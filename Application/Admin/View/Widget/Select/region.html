@@ -1,0 +1,9 @@
+<div class="select-region form-inline">
+<foreach name="list" item="v">
+<select class="form-control" name="region[]" style="min-width:auto; margin-right:10px;">
+ <foreach name="v" item="v2">
+	<option value="{$v2.id}" <if condition="$v2['selected']">selected</if> >{$v2.region_name}</option>
+ </foreach>
+</select>
+</foreach>
+</div>

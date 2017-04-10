@@ -1,0 +1,50 @@
+<include file="Public:header" />
+<div class="profile">
+	<div class="panel panel-default">
+		<div class="panel-heading">基本信息</div>
+		<table class="table ">
+			<tr>
+				<th class="th">管理员:</th>
+				<td>{$admin.name} ({$admin.roleName})</td>
+			</tr>
+			<tr>
+				<th class="th">上一次登陆:</th>
+				<td class="price">{$admin.lastLogin}</td>
+			</tr>
+			
+		</table>
+	</div>
+	<div class="panel panel-default">
+	  <div class="panel-heading">修改密码</div>
+	  <div class="panel-body">
+	  <form class="ajaxSubmit form-horizontal" action="{:u('changePass')}" method="post">
+		<div class="form-group">
+			<label class="col-sm-2 control-label"><i class="required-star">*</i> 原密码</label>
+			<div class="col-sm-4">
+			<input class="form-control" name="password" type="password" >
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 control-label"><i class="required-star">*</i> 新密码</label>
+			<div class="col-sm-4">
+			<input class="form-control" name="passnew" type="password" >
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 control-label"><i class="required-star">*</i> 新密码确认</label>
+			<div class="col-sm-4">
+			<input class="form-control" name="passnew2" type="password" >
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 control-label"> </label>
+			<div class="col-sm-4">
+				<input type="submit" class="btn btn-primary" />
+			</div>
+		</div>
+	   </div>
+	  </form>
+	</div>
+</div>
+<import file="js.admin.index.index" />
+<include file="Public:footer" />

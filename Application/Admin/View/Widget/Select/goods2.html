@@ -1,0 +1,21 @@
+<div class="select-goods form-inline">
+	<button id="select-goods-btn2" class="btn btn-default" type="button">选择</button>
+	<input name="{$name}" type="hidden" value="{$ids}" />
+	<table class="table table-bordered">
+	 <tr class="hide">
+		<th width="40%">商品名称</th>
+		<th width="10%" align="center">取消</th>
+	 </tr>
+	<foreach name="goodsList" item="v">
+		<tr>
+			<td>{$v.goods_name}<input name="goods[{$v.id}][goods_id]" value="{$v.id}" type="hidden">
+			</td> 
+			<td class="handle"><a class="btn btn-link del cancel">取消</a></td>
+		</tr>
+	</foreach>
+	</table>
+</div>
+<style>
+.select-goods th{text-align:center;}
+.select-goods td input[type=number]{width:50px;}
+</style>

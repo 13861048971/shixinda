@@ -1,0 +1,59 @@
+<include file="Public:header" />
+<div class="table-responsive shrink circle">
+	<div class="tabs clearfix">
+		<foreach name="tabs" item="v">
+			<a href="{$v[2]}" class="{$v[3]?"cur":""}" >{$v[0]}{$v[1]}</a>
+		</foreach>
+	</div>
+	<table class="table table-striped show-order-list tab{$tab}">
+		<tr>  
+		  <th width="150">{$tabTimeDt}</th>
+		  <th>下单人</th>
+		  <th>邀请艺人</th>
+		  <th style="">艺人类型</th>
+		  <th style="">邀约地址</th>
+		  <th style="">邀约时间</th>
+		  <th style="">邀约</th>
+		  <th style="">演出类容</th>
+		  <th class="handle-time">处理时间</th>
+		  <th class="refuse">拒绝原因</th>
+		  <th class="status">订单状态</th>
+		  <th class="cancel">撤销原因</th>
+		  <th class="report">举报原因</th>
+		  <th width=150 class="handle">操作</th>
+		</tr>
+		<foreach name="list" item="v">
+		<tr url="{:u('run/orderDetail',['id'=>$v['id']])}">
+			<td>{$v[$timeKey]}</td>
+			<td>
+				<a href="javascript:openInNewWindow('{$v.user.avatar}')">
+					<img class="avatar" src="{$v.user.avatar}" width=25 />
+				</a>{$v.user.nickname}
+			</td>
+			<td class="left">
+				<a href="javascript:openInNewWindow('{$v.artist.avatar}')">
+					<img class="avatar" src="{$v.artist.avatar}" width=25 />
+				</a>{$v.artist.nickname}
+			</td>
+			<td>{$v.artist.typeName}</td>
+			<td>{$v.address}</td>
+			<td>{$v.beginTime}</td>
+			<td>{$v.price}</td>
+			<td>{$v.desc}</td>
+			<td class="handle-time">{$v['handleTime']}</td>
+		    <td class="refuse">{$v.refuseTypeName}</td>
+		    <td class="status">{$v.statusName}</td>
+		    <td class="cancel">{$v.cancel_note}</td>
+		    <td class="report">{$v.reportTypeName}</td>
+			<td class="handle">
+				<a class="dialog edit hide" dialog-lg="true" href="#" url="{:u('edit','id=' . $v['id'])}">编辑</a>
+			 
+				<a class="btn btn-danger btn-sm ajaxPost2 {$v['status'] == 3?"disabled":""}" url="{:u('orderCancel')}" data="id={$v.id}" success="已撤销" confirm="true">{$v['status'] == 3?"已":""}撤销订单</a>
+			</td>
+		</tr>
+		</foreach>
+	</table>
+	<div class="pager">{$pageVar}</div>
+</div>
+<import file="js.lib.laydate.laydate,js.admin.run" />
+<include file="Public:footer" />

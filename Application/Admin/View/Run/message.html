@@ -1,0 +1,97 @@
+<include file="Public:header" />
+<div class="table-responsive shrink message">
+	<h2 class="sub-header" style="padding-bottom:3px;margin-bottom:20px;">
+		<div class="tabs clearfix">
+			<foreach name="tabs" item="v">
+				<a href="{$v[1]}" class="{$v[2]?"cur":""}" >{$v[0]}</a>
+			</foreach>
+		</div>
+	</h2>
+	<if condition="$tab lt 1">
+	<form class="form-horizontal ajaxSubmit message-form" action="{:u('messageEdit')}" method="post">
+		<div class="select-type-id">
+			<span class="trans"></span>
+			<div class="select">
+				<h4>选择推送人群</h4>
+				<foreach name="typeArr" item="v">
+				 <dl>
+					<dt><label>
+						<input name="type" checked type="checkbox" value="{$v.value}">{$v.name}
+					</label>
+					</dt>
+				<if condition="$v['ids']">
+					<dd>
+					<foreach name="v.ids" item="v2" key="k2">
+					<label>
+						<input name="type_id[{$k2}]" checked type="checkbox" value="{$v2}">{$v2}
+					</label>
+					</foreach>
+					</dd>
+				</if>
+				 </dl>
+				</foreach>
+				<div class="div-btn pull-right">
+					<button type="button" class="btn btn-default btn-sm">取消</button>
+					<button type="button" class="btn btn-info btn-sm">确定</button>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-sm-1 control-label"><i class="red">*</i>推送人群</div>
+			<div class="col-sm-4">
+				{:w('select/index', $typeList)}
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-sm-1 control-label"><i class="red">*</i>推送标题</div>
+			<div class="col-sm-5">
+				<input type="text" required class="form-control" name="title" value="">
+			</div>
+		</div>	 
+		<div class="form-group">
+			<div class="col-sm-1 control-label">相关链接</div>
+			<div class="col-sm-5">
+				<input type="text" class="form-control" name="link" value="">
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-sm-1 control-label"><i class="red">*</i>内容</div>
+			<div class="col-sm-8">
+				<textarea name="content" required class="form-control" rows="5"></textarea>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-sm-offset-1 col-sm-10">
+				<input type="hidden" name="name" value="SMS">
+				<button type="submit" class="btn btn-primary">提交</button>
+			</div>
+		</div>
+	</form>
+
+ <else />
+	<table class="table table-striped show-order-list tab{$tab}">
+		<tr>  
+		  <th width="150">推送时间</th>
+		  <th width="150">推送人群</th>
+		  <th width="250">推送标题</th>
+		  <th width="150">推送链接</th>
+		  <th>推送内容</th>
+		  <th>发送备注</th>
+		</tr>
+		<foreach name="list" item="v">
+		<tr>
+			<td>{$v.addTime}</td>
+			<td>{$v.typeName}</td>
+			<td>{$v.title}</td>
+			<td>{$v.link}</td>
+			<td>{$v.content}</td>
+			<td>{$v.note}</td>
+		</tr>
+		</foreach>
+	</table>
+	<div class="pager">{$pageVar}</div>
+	
+ </if>
+</div>
+<import file="js.lib.laydate.laydate,js.admin.run" />
+<include file="Public:footer" />

@@ -1,0 +1,84 @@
+<include file="Public:header" />
+<div class="table-responsive user shrink">
+	<form class="form-inline search clearfix">
+		<div class="btn-group pull-left">
+		{:w('select/index', $typeArr)}
+		{:w('select/index', $statusArr)}
+		
+		<input  class="form-control" name="keywords" type="text" placeholder="手机号或者昵称搜索" value="{$search.keywords}" >
+		<button  class="form-control btn-info" >搜索</button>
+		</div>
+	</form>
+	<style> .act-identify .type, .act-identify .imageccie{ display:none; } </style>
+	<table class="table table-striped artist-list act-{$Think.ACTION_NAME}">
+		<tr>
+		  <th>#</th>
+		  <th>申请时间</th>
+		  <th width=80>用户</th>
+		  <th>注册手机</th>
+		  <th>认证人</th> 
+		  <th width="145">身份证号</th>
+		  <th>支付宝</th>
+		  <th>作品</th>
+		  <th width="70">服务城市</th>
+		  <th>类型</th>
+		  <th width="180">认证图片</th>
+		  <th width="75">状态</th>
+		  <th>操作</th>
+		</tr>
+		<foreach name="list" item="v">
+		<tr>
+			<td>{$v.id}</td>
+			<td>{$v.addTime}</td>
+			<td><if condition="$v['user']['avatar']"><a href="javascript:openInNewWindow('{$v.user.avatar}');"><img  src="{$v.user.avatar}" width=40 /></a></if>
+				<br>{$v.user.nickname}
+			</td>
+			<td>{$v.user.mobile}</td>
+			<td>{$v.realname}</td>
+			<td>{$v.idno}</td>
+			<td>{$v.alipay}</td>
+			<td>
+				<if condition="$v['worklink']">
+					<a class="btn-link" target="_blank" href="{$v.worklink}">查看</a>
+				<else />
+				</if>
+			</td>
+			<td>{$v.cityName}</td>
+			<td><if condition="$v['type']"><abbr title="名称:{$v.orgname} &#10;地址:{$v.orgaddress}">{$v.typeName}</abbr><else />{$v.typeName}</if></td>
+			
+			<td>
+				<a href="javascript:;"><img src="{$v.image1}" onclick="openInNewWindow('{$v.image1}')" width="50"  /></a>
+				<a href="javascript:;"><img src="{$v.image2}" onclick="openInNewWindow('{$v.image2}')" width="50"  /></a>
+				<if condition="$v['type'] lt 1 && $v['image3']">
+				<a href="javascript:;"><img src="{$v.image3}" onclick="openInNewWindow('{$v.image3}')" width="50"  /></a>
+				</if>
+			</td>
+			<td>
+				<if condition="$v['status'] eq 2">
+					<abbr title="{$v.verify_note}">{$v.statusName}</abbr>
+				<else />
+				{$v.statusName}
+				</if>
+				<br><a class="btn-link" href="javascript:openInNewWindow('/Admin/user/report?pho_id={$v.id}');">举报({$v.reportNum})</a>
+			</td>
+			<td width=150 class="handle">
+				<if condition="$v['status'] lt 1 or $v['status'] eq 2">
+					<a class="btn btn-warning btn-sm dialog" url="/Admin/user/phoChange/id/{$v.id}">不通过</a>
+					<button class="btn btn-default btn-sm ajaxPost" url="/Admin/user/phoChange/" data="id={$v.id}&status=1" onchange="(function(th){th.text('审批通过');th.prop('disabled',true).prev().hide();})($(this))">通过</button>
+				<elseif condition="$v['status'] eq 1" />
+					<button class="btn btn-danger btn-sm ajaxPost" url="/Admin/user/phoChange/" data="id={$v.id}&status=3" confirm="1" onchange="location.reload();">取消摄影师资格</button>
+				<elseif condition="$v['status'] eq 2"/>
+					<button class="btn btn-success btn-sm ajaxPost" url="/Admin/user/phoChange/" data="id={$v.id}&status=1" confirm="1" onchange="location.reload();">通过审批</button>
+				<elseif condition="$v['status'] eq 3"/>
+					<button class="btn btn-success btn-sm ajaxPost" url="/Admin/user/phoChange/" data="id={$v.id}&status=1" confirm="1" onchange="location.reload();">恢复摄影师资格</button>
+				</if>
+			
+			</td>
+		</tr>
+		</foreach>
+	</table>
+	<div class="pager">{$pageVar}</div>
+</div>
+<import type="css" file="js.lib.daterangepicker.daterangepicker-bs3" />
+<import file="js.admin.user,js.lib.daterangepicker.moment#min,js.lib.daterangepicker.daterangepicker" />
+<include file="Public:footer" />

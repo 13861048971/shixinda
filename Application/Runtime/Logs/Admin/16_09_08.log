@@ -1,0 +1,333 @@
+[ 2016-09-08T11:40:49+08:00 ] 127.0.0.1 /Admin/User/%E6%89%8B%E6%8C%81%E8%BA%AB%E4%BB%BD%E8%AF%81
+ERR: 非法操作:手持身份证
+
+[ 2016-09-08T11:40:49+08:00 ] 127.0.0.1 /Admin/User/%E8%BA%AB%E4%BB%BD%E8%AF%81%E6%AD%A3%E9%9D%A2%E5%9B%BE%E7%89%87
+ERR: 非法操作:身份证正面图片
+
+[ 2016-09-08T11:40:49+08:00 ] 127.0.0.1 /Admin/User/%E8%BA%AB%E4%BB%BD%E8%AF%81%E5%8F%8D%E9%9D%A2%E5%9B%BE%E7%89%87
+ERR: 非法操作:身份证反面图片
+
+[ 2016-09-08T11:41:10+08:00 ] 127.0.0.1 /Admin/User/%E6%89%8B%E6%8C%81%E8%BA%AB%E4%BB%BD%E8%AF%81
+ERR: 非法操作:手持身份证
+
+[ 2016-09-08T11:41:10+08:00 ] 127.0.0.1 /Admin/User/%E8%BA%AB%E4%BB%BD%E8%AF%81%E6%AD%A3%E9%9D%A2%E5%9B%BE%E7%89%87
+ERR: 非法操作:身份证正面图片
+
+[ 2016-09-08T11:41:11+08:00 ] 127.0.0.1 /Admin/User/%E8%BA%AB%E4%BB%BD%E8%AF%81%E5%8F%8D%E9%9D%A2%E5%9B%BE%E7%89%87
+ERR: 非法操作:身份证反面图片
+
+[ 2016-09-08T11:51:26+08:00 ] 127.0.0.1 /Admin/User/%E6%89%8B%E6%8C%81%E8%BA%AB%E4%BB%BD%E8%AF%81
+ERR: 非法操作:手持身份证
+
+[ 2016-09-08T11:51:26+08:00 ] 127.0.0.1 /Admin/User/%E8%BA%AB%E4%BB%BD%E8%AF%81%E6%AD%A3%E9%9D%A2%E5%9B%BE%E7%89%87
+ERR: 非法操作:身份证正面图片
+
+[ 2016-09-08T11:51:26+08:00 ] 127.0.0.1 /Admin/User/%E8%BA%AB%E4%BB%BD%E8%AF%81%E5%8F%8D%E9%9D%A2%E5%9B%BE%E7%89%87
+ERR: 非法操作:身份证反面图片
+
+[ 2016-09-08T11:55:53+08:00 ] 127.0.0.1 /Admin/User/%E6%89%8B%E6%8C%81%E8%BA%AB%E4%BB%BD%E8%AF%81
+ERR: 非法操作:手持身份证
+
+[ 2016-09-08T11:55:53+08:00 ] 127.0.0.1 /Admin/User/%E8%BA%AB%E4%BB%BD%E8%AF%81%E6%AD%A3%E9%9D%A2%E5%9B%BE%E7%89%87
+ERR: 非法操作:身份证正面图片
+
+[ 2016-09-08T11:56:41+08:00 ] 127.0.0.1 /Admin/User/%E6%89%8B%E6%8C%81%E8%BA%AB%E4%BB%BD%E8%AF%81
+ERR: 非法操作:手持身份证
+
+[ 2016-09-08T11:56:41+08:00 ] 127.0.0.1 /Admin/User/%E8%BA%AB%E4%BB%BD%E8%AF%81%E6%AD%A3%E9%9D%A2%E5%9B%BE%E7%89%87
+ERR: 非法操作:身份证正面图片
+
+[ 2016-09-08T11:56:42+08:00 ] 127.0.0.1 /Admin/User/%E6%89%8B%E6%8C%81%E8%BA%AB%E4%BB%BD%E8%AF%81
+ERR: 非法操作:手持身份证
+
+[ 2016-09-08T11:56:42+08:00 ] 127.0.0.1 /Admin/User/%E8%BA%AB%E4%BB%BD%E8%AF%81%E6%AD%A3%E9%9D%A2%E5%9B%BE%E7%89%87
+ERR: 非法操作:身份证正面图片
+
+[ 2016-09-08T11:58:22+08:00 ] 127.0.0.1 /Admin/User/%E6%89%8B%E6%8C%81%E8%BA%AB%E4%BB%BD%E8%AF%81
+ERR: 非法操作:手持身份证
+
+[ 2016-09-08T11:58:22+08:00 ] 127.0.0.1 /Admin/User/%E8%BA%AB%E4%BB%BD%E8%AF%81%E6%AD%A3%E9%9D%A2%E5%9B%BE%E7%89%87
+ERR: 非法操作:身份证正面图片
+
+[ 2016-09-08T11:58:29+08:00 ] 127.0.0.1 /Admin/user/phoChange/id/1
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `pho` [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `task` [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `category` [ RunTime:0.0040s ]
+SQL: SELECT `id` FROM `category` WHERE `type` = 1 ORDER BY rank,id  [ RunTime:0.0000s ]
+SQL: SELECT `id` FROM `category` WHERE `type` = 2 ORDER BY rank,id  [ RunTime:0.0000s ]
+SQL: SELECT * FROM `category` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `category` WHERE `id` = 3 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `category` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `pho` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `album` [ RunTime:0.0040s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `album` WHERE `user_id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT `path` FROM `album` WHERE `user_id` = 1 ORDER BY id desc LIMIT 3   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `pho` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `region` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `region` WHERE `id` = 0 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `region` WHERE `id` = 0 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT `id` FROM `album` WHERE `type_id` = 1 ORDER BY add_time desc LIMIT 20   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `album` WHERE `id` = 13 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `album` WHERE `id` = 7 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `album` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `album` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `meal` [ RunTime:0.0040s ]
+SQL: SELECT `id` FROM `category` WHERE `type` = 2 ORDER BY rank,id  [ RunTime:0.0000s ]
+SQL: SELECT * FROM `category` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `category` WHERE `id` = 3 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `category` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `meal` WHERE `pho_id` = 1 ORDER BY price asc LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `collect` [ RunTime:0.0040s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `collect` WHERE `node_id` = 1 AND `type` = 0 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `id` FROM `collect` WHERE `type` = 0 AND `node_id` = 1 AND `user_id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `report` [ RunTime:0.0040s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `report` WHERE `pho_id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+
+[ 2016-09-08T11:58:32+08:00 ] 127.0.0.1 /Admin/User/phoChange
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `pho` [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `task` [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `category` [ RunTime:0.0040s ]
+SQL: SELECT `id` FROM `category` WHERE `type` = 1 ORDER BY rank,id  [ RunTime:0.0000s ]
+SQL: SELECT `id` FROM `category` WHERE `type` = 2 ORDER BY rank,id  [ RunTime:0.0000s ]
+SQL: SELECT * FROM `category` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `category` WHERE `id` = 3 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `category` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `pho` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `album` [ RunTime:0.0040s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `album` WHERE `user_id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT `path` FROM `album` WHERE `user_id` = 1 ORDER BY id desc LIMIT 3   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `pho` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: UPDATE `pho` SET `status`='2',`update_time`='1473307112',`verify_note`='其他原因' WHERE `id` = 1 [ RunTime:0.0350s ]
+
+[ 2016-09-08T11:58:33+08:00 ] 127.0.0.1 /Admin/User/%E6%89%8B%E6%8C%81%E8%BA%AB%E4%BB%BD%E8%AF%81
+ERR: 非法操作:手持身份证
+
+[ 2016-09-08T11:58:33+08:00 ] 127.0.0.1 /Admin/User/%E8%BA%AB%E4%BB%BD%E8%AF%81%E6%AD%A3%E9%9D%A2%E5%9B%BE%E7%89%87
+ERR: 非法操作:身份证正面图片
+
+[ 2016-09-08T11:58:36+08:00 ] 127.0.0.1 /Admin/user/phoChange/id/1
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `pho` [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `task` [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `category` [ RunTime:0.0030s ]
+SQL: SELECT `id` FROM `category` WHERE `type` = 1 ORDER BY rank,id  [ RunTime:0.0000s ]
+SQL: SELECT `id` FROM `category` WHERE `type` = 2 ORDER BY rank,id  [ RunTime:0.0000s ]
+SQL: SELECT * FROM `category` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `category` WHERE `id` = 3 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `category` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `pho` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `album` [ RunTime:0.0040s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `album` WHERE `user_id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT `path` FROM `album` WHERE `user_id` = 1 ORDER BY id desc LIMIT 3   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `pho` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `region` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `region` WHERE `id` = 0 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `region` WHERE `id` = 0 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT `id` FROM `album` WHERE `type_id` = 1 ORDER BY add_time desc LIMIT 20   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `album` WHERE `id` = 13 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `album` WHERE `id` = 7 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `album` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `album` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `meal` [ RunTime:0.0040s ]
+SQL: SELECT `id` FROM `category` WHERE `type` = 2 ORDER BY rank,id  [ RunTime:0.0000s ]
+SQL: SELECT * FROM `category` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `category` WHERE `id` = 3 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `category` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `meal` WHERE `pho_id` = 1 ORDER BY price asc LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `collect` [ RunTime:0.0030s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `collect` WHERE `node_id` = 1 AND `type` = 0 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT `id` FROM `collect` WHERE `type` = 0 AND `node_id` = 1 AND `user_id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `report` [ RunTime:0.0040s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `report` WHERE `pho_id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+
+[ 2016-09-08T11:58:43+08:00 ] 127.0.0.1 /Admin/user/phoChange/
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `pho` [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `task` [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `category` [ RunTime:0.0040s ]
+SQL: SELECT `id` FROM `category` WHERE `type` = 1 ORDER BY rank,id  [ RunTime:0.0010s ]
+SQL: SELECT `id` FROM `category` WHERE `type` = 2 ORDER BY rank,id  [ RunTime:0.0000s ]
+SQL: SELECT * FROM `category` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `category` WHERE `id` = 3 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `category` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `pho` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `user` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `album` [ RunTime:0.0040s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `album` WHERE `user_id` = 2 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT `path` FROM `album` WHERE `user_id` = 2 ORDER BY id desc LIMIT 3   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `pho` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0000s ]
+SQL: UPDATE `pho` SET `status`='3',`update_time`='1473307123' WHERE `id` = 2 [ RunTime:0.0260s ]
+
+[ 2016-09-08T11:58:44+08:00 ] 127.0.0.1 /Admin/User/%E6%89%8B%E6%8C%81%E8%BA%AB%E4%BB%BD%E8%AF%81
+ERR: 非法操作:手持身份证
+
+[ 2016-09-08T11:58:44+08:00 ] 127.0.0.1 /Admin/User/%E8%BA%AB%E4%BB%BD%E8%AF%81%E6%AD%A3%E9%9D%A2%E5%9B%BE%E7%89%87
+ERR: 非法操作:身份证正面图片
+
+[ 2016-09-08T11:58:48+08:00 ] 127.0.0.1 /Admin/User/%E6%89%8B%E6%8C%81%E8%BA%AB%E4%BB%BD%E8%AF%81
+ERR: 非法操作:手持身份证
+
+[ 2016-09-08T11:58:48+08:00 ] 127.0.0.1 /Admin/User/%E8%BA%AB%E4%BB%BD%E8%AF%81%E6%AD%A3%E9%9D%A2%E5%9B%BE%E7%89%87
+ERR: 非法操作:身份证正面图片
+
+[ 2016-09-08T11:58:49+08:00 ] 127.0.0.1 /Admin/user/phoChange/
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `pho` [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `task` [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `category` [ RunTime:0.0040s ]
+SQL: SELECT `id` FROM `category` WHERE `type` = 1 ORDER BY rank,id  [ RunTime:0.0000s ]
+SQL: SELECT `id` FROM `category` WHERE `type` = 2 ORDER BY rank,id  [ RunTime:0.0000s ]
+SQL: SELECT * FROM `category` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `category` WHERE `id` = 3 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `category` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `pho` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `user` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `album` [ RunTime:0.0040s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `album` WHERE `user_id` = 2 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT `path` FROM `album` WHERE `user_id` = 2 ORDER BY id desc LIMIT 3   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `pho` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0000s ]
+SQL: UPDATE `pho` SET `status`='1',`update_time`='1473307129' WHERE `id` = 2 [ RunTime:0.0050s ]
+
+[ 2016-09-08T11:58:50+08:00 ] 127.0.0.1 /Admin/User/%E6%89%8B%E6%8C%81%E8%BA%AB%E4%BB%BD%E8%AF%81
+ERR: 非法操作:手持身份证
+
+[ 2016-09-08T11:58:50+08:00 ] 127.0.0.1 /Admin/User/%E8%BA%AB%E4%BB%BD%E8%AF%81%E6%AD%A3%E9%9D%A2%E5%9B%BE%E7%89%87
+ERR: 非法操作:身份证正面图片
+
+[ 2016-09-08T11:59:14+08:00 ] 127.0.0.1 /Admin/User/%E6%89%8B%E6%8C%81%E8%BA%AB%E4%BB%BD%E8%AF%81
+ERR: 非法操作:手持身份证
+
+[ 2016-09-08T11:59:14+08:00 ] 127.0.0.1 /Admin/User/%E8%BA%AB%E4%BB%BD%E8%AF%81%E6%AD%A3%E9%9D%A2%E5%9B%BE%E7%89%87
+ERR: 非法操作:身份证正面图片
+
+[ 2016-09-08T11:59:37+08:00 ] 127.0.0.1 /Admin/User/%E6%89%8B%E6%8C%81%E8%BA%AB%E4%BB%BD%E8%AF%81
+ERR: 非法操作:手持身份证
+
+[ 2016-09-08T11:59:37+08:00 ] 127.0.0.1 /Admin/User/%E8%BA%AB%E4%BB%BD%E8%AF%81%E6%AD%A3%E9%9D%A2%E5%9B%BE%E7%89%87
+ERR: 非法操作:身份证正面图片
+
+[ 2016-09-08T12:00:16+08:00 ] 127.0.0.1 /Admin/User/%E6%89%8B%E6%8C%81%E8%BA%AB%E4%BB%BD%E8%AF%81
+ERR: 非法操作:手持身份证
+
+[ 2016-09-08T12:00:16+08:00 ] 127.0.0.1 /Admin/User/%E8%BA%AB%E4%BB%BD%E8%AF%81%E6%AD%A3%E9%9D%A2%E5%9B%BE%E7%89%87
+ERR: 非法操作:身份证正面图片
+
+[ 2016-09-08T12:01:08+08:00 ] 127.0.0.1 /Admin/User/%E6%89%8B%E6%8C%81%E8%BA%AB%E4%BB%BD%E8%AF%81
+ERR: 非法操作:手持身份证
+
+[ 2016-09-08T12:01:09+08:00 ] 127.0.0.1 /Admin/User/%E8%BA%AB%E4%BB%BD%E8%AF%81%E6%AD%A3%E9%9D%A2%E5%9B%BE%E7%89%87
+ERR: 非法操作:身份证正面图片
+
+[ 2016-09-08T12:01:42+08:00 ] 127.0.0.1 /Admin/User/%E6%89%8B%E6%8C%81%E8%BA%AB%E4%BB%BD%E8%AF%81
+ERR: 非法操作:手持身份证
+
+[ 2016-09-08T12:01:42+08:00 ] 127.0.0.1 /Admin/User/%E8%BA%AB%E4%BB%BD%E8%AF%81%E6%AD%A3%E9%9D%A2%E5%9B%BE%E7%89%87
+ERR: 非法操作:身份证正面图片
+
+[ 2016-09-08T12:07:00+08:00 ] 127.0.0.1 /Admin/User/%E6%89%8B%E6%8C%81%E8%BA%AB%E4%BB%BD%E8%AF%81
+ERR: 非法操作:手持身份证
+
+[ 2016-09-08T12:07:00+08:00 ] 127.0.0.1 /Admin/User/%E8%BA%AB%E4%BB%BD%E8%AF%81%E6%AD%A3%E9%9D%A2%E5%9B%BE%E7%89%87
+ERR: 非法操作:身份证正面图片
+
+[ 2016-09-08T12:07:31+08:00 ] 127.0.0.1 /Admin/User/%E6%89%8B%E6%8C%81%E8%BA%AB%E4%BB%BD%E8%AF%81
+ERR: 非法操作:手持身份证
+
+[ 2016-09-08T12:07:31+08:00 ] 127.0.0.1 /Admin/User/%E8%BA%AB%E4%BB%BD%E8%AF%81%E6%AD%A3%E9%9D%A2%E5%9B%BE%E7%89%87
+ERR: 非法操作:身份证正面图片
+
+[ 2016-09-08T12:07:43+08:00 ] 127.0.0.1 /Admin/User/%E6%89%8B%E6%8C%81%E8%BA%AB%E4%BB%BD%E8%AF%81
+ERR: 非法操作:手持身份证
+
+[ 2016-09-08T12:07:44+08:00 ] 127.0.0.1 /Admin/User/%E8%BA%AB%E4%BB%BD%E8%AF%81%E6%AD%A3%E9%9D%A2%E5%9B%BE%E7%89%87
+ERR: 非法操作:身份证正面图片
+
+[ 2016-09-08T12:07:46+08:00 ] 127.0.0.1 /Admin/user/phoChange/id/1
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `pho` [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `task` [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `category` [ RunTime:0.0040s ]
+SQL: SELECT `id` FROM `category` WHERE `type` = 1 ORDER BY rank,id  [ RunTime:0.0000s ]
+SQL: SELECT `id` FROM `category` WHERE `type` = 2 ORDER BY rank,id  [ RunTime:0.0000s ]
+SQL: SELECT * FROM `category` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `category` WHERE `id` = 3 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `category` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `pho` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `album` [ RunTime:0.0040s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `album` WHERE `user_id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT `path` FROM `album` WHERE `user_id` = 1 ORDER BY id desc LIMIT 3   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `pho` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `region` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `region` WHERE `id` = 0 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `region` WHERE `id` = 0 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT `id` FROM `album` WHERE `type_id` = 1 ORDER BY add_time desc LIMIT 20   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `album` WHERE `id` = 13 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `album` WHERE `id` = 7 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `album` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `album` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `meal` [ RunTime:0.0040s ]
+SQL: SELECT `id` FROM `category` WHERE `type` = 2 ORDER BY rank,id  [ RunTime:0.0000s ]
+SQL: SELECT * FROM `category` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `category` WHERE `id` = 3 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `category` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `meal` WHERE `pho_id` = 1 ORDER BY price asc LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `collect` [ RunTime:0.0040s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `collect` WHERE `node_id` = 1 AND `type` = 0 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `id` FROM `collect` WHERE `type` = 0 AND `node_id` = 1 AND `user_id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `report` [ RunTime:0.0040s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `report` WHERE `pho_id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+
+[ 2016-09-08T12:07:48+08:00 ] 127.0.0.1 /Admin/User/phoChange
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `pho` [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `task` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `category` [ RunTime:0.0030s ]
+SQL: SELECT `id` FROM `category` WHERE `type` = 1 ORDER BY rank,id  [ RunTime:0.0000s ]
+SQL: SELECT `id` FROM `category` WHERE `type` = 2 ORDER BY rank,id  [ RunTime:0.0000s ]
+SQL: SELECT * FROM `category` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `category` WHERE `id` = 3 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `category` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `pho` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `album` [ RunTime:0.0040s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `album` WHERE `user_id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT `path` FROM `album` WHERE `user_id` = 1 ORDER BY id desc LIMIT 3   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `pho` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: UPDATE `pho` SET `status`='2',`update_time`='1473307668',`verify_note`='身份照片不清楚' WHERE `id` = 1 [ RunTime:0.0460s ]
+
+[ 2016-09-08T12:07:49+08:00 ] 127.0.0.1 /Admin/User/%E6%89%8B%E6%8C%81%E8%BA%AB%E4%BB%BD%E8%AF%81
+ERR: 非法操作:手持身份证
+
+[ 2016-09-08T12:07:49+08:00 ] 127.0.0.1 /Admin/User/%E8%BA%AB%E4%BB%BD%E8%AF%81%E6%AD%A3%E9%9D%A2%E5%9B%BE%E7%89%87
+ERR: 非法操作:身份证正面图片
+
+[ 2016-09-08T13:00:37+08:00 ] 127.0.0.1 /Admin/User/%E6%89%8B%E6%8C%81%E8%BA%AB%E4%BB%BD%E8%AF%81
+ERR: 非法操作:手持身份证
+
+[ 2016-09-08T13:00:37+08:00 ] 127.0.0.1 /Admin/User/%E8%BA%AB%E4%BB%BD%E8%AF%81%E6%AD%A3%E9%9D%A2%E5%9B%BE%E7%89%87
+ERR: 非法操作:身份证正面图片
+
+[ 2016-09-08T13:00:38+08:00 ] 127.0.0.1 /Admin/User/%E6%89%8B%E6%8C%81%E8%BA%AB%E4%BB%BD%E8%AF%81
+ERR: 非法操作:手持身份证
+
+[ 2016-09-08T13:00:38+08:00 ] 127.0.0.1 /Admin/User/%E8%BA%AB%E4%BB%BD%E8%AF%81%E6%AD%A3%E9%9D%A2%E5%9B%BE%E7%89%87
+ERR: 非法操作:身份证正面图片
+
+[ 2016-09-08T13:00:42+08:00 ] 127.0.0.1 /Admin/User/%E6%89%8B%E6%8C%81%E8%BA%AB%E4%BB%BD%E8%AF%81
+ERR: 非法操作:手持身份证
+
+[ 2016-09-08T13:00:42+08:00 ] 127.0.0.1 /Admin/User/%E8%BA%AB%E4%BB%BD%E8%AF%81%E6%AD%A3%E9%9D%A2%E5%9B%BE%E7%89%87
+ERR: 非法操作:身份证正面图片
+
+[ 2016-09-08T13:00:43+08:00 ] 127.0.0.1 /Admin/User/%E6%89%8B%E6%8C%81%E8%BA%AB%E4%BB%BD%E8%AF%81
+ERR: 非法操作:手持身份证
+
+[ 2016-09-08T13:00:44+08:00 ] 127.0.0.1 /Admin/User/%E8%BA%AB%E4%BB%BD%E8%AF%81%E6%AD%A3%E9%9D%A2%E5%9B%BE%E7%89%87
+ERR: 非法操作:身份证正面图片
+

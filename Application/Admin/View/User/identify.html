@@ -1,0 +1,46 @@
+<include file="Public:header" />
+<div class="table-responsive user">
+	<form class="form-inline search">
+		<input  class="form-control" name="id" type="text" placeholder="ID" value="{$search.id}" pattern="[0-9]+" >
+		<input  class="form-control" name="username" type="text" placeholder="输入用户名称" value="{$search.username}" >
+		<input  class="form-control" name="tel" type="text" placeholder="输入手机号" value="{$search.tel}" pattern="[0-9]+" >
+		<div class="form-group">
+			{:w('select/index', $orderBy)}
+		</div>
+		<input  class="form-control btn-info" type="submit" value="搜索" >
+	</form>
+	<table class="table table-striped user-list">
+		<tr>  
+		  <th>#</th>
+		  <th>头像</th>
+		  <th>名称</th>
+		  <th>状态</th>
+		  <th>销客币</th> 
+		  <th>手机</th> 
+		  <th>首次登陆</th>
+		  <th>最后登录</th>
+		  <th>操作</th>
+		</tr>
+		<foreach name="userList" item="v">
+		<tr>
+			<td>{$v.id}</td>
+			<td><if condition="$v['avatar']"><img src="{$v.avatar}" width=25 /></if></td>
+			<td>{$v.username}</td>
+			<td <if condition="$v['status']"> class="green"</if>>
+				{$v.statusName}
+			</td>
+			<td>{$v.point}</td>
+			<td>{$v.tel}</td>
+			<td>{:date("y-m-d H:i",$v['add_time'])}</td>
+			<td>{:date("y-m-d H:i",$v['update_time'])}</td>
+			<td width=120 class="handle">
+				<a class="dialog edit" dialog-lg="true" href="#" url="{:u('edit','id=' . $v['id'])}">编辑</a>
+				<a class="ajaxDel del" href="#" url="{:u('del','id=' . $v['id'])}">删除</a>
+			</td>
+		</tr>
+		</foreach>
+	</table>
+	<div class="pager">{$page}</div>
+</div>
+<import file="js.lib.laydate.laydate,js.admin.user" />
+<include file="Public:footer" />

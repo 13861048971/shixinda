@@ -1,0 +1,57 @@
+<include file="Public:header" />
+<div class="table-responsive shrink">
+	<form class="form-inline search clearfix">
+		<div class="pull-left time-buttons">
+			{:w('select/index', $statusArr)}
+		</div>
+		<div class="btn-group pull-left">
+			<input  class="form-control" name="title" type="text" placeholder="任务标题" value="{$search.title}" > 
+			<button  class="form-control btn-info" >搜索</button>
+		</div>
+	</form>
+	<table class="table table-striped artist-list">
+		<tr>  
+		  <th>#</th>
+		  <th>头像</th>
+		  <th>用户昵称</th>
+		  <th>任务标题</th>
+		  <th>拍摄类型</th>
+		  <th>所在城市</th>
+		  <th>风格</th>
+		  <th>模特</th>
+		  <th>价格</th>
+		  <th>件数</th>
+		  <th>约定时间</th>
+		  <th>上交时间</th>
+		  <th>投标</th>
+		  <th>状态</th>
+		  <th class="">操作</th>
+		</tr>
+		<foreach name="list" item="v">
+		<tr>
+			<td>{$v.id}</td>
+			<td><if condition="$v['user']['avatar']"><img src="{$v.user.avatar}" width=40 /></if></td>
+			<td>{$v.user.nickname}</th>
+			<td>{$v.title}</td>
+			<td>{$v.typeName}</td>
+			<td>{$v.cityName}</td>
+			<td>{$v.styleName}</td>
+			<td>{$v.model}</td>
+			<td class="price">{$v.price}</td>
+			<td>{$v.num}</td>
+			<td>{$v.beginTime}</td>
+			<td>{$v.overTime}</td>
+			<td><a class="btn-link" href="javascript:openInNewWindow('/Admin/Run/join?task_id={$v.id}','任务“{$v.title}” 的投标')">{$v.joinNum}</a></td>
+			<td>{$v.statusName}</td>
+			<td width=120 class="handle">
+				<if condition="1 gt $v['status']">
+					<a class="ajaxPost btn btn-warning btn-sm" href="#" url="{:u('taskCancel')}" data="id={$v.id}" confirm="true" success="已取消">取消招标</a>
+				</if>
+			</td>
+		</tr>
+		</foreach>
+	</table>
+	<div class="pager">{$pageVar}</div>
+</div>
+<import file="js.lib.laydate.laydate,js.admin.user" />
+<include file="Public:footer" />

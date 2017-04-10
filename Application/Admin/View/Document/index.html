@@ -1,0 +1,66 @@
+<include file="Public:header" />
+
+<div class="document" style="position:relative;">
+<div class="pull-right navbar-fixed-top" style="">
+	<ul class="nav nav-pills nav-stacked right-nav">
+		<li><a href="">sdsdsd</a></li>
+	</ul>
+</div >
+<div class="form-list pull-left" style="width:74%">
+  <foreach name="forms" item="v" key="k">
+	<div class="panel panel-default" <if condition="$v[0]['group']"> group="{$v[0]['group']}" </if>>
+	  <div class="panel-heading">{$k}.{$v[0]['title']}</div>
+	  <div class="panel-body">
+		{:w('form/index', $v)}
+	  </div>
+	</div>
+  </foreach>
+</div>
+
+</div>
+<import file="js.admin.index.index" />
+<include file="Public:footer" />
+<script>
+var li = $('.form-list .panel .panel-heading');
+var rightNav = $('.right-nav');
+
+var i = 0;
+var str = '';
+var group = '';
+li.each(function(){
+	var th = $(this);
+	var id = 'hash_'+i
+	var liGroup = th.parent().attr('group');
+	
+	liGroup && (group=liGroup) && (str += '<li class="group" group="'+ group	 +'"><a style="font-weight:700;" href="#' +id+ '"><b>--</b> '+ group + '</a></li>');
+	str += '<li group="'+ group +'"><a style="text-indent:20px;" href="#' +id+ '">'+ th.text().replace(/[A-z\/?=]+/,'')+'</a></li>';
+	th.parent().attr('id', id);
+	i++;
+});
+rightNav.html(str);
+rightNav.on('click', 'a', function(){
+	var th = $(this);
+	var node = $(th.attr('href'));
+	scrollTo2(node,'', -42);
+	return false;
+});
+
+$('#hash_3').on('ajaxCallback',function(e, info){
+	$('form input[name=vercode]').val(info.code);
+});
+
+rightNav.on('click', '.group b', function(e){
+	console.log('==');
+	var th = $(this);
+	var li = th.parent().parent();
+	var gr = li.attr('group');
+	var str = $.trim(th.text());
+	lis = li.siblings('[group=' + gr + ']');
+	if(str == '+')
+		lis.show() && (th.text('--'));
+	else
+		lis.hide() && (th.text('+'));
+	
+	e.stopPropagation();
+});
+</script>

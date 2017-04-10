@@ -1,0 +1,33 @@
+<include file="Public:header" />
+<div class="table-responsive shrink count">
+ <h2 class="sub-header">
+	<form class="form-inline search clearfix">
+		{:w('form/node', $selectDate)}
+	</form>
+  </h2>
+  
+  <if condition="$error">
+  <div class="alert alert-danger">{$error}</div>
+  <else />
+  <table class="table table-striped num-list">
+		<tr>
+		  <th class="r1"></th>
+		<foreach name="fieldArr" item="v">
+		  <th>{$v[0]}</th>
+		</foreach>
+		</tr>
+		<foreach name="rows" item="v">
+		<tr>
+			<foreach name="v" key="k" item="v2">
+				<if condition="$k gt 0">
+					<td <if condition="$k eq 1"> class="r1"</if> >{$v2}</td>
+				</if>
+			</foreach>
+		</tr>
+		</foreach>
+	</table>
+  </if>
+</div>
+<import type="css" file="js.lib.daterangepicker.daterangepicker-bs3" />
+<import file="js.lib.laydate.laydate,js.lib.daterangepicker.moment#min,js.lib.daterangepicker.daterangepicker,js.admin.count" />
+<include file="Public:footer" />

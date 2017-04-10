@@ -1,0 +1,71 @@
+<span class="select-user">
+	<input class="form-control user-input" type="text" placeholder="输入用户名称" value="{$user.username}" autocomplete="off" />
+	<input name="user_id" value="{$user.id}" type="hidden" username="{$user.username}" />
+	<ul></ul>
+<style>
+	.select-user{position:relative;display:inline-block;}
+	.select-user input:-webkit-autofill{display:none;}
+	.select-user ul{position:absolute;padding:10px; background:#fff; display:none;
+		box-shadow:1px 2px 3px #ccc;width:100%;z-index:2;}
+	.select-user ul:after{clear:both; content:""; display:block;}
+	.select-user li{float:left; margin:10px 10px 0 0; padding:5px; border:1px solid #ccc; cursor:pointer;}
+	.select-user li:hover{background:#efefef;}
+</style>
+</span>
+<script>
+$(function(){
+	var selectUser = $('.select-user .user-input');
+	var ul = selectUser.siblings('ul');
+	var ulover = false;
+	var uidInp = selectUser.next();
+	
+	selectUser.off('keyup').on('keyup', function(){
+		ul.html('');
+		var name = $.trim($(this).val());
+		$.get("/Admin/User/index",{username:name}, function(info){
+			if(!info.data)
+				return ul.html('<div>没有此用户!</div>')
+			var listr = '';
+			foreach(info.data, function(v){
+				listr += '<li uid="'+ v.id +'" username="'+ v.username +'">'+v.username+'</li>';
+			});
+			ul.html(listr);
+		}, 'json');
+		ul.show();
+	});
+	selectUser.blur(function(e){
+		if(ulover) return;
+		
+		var v = $.trim(selectUser.val());
+		selectUser.val(v);
+			
+		ul.find('li').each(function(){
+			var li = $(this);
+			var text = $.trim(li.text());
+			if(v != text) return true;
+			uidInp.val(li.attr('uid')).attr('username', li.attr('username'));
+			return false;
+		});
+		
+		if(!v || v != uidInp.attr('username')){
+			uidInp.val('');
+			ul.hide();
+			return 
+		}
+		
+		ul.hide();
+	});
+	ul.on('click','li', function(){
+		var uid = $(this).attr('uid');
+		ul.hide();
+		if(!uid) return;
+		var input = ul.prev().val(uid).prev();
+		input.val($(this).text());
+		input.attr('username', $(this).attr('username'));
+	}).on('mouseover',function(){
+		ulover = true;
+	}).on('mouseout',function(){
+		ulover = false;
+	});
+});
+</script>

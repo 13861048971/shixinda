@@ -1,0 +1,31 @@
+<include file="Public:header" />
+<div class="table-responsive">
+	<table class="table table-striped">
+		<tr>  
+		  <th width="20%">模板目录</th>
+		  <th width="20%">截图</th>
+		  <th>名称</th>
+		  <th>描述</th>
+		  <th>作者</th>
+		  <th>操作</th>
+		</tr>
+		<foreach name="list" item="v">
+		<tr>
+			<td>{$v.name}</td>
+			<td><a href="javascript:openInNewWindow('{$v.screenshot}')"><img src="{$v.screenshot}" style="width:100px;" class="img-thumbnail"></a></td>
+			<td>{$v.config.name}</td>
+			<td>{$v.config.desc}</td>
+			<td>{$v.config.author}</td>
+			<td width=200 class="handle">
+			<if condition="$v['default']">
+				<span class="green">默认模板</span>
+			<else/>
+				<a  href="{:u('themeDefault','theme=' . $v['name'])}">设为默认</a>
+			</if>
+			</td>
+		</tr>
+		</foreach>
+	</table>
+	<div class="pager">{$pageVar}</div>
+</div>
+<include file="Public:footer" />

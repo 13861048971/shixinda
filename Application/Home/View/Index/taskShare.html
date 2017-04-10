@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1" /> 
+	<title>{$row.title}</title>
+	<import type="css" file="css.app" />
+	<import file="js.lib.jquery" />
+</head>
+<body >
+ <div class="containner task">
+	<div class="h">任务详情</div>
+	<div class="info">
+		<div class="title">{$row.title} <span class="price">￥{$row.price}</span></div>
+		<ul>
+			<li>
+				<span>类型: {$row.typeName}</span>
+				<span>城市: {$row.cityName}</span>
+			</li>
+			<li >
+				<span>数量: {$row.num}</span>
+				<span>模特: {$row.model}</span>
+			</li>
+		</ul>
+		<ul>
+			<li>
+				<span>拍摄时间: {$row.begin_time|local_date='Y.m.d H:i'}</span>
+			</li>
+			<li >
+				<span>交片时间: {$row.over_time|local_date='Y.m.d H:i'}</span>
+			</li>
+		</ul>
+	</div>
+	<div class="info">
+		<div class="title">拍摄要求</div>
+		<div class="note">{$row.note}</div>
+	</div>
+	<div class="info join-list">
+		<div>
+			<span>已有{$row.joinNum}投标</span>
+			<div class="avatar" >
+			<foreach name="row.joinList" item="v">
+				<img src="{$v.user.avatar}" >
+			</foreach>
+			</div>
+		</div>
+	</div>
+	<div class="h">想拍的类型</div>
+	<div class="info">
+		<img src="{$row.style_img}">
+	</div>
+	<div class="h">实物图片</div>
+	<div class="info entity-img">
+		<foreach name="row.images" item="v">
+			<img  src="{$v}" />
+		</foreach>
+	</div>
+	<div class="down" >
+		<img src="/Public/images/logo-3x.png" class="logo">
+		<div class="slogn">
+			<p>摄蝇</p>
+			<span>轻盈 自由的摄影平台</span>
+		</div>
+		<div class="pull-right">
+			<a class="downlink" href="{$downlink}">下载App</a>
+			<div>立即约起来吧</div>
+			<a href="javascript:$('.down').hide();" class="cancel"><img src="/Public/images/cancel.png"></a>
+		</div>
+	</div>
+ </div>
+</body>
+</html>

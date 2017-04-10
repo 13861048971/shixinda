@@ -1,0 +1,15 @@
+<form class="form-horizontal ajaxSubmit" action="{:u()}" method="post"> 
+	{:W('form/elements', $elements)}
+	<div class="form-group hide">
+		<div class="col-sm-2 control-label"><i class="red">*</i>状态</div>
+		<div class="col-sm-5">
+			 {:w('select/radio',$statusList)}
+		</div>
+	</div>
+	<div class="form-group">
+	<div class="col-sm-offset-2 col-sm-10">
+		<input type="hidden" name="id" value="{$row.id}" />
+		<button type="submit" class="btn btn-primary">提交</button>
+	</div>
+	</div>
+</form>

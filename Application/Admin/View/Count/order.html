@@ -1,0 +1,31 @@
+<include file="Public:header" />
+<div class="table-responsive shrink">
+	<h2 class="sub-header" style="padding-bottom:3px;margin-bottom:20px;">
+		<div class="tabs clearfix">
+			<foreach name="tabs" item="v">
+				<a href="{$v[1]}" class="{$v[2]?"cur":""}" >{$v[0]}</a>
+			</foreach>
+		</div>
+	</h2>
+<if condition="$tab neq 1">
+	<if condition="$error">
+		<div class="alert alert-danger">{$error}</div>
+	<else />
+		<form class="form-inline search clearfix">
+			<div class="pull-left time-buttons">
+				<label>日期:</label> {:w('form/node', $selectDate)}
+			</div>
+		</form>
+		<div id="order-chart" style="height:400px">
+			<textarea class="hide">{$sData}</textarea>
+		</div>
+	</if>
+  <else />
+	 <div title="地区分布" id="region-chart" style="height:400px">
+		<textarea class="hide">{$sData}</textarea>
+	 </div>
+  </if>
+</div>
+<import type="css" file="js.lib.daterangepicker.daterangepicker-bs3" />
+<import file="js.lib.daterangepicker.moment#min,js.lib.daterangepicker.daterangepicker,js.lib.echarts.echarts,js.admin.count" />
+<include file="Public:footer" />

@@ -1,0 +1,30 @@
+<include file="Public:header" />
+<div class="table-responsive">
+	<table class="table table-striped">
+		<tr>  
+		  <th>#</th>
+		  <th>名称</th>
+		  <th>角色</th>
+		  <th>最后登录</th>
+		  <th>操作</th>
+		</tr>
+		<foreach name="list" item="v">
+		<tr>
+			<td>{$v.id}</td>
+			<td>{$v.name}</td>
+			<td>{$v.roleName}</td>
+			<td>{$v.updateTime}</td>
+			<td class="handle">
+			  <if condition="$v['id'] gt 1">
+				<a class="dialog edit" href="#" url="{:u('adminEdit','id=' . $v['id'])}">编辑</a>
+				<a class="dialog del" href="#" url="{:u('adminDel','id=' . $v['id'])}">删除</a>
+			  <else />
+				<a class="lock"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span> 锁定</a>
+			  </if>
+			</td>
+		</tr>
+		</foreach>
+	</table>
+	<div>{$pageVar}</div>
+</div>
+<include file="Public:footer" />

@@ -1,0 +1,16 @@
+<div class="select-region form-inline select-region-multi">
+<foreach name="list" item="v">
+<select multiple="multiple" class="form-control" name="region" style="margin-right:10px;">
+ <foreach name="v" item="v2">
+	<option value="{$v2.id}" <if condition="$v2['selected']">selected</if> >{$v2.region_name}</option>
+ </foreach>
+</select>
+</foreach>
+<button type="button" class="btn btn-default add-region">添加选中地区</button>
+<div class="selected-region">
+	<strong class="checkbox-inline">已选择:</strong>
+	<foreach name="selectedRegion" item="vr">
+		<label class="checkbox-inline"><input name="region_ids[{$vr.id}]" value="{$vr.id}" checked type="checkbox">{$vr.region_name}</label>
+	</foreach>
+</div>
+</div>

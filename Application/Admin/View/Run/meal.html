@@ -1,0 +1,58 @@
+<include file="Public:header" />
+<div class="table-responsive shrink">
+	<form class="form-inline search clearfix">
+		<div class="pull-left time-buttons">
+			{:w('select/index', $statusArr)}
+		</div>
+		<div class="btn-group pull-left">
+			<input  class="form-control" name="nickname" type="text" placeholder="任务标题" value="{$search.nickname}" > 
+			<button  class="form-control btn-info" >搜索</button>
+		</div>
+	</form>
+	<table class="table table-striped artist-list">
+		<tr>  
+		  <th>#</th>
+		  <th>头像</th>
+		  <th>用户昵称</th>
+		  <th>标题</th>
+		  <th>拍摄类型</th>
+		  <th>场景</th>
+		  <th>后期</th>
+		  <th>所在城市</th>
+		  <th>价格</th>
+		  <th>模特</th>
+		  <th>起拍数</th>
+		  <th>特色说明</th>
+		  <th>状态</th>
+		  <th class="">操作</th>
+		</tr>
+		<foreach name="list" item="v">
+		<tr>
+			<td>{$v.id}</td>
+			<td><if condition="$v['pho']['avatar']"><img src="{$v.pho.avatar}" width=40 /></if></td>
+			<td>{$v.pho.user.nickname}</th>
+			<td>{$v.title}</td>
+			<td>{$v.typeName}</td>
+			<td>{$v.sceneName}</td>
+			<td>{$v.afterName}</td>
+			<td>{$v.cityName}</td>
+			<td class="price">{$v.price}</td>
+			<td>{$v.model}</td>
+			<td>{$v.num}</td>
+			<td>{$v.note}</td>
+			<td>{$v.statusName}</td>
+			<td width=120 class="handle">
+				<if condition="1 gt $v['status']">
+					<a class="ajaxPost btn btn-warning btn-sm" href="#" url="{:u('mealChange')}" data="id={$v.id}&status=1" success="已屏蔽" confirm="1">屏蔽</a>
+				</if>
+				<if condition="1 eq $v['status']">
+					<a class="ajaxPost btn btn-success btn-sm" href="#" url="{:u('mealChange')}" data="id={$v.id}&status=0" success="已取消" confirm="1">取消屏蔽</a>
+				</if>
+			</td>
+		</tr>
+		</foreach>
+	</table>
+	<div class="pager">{$pageVar}</div>
+</div>
+<import file="js.lib.laydate.laydate,js.admin.user" />
+<include file="Public:footer" />

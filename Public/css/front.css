@@ -1,0 +1,196 @@
+/*
+ * Base structure
+ */
+
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+	background-color: #F4F6F8;
+}
+
+a{color: #16A085;}
+
+/*
+ * Global add-ons
+ */
+
+.sub-header {
+  padding-bottom: 10px;
+  margin:5px 0 10px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.dl-horizontal dt,.dl-horizontal dd{padding:3px 0;}
+
+/*
+ * Top navigation
+ * Hide default border to remove 1px line.
+ */
+.navbar-fixed-top {
+  border: 0;
+}
+
+/*
+ * Sidebar
+ */
+.sidebar a:hover{color:#16A085; text-decoration:underline; font-weight:700;}
+.sidebar ul{ padding:0; border:1px solid #E7E7E7;}
+
+.sidebar .active{ background:#E7E7E7; }
+
+/* Sidebar navigation */
+.nav-sidebar {
+  margin-right: -21px; /* 20px padding + 1px border */
+  margin-bottom: 20px;
+  margin-left: -20px;
+}
+.nav-sidebar > li > a {
+  padding-right: 20px;
+  padding-left: 20px;
+}
+.nav-sidebar > .active > a,
+.nav-sidebar > .active > a:hover,
+.nav-sidebar > .active > a:focus {
+  color: #fff;
+  background-color: #428bca;
+}
+
+
+/*
+ * Main content
+ */
+
+.main {
+  padding: 10px;
+}
+@media (min-width: 768px) {
+  .main {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+}
+
+.main .page-header {
+  margin-top: 0;
+}
+
+.sidebar .nav , .main{ background:#fff;box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.102);} 
+/*
+ * Placeholder dashboard ideas
+ */
+
+.placeholders {
+  margin-bottom: 30px;
+  text-align: center;
+}
+.placeholders h4 {
+  margin-bottom: 0;
+}
+.placeholder {
+  margin-bottom: 20px;
+}
+.placeholder img {
+  display: inline-block;
+  border-radius: 50%;
+}
+
+.pager span{
+	background-color: #428BCA;
+	border:1px solid #428BCA;
+	line-height: 1.43;
+	margin-left: -1px;
+	padding: 6px 12px;
+	color:#fff;
+}
+.pager .prev{
+	border-bottom-left-radius: 4px;
+	border-top-left-radius: 4px;
+}
+
+.pager .next{
+	border-bottom-right-radius: 4px;
+	border-top-right-radius: 4px;
+}
+.pager a{
+	background: #FFFFFF;
+	border:solid 1px #DDDDDD;
+	color: #2A6496;
+	line-height: 1.43;
+	margin-left: -1px;
+	padding: 6px 12px;
+}
+
+.footer{
+	padding:40px 0 0 0; background:#fff;
+	margin:50px 0 0 0;
+}
+
+#getTBdata{width:100%;}
+.listTitle{font-weight:700; margin:20px 0 10px 0; background:#eee;line-height:30px;}
+#TBgoodsList .goodsList{max-height:270px; overflow-y:scroll;border:1px solid #ccc;margin:0 0 20px 0;
+	min-height:3px;}
+#TBgoodsList .goodsList img{width:100%;}
+#TBgoodsList .goodsList .row{padding:10px 0; border:1px solid #ccc;margin:-1px 0 0 -1px;}
+#TBgoodsList .goodsList h3{font-size:14px; line-height:1.5;}
+#TBgoodsList .goodsList .tmall{display:inline-block;vertical-align: middle;margin:0 4px 0 0;background:url("http://gtms03.alicdn.com/tps/i3/TB1_aLtGpXXXXXeaXXXNhI87XXX-231-230.png") no-repeat;
+	background-position: -158px -109px;height: 16px;width: 16px;}
+	
+/*** priceScatter **/
+#priceScatter{height:300px;}
+#regionChart{height:300px;}
+#sellerTypeChart{height:300px;}
+
+/*****/
+.tradeList{margin:15px 0 0 0;}
+.tradeList thead {margin:10px 0;}
+.tradeList thead  th{text-align:center;}
+#trades tbody{ border:none;}
+#trades tbody tr{background:#fff;}
+.tradeList tbody td{text-align:center; border-bottom:1px solid #ddd;}
+.tradeList tbody td:first-child{text-align:left; border-left:1px solid #ddd;}
+.tradeList tbody td:last-child{text-align:left; border-right:1px solid #ddd;}
+#trades .tradeList .padding-row{ background:#fff; }
+#trades .tradeList .padding-row td{border-left:1px solid #fff; border-right:1px solid #fff;}
+.tradeList .row div{text-align:center;}
+.tradeList .row div.goodsName{text-align:left;}
+#saleReport{height:400px;}
+#reportSection{height:480px}
+.time-section{margin:0 0 5px 80px;}
+#searhSection{margin:5px 0 20px 10px;}
+
+.addTopic{margin:10px 0;}
+
+.userSection{text-align:center;border-right:1px solid #ddd; padding:0 0 0}
+.replyList .table td{border-bottom:1px solid #ddd;}
+.userSection img{ width:100px; height:120px; background:#fff;margin:5px 0 5px 0;}
+.userSection .user-name{display:inline-block;}
+.topic-header{ border-bottom:1px dashed #ccc; padding: 0px 0 7px 0; margin:0 0 7px 0;}
+.topic-header h4{ margin:5px 0; }
+.main .nav-tabs{margin:10px 0;}
+
+fieldset{border:1px dotted #ddd; padding:10px 10px 10px 10px;background:#F4F6F8;margin:5px 0 10px 0}
+fieldset legend{border:solid #fff 1px;display:inline; width:auto; font-size:16px; padding:5px 10px; 
+		margin:5px 0px; background:#16A085; color:#fff;}
+
+.form-inline .form-group{margin-right:12px;}
+/** 批量产品操作 **/
+.batch-goods-operator{margin:10px 0;}
+.search-form{padding:5px 0 10px 0}
+
+#goods-list-ajax .showcase li{width:24%;line-height:32px; list-style:none; float:left;padding:5px; height:150px;
+		position:relative; width:150px; border:1px dotted #ccc; margin:0px 0px 20px 28px;overflow:hidden;}
+#goods-list-ajax .showcase li.last-child:after{clear:all;}
+.showcase{padding:20px 0;margin:0 0 10px -28px;}
+.showcase li img{ height:100px; width:100px;margin:5px 0 5px 20px;}
+.showcase li a{display:block;} 
+.showcase .handle{position:absolute; right:0px; top:0px;}
+
+.widgetselectGoods{margin:-30px 0 0 60px;}
+.widgetselectGoods li{ float:left; margin:0 10px 5px 0; border:1px dotted #ccc; padding:4px 5px;
+					list-style:none;border-radius:4px; background:#fff; color:#16A085;}
+.widgetselectGoods li code{cursor:pointer; color:#999; margin:0 0 0 3px;}
+.widgetselectGoods li code:hover{color:red}
+.remove{color:#ccc; text-decoration:line-through;}
+
+
+
+

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1" /> 
+	<title>{$row.title}</title>
+	<import type="css" file="css.app" />
+	<import file="js.lib.jquery" />
+</head>
+<body >
+ <div class="containner meal">
+	<div class="bg"><img src="{$row.meal_bg}"/><span>￥{$row.price}</span></div>
+	<div class="info user">
+		<div class="avatar"><img src="{$row.pho.avatar}"></div>
+		<div class="nickname">{$row.pho.nickname}</div>
+		<div class="star">
+			<div class="star-empty">
+				<img src="/Public/images/star-empty.png">
+				<img src="/Public/images/star-empty.png">
+				<img src="/Public/images/star-empty.png">
+				<img src="/Public/images/star-empty.png">
+				<img src="/Public/images/star-empty.png">
+			</div>
+			<div class="star-full" style="width:{$row['pho']['star']*80/5}px;">
+				<img src="/Public/images/star-full.png">
+				<img src="/Public/images/star-full.png">
+				<img src="/Public/images/star-full.png">
+				<img src="/Public/images/star-full.png">
+				<img src="/Public/images/star-full.png">
+			</div>
+		</div>
+	</div>
+	<div class="info">
+		<div class="title">{$row.title}</div>
+		<div class="tag-list">
+			<foreach name="row.tagArr" item="v">
+				<span><img src="/Public/images/tag-pre.png">{$v}</span>
+			</foreach>
+		</div>
+	</div>
+	<div class="info pro-list">
+		<ul>
+			<li><img src="/Public/images/meal-pro1.png"><div class="name">模特</div><div class="offer">{$row['model']? $row['model'] : "不提供"}</div></li>
+			<li><img src="/Public/images/meal-pro2.png"><div class="name">化妆</div><div class="offer">{$row['model']? "提供":"不提供"}</div></li>
+			<li><img src="/Public/images/meal-pro3.png"><div class="name">场景</div><div class="offer">{$row.sceneName}</div></li>
+			<li><img src="/Public/images/meal-pro4.png"><div class="name">后期</div><div class="offer">{$row.afterName}</div></li>
+			<div class="cr"></div>
+		</ul>
+	</div>
+	<div class="info">
+		<div class="title">套餐信息</div>
+		<ul>
+			<li>
+				<span>服务城市: {$row.cityName}</span>
+				<span>拍摄类型: {$row.typeName}</span>
+			</li>
+			<li >
+				<span>交片数量: {$row.num}张/件</span>
+				<span>最低起拍: {$row.min_buy_num}件</span>
+			</li>
+		</ul>
+	</div>
+	<div class="info">
+		<div class="title">服务流程</div>
+		<ul>
+			<li>{$row.flow}</li>
+		</ul>
+	</div>
+	<div class="info">
+		<div class="title">特殊说明</div>
+		<ul>
+			<li>{$row.note}</li>
+		</ul>
+	</div>
+	<div class="info entity-img">
+		<foreach name="row.images" item="v">
+			<img  src="{$v}" />
+		</foreach>
+	</div>
+	<div class="down" >
+		<img src="/Public/images/logo-3x.png" class="logo">
+		<div class="slogn">
+			<p>摄蝇</p>
+			<span>轻盈 自由的摄影平台</span>
+		</div>
+		<div class="pull-right">
+			<a class="downlink" href="{$downlink}">下载App</a>
+			<div>立即约起来吧</div>
+			<a href="javascript:$('.down').hide();" class="cancel"><img src="/Public/images/cancel.png"></a>
+		</div>
+	</div>
+ </div>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<div class="select-goods form-inline">
+	<button id="select-goods-btn" class="btn btn-default" type="button">选择</button>
+	<table class="table table-bordered">
+	 <tr>
+		<th width="40%">商品名称</th>
+		<th width="10%">数量</th>
+		<th>属性</th>
+		<th width="10%" align="center">取消</th>
+	 </tr>
+	<foreach name="goodsList" item="v">
+		<tr>
+			<td>{$v.goods_name}<input name="goods[{$v.id}][goods_id]" value="{$v.id}" type="hidden">
+			</td> 
+			<td>
+			<input name="goods[{$v.id}][number]" value="1" type="number">
+			</td>
+			<td>
+			<input name="goods[{$v.id}][attr]" value="" type="text">
+			</td>
+			<td><span class="btn cancel">取消</span></td>
+		</tr>
+	</foreach>
+	</table>
+</div>
+<style>
+.select-goods th{text-align:center;}
+.select-goods td input[type=number]{width:50px;}
+</style>
+<script>
+(function(){
+	function addGoods(goods_id, goods_name){
+		
+	}
+	var dia = new dialog('selectGoodsDialog', function(){
+		var goodsChecks = dia.modalNode.find(':checked');
+		goodsChecks.each(function(){
+			var th = $(this);
+			var tr = th.next().find('tr').clone();
+			dia.triggerNode.next().find('tbody').append(tr);
+		});
+		dia.hide();
+	});
+	$('#select-goods-btn').click(function(){
+		var url = '/admin/goods';
+		var title = '选择商品';
+		var lg    = false;
+		var triggerNode = $(this); 
+		!title && (title = triggerNode.html());
+		
+		$.get(url, function(info){
+			if(info.status){
+				var content = $(info.data.content);
+				dia.show(content, title, lg, triggerNode);
+				return;
+			}
+			floatWin.alert(info.info);
+		}, 'json');
+	});
+	$('.select-goods').on('click', '.cancel',function(){
+		$(this).parent().parent().remove();
+	});
+})();
+</script>

@@ -1,0 +1,54 @@
+<include file="Public:header" />
+<div class="table-responsive shrink user">
+	<form class="search form-inline clearfix">
+		<div class="pull-left time-buttons">
+		  <foreach name="timeArr" item="v">
+			<a class="{$v['cur']?"cur":""}" href="{$v.url}">{$v.name}</a>
+		  </foreach>
+			{:w('form/node', $selectDate)}
+			{:w('select/index', $orderArr)}
+		</div>
+		<div class="btn-group pull-right hide">
+		<input  class="form-control" name="keywords" type="text" placeholder="手机号或者昵称搜索" value="{$search.keywords}" >
+		<button  class="form-control btn-info" >搜索</button>
+		</div>
+	</form>
+	<table class="table table-striped">
+		<tr>  
+		  <th width="40">#</th>
+		  <th>头像</th>
+		  <th>昵称</th>
+		  <th>性别</th>
+		  <th>注册手机号</th>
+		  <th>反馈说明</th>
+		  <th>发布</th>
+		  <th>更新</th>
+		  <th>操作</th>
+		</tr>
+		<foreach name="list" item="v">
+		<tr titie="{$v.statusName}">
+			<td width="20">{$v.id}</td>
+			<td><if condition="$v['avatar']">
+					<a href="javascript:openInNewWindow('{$v.avatar}')">
+						<img class="avatar" src="{$v.avatar}" width=25 />
+					</a>
+				</if>
+			</td>
+			<td>{$v.nickname}</td>
+			<td>{$v.sexName}</td>
+			<td>{$v.mobile}</td>
+			<td class="left">{$v.desc}</td>
+			<td>{$v.addTime}</td>
+			<td>{$v.updateTime}</td>
+			<td class="handle">
+				<a class="dialog edit hide" href="#" url="{:u('feedbackEdit','id=' . $v['id'])}" dialogTitle="编辑评论">编辑</a>
+				<a class="ajaxDel del" href="#" url="{:u('feedbackDel','id=' . $v['id'])}">删除</a>
+			</td>
+		</tr>
+		</foreach>
+	</table>
+	<div class="pager">{$page}</div>
+</div>
+<import type="css" file="js.lib.daterangepicker.daterangepicker-bs3" />
+<import file="js.lib.laydate.laydate,js.lib.daterangepicker.moment#min,js.lib.daterangepicker.daterangepicker" />
+<include file="Public:footer" />

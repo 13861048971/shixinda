@@ -1,0 +1,72 @@
+<include file="Public:header" />
+<div class="table-responsive user shrink circle">
+	<form class="form-inline search clearfix">
+		<div class="pull-left time-buttons">
+		  <foreach name="timeArr" item="v">
+			<a class="{$v['cur']?"cur":""}" href="{$v.url}">{$v.name}</a>
+		  </foreach>
+			{:w('form/node', $selectDate)}
+			{:w('select/index', $orderArr)}
+		</div>
+		<div class="btn-group pull-right">
+		<input  class="form-control" name="keywords" type="text" placeholder="手机号或者昵称搜索" value="{$search.keywords}" >
+		<button  class="form-control btn-info" >搜索</button>
+		</div>
+	</form>
+	<table class="table table-striped user-list">
+		<tr>  
+		  <th width="150">发布时间</th>
+		  <th width="60">头像</th>
+		  <th width="60">昵称</th>
+		  <th style="">发布内容</th>
+		  <th>发布照片</th>
+		  <th width=150>操作</th>
+		</tr>
+		<foreach name="userList" item="v">
+		<tr>
+			<td>{$v.addTime}</td>
+			<td>
+				<if condition="$v['avatar']">
+					<a href="javascript:openInNewWindow('{$v.avatar}')">
+						<img class="avatar" src="{$v.avatar}" width=25 />
+					</a>
+				</if>
+			</td>
+			<td>{$v.nickname}</td>
+			<td class="left">
+				<if condition="$v['comment']">
+					<span class="dt">评论了</span>{$v.comment.nickname}: {$v.desc}
+				<elseif condition="$v['back']"/>
+					<span class="dt">回复了</span>{$v.back.nickname}: {$v.desc}
+				<else/>
+					{$v.desc}
+				</if>
+			</td>
+			<td class="img-list left">
+				<if condition="$v['comment']">
+					<span class="dt">来源于</span>{$v.node.nickname}:  {:local_date($v['node']['add_time'])}的内容
+				<elseif condition="$v['back']"/>
+					<span class="dt">来源于</span>{$v.node.nickname}:  {:local_date($v['node']['add_time'])}的内容
+				<else/>
+					<foreach name="v.images" item="img">
+						<a href="javascript:openInNewWindow('{$img}')">
+							<img class="" src="{$img}" width=50 />
+						</a>
+					</foreach>
+				</if>
+			</td>
+			<td class="handle right">
+				<a class="dialog edit hide" dialog-lg="true" href="#" url="{:u('edit','id=' . $v['id'])}">编辑</a>
+			 <if condition="$v['parent_id'] lt 1">
+				<a class="btn btn-default btn-sm ajaxPost {$v['hide']?"disabled":""}" url="{:u('change')}" data="id={$v.id}&type=0" success="已隐藏">{$v['hide']?"被":""}隐藏</a>				
+			 </if>
+				<a class="btn btn-danger btn-sm ajaxPost {$v['delete']?"disabled":""}" url="{:u('change')}" data="id={$v.id}&type=1" success="已删除" confirm="true">{$v['delete']?"被":""}删除</a>
+			</td>
+		</tr>
+		</foreach>
+	</table>
+	<div class="pager">{$page}</div>
+</div>
+<import type="css" file="js.lib.daterangepicker.daterangepicker-bs3" />
+<import file="js.lib.laydate.laydate,js.lib.daterangepicker.moment#min,js.lib.daterangepicker.daterangepicker" />
+<include file="Public:footer" />

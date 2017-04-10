@@ -1,0 +1,45 @@
+<include file="Public:header" />
+<style>
+	#think_page_trace_open,nav,.sidebar{display:none;}
+	body{padding:10px 15px;}
+	.footer{display:none;}
+	.main{margin-left:0;width:100%;padding:0;}
+</style>
+<div class="table-responsive shrink">
+	<form class="form-inline search clearfix">
+		<div class="pull-left time-buttons">
+			{:w('select/index', $statusArr)}
+		</div>
+		<div class="btn-group pull-left hide">
+			<input  class="form-control" name="title" type="text" placeholder="任务标题" value="{$search.title}" > 
+			<input name="task_id" value="{$search.task_id}" type="hidden" />
+			<button  class="form-control btn-info" >搜索</button>
+		</div>
+	</form>
+	<table class="table table-striped artist-list">
+		<tr>  
+		  <th>#</th>
+		  <th>头像</th>
+		  <th>用户昵称</th>
+		  <th>举报原因</th>
+		  <th>提交时间</th>
+		  <th class="">操作</th>
+		</tr>
+		<foreach name="list" item="v">
+		<tr>
+			<td>{$v.id}</td>
+			<td><if condition="$v['user']['avatar']"><img src="{$v.user.avatar}" width=40 /></if></td>
+			<td>{$v.user.nickname}</th>
+			<td width="400">{$v.reportTypeName} {$v.report_note}</td>
+			<td>{$v.addTime}</td>
+			<td width=120 class="handle">
+				<a class="ajaxDel " href="#" url="{:u('reportDel',['id'=>$v['id']])}" >删除</a>
+				
+			</td>
+		</tr>
+		</foreach>
+	</table>
+	<div class="pager">{$pageVar}</div>
+</div>
+<import file="js.lib.laydate.laydate,js.admin.user" />
+<include file="Public:footer" />

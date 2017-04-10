@@ -1,0 +1,41 @@
+[ 2016-09-11T14:26:41+08:00 ] 127.0.0.1 /Admin/Setting/index
+SQL: SHOW COLUMNS FROM `config` [ RunTime:0.0040s ]
+SQL: UPDATE `config` SET `name`='image',`value`='a:1:{s:5:\"thumb\";s:7:\"250*250\";}',`update_time`='1473575201' WHERE `name` = 'image' [ RunTime:0.0310s ]
+SQL: SELECT * FROM `config` WHERE `name` = 'image' LIMIT 1   [ RunTime:0.0000s ]
+
+[ 2016-09-11T10:08:32+08:00 ] 127.0.0.1 /Admin/Run/mealChange
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `meal` [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `category` [ RunTime:0.0040s ]
+SQL: SELECT `id` FROM `category` WHERE `type` = 2 ORDER BY rank,id  [ RunTime:0.0000s ]
+SQL: SELECT * FROM `category` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `category` WHERE `id` = 3 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `category` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `task` [ RunTime:0.0030s ]
+SQL: SELECT `id` FROM `category` WHERE `type` = 1 ORDER BY rank,id  [ RunTime:0.0000s ]
+SQL: UPDATE `meal` SET `status`='0' WHERE `id` = 3 [ RunTime:0.0340s ]
+
+[ 2016-09-11T10:08:43+08:00 ] 127.0.0.1 /Admin/Run/mealChange
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `meal` [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `category` [ RunTime:0.0030s ]
+SQL: SELECT `id` FROM `category` WHERE `type` = 2 ORDER BY rank,id  [ RunTime:0.0010s ]
+SQL: SELECT * FROM `category` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `category` WHERE `id` = 3 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `category` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `task` [ RunTime:0.0040s ]
+SQL: SELECT `id` FROM `category` WHERE `type` = 1 ORDER BY rank,id  [ RunTime:0.0000s ]
+SQL: UPDATE `meal` SET `status`='1' WHERE `id` = 3 [ RunTime:0.0020s ]
+
+[ 2016-09-11T10:08:47+08:00 ] 127.0.0.1 /Admin/Run/mealChange
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `meal` [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `category` [ RunTime:0.0030s ]
+SQL: SELECT `id` FROM `category` WHERE `type` = 2 ORDER BY rank,id  [ RunTime:0.0000s ]
+SQL: SELECT * FROM `category` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `category` WHERE `id` = 3 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `category` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `task` [ RunTime:0.0030s ]
+SQL: SELECT `id` FROM `category` WHERE `type` = 1 ORDER BY rank,id  [ RunTime:0.0000s ]
+SQL: UPDATE `meal` SET `status`='0' WHERE `id` = 3 [ RunTime:0.0360s ]
+

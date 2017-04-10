@@ -1,0 +1,18 @@
+<style type="text/css">
+form{margin:0;}
+textarea{display:block;}
+</style>
+
+<script type="text/javascript">
+(function(){
+	console.log('====');
+	var options = kindEditorConfig.options;
+	//options.height = "{$height}";
+	//options.width  = "{$width}";
+	//options.items  = kindEditorConfig.items['{$type}'];
+	kindEditor.remove('#{$editorId}');
+	var s = kindEditor.create('#{$editorId}',  options);
+	console.log(s);
+	
+})();
+</script>

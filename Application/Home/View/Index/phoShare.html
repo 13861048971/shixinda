@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1" /> 
+	<title>{$row.title}</title>
+	<import type="css" file="css.app" />
+	<import file="js.lib.jquery" />
+</head>
+<body >
+ <div class="containner pho">
+	<div class="bg"><img src="{$row.pho_bg}"/><div class="bottom"></div></div>
+	<div class="user"><div class="nickname">{$row.user.nickname}</div><div class="avatar"><img src="{$row.user.avatar}"></div></div>
+	<div class="info">
+		<div class="title">{$row.title}</div>
+		<div class="tag-list">
+			<foreach name="row.tagArr" item="v">
+				
+			</foreach>
+		</div>
+	</div>
+	<div class="info pro">
+		<span class="title">服务城市</span>
+		<span class="v">{$row.serviceCityName}</span>
+	</div>
+	<div class="info pro">
+		<span class="title">擅长题材</span>
+		<span class="v">{$row.good_at}</span>
+	</div>	
+	<div class="info pro">
+		<span class="title">个人介绍</span>
+		<span class="v">{$row.inshort}</span>
+	</div>
+	<div class="h">我的套餐</div>
+	<div class="meal-list">
+	  <foreach name="row.mealList" item="v">
+		<div class="li">
+			<div class="meal-bg"><img src="{$v.meal_bg}"></div>
+			<div class="row2">
+				<span class="price">￥{$v.price}</span>
+				<span class="city"><img src="/Public/images/location.png">{$v.cityName}</span>
+				<span class="avatar"><img src="{$row.user.avatar}"></span>
+				<div class="cr"></div>
+			</div>
+			<div class="title">{$v.title}</div>
+			<div class="tag-list">
+			<foreach name="v.tagArr" item="v2">
+				<span><img src="/Public/images/tag-pre.png">{$v2}</span>
+			</foreach>
+			</div>
+		</div>
+	  </foreach>
+	</div>
+	<div class="down" >
+		<img src="/Public/images/logo-3x.png" class="logo">
+		<div class="slogn">
+			<p>摄蝇</p>
+			<span>轻盈 自由的摄影平台</span>
+		</div>
+		<div class="pull-right">
+			<a class="downlink" href="{$downlink}">下载App</a>
+			<div>立即约起来吧</div>
+			<a href="javascript:$('.down').hide();" class="cancel"><img src="/Public/images/cancel.png"></a>
+		</div>
+	</div>
+ </div>
+</body>
+</html>

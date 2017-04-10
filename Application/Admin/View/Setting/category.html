@@ -1,0 +1,32 @@
+<include file="Public:header" />
+<div class="table-responsive">
+	<table class="table table-striped">
+		<tr>  
+		  <th>#</th>
+		  <th width="45%" class="left">名称</th>
+		  <th>排序</th>
+		  <th>首次登陆</th>
+		  <th>最后登录</th>
+		  <th>操作</th>
+		</tr>
+		<foreach name="rows" item="v">
+		<tr>
+			<td>{$v.id}</td>
+			<td class="left">{$v.name2}</td>
+			<td>{$v.rank}</td>
+			<td>{:date("Y-m-d H:i:s",$v['add_time'])}</td>
+			<td>{:date("Y-m-d H:i:s",$v['update_time'])}</td>
+			<td width=170 class="handle" style="text-align:center;">
+			 <if condition="$v['deep'] lt $maxDeep">
+				<a class="dialog add" href="#" url="{:u('cateEdit',['pid'=> $v['id'], 'act'=>'addChild'])}">添加下级</a>
+			 </if>
+				<a class="dialog edit" href="#" url="{:u('cateEdit','id=' . $v['id'])}">编辑</a> | 
+				
+				<a class="ajaxDel del" href="#" url="{:u('cateDel','id=' . $v['id'])}">删除</a>
+			</td>
+		</tr>
+		</foreach>
+	</table>
+	<div class="pager">{$page}</div>
+</div>
+<include file="Public:footer" />

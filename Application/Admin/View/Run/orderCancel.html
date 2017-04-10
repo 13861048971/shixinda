@@ -1,0 +1,26 @@
+<form class="form-horizontal ajaxSubmit order-cancel-form" action="{:u()}" method="post">
+	<div class="form-group">
+	  <div class="col-sm-offset-1 col-sm-10">
+		<h4>确定要撤销订单吗？请输入撤销原因:</h4>
+		<foreach name="cancelArr" item="v" key="k">
+		<div class="checkbox">
+			<label>
+			  <input type="checkbox" value="cancel_type[{$k}]">
+			  {$v}
+			</label>
+		</div>
+		</foreach>
+	  </div>
+	</div>
+	<div class="form-group">
+		<div class="col-sm-offset-1 col-sm-10">
+			<textarea style="padding-left:0;" class="form-control" rows="5" name="cancel_note"></textarea>
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="col-sm-offset-2 col-sm-10">
+			<input type="hidden" name="id" value="{$row.id}" />
+			<button type="submit" class="btn btn-primary">提交</button>
+		</div>
+	</div>
+</form>

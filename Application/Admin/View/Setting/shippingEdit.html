@@ -1,0 +1,68 @@
+<form class="form-horizontal ajaxSubmit goods-edit" action="{:u()}" method="post">
+	<ul class="nav nav-tabs hide" role="tablist">
+		<li role="presentation" class="active">
+			<a href="#ship_info" aria-controls="ship_info" role="tab" data-toggle="tab">
+				基本信息
+			</a>
+		</li>
+		<li role="presentation" >
+			<a href="#ship_area" aria-controls="ship_area" role="tab" data-toggle="tab">
+				配送区域
+			</a>
+		</li>
+	</ul>
+  <div class="tab-content">
+	<div id="ship_info" role="tabpanel" class="tab-pane active">
+	  <div class="form-group">
+		<label class="col-sm-2 control-label">配送方式名称</label>
+		<div class="col-sm-9">
+		  <input name="name" required class="form-control" value="{$row.name}" />
+		</div>
+	  </div>
+	  <div class="form-group">
+		<label class="col-sm-2 control-label">描述</label>
+		<div class="col-sm-9" >
+		   <textarea class="kind-editor11 form-control" rows="4" name="desc">{$row.desc}</textarea>
+		</div>
+	  </div>
+	  <hr>
+	  <foreach name="row['config']" item="v">
+	  <div class="form-group">
+		<label class="col-sm-2 control-label">{$v.label}</label>
+		<div class="col-sm-6">
+		   {:W('form/node', [$v])}
+		</div>
+	  </div>
+	  </foreach>
+	  <div class="form-group">
+		<label class="col-sm-2 control-label">状态</label>
+		<div class="col-sm-9">
+		   {:W('select/radio', $statusList)}
+		</div>
+	  </div>
+	  <div class="form-group">
+		<label class="col-sm-2 control-label">配送保证金</label>
+		<div class="col-sm-2">
+		   <input name="insure" class="form-control" value="{$row.insure|default=0}">
+		</div>
+	  </div>
+	  <div class="form-group">
+		<label class="col-sm-2 control-label">货到付款</label>
+		<div class="col-sm-10">
+		   {$row['support_cod'] ? '支持' : '不支持'}
+		   <input name="support_cod" value="{$row.support_cod}" type="hidden">
+		</div>
+	  </div>
+	  <div class="form-group">
+		<div class="col-sm-offset-2 col-sm-10">
+			<input type="hidden" name="id" value="{$row.id}" />
+			<input type="hidden" name="code" value="{$row.code}" />
+			<button type="submit" class="btn btn-primary">提交</button>
+		</div>
+	  </div>
+	</div>
+	<div id="ship_area" role="tabpanel" class="tab-pane">
+		
+	</div>
+  </div>
+</form>

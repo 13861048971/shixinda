@@ -1,0 +1,19 @@
+<nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+  <ul class="nav navbar-nav">
+   <foreach name="button" item="v">
+	<li class="dropdown">
+		<a <if condition="'view' eq $v['type']"> href="{$v.url}" target="_blank"<else /> href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true" </if>>
+			{$v.name}
+			<if condition="'view' neq $v['type']"> <b class="caret"></b></if>
+		</a>
+	  <if condition="$v['sub_button']">
+		<ul class="dropdown-menu">
+		  <foreach  name="v.sub_button" item="v2">
+		   <li><a href="{$v2.url}" target="_blank">{$v2.name}</a></li>
+		  </foreach>
+		</ul>
+	  </if>
+	</li>
+  </foreach>
+  </ul>
+</nav>

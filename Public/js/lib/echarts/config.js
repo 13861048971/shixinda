@@ -1,0 +1,1 @@
+require.config({ paths: { echarts: '/Public/js/lib/echarts' }});

@@ -1,0 +1,30 @@
+<include file="Public:header" />
+<div class="table-responsive">
+	<ul class="nav nav-tabs" role="tablist" style="margin-bottom:20px;">
+	 <foreach name="tabList" item="v" key="k">
+		<li role="presentation" <if condition="$k eq 'SMS'" > class="active"</if> {$k} = "sd" >
+			<a href="#config_{$k}" aria-controls="config_{$k}" role="tab" data-toggle="tab">{$v}</a>
+		</li>
+	  </foreach>
+	</ul>
+  <div class="tab-content">
+	<foreach name="list" item="v" key="k">
+	<div id="config_{$k}" role="tabpanel" class="tab-pane <if condition="$k eq 'SMS'" >   active</if>" >
+	  <form class="form-horizontal ajaxSubmit" action="{:u()}" method="post">
+		<foreach name="v.node" item="row">
+		  {:w('form/row', [$row])}
+		</foreach>
+	  <div class="form-group">
+		<div class="col-sm-offset-2 col-sm-10">
+			<input type="hidden" name="name" value="{$k}" />
+			<button type="submit" class="btn btn-primary">提交</button>
+		</div>
+	  </div>
+	  </form>
+	</div>
+	</foreach>
+  </div>
+</div>
+<import type="css" file="js.lib.kindeditor.themes.default.default" />
+<import file="js.lib.kindeditor.kindeditor-min,js.lib.kindeditor.lang.zh_CN,js.lib.kindeditor.config" />
+<include file="Public:footer" />

@@ -1,0 +1,29 @@
+<include file="Public:header" />
+<div class="table-responsive">
+	<table class="table table-striped">
+		<tr>  
+		  <th>#</th>
+		  <th>角色名称</th>
+		  <th>备注</th>
+		  <th>操作</th>
+		</tr>
+		<foreach name="list" item="v">
+		<tr>
+			<td>{$v.id}</td>
+			<td>{$v.name}</td>
+			<td>{$v.note}</td>
+			<td class="handle">  
+				<if condition="$v['id'] gt 1">
+					<a class="dialog edit" dialog-lg="true" href="#" url="{:u('roleEdit','id=' . $v['id'])}">编辑</a>
+					<a class="del" href="#" url="{:u('roleDel','id=' . $v['id'])}">删除</a>
+				<else />
+					<a class="lock"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span> 锁定</a>
+				</if>
+			</td>
+		</tr>
+		</foreach>
+	</table>
+	<div>{$pageVar}</div>
+</div>
+<import file="js.admin.role" />
+<include file="Public:footer" />

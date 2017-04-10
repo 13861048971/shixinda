@@ -1,0 +1,42 @@
+<include file="Public:header" />
+<div class="table-responsive">
+	<form class="form-inline search">
+		<div class="form-group">
+			<label>区块类型:</label> 
+			{:w('select/index', $typeList)}
+		</div>
+		<div class="form-group">
+		<input name="name" type="text" placeholder="输入区块名称" value="{$search.name}"  class="form-control"></div>
+		<input type="submit" class="btn btn-info" value="搜索" />
+	</form>
+	<table class="table table-striped">
+		<tr>  
+		  <th>#</th>
+		  <th width="20%">名称</th>
+		  <th>类型</th>
+		  <th>缓存时间</th>
+		  <th>添加</th>
+		  <th>更新</th>
+		  <th>操作</th>
+		</tr>
+		<foreach name="list" item="v">
+		<tr>
+			<td>{$v.id}</td>
+			<td>{$v.name}</td>
+			<td>{$v.typeName}</td>
+			<td>{$v.cache}</td>
+			<td>{$v.addTime}</td>
+			<td>{$v.updateTime}</td>
+			<td width=200 class="handle">
+				<a class="dialog edit" dialog-lg="true" href="#" url="{:u('blockEdit','id=' . $v['id'])}">编辑</a>
+				
+				<a class="ajaxDel del" href="#" url="{:u('blockDel','id=' . $v['id'])}">删除</a>
+			</td>
+		</tr>
+		</foreach>
+	</table>
+	<div class="pager">{$pageVar}</div>
+</div>
+<import type="css" file="js.lib.kindeditor.themes.default.default" />
+<import file="js.lib.kindeditor.kindeditor-min,js.lib.kindeditor.lang.zh_CN,js.lib.kindeditor.config" />
+<include file="Public:footer" />

@@ -1,0 +1,37 @@
+<include file="Public:header" />
+<div class="table-responsive">
+	<form class="search form-inline">
+		<input name="title" type="text" placeholder="输入评论关键词" value="{$search.title}"  class="form-control"/>
+		<input name="username" type="text" placeholder="输入用户名称" value="{$search.username}"   class="form-control"/>
+		<input type="submit" class="btn btn-info" value="搜索" />
+	</form>
+	<table class="table table-striped">
+		<tr>  
+		  <th>#</th>
+		  <th>标题</th>
+		  <th>内容</th>
+		  <th>用户</th>
+		  <th>状态</th>
+		  <th>添加</th>
+		  <th>更新</th>
+		  <th>操作</th>
+		</tr>
+		<foreach name="list" item="v">
+		<tr titie="{$v.statusName}">
+			<td>{$v.id}</td>
+			<td>{$v.title}</td>
+			<td>{$v.content|mb_substr=0,15}...</td>
+			<td>{$v.userName}</td>
+			<td class="<if condition="$v['status'] gt 0">green</if>">{$v.statusName}</td>
+			<td>{$v.add_time_format}</td>
+			<td>{$v.update_time_format}</td>
+			<td class="handle">
+				<a class="dialog edit" href="#" url="{:u('feedbackEdit','id=' . $v['id'])}" dialogTitle="编辑评论">编辑</a> | 
+				<a class="ajaxDel del" href="#" url="{:u('feedbackDel','id=' . $v['id'])}">删除</a>
+			</td>
+		</tr>
+		</foreach>
+	</table>
+	<div class="pager">{$page}</div>
+</div>
+<include file="Public:footer" />

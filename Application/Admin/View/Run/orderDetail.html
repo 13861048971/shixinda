@@ -1,0 +1,119 @@
+<include file="Public:header" />
+<div class="table-responsive shrink order-details ">
+	<h2>
+		<a href="javascript:history.back();" class="back btn btn-default btn-sm pull-right">返回</a> 
+		订单详情
+	</h2>
+	<table>
+		<tr class="dt">
+			<td width="210">
+				<span><label>下单时间:</label> {$row.addTime}</span>
+			</td>
+			<td width="210">
+				<span><label>下单编号:</label> {$row.order_sn}</span>
+			</td>
+			<td width="200">
+				<span><label>订单状态:</label> {$row.statusName}</span>
+			</td>
+			<td>  </td>
+		</tr>
+		<tr>
+			<td>
+				<span>
+					<label>下单人:</label> 
+					<a href="javascript:openInNewWindow('{$row.user.avatar}')">
+						<img class="avatar" src="{$row.user.avatar}" width=40 />
+					</a>
+					{$row.user.nickname}
+				</span>
+			</td>
+			<td colspan="3">
+				<span><label>联系方式:</label> {$row.user.mobile}</span>
+			</td>
+		</tr>
+		<tr>
+			<td class="left">
+				<span>
+					<label>艺人:</label> 
+					<a href="javascript:openInNewWindow('{$row.artist.avatar}')">
+						<img class="avatar" src="{$row.artist.avatar}" width=40 />
+					</a>
+					{$row.artist.nickname}
+				</span>
+			</td>
+			<td class="left">
+				<span><label>艺人类型:</label> {$row.artist.typeName}</span>
+			</td>
+			<td>			
+				<span><label>联系方式:</label> {$row.artist.mobile}</span>
+			</td>
+			<td>
+			  <if condition="$row['handleTime']">
+				<span><label>处理时长:</label> {$row.handleTime}</span>
+			  </if>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<span><label>邀请地址:</label> {$row.address}</span>
+			</td>
+			<td>
+				<span><label>邀请时间:</label> {$row.beginTime}</span>
+			</td>
+			<td>
+				<span><label>邀请时长:</label> {$row.time}</span>
+			</td>
+			<td>
+				<label>邀请说明:</label>{$row.desc}
+			</td>
+		</tr>
+	<if condition="$row['status'] gt 1 or $row['report_type']">
+	  <if condition="$row['refuse_type']">
+		<tr>
+			<td colspan=4>
+				<span>
+					<label>拒绝原因:</label>{$row.refuseTypeName} {$row.refuse_note}
+				</span>
+			</td>
+		</tr>
+	  </if>
+	  <if condition="$row['status'] eq 3">
+		<tr>
+			<td colspan=4>
+				<span>
+					<label>撤销原因:</label>{$row.cancel_note}
+				</span>
+			</td>
+		</tr>
+	  </if>
+	  <if condition="$row['report_type']">
+		<tr>
+			<td colspan=1>
+				<span>{$row.artist.realname}
+					<label style="width:auto;">举报</label> {$row.user.realname}
+				</span>
+			</td>
+			<td colspan=3>
+				<span>
+				<label>举报原因:</label>{$row.reportTypeName} {$row.report_note}</span>
+			</td>
+		</tr>
+	  </if>
+	</if>
+	</table>
+	<div class="bottom-btn pull-right">
+	 <if condition="$row['status'] lt 1 or ( $row['status'] eq 4 or $row['report_type'] ) ">
+		<button class="btn btn-danger dialog " {$row['status'] == 3 ? "disabled":""} url="{:u('run/orderCancel',['id'=>$row['id']])}">{$row['status'] == 3 ? "已":""}撤销订单</button>
+	 </if>
+	 <if condition ="$row['status'] eq 4 or $row['report_type']">
+		<if condition="$row['user']['isArtist']">
+			<button class="btn btn-danger ajaxPost" url="{:u('user/artistChange')}" data="id={$row.user.id}&status=3" confirm=1 success="已取消艺人资格!">取消艺人资格</button>
+		</if>
+	 </if>
+	 <if condition="$row['status'] eq 3 or $row['report_type']">
+		<button class="btn btn-danger ajaxPost" {$row['user']['status']?'disabled':''} url="{:u('user/userChange')}" data="id={$row.user.id}&status=1" confirm=1 success="已封号!">{$row['user']['status']?'已':''}封号</button>
+	 </if>
+	</div>
+</div>
+<import file="js.admin.run" />
+<include file="Public:footer" />

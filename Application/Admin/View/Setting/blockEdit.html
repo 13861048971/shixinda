@@ -1,0 +1,28 @@
+<form class="form-horizontal ajaxSubmit" action="{:u()}" method="post">
+  <div class="form-group">
+    <label class="col-sm-2 control-label">区块名称</label>
+    <div class="col-sm-3">
+      <input required name="name" class="form-control" value="{$row.name}">
+    </div>
+	<label class="col-sm-2 control-label">缓存设置</label>
+    <div class="col-sm-3">
+      <input name="cache" class="form-control" value="{$row.cache|default=0}">
+    </div>
+	<span class="col-sm-1">(秒)</span>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">模板</label>
+    <div class="col-sm-9">
+      <textarea name="template" rows="5" class="form-control">{$row.template}</textarea>
+    </div>
+  </div>
+  <hr>
+  {:w('block/'.$type, [$row['config']])}
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+		<input type="hidden" name="id" value="{$row.id}" />
+		<input type="hidden" name="type" value="{$type}" />
+		<button type="submit" class="btn btn-primary">提交</button>
+    </div>
+  </div>
+</form>

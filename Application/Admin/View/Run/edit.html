@@ -1,0 +1,44 @@
+<form class="form-horizontal ajaxSubmit" action="{:u()}" method="post">
+	<ul class="nav nav-tabs" role="tablist" style="margin-bottom:20px;">
+		<li role="presentation" class="active">
+			<a href="#artist-info" aria-controls="#artist-info" role="tab" data-toggle="tab">基本信息</a>
+		</li>
+		<li role="presentation" class="">
+			<a href="#artist-album" aria-controls="#artist-album" role="tab" data-toggle="tab">相册</a>
+		</li>
+	</ul>
+    <div class="tab-content">
+	<div id="artist-info" role="tabpanel" class="tab-pane active" >
+		  <div class="form-group">
+			<div class="col-sm-2 control-label"><i class="red">*</i>用户</div>
+			<div class="col-sm-5">
+				 {:w('select/user',[['uid'=>$row['user_id'] ]])}
+			</div>
+		  </div>
+		  {:W('form/elements', $elements)}
+		  <div class="form-group">
+			<div class="col-sm-2 control-label"><i class="red">*</i>状态</div>
+			<div class="col-sm-5">
+				 {:w('select/radio',$statusList)}
+			</div>
+		  </div>
+
+		  <div class="form-group">
+			<div class="col-sm-offset-2 col-sm-10">
+				<input type="hidden" name="id" value="{$row.id}" />
+				<button type="submit" class="btn btn-primary">提交</button>
+			</div>
+		  </div>
+	</div>
+	<div id="artist-album" role="tabpanel" class="tab-pane" >
+		<ul class="album" type="image">
+		  <foreach name="row.imageList" key="k" item="v">
+			<li rank="{$k+1}"  class="img-thumbnail <if condition="$v['default']">default</if>"><a href="{$v.path}" target="_blank"><img src="{$v.path}"></a>
+			<input type="hidden" name="image[{$v.id}][{$k+1}]" value="{$v.path}">
+			<span class="del"></span><span class="set-default">设为默认</span>
+			</li>
+		  </foreach>
+		</ul>
+	</div>
+  </div>
+</form>

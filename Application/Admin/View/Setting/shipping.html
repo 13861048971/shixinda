@@ -1,0 +1,33 @@
+<include file="Public:header" />
+<div class="table-responsive">
+	<table class="table table-striped">
+		<tr>  
+		  <th>#</th>
+		  <th width="20%">支付方式</th>
+		  <th>描述</th>
+		  <th>保证金</th>
+		  <th>状态</th>
+		  <th>操作</th>
+		</tr>
+		<foreach name="list" item="v">
+		<tr>
+			<td>{$v.id}</td>
+			<td>{$v.name}</td>
+			<td>{$v.desc}</td>
+			<td>{$v.insure}</td>
+			<td><span class="{$v['status'] == 1 ? 'green':'red'}">{$v['statusName']|default="未开启"}</td>
+			<td width=200 class="handle">
+			 <if condition="$v['id']">
+				<a class="dialog edit" dialog-lg="true" href="#" url="{:u('shippingEdit','id=' . $v['id'])}">编辑</a>
+				<a class="view" href="{:u('shippingArea').'?shipping_id='.$v['id']}">设置配送区域
+				</a>
+			 <else/>
+				<a class="dialog edit" dialog-lg="true" href="#" url="{:u('shippingEdit','code=' . $v['code'])}">开启</a>
+			 </if>
+			</td>
+		</tr>
+		</foreach>
+	</table>
+	<div class="pager">{$pageVar}</div>
+</div>
+<include file="Public:footer" />
