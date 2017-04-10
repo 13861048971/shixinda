@@ -1,19 +1,20 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : localhost
-Source Server Version : 50622
+Source Server         : 本地
+Source Server Version : 50553
 Source Host           : localhost:3306
 Source Database       : shixinda
 
 Target Server Type    : MYSQL
-Target Server Version : 50622
+Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2017-04-10 13:28:09
+Date: 2017-04-10 19:18:06
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
 -- ----------------------------
 -- Table structure for `admin`
 -- ----------------------------
@@ -35,7 +36,7 @@ CREATE TABLE `admin` (
 -- ----------------------------
 -- Records of admin
 -- ----------------------------
-INSERT INTO `admin` VALUES ('1', '1', 'admin', 'e10adc3949ba59abbe56e057f20f883e', '100', '', '/Public/qrcode/2016-07-02/1467438415603.png', '1491793233', '0', '1467904390');
+INSERT INTO `admin` VALUES ('1', '1', 'admin', 'e10adc3949ba59abbe56e057f20f883e', '100', '', '/Public/qrcode/2016-07-02/1467438415603.png', '1491814235', '0', '1467904390');
 INSERT INTO `admin` VALUES ('2', '1', 'holahi', 'fcea920f7412b5da7be0cf42b8c93759', '0', '', '/Public/qrcode/2016-06-25/1466785122121.png', '0', '1466784503', '1466785436');
 
 -- ----------------------------
@@ -53,7 +54,7 @@ CREATE TABLE `admin_role` (
 -- ----------------------------
 -- Records of admin_role
 -- ----------------------------
-INSERT INTO `admin_role` VALUES ('1', '管理员', 'a:15:{i:0;s:15:\"index/adminlist\";i:1;s:15:\"index/adminedit\";i:2;s:14:\"index/admindel\";i:3;s:14:\"index/rolelist\";i:4;s:14:\"index/roleedit\";i:5;s:13:\"index/roledel\";i:6;s:10:\"user/index\";i:7;s:13:\"user/identify\";i:8;s:8:\"run/task\";i:9;s:8:\"run/meal\";i:10;s:9:\"run/order\";i:11;s:11:\"run/message\";i:12;s:11:\"count/index\";i:13;s:13:\"setting/index\";i:14;s:14:\"document/index\";}', '');
+INSERT INTO `admin_role` VALUES ('1', '管理员', 'a:11:{i:0;s:15:\"index/adminlist\";i:1;s:15:\"index/adminedit\";i:2;s:14:\"index/admindel\";i:3;s:14:\"index/rolelist\";i:4;s:14:\"index/roleedit\";i:5;s:13:\"index/roledel\";i:6;s:13:\"content/index\";i:7;s:19:\"content/contentcate\";i:8;s:18:\"content/frinedlink\";i:9;s:18:\"content/navigation\";i:10;s:13:\"setting/index\";}', '');
 INSERT INTO `admin_role` VALUES ('2', '会员管理员', 'a:5:{i:6;s:10:\"user/index\";i:7;s:13:\"user/userbill\";i:8;s:13:\"user/withdraw\";i:9;s:13:\"user/vipapply\";i:10;s:14:\"user/giftapply\";}', '');
 INSERT INTO `admin_role` VALUES ('3', '内容管理员', 'a:6:{i:11;s:9:\"cms/index\";i:12;s:12:\"cms/category\";i:13;s:10:\"cms/gossip\";i:14;s:13:\"cms/gossipcat\";i:15;s:9:\"cms/about\";i:16;s:11:\"cms/contact\";}', '');
 
@@ -238,6 +239,46 @@ INSERT INTO `config` VALUES ('vip', 'a:5:{s:9:\"vip_price\";s:3:\"100\";s:6:\"gr
 INSERT INTO `config` VALUES ('weixin', 'a:9:{s:8:\"siteName\";s:0:\"\";s:5:\"email\";s:17:\"info@xiaokebi.com\";s:9:\"cellphone\";s:0:\"\";s:9:\"telephone\";s:0:\"\";s:6:\"weixin\";s:0:\"\";s:8:\"weixinQR\";s:49:\"/Public/upload/image/2016-06-29/5773e4769d217.jpg\";s:5:\"right\";s:0:\"\";s:5:\"icpNo\";s:0:\"\";s:7:\"workday\";s:28:\"周一至周六 9:00－18:00\";}', '0', '1467212930', '1468334077');
 
 -- ----------------------------
+-- Table structure for `content`
+-- ----------------------------
+DROP TABLE IF EXISTS `content`;
+CREATE TABLE `content` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `cat_id` int(11) unsigned NOT NULL COMMENT '分类id',
+  `title` varchar(100) NOT NULL,
+  `content` text NOT NULL,
+  `author` varchar(50) NOT NULL COMMENT '内容的作者',
+  `status` int(10) unsigned NOT NULL COMMENT '内容的状态',
+  `publish_time` int(10) unsigned NOT NULL,
+  `add_time` int(10) unsigned NOT NULL,
+  `update_time` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of content
+-- ----------------------------
+INSERT INTO `content` VALUES ('1', '1', '', '', '', '0', '0', '0', '0');
+
+-- ----------------------------
+-- Table structure for `content_category`
+-- ----------------------------
+DROP TABLE IF EXISTS `content_category`;
+CREATE TABLE `content_category` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL COMMENT '分类内容的名字',
+  `status` int(10) unsigned NOT NULL COMMENT '分类内容的状态',
+  `publish_time` int(10) unsigned NOT NULL,
+  `add_time` int(10) unsigned NOT NULL,
+  `update_time` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of content_category
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for `feedback`
 -- ----------------------------
 DROP TABLE IF EXISTS `feedback`;
@@ -259,6 +300,47 @@ CREATE TABLE `feedback` (
 -- Records of feedback
 -- ----------------------------
 INSERT INTO `feedback` VALUES ('1', '0', '1', '', '内容就是这么多', '', '0', '', '1471853908', '1471853908');
+
+-- ----------------------------
+-- Table structure for `friend_link`
+-- ----------------------------
+DROP TABLE IF EXISTS `friend_link`;
+CREATE TABLE `friend_link` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `cat_id` int(10) unsigned NOT NULL COMMENT '分类id',
+  `name` varchar(50) NOT NULL COMMENT '友情链接名',
+  `logo` varchar(50) NOT NULL,
+  `url` varchar(50) NOT NULL COMMENT '友情链接地址',
+  `status` int(50) unsigned NOT NULL COMMENT '友情链接状态',
+  `publish_time` int(10) unsigned NOT NULL,
+  `add_time` int(10) unsigned NOT NULL,
+  `update_time` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of friend_link
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `navigation`
+-- ----------------------------
+DROP TABLE IF EXISTS `navigation`;
+CREATE TABLE `navigation` (
+  `id` int(10) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `logo` varchar(50) NOT NULL,
+  `url` varchar(50) NOT NULL,
+  `status` int(10) unsigned NOT NULL,
+  `parent_id` int(10) unsigned NOT NULL,
+  `add_time` int(10) unsigned NOT NULL,
+  `update_time` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of navigation
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for `region`
