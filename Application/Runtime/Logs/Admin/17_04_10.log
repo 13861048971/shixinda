@@ -4393,3 +4393,811 @@ WARN: Common.Model.ConfigModel
 WARN: Common.Model.BaseModel
 [ 2017-04-10T13:28:33+08:00 ] 127.0.0.1 /Admin/setting/index
 WARN: Admin/Widget/FormWidget
+[ 2017-04-10T16:38:07+08:00 ] 127.0.0.1 /admin
+WARN: Admin/Controller/IndexController
+[ 2017-04-10T16:38:19+08:00 ] 127.0.0.1 /Admin/Index/login
+WARN: Admin/Controller/IndexController
+[ 2017-04-10T16:38:19+08:00 ] 127.0.0.1 /Admin/Index/login
+WARN: Admin/Model/AdminModel
+[ 2017-04-10T16:38:19+08:00 ] 127.0.0.1 /Admin/Index/login
+WARN: Common.Model.AdminModel
+[ 2017-04-10T16:38:19+08:00 ] 127.0.0.1 /Admin/Index/login
+WARN: Common.Model.BaseModel
+[ 2017-04-10T16:38:27+08:00 ] 127.0.0.1 /Admin/Index/login
+WARN: Admin/Controller/IndexController
+[ 2017-04-10T16:38:27+08:00 ] 127.0.0.1 /Admin/Index/login
+WARN: Admin/Model/AdminModel
+[ 2017-04-10T16:38:27+08:00 ] 127.0.0.1 /Admin/Index/login
+WARN: Common.Model.AdminModel
+[ 2017-04-10T16:38:27+08:00 ] 127.0.0.1 /Admin/Index/login
+WARN: Common.Model.BaseModel
+[ 2017-04-10T16:38:28+08:00 ] 127.0.0.1 /Admin/Index/login
+WARN: Admin/Model/AdminRoleModel
+[ 2017-04-10T16:38:28+08:00 ] 127.0.0.1 /Admin/Index/login
+WARN: Common.Model.AdminRoleModel
+[ 2017-04-10T16:38:28+08:00 ] 127.0.0.1 /Admin/Index/index
+WARN: Admin/Controller/IndexController
+[ 2017-04-10T16:38:28+08:00 ] 127.0.0.1 /Admin/Index/index
+WARN: Admin/Model/AdminModel
+[ 2017-04-10T16:38:28+08:00 ] 127.0.0.1 /Admin/Index/index
+WARN: Common.Model.AdminModel
+[ 2017-04-10T16:38:28+08:00 ] 127.0.0.1 /Admin/Index/index
+WARN: Common.Model.BaseModel
+[ 2017-04-10T16:38:29+08:00 ] 127.0.0.1 /Admin/Index/index
+WARN: Admin/Model/AdminRoleModel
+[ 2017-04-10T16:38:29+08:00 ] 127.0.0.1 /Admin/Index/index
+WARN: Common.Model.AdminRoleModel
+[ 2017-04-10T16:38:33+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Admin/Controller/IndexController
+[ 2017-04-10T16:38:33+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Admin/Model/AdminModel
+[ 2017-04-10T16:38:33+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Common.Model.AdminModel
+[ 2017-04-10T16:38:33+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Common.Model.BaseModel
+[ 2017-04-10T16:38:35+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Admin/Model/AdminRoleModel
+[ 2017-04-10T16:38:35+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Common.Model.AdminRoleModel
+[ 2017-04-10T16:38:36+08:00 ] 127.0.0.1 /admin/index/rolelist
+WARN: Admin/Controller/IndexController
+[ 2017-04-10T16:38:36+08:00 ] 127.0.0.1 /admin/index/rolelist
+WARN: Admin/Model/AdminRoleModel
+[ 2017-04-10T16:38:36+08:00 ] 127.0.0.1 /admin/index/rolelist
+WARN: Common.Model.AdminRoleModel
+[ 2017-04-10T16:38:36+08:00 ] 127.0.0.1 /admin/index/rolelist
+WARN: Common.Model.BaseModel
+[ 2017-04-10T16:38:38+08:00 ] 127.0.0.1 /Admin/setting/index
+WARN: Admin/Controller/SettingController
+[ 2017-04-10T16:38:38+08:00 ] 127.0.0.1 /Admin/setting/index
+WARN: Admin/Model/ConfigModel
+[ 2017-04-10T16:38:38+08:00 ] 127.0.0.1 /Admin/setting/index
+WARN: Common.Model.ConfigModel
+[ 2017-04-10T16:38:38+08:00 ] 127.0.0.1 /Admin/setting/index
+WARN: Common.Model.BaseModel
+[ 2017-04-10T16:38:39+08:00 ] 127.0.0.1 /Admin/setting/index
+WARN: Admin/Widget/FormWidget
+[ 2017-04-10T16:38:41+08:00 ] 127.0.0.1 /Admin/index/index
+WARN: Admin/Controller/IndexController
+[ 2017-04-10T16:38:41+08:00 ] 127.0.0.1 /Admin/index/index
+WARN: Admin/Model/AdminModel
+[ 2017-04-10T16:38:41+08:00 ] 127.0.0.1 /Admin/index/index
+WARN: Common.Model.AdminModel
+[ 2017-04-10T16:38:41+08:00 ] 127.0.0.1 /Admin/index/index
+WARN: Common.Model.BaseModel
+[ 2017-04-10T16:38:42+08:00 ] 127.0.0.1 /Admin/index/index
+WARN: Admin/Model/AdminRoleModel
+[ 2017-04-10T16:38:42+08:00 ] 127.0.0.1 /Admin/index/index
+WARN: Common.Model.AdminRoleModel
+[ 2017-04-10T16:38:43+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Admin/Controller/IndexController
+[ 2017-04-10T16:38:43+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Admin/Model/AdminModel
+[ 2017-04-10T16:38:43+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Common.Model.AdminModel
+[ 2017-04-10T16:38:43+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Common.Model.BaseModel
+[ 2017-04-10T16:38:44+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Admin/Model/AdminRoleModel
+[ 2017-04-10T16:38:44+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Common.Model.AdminRoleModel
+[ 2017-04-10T16:42:10+08:00 ] 127.0.0.1 /Admin/user/index
+WARN: Admin/Controller/UserController
+[ 2017-04-10T16:42:10+08:00 ] 127.0.0.1 /Admin/user/index
+WARN: Admin/Model/UserModel
+[ 2017-04-10T16:42:10+08:00 ] 127.0.0.1 /Admin/user/index
+WARN: Common.Model.UserModel
+[ 2017-04-10T16:42:10+08:00 ] 127.0.0.1 /Admin/user/index
+WARN: Org.Util.Validator
+[ 2017-04-10T16:42:10+08:00 ] 127.0.0.1 /Admin/user/index
+WARN: Common.Model.BaseModel
+[ 2017-04-10T16:42:11+08:00 ] 127.0.0.1 /Admin/user/index
+WARN: Admin/Model/AlbumModel
+[ 2017-04-10T16:42:11+08:00 ] 127.0.0.1 /Admin/user/index
+WARN: Common.Model.AlbumModel
+[ 2017-04-10T16:42:11+08:00 ] 127.0.0.1 /Admin/user/index
+WARN: Admin/Model/RegionModel
+[ 2017-04-10T16:42:11+08:00 ] 127.0.0.1 /Admin/user/index
+WARN: Common.Model.RegionModel
+[ 2017-04-10T16:42:11+08:00 ] 127.0.0.1 /Admin/user/index
+WARN: Admin/Model/PhoModel
+[ 2017-04-10T16:42:11+08:00 ] 127.0.0.1 /Admin/user/index
+WARN: Common.Model.PhoModel
+[ 2017-04-10T16:42:11+08:00 ] 127.0.0.1 /Admin/user/index
+ERR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'shixinda.pho' doesn't exist
+
+[ 2017-04-10T16:42:57+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Admin/Controller/IndexController
+[ 2017-04-10T16:42:57+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Admin/Model/AdminModel
+[ 2017-04-10T16:42:57+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Common.Model.AdminModel
+[ 2017-04-10T16:42:57+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Common.Model.BaseModel
+[ 2017-04-10T16:42:58+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Admin/Model/AdminRoleModel
+[ 2017-04-10T16:42:58+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Common.Model.AdminRoleModel
+[ 2017-04-10T16:43:00+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Admin/Controller/IndexController
+[ 2017-04-10T16:43:00+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Admin/Model/AdminModel
+[ 2017-04-10T16:43:00+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Common.Model.AdminModel
+[ 2017-04-10T16:43:00+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Common.Model.BaseModel
+[ 2017-04-10T16:43:02+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Admin/Model/AdminRoleModel
+[ 2017-04-10T16:43:02+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Common.Model.AdminRoleModel
+[ 2017-04-10T16:48:04+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Admin/Controller/IndexController
+[ 2017-04-10T16:48:04+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Admin/Model/AdminModel
+[ 2017-04-10T16:48:04+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Common.Model.AdminModel
+[ 2017-04-10T16:48:04+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Common.Model.BaseModel
+[ 2017-04-10T16:48:05+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Admin/Model/AdminRoleModel
+[ 2017-04-10T16:48:05+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Common.Model.AdminRoleModel
+[ 2017-04-10T16:48:06+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Admin/Controller/IndexController
+[ 2017-04-10T16:48:06+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Admin/Model/AdminModel
+[ 2017-04-10T16:48:06+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Common.Model.AdminModel
+[ 2017-04-10T16:48:06+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Common.Model.BaseModel
+[ 2017-04-10T16:48:07+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Admin/Model/AdminRoleModel
+[ 2017-04-10T16:48:07+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Common.Model.AdminRoleModel
+[ 2017-04-10T16:48:07+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Admin/Controller/IndexController
+[ 2017-04-10T16:48:07+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Admin/Model/AdminModel
+[ 2017-04-10T16:48:07+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Common.Model.AdminModel
+[ 2017-04-10T16:48:07+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Common.Model.BaseModel
+[ 2017-04-10T16:48:08+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Admin/Model/AdminRoleModel
+[ 2017-04-10T16:48:08+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Common.Model.AdminRoleModel
+[ 2017-04-10T16:48:12+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Admin/Controller/IndexController
+[ 2017-04-10T16:48:12+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Admin/Model/AdminModel
+[ 2017-04-10T16:48:12+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Common.Model.AdminModel
+[ 2017-04-10T16:48:12+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Common.Model.BaseModel
+[ 2017-04-10T16:48:13+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Admin/Model/AdminRoleModel
+[ 2017-04-10T16:48:13+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Common.Model.AdminRoleModel
+[ 2017-04-10T16:48:39+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Admin/Controller/IndexController
+[ 2017-04-10T16:48:39+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Admin/Model/AdminModel
+[ 2017-04-10T16:48:39+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Common.Model.AdminModel
+[ 2017-04-10T16:48:39+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Common.Model.BaseModel
+[ 2017-04-10T16:48:40+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Admin/Model/AdminRoleModel
+[ 2017-04-10T16:48:40+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Common.Model.AdminRoleModel
+[ 2017-04-10T16:49:39+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Admin/Controller/IndexController
+[ 2017-04-10T16:49:39+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Admin/Model/AdminModel
+[ 2017-04-10T16:49:39+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Common.Model.AdminModel
+[ 2017-04-10T16:49:39+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Common.Model.BaseModel
+[ 2017-04-10T16:49:40+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Admin/Model/AdminRoleModel
+[ 2017-04-10T16:49:40+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Common.Model.AdminRoleModel
+[ 2017-04-10T16:49:42+08:00 ] 127.0.0.1 /Admin/Index/adminEdit/id/1
+WARN: Admin/Controller/IndexController
+[ 2017-04-10T16:49:42+08:00 ] 127.0.0.1 /Admin/Index/adminEdit/id/1
+WARN: Admin/Model/AdminModel
+[ 2017-04-10T16:49:42+08:00 ] 127.0.0.1 /Admin/Index/adminEdit/id/1
+WARN: Common.Model.AdminModel
+[ 2017-04-10T16:49:42+08:00 ] 127.0.0.1 /Admin/Index/adminEdit/id/1
+WARN: Common.Model.BaseModel
+[ 2017-04-10T16:49:43+08:00 ] 127.0.0.1 /Admin/Index/adminEdit/id/1
+WARN: Admin/Model/AdminRoleModel
+[ 2017-04-10T16:49:43+08:00 ] 127.0.0.1 /Admin/Index/adminEdit/id/1
+WARN: Common.Model.AdminRoleModel
+[ 2017-04-10T16:49:43+08:00 ] 127.0.0.1 /Admin/Index/adminEdit/id/1
+WARN: Admin/Widget/SelectWidget
+[ 2017-04-10T16:49:43+08:00 ] 127.0.0.1 /Admin/Index/adminEdit/id/1
+SQL: SHOW COLUMNS FROM `admin` [ RunTime:0.0100s ]
+SQL: SELECT * FROM `admin` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `admin_role` [ RunTime:0.0090s ]
+SQL: SELECT * FROM `admin_role` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT `id` FROM `admin_role` ORDER BY id asc LIMIT 50   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `admin_role` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `admin_role` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `admin_role` WHERE `id` = 3 LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2017-04-10T16:49:48+08:00 ] 127.0.0.1 /admin/index/rolelist
+WARN: Admin/Controller/IndexController
+[ 2017-04-10T16:49:48+08:00 ] 127.0.0.1 /admin/index/rolelist
+WARN: Admin/Model/AdminRoleModel
+[ 2017-04-10T16:49:48+08:00 ] 127.0.0.1 /admin/index/rolelist
+WARN: Common.Model.AdminRoleModel
+[ 2017-04-10T16:49:48+08:00 ] 127.0.0.1 /admin/index/rolelist
+WARN: Common.Model.BaseModel
+[ 2017-04-10T16:50:06+08:00 ] 127.0.0.1 /admin/index/rolelist
+WARN: Admin/Controller/IndexController
+[ 2017-04-10T16:50:06+08:00 ] 127.0.0.1 /admin/index/rolelist
+WARN: Admin/Model/AdminRoleModel
+[ 2017-04-10T16:50:06+08:00 ] 127.0.0.1 /admin/index/rolelist
+WARN: Common.Model.AdminRoleModel
+[ 2017-04-10T16:50:06+08:00 ] 127.0.0.1 /admin/index/rolelist
+WARN: Common.Model.BaseModel
+[ 2017-04-10T16:50:08+08:00 ] 127.0.0.1 /Admin/Index/roleEdit/id/1
+WARN: Admin/Controller/IndexController
+[ 2017-04-10T16:50:08+08:00 ] 127.0.0.1 /Admin/Index/roleEdit/id/1
+WARN: Admin/Model/AdminRoleModel
+[ 2017-04-10T16:50:08+08:00 ] 127.0.0.1 /Admin/Index/roleEdit/id/1
+WARN: Common.Model.AdminRoleModel
+[ 2017-04-10T16:50:08+08:00 ] 127.0.0.1 /Admin/Index/roleEdit/id/1
+WARN: Common.Model.BaseModel
+[ 2017-04-10T16:50:09+08:00 ] 127.0.0.1 /Admin/Index/roleEdit/id/1
+SQL: SHOW COLUMNS FROM `admin_role` [ RunTime:0.0100s ]
+SQL: SELECT * FROM `admin_role` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2017-04-10T16:50:19+08:00 ] 127.0.0.1 /Admin/Index/roleEdit
+WARN: Admin/Controller/IndexController
+[ 2017-04-10T16:50:19+08:00 ] 127.0.0.1 /Admin/Index/roleEdit
+WARN: Admin/Model/AdminRoleModel
+[ 2017-04-10T16:50:19+08:00 ] 127.0.0.1 /Admin/Index/roleEdit
+WARN: Common.Model.AdminRoleModel
+[ 2017-04-10T16:50:19+08:00 ] 127.0.0.1 /Admin/Index/roleEdit
+WARN: Common.Model.BaseModel
+[ 2017-04-10T16:50:20+08:00 ] 127.0.0.1 /Admin/Index/roleEdit
+SQL: SHOW COLUMNS FROM `admin_role` [ RunTime:0.0100s ]
+SQL: UPDATE `admin_role` SET `name`='管理员',`actions`='a:11:{i:0;s:15:\"index/adminlist\";i:1;s:15:\"index/adminedit\";i:2;s:14:\"index/admindel\";i:3;s:14:\"index/rolelist\";i:4;s:14:\"index/roleedit\";i:5;s:13:\"index/roledel\";i:6;s:13:\"content/index\";i:7;s:19:\"content/contentcate\";i:8;s:18:\"content/frinedlink\";i:9;s:18:\"content/navigation\";i:10;s:13:\"setting/index\";}',`note`='',`id`='1' WHERE ( id=1 ) [ RunTime:0.0440s ]
+
+[ 2017-04-10T16:50:21+08:00 ] 127.0.0.1 /admin/index/rolelist
+WARN: Admin/Controller/IndexController
+[ 2017-04-10T16:50:21+08:00 ] 127.0.0.1 /admin/index/rolelist
+WARN: Admin/Model/AdminRoleModel
+[ 2017-04-10T16:50:21+08:00 ] 127.0.0.1 /admin/index/rolelist
+WARN: Common.Model.AdminRoleModel
+[ 2017-04-10T16:50:21+08:00 ] 127.0.0.1 /admin/index/rolelist
+WARN: Common.Model.BaseModel
+[ 2017-04-10T16:50:23+08:00 ] 127.0.0.1 /admin/index/rolelist
+WARN: Admin/Controller/IndexController
+[ 2017-04-10T16:50:23+08:00 ] 127.0.0.1 /admin/index/rolelist
+WARN: Admin/Model/AdminRoleModel
+[ 2017-04-10T16:50:23+08:00 ] 127.0.0.1 /admin/index/rolelist
+WARN: Common.Model.AdminRoleModel
+[ 2017-04-10T16:50:23+08:00 ] 127.0.0.1 /admin/index/rolelist
+WARN: Common.Model.BaseModel
+[ 2017-04-10T16:50:26+08:00 ] 127.0.0.1 /Admin/setting/index
+WARN: Admin/Controller/SettingController
+[ 2017-04-10T16:50:26+08:00 ] 127.0.0.1 /Admin/setting/index
+WARN: Admin/Model/ConfigModel
+[ 2017-04-10T16:50:26+08:00 ] 127.0.0.1 /Admin/setting/index
+WARN: Common.Model.ConfigModel
+[ 2017-04-10T16:50:26+08:00 ] 127.0.0.1 /Admin/setting/index
+WARN: Common.Model.BaseModel
+[ 2017-04-10T16:50:28+08:00 ] 127.0.0.1 /Admin/setting/index
+WARN: Admin/Widget/FormWidget
+[ 2017-04-10T16:50:28+08:00 ] 127.0.0.1 /Admin/index/index
+WARN: Admin/Controller/IndexController
+[ 2017-04-10T16:50:28+08:00 ] 127.0.0.1 /Admin/index/index
+WARN: Admin/Model/AdminModel
+[ 2017-04-10T16:50:28+08:00 ] 127.0.0.1 /Admin/index/index
+WARN: Common.Model.AdminModel
+[ 2017-04-10T16:50:28+08:00 ] 127.0.0.1 /Admin/index/index
+WARN: Common.Model.BaseModel
+[ 2017-04-10T16:50:29+08:00 ] 127.0.0.1 /Admin/index/index
+WARN: Admin/Model/AdminRoleModel
+[ 2017-04-10T16:50:29+08:00 ] 127.0.0.1 /Admin/index/index
+WARN: Common.Model.AdminRoleModel
+[ 2017-04-10T16:50:32+08:00 ] 127.0.0.1 /Admin/Index/Logout
+WARN: Admin/Controller/IndexController
+[ 2017-04-10T16:50:32+08:00 ] 127.0.0.1 /Admin/Index/admin
+WARN: Admin/Controller/IndexController
+[ 2017-04-10T16:50:34+08:00 ] 127.0.0.1 /Admin/Index/login
+WARN: Admin/Controller/IndexController
+[ 2017-04-10T16:50:34+08:00 ] 127.0.0.1 /Admin/Index/login
+WARN: Admin/Model/AdminModel
+[ 2017-04-10T16:50:34+08:00 ] 127.0.0.1 /Admin/Index/login
+WARN: Common.Model.AdminModel
+[ 2017-04-10T16:50:34+08:00 ] 127.0.0.1 /Admin/Index/login
+WARN: Common.Model.BaseModel
+[ 2017-04-10T16:50:35+08:00 ] 127.0.0.1 /Admin/Index/login
+WARN: Admin/Model/AdminRoleModel
+[ 2017-04-10T16:50:35+08:00 ] 127.0.0.1 /Admin/Index/login
+WARN: Common.Model.AdminRoleModel
+[ 2017-04-10T16:50:35+08:00 ] 127.0.0.1 /Admin/Index/index
+WARN: Admin/Controller/IndexController
+[ 2017-04-10T16:50:35+08:00 ] 127.0.0.1 /Admin/Index/index
+WARN: Admin/Model/AdminModel
+[ 2017-04-10T16:50:35+08:00 ] 127.0.0.1 /Admin/Index/index
+WARN: Common.Model.AdminModel
+[ 2017-04-10T16:50:35+08:00 ] 127.0.0.1 /Admin/Index/index
+WARN: Common.Model.BaseModel
+[ 2017-04-10T16:50:36+08:00 ] 127.0.0.1 /Admin/Index/index
+WARN: Admin/Model/AdminRoleModel
+[ 2017-04-10T16:50:36+08:00 ] 127.0.0.1 /Admin/Index/index
+WARN: Common.Model.AdminRoleModel
+[ 2017-04-10T16:50:39+08:00 ] 127.0.0.1 /Admin/content/index
+WARN: Admin/Controller/ContentController
+[ 2017-04-10T16:50:39+08:00 ] 127.0.0.1 /Admin/content/index
+WARN: Common.Model.ContentController
+[ 2017-04-10T16:50:39+08:00 ] 127.0.0.1 /Admin/content/index
+WARN: Admin.Widget.ContentController
+[ 2017-04-10T16:50:39+08:00 ] 127.0.0.1 /Admin/content/index
+WARN: Admin/Controller/EmptyController
+[ 2017-04-10T16:50:39+08:00 ] 127.0.0.1 /Admin/content/index
+WARN: Common.Model.EmptyController
+[ 2017-04-10T16:50:39+08:00 ] 127.0.0.1 /Admin/content/index
+WARN: Admin.Widget.EmptyController
+[ 2017-04-10T16:50:39+08:00 ] 127.0.0.1 /Admin/content/index
+ERR: 无法加载控制器:Content
+
+[ 2017-04-10T16:53:02+08:00 ] 127.0.0.1 /Admin/content/index
+WARN: Admin/Controller/ContentController
+[ 2017-04-10T17:01:37+08:00 ] 127.0.0.1 /Admin
+WARN: Admin/Controller/IndexController
+[ 2017-04-10T17:01:37+08:00 ] 127.0.0.1 /Admin
+WARN: Admin/Model/AdminModel
+[ 2017-04-10T17:01:37+08:00 ] 127.0.0.1 /Admin
+WARN: Common.Model.AdminModel
+[ 2017-04-10T17:01:37+08:00 ] 127.0.0.1 /Admin
+WARN: Common.Model.BaseModel
+[ 2017-04-10T17:01:38+08:00 ] 127.0.0.1 /Admin
+WARN: Admin/Model/AdminRoleModel
+[ 2017-04-10T17:01:38+08:00 ] 127.0.0.1 /Admin
+WARN: Common.Model.AdminRoleModel
+[ 2017-04-10T17:03:36+08:00 ] 127.0.0.1 /Admin/content/index
+WARN: Admin/Controller/ContentController
+[ 2017-04-10T17:03:39+08:00 ] 127.0.0.1 /Admin/setting/index
+WARN: Admin/Controller/SettingController
+[ 2017-04-10T17:03:39+08:00 ] 127.0.0.1 /Admin/setting/index
+WARN: Admin/Model/ConfigModel
+[ 2017-04-10T17:03:39+08:00 ] 127.0.0.1 /Admin/setting/index
+WARN: Common.Model.ConfigModel
+[ 2017-04-10T17:03:39+08:00 ] 127.0.0.1 /Admin/setting/index
+WARN: Common.Model.BaseModel
+[ 2017-04-10T17:03:40+08:00 ] 127.0.0.1 /Admin/setting/index
+WARN: Admin/Widget/FormWidget
+[ 2017-04-10T17:03:42+08:00 ] 127.0.0.1 /Admin/content/index
+WARN: Admin/Controller/ContentController
+[ 2017-04-10T17:03:45+08:00 ] 127.0.0.1 /Admin/index/index
+WARN: Admin/Controller/IndexController
+[ 2017-04-10T17:03:45+08:00 ] 127.0.0.1 /Admin/index/index
+WARN: Admin/Model/AdminModel
+[ 2017-04-10T17:03:45+08:00 ] 127.0.0.1 /Admin/index/index
+WARN: Common.Model.AdminModel
+[ 2017-04-10T17:03:45+08:00 ] 127.0.0.1 /Admin/index/index
+WARN: Common.Model.BaseModel
+[ 2017-04-10T17:03:46+08:00 ] 127.0.0.1 /Admin/index/index
+WARN: Admin/Model/AdminRoleModel
+[ 2017-04-10T17:03:46+08:00 ] 127.0.0.1 /Admin/index/index
+WARN: Common.Model.AdminRoleModel
+[ 2017-04-10T17:06:46+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Admin/Controller/IndexController
+[ 2017-04-10T17:06:46+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Admin/Model/AdminModel
+[ 2017-04-10T17:06:46+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Common.Model.AdminModel
+[ 2017-04-10T17:06:46+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Common.Model.BaseModel
+[ 2017-04-10T17:06:47+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Admin/Model/AdminRoleModel
+[ 2017-04-10T17:06:47+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Common.Model.AdminRoleModel
+[ 2017-04-10T17:07:00+08:00 ] 127.0.0.1 /admin/index/rolelist
+WARN: Admin/Controller/IndexController
+[ 2017-04-10T17:07:00+08:00 ] 127.0.0.1 /admin/index/rolelist
+WARN: Admin/Model/AdminRoleModel
+[ 2017-04-10T17:07:00+08:00 ] 127.0.0.1 /admin/index/rolelist
+WARN: Common.Model.AdminRoleModel
+[ 2017-04-10T17:07:00+08:00 ] 127.0.0.1 /admin/index/rolelist
+WARN: Common.Model.BaseModel
+[ 2017-04-10T17:07:07+08:00 ] 127.0.0.1 /admin/index/phpinfo
+WARN: Admin/Controller/IndexController
+[ 2017-04-10T17:07:07+08:00 ] 127.0.0.1 /admin/index/phpinfo
+WARN: Common.Common.mdl_serverinfo
+[ 2017-04-10T17:07:07+08:00 ] 127.0.0.1 /admin/index/phpinfo
+WARN: Common.Model.Memcache
+[ 2017-04-10T17:07:07+08:00 ] 127.0.0.1 /admin/index/phpinfo
+WARN: Admin.Widget.Memcache
+[ 2017-04-10T17:07:07+08:00 ] 127.0.0.1 /admin/index/phpinfo?img=yes.gif
+WARN: Admin/Controller/IndexController
+[ 2017-04-10T17:07:07+08:00 ] 127.0.0.1 /admin/index/phpinfo?img=yes.gif
+WARN: Common.Common.mdl_serverinfo
+[ 2017-04-10T17:07:07+08:00 ] 127.0.0.1 /admin/index/phpinfo?img=no.gif
+WARN: Admin/Controller/IndexController
+[ 2017-04-10T17:07:07+08:00 ] 127.0.0.1 /admin/index/phpinfo?img=no.gif
+WARN: Common.Common.mdl_serverinfo
+[ 2017-04-10T17:07:09+08:00 ] 127.0.0.1 /admin/index/index
+WARN: Admin/Controller/IndexController
+[ 2017-04-10T17:07:09+08:00 ] 127.0.0.1 /admin/index/index
+WARN: Admin/Model/AdminModel
+[ 2017-04-10T17:07:09+08:00 ] 127.0.0.1 /admin/index/index
+WARN: Common.Model.AdminModel
+[ 2017-04-10T17:07:09+08:00 ] 127.0.0.1 /admin/index/index
+WARN: Common.Model.BaseModel
+[ 2017-04-10T17:07:11+08:00 ] 127.0.0.1 /admin/index/index
+WARN: Admin/Model/AdminRoleModel
+[ 2017-04-10T17:07:11+08:00 ] 127.0.0.1 /admin/index/index
+WARN: Common.Model.AdminRoleModel
+[ 2017-04-10T17:07:15+08:00 ] 127.0.0.1 /Admin/content/index
+WARN: Admin/Controller/ContentController
+[ 2017-04-10T17:07:20+08:00 ] 127.0.0.1 /Admin/content/index
+WARN: Admin/Controller/ContentController
+[ 2017-04-10T18:01:41+08:00 ] 127.0.0.1 /Admin/content/index
+WARN: Admin/Controller/ContentController
+[ 2017-04-10T18:02:36+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Admin/Controller/IndexController
+[ 2017-04-10T18:02:36+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Admin/Model/AdminModel
+[ 2017-04-10T18:02:36+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Common.Model.AdminModel
+[ 2017-04-10T18:02:36+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Common.Model.BaseModel
+[ 2017-04-10T18:02:37+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Admin/Model/AdminRoleModel
+[ 2017-04-10T18:02:37+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Common.Model.AdminRoleModel
+[ 2017-04-10T18:02:40+08:00 ] 127.0.0.1 /admin/index/index
+WARN: Admin/Controller/IndexController
+[ 2017-04-10T18:02:40+08:00 ] 127.0.0.1 /admin/index/index
+WARN: Admin/Model/AdminModel
+[ 2017-04-10T18:02:40+08:00 ] 127.0.0.1 /admin/index/index
+WARN: Common.Model.AdminModel
+[ 2017-04-10T18:02:40+08:00 ] 127.0.0.1 /admin/index/index
+WARN: Common.Model.BaseModel
+[ 2017-04-10T18:02:41+08:00 ] 127.0.0.1 /admin/index/index
+WARN: Admin/Model/AdminRoleModel
+[ 2017-04-10T18:02:41+08:00 ] 127.0.0.1 /admin/index/index
+WARN: Common.Model.AdminRoleModel
+[ 2017-04-10T18:02:43+08:00 ] 127.0.0.1 /admin/index/rolelist
+WARN: Admin/Controller/IndexController
+[ 2017-04-10T18:02:43+08:00 ] 127.0.0.1 /admin/index/rolelist
+WARN: Admin/Model/AdminRoleModel
+[ 2017-04-10T18:02:43+08:00 ] 127.0.0.1 /admin/index/rolelist
+WARN: Common.Model.AdminRoleModel
+[ 2017-04-10T18:02:43+08:00 ] 127.0.0.1 /admin/index/rolelist
+WARN: Common.Model.BaseModel
+[ 2017-04-10T18:02:48+08:00 ] 127.0.0.1 /admin/index/index
+WARN: Admin/Controller/IndexController
+[ 2017-04-10T18:02:48+08:00 ] 127.0.0.1 /admin/index/index
+WARN: Admin/Model/AdminModel
+[ 2017-04-10T18:02:48+08:00 ] 127.0.0.1 /admin/index/index
+WARN: Common.Model.AdminModel
+[ 2017-04-10T18:02:48+08:00 ] 127.0.0.1 /admin/index/index
+WARN: Common.Model.BaseModel
+[ 2017-04-10T18:02:49+08:00 ] 127.0.0.1 /admin/index/index
+WARN: Admin/Model/AdminRoleModel
+[ 2017-04-10T18:02:49+08:00 ] 127.0.0.1 /admin/index/index
+WARN: Common.Model.AdminRoleModel
+[ 2017-04-10T18:34:42+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Admin/Controller/IndexController
+[ 2017-04-10T18:34:42+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Admin/Model/AdminModel
+[ 2017-04-10T18:34:42+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Common.Model.AdminModel
+[ 2017-04-10T18:34:42+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Common.Model.BaseModel
+[ 2017-04-10T18:34:43+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Admin/Model/AdminRoleModel
+[ 2017-04-10T18:34:43+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Common.Model.AdminRoleModel
+[ 2017-04-10T18:34:44+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Admin/Controller/IndexController
+[ 2017-04-10T18:34:44+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Admin/Model/AdminModel
+[ 2017-04-10T18:34:44+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Common.Model.AdminModel
+[ 2017-04-10T18:34:44+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Common.Model.BaseModel
+[ 2017-04-10T18:34:45+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Admin/Model/AdminRoleModel
+[ 2017-04-10T18:34:45+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Common.Model.AdminRoleModel
+[ 2017-04-10T18:34:45+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Admin/Controller/IndexController
+[ 2017-04-10T18:34:45+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Admin/Model/AdminModel
+[ 2017-04-10T18:34:45+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Common.Model.AdminModel
+[ 2017-04-10T18:34:45+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Common.Model.BaseModel
+[ 2017-04-10T18:34:46+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Admin/Model/AdminRoleModel
+[ 2017-04-10T18:34:46+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Common.Model.AdminRoleModel
+[ 2017-04-10T18:34:49+08:00 ] 127.0.0.1 /admin/index/rolelist
+WARN: Admin/Controller/IndexController
+[ 2017-04-10T18:34:49+08:00 ] 127.0.0.1 /admin/index/rolelist
+WARN: Admin/Model/AdminRoleModel
+[ 2017-04-10T18:34:49+08:00 ] 127.0.0.1 /admin/index/rolelist
+WARN: Common.Model.AdminRoleModel
+[ 2017-04-10T18:34:49+08:00 ] 127.0.0.1 /admin/index/rolelist
+WARN: Common.Model.BaseModel
+[ 2017-04-10T18:34:50+08:00 ] 127.0.0.1 /admin/index/rolelist
+WARN: Admin/Controller/IndexController
+[ 2017-04-10T18:34:50+08:00 ] 127.0.0.1 /admin/index/rolelist
+WARN: Admin/Model/AdminRoleModel
+[ 2017-04-10T18:34:50+08:00 ] 127.0.0.1 /admin/index/rolelist
+WARN: Common.Model.AdminRoleModel
+[ 2017-04-10T18:34:50+08:00 ] 127.0.0.1 /admin/index/rolelist
+WARN: Common.Model.BaseModel
+[ 2017-04-10T18:34:51+08:00 ] 127.0.0.1 /admin/index/rolelist
+WARN: Admin/Controller/IndexController
+[ 2017-04-10T18:34:51+08:00 ] 127.0.0.1 /admin/index/rolelist
+WARN: Admin/Model/AdminRoleModel
+[ 2017-04-10T18:34:51+08:00 ] 127.0.0.1 /admin/index/rolelist
+WARN: Common.Model.AdminRoleModel
+[ 2017-04-10T18:34:51+08:00 ] 127.0.0.1 /admin/index/rolelist
+WARN: Common.Model.BaseModel
+[ 2017-04-10T18:34:53+08:00 ] 127.0.0.1 /admin/index/phpinfo
+WARN: Admin/Controller/IndexController
+[ 2017-04-10T18:34:53+08:00 ] 127.0.0.1 /admin/index/phpinfo
+WARN: Common.Common.mdl_serverinfo
+[ 2017-04-10T18:34:53+08:00 ] 127.0.0.1 /admin/index/phpinfo
+WARN: Common.Model.Memcache
+[ 2017-04-10T18:34:53+08:00 ] 127.0.0.1 /admin/index/phpinfo
+WARN: Admin.Widget.Memcache
+[ 2017-04-10T18:34:53+08:00 ] 127.0.0.1 /admin/index/phpinfo?img=yes.gif
+WARN: Admin/Controller/IndexController
+[ 2017-04-10T18:34:53+08:00 ] 127.0.0.1 /admin/index/phpinfo?img=yes.gif
+WARN: Common.Common.mdl_serverinfo
+[ 2017-04-10T18:34:53+08:00 ] 127.0.0.1 /admin/index/phpinfo?img=no.gif
+WARN: Admin/Controller/IndexController
+[ 2017-04-10T18:34:53+08:00 ] 127.0.0.1 /admin/index/phpinfo?img=no.gif
+WARN: Common.Common.mdl_serverinfo
+[ 2017-04-10T18:34:56+08:00 ] 127.0.0.1 /admin/index/index
+WARN: Admin/Controller/IndexController
+[ 2017-04-10T18:34:56+08:00 ] 127.0.0.1 /admin/index/index
+WARN: Admin/Model/AdminModel
+[ 2017-04-10T18:34:56+08:00 ] 127.0.0.1 /admin/index/index
+WARN: Common.Model.AdminModel
+[ 2017-04-10T18:34:56+08:00 ] 127.0.0.1 /admin/index/index
+WARN: Common.Model.BaseModel
+[ 2017-04-10T18:34:57+08:00 ] 127.0.0.1 /admin/index/index
+WARN: Admin/Model/AdminRoleModel
+[ 2017-04-10T18:34:57+08:00 ] 127.0.0.1 /admin/index/index
+WARN: Common.Model.AdminRoleModel
+[ 2017-04-10T18:34:57+08:00 ] 127.0.0.1 /admin/index/index
+WARN: Admin/Controller/IndexController
+[ 2017-04-10T18:34:57+08:00 ] 127.0.0.1 /admin/index/index
+WARN: Admin/Model/AdminModel
+[ 2017-04-10T18:34:57+08:00 ] 127.0.0.1 /admin/index/index
+WARN: Common.Model.AdminModel
+[ 2017-04-10T18:34:57+08:00 ] 127.0.0.1 /admin/index/index
+WARN: Common.Model.BaseModel
+[ 2017-04-10T18:34:58+08:00 ] 127.0.0.1 /admin/index/index
+WARN: Admin/Model/AdminRoleModel
+[ 2017-04-10T18:34:58+08:00 ] 127.0.0.1 /admin/index/index
+WARN: Common.Model.AdminRoleModel
+[ 2017-04-10T18:34:59+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Admin/Controller/IndexController
+[ 2017-04-10T18:34:59+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Admin/Model/AdminModel
+[ 2017-04-10T18:34:59+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Common.Model.AdminModel
+[ 2017-04-10T18:34:59+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Common.Model.BaseModel
+[ 2017-04-10T18:35:01+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Admin/Model/AdminRoleModel
+[ 2017-04-10T18:35:01+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Common.Model.AdminRoleModel
+[ 2017-04-10T18:35:01+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Admin/Controller/IndexController
+[ 2017-04-10T18:35:01+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Admin/Model/AdminModel
+[ 2017-04-10T18:35:01+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Common.Model.AdminModel
+[ 2017-04-10T18:35:01+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Common.Model.BaseModel
+[ 2017-04-10T18:35:02+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Admin/Model/AdminRoleModel
+[ 2017-04-10T18:35:02+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Common.Model.AdminRoleModel
+[ 2017-04-10T18:35:33+08:00 ] 127.0.0.1 /Admin/Index/adminEdit/id/2
+WARN: Admin/Controller/IndexController
+[ 2017-04-10T18:35:33+08:00 ] 127.0.0.1 /Admin/Index/adminEdit/id/2
+WARN: Admin/Model/AdminModel
+[ 2017-04-10T18:35:33+08:00 ] 127.0.0.1 /Admin/Index/adminEdit/id/2
+WARN: Common.Model.AdminModel
+[ 2017-04-10T18:35:33+08:00 ] 127.0.0.1 /Admin/Index/adminEdit/id/2
+WARN: Common.Model.BaseModel
+[ 2017-04-10T18:35:34+08:00 ] 127.0.0.1 /Admin/Index/adminEdit/id/2
+WARN: Admin/Model/AdminRoleModel
+[ 2017-04-10T18:35:34+08:00 ] 127.0.0.1 /Admin/Index/adminEdit/id/2
+WARN: Common.Model.AdminRoleModel
+[ 2017-04-10T18:35:34+08:00 ] 127.0.0.1 /Admin/Index/adminEdit/id/2
+WARN: Admin/Widget/SelectWidget
+[ 2017-04-10T18:35:34+08:00 ] 127.0.0.1 /Admin/Index/adminEdit/id/2
+SQL: SHOW COLUMNS FROM `admin` [ RunTime:0.0100s ]
+SQL: SELECT * FROM `admin` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `admin_role` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `admin_role` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `id` FROM `admin_role` ORDER BY id asc LIMIT 50   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `admin_role` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `admin_role` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `admin_role` WHERE `id` = 3 LIMIT 1   [ RunTime:0.0000s ]
+
+[ 2017-04-10T18:35:39+08:00 ] 127.0.0.1 /admin/index/index
+WARN: Admin/Controller/IndexController
+[ 2017-04-10T18:35:39+08:00 ] 127.0.0.1 /admin/index/index
+WARN: Admin/Model/AdminModel
+[ 2017-04-10T18:35:39+08:00 ] 127.0.0.1 /admin/index/index
+WARN: Common.Model.AdminModel
+[ 2017-04-10T18:35:39+08:00 ] 127.0.0.1 /admin/index/index
+WARN: Common.Model.BaseModel
+[ 2017-04-10T18:35:40+08:00 ] 127.0.0.1 /admin/index/index
+WARN: Admin/Model/AdminRoleModel
+[ 2017-04-10T18:35:40+08:00 ] 127.0.0.1 /admin/index/index
+WARN: Common.Model.AdminRoleModel
+[ 2017-04-10T18:36:13+08:00 ] 127.0.0.1 /Admin/setting/index
+WARN: Admin/Controller/SettingController
+[ 2017-04-10T18:36:13+08:00 ] 127.0.0.1 /Admin/setting/index
+WARN: Admin/Model/ConfigModel
+[ 2017-04-10T18:36:13+08:00 ] 127.0.0.1 /Admin/setting/index
+WARN: Common.Model.ConfigModel
+[ 2017-04-10T18:36:13+08:00 ] 127.0.0.1 /Admin/setting/index
+WARN: Common.Model.BaseModel
+[ 2017-04-10T18:36:14+08:00 ] 127.0.0.1 /Admin/setting/index
+WARN: Admin/Widget/FormWidget
+[ 2017-04-10T18:37:35+08:00 ] 127.0.0.1 /Admin/index/index
+WARN: Admin/Controller/IndexController
+[ 2017-04-10T18:37:35+08:00 ] 127.0.0.1 /Admin/index/index
+WARN: Admin/Model/AdminModel
+[ 2017-04-10T18:37:35+08:00 ] 127.0.0.1 /Admin/index/index
+WARN: Common.Model.AdminModel
+[ 2017-04-10T18:37:35+08:00 ] 127.0.0.1 /Admin/index/index
+WARN: Common.Model.BaseModel
+[ 2017-04-10T18:37:36+08:00 ] 127.0.0.1 /Admin/index/index
+WARN: Admin/Model/AdminRoleModel
+[ 2017-04-10T18:37:36+08:00 ] 127.0.0.1 /Admin/index/index
+WARN: Common.Model.AdminRoleModel
+[ 2017-04-10T18:52:14+08:00 ] 127.0.0.1 /Admin/content/index
+WARN: Admin/Controller/ContentController
+[ 2017-04-10T18:52:14+08:00 ] 127.0.0.1 /Admin/content/index
+WARN: Admin/Model/ContentModel
+[ 2017-04-10T18:52:14+08:00 ] 127.0.0.1 /Admin/content/index
+WARN: Common.Model.ContentModel
+[ 2017-04-10T18:52:14+08:00 ] 127.0.0.1 /Admin/content/index
+WARN: Common.Model.BaseModel
+[ 2017-04-10T18:52:42+08:00 ] 127.0.0.1 /Admin/content/index
+WARN: Admin/Controller/ContentController
+[ 2017-04-10T18:52:42+08:00 ] 127.0.0.1 /Admin/content/index
+WARN: Admin/Model/ContentModel
+[ 2017-04-10T18:52:42+08:00 ] 127.0.0.1 /Admin/content/index
+WARN: Common.Model.ContentModel
+[ 2017-04-10T18:52:42+08:00 ] 127.0.0.1 /Admin/content/index
+WARN: Common.Model.BaseModel
+[ 2017-04-10T19:00:24+08:00 ] 127.0.0.1 /Admin/content/index
+WARN: Admin/Controller/ContentController
+[ 2017-04-10T19:00:24+08:00 ] 127.0.0.1 /Admin/content/index
+WARN: Admin/Model/ContentModel
+[ 2017-04-10T19:00:24+08:00 ] 127.0.0.1 /Admin/content/index
+WARN: Common.Model.ContentModel
+[ 2017-04-10T19:00:24+08:00 ] 127.0.0.1 /Admin/content/index
+WARN: Common.Model.BaseModel
+[ 2017-04-10T19:00:25+08:00 ] 127.0.0.1 /Admin/content/index
+ERR: 模板不存在:D:\workplace\php\thinkApp\shixinda/Application/Admin/View/Content/Content.html
+
+[ 2017-04-10T19:00:37+08:00 ] 127.0.0.1 /Admin/content/index
+WARN: Admin/Controller/ContentController
+[ 2017-04-10T19:00:37+08:00 ] 127.0.0.1 /Admin/content/index
+WARN: Admin/Model/ContentModel
+[ 2017-04-10T19:00:37+08:00 ] 127.0.0.1 /Admin/content/index
+WARN: Common.Model.ContentModel
+[ 2017-04-10T19:00:37+08:00 ] 127.0.0.1 /Admin/content/index
+WARN: Common.Model.BaseModel
+[ 2017-04-10T19:00:38+08:00 ] 127.0.0.1 /Admin/content/index
+ERR: 模板不存在:D:\workplace\php\thinkApp\shixinda/Application/Admin/View/Content/Content.html
+
+[ 2017-04-10T19:05:47+08:00 ] 127.0.0.1 /Admin/content/index
+WARN: Admin/Controller/ContentController
+[ 2017-04-10T19:05:47+08:00 ] 127.0.0.1 /Admin/content/index
+WARN: Admin/Model/ContentModel
+[ 2017-04-10T19:05:47+08:00 ] 127.0.0.1 /Admin/content/index
+WARN: Common.Model.ContentModel
+[ 2017-04-10T19:05:47+08:00 ] 127.0.0.1 /Admin/content/index
+WARN: Common.Model.BaseModel
+[ 2017-04-10T19:06:47+08:00 ] 127.0.0.1 /Admin/content/index
+WARN: Admin/Controller/ContentController
+[ 2017-04-10T19:06:47+08:00 ] 127.0.0.1 /Admin/content/index
+WARN: Admin/Model/ContentModel
+[ 2017-04-10T19:06:47+08:00 ] 127.0.0.1 /Admin/content/index
+WARN: Common.Model.ContentModel
+[ 2017-04-10T19:06:47+08:00 ] 127.0.0.1 /Admin/content/index
+WARN: Common.Model.BaseModel
+[ 2017-04-10T19:06:50+08:00 ] 127.0.0.1 /Admin/content/index
+WARN: Admin/Controller/ContentController
+[ 2017-04-10T19:06:50+08:00 ] 127.0.0.1 /Admin/content/index
+WARN: Admin/Model/ContentModel
+[ 2017-04-10T19:06:50+08:00 ] 127.0.0.1 /Admin/content/index
+WARN: Common.Model.ContentModel
+[ 2017-04-10T19:06:50+08:00 ] 127.0.0.1 /Admin/content/index
+WARN: Common.Model.BaseModel
+[ 2017-04-10T19:06:56+08:00 ] 127.0.0.1 /Admin/content/index
+WARN: Admin/Controller/ContentController
+[ 2017-04-10T19:06:56+08:00 ] 127.0.0.1 /Admin/content/index
+WARN: Admin/Model/ContentModel
+[ 2017-04-10T19:06:56+08:00 ] 127.0.0.1 /Admin/content/index
+WARN: Common.Model.ContentModel
+[ 2017-04-10T19:06:56+08:00 ] 127.0.0.1 /Admin/content/index
+WARN: Common.Model.BaseModel
+[ 2017-04-10T19:09:49+08:00 ] 127.0.0.1 /Admin/content/index
+WARN: Admin/Controller/ContentController
+[ 2017-04-10T19:09:49+08:00 ] 127.0.0.1 /Admin/content/index
+WARN: Admin/Model/ContentModel
+[ 2017-04-10T19:09:49+08:00 ] 127.0.0.1 /Admin/content/index
+WARN: Common.Model.ContentModel
+[ 2017-04-10T19:09:49+08:00 ] 127.0.0.1 /Admin/content/index
+WARN: Common.Model.BaseModel
+[ 2017-04-10T19:12:40+08:00 ] 127.0.0.1 /Admin/content/index
+WARN: Admin/Controller/ContentController
+[ 2017-04-10T19:12:40+08:00 ] 127.0.0.1 /Admin/content/index
+WARN: Admin/Model/ContentModel
+[ 2017-04-10T19:12:40+08:00 ] 127.0.0.1 /Admin/content/index
+WARN: Common.Model.ContentModel
+[ 2017-04-10T19:12:40+08:00 ] 127.0.0.1 /Admin/content/index
+WARN: Common.Model.BaseModel
+[ 2017-04-10T19:15:10+08:00 ] 127.0.0.1 /Admin/content/index
+WARN: Admin/Controller/ContentController
+[ 2017-04-10T19:15:10+08:00 ] 127.0.0.1 /Admin/content/index
+WARN: Admin/Model/ContentModel
+[ 2017-04-10T19:15:10+08:00 ] 127.0.0.1 /Admin/content/index
+WARN: Common.Model.ContentModel
+[ 2017-04-10T19:15:10+08:00 ] 127.0.0.1 /Admin/content/index
+WARN: Common.Model.BaseModel
+[ 2017-04-10T19:15:11+08:00 ] 127.0.0.1 /Admin/content/index
+WARN: Admin/Controller/ContentController
+[ 2017-04-10T19:15:11+08:00 ] 127.0.0.1 /Admin/content/index
+WARN: Admin/Model/ContentModel
+[ 2017-04-10T19:15:11+08:00 ] 127.0.0.1 /Admin/content/index
+WARN: Common.Model.ContentModel
+[ 2017-04-10T19:15:11+08:00 ] 127.0.0.1 /Admin/content/index
+WARN: Common.Model.BaseModel
+[ 2017-04-10T19:15:16+08:00 ] 127.0.0.1 /Admin/index/index
+WARN: Admin/Controller/IndexController
+[ 2017-04-10T19:15:16+08:00 ] 127.0.0.1 /Admin/index/index
+WARN: Admin/Model/AdminModel
+[ 2017-04-10T19:15:16+08:00 ] 127.0.0.1 /Admin/index/index
+WARN: Common.Model.AdminModel
+[ 2017-04-10T19:15:16+08:00 ] 127.0.0.1 /Admin/index/index
+WARN: Common.Model.BaseModel
+[ 2017-04-10T19:15:17+08:00 ] 127.0.0.1 /Admin/index/index
+WARN: Admin/Model/AdminRoleModel
+[ 2017-04-10T19:15:17+08:00 ] 127.0.0.1 /Admin/index/index
+WARN: Common.Model.AdminRoleModel
+[ 2017-04-10T19:15:19+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Admin/Controller/IndexController
+[ 2017-04-10T19:15:19+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Admin/Model/AdminModel
+[ 2017-04-10T19:15:19+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Common.Model.AdminModel
+[ 2017-04-10T19:15:19+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Common.Model.BaseModel
+[ 2017-04-10T19:15:20+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Admin/Model/AdminRoleModel
+[ 2017-04-10T19:15:20+08:00 ] 127.0.0.1 /admin/index/adminlist
+WARN: Common.Model.AdminRoleModel
+[ 2017-04-10T19:15:35+08:00 ] 127.0.0.1 /Admin/content/index
+WARN: Admin/Controller/ContentController
+[ 2017-04-10T19:15:35+08:00 ] 127.0.0.1 /Admin/content/index
+WARN: Admin/Model/ContentModel
+[ 2017-04-10T19:15:35+08:00 ] 127.0.0.1 /Admin/content/index
+WARN: Common.Model.ContentModel
+[ 2017-04-10T19:15:35+08:00 ] 127.0.0.1 /Admin/content/index
+WARN: Common.Model.BaseModel

@@ -9,11 +9,8 @@ return array(
 	//控制器
 	'ctrs' => [
 		'index' => '控制台',
-		'user' 	=> '用户管理',
-		'run' => '运营管理',
-		'count'   => '数据统计',
+		'content' => '内容管理',
 		'setting' => '系统设置',
-		'document'=> '接口调试',
 	],
 	//所有的动作
 	'actions' => [
@@ -25,9 +22,11 @@ return array(
 			['roleEdit',  '角色添加编辑'],
 			['roleDel',   '角色删除'],
 		],
-		'user'=>[
-			['index', 	 '用户管理'],
-			['identify', '认证管理'],
+		'content'=>[
+			['index', 	 '内容列表'],
+			['contentCate', '内容分类'],
+		    ['frinedLink','友情链接'],
+		    ['navigation','导航管理']
 		],
 		'setting'=>[
 			['index', '系统配置'],
@@ -41,11 +40,23 @@ return array(
 			['roleList', 	'角色管理'],
 			['phpInfo', 	'服务器信息'],
 		],
-		'user'=>[
-			['index', '用户管理',]
+		'content'=>[
+			['index', 	 '内容列表'],
+			['contentCate', '内容分类'],
+		    ['frinedLink','友情链接'],
+		    ['navigation','导航管理']
 		],
 		'setting' => [
 			['index', '系统设置'],
 		],
 	],
+    //配置数据库
+    'DB_CONFIG' => array(
+        'db_type'  => 'mysql',
+        'db_user'  => 'root',
+        'db_pwd'   => '1234',
+        'db_host'  => 'localhost',
+        'db_name'  => 'shixinda',
+        'db_charset'=>    'utf8',
+    ),
 );

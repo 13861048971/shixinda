@@ -23,14 +23,15 @@
 
 
 后台功能：
+	tdk表
 	
 	内容管理
-		导航管理
-		内容列表
-		内容分类
-		友情连接
+		导航管理 id  name logo url status parent_id add_time update_time    
+		内容列表 id cat_id title content author status publish_time add_time update_time
+		内容分类 id name  status publish_time add_time update_time 
+		友情连接 id  name logo url  status add_time update_time
 	用户管理
-		用户列表
+		用户列表 id 
 		用户评论
 		消息管理
 		投诉建业

@@ -13,7 +13,7 @@
 			<td>{$v.name}</td>
 			<td>{$v.note}</td>
 			<td class="handle">  
-				<if condition="$v['id'] gt 1">
+				<if condition="$v['id'] gt 0">
 					<a class="dialog edit" dialog-lg="true" href="#" url="{:u('roleEdit','id=' . $v['id'])}">编辑</a>
 					<a class="del" href="#" url="{:u('roleDel','id=' . $v['id'])}">删除</a>
 				<else />
