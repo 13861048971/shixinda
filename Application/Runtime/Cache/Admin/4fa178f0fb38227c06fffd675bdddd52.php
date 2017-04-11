@@ -105,8 +105,8 @@
 			<td><?php echo ($v["add_time"]); ?></td>
 			<td><?php echo ($v["update_time"]); ?></td>
 			<td class="handle">
-				<a href=# >编辑</a>|
-				<a href=# >删除</a>
+				<a class="dialog edit" href="#" url="<?php echo u('contentEdit','id=' . $v['id']);?>">编辑</a>|
+				<a class="ajaxDel del" href="#" url="<?php echo u('contentDel','id=' . $v['id']);?>">删除</a>
 			</td>
 		</tr><?php endforeach; endif; ?>
 	</table>
