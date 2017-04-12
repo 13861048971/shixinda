@@ -83,9 +83,9 @@
 		<button  class="form-control btn-info" >搜索</button>
 		</div>
 	</form> -->
-	<form action="ContentController.class.php" method="post">
-		<input type="text" name="title" placeholder="标题" />
-		<input type="submit" value="查找内容">       			     
+	<form action="" class="form-inline search clearfix" method="GET">
+		<input type="text" class="form-control" name="title" placeholder="请输入标题" value="<?php echo ($contentTitle); ?>" />
+		<input type="submit"  class="form-control btn-info" value="搜索">       			     
 	</form>
 	<table class="table table-striped user-list">
 		<tr>  
@@ -104,17 +104,17 @@
 			<td><?php echo ($v["cateName"]); ?></td>
 			<td><?php echo ($v["title"]); ?></td>
 			<td><?php echo ($v["author"]); ?></td>
-			<td><?php echo ($v["status"]); ?></td>
-			<td><?php echo ($v["publish_time"]); ?></td>
-			<td><?php echo ($v["add_time"]); ?></td>
-			<td><?php echo ($v["update_time"]); ?></td>
+			<td><?php echo ($v["statusName"]); ?></td>
+			<td><?php echo ($v["publishTime"]); ?></td>
+			<td><?php echo ($v["addTime"]); ?></td>
+			<td><?php echo ($v["updateTime"]); ?></td>
 			<td class="handle">
 				<a class="dialog edit" dialog-lg="true" href="#" url="<?php echo u('contentEdit','id=' . $v['id']);?>">编辑</a>|
 				<a class="ajaxDel del" href="#" url="<?php echo u('contentDel','id=' . $v['id']);?>">删除</a>
 			</td>
 		</tr><?php endforeach; endif; ?>
 	</table>
-	<div class="pager"><?php echo ($page); ?></div>
+	<div class="pager"><?php echo ($pageVar); ?></div>
 </div>
 <link rel="stylesheet" type="text/css" href="/Public/js/lib/daterangepicker/daterangepicker-bs3.css" />
 <script type="text/javascript" src="/Public/js/lib/laydate/laydate.js"></script><script type="text/javascript" src="/Public/js/admin/user.js"></script><script type="text/javascript" src="/Public/js/lib/daterangepicker/moment.min.js"></script><script type="text/javascript" src="/Public/js/lib/daterangepicker/daterangepicker.js"></script>

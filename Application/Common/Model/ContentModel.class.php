@@ -9,6 +9,9 @@ class ContentModel extends BaseModel {
     //列表
     public function getList($con=[], $limit=5){
         $list = $this->where($con)->limit($limit)->select();
+        foreach ($list as $k=>$v){
+            $list[$k] = $this->parseRow($v);
+        }
 	    return $list;
 	}
 	
@@ -17,8 +20,16 @@ class ContentModel extends BaseModel {
 	    $info = $this->find($id);
 	    if(!$info) return;
 	
-	    $info['statusName'] = $this->statusArr[$info['status']];
+	    $info = $this->parseRow($info);
 	    return $info;
+	}
+	//格式化行
+	public function parseRow($v){
+	    $v['statusName'] = $this->statusArr[$v['status']];
+	    $v['publishTime'] = date("Y-m-d H:i:s",$v['publish_time']);
+	    $v['updateTime'] = date("Y-m-d H:i:s",$v['update_time']);
+	    $v['addTime'] = date("Y-m-d H:i:s",$v['add_time']);
+	    return $v;
 	}
 	
 	//添加或编辑
@@ -42,6 +53,16 @@ class ContentModel extends BaseModel {
 	            return $this->setError('添加失败!');
 	        }
 	        return $id;
+	}
+	
+	//分页
+	function getPageList($con=[], $fields = 'id', $order = '', $perNum = 15){
+	    $data = parent::getPageList($con, $fields, $order, $perNum);
+	
+	    foreach($data['list'] as $k=>$v){
+	        $data['list'][$k] = $this->getInfo($v['id']);
+	    }
+	    return $data;
 	}
 }
 

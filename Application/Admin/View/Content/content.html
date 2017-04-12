@@ -1,6 +1,6 @@
 <include file="Public:header" />
 <div class="table-responsive shrink user">
-	<form class="form-inline search clearfix">
+	<!-- <form class="form-inline search clearfix">
 	  <if condition="$timeArr">
 		<div class="pull-left time-buttons">
 		  <foreach name="timeArr" item="v">
@@ -13,6 +13,10 @@
 		<input  class="form-control" name="keywords" type="text" placeholder="手机号或者昵称搜索" value="{$search.keywords}" >
 		<button  class="form-control btn-info" >搜索</button>
 		</div>
+	</form> -->
+	<form action="" class="form-inline search clearfix" method="GET">
+		<input type="text" class="form-control" name="title" placeholder="请输入标题" value="{$contentTitle}" />
+		<input type="submit"  class="form-control btn-info" value="搜索">       			     
 	</form>
 	<table class="table table-striped user-list">
 		<tr>  
@@ -32,18 +36,18 @@
 			<td>{$v.cateName}</td>
 			<td>{$v.title}</td>
 			<td>{$v.author}</td>
-			<td>{$v.status}</td>
-			<td>{$v.publish_time}</td>
-			<td>{$v.add_time}</td>
-			<td>{$v.update_time}</td>
+			<td>{$v.statusName}</td>
+			<td>{$v.publishTime}</td>
+			<td>{$v.addTime}</td>
+			<td>{$v.updateTime}</td>
 			<td class="handle">
-				<a class="dialog edit" href="#" url="{:u('contentEdit','id=' . $v['id'])}">编辑</a>|
+				<a class="dialog edit" dialog-lg="true" href="#" url="{:u('contentEdit','id=' . $v['id'])}">编辑</a>|
 				<a class="ajaxDel del" href="#" url="{:u('contentDel','id=' . $v['id'])}">删除</a>
 			</td>
 		</tr>
 		</foreach>
 	</table>
-	<div class="pager">{$page}</div>
+	<div class="pager">{$pageVar}</div>
 </div>
 <import type="css" file="js.lib.daterangepicker.daterangepicker-bs3" />
 <import file="js.lib.laydate.laydate,js.admin.user,js.lib.daterangepicker.moment#min,js.lib.daterangepicker.daterangepicker" />

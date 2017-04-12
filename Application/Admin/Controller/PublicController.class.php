@@ -224,6 +224,14 @@ class PublicController extends Controller {
 		
 		ajaxReturn(0, '',	['content'=>$this->fetch($template)]);
 	}
+	//查找
+	protected function ajaxFind($modName, $template){
+        $mod = d($modName);
+        $title = $_POST['title'];
+        $row = $mod->getInfo($title);
+        $this->assign('row',$row);
+        $this->display("$template",'row');
+	}
 	//检测权限
 	function checkPermission(){
 		return true;
