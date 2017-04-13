@@ -224,13 +224,17 @@ class PublicController extends Controller {
 		
 		ajaxReturn(0, '',	['content'=>$this->fetch($template)]);
 	}
+	
 	//查找
-	protected function ajaxFind($modName, $template){
+	protected function ajaxCateEdit($modName, $template, $callback = null){
         $mod = d($modName);
-        $title = $_POST['title'];
-        $row = $mod->getInfo($title);
-        $this->assign('row',$row);
-        $this->display("$template",'row');
+	    if($id = (int)$_GET['id']){
+			$row = $mod->getInfo($id);
+			$this->assign('row', $row);
+			if(is_callable($callback))
+			    $callback($row, $mod);
+			ajaxReturn(0, '',	['content'=>$this->fetch($template)]);
+		}
 	}
 	//检测权限
 	function checkPermission(){

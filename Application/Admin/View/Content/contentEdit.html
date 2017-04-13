@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+
     <form class="form-horizontal ajaxSubmit role-form" action="{:u('contentEdit')}" method="post">
   <div class="form-group">
     <label class="col-sm-2 control-label"><b class="red">*</b>标题:</label>
@@ -21,11 +15,7 @@
    <div class="form-group">
     <label class="col-sm-2 control-label"><b class="red">*</b>状态:</label>
     <div class="col-sm-5">
-
-	<foreach name="statusArr" item="v" key="k">
-		<label><input type="radio" value="{$k}" <if condition="$k eq $row['status']">checked</if> />{$v}</label>
-	</foreach>
-    
+	{:w('select/index', $statusList)}
     </div>
   </div>
   <div class="form-group">
@@ -47,5 +37,3 @@
     </div>
   </div>
 </form> 
-</body>
-</html>

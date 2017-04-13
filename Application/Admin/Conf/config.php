@@ -25,7 +25,7 @@ return array(
 		'content'=>[
 			['index', 	 '内容列表'],
 			['contentCate', '内容分类'],
-		    ['frinedLink','友情链接'],
+		    ['friendLink','友情链接'],
 		    ['navigation','导航管理']
 		],
 		'setting'=>[
@@ -43,7 +43,7 @@ return array(
 		'content'=>[
 			['index', 	 '内容列表'],
 			['contentCate', '内容分类'],
-		    ['frinedLink','友情链接'],
+		    ['friendLink','友情链接'],
 		    ['navigation','导航管理']
 		],
 		'setting' => [
