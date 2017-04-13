@@ -1,6 +1,0 @@
-[ 2016-09-12T16:51:46+08:00 ] 127.0.0.1 /Admin/Setting/index
-SQL: SHOW COLUMNS FROM `config` [ RunTime:0.0040s ]
-SQL: SELECT * FROM `config` WHERE `name` = 'trade_note' LIMIT 1   [ RunTime:0.0000s ]
-SQL: INSERT INTO `config` (`name`,`value`,`add_time`,`update_time`) VALUES ('trade_note','a:1:{s:7:\"content\";s:18:\"交易担保说明\";}','1473670306','1473670306') [ RunTime:0.0040s ]
-SQL: SELECT * FROM `config` WHERE `name` = 1 LIMIT 1   [ RunTime:0.0000s ]
-

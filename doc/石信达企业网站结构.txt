@@ -23,19 +23,29 @@
 
 
 后台功能：
-	tdk表
+	tdk表 : 搜索引擎优化表
 	
 	内容管理
 		导航管理 id  name logo url status parent_id add_time update_time    
 		内容列表 id cat_id title content author status publish_time add_time update_time
-		内容分类 id name  status publish_time add_time update_time 
+		内容分类 id name  deep status publish_time add_time update_time 
 		友情连接 id  name logo url  status add_time update_time
 	用户管理
-		用户列表 id 
-		用户评论
-		消息管理
-		投诉建业
+		用户列表 (user) 		id name mobile email password avatar gender birthday introduction weixin_id qq_id weibo_id status add_time update_time 
+		用户评论 (comment) 		id user_id type node_id title content pid add_time update_time
+		消息管理 (message) 		id user_id from_user_id type node_id add_time update_time 
+		帖子分类 (post_cate) 	id name pid deep add_time update_time 
+		帖子管理 (post)		 	id user_id post_cate_id title content status add_time update_time 
+		帖子评论 (post_comment) id user_id post_id content status add_time update_time 
+	文档管理
+		文档分类
+		文档列表
 	配置管理
+		网站名称
+		网站logo
+		微信二维码
+		备案信息
+		
 		
 
 	
