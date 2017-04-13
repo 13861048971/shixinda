@@ -23,7 +23,7 @@
 
 
 后台功能：
-	tdk表
+	tdk表 : 搜索引擎优化表
 	
 	内容管理
 		导航管理 id  name logo url status parent_id add_time update_time    
