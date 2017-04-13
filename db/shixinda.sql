@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2017-04-10 19:18:06
+Date: 2017-04-13 11:46:24
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -245,32 +245,46 @@ DROP TABLE IF EXISTS `content`;
 CREATE TABLE `content` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `cat_id` int(11) unsigned NOT NULL COMMENT '分类id',
-  `title` varchar(100) NOT NULL,
+  `title` varchar(50) NOT NULL,
   `content` text NOT NULL,
   `author` varchar(50) NOT NULL COMMENT '内容的作者',
   `status` int(10) unsigned NOT NULL COMMENT '内容的状态',
-  `publish_time` int(10) unsigned NOT NULL,
-  `add_time` int(10) unsigned NOT NULL,
-  `update_time` int(10) unsigned NOT NULL,
+  `publish_time` int(11) unsigned NOT NULL COMMENT '发布时间',
+  `add_time` int(11) unsigned NOT NULL COMMENT '添加时间',
+  `update_time` int(11) unsigned NOT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of content
 -- ----------------------------
-INSERT INTO `content` VALUES ('1', '1', '', '', '', '0', '0', '0', '0');
+INSERT INTO `content` VALUES ('4', '0', '历史', '', '孙中山', '0', '1', '1491907541', '1492050456');
+INSERT INTO `content` VALUES ('7', '0', 'f', 'f', 'f', '0', '0', '1491994334', '1491994334');
+INSERT INTO `content` VALUES ('8', '0', 'd', 'd', 'd', '0', '0', '1491994347', '1491994347');
+INSERT INTO `content` VALUES ('9', '0', 'q', 'q', 'q', '0', '0', '1491994364', '1491994364');
+INSERT INTO `content` VALUES ('10', '0', 'w', 'w', 'w', '0', '0', '1491994376', '1491994376');
+INSERT INTO `content` VALUES ('11', '0', 'eee', 'e', 'e', '0', '0', '1491994387', '1491994387');
+INSERT INTO `content` VALUES ('12', '0', 'e', 'e', 'e', '0', '0', '1491995051', '1491995051');
+INSERT INTO `content` VALUES ('13', '0', 'r', 'r', 'r', '0', '0', '1491995062', '1491995062');
+INSERT INTO `content` VALUES ('14', '0', 't', 't', 't', '0', '0', '1491995071', '1491995071');
+INSERT INTO `content` VALUES ('15', '0', 'y', 'y', 'y', '0', '0', '1491995080', '1491995080');
+INSERT INTO `content` VALUES ('16', '0', 'u', 'u', 'u', '0', '0', '1491995090', '1491995090');
+INSERT INTO `content` VALUES ('17', '0', 'i', 'i', 'i', '0', '0', '1491995105', '1491995105');
+INSERT INTO `content` VALUES ('18', '0', 'o', 'o', 'o', '0', '0', '1491995114', '1491995114');
+INSERT INTO `content` VALUES ('19', '0', 'p', 'p', 'p', '0', '0', '1491995123', '1491995123');
+INSERT INTO `content` VALUES ('22', '0', 'f', 'f', 'f', '0', '0', '1492050179', '1492050179');
 
 -- ----------------------------
 -- Table structure for `content_category`
 -- ----------------------------
 DROP TABLE IF EXISTS `content_category`;
 CREATE TABLE `content_category` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL COMMENT '分类内容的名字',
-  `status` int(10) unsigned NOT NULL COMMENT '分类内容的状态',
-  `publish_time` int(10) unsigned NOT NULL,
-  `add_time` int(10) unsigned NOT NULL,
-  `update_time` int(10) unsigned NOT NULL,
+  `status` int(11) unsigned NOT NULL COMMENT '分类内容的状态',
+  `publish_time` int(11) unsigned NOT NULL COMMENT '发布时间',
+  `add_time` int(11) unsigned NOT NULL COMMENT '添加时间',
+  `update_time` int(11) unsigned NOT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
