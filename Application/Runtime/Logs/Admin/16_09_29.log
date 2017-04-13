@@ -1,5 +1,0 @@
-[ 2016-09-29T23:53:26+08:00 ] 127.0.0.1 /Admin/Setting/index
-SQL: SHOW COLUMNS FROM `config` [ RunTime:0.0040s ]
-SQL: UPDATE `config` SET `name`='SMS',`value`='a:3:{s:6:\"apikey\";s:33:\"0e1a6249036262e5bdf76bb7127e9b66 \";s:5:\"param\";s:4:\"code\";s:4:\"code\";s:7:\"1500228\";}',`update_time`='1475164406' WHERE `name` = 'SMS' [ RunTime:0.0290s ]
-SQL: SELECT * FROM `config` WHERE `name` = 'SMS' LIMIT 1   [ RunTime:0.0010s ]
-

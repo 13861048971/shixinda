@@ -1,9 +1,0 @@
-[ 2017-03-29T10:57:09+08:00 ] 127.0.0.1 /Admin/document/index
-ERR: Too few arguments to function PublicController::setMainTitle(), 0 passed in G:\workplace\php\thinkApp\sheying\src\Application\Admin\Controller\PublicController.class.php on line 285 and exactly 1 expected
-
-[ 2017-03-29T10:57:13+08:00 ] 127.0.0.1 /Admin/
-ERR: Too few arguments to function PublicController::setMainTitle(), 0 passed in G:\workplace\php\thinkApp\sheying\src\Application\Admin\Controller\PublicController.class.php on line 285 and exactly 1 expected
-
-[ 2017-03-29T15:38:17+08:00 ] 127.0.0.1 /Admin/
-ERR: Too few arguments to function PublicController::setMainTitle(), 0 passed in G:\workplace\php\thinkApp\sheying\src\Application\Admin\Controller\PublicController.class.php on line 285 and exactly 1 expected
-
