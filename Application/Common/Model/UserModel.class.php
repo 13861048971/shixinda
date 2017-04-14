@@ -442,10 +442,10 @@ class UserModel extends BaseModel{
 	}
 	
 	function getPageList($arr, $fields = 'id', $order="id desc", $limit = 15){
-		$username = trim($arr['username']);		
+		$username = trim($arr['name']);		
 		if($username){
-			unset($arr['username']);
-			$arr['username'] = array('like', "%{$username}%");
+			unset($arr['name']);
+			$arr['name'] = array('like', "%{$username}%");
 		}
 		if(isset($arr['status']) && '0' === $arr['status'] )
 			$arr['status'] = ['lt', 1];
@@ -476,39 +476,9 @@ class UserModel extends BaseModel{
 		$info['updateTime'] = local_date($info['update_time']);
 		$info['lastLogin'] = local_date($info['last_login']);
 		!$info['avatar'] && $info['avatar'] = '/Public/images/avatar.gif';
-		$info['sexName'] = $this->sexArr[$info['sex']];
-		$info['albumNum'] = d('album')->where(['user_id'=>$id])->count();
-		$info['images'] = d('album')->where(['user_id'=>$id])->order('id desc')->limit(3)->getField('path', true);
 		$info['cityName'] = d('region')->getName($info['city']);
-		$msgType = '普通用户';
-		$pho = d('pho')->find($id);
-		if($pho){
-			$info['isPhoVer'] = false;
-			if($pho['status'] == 1){
-				$pho['type'] == 0 && $msgType = '个人摄影师';
-				$pho['type'] == 1 && $msgType = '机构摄影师';
-				$info['isPhoVer'] = true;
-			}
-		}
-		
-		$info['msgType'] = $msgType;
-		$info['msgTags'] = [ 'user_'.$id, $msgType ];
 	
 		unset($info['password']);
-		$path = strtolower(CONTROLLER_NAME .'/'. ACTION_NAME);
-		if(MODULE_NAME == 'Home' && $path == 'user/index'){
-			if($pho){
-				$con = ['pho_id' => $id ];
-				$pho['myWorkOrderNum'] = d('order')->getCountArr($con)['orderNum'];
-				$con = ['user_id' => $id ];
-				$arr = d('join')->getCountArr($con);
-				$pho['joinNum'] = $arr['joinNum'];
-				$pho['joinSelectNum'] = $arr['joinSelectNum'];
-				$info['pho'] = $pho;
-			}
-			$countArr = $this->getLinkNum($id);
-			$info = array_merge($info, $countArr);
-		}
 		
 		return $info;
 	}

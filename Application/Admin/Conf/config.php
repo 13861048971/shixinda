@@ -10,6 +10,7 @@ return array(
 	'ctrs' => [
 		'index' => '控制台',
 		'content' => '内容管理',
+	    'user' => '用户管理',
 		'setting' => '系统设置',
 	],
 	//所有的动作
@@ -28,6 +29,15 @@ return array(
 		    ['frinedLink','友情链接'],
 		    ['navigation','导航管理']
 		],
+	    'user'=>[
+	        ['index','用户列表'],
+	        ['comment','用户评论'],
+	        ['message','消息管理'],
+	        ['postCate','帖子分类'],
+	        ['post','帖子管理'],
+	        ['postComment','帖子评论'],
+	        
+	    ],
 		'setting'=>[
 			['index', '系统配置'],
 		]
@@ -46,6 +56,15 @@ return array(
 		    ['frinedLink','友情链接'],
 		    ['navigation','导航管理']
 		],
+	    'user'=>[
+	        ['index','用户列表'],
+	        ['comment','用户评论'],
+	        ['message','消息管理'],
+	        ['postCate','帖子分类'],
+	        ['post','帖子管理'],
+	        ['postComment','帖子评论'],
+	        
+	    ],
 		'setting' => [
 			['index', '系统设置'],
 		],

@@ -64,11 +64,11 @@ class CategoryModel extends BaseModel {
 			if($k > $deep - 1) break;
 			
 			$cate = $cates[$k] = trim($v);
-			$con = ['name'=>$cate, 'parent_id' => $pid];
+			$con = ['name'=>$cate, 'pid' => $pid];
 			$rows = $this->getList(null, 1, $con);
 			if(!$rows){
 				$data = [
-					'parent_id' => $pid,
+					'pid' => $pid,
 					'name'		=> $cate,
 					'type'		=> 1,
 					'type_id'	=> $goods_type,
