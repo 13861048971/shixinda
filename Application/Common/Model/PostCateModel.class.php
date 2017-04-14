@@ -16,7 +16,7 @@ class PostCateModel extends BaseModel{
     
         $this->_validate = [
             ['name', 'require', '缺少名称!'],
-            ['type', [1,2,3], '缺少类型!', 1, 'in'],
+           
         ];
     }
     
@@ -24,10 +24,10 @@ class PostCateModel extends BaseModel{
      * 编辑or添加类目
      */
     function edit($data, $id=null){
-        !$data['type'] && ($data['type'] =1);
+//         !$data['type'] && ($data['type'] =1);
     
-        if(1 == $type && $data['type_id'])
-            return $this->setError('缺少类型id');
+//         if(1 == $type && $data['type_id'])
+//             return $this->setError('缺少类型id');
     
             if($id){
                 $data['update_time'] = time();
@@ -36,7 +36,7 @@ class PostCateModel extends BaseModel{
                     $this->lastError = '修改类目失败!';
                     return false;
                 }
-                $this->updatePath($id);
+//                 $this->updatePath($id);
                 return $id;
             }
     
@@ -45,7 +45,7 @@ class PostCateModel extends BaseModel{
                 return false;
                 if(!($id = $this->add()))
                     return $this->setError('添加类目失败!');
-                    $this->updatePath($id);
+                 //   $this->updatePath($id);
                     return $id;
     }
     
@@ -165,6 +165,7 @@ class PostCateModel extends BaseModel{
     
     //格式化行
     public function parseRow($v){
+   
         $v['addTime'] = date('Y-m-d H:i:s',$v['add_time']);
         $v['updateTime'] = date('Y-m-d H:i:s',$v['upate_time']);
         return $v ;
