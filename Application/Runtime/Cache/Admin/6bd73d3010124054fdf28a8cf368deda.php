@@ -1,10 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+<?php if (!defined('THINK_PATH')) exit();?>
     <form class="form-horizontal ajaxSubmit role-form" action="<?php echo u('contentEdit');?>" method="post">
   <div class="form-group">
     <label class="col-sm-2 control-label"><b class="red">*</b>标题:</label>
@@ -21,9 +15,7 @@
    <div class="form-group">
     <label class="col-sm-2 control-label"><b class="red">*</b>状态:</label>
     <div class="col-sm-5">
-
-	<?php if(is_array($statusArr)): foreach($statusArr as $k=>$v): ?><label><input type="radio" value="<?php echo ($k); ?>" <?php if($k == $row['status']): ?>checked<?php endif; ?> /><?php echo ($v); ?></label><?php endforeach; endif; ?>
-    
+	<?php echo w('select/index', $statusList);?>
     </div>
   </div>
   <div class="form-group">
@@ -44,6 +36,4 @@
 		<button type="submit" class="btn btn-primary">提交</button>
     </div>
   </div>
-</form> 
-</body>
-</html>
+</form>
