@@ -21,6 +21,7 @@
 	<table class="table table-striped user-list">
 		<tr>  
 		  <th>#</th>
+		  <th>下级个数</th>
 		  <th>名称</th>
 		  <th>状态</th>
 		  <th>排序</th> 
@@ -31,6 +32,7 @@
 		<foreach name="list" item="v">
 		<tr>
 			<td>{$v.id}</td>
+			<td>{$v.number}</td>
 			<td>{$v.name}</td>
 			<td>{$v.statusName}</td>
 			<td>{$v.order}</td>

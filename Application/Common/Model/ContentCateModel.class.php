@@ -26,8 +26,8 @@ class ContentCateModel extends BaseModel {
 	
 	//格式化行
 	public function parseRow($v){
+	    $v['number'] = $this->where(['pid'=>$v['id']])->Count();
 	    $v['statusName'] = $this->statusArr[$v['status']];
-	    $v['publishTime'] = date("Y-m-d H:i:s",$v['publish_time']);
 	    $v['updateTime'] = date("Y-m-d H:i:s",$v['update_time']);
 	    $v['addTime'] = date("Y-m-d H:i:s",$v['add_time']);
 	    return $v;

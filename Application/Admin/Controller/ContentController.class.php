@@ -18,7 +18,9 @@ class ContentController extends PublicController {
         ];
         $this->setRightAction($rightBtn);
         $data = d('content')->getPageList($_GET);
+       
         $this->assign($data); 
+        
         $this->assign('contentTitle',$_GET['title']);
         $this->display('content','list');
     }
@@ -52,17 +54,17 @@ class ContentController extends PublicController {
 	        
 	    });
 	}
+	
 	//添加子类
 	public function addChildren(){
 	    $this->ajaxEdit('contentCate', null, function($row, $mod){
 	        $pname = $_GET['pname'];
 	        $pid = $_GET['pid'];
 	        $data = ['name'=>$pname,'id'=>$pid];
-	        //dump($data);exit();
 	        $this->assign('data',$data);
-	        
 	    });
 	}
+	
 	//分类删除
 	public function contentCateDel(){
 	    $this->ajaxDel('contentCate');
