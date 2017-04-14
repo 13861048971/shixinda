@@ -140,7 +140,7 @@ class PostCateModel extends BaseModel{
         if(!$v) return;
         $v['typeName'] 		= $this->typeArr[$v['type']];
         $v['addTime']  		= local_date($v['add_time']);
-        $v['updateTime']  	= local_date($v['updateTime']);
+        $v['updateTime']  	= local_date($v['updateTime']);  
         $v['deepArr']   = explode('/', $v['path']);
         $v['deep'] = $n	= count($v['deepArr']);
         $v['name2'] 		= str_repeat('&emsp;', $n-1). $v['name'];
