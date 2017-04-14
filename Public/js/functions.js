@@ -8,31 +8,31 @@ function foreach(arr,func){
 }
 //日期格式化
 function date(format, UnixTime) {
-    this_Date = new Date(UnixTime?(parseInt(UnixTime)*1000):(new Date().getTime()));
-    var weekday = new Array('Sunday', 
-    'Monday', 
-    'Tuesday', 
-    'Wednesday', 
-    'Thursday', 
-    'Friday', 
-    'Saturday');
-    return format.replace(/y/i, this_Date.getFullYear()).
-    replace('m', parseInt(this_Date.getMonth()+1) < 10 ? 
-    '0'+parseInt(this_Date.getMonth()+1) : parseInt(this_Date.getMonth()+1)).
-    replace('d', parseInt(this_Date.getDate()) < 10 ? 
-    '0'+this_Date.getDate() : this_Date.getDate()).
-    replace(/h/i, this_Date.getHours() < 10 ? 
-    '0' + this_Date.getHours() : this_Date.getHours()).
-    replace('i', this_Date.getMinutes() < 10 ? 
-    '0' + this_Date.getMinutes() : this_Date.getMinutes()).
-    replace('s', this_Date.getSeconds() < 10 ? 
-    '0' + this_Date.getSeconds() : this_Date.getSeconds()).
-    replace('w', this_Date.getDay()).
-    replace('W', weekday[this_Date.getDay()]);
+	this_Date = new Date(UnixTime?(parseInt(UnixTime)*1000):(new Date().getTime()));
+	var weekday = new Array('Sunday', 
+	'Monday', 
+	'Tuesday', 
+	'Wednesday', 
+	'Thursday', 
+	'Friday', 
+	'Saturday');
+	return format.replace(/y/i, this_Date.getFullYear()).
+	replace('m', parseInt(this_Date.getMonth()+1) < 10 ? 
+	'0'+parseInt(this_Date.getMonth()+1) : parseInt(this_Date.getMonth()+1)).
+	replace('d', parseInt(this_Date.getDate()) < 10 ? 
+	'0'+this_Date.getDate() : this_Date.getDate()).
+	replace(/h/i, this_Date.getHours() < 10 ? 
+	'0' + this_Date.getHours() : this_Date.getHours()).
+	replace('i', this_Date.getMinutes() < 10 ? 
+	'0' + this_Date.getMinutes() : this_Date.getMinutes()).
+	replace('s', this_Date.getSeconds() < 10 ? 
+	'0' + this_Date.getSeconds() : this_Date.getSeconds()).
+	replace('w', this_Date.getDay()).
+	replace('W', weekday[this_Date.getDay()]);
 }
 //时间戳函数
 function time() {
-    return parseInt(new Date().getTime()/1000);
+	return parseInt(new Date().getTime()/1000);
 }
 
 //判断变量是否申明
@@ -652,7 +652,7 @@ function openInNewWindow(url, title) {
 	return;
   }
   
-    layer.open({
+	layer.open({
 	  title: title,
 	  type: 2,
 	  area: [width, height],
@@ -743,7 +743,7 @@ function album(node, inputName){
 			type:'post',
 			data:data,
 			dataType: 'JSON',  
-            cache: false,
+			cache: false,
 			xhr: function(){
 				var xhr = new window.XMLHttpRequest();
 				xhr.upload.addEventListener("progress", function(evt){
@@ -753,8 +753,8 @@ function album(node, inputName){
 				}, false);
 				return xhr;
 			},
-            processData: false,  
-            contentType: false,
+			processData: false,  
+			contentType: false,
 			complete : function(){ progressNode.hide(); },
 			success:function(info){
 				var src = info.src;
@@ -855,7 +855,7 @@ function uploadFile(btnSelector){
 			type:'post',
 			data:data,
 			dataType: 'JSON',  
-            cache: false,
+			cache: false,
 			xhr: function(){
 				var xhr = new window.XMLHttpRequest();
 				xhr.upload.addEventListener("progress", function(evt){
@@ -866,8 +866,8 @@ function uploadFile(btnSelector){
 				}, false);
 				return xhr;
 			},
-            processData: false,  
-            contentType: false,
+			processData: false,  
+			contentType: false,
 			complete : function(){ progressNode.hide(); },
 			success:function(info){
 				var src = info.src;
@@ -1049,7 +1049,7 @@ function attrDefault($el, data_var, default_val)
 {
   if(typeof $el.attr(data_var) != 'undefined')
   {
-    return $el.attr(data_var);
+	return $el.attr(data_var);
   }
   
   return default_val;
@@ -1057,65 +1057,67 @@ function attrDefault($el, data_var, default_val)
 
 //初始化 daterange
 function initDaterange(selector) {
+	if(!$(selector)[0]){
+		return false;
+	}
   $(selector).each(function(i, el){
-      var ranges = {
-          '1天': [moment(), moment().add('days', 1)],
-          '5天': [moment(), moment().add('days', 5)],
-          '7天': [moment(), moment().add('days', 7)],
-          '10天': [moment(), moment().add('days', 10)],
-          '15天': [moment(), moment().add('days', 15)],
-          '30天': [moment(), moment().add('days', 30)],
-          '半年': [moment(), moment().add('months', 6)],
-          '1年': [moment(), moment().add('years', 1)],
-          '2年': [moment(), moment().add('years', 2)],
-          
-      };
-      var $this = $(el),
-      opts = {
-          format: attrDefault($this, 'format', 'YYYY-MM-DD HH:mm:ss'),
-          timePicker: attrDefault($this, 'timePicker', true),
-          timePickerIncrement: attrDefault($this, 'timePickerIncrement', false),
-          separator: attrDefault($this, 'separator', ' - '),
-          locale: {
-            applyLabel: '确定',
-            cancelLabel: '取消',
-            fromLabel: '从',
-            toLabel: '到',
-            weekLabel: '周',
-            customRangeLabel: '自定义范围',
-            daysOfWeek: moment()._lang._weekdaysMin.slice(),
-            monthNames: moment()._lang._monthsShort.slice(),
-            firstDay: 0
-          },
-		   opens:attrDefault($this, 'opens', 'left'),
-      },
-      min_date = attrDefault($this, 'minDate', ''),
-      max_date = attrDefault($this, 'maxDate', ''),
-      start_date = attrDefault($this, 'startDate', ''),
-      end_date = attrDefault($this, 'endDate', '');
-      if ($this.hasClass('add-ranges'))
-      {
-          opts['ranges'] = ranges;
-      }
-      if (min_date.length)
-      {
-          opts['minDate'] = min_date;
-      }
-      if (max_date.length)
-      {
-          opts['maxDate'] = max_date;
-      }
-      if (start_date.length)
-      {
-          opts['startDate'] = start_date;
-      }
-      if (end_date.length)
-      {
-          opts['endDate'] = end_date;
-      }
-      $this.daterangepicker(opts, function(start, end){
-          var drp = $this.data('daterangepicker');
+	  var ranges = {
+		  '1天': [moment(), moment().add('days', 1)],
+		  '5天': [moment(), moment().add('days', 5)],
+		  '7天': [moment(), moment().add('days', 7)],
+		  '10天': [moment(), moment().add('days', 10)],
+		  '15天': [moment(), moment().add('days', 15)],
+		  '30天': [moment(), moment().add('days', 30)],
+		  '半年': [moment(), moment().add('months', 6)],
+		  '1年': [moment(), moment().add('years', 1)],
+		  '2年': [moment(), moment().add('years', 2)],
+	  };
+	  var $this = $(el),
+	  opts = {
+		  format: attrDefault($this, 'format', 'YYYY-MM-DD HH:mm:ss'),
+		  timePicker: attrDefault($this, 'timePicker', true),
+		  timePickerIncrement: attrDefault($this, 'timePickerIncrement', false),
+		  separator: attrDefault($this, 'separator', ' - '),
+		  locale: {
+			applyLabel: '确定',
+			cancelLabel: '取消',
+			fromLabel: '从',
+			toLabel: '到',
+			weekLabel: '周',
+			customRangeLabel: '自定义范围',
+			daysOfWeek: moment()._lang._weekdaysMin.slice(),
+			monthNames: moment()._lang._monthsShort.slice(),
+			firstDay: 0
+		  },
+	  	  opens:attrDefault($this, 'opens', 'left'),
+	  },
+	  min_date = attrDefault($this, 'minDate', ''),
+	  max_date = attrDefault($this, 'maxDate', ''),
+	  start_date = attrDefault($this, 'startDate', ''),
+	  end_date = attrDefault($this, 'endDate', '');
+	  if ($this.hasClass('add-ranges'))
+	  {
+		  opts['ranges'] = ranges;
+	  }
+	  if (min_date.length)
+	  {
+		  opts['minDate'] = min_date;
+	  }
+	  if (max_date.length)
+	  {
+		  opts['maxDate'] = max_date;
+	  }
+	  if (start_date.length)
+	  {
+		  opts['startDate'] = start_date;
+	  }
+	  if (end_date.length)
+	  {
+		  opts['endDate'] = end_date;
+	  }
+	  $this.daterangepicker(opts, function(start, end){
+		  var drp = $this.data('daterangepicker');
 		  $this.trigger('daterangeCallback',[start,end]);
-      });
+	  });
   });
 }

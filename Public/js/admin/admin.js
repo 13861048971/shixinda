@@ -62,30 +62,8 @@
 		});
 	});
 	
-    //屏蔽用户,审核不通过,撤销订单原因选中
-	$(document).on('click','.order-cancel-form input:checkbox,.user-block-form input:checkbox',function(){
-		var th = $(this);
-		var textarea = th.parents('form').find('textarea');
-		var v = textarea.val();
-		var s = $.trim(th.parent().text());
-		if(th.prop('checked')){
-			if(v && v.match(s))
-				return ;
-			textarea.val( (v ? v+"\n":"")+ s); 
-			return;
-		}
-		
-		if(v && v.match(s)){
-			v.indexOf(s) > 0 && (s = "\n" +s);
-			textarea.val( (v.replace(s,'') ) );
-		}
-		
-	});
-	
-	//日期选择初始化
-	$('.daterange')[0] && initDaterange('.daterange');
 	//日期选择回调
-	$('.search .daterange').on('daterangeCallback', function(e, data){
+	$('.daterange').on('daterangeCallback', function(e, data){
 		var th = $(this);
 		var form = th.parents('form');
 		setTimeout(function(){
