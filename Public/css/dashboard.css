@@ -43,7 +43,7 @@
 .process{display:block;position:relative; margin-top:14px;font-size:0;
 	width:0px; background:green;height:2px;}
 .process:before{height:4px;background:transform;;top:-1px;left:-1px;width:102px;
-	content:" "; display:block;border:1px solid #green;position:absolute;}
+	content:" "; display:block;border:1px solid green;position:absolute;}
 @-webkit-keyframes fa-spin{
   from {-webkit-transform:rotate(0deg);}
   to{-webkit-transform:rotate(360deg);}
@@ -289,7 +289,7 @@ label *{font-weight:400;}
 .order-list .order-dt td{background:#f9f9f9;border:1px solid #ddd;text-align:left;}
 .order-list .order-dt em{color:#aaa; font-style:normal; padding-right:5px;}
 .order-list .order-dt li{float:left; margin:0 30px 0 0}
-.order-list .order-dt li:before{font-family:;}
+.order-list .order-dt li:before{font-family:'';}
 .order-list .order-dt .order-remark{float:right;width:40px;overflow:hidden;text-indent:-30px;
 	margin-right:0;}
 .order-list .split-row td{border:none;}
@@ -456,3 +456,9 @@ table td.right{text-align:right;}
 .daterangepicker.opensleft .applyBtn {float:right;margin-left:10px;}
 .daterangepicker.opensleft .cancelBtn  {float:right;margin-left:10px;}
 .btn-link{text-decoration:underline;}
+/**对话弹窗宽度更改**/
+@media (min-width: 992px){
+  .modal-lg {
+      width: 940px;
+  }
+}

@@ -49,9 +49,19 @@ class ContentController extends PublicController {
 	//分类编辑
 	public function contentCateEdit(){
 	    $this->ajaxEdit('contentCate', null, function($row, $mod){
+	        
 	    });
 	}
-	
+	//添加子类
+	public function addChildren(){
+	    $this->ajaxEdit('contentCate', null, function($row, $mod){
+// 	        $pname = $_GET['pname'];
+// 	        $pid = $_GET['pid'];
+	        $data = $_GET;
+	        $this->assign('data',$data);
+	        
+	    });
+	}
 	//分类删除
 	public function contentCateDel(){
 	    $this->ajaxDel('contentCate');
