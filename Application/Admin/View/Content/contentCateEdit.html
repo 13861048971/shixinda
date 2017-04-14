@@ -12,18 +12,13 @@
       <input name="name" required class="form-control" value="{$row.name}">
     </div>
   </div>
+ 
   <div class="form-group">
     <label class="col-sm-2 control-label"><b class="red">*</b>状态:</label>
     <div class="col-sm-5">
 
 	{:w('select/index', $statusList)}
     
-    </div>
-  </div>
-  <div class="form-group">
-    <label class="col-sm-2 control-label">发布时间:</label>
-    <div class="col-sm-5">
-	   <input name="publish_time" type="text" required class="form-control" value="{$row.publish_time}">	
     </div>
   </div>
     <div class="col-sm-offset-2 col-sm-10">

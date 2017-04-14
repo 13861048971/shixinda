@@ -21,9 +21,9 @@
 	<table class="table table-striped user-list">
 		<tr>  
 		  <th>#</th>
-		  <th>分类名称</th>
+		  <th>名称</th>
 		  <th>状态</th>
-		  <th>发布时间</th> 
+		  <th>排序</th> 
 		  <th>添加时间</th> 
 		  <th>更新时间</th> 
 		  <th>操作</th>
@@ -33,12 +33,14 @@
 			<td>{$v.id}</td>
 			<td>{$v.name}</td>
 			<td>{$v.statusName}</td>
-			<td>{$v.publishTime}</td>
+			<td>{$v.order}</td>
 			<td>{$v.addTime}</td>
 			<td>{$v.updateTime}</td>
 			<td class="handle">
+			    <a class="dialog add"  href="#" url="{:u('addChildren',$v)}">添加子类</a>|
 				<a class="dialog edit"  href="#" url="{:u('contentCateEdit','id=' . $v['id'])}">编辑</a>|
 				<a class="ajaxDel del" href="#" url="{:u('contentCateDel','id=' . $v['id'])}">删除</a>
+				
 			</td>
 		</tr>
 		</foreach>
