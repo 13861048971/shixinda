@@ -381,10 +381,17 @@ class UserController extends PublicController {
 	    $this->setRightAction([[ 'name'=>'添加分类', 'dialog'=>true,
 	        'dialog-lg'=>true, 'url' => u('postCateEdit') ]]);
 	    $con = $_GET;
-	    $data = d('postCate')->getPageList($con);
-	    $this->assign($data);
+	    $con['pid'] = 0;
+	    $list = d('postCate')->getList($con);
+	    $this->assign('list',$list);
 	    $this->assign('search', $_GET);
 	    $this->display();
+	}
+	
+	public function postCateChildren(){
+	    $con = $_GET;
+	    $list = d('postCate')->getList($con);
+	    ajaxReturn(0,'',array('list'=>$list));
 	}
 	
 	//帖子分类编辑

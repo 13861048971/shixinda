@@ -49,6 +49,7 @@ class PostCateModel extends BaseModel{
                     return $id;
     }
     
+    
     /**
      * 添加多个类别,从父类开始
      * @param array $cates
@@ -153,26 +154,19 @@ class PostCateModel extends BaseModel{
      * @param int $type      类型,默认是产品分类
      * @return array
      **/
-    public function getList($parent_id = null, $type = 1, $con = []){
-        isset($parent_id) && $con['parent_id'] = $parent_id;
-        $con['type']	  = $type;
-        $list = $this->where($con)->field('id')->order('rank,id')->select();
+    public function getList($con = [], $limit = '15', $order = 'rank'){
+        $list = $this->where($con)->order($order)->select();
         foreach($list as $k=>$v){
-            $info = $this->getInfo($v['id']);
-            $arr[$info['parent_id']][] = $info;
+            $list[$k] = $this->parseRow($v);
         }
-        ksort($arr);
-        $n = count($arr);
-        $arr2 = $arr[0];
-        unset($arr[0]);
-        foreach($arr as $k=>$v){
-            $key = arr2Search($arr2, 'id', $k);
-            if(false === $k){
-                break;
-            }
-            array_splice($arr2, $key+1, 0, $v);
-        }
+      
+        return $list;
+    }
     
-        return $arr2;
+    //格式化行
+    public function parseRow($v){
+        $v['addTime'] = date('Y-m-d H:i:s',$v['add_time']);
+        $v['updateTime'] = date('Y-m-d H:i:s',$v['upate_time']);
+        return $v ;
     }
 }
