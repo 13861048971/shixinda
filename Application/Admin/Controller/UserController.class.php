@@ -387,18 +387,24 @@ class UserController extends PublicController {
 	    $this->assign('search', $_GET);
 	    $this->display();
 	}
-	
+	//子类显示
 	public function postCateChildren(){
 	    $con = $_GET;
 	    $list = d('postCate')->getList($con);
 	    ajaxReturn(0,'',array('list'=>$list));
 	}
-	
+
+
+	     	
 	//帖子分类编辑
 	public function postCateEdit(){
 	    $this->ajaxEdit('postCate',null, function(&$row, $mod){
 	        !isset($row['status']) && $row['status'] = 0;
+	        $con = $_GET;
+	        $data = d('postCate')->where(['id'=>$con['pid']])->find();
+	        $this->assign('pname',$data);
 	    });
+	    
 	}
 	
 	//帖子分类删除
