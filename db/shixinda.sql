@@ -3,14 +3,14 @@ Navicat MySQL Data Transfer
 
 Source Server         : 本地
 Source Server Version : 50553
-Source Host           : localhost:3306
+Source Host           : 127.0.0.1:3306
 Source Database       : shixinda
 
 Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2017-04-13 11:46:24
+Date: 2017-04-14 14:49:34
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -36,7 +36,7 @@ CREATE TABLE `admin` (
 -- ----------------------------
 -- Records of admin
 -- ----------------------------
-INSERT INTO `admin` VALUES ('1', '1', 'admin', 'e10adc3949ba59abbe56e057f20f883e', '100', '', '/Public/qrcode/2016-07-02/1467438415603.png', '1491814235', '0', '1467904390');
+INSERT INTO `admin` VALUES ('1', '1', 'admin', 'e10adc3949ba59abbe56e057f20f883e', '100', '', '/Public/qrcode/2016-07-02/1467438415603.png', '1492136167', '0', '1467904390');
 INSERT INTO `admin` VALUES ('2', '1', 'holahi', 'fcea920f7412b5da7be0cf42b8c93759', '0', '', '/Public/qrcode/2016-06-25/1466785122121.png', '0', '1466784503', '1466785436');
 
 -- ----------------------------
@@ -54,7 +54,7 @@ CREATE TABLE `admin_role` (
 -- ----------------------------
 -- Records of admin_role
 -- ----------------------------
-INSERT INTO `admin_role` VALUES ('1', '管理员', 'a:11:{i:0;s:15:\"index/adminlist\";i:1;s:15:\"index/adminedit\";i:2;s:14:\"index/admindel\";i:3;s:14:\"index/rolelist\";i:4;s:14:\"index/roleedit\";i:5;s:13:\"index/roledel\";i:6;s:13:\"content/index\";i:7;s:19:\"content/contentcate\";i:8;s:18:\"content/frinedlink\";i:9;s:18:\"content/navigation\";i:10;s:13:\"setting/index\";}', '');
+INSERT INTO `admin_role` VALUES ('1', '管理员', 'a:17:{i:0;s:15:\"index/adminlist\";i:1;s:15:\"index/adminedit\";i:2;s:14:\"index/admindel\";i:3;s:14:\"index/rolelist\";i:4;s:14:\"index/roleedit\";i:5;s:13:\"index/roledel\";i:6;s:13:\"content/index\";i:7;s:19:\"content/contentcate\";i:8;s:18:\"content/frinedlink\";i:9;s:18:\"content/navigation\";i:10;s:10:\"user/index\";i:11;s:12:\"user/comment\";i:12;s:12:\"user/message\";i:13;s:13:\"user/postcate\";i:14;s:9:\"user/post\";i:15;s:16:\"user/postcomment\";i:16;s:13:\"setting/index\";}', '');
 INSERT INTO `admin_role` VALUES ('2', '会员管理员', 'a:5:{i:6;s:10:\"user/index\";i:7;s:13:\"user/userbill\";i:8;s:13:\"user/withdraw\";i:9;s:13:\"user/vipapply\";i:10;s:14:\"user/giftapply\";}', '');
 INSERT INTO `admin_role` VALUES ('3', '内容管理员', 'a:6:{i:11;s:9:\"cms/index\";i:12;s:12:\"cms/category\";i:13;s:10:\"cms/gossip\";i:14;s:13:\"cms/gossipcat\";i:15;s:9:\"cms/about\";i:16;s:11:\"cms/contact\";}', '');
 
@@ -212,6 +212,30 @@ INSERT INTO `collect` VALUES ('2', '0', '2', '1', '1471014368');
 INSERT INTO `collect` VALUES ('5', '2', '1', '1', '1472711985');
 
 -- ----------------------------
+-- Table structure for `comment`
+-- ----------------------------
+DROP TABLE IF EXISTS `comment`;
+CREATE TABLE `comment` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `user_id` int(11) NOT NULL COMMENT '用户id',
+  `type` int(11) NOT NULL COMMENT '评论目标内型',
+  `node_id` int(11) NOT NULL COMMENT '评论类型id',
+  `title` varchar(50) NOT NULL COMMENT '评论类型的标题',
+  `content` text NOT NULL COMMENT '评论内容',
+  `pid` int(11) NOT NULL COMMENT '评论对象ID',
+  `add_time` int(11) NOT NULL COMMENT '评论时间',
+  `update_time` int(11) NOT NULL COMMENT '更新时间',
+  `status` int(1) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of comment
+-- ----------------------------
+INSERT INTO `comment` VALUES ('1', '6', '1', '1', 'sad', 'dsf', '2', '123123', '1492137494', '1');
+INSERT INTO `comment` VALUES ('2', '11', '0', '0', '112', 'weq', '0', '1492137275', '1492137275', '1');
+
+-- ----------------------------
 -- Table structure for `config`
 -- ----------------------------
 DROP TABLE IF EXISTS `config`;
@@ -253,7 +277,7 @@ CREATE TABLE `content` (
   `add_time` int(11) unsigned NOT NULL COMMENT '添加时间',
   `update_time` int(11) unsigned NOT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of content
@@ -273,6 +297,7 @@ INSERT INTO `content` VALUES ('17', '0', 'i', 'i', 'i', '0', '0', '1491995105', 
 INSERT INTO `content` VALUES ('18', '0', 'o', 'o', 'o', '0', '0', '1491995114', '1491995114');
 INSERT INTO `content` VALUES ('19', '0', 'p', 'p', 'p', '0', '0', '1491995123', '1491995123');
 INSERT INTO `content` VALUES ('22', '0', 'f', 'f', 'f', '0', '0', '1492050179', '1492050179');
+INSERT INTO `content` VALUES ('23', '0', '撒啊三大', '任霆发够', '阿斯达', '0', '0', '1492068484', '1492068484');
 
 -- ----------------------------
 -- Table structure for `content_category`
@@ -337,6 +362,34 @@ CREATE TABLE `friend_link` (
 -- ----------------------------
 
 -- ----------------------------
+-- Table structure for `message`
+-- ----------------------------
+DROP TABLE IF EXISTS `message`;
+CREATE TABLE `message` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `user_id` int(11) NOT NULL COMMENT '用户id',
+  `from_user_id` int(11) NOT NULL COMMENT '发消息用户id',
+  `status` int(11) NOT NULL COMMENT '评论文件内型',
+  `node_id` int(11) NOT NULL COMMENT '评论文件id',
+  `add_time` int(11) NOT NULL COMMENT '评论时间',
+  `update_time` int(11) NOT NULL COMMENT '更新时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of message
+-- ----------------------------
+INSERT INTO `message` VALUES ('4', '6', '0', '0', '0', '1492076558', '1492136921');
+INSERT INTO `message` VALUES ('5', '7', '4', '0', '0', '1492077183', '1492077183');
+INSERT INTO `message` VALUES ('6', '4', '7', '0', '0', '1492077291', '1492077291');
+INSERT INTO `message` VALUES ('7', '6', '4', '0', '0', '1492077827', '1492077827');
+INSERT INTO `message` VALUES ('8', '7', '6', '0', '0', '1492077837', '1492077837');
+INSERT INTO `message` VALUES ('9', '4', '7', '1', '0', '1492078135', '1492078715');
+INSERT INTO `message` VALUES ('10', '6', '4', '0', '0', '1492078190', '1492078190');
+INSERT INTO `message` VALUES ('11', '7', '6', '0', '0', '1492078205', '1492078744');
+INSERT INTO `message` VALUES ('12', '6', '4', '0', '0', '1492081518', '1492081518');
+
+-- ----------------------------
 -- Table structure for `navigation`
 -- ----------------------------
 DROP TABLE IF EXISTS `navigation`;
@@ -355,6 +408,71 @@ CREATE TABLE `navigation` (
 -- ----------------------------
 -- Records of navigation
 -- ----------------------------
+
+-- ----------------------------
+-- Table structure for `post`
+-- ----------------------------
+DROP TABLE IF EXISTS `post`;
+CREATE TABLE `post` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `user_id` int(11) NOT NULL COMMENT '用户id',
+  `post_cate_id` int(11) NOT NULL COMMENT '帖子分类id',
+  `title` varchar(50) NOT NULL COMMENT '帖子标题',
+  `content` text NOT NULL COMMENT '帖子内容',
+  `status` int(1) NOT NULL COMMENT '0禁用1启用',
+  `add_time` int(11) NOT NULL COMMENT '添加时间',
+  `update_time` int(11) NOT NULL COMMENT '更新时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of post
+-- ----------------------------
+INSERT INTO `post` VALUES ('2', '6', '0', 'sda', 'sdas ', '0', '1492134968', '1492135578');
+INSERT INTO `post` VALUES ('3', '7', '1', 'asd', 'dsada', '1', '1492134989', '1492134989');
+
+-- ----------------------------
+-- Table structure for `post_cate`
+-- ----------------------------
+DROP TABLE IF EXISTS `post_cate`;
+CREATE TABLE `post_cate` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `name` varchar(50) NOT NULL COMMENT '分类名称',
+  `pid` int(11) NOT NULL COMMENT '父级ID',
+  `deep` varchar(10) NOT NULL COMMENT '分类级别',
+  `rank` smallint(3) NOT NULL,
+  `status` int(1) NOT NULL,
+  `add_time` int(11) NOT NULL COMMENT '添加时间',
+  `update_time` int(11) NOT NULL COMMENT '更新时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of post_cate
+-- ----------------------------
+INSERT INTO `post_cate` VALUES ('1', '衣服', '0', '1', '0', '1', '1492138785', '1492152483');
+INSERT INTO `post_cate` VALUES ('2', 'sasa', '0', '', '0', '0', '1492151220', '1492151220');
+
+-- ----------------------------
+-- Table structure for `post_comment`
+-- ----------------------------
+DROP TABLE IF EXISTS `post_comment`;
+CREATE TABLE `post_comment` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `user_id` int(11) NOT NULL COMMENT '用户id',
+  `post_id` int(11) NOT NULL COMMENT '帖子id',
+  `content` text NOT NULL COMMENT '帖子内容',
+  `status` int(1) NOT NULL COMMENT '0禁用1启用',
+  `add_time` int(11) NOT NULL COMMENT '添加时间',
+  `update_time` int(11) NOT NULL COMMENT '更新时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of post_comment
+-- ----------------------------
+INSERT INTO `post_comment` VALUES ('2', '5', '0', 'sda', '0', '1492136399', '1492137367');
+INSERT INTO `post_comment` VALUES ('3', '1', '0', 'sada', '1', '1492136535', '1492136535');
 
 -- ----------------------------
 -- Table structure for `region`
@@ -3801,39 +3919,60 @@ CREATE TABLE `support` (
 -- ----------------------------
 
 -- ----------------------------
+-- Table structure for `tdk`
+-- ----------------------------
+DROP TABLE IF EXISTS `tdk`;
+CREATE TABLE `tdk` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `type` int(11) NOT NULL COMMENT '类型',
+  `node_id` int(11) NOT NULL COMMENT '文件id',
+  `title` varchar(50) NOT NULL COMMENT '标题',
+  `keywords` varchar(50) NOT NULL,
+  `descripation` text NOT NULL COMMENT '描述',
+  `add_time` int(11) NOT NULL COMMENT '添加时间',
+  `update_time` int(11) NOT NULL COMMENT '更新时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of tdk
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for `user`
 -- ----------------------------
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
-  `password` char(40) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `sex` tinyint(1) NOT NULL,
+  `name` varchar(10) NOT NULL,
   `mobile` varchar(20) NOT NULL,
-  `city` int(10) unsigned NOT NULL,
-  `status` tinyint(2) unsigned NOT NULL,
-  `block_note` varchar(100) NOT NULL COMMENT '封号原因',
-  `nickname` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `password` char(40) NOT NULL,
+  `avatar` varchar(300) NOT NULL,
+  `gender` enum('女','男') NOT NULL DEFAULT '男',
+  `birthday` varchar(20) NOT NULL,
+  `introduction` text NOT NULL,
+  `qq_id` varchar(100) NOT NULL,
   `weixin_id` varchar(300) NOT NULL,
   `weibo_id` varchar(100) NOT NULL,
-  `qq_id` varchar(100) NOT NULL,
-  `avatar` varchar(300) NOT NULL,
-  `birthday` varchar(20) NOT NULL,
-  `last_login` int(10) NOT NULL,
-  `last_logout` int(10) unsigned NOT NULL,
+  `status` tinyint(2) unsigned NOT NULL,
   `add_time` int(10) unsigned NOT NULL,
   `update_time` int(10) unsigned NOT NULL,
+  `city` int(10) unsigned NOT NULL,
+  `block_note` varchar(100) NOT NULL COMMENT '封号原因',
+  `nickname` varchar(100) NOT NULL,
+  `last_login` int(10) NOT NULL,
+  `last_logout` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `weibo_id` (`weibo_id`,`qq_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('1', '561fb5e85fa96353f00d4168315ffa25', '', '1', '18652985024', '0', '0', '涉嫌邀约欺诈', 'hilahi3', '', '', '111111', '/Public/images/artist_bg.jpg', '2016-07-06', '1473580931', '1472399825', '1470670012', '1472295593');
-INSERT INTO `user` VALUES ('2', '6d87417435fa1201dca0b5a1e9982398', '', '0', '18607401234', '2', '0', '', '劳拉悠悠', '', '', '1111112', '/Public/images/slide/slide2.png', '', '1473656971', '1474170335', '1470761069', '1471842275');
-INSERT INTO `user` VALUES ('4', '', '', '0', '18607401235', '0', '0', '', 'hilahi3', '', '', '1111115', '/Public/images/artist_bg.jpg', '2016-07-06', '1472744736', '0', '1471842619', '1472744818');
-INSERT INTO `user` VALUES ('5', '92ea7c63b1d8b190af1037918a80eb64', '', '0', '18352114281', '0', '0', '', '', '', '', '', '', '', '1476858774', '0', '1476858774', '1476858774');
+INSERT INTO `user` VALUES ('4', '', '18607401235', '', '', '/Public/images/artist_bg.jpg', '', '2016-07-06', '', '1111115', '', '', '0', '1471842619', '1472744818', '0', '', 'hilahi3', '1472744736', '0');
+INSERT INTO `user` VALUES ('6', '', '13861048971', '13861048971@163.com', '', 'http://os.blog.163.com/common/ava.s?b=1&host=wlb.wlb', '男', '2017-04-04', '', '', '', '', '0', '1492069146', '1492070306', '0', '其他原因', '撒嗒', '1492069146', '0');
+INSERT INTO `user` VALUES ('7', '', '12345678941', '', '', 'http://os.blog.163.com/common/ava.s?b=1&host=wlb.wlb', '男', '', '', '', '', '', '1', '1492071976', '1492079352', '0', '多次发布违禁类容', '生生世世', '1492071976', '0');
 
 -- ----------------------------
 -- Table structure for `user_msg`
@@ -3855,7 +3994,7 @@ CREATE TABLE `user_msg` (
   `update_time` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`,`type_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user_msg
@@ -3916,6 +4055,10 @@ INSERT INTO `user_msg` VALUES ('53', '0', '2', '发起了一个任务订单 金�
 INSERT INTO `user_msg` VALUES ('54', '0', '2', '发起了一个任务订单 金额: ￥500.00', '', '2', '0', '', '发起了一个任务订单 金额: ￥500.00', '24', 'IOS 发送失败.Android 发送失败.', '1473657771', '1473657771');
 INSERT INTO `user_msg` VALUES ('55', '0', '2', '发起了一个任务订单 金额: ￥500.00', '', '2', '0', '', '发起了一个任务订单 金额: ￥500.00', '25', 'IOS 发送失败.Android 发送失败.', '1473657865', '1473657865');
 INSERT INTO `user_msg` VALUES ('56', '1', '2', '发起了一个套餐订单 金额: ￥45.00', '', '2', '0', '', '发起了一个套餐订单 金额: ￥45.00', '26', 'IOS 发送失败.Android 发送失败.', '1473660432', '1473660432');
+INSERT INTO `user_msg` VALUES ('57', '6', '0', '你的账号已被系统管理封号处理,将无法登陆.', '', '0', '0', '', '你的账号已被系统管理封号处理,将无法登陆. 封号原因:其他原因', '0', 'IOS 发送失败.Android 发送失败.', '1492069495', '1492069495');
+INSERT INTO `user_msg` VALUES ('58', '6', '0', '你的账号已经解封,已恢复正常使用.', '', '0', '0', '', '你的账号已经解封,已恢复正常使用.', '0', 'IOS 发送失败.Android 发送失败.', '1492069503', '1492069503');
+INSERT INTO `user_msg` VALUES ('59', '7', '0', '你的账号已经解封,已恢复正常使用.', '', '0', '0', '', '你的账号已经解封,已恢复正常使用.', '0', 'IOS 发送失败.Android 发送失败.', '1492071983', '1492071983');
+INSERT INTO `user_msg` VALUES ('61', '7', '0', '你的账号已被系统管理封号处理,将无法登陆.', '', '0', '0', '', '你的账号已被系统管理封号处理,将无法登陆. 封号原因:多次发布违禁类容', '0', 'IOS 发送失败.Android 发送失败.', '1492079352', '1492079352');
 
 -- ----------------------------
 -- Table structure for `user_msg_read`
