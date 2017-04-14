@@ -63,6 +63,9 @@ class MessageModel extends BaseModel{
     public function getPageList($con, $fields = 'id',$order = 'id desc', $perNum = 10){
     		if($con['title']){
     			$con['title'] = ['like', '%' . $con['title'] . '%'];
+    			$con['from_user_id'] = ['like', '%' . $con['from_user_id'] . '%'];
+    			$con['user_id'] = ['like', '%' . $con['user_id'] . '%'];
+    		
     		}
     		
     		$mod = d('user_msg_read');
