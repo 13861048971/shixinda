@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2017-04-15 16:28:21
+Date: 2017-04-15 19:22:22
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -227,13 +227,14 @@ CREATE TABLE `comment` (
   `update_time` int(11) NOT NULL COMMENT '更新时间',
   `status` int(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of comment
 -- ----------------------------
 INSERT INTO `comment` VALUES ('1', '6', '1', '1', 'sad', 'dsf', '2', '123123', '1492137494', '1');
-INSERT INTO `comment` VALUES ('2', '11', '0', '0', '112', 'weq', '0', '1492137275', '1492137275', '1');
+INSERT INTO `comment` VALUES ('2', '6', '0', '0', '112', 'weq', '0', '1492137275', '1492254543', '1');
+INSERT INTO `comment` VALUES ('3', '6', '0', '0', '112', '<p>\n	uiui\n</p>\n<p>\n	<br />\n</p>', '0', '1492254151', '1492254926', '1');
 
 -- ----------------------------
 -- Table structure for `config`
@@ -451,17 +452,20 @@ CREATE TABLE `post` (
   `post_cate_id` int(11) NOT NULL COMMENT '帖子分类id',
   `title` varchar(50) NOT NULL COMMENT '帖子标题',
   `content` text NOT NULL COMMENT '帖子内容',
+  `type` int(11) DEFAULT NULL,
   `status` int(1) NOT NULL COMMENT '0禁用1启用',
   `add_time` int(11) NOT NULL COMMENT '添加时间',
   `update_time` int(11) NOT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of post
 -- ----------------------------
-INSERT INTO `post` VALUES ('2', '6', '0', 'sda', 'sdas ', '0', '1492134968', '1492135578');
-INSERT INTO `post` VALUES ('3', '7', '1', 'asd', 'dsada', '1', '1492134989', '1492134989');
+INSERT INTO `post` VALUES ('2', '6', '0', 'sda', 'sdas ', null, '0', '1492134968', '1492135578');
+INSERT INTO `post` VALUES ('3', '7', '1', 'asd', 'dsada', null, '1', '1492134989', '1492134989');
+INSERT INTO `post` VALUES ('4', '4', '0', 'ssas', 'dada', '0', '1', '1492251867', '1492251867');
+INSERT INTO `post` VALUES ('5', '5', '0', 'asdsa', 'dasda', '1', '1', '1492251904', '1492251904');
 
 -- ----------------------------
 -- Table structure for `post_cate`
@@ -477,13 +481,15 @@ CREATE TABLE `post_cate` (
   `add_time` int(11) NOT NULL COMMENT '添加时间',
   `update_time` int(11) NOT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of post_cate
 -- ----------------------------
 INSERT INTO `post_cate` VALUES ('1', '衣服', '0', '1', '0', '1', '1492138785', '1492152483');
 INSERT INTO `post_cate` VALUES ('2', 'sasa', '0', '', '0', '0', '1492151220', '1492151220');
+INSERT INTO `post_cate` VALUES ('3', 'sdas', '1', '', '0', '0', '1492245107', '1492245107');
+INSERT INTO `post_cate` VALUES ('4', 'admin', '2', '', '0', '0', '1492245120', '1492245120');
 
 -- ----------------------------
 -- Table structure for `post_comment`
@@ -494,17 +500,20 @@ CREATE TABLE `post_comment` (
   `user_id` int(11) NOT NULL COMMENT '用户id',
   `post_id` int(11) NOT NULL COMMENT '帖子id',
   `content` text NOT NULL COMMENT '帖子内容',
+  `type` int(11) NOT NULL,
   `status` int(1) NOT NULL COMMENT '0禁用1启用',
   `add_time` int(11) NOT NULL COMMENT '添加时间',
   `update_time` int(11) NOT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of post_comment
 -- ----------------------------
-INSERT INTO `post_comment` VALUES ('2', '5', '0', 'sda', '0', '1492136399', '1492137367');
-INSERT INTO `post_comment` VALUES ('3', '1', '0', 'sada', '1', '1492136535', '1492136535');
+INSERT INTO `post_comment` VALUES ('2', '5', '0', 'sda', '0', '0', '1492136399', '1492137367');
+INSERT INTO `post_comment` VALUES ('3', '1', '0', 'sada', '0', '1', '1492136535', '1492136535');
+INSERT INTO `post_comment` VALUES ('4', '6', '0', 'asa', '0', '1', '1492252862', '1492252862');
+INSERT INTO `post_comment` VALUES ('5', '7', '0', 'sada', '1', '1', '1492252933', '1492252933');
 
 -- ----------------------------
 -- Table structure for `region`

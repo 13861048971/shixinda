@@ -219,7 +219,20 @@ class PublicController extends Controller {
 			}
 			if(!isset($row['status']))
 				$statusList[0]['checked'] = 1;
+			
 			$this->assign('statusList', $statusList);
+		}	
+		
+		if($mod->typeArr){
+		    $typeList = [[ 'name'=>'type', 'list' => $mod->typeArr]];
+		    if(isset($row['type'])){
+		        $typeList[0]['checked'] = $row['type'];
+		        $typeList[0]['selected'] = $row['type'];
+		    }
+		    if(!isset($row['status']))
+		        $typeList[0]['checked'] = 1;
+		        	
+		        $this->assign('typeList', $typeList);
 		}
 		
 		ajaxReturn(0, '',	['content'=>$this->fetch($template)]);

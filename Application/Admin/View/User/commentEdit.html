@@ -6,15 +6,15 @@
     </div>
   </div>
   <div class="form-group">
-    <label class="col-sm-2 control-label"><i class="red">*</i>用户id</label>
+    <label class="col-sm-2 control-label"><i class="red">*</i>用户</label>
     <div class="col-sm-9">
-      <input name="user_id" class="form-control" value="{$row.user_id}" placeholder="发帖人">
+      {:w('Select/user',[[ 'uid' => $row['user_id'] ]] )}
     </div>
   </div>
   <div class="form-group">
-    <label class="col-sm-2 control-label"><i class="red">*</i>帖子类别id</label>
+    <label class="col-sm-2 control-label"><i class="red">*</i>类型</label>
     <div class="col-sm-9">
-      <input name="post_cate_id" class="form-control" value="{$row.post_cate_id}" placeholder="0为系统消息">
+      {:W('select/select', $typeList)}
     </div>
   </div>
   <div class="form-group">

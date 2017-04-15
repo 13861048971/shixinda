@@ -5,10 +5,12 @@ import('Org.Util.Validator');
  * 用户模型
  */
 class PostModel extends BaseModel{
-    public $statusArr = [1=>'显示', 0=>'不显示'];
+    public $statusArr = ['不显示', '显示'];
+    public $typeArr = ['新闻', '短信'];
     /**
      * 编辑or添加
      */
+ 
     function edit($data, $id=null){
         $data = $this->setValidate($data);
         if($id){

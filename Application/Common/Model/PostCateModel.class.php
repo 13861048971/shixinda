@@ -154,7 +154,7 @@ class PostCateModel extends BaseModel{
      * @param int $type      类型,默认是产品分类
      * @return array
      **/
-    public function getList($con = [], $limit = '15', $order = 'rank'){
+    public function getList($con = [], $limit = '15', $order = 'rank desc'){
 		foreach($con as $k=>$v){
 		    if(!$v && $v !== '0' )
 		        unset($con[$k]);

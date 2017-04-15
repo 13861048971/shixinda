@@ -6,9 +6,9 @@
     </div>
   </div>
   <div class="form-group">
-    <label class="col-sm-2 control-label"><i class="red">*</i>用户id</label>
+    <label class="col-sm-2 control-label"><i class="red">*</i>用户</label>
     <div class="col-sm-9">
-      <input name="user_id" class="form-control" value="{$row.user_id}" placeholder="0为发送给所以用户">
+      {:w('Select/user',[[ 'uid' => $row['user_id'] ]] )}
     </div>
   </div>
   <div class="form-group">

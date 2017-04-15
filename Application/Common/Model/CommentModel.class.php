@@ -6,6 +6,7 @@ import('Org.Util.Validator');
  */
 class CommentModel extends BaseModel{
     public $statusArr = [1=>'显示', 0=>'不显示'];
+    public $typeArr = ['新闻', '短信'];
     /**
      * 编辑or添加
      */

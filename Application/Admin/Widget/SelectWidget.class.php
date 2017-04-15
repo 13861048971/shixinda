@@ -71,7 +71,8 @@ class SelectWidget extends Controller{
 
 		$valueKey = $data['valueKey'] ? $data['valueKey'] : 'value';
 		$nameKey  = $data['nameKey']  ? $data['nameKey']  : 'name';
-		!$data['checked'] && $data['checked'] = $data['selected']; 
+		if( !isset($data['checked']) && isset($data['selected']) )
+            $data['checked'] = $data['selected']; 
 		
 		$str = '';
 		foreach($data['list'] as $k=>$v){
@@ -182,7 +183,7 @@ class SelectWidget extends Controller{
 
 		
 	/**
-	 * @param array $data ['user_id'=>, 'require'=>false] 
+	 * @param array $data ['uid'=> , 'name'=>'user_id' 'require' => false] 
 	 */
 	function user($data = []){
 		$uid = (int)$data['uid'];
@@ -190,6 +191,9 @@ class SelectWidget extends Controller{
 			$user= d('user')->getInfo($uid);
 			$this->assign('user', $user);
 		}
+		
+		!$data['name'] && $data['name'] = 'user_id';
+		$this->assign('data', $data);
 		$this->assign('require', $data['require']);
 		$this->display('Widget:Select:user');
 	}

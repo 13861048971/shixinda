@@ -301,7 +301,7 @@ class UserController extends PublicController {
 	//消息编辑
 	public function messageEdit(){
 		$this->ajaxEdit('message',null, function(&$row, $mod){
-			!isset($row['status']) && $row['status'] = 0;
+			
 		});
 	}
 	
@@ -311,7 +311,7 @@ class UserController extends PublicController {
 	}
 	//帖子管理列表
 	public function post(){
-	    $this->setRightAction([[ 'name'=>'添加消息', 'dialog'=>true,
+	    $this->setRightAction([[ 'name'=>'添加内容', 'dialog'=>true,
 	        'dialog-lg'=>true, 'url' => u('postEdit') ]]);
 	    $con = $_GET;
 	    $data = d('post')->getPageList($con);
@@ -322,8 +322,8 @@ class UserController extends PublicController {
 	
 	//帖子编辑
 	public function postEdit(){
-	    $this->ajaxEdit('post',null, function(&$row, $mod){
-	        !isset($row['status']) && $row['status'] = 0;
+	    $this->ajaxEdit('post',null, function($row, $mod){
+	        
 	    });
 	}
 	
@@ -333,7 +333,7 @@ class UserController extends PublicController {
 	}
 	//帖子评论列表
 	public function postComment(){
-	    $this->setRightAction([[ 'name'=>'添加消息', 'dialog'=>true,
+	    $this->setRightAction([[ 'name'=>'帖子评论', 'dialog'=>true,
 	        'dialog-lg'=>true, 'url' => u('postCommentEdit') ]]);
 	    $con = $_GET;
 	    $data = d('postComment')->getPageList($con);
@@ -344,8 +344,8 @@ class UserController extends PublicController {
 	
 	//帖子评论编辑
 	public function postCommentEdit(){
-	    $this->ajaxEdit('postComment',null, function(&$row, $mod){
-	        !isset($row['status']) && $row['status'] = 0;
+	    $this->ajaxEdit('postComment',null, function($row, $mod){
+            
 	    });
 	}
 	
@@ -356,7 +356,7 @@ class UserController extends PublicController {
 	
 	//用户评论列表
 	public function comment(){
-	    $this->setRightAction([[ 'name'=>'添加消息', 'dialog'=>true,
+	    $this->setRightAction([[ 'name'=>'用户评论', 'dialog'=>true,
 	        'dialog-lg'=>true, 'url' => u('commentEdit') ]]);
 	    $con = $_GET;
 	    $data = d('comment')->getPageList($con);
@@ -367,8 +367,7 @@ class UserController extends PublicController {
 	
 	//用户评论编辑
 	public function commentEdit(){
-	    $this->ajaxEdit('comment',null, function(&$row, $mod){
-	        !isset($row['status']) && $row['status'] = 0;
+	    $this->ajaxEdit('comment',null, function($row, $mod){
 	    });
 	}
 	
@@ -397,8 +396,7 @@ class UserController extends PublicController {
   	
 	//帖子分类编辑
 	public function postCateEdit(){
-	    $this->ajaxEdit('postCate',null, function(&$row, $mod){
-	        !isset($row['status']) && $row['status'] = 0;
+	    $this->ajaxEdit('postCate',null, function($row, $mod){
 	        $con = $_GET;
 	        if($con['pid']!=null){
 	           $data = d('postCate')->where(['id'=>$con['pid']])->find();

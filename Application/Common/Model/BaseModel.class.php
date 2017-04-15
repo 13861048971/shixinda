@@ -4,9 +4,11 @@ class BaseModel extends Model {
 	public $lastError;
 	protected $errorCode;
 	public $user, $admin, $shop;
+
 	public function __construct(){
 		parent::__construct();
 		$this->user = session('user');
+		
 		//$this->admin = session('admin');
 		//$this->shop = session('shop');
 		// session('[pause]');
