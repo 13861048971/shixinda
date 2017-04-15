@@ -9,6 +9,7 @@ class ContentCateModel extends BaseModel {
     //列表
     public function getList($con=[], $limit=5){
         $list = $this->where($con)->limit($limit)->select();
+       
         foreach ($list as $k=>$v){
             $list[$k] = $this->parseRow($v);
         }
@@ -59,6 +60,8 @@ class ContentCateModel extends BaseModel {
 	//分页
 	function getPageList($con=[], $fields = 'id', $order = '', $perNum = 15){
 	    $data = parent::getPageList($con, $fields, $order, $perNum);
+	    //$first = $this->where(['pid'=>0])->select();
+	    //dump($con);exit();
 	    
 	    foreach($data['list'] as $k=>$v){
 	        $data['list'][$k] = $this->getInfo($v['id']);

@@ -18,9 +18,7 @@ class ContentController extends PublicController {
         ];
         $this->setRightAction($rightBtn);
         $data = d('content')->getPageList($_GET);
-       
         $this->assign($data); 
-        
         $this->assign('contentTitle',$_GET['title']);
         $this->display('content','list');
     }
@@ -42,10 +40,13 @@ class ContentController extends PublicController {
 	        ['name' => '添加内容','url'=>u('contentCateEdit'), 'dialog' => 1, 'dialog-lg' => 1 ]
 	    ];
 	    $this->setRightAction($rightBtn);
-        $data = d('contentCate')->getPageList($_GET);
+        $data = d('contentCate')->getPageList(['p'=>$_GET['p'],'name'=>$_GET['name'],'pid'=>'0']);
         $this->assign($data);
+        //dump($data);exit();
         $this->assign('cateName',$_GET['name']);
+        $this->assign('list',$data['list']);
         $this->display('contentCate','list');
+        
 	}
 	
 	//分类编辑
