@@ -14,7 +14,7 @@
 		<tr> 
 		  <th></th> 
 		  <th>#</th>
-		  <th>分类名称</th>
+		  <th class="post-cate-name">分类名称</th>
 		  <th>分类级别</th>
 		  <th>状态</th>
 		  <th width="250">添加/更新</th>
@@ -24,7 +24,7 @@
 		<tr>
 			<td><if condition="$v['num'] gt 0"><span class="icon-add" data-id="{$v.id}" data-level="1"></span></if></td>
 			<td>{$v.id}</td>
-			<td>{$v.name}</td>
+			<td class="post-cate-name">{$v.name}</td>
 			<td>{$v.deep}</td>
 			<td class="<if condition="$v['status'] gt 0">green</if>"><if condition="$v['status'] gt 0">显示 <else/>不显示</if></td>
 			<td >{$v.addTime} / {$v.updateTime}</td>

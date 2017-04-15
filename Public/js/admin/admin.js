@@ -84,19 +84,19 @@ $('.post-cate-table').on('click',function(e){
 		var url="/admin/user/postcatechildren/pid/"+_this.data('id');
 		$.ajax({
 			url:url,
-			type:'post',
+			type:'get',
 			dataType:'json',
 			success:function(data){
 				var sub=data.data.list;
 				_this.removeClass('icon-add').addClass('icon-sub');
 
 				for(k in sub){
-					var html='<tr class="pid'+sub[k].pid+'"><td>';
+					var html='<tr class="'+_this.parents('tr')[0].className+'pid'+sub[k].pid+' "><td>';
 					if(sub[k].num > 0){
 						html+='<span class="icon-add" data-id="'+sub[k].id+'" data-level="'+(_this.data('level')+1)+'"></span>';
 					}
 
-					html+='<td>'+sub[k].id+'</td><td>';
+					html+='</td><td>'+sub[k].id+'</td><td class="post-cate-name">';
 
 					for(var i=0;i<_this.data('level');i++){
 						html+='&nbsp;&nbsp;&nbsp;&nbsp;';
