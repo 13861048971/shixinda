@@ -62,6 +62,7 @@ class ContentController extends PublicController {
 	        $name = $_GET['name'];
 	        $id = $_GET['id'];
 	        $data = ['name'=>$name,'id'=>$id];
+	        //dump($data);exit();
 	        $this->assign('data',$data);
 	    });
 	}
@@ -74,7 +75,7 @@ class ContentController extends PublicController {
 	//友情连接
 	public function friendLink(){
 	    $rightBtn = [
-	        ['name' => '添加新连接','url'=>u('friendLinkEdit'), 'dialog' => 1, 'dialog-lg' => 1 ]
+	        ['name' => '添加新连接', 'url'=> u('friendLinkEdit'), 'dialog' => 1, 'dialog-lg' => 1 ]
 	    ];
 	    $this->setRightAction($rightBtn);
 	    $data = d('friendLink')->getPageList($_GET);
@@ -97,7 +98,7 @@ class ContentController extends PublicController {
 	//导航管理
 	public function navigation(){
 	    $rightBtn = [
-	        ['name' => '添加新导航','url'=>u('navigationEdit'), 'dialog' => 1, 'dialog-lg' => 1 ]
+	        ['name' => '添加新导航','url'=> u('navigationEdit'), 'dialog' => 1, 'dialog-lg' => 1 ]
 	    ];
 	    $this->setRightAction($rightBtn);
 	    $data = d('navigation')->getPageList($_GET);
