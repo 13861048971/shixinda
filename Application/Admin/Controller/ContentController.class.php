@@ -49,6 +49,15 @@ class ContentController extends PublicController {
         
 	}
 	
+	//内容分类获取子类
+	public function contentCateChildren($pid){
+	    $data = d('contentCate')->getPageList(['pid'=>$pid]);
+	    $this->assign($data);
+	    $list = $data['list'];
+	    ajaxReturn(0,'子类获取成功',['list'=>$list]);
+	
+	}
+	
 	//分类编辑
 	public function contentCateEdit(){
 	    $this->ajaxEdit('contentCate', null, function($row, $mod){
@@ -57,7 +66,7 @@ class ContentController extends PublicController {
 	}
 	
 	//添加内容子类
-	public function contentChildren(){
+	public function addContentChildren(){
 	    $this->ajaxEdit('contentCate', null, function($row, $mod){
 	        $name = $_GET['name'];
 	        $id = $_GET['id'];

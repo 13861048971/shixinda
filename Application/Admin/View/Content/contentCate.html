@@ -39,7 +39,7 @@
 			<td>{$v.addTime}</td>
 			<td>{$v.updateTime}</td>
 			<td class="handle">
-			    <a class="dialog add"  href="#" url="{:u('contentChildren',array('id'=>$v['id'],'name'=>$v['name']))}">添加子类</a>|
+			    <a class="dialog add"  href="#" url="{:u('addContentChildren',array('id'=>$v['id'],'name'=>$v['name']))}">添加子类</a>|
 				<a class="dialog edit"  href="#" url="{:u('contentCateEdit','id=' . $v['id'])}">编辑</a>|
 				<a class="ajaxDel del" href="#" url="{:u('contentCateDel','id=' . $v['id'])}">删除</a>
 				
