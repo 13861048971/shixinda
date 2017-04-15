@@ -220,6 +220,7 @@ class UserController extends PublicController {
 		$this->display('artist');
 	}
 	
+	
 	//用户详情页
 	public function userDetail(){
 		$id = (int)$_GET['id'];
@@ -401,7 +402,14 @@ class UserController extends PublicController {
 	    $this->ajaxEdit('postCate',null, function(&$row, $mod){
 	        !isset($row['status']) && $row['status'] = 0;
 	        $con = $_GET;
-	        $data = d('postCate')->where(['id'=>$con['pid']])->find();
+	        if($con['pid']!=null){
+	           $data = d('postCate')->where(['id'=>$con['pid']])->find();
+	        }else{
+	           $info = d('postCate')->where(['id'=>$con['id']])->find();
+	           
+	           $data = d('postCate')->where(['id'=>$info['pid']])->find();
+	       }
+	        
 	        $this->assign('pname',$data);
 	    });
 	    

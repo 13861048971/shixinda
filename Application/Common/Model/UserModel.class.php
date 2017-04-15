@@ -1,5 +1,6 @@
 <?php
 use Think\Model;
+
 import('Org.Util.Validator');
 /**
  * 用户模型
@@ -22,6 +23,7 @@ class UserModel extends BaseModel{
 	 * @return bool
 	 */
 	function login($mobile, $pass){
+	    
 		if(!Org\Util\Validator::isMobile($mobile))
 			return $this->setError('手机号格式错误!');
 		$con['mobile'] = htmlentities($mobile);
@@ -297,10 +299,28 @@ class UserModel extends BaseModel{
 			return $this->setError('密码要大于6个字符!');
 		return self::getPass($pass);
 	}
-	
+	/**图像上传
+	 * @param name 文件名
+	 */
+	public function upload($name){
+	    $path = ROOT_PATH.'/public';
+	    $imagepre = '/uploads/images/';
+	    $file = request()->file($name);
+	    $image = $file->move($path.$imagepre);
+	    $filename = $image->getSaveName();//生成头像的文件夹+文件名
+	    $imagePath = $imagepre.$filename;//图片相对路径地址
+	    $thumbName = $imagepre.str_replace(['/','\\'], '/thum_', $filename);
+	    Image::open($file)->thumb(150, 150)->save($path.$thumbName);
+	    $data = [
+	        'thumb_image' =>$thumbName,//缩略图地址
+	        'image' =>$imagePath//图像地址
+	    ];
+	    return $data;
+	}
 	/**
 	 * 编辑or添加
 	 */
+	
 	function edit($data, $id=null){
 		if($id){
 			$data['update_time'] = time();
