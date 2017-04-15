@@ -105,9 +105,9 @@ $('.post-cate-table').on('click',function(e){
 					html+=sub[k].name+'</td><td>'+sub[k].deep+'</td>';
 
 					if(sub[k].status > 0){
-						html+='<td class="green">显示</td>'
+						html+='<td class="green">显示</td>';
 					}else{
-						html+='<td>不显示</td>'
+						html+='<td>不显示</td>';
 					}
 					
 					html+='<td>'+sub[k].addTime+'/'+sub[k].updateTime+'</td><td width=200 class="handle"><a class="dialog add" dialog-lg="true" href="#" url="/admin/user/postCateEdit/pid/'+sub[k].id+'">添加子类</a><a class="dialog edit" dialog-lg="true" href="#" url="/admin/user/postCateEdit/id/'+sub[k].id+'">编辑</a><a class="ajaxDel del" href="#" url="/admin/user/postCateDel/id/'+sub[k].id+'">删除</a></td></tr>';
