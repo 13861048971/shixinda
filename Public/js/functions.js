@@ -1123,6 +1123,7 @@ function initDaterange(selector) {
 }
 // date2timestamp
 function date2timestamp(time){
-	timestamp=(new Date(time.replace(/-/g, "/"))).valueOf();
+	timestamp=Date.parse(new Date(time.replace(/-/g, "/")));
+	timestamp=timestamp/1000;
 	$('.timestamp').val(timestamp);
 }
