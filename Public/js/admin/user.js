@@ -34,3 +34,29 @@
 		$(this).parent().remove();
 	});
 })();
+/**
+ * 添加图片并返回图片路径
+ */
+$("#file").change(function(){ 
+	if(!this.files[0]) return;
+	$(this).hide();
+	name = this.name;
+	//file = this.files.item(0);//== file = this.files[0];
+	var data = new FormData($("#form1")[0]);
+	data.append('imagename',name);
+	//data.append(name,file);//名称和文件内容对应
+	$.ajax({
+		url: "/admin/user/upload",
+		type:'post',
+		data:data,
+		dataType: 'JSON',  
+        cache: false,
+        processData: false,  
+        contentType: false,
+		success:function(info){
+			$("#pathimage").val(info['image']);
+			$("#paththumb").val(info.thumb_image);
+			$("#form1").find("img").attr('src',info.thumb_image);
+		}
+	});
+});

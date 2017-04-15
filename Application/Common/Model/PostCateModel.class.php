@@ -24,13 +24,13 @@ class PostCateModel extends BaseModel{
      * 编辑or添加类目
      */
     function edit($data, $id=null){
-//         !$data['type'] && ($data['type'] =1);
-    
-//         if(1 == $type && $data['type_id'])
-//             return $this->setError('缺少类型id');
+
     
             if($id){
                 $data['update_time'] = time();
+                
+                $pdata = $this->where(['name'=>$_POST['pname']])->find();
+                $data['pid'] = $pdata['id'];
                 $return  = $this->data($data)->where('id=' . (int)$id)->save();
                 if(!$return){
                     $this->lastError = '修改类目失败!';
@@ -155,6 +155,10 @@ class PostCateModel extends BaseModel{
      * @return array
      **/
     public function getList($con = [], $limit = '15', $order = 'rank'){
+		foreach($con as $k=>$v){
+		    if(!$v && $v !== '0' )
+		        unset($con[$k]);
+		}
         $list = $this->where($con)->order($order)->select();
         foreach($list as $k=>$v){
             $list[$k] = $this->parseRow($v);
