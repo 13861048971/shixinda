@@ -1121,3 +1121,8 @@ function initDaterange(selector) {
 	  });
   });
 }
+// date2timestamp
+function date2timestamp(time){
+	timestamp=(new Date(time.replace(/-/g, "/"))).valueOf();
+	$('.timestamp').val(timestamp);
+}

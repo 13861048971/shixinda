@@ -61,7 +61,7 @@
 			call(); layer.close(t);
 		});
 	});
-	
+	$('.daterange')[0] && initDaterange('.daterange');
 	//日期选择回调
 	$('.daterange').on('daterangeCallback', function(e, data){
 		var th = $(this);

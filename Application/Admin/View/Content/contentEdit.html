@@ -21,7 +21,8 @@
   <div class="form-group">
     <label class="col-sm-2 control-label">发布时间:</label>
     <div class="col-sm-5">
-	   <input name="publish_time" type="text" onclick="window.laydate();" required class="form-control" value="{$row.publish_time}">	
+	   <input type="text" onclick="window.laydate({choose:date2timestamp});" required class="form-control publish_time" value="{$row.publish_time}">
+     <input name="publish_time" type="text" class="hide timestamp">
     </div>
   </div>
   <div class="form-group">
