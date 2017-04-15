@@ -3,14 +3,14 @@ Navicat MySQL Data Transfer
 
 Source Server         : 本地
 Source Server Version : 50553
-Source Host           : 127.0.0.1:3306
+Source Host           : localhost:3306
 Source Database       : shixinda
 
 Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2017-04-15 15:50:31
+Date: 2017-04-15 16:23:05
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -36,7 +36,7 @@ CREATE TABLE `admin` (
 -- ----------------------------
 -- Records of admin
 -- ----------------------------
-INSERT INTO `admin` VALUES ('1', '1', 'admin', 'e10adc3949ba59abbe56e057f20f883e', '100', '', '/Public/qrcode/2016-07-02/1467438415603.png', '1492165573', '0', '1467904390');
+INSERT INTO `admin` VALUES ('1', '1', 'admin', 'e10adc3949ba59abbe56e057f20f883e', '100', '', '/Public/qrcode/2016-07-02/1467438415603.png', '1492165505', '0', '1467904390');
 INSERT INTO `admin` VALUES ('2', '1', 'holahi', 'fcea920f7412b5da7be0cf42b8c93759', '0', '', '/Public/qrcode/2016-06-25/1466785122121.png', '0', '1466784503', '1466785436');
 
 -- ----------------------------
@@ -233,7 +233,7 @@ CREATE TABLE `comment` (
 -- Records of comment
 -- ----------------------------
 INSERT INTO `comment` VALUES ('1', '6', '1', '1', 'sad', 'dsf', '2', '123123', '1492137494', '1');
-INSERT INTO `comment` VALUES ('2', '7', '0', '0', '112', 'weq', '0', '1492137275', '1492234414', '0');
+INSERT INTO `comment` VALUES ('2', '11', '0', '0', '112', 'weq', '0', '1492137275', '1492137275', '1');
 
 -- ----------------------------
 -- Table structure for `config`
@@ -268,36 +268,37 @@ INSERT INTO `config` VALUES ('weixin', 'a:9:{s:8:\"siteName\";s:0:\"\";s:5:\"ema
 DROP TABLE IF EXISTS `content`;
 CREATE TABLE `content` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `cat_id` int(11) unsigned NOT NULL COMMENT '分类id',
-  `title` varchar(50) NOT NULL,
-  `content` text NOT NULL,
-  `author` varchar(50) NOT NULL COMMENT '内容的作者',
-  `status` int(10) unsigned NOT NULL COMMENT '内容的状态',
+  `cate_id` int(11) unsigned NOT NULL COMMENT '分类id',
+  `title` varchar(50) NOT NULL COMMENT '标题',
+  `content` text NOT NULL COMMENT '内容',
+  `author` varchar(50) NOT NULL COMMENT '作者',
+  `status` int(11) unsigned NOT NULL COMMENT '状态',
   `publish_time` int(11) unsigned NOT NULL COMMENT '发布时间',
   `add_time` int(11) unsigned NOT NULL COMMENT '添加时间',
   `update_time` int(11) unsigned NOT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of content
 -- ----------------------------
-INSERT INTO `content` VALUES ('4', '0', '历史', '', '孙中山', '0', '1', '1491907541', '1492050456');
-INSERT INTO `content` VALUES ('7', '0', 'f', 'f', 'f', '0', '0', '1491994334', '1491994334');
-INSERT INTO `content` VALUES ('8', '0', 'd', 'd', 'd', '0', '0', '1491994347', '1491994347');
-INSERT INTO `content` VALUES ('9', '0', 'q', 'q', 'q', '0', '0', '1491994364', '1491994364');
-INSERT INTO `content` VALUES ('10', '0', 'w', 'w', 'w', '0', '0', '1491994376', '1491994376');
-INSERT INTO `content` VALUES ('11', '0', 'eee', 'e', 'e', '0', '0', '1491994387', '1491994387');
-INSERT INTO `content` VALUES ('12', '0', 'e', 'e', 'e', '0', '0', '1491995051', '1491995051');
-INSERT INTO `content` VALUES ('13', '0', 'r', 'r', 'r', '0', '0', '1491995062', '1491995062');
-INSERT INTO `content` VALUES ('14', '0', 't', 't', 't', '0', '0', '1491995071', '1491995071');
-INSERT INTO `content` VALUES ('15', '0', 'y', 'y', 'y', '0', '0', '1491995080', '1491995080');
-INSERT INTO `content` VALUES ('16', '0', 'u', 'u', 'u', '0', '0', '1491995090', '1491995090');
-INSERT INTO `content` VALUES ('17', '0', 'i', 'i', 'i', '0', '0', '1491995105', '1491995105');
-INSERT INTO `content` VALUES ('18', '0', 'o', 'o', 'o', '0', '0', '1491995114', '1491995114');
-INSERT INTO `content` VALUES ('19', '0', 'p', 'p', 'p', '0', '0', '1491995123', '1491995123');
-INSERT INTO `content` VALUES ('22', '0', 'f', 'f', 'f', '0', '0', '1492050179', '1492050179');
-INSERT INTO `content` VALUES ('23', '0', '撒啊三大', '任霆发够', '阿斯达', '0', '0', '1492068484', '1492068484');
+INSERT INTO `content` VALUES ('4', '2', '历史', 'eeeefffff', '孙中山', '0', '2017', '1491907541', '1492224109');
+INSERT INTO `content` VALUES ('7', '4', 'f', 'f', 'f', '0', '2017', '1491994334', '1492221046');
+INSERT INTO `content` VALUES ('8', '5', 'd', 'd', 'd', '0', '0', '1491994347', '1491994347');
+INSERT INTO `content` VALUES ('9', '6', 'q', 'q', 'q', '0', '0', '1491994364', '1491994364');
+INSERT INTO `content` VALUES ('10', '7', 'w', 'w', 'w', '0', '0', '1491994376', '1491994376');
+INSERT INTO `content` VALUES ('11', '8', 'eee', 'e', 'e', '0', '0', '1491994387', '1491994387');
+INSERT INTO `content` VALUES ('12', '9', 'e', 'e', 'e', '0', '0', '1491995051', '1491995051');
+INSERT INTO `content` VALUES ('13', '10', 'r', 'r', 'r', '0', '0', '1491995062', '1491995062');
+INSERT INTO `content` VALUES ('14', '11', 't', 't', 't', '0', '0', '1491995071', '1491995071');
+INSERT INTO `content` VALUES ('15', '12', 'y', 'y', 'y', '0', '0', '1491995080', '1491995080');
+INSERT INTO `content` VALUES ('16', '13', 'u', 'u', 'u', '0', '0', '1491995090', '1491995090');
+INSERT INTO `content` VALUES ('17', '14', 'i', 'i', 'i', '0', '0', '1491995105', '1491995105');
+INSERT INTO `content` VALUES ('18', '15', 'o', 'o', 'o', '0', '0', '1491995114', '1491995114');
+INSERT INTO `content` VALUES ('19', '16', 'p', 'p', 'p', '0', '0', '1491995123', '1491995123');
+INSERT INTO `content` VALUES ('22', '17', 'f', 'f', 'f', '0', '0', '1492050179', '1492050179');
+INSERT INTO `content` VALUES ('23', '18', '撒啊三大', '任霆发够', '阿斯达', '0', '0', '1492068484', '1492068484');
+INSERT INTO `content` VALUES ('24', '0', '健身', '坚持健身有益身体健康。', '阿诺', '0', '2017', '1492220792', '1492220792');
 
 -- ----------------------------
 -- Table structure for `content_cate`
@@ -305,23 +306,23 @@ INSERT INTO `content` VALUES ('23', '0', '撒啊三大', '任霆发够', '阿斯
 DROP TABLE IF EXISTS `content_cate`;
 CREATE TABLE `content_cate` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `pid` int(11) unsigned NOT NULL COMMENT '父类id',
-  `name` varchar(50) NOT NULL COMMENT '分类内容的名字',
-  `status` int(11) unsigned NOT NULL COMMENT '分类内容的状态',
-  `order` int(11) NOT NULL COMMENT '分类排序',
+  `pid` int(11) unsigned NOT NULL COMMENT '上级id',
+  `name` varchar(50) NOT NULL COMMENT '名称',
+  `status` int(11) unsigned NOT NULL COMMENT '状态',
+  `rank` int(11) unsigned NOT NULL COMMENT '排序',
   `add_time` int(11) unsigned NOT NULL COMMENT '添加时间',
   `update_time` int(11) unsigned NOT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=36 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of content_cate
 -- ----------------------------
 INSERT INTO `content_cate` VALUES ('3', '0', 'd', '0', '0', '1492075564', '1492075564');
-INSERT INTO `content_cate` VALUES ('2', '2', '1223 子类', '0', '0', '1492075235', '1492156695');
-INSERT INTO `content_cate` VALUES ('4', '0', 'f', '0', '0', '1492075601', '1492075601');
-INSERT INTO `content_cate` VALUES ('5', '0', 'r', '0', '0', '1492075617', '1492075617');
-INSERT INTO `content_cate` VALUES ('6', '0', 'q', '0', '0', '1492075638', '1492075638');
+INSERT INTO `content_cate` VALUES ('2', '0', '1223 子类', '0', '0', '1492075235', '1492156695');
+INSERT INTO `content_cate` VALUES ('4', '3', 'f', '0', '0', '1492075601', '1492075601');
+INSERT INTO `content_cate` VALUES ('5', '3', 'r', '0', '0', '1492075617', '1492075617');
+INSERT INTO `content_cate` VALUES ('6', '7', 'q', '0', '0', '1492075638', '1492075638');
 INSERT INTO `content_cate` VALUES ('7', '0', 'w', '0', '0', '1492075646', '1492075646');
 INSERT INTO `content_cate` VALUES ('8', '0', 'e', '0', '0', '1492075664', '1492075664');
 INSERT INTO `content_cate` VALUES ('9', '0', 't', '0', '0', '1492075672', '1492075672');
@@ -334,6 +335,8 @@ INSERT INTO `content_cate` VALUES ('15', '0', 'a', '0', '0', '1492075734', '1492
 INSERT INTO `content_cate` VALUES ('16', '0', 's', '0', '0', '1492075744', '1492075744');
 INSERT INTO `content_cate` VALUES ('17', '0', 'd', '0', '0', '1492075752', '1492148931');
 INSERT INTO `content_cate` VALUES ('18', '0', '吴', '0', '0', '1492152665', '1492152665');
+INSERT INTO `content_cate` VALUES ('19', '17', '周', '0', '0', '1492157692', '1492157692');
+INSERT INTO `content_cate` VALUES ('20', '2', 'deng', '0', '0', '1492221583', '1492221583');
 
 -- ----------------------------
 -- Table structure for `feedback`
@@ -363,21 +366,28 @@ INSERT INTO `feedback` VALUES ('1', '0', '1', '', '内容就是这么多', '', '
 -- ----------------------------
 DROP TABLE IF EXISTS `friend_link`;
 CREATE TABLE `friend_link` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `cat_id` int(10) unsigned NOT NULL COMMENT '分类id',
-  `name` varchar(50) NOT NULL COMMENT '友情链接名',
-  `logo` varchar(50) NOT NULL,
-  `url` varchar(50) NOT NULL COMMENT '友情链接地址',
-  `status` int(50) unsigned NOT NULL COMMENT '友情链接状态',
-  `publish_time` int(10) unsigned NOT NULL,
-  `add_time` int(10) unsigned NOT NULL,
-  `update_time` int(10) unsigned NOT NULL,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL COMMENT '链接名',
+  `logo` varchar(50) NOT NULL COMMENT '标志',
+  `url` varchar(50) NOT NULL COMMENT '链接地址',
+  `rank` int(11) unsigned NOT NULL COMMENT '排序',
+  `add_time` int(11) unsigned NOT NULL COMMENT '增加时间',
+  `update_time` int(11) unsigned NOT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of friend_link
 -- ----------------------------
+INSERT INTO `friend_link` VALUES ('1', 'd', 'd', 'd', '0', '1492165623', '1492165623');
+INSERT INTO `friend_link` VALUES ('2', 'q', 'q', 'q', '0', '1492165663', '1492165663');
+INSERT INTO `friend_link` VALUES ('3', 'w', 'w', 'w', '0', '1492165674', '1492165674');
+INSERT INTO `friend_link` VALUES ('4', 'e', 'e', 'e', '0', '1492165682', '1492165682');
+INSERT INTO `friend_link` VALUES ('5', 'r', 'r', 'r', '0', '1492165695', '1492165695');
+INSERT INTO `friend_link` VALUES ('6', 't', 't', 't', '0', '1492165707', '1492165707');
+INSERT INTO `friend_link` VALUES ('7', 'y', 'y', 'y', '0', '1492165727', '1492165727');
+INSERT INTO `friend_link` VALUES ('8', 'u', 'u', 'u', '0', '1492165736', '1492165736');
+INSERT INTO `friend_link` VALUES ('10', 'o', '7', 'o', '0', '1492165785', '1492165800');
 
 -- ----------------------------
 -- Table structure for `message`
@@ -412,20 +422,24 @@ INSERT INTO `message` VALUES ('12', '6', '4', '0', '0', '1492081518', '149208151
 -- ----------------------------
 DROP TABLE IF EXISTS `navigation`;
 CREATE TABLE `navigation` (
-  `id` int(10) NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `logo` varchar(50) NOT NULL,
-  `url` varchar(50) NOT NULL,
-  `status` int(10) unsigned NOT NULL,
-  `parent_id` int(10) unsigned NOT NULL,
-  `add_time` int(10) unsigned NOT NULL,
-  `update_time` int(10) unsigned NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL COMMENT '上级id',
+  `name` varchar(50) NOT NULL COMMENT '名称',
+  `logo` varchar(50) NOT NULL COMMENT '标志',
+  `url` varchar(50) NOT NULL COMMENT '地址',
+  `status` int(10) unsigned NOT NULL COMMENT '状态',
+  `add_time` int(10) unsigned NOT NULL COMMENT '增加时间',
+  `update_time` int(10) unsigned NOT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of navigation
 -- ----------------------------
+INSERT INTO `navigation` VALUES ('1', '0', 'q', 'q', 'q', '0', '1492231207', '1492231207');
+INSERT INTO `navigation` VALUES ('4', '0', 'erf', 'e', 'e', '0', '1492235928', '1492235942');
+INSERT INTO `navigation` VALUES ('3', '0', 'r', 'r', 'rg', '0', '1492231432', '1492231444');
+INSERT INTO `navigation` VALUES ('5', '1', 'q的子类', 'logo', 'url', '0', '1492236126', '1492236126');
 
 -- ----------------------------
 -- Table structure for `post`
@@ -463,23 +477,13 @@ CREATE TABLE `post_cate` (
   `add_time` int(11) NOT NULL COMMENT '添加时间',
   `update_time` int(11) NOT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of post_cate
 -- ----------------------------
-INSERT INTO `post_cate` VALUES ('1', '衣服', '0', '1', '1', '1', '1492138785', '1492152483');
-INSERT INTO `post_cate` VALUES ('2', 'sasa', '0', '', '7', '0', '1492151220', '1492225532');
-INSERT INTO `post_cate` VALUES ('3', 'das', '0', '', '2', '0', '1492153427', '1492153427');
-INSERT INTO `post_cate` VALUES ('4', 'asd', '0', '', '3', '0', '1492153528', '1492153528');
-INSERT INTO `post_cate` VALUES ('5', 'sss', '0', '', '4', '0', '1492154102', '1492163646');
-INSERT INTO `post_cate` VALUES ('6', '111aaa11', '3', '', '0', '0', '1492157151', '1492224958');
-INSERT INTO `post_cate` VALUES ('7', 'sad', '1', '', '2', '0', '1492157804', '1492157804');
-INSERT INTO `post_cate` VALUES ('8', 'das', '4', '', '3', '0', '1492157824', '1492157824');
-INSERT INTO `post_cate` VALUES ('9', 'sadas', '1', '', '1', '0', '1492221822', '1492221822');
-INSERT INTO `post_cate` VALUES ('10', 'qwe', '1', '', '1', '0', '1492222488', '1492240771');
-INSERT INTO `post_cate` VALUES ('11', 'AS', '0', '', '6', '0', '1492222506', '1492222551');
-INSERT INTO `post_cate` VALUES ('12', '小', '6', '', '0', '0', '1492225678', '1492225678');
+INSERT INTO `post_cate` VALUES ('1', '衣服', '0', '1', '0', '1', '1492138785', '1492152483');
+INSERT INTO `post_cate` VALUES ('2', 'sasa', '0', '', '0', '0', '1492151220', '1492151220');
 
 -- ----------------------------
 -- Table structure for `post_comment`
@@ -3993,7 +3997,7 @@ CREATE TABLE `user` (
   `last_logout` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `weibo_id` (`weibo_id`,`qq_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user
@@ -4001,7 +4005,6 @@ CREATE TABLE `user` (
 INSERT INTO `user` VALUES ('4', '', '18607401235', '', '', '/Public/images/artist_bg.jpg', '', '2016-07-06', '', '1111115', '', '', '0', '1471842619', '1472744818', '0', '', 'hilahi3', '1472744736', '0');
 INSERT INTO `user` VALUES ('6', '', '13861048971', '13861048971@163.com', '', 'http://os.blog.163.com/common/ava.s?b=1&host=wlb.wlb', '男', '2017-04-04', '', '', '', '', '0', '1492069146', '1492070306', '0', '其他原因', '撒嗒', '1492069146', '0');
 INSERT INTO `user` VALUES ('7', '', '12345678941', '', '', 'http://os.blog.163.com/common/ava.s?b=1&host=wlb.wlb', '男', '', '', '', '', '', '1', '1492071976', '1492079352', '0', '多次发布违禁类容', '生生世世', '1492071976', '0');
-INSERT INTO `user` VALUES ('8', '', '13861048974', '13861048971@163.com', '', 'C:\\Users\\Administrator\\Desktop\\images', '男', '2017-04-02', '', '', '', '', '1', '1492235857', '1492235857', '0', '', 'dsf', '1492235857', '0');
 
 -- ----------------------------
 -- Table structure for `user_msg`
