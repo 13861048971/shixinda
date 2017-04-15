@@ -18,30 +18,30 @@
 		<input type="text" class="form-control" name="name" placeholder="请输入分类名" value="{$cateName}" />
 		<input type="submit"  class="form-control btn-info" value="搜索">       			     
 	</form>
-	<table class="table table-striped user-list">
-		<tr>  
-		  <th>#</th>
-		  <th>下级个数</th>
-		  <th>名称</th>
-		  <th>状态</th>
-		  <th>排序</th> 
-		  <th>添加时间</th> 
-		  <th>更新时间</th> 
-		  <th>操作</th>
+	<table class="table table-striped user-list content-cate-table">
+		<tr> 
+		  <th></th>  
+		  <th class="content-cate-id">#</th>
+		  <th class="post-cate-name">名称</th>
+		  <th class="content-cate-rank">排序</th> 
+		  <th class="content-cate-status">状态</th>
+		  <th class="content-cate-addtime">添加时间</th> 
+		  <th class="content-cate-updatetime">更新时间</th> 
+		  <th class="content-cate-operation">操作</th>
 		</tr>
 		<foreach name="list" item="v">
 		<tr>
+			<td><if condition="$v['number'] gt 0"><span class="icon-add" data-id="{$v.id}" data-level="1"></span></if></td>
 			<td>{$v.id}</td>
-			<td>{$v.number}</td>
-			<td>{$v.name}</td>
-			<td>{$v.statusName}</td>
+			<td class="post-cate-name">{$v.name}</td>
 			<td>{$v.rank}</td>
+			<td>{$v.statusName}</td>
 			<td>{$v.addTime}</td>
 			<td>{$v.updateTime}</td>
 			<td class="handle">
 			    <a class="dialog add"  href="#" url="{:u('addContentChildren',array('id'=>$v['id'],'name'=>$v['name']))}">添加子类</a>|
-				<a class="dialog edit"  href="#" url="{:u('contentCateEdit','id=' . $v['id'])}">编辑</a>|
-				<a class="ajaxDel del" href="#" url="{:u('contentCateDel','id=' . $v['id'])}">删除</a>
+					<a class="dialog edit"  href="#" url="{:u('contentCateEdit','id=' . $v['id'])}">编辑</a>|
+					<a class="ajaxDel del" href="#" url="{:u('contentCateDel','id=' . $v['id'])}">删除</a>
 				
 			</td>
 		</tr>

@@ -121,3 +121,48 @@ $('.post-cate-table').on('click',function(e){
 		$(selector).remove();
 	}
 });
+$('.content-cate-table').on('click',function(e){
+	var _this=$(e.target);
+	var pid=_this.data('id');
+	if(_this[0].className=='icon-add'){
+		var url="/admin/content/contentCateChildren/pid/"+_this.data('id');
+		$.ajax({
+			url:url,
+			type:'get',
+			dataType:'json',
+			success:function(data){
+				var sub=data.data.list;
+				_this.removeClass('icon-add').addClass('icon-sub');
+
+				for(k in sub){
+					var html='<tr class="'+_this.parents('tr')[0].className+'pid'+sub[k].pid+' "><td>';
+					if(sub[k].number > 0){
+						html+='<span class="icon-add" data-id="'+sub[k].id+'" data-level="'+(_this.data('level')+1)+'"></span>';
+					}
+
+					html+='</td><td>'+sub[k].id+'</td><td class="post-cate-name">';
+
+					for(var i=0;i<_this.data('level');i++){
+						html+='&nbsp;&nbsp;&nbsp;&nbsp;';
+					}
+
+					html+=sub[k].name+'</td><td>'+sub[k].rank+'</td>';
+
+					if(sub[k].statusName > 0){
+						html+='<td class="green">显示</td>';
+					}else{
+						html+='<td>禁用</td>';
+					}
+					
+					html+='<td>'+sub[k].addTime+'</td><td>'+sub[k].updateTime+'</td><td width=200 class="handle"><a class="dialog add" dialog-lg="true" href="#" url="/admin/content/addContentChildren/id/'+sub[k].id+'/name/'+sub[k].name+'">添加子类</a>| <a class="dialog edit" dialog-lg="true" href="#" url="/admin/content/contentCateEdit/id/'+sub[k].id+'">编辑</a>| <a class="ajaxDel del" href="#" url="/admin/content/contentCateDel/id/'+sub[k].id+'">删除</a></td></tr>';
+					console.log(html);
+					_this.parents('tr').after(html);
+				}
+			}
+		})
+	}else if(_this[0].className=='icon-sub'){
+		_this.removeClass('icon-sub').addClass('icon-add');
+		selector='.pid'+pid;
+		$(selector).remove();
+	}
+});
