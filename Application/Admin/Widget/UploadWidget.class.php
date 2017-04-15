@@ -17,6 +17,11 @@ class UploadWidget extends Controller{
 	
 	/**
 	 * 上传图片
+	 * @param string $name input中name属性值
+	 * @param string $label input前中文名称
+	 * @param string $path input 中的value值
+	 * @param string $req 判断值是否为必填项
+	 * 
 	 */
 	public function img($name, $label=null , $path=null,$req=false, $type = 'image'){
 		$img = self::$img;

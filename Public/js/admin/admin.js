@@ -101,7 +101,7 @@ $('.post-cate-table').on('click',function(e){
 						html+='&nbsp;&nbsp;&nbsp;&nbsp;';
 					}
 
-					html+=sub[k].name+'</td><td>'+sub[k].deep+'</td>';
+					html+=sub[k].name+'</td><td>'+sub[k].rank+'</td>';
 
 					if(sub[k].status > 0){
 						html+='<td class="green">显示</td>';

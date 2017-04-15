@@ -23,13 +23,13 @@
 
 
 后台功能：
-	tdk表 : 搜索引擎优化表
+	tdk表 : 搜索引擎优化表 (tdk) id type node_id title keywords descripation add_time update_time
 	
 	内容管理
-		导航管理 id  name logo url status parent_id add_time update_time    
-		内容列表 id cat_id title content author status publish_time add_time update_time
-		内容分类 id name  deep status publish_time add_time update_time 
-		友情连接 id  name logo url  status add_time update_time
+		导航管理 (navigation)id  name logo url status parent_id add_time update_time    
+		内容列表 (content)id cat_id title content author status publish_time add_time update_time
+		内容分类 (content_cate)id name  deep status publish_time add_time update_time 
+		友情连接 (friend_link)id  name logo url  status add_time update_time
 	用户管理
 		用户列表 (user) 		id name mobile email password avatar gender birthday introduction weixin_id qq_id weibo_id status add_time update_time 
 		用户评论 (comment) 		id user_id type node_id title content pid add_time update_time
@@ -45,6 +45,13 @@
 		网站logo
 		微信二维码
 		备案信息
+		
+		模型里的常用五个方法
+		getInfo($id)  是用来实现编辑查询的针对的是单个
+		getList($con) 是用来实现条件查询的，针对的是多个
+		getPageList($con, $fields = 'id',$order = 'id desc', $perNum = 10) 用来分页查询的，可以和getList配合使用
+		edit($data, $id=null)  用来编辑和添加信息的
+		parseRow($arr)用来格式化参数的
 		
 		
 
