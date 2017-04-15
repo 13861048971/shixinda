@@ -159,6 +159,7 @@ class PostCateModel extends BaseModel{
 		    if(!$v && $v !== '0' )
 		        unset($con[$k]);
 		}
+		
         $list = $this->where($con)->order($order)->select();
         foreach($list as $k=>$v){
             $list[$k] = $this->parseRow($v);

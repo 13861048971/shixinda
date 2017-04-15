@@ -383,7 +383,7 @@ class UserController extends PublicController {
 	        'dialog-lg'=>true, 'url' => u('postCateEdit') ]]);
 	    $con = $_GET;
 	    $con['pid'] = 0;
-	    $list = d('postCate')->getList($con);
+	     $list = d('postCate')->getList($con,'15', 'id');
 	    $this->assign('list',$list);
 	    $this->assign('search', $_GET);
 	    $this->display();
@@ -391,12 +391,10 @@ class UserController extends PublicController {
 	//子类显示
 	public function postCateChildren(){
 	    $con = $_GET;
-	    $list = d('postCate')->getList($con);
+        $list = d('postCate')->getList($con);
 	    ajaxReturn(0,'',array('list'=>$list));
 	}
-
-
-	     	
+  	
 	//帖子分类编辑
 	public function postCateEdit(){
 	    $this->ajaxEdit('postCate',null, function(&$row, $mod){
@@ -406,7 +404,6 @@ class UserController extends PublicController {
 	           $data = d('postCate')->where(['id'=>$con['pid']])->find();
 	        }else{
 	           $info = d('postCate')->where(['id'=>$con['id']])->find();
-	           
 	           $data = d('postCate')->where(['id'=>$info['pid']])->find();
 	       }
 	        
