@@ -42,11 +42,9 @@ class ContentController extends PublicController {
 	    $this->setRightAction($rightBtn);
         $data = d('contentCate')->getPageList(['p'=>$_GET['p'],'name'=>$_GET['name'],'pid'=>'0']);
         $this->assign($data);
-        //dump($data);exit();
         $this->assign('cateName',$_GET['name']);
         $this->assign('list',$data['list']);
-        $this->display('contentCate','list');
-        
+        $this->display('contentCate','list');     
 	}
 	
 	//内容分类获取子类
@@ -123,16 +121,14 @@ class ContentController extends PublicController {
 	}
 	
 	//添加导航子类
-	public function navigationChildren(){
+	public function navigationChildrenEdit(){
 	    $this->ajaxEdit('navigation', null, function($row, $mod){
 	        $name = $_GET['name'];
-	        $id = $_GET['id'];
-	        $data = ['name'=>$name,'id'=>$id];
+	        $id = $_GET['pid'];
+	        $parent = ['name'=>$name,'id'=>$id];
 	        //dump($data);exit();
-	        $this->assign('data',$data);
-	    });	    
-	    
-	    
+	        $this->assign('parent',$parent);
+	    });	        
 	}
 	
 	//导航管理删除

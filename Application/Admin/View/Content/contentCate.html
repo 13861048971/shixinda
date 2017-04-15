@@ -35,7 +35,7 @@
 			<td>{$v.id}</td>
 			<td class="post-cate-name">{$v.name}</td>
 			<td>{$v.rank}</td>
-			<td>{$v.statusName}</td>
+			<td <if condition="$v['status'] eq 1"> class="green"</if>>{$v.statusName}</td>
 			<td>{$v.addTime}</td>
 			<td>{$v.updateTime}</td>
 			<td class="handle">

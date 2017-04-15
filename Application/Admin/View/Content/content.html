@@ -1,19 +1,5 @@
 <include file="Public:header" />
 <div class="table-responsive shrink user">
-	<!-- <form class="form-inline search clearfix">
-	  <if condition="$timeArr">
-		<div class="pull-left time-buttons">
-		  <foreach name="timeArr" item="v">
-			<a class="{$v['cur']?"cur":""}" href="{$v.url}">{$v.name}</a>
-		  </foreach>
-		{:w('form/node', $selectDate)}
-		</div>
-	  </if>
-		<div class="btn-group pull-right">
-		<input  class="form-control" name="keywords" type="text" placeholder="手机号或者昵称搜索" value="{$search.keywords}" >
-		<button  class="form-control btn-info" >搜索</button>
-		</div>
-	</form> -->
 	<form action="" class="form-inline search clearfix" method="GET">
 		<input type="text" class="form-control" name="title" placeholder="请输入标题" value="{$contentTitle}" />
 		<input type="submit"  class="form-control btn-info" value="搜索">       			     
@@ -36,8 +22,8 @@
 			<td>{$v.cateName}</td>
 			<td>{$v.title}</td>
 			<td>{$v.author}</td>
-			<td>{$v.statusName}</td>
-			<td>{$v.publish_time}</td>
+			<td <if condition="$v['status'] eq 1"> class="green"</if>> {$v.statusName}</td>
+			<td>{$v.publishTime}</td>
 			<td>{$v.addTime}</td>
 			<td>{$v.updateTime}</td>
 			<td class="handle">

@@ -15,13 +15,13 @@
     <div class="form-group">
       <label class="col-sm-2 control-label"><b class="red">*</b>状态:</label>
       <div class="col-sm-5">
-        {:w('select/index', $statusList)}
+        {:w('select/radio', $statusList)}
       </div>
     </div>
     <div class="form-group">
-      <label class="col-sm-2 control-label">排序:</label>
+      <label class="col-sm-2 control-label"><b class="red">*</b>排序:</label>
       <div class="col-sm-5">
-      <input name="order" type="text" required class="form-control" value="{$row.order}">	
+      <input name="rank" type="text" required class="form-control" placeholder="排序默认为0" value="{$row.rank}">	
       </div>
     </div>
       <div class="col-sm-offset-2 col-sm-10">

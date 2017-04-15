@@ -29,7 +29,7 @@ class ContentModel extends BaseModel {
 	    $cateRow = d('contentCate')->where([ 'id'=>$v['cate_id'] ])->find();
 	    $v['cateName'] = $cateRow['name'];
 	    $v['statusName'] = $this->statusArr[$v['status']];
-	    //$v['publishTime'] = date("Y-m-d H:i:s",$v['publish_time']);
+	    $v['publishTime'] = date("Y-m-d H:i:s",$v['publish_time']);
 	    $v['updateTime'] = date("Y-m-d H:i:s",$v['update_time']);
 	    $v['addTime'] = date("Y-m-d H:i:s",$v['add_time']);
 	    return $v;
