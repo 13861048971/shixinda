@@ -1,5 +1,5 @@
 <span class="select-user">
-	<input class="user-input form-control" type="text" placeholder="输入用户名称" value="{$user.username}" autocomplete="off"  />
+	<input class="user-input form-control" type="text" placeholder="输入用户名称" value="{$user.nickname}" autocomplete="off"  />
 	<input name="{$name}" value="{$user.id}" type="hidden" />
 	<ul></ul>
 <style>
@@ -22,12 +22,12 @@ $(function(){
 	selectUser.off('keyup').on('keyup', function(){
 		ul.html('');
 		var name = $.trim($(this).val());
-		$.get("/Admin/User/index",{username:name}, function(info){
+		$.get("/Admin/User/index",{nickname:name}, function(info){
 			if(!info.data)
 				return ul.html('<div>没有此用户!</div>')
 			var listr = '';
 			foreach(info.data, function(v){
-				listr += '<li uid="'+ v.id +'">'+v.username+'</li>';
+				listr += '<li uid="'+ v.id +'">'+v.nickname+'</li>';
 			});
 			ul.html(listr);
 		}, 'json');

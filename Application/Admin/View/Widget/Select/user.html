@@ -1,6 +1,6 @@
 <span class="select-user">
-	<input class="form-control user-input" type="text" placeholder="输入用户名称" value="{$user.username}" autocomplete="off" />
-	<input name="user_id" value="{$user.id}" type="hidden" username="{$user.username}" />
+	<input class="form-control user-input" type="text" placeholder="输入用户名称" value="{$user.nickname}" autocomplete="off" />
+	<input name="user_id" value="{$user.id}" type="hidden" nickname="{$user.nickname}" />
 	<ul></ul>
 <style>
 	.select-user{position:relative;display:inline-block;}
@@ -22,12 +22,12 @@ $(function(){
 	selectUser.off('keyup').on('keyup', function(){
 		ul.html('');
 		var name = $.trim($(this).val());
-		$.get("/Admin/User/index",{username:name}, function(info){
+		$.get("/Admin/User/index",{nickname:name}, function(info){
 			if(!info.data)
 				return ul.html('<div>没有此用户!</div>')
 			var listr = '';
 			foreach(info.data, function(v){
-				listr += '<li uid="'+ v.id +'" username="'+ v.username +'">'+v.username+'</li>';
+				listr += '<li uid="'+ v.id +'" nickname="'+ v.nickname +'">'+v.nickname+'</li>';
 			});
 			ul.html(listr);
 		}, 'json');
@@ -43,11 +43,11 @@ $(function(){
 			var li = $(this);
 			var text = $.trim(li.text());
 			if(v != text) return true;
-			uidInp.val(li.attr('uid')).attr('username', li.attr('username'));
+			uidInp.val(li.attr('uid')).attr('nickname', li.attr('nickname'));
 			return false;
 		});
 		
-		if(!v || v != uidInp.attr('username')){
+		if(!v || v != uidInp.attr('nickname')){
 			uidInp.val('');
 			ul.hide();
 			return 
@@ -61,7 +61,7 @@ $(function(){
 		if(!uid) return;
 		var input = ul.prev().val(uid).prev();
 		input.val($(this).text());
-		input.attr('username', $(this).attr('username'));
+		input.attr('nickname', $(this).attr('nickname'));
 	}).on('mouseover',function(){
 		ulover = true;
 	}).on('mouseout',function(){
