@@ -25,7 +25,6 @@
 		  <th>logo</th>
 		  <th>链接地址</th> 
 		  <th>状态</th>
-		  <th>父级id</th>
 		  <th>操作</th>
 		</tr>
 		<foreach name="list" item="v">
@@ -35,8 +34,8 @@
 			<td>{$v.logo}</td>
 			<td>{$v.url}</td>
 			<td>{$v.statusName}</td>
-			<td>{$v.parent_id}</td>
 			<td class="handle">
+			    <a class="dialog add" href="#" url="{:u('navigationChildren',array('name'=>$v['name'],'id'=>$v['id']))}">添加子类</a>
 				<a class="dialog edit"  href="#" url="{:u('navigationEdit','id=' . $v['id'])}">编辑</a>|
 				<a class="ajaxDel del" href="#" url="{:u('navigationDel','id=' . $v['id'])}">删除</a>
 			</td>

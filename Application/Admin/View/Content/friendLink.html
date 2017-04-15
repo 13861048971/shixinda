@@ -24,7 +24,7 @@
 		  <th>连接名</th>
 		  <th>logo</th>
 		  <th>链接地址</th> 
-		  <th>状态</th>
+		  <th>排序</th>
 		  <th>操作</th>
 		</tr>
 		<foreach name="list" item="v">
@@ -33,7 +33,7 @@
 			<td>{$v.name}</td>
 			<td>{$v.logo}</td>
 			<td>{$v.url}</td>
-			<td>{$v.statusName}</td>
+			<td>{$v.rank}</td>
 			<td class="handle">
 				<a class="dialog edit"  href="#" url="{:u('friendLinkEdit','id=' . $v['id'])}">编辑</a>|
 				<a class="ajaxDel del" href="#" url="{:u('friendLinkDel','id=' . $v['id'])}">删除</a>

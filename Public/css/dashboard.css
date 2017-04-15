@@ -470,6 +470,10 @@ table td.right{text-align:right;}
   padding: 0;
   vertical-align: middle;
 }
+.post-cate-table>tbody>tr .post-cate-name{
+  text-align: left;
+  width: 200px;
+}
 .post-cate-table .icon-add{
   display: inline-block;
   width: 15px;

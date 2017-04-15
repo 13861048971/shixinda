@@ -91,12 +91,12 @@ $('.post-cate-table').on('click',function(e){
 				_this.removeClass('icon-add').addClass('icon-sub');
 
 				for(k in sub){
-					var html='<tr class="pid'+sub[k].pid+'"><td>';
+					var html='<tr class="'+_this.parents('tr')[0].className+'pid'+sub[k].pid+' "><td>';
 					if(sub[k].num > 0){
 						html+='<span class="icon-add" data-id="'+sub[k].id+'" data-level="'+(_this.data('level')+1)+'"></span>';
 					}
 
-					html+='<td>'+sub[k].id+'</td><td>';
+					html+='</td><td>'+sub[k].id+'</td><td class="post-cate-name">';
 
 					for(var i=0;i<_this.data('level');i++){
 						html+='&nbsp;&nbsp;&nbsp;&nbsp;';
@@ -105,9 +105,9 @@ $('.post-cate-table').on('click',function(e){
 					html+=sub[k].name+'</td><td>'+sub[k].rank+'</td>';
 
 					if(sub[k].status > 0){
-						html+='<td class="green">显示</td>'
+						html+='<td class="green">显示</td>';
 					}else{
-						html+='<td>不显示</td>'
+						html+='<td>不显示</td>';
 					}
 					
 					html+='<td>'+sub[k].addTime+'/'+sub[k].updateTime+'</td><td width=200 class="handle"><a class="dialog add" dialog-lg="true" href="#" url="/admin/user/postCateEdit/pid/'+sub[k].id+'">添加子类</a><a class="dialog edit" dialog-lg="true" href="#" url="/admin/user/postCateEdit/id/'+sub[k].id+'">编辑</a><a class="ajaxDel del" href="#" url="/admin/user/postCateDel/id/'+sub[k].id+'">删除</a></td></tr>';

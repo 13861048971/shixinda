@@ -225,17 +225,6 @@ class PublicController extends Controller {
 		ajaxReturn(0, '',	['content'=>$this->fetch($template)]);
 	}
 	
-	//查找
-	protected function ajaxCateEdit($modName, $template, $callback = null){
-        $mod = d($modName);
-	    if($id = (int)$_GET['id']){
-			$row = $mod->getInfo($id);
-			$this->assign('row', $row);
-			if(is_callable($callback))
-			    $callback($row, $mod);
-			ajaxReturn(0, '',	['content'=>$this->fetch($template)]);
-		}
-	}
 	//检测权限
 	function checkPermission(){
 		return true;

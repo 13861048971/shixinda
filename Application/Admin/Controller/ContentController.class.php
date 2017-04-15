@@ -18,9 +18,7 @@ class ContentController extends PublicController {
         ];
         $this->setRightAction($rightBtn);
         $data = d('content')->getPageList($_GET);
-       
         $this->assign($data); 
-        
         $this->assign('contentTitle',$_GET['title']);
         $this->display('content','list');
     }
@@ -42,10 +40,13 @@ class ContentController extends PublicController {
 	        ['name' => '添加内容','url'=>u('contentCateEdit'), 'dialog' => 1, 'dialog-lg' => 1 ]
 	    ];
 	    $this->setRightAction($rightBtn);
-        $data = d('contentCate')->getPageList($_GET);
+        $data = d('contentCate')->getPageList(['p'=>$_GET['p'],'name'=>$_GET['name'],'pid'=>'0']);
         $this->assign($data);
+        //dump($data);exit();
         $this->assign('cateName',$_GET['name']);
+        $this->assign('list',$data['list']);
         $this->display('contentCate','list');
+        
 	}
 	
 	//分类编辑
@@ -55,12 +56,13 @@ class ContentController extends PublicController {
 	    });
 	}
 	
-	//添加子类
-	public function addChildren(){
+	//添加内容子类
+	public function contentChildren(){
 	    $this->ajaxEdit('contentCate', null, function($row, $mod){
-	        $pname = $_GET['pname'];
-	        $pid = $_GET['pid'];
-	        $data = ['name'=>$pname,'id'=>$pid];
+	        $name = $_GET['name'];
+	        $id = $_GET['id'];
+	        $data = ['name'=>$name,'id'=>$id];
+	        //dump($data);exit();
 	        $this->assign('data',$data);
 	    });
 	}
@@ -73,7 +75,7 @@ class ContentController extends PublicController {
 	//友情连接
 	public function friendLink(){
 	    $rightBtn = [
-	        ['name' => '添加内容','url'=>u('friendLinkEdit'), 'dialog' => 1, 'dialog-lg' => 1 ]
+	        ['name' => '添加新连接', 'url'=> u('friendLinkEdit'), 'dialog' => 1, 'dialog-lg' => 1 ]
 	    ];
 	    $this->setRightAction($rightBtn);
 	    $data = d('friendLink')->getPageList($_GET);
@@ -96,7 +98,7 @@ class ContentController extends PublicController {
 	//导航管理
 	public function navigation(){
 	    $rightBtn = [
-	        ['name' => '添加内容','url'=>u('navigationEdit'), 'dialog' => 1, 'dialog-lg' => 1 ]
+	        ['name' => '添加新导航','url'=> u('navigationEdit'), 'dialog' => 1, 'dialog-lg' => 1 ]
 	    ];
 	    $this->setRightAction($rightBtn);
 	    $data = d('navigation')->getPageList($_GET);
@@ -109,6 +111,19 @@ class ContentController extends PublicController {
 	public function navigationEdit(){
 	    $this->ajaxEdit('navigation', null, function($row, $mod){
 	    });
+	}
+	
+	//添加导航子类
+	public function navigationChildren(){
+	    $this->ajaxEdit('navigation', null, function($row, $mod){
+	        $name = $_GET['name'];
+	        $id = $_GET['id'];
+	        $data = ['name'=>$name,'id'=>$id];
+	        //dump($data);exit();
+	        $this->assign('data',$data);
+	    });	    
+	    
+	    
 	}
 	
 	//导航管理删除

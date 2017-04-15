@@ -1,6 +1,7 @@
 <?php
 use Think\Model;
 class ContentModel extends BaseModel {
+    
     public $statusArr = [  //可选的状态
         0 => '禁用',
         1 => '启用'
@@ -25,8 +26,10 @@ class ContentModel extends BaseModel {
 	}
 	//格式化行
 	public function parseRow($v){
+	    $cateRow = d('contentCate')->where([ 'id'=>$v['cate_id'] ])->find();
+	    $v['cateName'] = $cateRow['name'];
 	    $v['statusName'] = $this->statusArr[$v['status']];
-	    $v['publishTime'] = date("Y-m-d H:i:s",$v['publish_time']);
+	    //$v['publishTime'] = date("Y-m-d H:i:s",$v['publish_time']);
 	    $v['updateTime'] = date("Y-m-d H:i:s",$v['update_time']);
 	    $v['addTime'] = date("Y-m-d H:i:s",$v['add_time']);
 	    return $v;
