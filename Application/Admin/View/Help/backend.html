@@ -76,11 +76,55 @@
 	“删除” 		ajaxDel
 
 4.使用挂件已经实现的功能
-	图片上传 		select/image
+	图片上传 		upload/img  
+	方法及参数			img($name, $label=null , $path=null,$req=false, $type = 'image')
+						{
+					
+						 * @param string $name input中name属性值
+						 * @param string $label input前中文名称
+						 * @param string $path input 中的value值
+						 * @param string $req 判断值是否为必填项
+						 * @param string $type 定义图片保存的文件夹名称
+						}
+						
 	radio			select/radio
+	方法及参数			radio($data)
+						{	
+						* @param array $data 选择按钮的信息
+						举例:$data = ['list'=> ['男'=>'男','女'=>'女'], 'name'=>'gender', 'checked'=>$row['gender']]
+							{
+							* @param array $data['list'] 是模型里取的信息
+							* @param string 'name'是字段名，同时也是radio的name值
+							* @param 'checked' 是radio的value值，是从list数组中获取的键值
+							}
+						}
+						
 	select			select/select
+	方法及参数			select($data)
+						{	
+						* @param array $data 选择框的信息
+						举例:$data = [[ 'name'=>'type', 'list' => $mod->typeArr]]
+							{
+							* @param array $data['list'] 是模型里定义好或者取数据库的信息
+							* @param string 'name'是字段名，同时也是select的name值
+							* @param option的value值是从list数组中获取的键值
+							}
+						}
+						
 	checkbox		select/checkbox
-	富文本框		edit/index
+	
+	
+	方法及参数			checkbox($data)
+						{	
+						* @param array $data 选择按钮的信息
+						* @param array $data['list'] 是模型里定义好或者取数据库的信息
+						* value值是从list数组中获取
+						* list的结构是:[['name'=>'', 'value'=>'value',checked=>true],['']]
+						}
+						
+						
+	
+	富文本框		edit/index 在textarea 的class属性添加"kind-editor"
 	日期选择控件  	在input 的class属性添加“lay-data”
 	</pre>	
 </div>

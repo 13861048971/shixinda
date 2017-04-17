@@ -35,6 +35,7 @@ function dialog(idName, callback){
 		renderEditor(th.modalNode);			//编辑器
 		album(th.modalNode.find('.album'));	//相册
 		initLayDate(th.modalNode.find('.lay-date'));
+		setTimeout(initMultiSelect,500);
 	};
 	this.hide = function(){
 		modalNode.modal('hide');
@@ -82,3 +83,10 @@ function dialog(idName, callback){
 	});
 }
 (new dialog());
+function initMultiSelect(){
+	console.log($('.multi-level-select')[0]);
+	$('.multi-level-select').on('change',function(e){
+		multiLevel($(e.target));
+		console.log(1);
+	});
+}

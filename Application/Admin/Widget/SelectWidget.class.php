@@ -63,7 +63,9 @@ class SelectWidget extends Controller{
 	
 	/**
 	 * 生成radio
-	 **/
+	 * @param array $data 选择按钮的信息
+	 * 
+	 */
 	function radio($data){
 		if(!$data['name'] || !$data['list'] || !is_array($data['list'])){
 			return;
@@ -124,7 +126,29 @@ class SelectWidget extends Controller{
 		if($data['return']) return $str;
 		echo $str;
 	}
-
+// 	<div data-url="/admin/content/navigationChildren/pid/" class="multi-level-select">
+// 	<select class="form-control">
+// 	<option value="">请选择</option>
+// 	<foreach name="list" item="v">
+// 	<option value="{$v.id}">{$v.name}</option>
+// 	</foreach>
+// 	</select>
+// 	</div>
+	/**
+	 * select多级下拉框
+	 * @param array $data 包含分类信息和url连接
+	 */
+	function selectMuti($data){
+	    $str = '';
+	    $str .= '<div data-url="'.$data['url'].'"class="multi-level-select">';
+	    $str .='<select class="form-control">';
+	    $str .='<option value="">请选择</option>';
+	    foreach ($data['list'] as $k=>$v){
+	        $str .='<option value="'.$v["id"].'">'.$v["name"].'</option>';
+	    }
+	    $str .='</select></div>';
+	    echo $str;
+	}
 	/**
 	 * 选择地区
 	 */

@@ -86,8 +86,8 @@ class UserController extends PublicController {
     //编辑/添加用户
 	public function edit(){
 		$this->ajaxEdit('user', null, function($row, $mod){
-			$sexList = [['list'=> d('user')->genderArr, 'name'=>'gender', 'checked'=>$row['gender']]];
-			$this->assign('sexList', $sexList);
+			$genderList = [['list'=> d('user')->genderArr, 'name'=>'gender', 'checked'=>$row['gender']]];
+			$this->assign('genderList', $genderList);
 		});
 	}
 	//删除用户
@@ -249,7 +249,16 @@ class UserController extends PublicController {
 	public function postEdit(){
 	    $this->ajaxEdit('post',null, function($row, $mod){
 	        
+	        $con = $_GET;
+	        $postCateInfo = d('postCate')->getList($con);
+	        $url = "/admin/user/postCateChildren/pid/";
+	        $selectMuti = [
+	            "list" => $postCateInfo,
+	            "url" => $url
+	        ];
+	        $this->assign('selectMuti',$selectMuti);
 	    });
+	    
 	}
 	
 	//帖子删除
@@ -329,7 +338,7 @@ class UserController extends PublicController {
 	           $info = d('postCate')->where(['id'=>$con['id']])->find();
 	           $data = d('postCate')->where(['id'=>$info['pid']])->find();
 	       }
-	        
+	       
 	        $this->assign('pname',$data);
 	    });
 	    
