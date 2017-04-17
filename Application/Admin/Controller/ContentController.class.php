@@ -64,7 +64,7 @@ class ContentController extends PublicController {
 	}
 	
 	//添加内容子类
-	public function addContentChildren(){
+	public function contentChildrenEdit(){
 	    $this->ajaxEdit('contentCate', null, function($row, $mod){
 	        $name = $_GET['name'];
 	        $id = $_GET['id'];
@@ -108,10 +108,19 @@ class ContentController extends PublicController {
 	        ['name' => '添加新导航','url'=> u('navigationEdit'), 'dialog' => 1, 'dialog-lg' => 1 ]
 	    ];
 	    $this->setRightAction($rightBtn);
-	    $data = d('navigation')->getPageList($_GET);
+	    $data = d('navigation')->getPageList(['p'=>$_GET['p'],'name'=>$_GET['name'],'pid'=>'0']);
 	    $this->assign($data);
 	    $this->assign('navigationName',$_GET['name']);
 	    $this->display('navigation','list');
+	}
+	
+	//导航管理子类获取
+	public function navigationChildren($pid){
+	    $data = d('navigation')->getPageList(['pid'=>$pid]);
+	    $this->assign($data);
+	    $list = $data['list'];
+	    ajaxReturn(0,'子类获取成功',['list'=>$list]);
+	
 	}
 	
 	//导航管理编辑
