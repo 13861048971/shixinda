@@ -32,7 +32,7 @@
 		    <td>{$v.id}</td>
 			<td>{$v.name}</td>
 			<td><img src="{$v.logo}" width=25></td>
-			<td>{$v.url}</td>
+			<td><a href="{$v.url}" target="_blank">{$v.url}</a></td>
 			<td>{$v.rank}</td>
 			<td class="handle">
 				<a class="dialog edit"  href="#" url="{:u('friendLinkEdit','id=' . $v['id'])}">编辑</a>|

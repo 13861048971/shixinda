@@ -187,7 +187,7 @@ $('.navigation-table').on('click',function(e){
 					for(var i=0;i<_this.data('level');i++){
 						html+='&nbsp;&nbsp;&nbsp;&nbsp;';
 					}
-					html+=sub[k].name+'</td><td><img src="'+sub[k].logo+'" width=25></td><td>'+sub[k].url+'</td>';
+					html+=sub[k].name+'</td><td><img src="'+sub[k].logo+'" width=25></td><td><a href="'+sub[k].url+'" target="_blank">'+sub[k].url+'</a></td>';
 					if(sub[k].status > 0){
 						html+='<td class="green">'+sub[k].statusName+'</td>';
 					}else{

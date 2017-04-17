@@ -41,7 +41,7 @@
 		  <td><if condition="$v['num'] gt 0"><span class="icon-add" data-id="{$v.id}" data-level="1"></span></if>	</td>
 			<td class="post-cate-name">{$v.name}</td>
 			<td><img src={$v.logo} width=25></td>
-			<td>{$v.url}</td>
+			<td><a href="{$v.url}" target="_blank">{$v.url}</a></td>
 			<td <if condition="$v['status'] eq 1"> class="green"</if>>{$v.statusName}</td>
 			<td>{$v.rank}</td>
 			<td class="handle">
