@@ -49,11 +49,12 @@ class ContentController extends PublicController {
 	
 	//内容分类获取子类
 	public function contentCateChildren($pid){
-	    $data = d('contentCate')->getPageList(['pid'=>$pid]);
+	    $data = d('contentCate')->getList(['pid'=>$pid]);
+	    dump($data);exit();
 	    $this->assign($data);
 	    $list = $data['list'];
 	    ajaxReturn(0,'子类获取成功',['list'=>$list]);
-	
+	    
 	}
 	
 	//分类编辑

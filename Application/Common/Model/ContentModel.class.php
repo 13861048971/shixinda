@@ -40,6 +40,7 @@ class ContentModel extends BaseModel {
 	    $data['actions'] && $data['actions'] = serialize($data['actions']);
 	    if($id){
 	        $data['update_time'] = time();
+	        
 	        $return  = $this->data($data)->where('id=' . (int)$id)->save();
 	        if(false === $return){
 	            $this->lastError = '修改失败!';
@@ -49,6 +50,8 @@ class ContentModel extends BaseModel {
 	    }
 	
 	    $data['update_time'] = $data['add_time'] = time();
+	    $cateRow = d('contentCate')->where(['name'=>$data['cateName']])->find();
+	    $data['cate_id'] = $cateRow['id'];
 	    if(!$this->create($data))
 	        return false;
 	
