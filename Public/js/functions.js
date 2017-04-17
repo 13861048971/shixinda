@@ -1159,7 +1159,7 @@ function multiLevel(node){
 				}
 				html+='</select>';
 				node.after(html);
-//			}
+			}
 		}
 	});
 }
