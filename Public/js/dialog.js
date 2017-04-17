@@ -83,4 +83,10 @@ function dialog(idName, callback){
 	});
 }
 (new dialog());
-
+function initMultiSelect(){
+	console.log($('.multi-level-select')[0]);
+	$('.multi-level-select').on('change',function(e){
+		multiLevel($(e.target));
+		console.log(1);
+	});
+}

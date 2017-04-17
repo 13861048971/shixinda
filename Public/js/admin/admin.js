@@ -71,7 +71,6 @@
 				form.submit();
 		},200);
 	});
-	$('.multi-level-select')[0] && initMultiSelect();
 })();
 $(function(){
 	renderEditor();
@@ -206,6 +205,6 @@ $('.navigation-table').on('click',function(e){
 		$(selector).remove();
 	}
 });
-// $('.multi-level-select').on('change',function(e){
-// 	multiLevel($(e.target));
-// });
+$('.multi-level-select').on('change',function(e){
+	multiLevel($(e.target));
+});

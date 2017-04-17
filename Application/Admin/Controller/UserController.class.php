@@ -250,6 +250,7 @@ class UserController extends PublicController {
 	    $this->ajaxEdit('post',null, function($row, $mod){
 	        
 	        $con = $_GET;
+	        (int)$con['pid'] = '0';
 	        $postCateInfo = d('postCate')->getList($con);
 	        $url = "/admin/user/postCateChildren/pid/";
 	        $selectMuti = [
