@@ -86,7 +86,7 @@ class UserController extends PublicController {
     //编辑/添加用户
 	public function edit(){
 		$this->ajaxEdit('user', null, function($row, $mod){
-			$sexList = [['list'=> d('user')->sexArr, 'name'=>'sex', 'checked'=>$row['sex']]];
+			$sexList = [['list'=> d('user')->genderArr, 'name'=>'gender', 'checked'=>$row['gender']]];
 			$this->assign('sexList', $sexList);
 		});
 	}
@@ -104,7 +104,7 @@ class UserController extends PublicController {
 	}
 	//小黑屋
 	public function hei(){
-		$_GET['status'] = 1;
+		$_GET['status'] = 0;
 		$this->index('', false);
 	}
 
@@ -122,7 +122,7 @@ class UserController extends PublicController {
 		}
 		
 		$this->ajaxEdit('user', null, function(&$row, $mod){
-			$row['status'] = 1;
+			$row['status'] = 0;
 			$this->assign('blockArr', $mod->blockArr);
 		});
 	}
@@ -153,24 +153,6 @@ class UserController extends PublicController {
 		$this->display('phoList');
 	}
 
-	//变更摄影师认证
-	public function phoChange(){
-		$mod 	= d('pho');
-		if(IS_POST){
-			$status = (int)$_POST['status'];
-			$id 	= (int)$_POST['id'];
-			$verify_note = $_POST['verify_note']; 
-			if(!$mod->change($id, $status, $verify_note))
-				return ajaxReturn(1, $mod->getError().'操作失败!');
-			
-			return ajaxReturn(0,'操作成功!');
-		}
-		
-		$this->ajaxEdit('pho', null, function(&$row, $mod){
-			$row['status'] = 2;
-			$this->assign('unpassArr', $mod->unpassArr);
-		});
-	}
 	//头部时间选择
 	private function setTimeArr($field = 'add_time', $showTimeArr = true){
 		if(!$showTimeArr) return;
@@ -229,63 +211,6 @@ class UserController extends PublicController {
 		$this->assign('user', $user);
 		$this->display('userDetail');
 	}	
-	
-	function report(){
-		$con = $_GET;
-		$mod = d('report');
-		$data = $mod->getPageList($con);
-		$this->assign($data);
-		$this->display();
-	}
-	function reportDel(){
-		$this->ajaxDel('report');
-	}
-	
-	//评论列表
-	public function feedback(){
-		$search['title'] = trim($_GET['title']);
-		$search['username'] = trim($_GET['username']);
-		$feedbackMod = d('Feedback');
-		$res = $feedbackMod->getPageTopicList(0, $search);
-		
-		$rightAction[]  = ['name'=>'添加评论',
-			'url'=>u('feedbackEdit'), 'dialog' => true];
-		$this->setRightAction($rightAction);
-		$this->assign('list', $res['list']);
-		$this->assign('page', $res['pageVar']);
-		$this->assign('search', $_GET);
-		$this->display();
-	}
-	
-	//编辑评论
-	public function feedbackEdit(){
-		if($_POST){
-			$data = $_POST;
-			$feedbackMod = d('Feedback');
-			if($feedbackMod->edit($data, (int)$data['id']))
-				return $this->success('编辑成功!');
-			
-			return $this->error('编辑失败!'. $feedbackMod->lastError);
-		}
-		
-		$id = (int)$_GET['id'];
-		$feedbackMod = d('Feedback');
-		$topic = $feedbackMod->getInfo($id);
-		
-		$typeArr = $feedbackMod->typeArr;
-		// $typeArr = [['name'=>'type', 'list'=>$typeArr, 'selected'=>$topic['type']]];
-		$this->assign('statusArr', 	$feedbackMod->statusArr);
-		$this->assign('typeArr', 	$typeArr);
-		$this->assign('topic', 		$topic);
-		ajaxReturn(0, '',			['content'=>$this->fetch()]);
-	}
-	
-	public function feedbackDel(){
-		if($id = (int)$_REQUEST['id']){
-			d('Feedback')->delete($id);
-			ajaxReturn(0, "评论删除成功!");
-		}
-	}
 	
     //消息管理列表
 	public function message(){
@@ -381,8 +306,8 @@ class UserController extends PublicController {
 	    $this->setRightAction([[ 'name'=>'添加分类', 'dialog'=>true,
 	        'dialog-lg'=>true, 'url' => u('postCateEdit') ]]);
 	    $con = $_GET;
-	    $con['pid'] = 0;
-	     $list = d('postCate')->getList($con,'15', 'id');
+	    (int)$con['pid'] = '0';
+	    $list = d('postCate')->getList($con,'15', 'id');
 	    $this->assign('list',$list);
 	    $this->assign('search', $_GET);
 	    $this->display();

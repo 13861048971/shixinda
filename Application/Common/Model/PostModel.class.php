@@ -96,6 +96,7 @@ class PostModel extends BaseModel{
      * @param array $con
      */
     public function getList($con = null, $limit = 10){
+        
         $list = $this->where($con)->order('rank')->limit($limit)->select();
         foreach($list as $k=>&$v){
             $list[$k] = $this->parseRow($v);

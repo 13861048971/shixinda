@@ -23,6 +23,7 @@ class UploadWidget extends Controller{
 	 * @param string $req 判断值是否为必填项
 	 * 
 	 */
+	//{:W('upload/img', ['avatar','头像', $row['avatar'], 'required', 'avatar' ])}
 	public function img($name, $label=null , $path=null,$req=false, $type = 'image'){
 		$img = self::$img;
 		if(is_array($name)) extract($name);

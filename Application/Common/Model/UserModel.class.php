@@ -7,9 +7,9 @@ import('Org.Util.Validator');
  */
 class UserModel extends BaseModel{
 	private $cacheKey = 'user_';
-	public $statusArr = ['小黑屋', '正常'];
+	public $statusArr = ['小黑屋','正常'];
 	public $blockArr = ['多次发布违禁类容', '涉嫌邀约欺诈','其他原因'];
-	public $sexArr = ['女','男'];
+	public $genderArr = ['女'=>'女','男'=>'男'];
 	
 	protected $_validate = [
 		['mobile', 'require', 	'缺少手机号码!', 1],

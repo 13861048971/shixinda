@@ -81,7 +81,7 @@ class BaseModel extends Model {
 			if(!$v && $v !== '0' )
 				unset($con[$k]);
 		}
-		//dump($con);exit();
+		
 		$count   = $this->where($con)->count();
 		$Page    = new Think\Page($count, $perNum);
 		$pageVar = $Page->show();

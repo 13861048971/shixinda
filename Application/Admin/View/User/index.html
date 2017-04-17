@@ -39,7 +39,8 @@
 				</if>
 			</td>
 			<td>{$v.nickname}</td>
-			<td>{$v.sexName}</td>
+			
+			<td>{$v.gender}</td>
 			<td>{$v.mobile}</td>
 			<td>{$v['weixin_id']?'是':'否'}</td>
 			<td>{$v['qq_id']?'是':'否'}</td>
@@ -48,11 +49,11 @@
 			<td>{$v['lastLogin']}</td>
 			<td class="handle">
 				<a class="dialog edit " dialog-lg="true" href="#" url="{:u('edit','id=' . $v['id'])}">编辑</a>
-				<a onclick="if (confirm('确定要删除吗？')) return true;else return false;" class="dialog edit " dialog-lg="true" href="#" url="{:u('del','id=' . $v['id'])}"><font color='red'>删除<font/></a>
-			 <if condition="$v['status'] lt 1">
+				<a class="ajaxDel del" href="#" url="{:u('del','id=' . $v['id'])}">删除</a>
+			 <if condition="$v['status'] gt 0">
 				<button class="btn btn-danger dialog" title="确定封号" url="/Admin/user/userChange/id/{$v.id}">封号</button>
 			 <else />
-				<button class="btn btn-warning ajaxPost" url="{:u('user/userChange')}" data="id={$v.id}&status=0" confirm=1 success="已解封!">解封</button>
+				<button class="btn btn-warning ajaxPost" url="{:u('user/userChange')}" data="id={$v.id}&status=1" confirm=1 success="已解封!">解封</button>
 			 </if>
 			</td>
 		</tr>

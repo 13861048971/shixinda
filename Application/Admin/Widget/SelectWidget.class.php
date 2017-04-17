@@ -73,6 +73,8 @@ class SelectWidget extends Controller{
 		$nameKey  = $data['nameKey']  ? $data['nameKey']  : 'name';
 		if( !isset($data['checked']) && isset($data['selected']) )
             $data['checked'] = $data['selected']; 
+		if(!$data['checked'])
+		    $data['checked'] = '女';
 		
 		$str = '';
 		foreach($data['list'] as $k=>$v){
