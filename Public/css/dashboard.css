@@ -464,7 +464,8 @@ table td.right{text-align:right;}
 }
 /*用户管理-帖子分类*/
 .post-cate-table tr>td:first-child,
-.content-cate-table tr>td:first-child{
+.content-cate-table tr>td:first-child,
+.navigation-table tr>td:first-child{
   width: 50px;
   height: 100%;
   line-height: 100%;
@@ -472,7 +473,8 @@ table td.right{text-align:right;}
   vertical-align: middle;
 }
 .post-cate-table tr .post-cate-name,
-.content-cate-table tr .post-cate-name{
+.content-cate-table tr .post-cate-name,
+.navigation-table tr .post-cate-name{
   text-align: left;
   width: 300px;
 }
@@ -498,7 +500,8 @@ table td.right{text-align:right;}
   padding: 8px 0;
 }
 .post-cate-table .icon-add,
-.content-cate-table .icon-add{
+.content-cate-table .icon-add,
+.navigation-table .icon-add{
   display: inline-block;
   width: 15px;
   height: 15px;
@@ -506,7 +509,8 @@ table td.right{text-align:right;}
   cursor: pointer;
 }
 .post-cate-table .icon-sub,
-.content-cate-table .icon-sub{
+.content-cate-table .icon-sub,
+.navigation-table .icon-sub{
   display: inline-block;
   width: 15px;
   height: 15px;

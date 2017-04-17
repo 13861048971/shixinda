@@ -1,12 +1,27 @@
 <include file="Public:header" />
 <div class="table-responsive shrink user">
+	<!-- <form class="form-inline search clearfix">
+	  <if condition="$timeArr">
+		<div class="pull-left time-buttons">
+		  <foreach name="timeArr" item="v">
+			<a class="{$v['cur']?"cur":""}" href="{$v.url}">{$v.name}</a>
+		  </foreach>
+		{:w('form/node', $selectDate)}
+		</div>
+	  </if>
+		<div class="btn-group pull-right">
+		<input  class="form-control" name="keywords" type="text" placeholder="手机号或者昵称搜索" value="{$search.keywords}" >
+		<button  class="form-control btn-info" >搜索</button>
+		</div>
+	</form> -->
 	<form action="" class="form-inline search clearfix" method="GET">
 		<input type="text" class="form-control" name="name" placeholder="请输入连接名" value="{$navigationName}" />
 		<input type="submit"  class="form-control btn-info" value="搜索">       			     
 	</form>
-	<table class="table table-striped user-list">
+	<table class="table table-striped user-list navigation-table">
 		<tr>  
-		  <th>链接名</th>
+		  <th></th>
+		  <th class="post-cate-name">链接名</th>
 		  <th>logo</th>
 		  <th>链接地址</th> 
 		  <th>状态</th>
@@ -15,13 +30,14 @@
 		</tr>
 		<foreach name="list" item="v">
 		<tr>
-			<td id="row-{$v.id}">{$v.name}</td>
+		  <td><if condition="$v['num'] gt 0"><span class="icon-add" data-id="{$v.id}" data-level="1"></span></if>	</td>
+			<td class="post-cate-name">{$v.name}</td>
 			<td><img src={$v.logo} width=25></td>
 			<td>{$v.url}</td>
 			<td <if condition="$v['status'] eq 1"> class="green"</if>>{$v.statusName}</td>
 			<td>{$v.rank}</td>
 			<td class="handle">
-			    <a class="dialog add" href="#" url="{:u('navigationChildrenEdit',array('name'=>$v['name'],'pid'=>$v['id']))}">添加子类</a>
+			    <a class="dialog add" href="#" url="{:u('navigationChildrenEdit',array('name'=>$v['name'],'pid'=>$v['id']))}">添加子类</a>|
 				<a class="dialog edit"  href="#" url="{:u('navigationEdit','id=' . $v['id'])}">编辑</a>|
 				<a class="ajaxDel del" href="#" url="{:u('navigationDel','id=' . $v['id'])}">删除</a>
 			</td>
