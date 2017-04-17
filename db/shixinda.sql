@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2017-04-15 19:22:22
+Date: 2017-04-17 13:17:43
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -234,7 +234,7 @@ CREATE TABLE `comment` (
 -- ----------------------------
 INSERT INTO `comment` VALUES ('1', '6', '1', '1', 'sad', 'dsf', '2', '123123', '1492137494', '1');
 INSERT INTO `comment` VALUES ('2', '6', '0', '0', '112', 'weq', '0', '1492137275', '1492254543', '1');
-INSERT INTO `comment` VALUES ('3', '6', '0', '0', '112', '<p>\n	uiui\n</p>\n<p>\n	<br />\n</p>', '0', '1492254151', '1492254926', '1');
+INSERT INTO `comment` VALUES ('3', '6', '0', '0', '112', '<p>\n	uiui\n</p>\n<p>\n	ss\n</p>', '0', '1492254151', '1492395367', '1');
 
 -- ----------------------------
 -- Table structure for `config`
@@ -428,6 +428,7 @@ CREATE TABLE `navigation` (
   `name` varchar(50) NOT NULL COMMENT '名称',
   `logo` varchar(50) NOT NULL COMMENT '标志',
   `url` varchar(50) NOT NULL COMMENT '地址',
+  `rank` int(11) NOT NULL COMMENT '排序',
   `status` int(10) unsigned NOT NULL COMMENT '状态',
   `add_time` int(10) unsigned NOT NULL COMMENT '增加时间',
   `update_time` int(10) unsigned NOT NULL COMMENT '更新时间',
@@ -437,10 +438,10 @@ CREATE TABLE `navigation` (
 -- ----------------------------
 -- Records of navigation
 -- ----------------------------
-INSERT INTO `navigation` VALUES ('1', '0', 'q', 'q', 'q', '0', '1492231207', '1492231207');
-INSERT INTO `navigation` VALUES ('4', '0', 'erf', 'e', 'e', '0', '1492235928', '1492235942');
-INSERT INTO `navigation` VALUES ('3', '0', 'r', 'r', 'rg', '0', '1492231432', '1492231444');
-INSERT INTO `navigation` VALUES ('5', '1', 'q的子类', 'logo', 'url', '0', '1492236126', '1492236126');
+INSERT INTO `navigation` VALUES ('1', '0', 'q', 'q', 'q', '0', '0', '1492231207', '1492231207');
+INSERT INTO `navigation` VALUES ('4', '0', 'erf', 'e', 'e', '0', '0', '1492235928', '1492235942');
+INSERT INTO `navigation` VALUES ('3', '0', 'r', 'r', 'rg', '0', '0', '1492231432', '1492231444');
+INSERT INTO `navigation` VALUES ('5', '1', 'q的子类', 'logo', 'url', '0', '0', '1492236126', '1492236126');
 
 -- ----------------------------
 -- Table structure for `post`
@@ -481,7 +482,7 @@ CREATE TABLE `post_cate` (
   `add_time` int(11) NOT NULL COMMENT '添加时间',
   `update_time` int(11) NOT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of post_cate
@@ -490,6 +491,8 @@ INSERT INTO `post_cate` VALUES ('1', '衣服', '0', '1', '0', '1', '1492138785',
 INSERT INTO `post_cate` VALUES ('2', 'sasa', '0', '', '0', '0', '1492151220', '1492151220');
 INSERT INTO `post_cate` VALUES ('3', 'sdas', '1', '', '0', '0', '1492245107', '1492245107');
 INSERT INTO `post_cate` VALUES ('4', 'admin', '2', '', '0', '0', '1492245120', '1492245120');
+INSERT INTO `post_cate` VALUES ('5', 'sda', '3', '', '5', '1', '1492403035', '1492403035');
+INSERT INTO `post_cate` VALUES ('6', 'sdaa', '5', '', '33', '1', '1492403053', '1492403053');
 
 -- ----------------------------
 -- Table structure for `post_comment`
@@ -3985,7 +3988,6 @@ CREATE TABLE `tdk` (
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
-  `name` varchar(10) NOT NULL,
   `mobile` varchar(20) NOT NULL,
   `email` varchar(100) NOT NULL,
   `password` char(40) NOT NULL,
@@ -4006,14 +4008,18 @@ CREATE TABLE `user` (
   `last_logout` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `weibo_id` (`weibo_id`,`qq_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('4', '', '18607401235', '', '', '/Public/images/artist_bg.jpg', '', '2016-07-06', '', '1111115', '', '', '0', '1471842619', '1472744818', '0', '', 'hilahi3', '1472744736', '0');
-INSERT INTO `user` VALUES ('6', '', '13861048971', '13861048971@163.com', '', 'http://os.blog.163.com/common/ava.s?b=1&host=wlb.wlb', '男', '2017-04-04', '', '', '', '', '0', '1492069146', '1492070306', '0', '其他原因', '撒嗒', '1492069146', '0');
-INSERT INTO `user` VALUES ('7', '', '12345678941', '', '', 'http://os.blog.163.com/common/ava.s?b=1&host=wlb.wlb', '男', '', '', '', '', '', '1', '1492071976', '1492079352', '0', '多次发布违禁类容', '生生世世', '1492071976', '0');
+INSERT INTO `user` VALUES ('6', '13861048971', '13861048971@163.com', '', 'http://os.blog.163.com/common/ava.s?b=1&host=wlb.wlb', '女', '2017-04-04', '', '', '', '', '0', '1492069146', '1492399619', '0', '其他原因', '撒嗒', '1492069146', '0');
+INSERT INTO `user` VALUES ('7', '12345678941', '', '', 'http://os.blog.163.com/common/ava.s?b=1&host=wlb.wlb', '女', '', '', '', '', '', '1', '1492071976', '1492400210', '0', '多次发布违禁类容', '生生世世', '1492071976', '0');
+INSERT INTO `user` VALUES ('9', '13861048978', '', '', '/Public/upload/avatar/2017-04-17/58f423f19c06d.png', '女', '', '', '', '', '', '0', '1492394995', '1492399731', '0', '', 'aa', '1492394995', '0');
+INSERT INTO `user` VALUES ('10', '13860489711', '', '', '/Public/upload/avatar/2017-04-17/58f431f289bec.png', '', '', '', '', '', '', '1', '1492398598', '1492400555', '0', '', 'adsa', '1492398598', '0');
+INSERT INTO `user` VALUES ('11', '13861048973', '13861048971@163.com', '', '/Public/upload/avatar/2017-04-17/58f434a16ad8c.png', '女', '', '', '', '', '', '1', '1492399268', '1492402325', '0', '', '生生世世aa', '1492399268', '0');
+INSERT INTO `user` VALUES ('12', '12345678921', '', '', '/Public/upload/avatar/2017-04-17/58f4389965c7f.png', '男', '', '', '', '', '', '1', '1492400285', '1492402095', '0', '', '啥的', '1492400285', '0');
+INSERT INTO `user` VALUES ('13', '13861047971', '', '', '/Public/upload/avatar/2017-04-17/58f43c6c5b376.jpg', '男', '', '', '', '', '', '1', '1492401263', '1492402089', '0', '', '啊啊', '1492401263', '0');
 
 -- ----------------------------
 -- Table structure for `user_msg`
@@ -4035,7 +4041,7 @@ CREATE TABLE `user_msg` (
   `update_time` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`,`type_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=68 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user_msg
@@ -4100,6 +4106,12 @@ INSERT INTO `user_msg` VALUES ('57', '6', '0', '你的账号已被系统管理�
 INSERT INTO `user_msg` VALUES ('58', '6', '0', '你的账号已经解封,已恢复正常使用.', '', '0', '0', '', '你的账号已经解封,已恢复正常使用.', '0', 'IOS 发送失败.Android 发送失败.', '1492069503', '1492069503');
 INSERT INTO `user_msg` VALUES ('59', '7', '0', '你的账号已经解封,已恢复正常使用.', '', '0', '0', '', '你的账号已经解封,已恢复正常使用.', '0', 'IOS 发送失败.Android 发送失败.', '1492071983', '1492071983');
 INSERT INTO `user_msg` VALUES ('61', '7', '0', '你的账号已被系统管理封号处理,将无法登陆.', '', '0', '0', '', '你的账号已被系统管理封号处理,将无法登陆. 封号原因:多次发布违禁类容', '0', 'IOS 发送失败.Android 发送失败.', '1492079352', '1492079352');
+INSERT INTO `user_msg` VALUES ('62', '13', '0', '你的账号已被系统管理封号处理,将无法登陆.', '', '0', '0', '', '你的账号已被系统管理封号处理,将无法登陆. 封号原因:', '0', 'IOS 发送失败.Android 发送失败.', '1492401638', '1492401638');
+INSERT INTO `user_msg` VALUES ('63', '13', '0', '你的账号已被系统管理封号处理,将无法登陆.', '', '0', '0', '', '你的账号已被系统管理封号处理,将无法登陆. 封号原因:', '0', 'IOS 发送失败.Android 发送失败.', '1492401656', '1492401656');
+INSERT INTO `user_msg` VALUES ('64', '13', '0', '你的账号已经解封,已恢复正常使用.', '', '0', '0', '', '你的账号已经解封,已恢复正常使用.', '0', 'IOS 发送失败.Android 发送失败.', '1492401784', '1492401784');
+INSERT INTO `user_msg` VALUES ('65', '13', '0', '你的账号已经解封,已恢复正常使用.', '', '0', '0', '', '你的账号已经解封,已恢复正常使用.', '0', 'IOS 发送失败.Android 发送失败.', '1492401790', '1492401790');
+INSERT INTO `user_msg` VALUES ('66', '13', '0', '你的账号已经解封,已恢复正常使用.', '', '0', '0', '', '你的账号已经解封,已恢复正常使用.', '0', 'IOS 发送失败.Android 发送失败.', '1492401806', '1492401806');
+INSERT INTO `user_msg` VALUES ('67', '13', '0', '你的账号已被系统管理封号处理,将无法登陆.', '', '0', '0', '', '你的账号已被系统管理封号处理,将无法登陆. 封号原因:', '0', 'IOS 发送失败.Android 发送失败.', '1492401890', '1492401890');
 
 -- ----------------------------
 -- Table structure for `user_msg_read`
