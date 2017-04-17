@@ -1138,6 +1138,11 @@ function initLayDate(node){
 	node.after(html);
 }
 // 多级下拉菜单
+function initMultiSelect(){
+	$('.multi-level-select').on('change',function(e){
+		multiLevel($(e.target));
+	});
+}
 function multiLevel(node){
 	node.nextAll().remove();
 	if(!node.val()){
@@ -1152,14 +1157,14 @@ function multiLevel(node){
 		dataType:'json',
 		success:function(data){
 			var sub = data.data.list;
-			if(sub.length>0){
+			if(sub){
 				var html = '<select class="form-control"><option value="">请选择</option>';
 				for(k in sub){
 					html+='<option value="'+sub[k].id+'">'+sub[k].name+'</option>';
 				}
 				html+='</select>';
-				node.after(html);
-//			}
+				node.after(html);		
+			}
 		}
 	});
 }
