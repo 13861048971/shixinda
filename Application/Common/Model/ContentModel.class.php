@@ -50,7 +50,7 @@ class ContentModel extends BaseModel {
 	    }
 	
 	    $data['update_time'] = $data['add_time'] = time();
-	    $cateRow = d('contentCate')->where(['name'=>$data['cateName']])->find();
+	    //$cateRow = d('contentCate')->where(['name'=>$data['cateName']])->find();
 	    $data['cate_id'] = $cateRow['id'];
 	    if(!$this->create($data))
 	        return false;

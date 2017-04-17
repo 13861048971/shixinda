@@ -26,6 +26,16 @@ class ContentController extends PublicController {
     //内容编辑
 	public function contentEdit(){
 	    $this->ajaxEdit('content', null, function($row, $mod){
+	    $list = d('contentCate')->getList(['pid'=>'0'],$limit=50);
+	    //ump($data);exit();
+	    $url = "/admin/user/contentCateChildren/pid/";
+	     $selectMuti = [
+	            "list" => $list,
+	            "url" => $url
+	        ];
+	    $this->assign('selectMuti',$selectMuti);
+	    //dump($list);exit();
+	    //ajaxReturn(0,'子类获取成功',['list'=>$list]);   
 	    });
 	}
 	 
@@ -50,7 +60,7 @@ class ContentController extends PublicController {
 	//内容分类获取子类
 	public function contentCateChildren($pid){
 	    $data = d('contentCate')->getList(['pid'=>$pid]);
-	    dump($data);exit();
+	    //ump($data);exit();
 	    $this->assign($data);
 	    $list = $data['list'];
 	    ajaxReturn(0,'子类获取成功',['list'=>$list]);
