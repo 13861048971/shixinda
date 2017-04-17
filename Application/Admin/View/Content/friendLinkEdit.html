@@ -7,7 +7,7 @@
 <body>
     <form class="form-horizontal ajaxSubmit role-form" action="{:u('friendLinkEdit')}" method="post">
   <div class="form-group">
-    <label class="col-sm-2 control-label"><b class="red">*</b>连接名:</label>
+    <label class="col-sm-2 control-label"><b class="red">*</b>链接名:</label>
     <div class="col-sm-8">
       <input name="name" required class="form-control" value="{$row.name}">
     </div>
@@ -19,7 +19,7 @@
     </div>
   </div>
    <div class="form-group">
-    <label class="col-sm-2 control-label"><b class="red">*</b>连接地址:</label>
+    <label class="col-sm-2 control-label"><b class="red">*</b>链接地址:</label>
     <div class="col-sm-8">
       <input name="url" required class="form-control" value="{$row.url}">
     </div>
@@ -27,9 +27,7 @@
   <div class="form-group">
     <label class="col-sm-2 control-label"><b class="red">*</b>排序:</label>
     <div class="col-sm-5">
-
-	{:w('select/index', $statusList)}
-    
+      <input name="rank" required class="form-control" placeholder="排序默认为0" value="{$row.rank}">
     </div>
   </div>
     <div class="col-sm-offset-2 col-sm-10">

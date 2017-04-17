@@ -71,7 +71,6 @@
 				form.submit();
 		},200);
 	});
-	
 })();
 $(function(){
 	renderEditor();

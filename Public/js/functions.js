@@ -1123,7 +1123,17 @@ function initDaterange(selector) {
 }
 // date2timestamp
 function date2timestamp(time){
-	timestamp=Date.parse(new Date(time.replace(/-/g, "/")));
-	timestamp=timestamp/1000;
-	$('.timestamp').val(timestamp);
+	timestamp = Date.parse(new Date(time.replace(/-/g, "/")));
+	timestamp = timestamp/1000;
+	$('.lay-date').val(timestamp);
+}
+// 初始化日期控件，特定用于时间为时间戳格式的时间填写
+function initLayDate(node){
+	node.hide();
+	var time = node.val();
+	if(time){
+		time = date('Y-m-d', time);
+	}
+	var html = '<input type="text" onclick="window.laydate({choose:date2timestamp});" required value="'+ time +'" class="form-control">';
+	node.after(html);
 }

@@ -7,6 +7,9 @@
  *
  * Built for http://www.improvely.com
  */
+.green{
+	color:green;
+}
 
  .daterangepicker.dropdown-menu {
   max-width: none;
