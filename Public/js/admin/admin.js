@@ -205,3 +205,6 @@ $('.navigation-table').on('click',function(e){
 		$(selector).remove();
 	}
 });
+$('.multi-level-select').on('change',function(e){
+	multiLevel($(e.target));
+});

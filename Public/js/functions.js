@@ -1137,3 +1137,29 @@ function initLayDate(node){
 	var html = '<input type="text" onclick="window.laydate({choose:date2timestamp});" required value="'+ time +'" class="form-control">';
 	node.after(html);
 }
+// 多级下拉菜单
+function multiLevel(node){
+	node.nextAll().remove();
+	if(!node.val()){
+		return false;
+	}
+	node.attr('name',node.find("option:selected").text());
+	node.siblings().removeAttr('name');
+	url = node.parents('.multi-level-select').data('url')+node.val();
+	$.ajax({
+		url:url,
+		type:'get',
+		dataType:'json',
+		success:function(data){
+			var sub = data.data.list;
+			if(sub.length>0){
+				var html = '<select class="form-control"><option value="">请选择</option>';
+				for(k in sub){
+					html+='<option value="'+sub[k].id+'">'+sub[k].name+'</option>';
+				}
+				html+='</select>';
+				node.after(html);
+			}
+		}
+	});
+}

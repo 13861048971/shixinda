@@ -517,3 +517,10 @@ table td.right{text-align:right;}
   background: url(./images/icon-sub.png) no-repeat;
   cursor: pointer;
 }
+/*多级下拉菜单*/
+.multi-level-select{
+  display: inline-block;
+}
+.multi-level-select select{
+  margin: 0 0 0 15px;
+}

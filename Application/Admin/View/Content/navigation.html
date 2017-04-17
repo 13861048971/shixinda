@@ -16,7 +16,15 @@
 	</form> -->
 	<form action="" class="form-inline search clearfix" method="GET">
 		<input type="text" class="form-control" name="name" placeholder="请输入连接名" value="{$navigationName}" />
-		<input type="submit"  class="form-control btn-info" value="搜索">       			     
+		<input type="submit"  class="form-control btn-info" value="搜索">
+		<div data-url="/admin/content/navigationChildren/pid/" class="multi-level-select">
+			<select class="form-control">
+				<option value="">请选择</option>
+				<foreach name="list" item="v">
+					<option value="{$v.id}">{$v.name}</option>
+				</foreach>
+			</select>  
+		</div>   
 	</form>
 	<table class="table table-striped user-list navigation-table">
 		<tr>  
