@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2017-04-17 13:17:43
+Date: 2017-04-17 14:54:01
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -274,6 +274,7 @@ CREATE TABLE `content` (
   `content` text NOT NULL COMMENT '内容',
   `author` varchar(50) NOT NULL COMMENT '作者',
   `status` int(11) unsigned NOT NULL COMMENT '状态',
+  `cover` varchar(200) NOT NULL,
   `publish_time` int(11) unsigned NOT NULL COMMENT '发布时间',
   `add_time` int(11) unsigned NOT NULL COMMENT '添加时间',
   `update_time` int(11) unsigned NOT NULL COMMENT '更新时间',
@@ -283,23 +284,23 @@ CREATE TABLE `content` (
 -- ----------------------------
 -- Records of content
 -- ----------------------------
-INSERT INTO `content` VALUES ('4', '2', '历史', 'eeeefffff', '孙中山', '0', '2017', '1491907541', '1492224109');
-INSERT INTO `content` VALUES ('7', '4', 'f', 'f', 'f', '0', '2017', '1491994334', '1492221046');
-INSERT INTO `content` VALUES ('8', '5', 'd', 'd', 'd', '0', '0', '1491994347', '1491994347');
-INSERT INTO `content` VALUES ('9', '6', 'q', 'q', 'q', '0', '0', '1491994364', '1491994364');
-INSERT INTO `content` VALUES ('10', '7', 'w', 'w', 'w', '0', '0', '1491994376', '1491994376');
-INSERT INTO `content` VALUES ('11', '8', 'eee', 'e', 'e', '0', '0', '1491994387', '1491994387');
-INSERT INTO `content` VALUES ('12', '9', 'e', 'e', 'e', '0', '0', '1491995051', '1491995051');
-INSERT INTO `content` VALUES ('13', '10', 'r', 'r', 'r', '0', '0', '1491995062', '1491995062');
-INSERT INTO `content` VALUES ('14', '11', 't', 't', 't', '0', '0', '1491995071', '1491995071');
-INSERT INTO `content` VALUES ('15', '12', 'y', 'y', 'y', '0', '0', '1491995080', '1491995080');
-INSERT INTO `content` VALUES ('16', '13', 'u', 'u', 'u', '0', '0', '1491995090', '1491995090');
-INSERT INTO `content` VALUES ('17', '14', 'i', 'i', 'i', '0', '0', '1491995105', '1491995105');
-INSERT INTO `content` VALUES ('18', '15', 'o', 'o', 'o', '0', '0', '1491995114', '1491995114');
-INSERT INTO `content` VALUES ('19', '16', 'p', 'p', 'p', '0', '0', '1491995123', '1491995123');
-INSERT INTO `content` VALUES ('22', '17', 'f', 'f', 'f', '0', '0', '1492050179', '1492050179');
-INSERT INTO `content` VALUES ('23', '18', '撒啊三大', '任霆发够', '阿斯达', '0', '0', '1492068484', '1492068484');
-INSERT INTO `content` VALUES ('24', '0', '健身', '坚持健身有益身体健康。', '阿诺', '0', '2017', '1492220792', '1492220792');
+INSERT INTO `content` VALUES ('4', '2', '历史', 'eeeefffff', '孙中山', '0', '', '2017', '1491907541', '1492224109');
+INSERT INTO `content` VALUES ('7', '4', 'f', 'f', 'f', '0', '', '2017', '1491994334', '1492221046');
+INSERT INTO `content` VALUES ('8', '5', 'd', 'd', 'd', '0', '', '0', '1491994347', '1491994347');
+INSERT INTO `content` VALUES ('9', '6', 'q', 'q', 'q', '0', '', '0', '1491994364', '1491994364');
+INSERT INTO `content` VALUES ('10', '7', 'w', 'w', 'w', '0', '', '0', '1491994376', '1491994376');
+INSERT INTO `content` VALUES ('11', '8', 'eee', 'e', 'e', '0', '', '0', '1491994387', '1491994387');
+INSERT INTO `content` VALUES ('12', '9', 'e', 'e', 'e', '0', '', '0', '1491995051', '1491995051');
+INSERT INTO `content` VALUES ('13', '10', 'r', 'r', 'r', '0', '', '0', '1491995062', '1491995062');
+INSERT INTO `content` VALUES ('14', '11', 't', 't', 't', '0', '', '0', '1491995071', '1491995071');
+INSERT INTO `content` VALUES ('15', '12', 'y', 'y', 'y', '0', '', '0', '1491995080', '1491995080');
+INSERT INTO `content` VALUES ('16', '13', 'u', 'u', 'u', '0', '', '0', '1491995090', '1491995090');
+INSERT INTO `content` VALUES ('17', '14', 'i', 'i', 'i', '0', '', '0', '1491995105', '1491995105');
+INSERT INTO `content` VALUES ('18', '15', 'o', 'o', 'o', '0', '', '0', '1491995114', '1491995114');
+INSERT INTO `content` VALUES ('19', '16', 'p', 'p', 'p', '0', '', '0', '1491995123', '1491995123');
+INSERT INTO `content` VALUES ('22', '17', 'f', 'f', 'f', '0', '', '0', '1492050179', '1492050179');
+INSERT INTO `content` VALUES ('23', '18', '撒啊三大', '任霆发够', '阿斯达', '0', '', '0', '1492068484', '1492068484');
+INSERT INTO `content` VALUES ('24', '0', '健身', '坚持健身有益身体健康。', '阿诺', '0', '', '2017', '1492220792', '1492220792');
 
 -- ----------------------------
 -- Table structure for `content_cate`
@@ -369,8 +370,8 @@ DROP TABLE IF EXISTS `friend_link`;
 CREATE TABLE `friend_link` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL COMMENT '链接名',
-  `logo` varchar(50) NOT NULL COMMENT '标志',
-  `url` varchar(50) NOT NULL COMMENT '链接地址',
+  `logo` varchar(200) NOT NULL COMMENT '标志',
+  `url` varchar(200) NOT NULL COMMENT '链接地址',
   `rank` int(11) unsigned NOT NULL COMMENT '排序',
   `add_time` int(11) unsigned NOT NULL COMMENT '增加时间',
   `update_time` int(11) unsigned NOT NULL COMMENT '更新时间',
@@ -426,8 +427,8 @@ CREATE TABLE `navigation` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `pid` int(10) unsigned NOT NULL COMMENT '上级id',
   `name` varchar(50) NOT NULL COMMENT '名称',
-  `logo` varchar(50) NOT NULL COMMENT '标志',
-  `url` varchar(50) NOT NULL COMMENT '地址',
+  `logo` varchar(200) NOT NULL COMMENT '标志',
+  `url` varchar(200) NOT NULL COMMENT '地址',
   `rank` int(11) NOT NULL COMMENT '排序',
   `status` int(10) unsigned NOT NULL COMMENT '状态',
   `add_time` int(10) unsigned NOT NULL COMMENT '增加时间',
