@@ -524,3 +524,12 @@ table td.right{text-align:right;}
 .multi-level-select select{
   margin: 0 0 0 15px;
 }
+.modal-content .multi-level-select select{
+  width: 150px;
+  display: inline-block;
+  margin: 10px 15px 0 0;
+}
+.form-horizontal .form-group{
+  margin-left: 0;
+  margin-right: 0;
+}
