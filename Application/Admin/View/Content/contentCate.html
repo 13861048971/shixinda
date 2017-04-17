@@ -21,7 +21,6 @@
 	<table class="table table-striped user-list content-cate-table">
 		<tr> 
 		  <th></th>  
-		  <th class="content-cate-id">#</th>
 		  <th class="post-cate-name">名称</th>
 		  <th class="content-cate-rank">排序</th> 
 		  <th class="content-cate-status">状态</th>
@@ -32,8 +31,7 @@
 		<foreach name="list" item="v">
 		<tr>
 			<td><if condition="$v['number'] gt 0"><span class="icon-add" data-id="{$v.id}" data-level="1"></span></if></td>
-			<td>{$v.id}</td>
-			<td class="post-cate-name">{$v.name}</td>
+			<td class="post-cate-name" id="row-{$v.id}">{$v.name}</td>
 			<td>{$v.rank}</td>
 			<td <if condition="$v['status'] eq 1"> class="green"</if>>{$v.statusName}</td>
 			<td>{$v.addTime}</td>

@@ -79,7 +79,7 @@ class ContentController extends PublicController {
 	    $this->ajaxDel('contentCate');
 	}
 	
-	//友情连接
+	//友情链接
 	public function friendLink(){
 	    $rightBtn = [
 	        ['name' => '添加新连接', 'url'=> u('friendLinkEdit'), 'dialog' => 1, 'dialog-lg' => 1 ]
@@ -91,13 +91,13 @@ class ContentController extends PublicController {
 	    $this->display('friendLink','list');
 	}
 	
-	//连接编辑
+	//链接编辑
 	public function friendLinkEdit(){
 	    $this->ajaxEdit('friendLink', null, function($row, $mod){
 	    });
 	}
 	
-	//连接删除
+	//链接删除
 	public function friendLinkDel(){
 	    $this->ajaxDel('friendLink');
 	}

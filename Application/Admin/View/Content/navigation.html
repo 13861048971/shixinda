@@ -32,7 +32,7 @@
 		<tr>
 		    <td>{$v.id}</td>
 			<td>{$v.name}</td>
-			<td>{$v.logo}</td>
+			<td><img src={$v.logo} width=25></td>
 			<td>{$v.url}</td>
 			<td <if condition="$v['status'] eq 1"> class="green"</if>>{$v.statusName}</td>
 			<td>{$v.rank}</td>
