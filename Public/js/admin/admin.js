@@ -95,7 +95,7 @@ $('.post-cate-table').on('click',function(e){
 						html+='<span class="icon-add" data-id="'+sub[k].id+'" data-level="'+(_this.data('level')+1)+'"></span>';
 					}
 
-					html+='</td><td>'+sub[k].id+'</td><td class="post-cate-name">';
+					html+='</td><td class="post-cate-name">';
 
 					for(var i=0;i<_this.data('level');i++){
 						html+='&nbsp;&nbsp;&nbsp;&nbsp;';
