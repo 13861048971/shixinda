@@ -1138,6 +1138,11 @@ function initLayDate(node){
 	node.after(html);
 }
 // 多级下拉菜单
+function initMultiSelect(){
+	$('.multi-level-select').on('change',function(e){
+		multiLevel($(e.target));
+	});
+}
 function multiLevel(node){
 	node.nextAll().remove();
 	if(!node.val()){
