@@ -1143,7 +1143,7 @@ function multiLevel(node){
 	if(!node.val()){
 		return false;
 	}
-	node.attr('name',node.find("option:selected").text());
+	node.attr('name',node.parents('.multi-level-select').data('name'));
 	node.siblings().removeAttr('name');
 	url = node.parents('.multi-level-select').data('url')+node.val();
 	$.ajax({
