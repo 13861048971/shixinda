@@ -135,13 +135,13 @@ class SelectWidget extends Controller{
 // 	</select>
 // 	</div>
 	/**
-	 * select多级下拉框
+	 * select多级选择下拉框
 	 * @param array $data 包含分类信息和url连接
 	 */
 	function selectMuti($data){
 	    $str = '';
-	    $str .= '<div data-url="'.$data['url'].'"class="multi-level-select">';
-	    $str .='<select class="form-control" name='.$data["name"].'>';
+	    $str .= '<div data-name='.$data["name"].' data-url="'.$data['url'].'"class="multi-level-select">';
+	    $str .='<select class="form-control" >';
 	    $str .='<option value="">请选择</option>';
 	    foreach ($data['list'] as $k=>$v){
 	        $str .='<option value="'.$v["id"].'">'.$v["name"].'</option>';
