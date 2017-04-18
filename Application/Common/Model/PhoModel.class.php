@@ -122,44 +122,44 @@ class PhoModel extends BaseModel {
 	
 	public function getInfo($id){
 		$info = $this->find($id);
-		if(!$info) return;
+// 		if(!$info) return;
 		
-		$cateMod = d('category');
-		$info['updateTime'] = local_date($info['update_time'], 'Y-m-d H:i');
-		$info['addTime'] 	= local_date($info['add_time'], 'Y-m-d H:i');
-		$info['verifyTime'] 	= local_date($info['verify_time'], 'Y-m-d H:i');
-		$info['user'] = d('user')->getInfo($info['user_id']);
-		$info['nickname'] = $info['user']['nickname'];
-		$info['avatar'] = $info['user']['avatar'];
-		$info['mobile'] = $info['user']['mobile'];
-		$info['statusName'] = $this->statusArr[$info['status']];
-		$info['cityName'] = d('region')->getName($info['city']);
-		$info['serviceCityName'] = d('region')->getName($info['service_city']);
-		$info['typeName'] = $this->typeArr[$info['type']];
-		$info['inviteeNum'] = $info['receive_num'] = $info['sales'];
-		$info['lastLogin'] = $info['user']['lastLogin'];
-		$info['images'] = [];
-		$imgList = d('album')->getList(['type_id'=> $id]);
-		$info['imageList'] = $imgList;
-		$info['price'] = d('meal')->where(['pho_id'=>$id,'status'=>0])->order('price asc')->find()['price'];
-		foreach($imgList as $v){
-			$info['images'][] = $v['path'];
-		}
-		$collectMod = d('collect');
-		$info['attentionedNum'] = $collectMod->getNum($id); //被关注
-		$info['isAttentioned'] = $collectMod->isCollect($id); //当前用户是否关注
+// 		$cateMod = d('category');
+// 		$info['updateTime'] = local_date($info['update_time'], 'Y-m-d H:i');
+// 		$info['addTime'] 	= local_date($info['add_time'], 'Y-m-d H:i');
+// 		$info['verifyTime'] 	= local_date($info['verify_time'], 'Y-m-d H:i');
+// 		$info['user'] = d('user')->getInfo($info['user_id']);
+// 		$info['nickname'] = $info['user']['nickname'];
+// 		$info['avatar'] = $info['user']['avatar'];
+// 		$info['mobile'] = $info['user']['mobile'];
+// 		$info['statusName'] = $this->statusArr[$info['status']];
+// 		$info['cityName'] = d('region')->getName($info['city']);
+// 		$info['serviceCityName'] = d('region')->getName($info['service_city']);
+// 		$info['typeName'] = $this->typeArr[$info['type']];
+// 		$info['inviteeNum'] = $info['receive_num'] = $info['sales'];
+// 		$info['lastLogin'] = $info['user']['lastLogin'];
+// 		$info['images'] = [];
+// 		$imgList = d('album')->getList(['type_id'=> $id]);
+// 		$info['imageList'] = $imgList;
+// 		$info['price'] = d('meal')->where(['pho_id'=>$id,'status'=>0])->order('price asc')->find()['price'];
+// 		foreach($imgList as $v){
+// 			$info['images'][] = $v['path'];
+// 		}
+// 		$collectMod = d('collect');
+// 		$info['attentionedNum'] = $collectMod->getNum($id); //被关注
+// 		$info['isAttentioned'] = $collectMod->isCollect($id); //当前用户是否关注
 		
-		if('Home' == MODULE_NAME){
-			$info['user'] = filter([$info['user']], 'id,nickname,sex,avatar');
-			$info['user'] = $info['user'][0];
-			$info = filter([$info], 'imageList,', false);
-			$info = $info[0];
-		}
-		$info['shareUrl'] = '/phoShare/'.$id;
-		!$info['pho_bg'] && $info['pho_bg'] = '/Public/images/artist_bg.jpg';
-		$info['reportNum'] = (int)d('report')->getNum(['pho_id'=>$id]);
-		if(false === strpos($info['worklink'], 'http') )
-			$info['worklink'] = 'http://'.$info['worklink'];
+// 		if('Home' == MODULE_NAME){
+// 			$info['user'] = filter([$info['user']], 'id,nickname,sex,avatar');
+// 			$info['user'] = $info['user'][0];
+// 			$info = filter([$info], 'imageList,', false);
+// 			$info = $info[0];
+// 		}
+// 		$info['shareUrl'] = '/phoShare/'.$id;
+// 		!$info['pho_bg'] && $info['pho_bg'] = '/Public/images/artist_bg.jpg';
+// 		$info['reportNum'] = (int)d('report')->getNum(['pho_id'=>$id]);
+// 		if(false === strpos($info['worklink'], 'http') )
+// 			$info['worklink'] = 'http://'.$info['worklink'];
 		
 		return $info;
 	}

@@ -126,28 +126,47 @@ class SelectWidget extends Controller{
 		if($data['return']) return $str;
 		echo $str;
 	}
-// 	<div data-url="/admin/content/navigationChildren/pid/" class="multi-level-select">
-// 	<select class="form-control">
-// 	<option value="">请选择</option>
-// 	<foreach name="list" item="v">
-// 	<option value="{$v.id}">{$v.name}</option>
-// 	</foreach>
-// 	</select>
-// 	</div>
+
 	/**
-	 * select多级选择下拉框
-	 * @param array $data 包含分类信息和url连接
+	 * select多级分类选择下拉框
+	 * 
 	 */
-	function selectMuti($data){
-	    $str = '';
-	    $str .= '<div data-name='.$data["name"].' data-url="'.$data['url'].'"class="multi-level-select">';
-	    $str .='<select class="form-control" >';
-	    $str .='<option value="">请选择</option>';
-	    foreach ($data['list'] as $k=>$v){
-	        $str .='<option value="'.$v["id"].'">'.$v["name"].'</option>';
+	function postCate(){
+	    $con = $_GET;
+	    $con['pid'] = '0';
+	    $postCateInfo = d('postCate')->getList($con);//分类表所有信息
+	    $url = "/admin/user/postCateChildren/pid/";
+	    $row = d('post')->where(['id'=>$con['id']])->find();;
+	    $cateInfo = d('postCate')->getInfo((int)$row['post_cate_id']);
+	    $rowId = (int)$row['post_cate_id'];
+	    $cateList = d('post')->getPostCateList($rowId);//父级分类集合
+	    $data = [
+	        "url" => $url,
+	        "name" =>'post_cate_id',
+	        'cateName' =>$cateInfo['name'],//当前分类名称
+	    ];
+	    isset($postCateInfo)?$list = $postCateInfo:null;
+	    isset($cateList)?$cateList:null;
+	    $countnum = count($cateList);
+	    $cate = [];
+	    foreach ($list as $v){
+	        $cate[] = $v;
 	    }
-	    $str .='</select></div>';
-	    echo $str;
+	    foreach ($cateList as $ko=>$vo){
+	        $cateList[$ko]['list'] = d('postCate')->getList(['pid'=>$vo['pid']]);
+	        $cateList[$ko]['count'] = count($cateList[$ko]['list']);
+	    }
+	    
+	    $cateList = array_reverse($cateList);//按键值逆向排序
+	    $value = $data['cateName']?$data['cateName']:'请选择';
+        $this->assign('data',$data);
+        $this->assign('cate',$cate);
+        $this->assign('cateList',$cateList);//有上级的信息列表
+        
+        $this->assign('list',$list);//无上级的信息列表
+        $this->assign('value',$value);
+        $this->assign('count',$countnum);//上级数量
+        $this->display('Widget:Select:cateList');
 	}
 	/**
 	 * 选择地区

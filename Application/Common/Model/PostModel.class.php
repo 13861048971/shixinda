@@ -7,6 +7,7 @@ import('Org.Util.Validator');
 class PostModel extends BaseModel{
     public $statusArr = ['不显示', '显示'];
     public $typeArr = ['新闻', '短信'];
+    public $cateList = [];
     /**
      * 编辑or添加
      */
@@ -90,7 +91,22 @@ class PostModel extends BaseModel{
         }
         return $data;
     }
-   
+    
+    public function getPostCateList($id,$i = 0){
+        if($id>0){
+            $postCate = d('postCate')->getInfo($id);//分类的信息
+            $pid = (int)$postCate['pid'];//信息的父级id
+             
+            $this->cateList[$i] = $postCate;
+             
+            $i +=1;
+            // var_dump($postCate);
+            $this->getPostCateList($pid,$i);
+             
+        }
+         
+        return  $this->cateList;
+    }
     /**
      * 根据条件获取信息
      * @param array $con

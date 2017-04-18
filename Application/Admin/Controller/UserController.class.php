@@ -2,6 +2,7 @@
 use Think\Controller;
 class UserController extends PublicController {
 	public $mod;
+ 	public $cateList = [];
 	
 	function _initialize(){
 		parent::_initialize();
@@ -244,21 +245,43 @@ class UserController extends PublicController {
 	    $this->assign('search', $_GET);
 	    $this->display();
 	}
-	
+	//取帖子所有父级元素集合
+	public function getPostCateList($id,$i = 0){
+	    if($id>0){
+	        $postCate = d('postCate')->getInfo($id);//分类的信息
+	        $pid = (int)$postCate['pid'];//信息的父级id
+	        
+	        $this->cateList[$i] = $postCate;
+	      
+	        $i +=1;
+	       // var_dump($postCate);
+	        $this->getPostCateList($pid,$i);
+	        
+	    }
+	    
+	    return  $this->cateList;
+	}
 	//帖子编辑
 	public function postEdit(){
-	    $this->ajaxEdit('post',null, function($row, $mod){
+	    $this->ajaxEdit('post',null, function($row, $mod){  
+// 	        $con = $_GET;
+// 	        (int)$con['pid'] = '0';
+// 	        $postCateInfo = d('postCate')->getList([pid=>$con['pid']]);
+// 	        $url = "/admin/user/postCateChildren/pid/";
 	        
-	        $con = $_GET;
-	        (int)$con['pid'] = '0';
-	        $postCateInfo = d('postCate')->getList($con);
-	        $url = "/admin/user/postCateChildren/pid/";
-	        $selectMuti = [
-	            "list" => $postCateInfo,
-	            "url" => $url,
-	            "name" =>'post_cate_id'
-	        ];
-	        $this->assign('selectMuti',$selectMuti);
+// 	        $cateInfo = d('postCate')->getInfo((int)$row['post_cate_id']);
+	        
+//  	        $rowId = (int)$row['post_cate_id'];
+//             $cateList = $this->getPostCateList($rowId);
+// 	        $selectMuti = [
+// 	            "list" => $postCateInfo,//分类表所有信息
+// 	            "url" => $url,
+// 	            "name" =>'post_cate_id',//字段名称
+// 	            'cateName' =>$cateInfo['name'],//当前分类名称
+// 	            'cateList' =>$cateList //父级分类集合
+// 	        ];
+// 	        //var_dump($selectMuti['cateName']);
+// 	        $this->assign('selectMuti',$selectMuti);
 	    });
 	    
 	}
