@@ -1152,7 +1152,7 @@ function multiLevel(node){
 		dataType:'json',
 		success:function(data){
 			var sub = data.data.list;
-			if(sub.length>0){
+			if(sub){
 				var html = '<select class="form-control"><option value="">请选择</option>';
 				for(k in sub){
 					html+='<option value="'+sub[k].id+'">'+sub[k].name+'</option>';
