@@ -255,7 +255,8 @@ class UserController extends PublicController {
 	        $url = "/admin/user/postCateChildren/pid/";
 	        $selectMuti = [
 	            "list" => $postCateInfo,
-	            "url" => $url
+	            "url" => $url,
+	            "name" =>'post_cate_id'
 	        ];
 	        $this->assign('selectMuti',$selectMuti);
 	    });

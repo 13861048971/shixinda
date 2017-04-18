@@ -141,7 +141,7 @@ class SelectWidget extends Controller{
 	function selectMuti($data){
 	    $str = '';
 	    $str .= '<div data-url="'.$data['url'].'"class="multi-level-select">';
-	    $str .='<select class="form-control">';
+	    $str .='<select class="form-control" name='.$data["name"].'>';
 	    $str .='<option value="">请选择</option>';
 	    foreach ($data['list'] as $k=>$v){
 	        $str .='<option value="'.$v["id"].'">'.$v["name"].'</option>';
