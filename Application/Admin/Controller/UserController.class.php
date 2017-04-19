@@ -263,25 +263,8 @@ class UserController extends PublicController {
 	}
 	//帖子编辑
 	public function postEdit(){
+	    
 	    $this->ajaxEdit('post',null, function($row, $mod){  
-// 	        $con = $_GET;
-// 	        (int)$con['pid'] = '0';
-// 	        $postCateInfo = d('postCate')->getList([pid=>$con['pid']]);
-// 	        $url = "/admin/user/postCateChildren/pid/";
-	        
-// 	        $cateInfo = d('postCate')->getInfo((int)$row['post_cate_id']);
-	        
-//  	        $rowId = (int)$row['post_cate_id'];
-//             $cateList = $this->getPostCateList($rowId);
-// 	        $selectMuti = [
-// 	            "list" => $postCateInfo,//分类表所有信息
-// 	            "url" => $url,
-// 	            "name" =>'post_cate_id',//字段名称
-// 	            'cateName' =>$cateInfo['name'],//当前分类名称
-// 	            'cateList' =>$cateList //父级分类集合
-// 	        ];
-// 	        //var_dump($selectMuti['cateName']);
-// 	        $this->assign('selectMuti',$selectMuti);
 	    });
 	    
 	}
@@ -341,7 +324,7 @@ class UserController extends PublicController {
 	        'dialog-lg'=>true, 'url' => u('postCateEdit') ]]);
 	    $con = $_GET;
 	    (int)$con['pid'] = '0';
-	    $list = d('postCate')->getList($con,'15', 'id');
+	    $list = d('postCate')->getList($con,'15');
 	    $this->assign('list',$list);
 	    $this->assign('search', $_GET);
 	    $this->display();

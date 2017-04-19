@@ -1139,9 +1139,9 @@ function initLayDate(node){
 }
 // 多级下拉菜单
 function initMultiSelect(){
-	if($('.multi-level-select select').val()){
+/*	if($('.multi-level-select select').val()){
 		multiLevel($('.multi-level-select select'));
-	}
+	}*/
 	$('.multi-level-select').on('change',function(e){
 		multiLevel($(e.target));
 	});

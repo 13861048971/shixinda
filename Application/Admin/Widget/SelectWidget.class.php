@@ -137,34 +137,27 @@ class SelectWidget extends Controller{
 	    $postCateInfo = d('postCate')->getList($con);//分类表所有信息
 	    $url = "/admin/user/postCateChildren/pid/";
 	    $row = d('post')->where(['id'=>$con['id']])->find();;
-	    $cateInfo = d('postCate')->getInfo((int)$row['post_cate_id']);
 	    $rowId = (int)$row['post_cate_id'];
 	    $cateList = d('post')->getPostCateList($rowId);//父级分类集合
+	    $currentCateChild = d('postCate')->where(['pid'=>$rowId])->select();//当前子集分类的集合
 	    $data = [
 	        "url" => $url,
 	        "name" =>'post_cate_id',
-	        'cateName' =>$cateInfo['name'],//当前分类名称
+	        'rowId' => $rowId
 	    ];
-	    isset($postCateInfo)?$list = $postCateInfo:null;
-	    isset($cateList)?$cateList:null;
+	    $list = isset($postCateInfo)? $postCateInfo:null;
+	    $cateList = isset($cateList)?$cateList:null;
+	    $currentCateChild = isset($currentCateChild)?$currentCateChild:null;
 	    $countnum = count($cateList);
-	    $cate = [];
-	    foreach ($list as $v){
-	        $cate[] = $v;
-	    }
 	    foreach ($cateList as $ko=>$vo){
 	        $cateList[$ko]['list'] = d('postCate')->getList(['pid'=>$vo['pid']]);
-	        $cateList[$ko]['count'] = count($cateList[$ko]['list']);
+	        $cateList[$ko]['count'] = count($cateList[$ko]['list']);    
 	    }
-	    
 	    $cateList = array_reverse($cateList);//按键值逆向排序
-	    $value = $data['cateName']?$data['cateName']:'请选择';
         $this->assign('data',$data);
-        $this->assign('cate',$cate);
+        $this->assign('child',$currentCateChild);
         $this->assign('cateList',$cateList);//有上级的信息列表
-        
         $this->assign('list',$list);//无上级的信息列表
-        $this->assign('value',$value);
         $this->assign('count',$countnum);//上级数量
         $this->display('Widget:Select:cateList');
 	}

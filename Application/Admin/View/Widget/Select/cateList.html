@@ -1,36 +1,47 @@
 
 <div data-name="{$data.name}" data-url="{$data.url}"class="multi-level-select">
-<if condition="$count egt 1">
-	<foreach name="cateList" item="vo" key="k">
-		<if condition="$k neq $count">
-			<select class="form-control" >
-				<!-- <option value="{$vo.id}" >{$vo.name}</option> -->
-				<foreach name="vo.list" item="vo2" key="k2">
-					<if condition="$vo2['id'] eq $vo['id']">
-					<option value="{$vo2.id}" selected>{$vo2.name}</option>
-					<else/>
-					<option value="{$vo2.id}" >{$vo2.name}</option>
-				</if>
-				</foreach>
+
+	<if condition="$count egt 1">
+		<foreach name="cateList" item="vo" key="k">
+			<if condition="$k+1 neq $count">
 			
-			</select>
-			<else/>
-			<select class="form-control" name="{$data.name}">
-				
-				<option value="{$vo.id}" >{$vo.name}</option>
-				<for start="1" end="$vo['count']">
-					<option value='{$vo["list"]["$i"]["id"]}' >{$vo["list"]["$i"]["name"]}</option>
-				</for>
-			</select>
-		</if>
-	</foreach>
-<else/>
-	<select class="form-control" >
-			<option value="">{$value}</option>
-			<foreach name="list" item="v">
-			<option value="{$v.id}">{$v.name}</option>
-			</foreach>
-	</select>
-</if>
+				<select class="form-control" >
+					<!-- <option value="{$vo.id}" >{$vo.name}</option> -->
+					<foreach name="vo.list" item="vo2" key="k2">
+						<if condition="$vo2['id'] eq $vo['id']">
+						<option value="{$vo2.id}" selected>{$vo2.name}</option>
+						<else/>
+						<option value="{$vo2.id}" >{$vo2.name}</option>
+						</if>
+					</foreach>
+				</select>
+				<else/>
+				<select class="form-control" name="{$data.name}">
+					<foreach name="vo.list" item="vo2" key="k2">
+						<if condition="$vo2['id'] eq $vo['id']">
+						<option value="{$vo2.id}" selected>{$vo2.name}</option>
+						<else/>
+						<option value="{$vo2.id}" >{$vo2.name}</option>
+						</if>
+					</foreach>
+				</select>
+				<if condition="$child">
+					<select class="form-control" >
+						<option value="" >请选择</option>
+						<foreach name="child" item="cd">
+						<option value="{$cd.id}" >{$cd.name}</option>
+						</foreach>
+					</select>
+				</if>
+			</if>
+		</foreach>
+	<else/>
+		<select class="form-control" >
+				<option value="" >请选择</option>
+				<foreach name="list" item="v">
+				<option value="{$v.id}">{$v.name}</option>
+				</foreach>
+		</select>
+	</if>
 </div>
 

@@ -27,6 +27,10 @@ class PostModel extends BaseModel{
         }
     
         $data['add_time'] = $data['update_time'] = time();
+        if(in_array($data['post_cate_id'], [null,0]))
+        {
+            $data['post_cate_id'] = 10;
+        }
         if(!$this->create($data))
             return false;
             if(!($id = $this->add()))
@@ -92,15 +96,19 @@ class PostModel extends BaseModel{
         return $data;
     }
     
+     /**
+     * 冒泡法取当前分类的所有父级分类集合
+     * @param int $id 当前分类id（post_cate_id值）
+     * @param int $i 当前分类键值为0，冒泡一次+1
+     */
     public function getPostCateList($id,$i = 0){
-        if($id>0){
+        if($id > 0){
             $postCate = d('postCate')->getInfo($id);//分类的信息
             $pid = (int)$postCate['pid'];//信息的父级id
-             
+            
             $this->cateList[$i] = $postCate;
-             
             $i +=1;
-            // var_dump($postCate);
+            
             $this->getPostCateList($pid,$i);
              
         }
