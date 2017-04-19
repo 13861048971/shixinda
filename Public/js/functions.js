@@ -1134,11 +1134,13 @@ function initLayDate(node,chooseTime){
 	if(time){
 		time = date('Y-m-d', time);
 	}
-	var html = '<div class="form-control"><input type="text" onclick="window.laydate({'
+	var html = '<div class="form-control"><input type="text" '
 	if(chooseTime){
-		html += 'istime:true,format:\'YYYY-MM-DD hh:mm\',';
+		config = 'onclick="window.laydate({istime:true,format:\'YYYY-MM-DD hh:mm\',choose:date2timestamp});"';
+	}else{
+		config = 'onclick="window.laydate({choose:date2timestamp});"';
 	}
-	html += 'choose:date2timestamp});" required value="'+ time +'"><label class="laydate-icon"></label></div>';
+	html += config+' required value="'+ time +'"><label class="laydate-icon" '+config+'></label></div>';
 	node.after(html);
 }
 // 多级下拉菜单
