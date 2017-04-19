@@ -34,7 +34,7 @@ function dialog(idName, callback){
 		ajaxSubmit(th.form);
 		renderEditor(th.modalNode);			//编辑器
 		album(th.modalNode.find('.album'));	//相册
-		initLayDate(th.modalNode.find('.lay-date'),true);
+		initLayDate(th.modalNode.find('.lay-date'));
 		setTimeout(initMultiSelect,500);
 	};
 	this.hide = function(){

@@ -5,43 +5,33 @@
 1.缩进对齐
 	使用tab缩进
 	多行变量赋值,数组赋值,使用缩进和空格来对其, 如：
-		$name 	  = '';
-		$yourName = '';
-		$array = [
-			'name' 		=> '',
-			'age'  		=> '',
-			'birthday' 	=> '',
+		var name      = '';
+		var yourName  = '';
+		var arr       = new Array = [
+			'name',
+			'age',
+			'birthday',
 		];
 	
-2.常量
-	用大写字母+下划线的方式  如: define('BAR_BAZ', 0);
 	
-3.变量
+2.变量
 	变量名称使用有意义的英文字母  如: userPoint
-	普通的变量采用驼峰, 如 $myName
-	来自数据库字段的变量采用小写字母+下划线隔开,  如: $user_id
-	字符串变量请尽量使用单引号
+	普通的变量采用驼峰, 如 myName
 	
 	
-4.控制结构 if,for,foreach,while,switch
+3.控制结构 if,for,foreach,while,switch
 	注意多个条件之间的空格 和 括号的位置 如:
-	if(($con1 && $con2) || $con3){
+	if((con1 && con2) || con3){
 	}
 	
-5.函数名,方法名
+4.函数名
 	采用驼峰
 	
-6.类名
-	使用帕斯卡方式命名,  如: (注意括号的位置)
-	MyClass extends ParentClass
- 	{
 	
-	}
-	
-7.嵌套深度
+5.嵌套深度
 	避免深层嵌套,深度不要超过3级
 	
-8.注释
+6.注释
 	添加应有的注释,函数和类必须有注释
 	当行注释 ,如://这是一个单行注释
 	多行注释, 如:(注意以"/**" 开始, "*/"结尾)
@@ -50,5 +40,82 @@
 		 *
 		 */
 	</pre>
+
+	<h4>项目规范</h4>
+	<pre>
+1.常用或基础函数写在一个js文件内
+
+2.模型需要实现的方法有:
+	编辑or添加
+	public edit($data, $id = null){ }
+	
+	//详情
+	public getInfo($id){}
+	
+	//格式化行
+	public parseRow($v){}
+	
+	//列表
+	public getList($con, $limit = 10, $order='id desc'){ }
+	
+	//分页列表
+	public getPageList($con, $field = '*', $limit = 15, $order = 'id desc', $group = ''){ }
+
+3.后台控制器代码复用 
+	“编辑添加”，ajaxEdit
+	“删除” 		ajaxDel
+
+4.使用挂件已经实现的功能
+	图片上传 		upload/img  
+	方法及参数			img($name, $label=null , $path=null,$req=false, $type = 'image')
+						{
+					
+						 * @param string $name input中name属性值
+						 * @param string $label input前中文名称
+						 * @param string $path input 中的value值
+						 * @param string $req 判断值是否为必填项
+						 * @param string $type 定义图片保存的文件夹名称
+						}
+						
+	radio			select/radio
+	方法及参数			radio($data)
+						{	
+						* @param array $data 选择按钮的信息
+						举例:$data = ['list'=> ['男'=>'男','女'=>'女'], 'name'=>'gender', 'checked'=>$row['gender']]
+							{
+							* @param array $data['list'] 是模型里取的信息
+							* @param string 'name'是字段名，同时也是radio的name值
+							* @param 'checked' 是radio的value值，是从list数组中获取的键值
+							}
+						}
+						
+	select			select/select
+	方法及参数			select($data)
+						{	
+						* @param array $data 选择框的信息
+						举例:$data = [[ 'name'=>'type', 'list' => $mod->typeArr]]
+							{
+							* @param array $data['list'] 是模型里定义好或者取数据库的信息
+							* @param string 'name'是字段名，同时也是select的name值
+							* @param option的value值是从list数组中获取的键值
+							}
+						}
+						
+	checkbox		select/checkbox
+	
+	
+	方法及参数			checkbox($data)
+						{	
+						* @param array $data 选择按钮的信息
+						* @param array $data['list'] 是模型里定义好或者取数据库的信息
+						* value值是从list数组中获取
+						* list的结构是:[['name'=>'', 'value'=>'value',checked=>true],['']]
+						}
+						
+						
+	
+	富文本框		edit/index 在textarea 的class属性添加"kind-editor"
+	日期选择控件  	在input 的class属性添加“lay-data”
+	</pre>	
 </div>
 <include file="Public:footer" />

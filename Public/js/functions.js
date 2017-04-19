@@ -1128,14 +1128,14 @@ function date2timestamp(time){
 	$('.lay-date').val(timestamp);
 }
 // 初始化日期控件，特定用于时间为时间戳格式的时间填写
-function initLayDate(node,chooseTime){
+function initLayDate(node){
 	node.hide();
 	var time = node.val();
 	if(time){
 		time = date('Y-m-d', time);
 	}
 	var html = '<div class="form-control"><input type="text" '
-	if(chooseTime){
+	if(node.data('istime')){
 		config = 'onclick="window.laydate({istime:true,format:\'YYYY-MM-DD hh:mm\',choose:date2timestamp});"';
 	}else{
 		config = 'onclick="window.laydate({choose:date2timestamp});"';
