@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2017-04-17 14:54:01
+Date: 2017-04-19 08:57:55
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -36,7 +36,7 @@ CREATE TABLE `admin` (
 -- ----------------------------
 -- Records of admin
 -- ----------------------------
-INSERT INTO `admin` VALUES ('1', '1', 'admin', 'e10adc3949ba59abbe56e057f20f883e', '100', '', '/Public/qrcode/2016-07-02/1467438415603.png', '1492165505', '0', '1467904390');
+INSERT INTO `admin` VALUES ('1', '1', 'admin', 'e10adc3949ba59abbe56e057f20f883e', '100', '', '/Public/qrcode/2016-07-02/1467438415603.png', '1492413039', '0', '1467904390');
 INSERT INTO `admin` VALUES ('2', '1', 'holahi', 'fcea920f7412b5da7be0cf42b8c93759', '0', '', '/Public/qrcode/2016-06-25/1466785122121.png', '0', '1466784503', '1466785436');
 
 -- ----------------------------
@@ -404,7 +404,7 @@ CREATE TABLE `message` (
   `add_time` int(11) NOT NULL COMMENT '评论时间',
   `update_time` int(11) NOT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of message
@@ -414,10 +414,11 @@ INSERT INTO `message` VALUES ('5', '7', '4', '0', '0', '1492077183', '1492077183
 INSERT INTO `message` VALUES ('6', '4', '7', '0', '0', '1492077291', '1492077291');
 INSERT INTO `message` VALUES ('7', '6', '4', '0', '0', '1492077827', '1492077827');
 INSERT INTO `message` VALUES ('8', '7', '6', '0', '0', '1492077837', '1492077837');
-INSERT INTO `message` VALUES ('9', '4', '7', '1', '0', '1492078135', '1492078715');
+INSERT INTO `message` VALUES ('9', '12', '0', '1', '0', '1492078135', '1492478340');
 INSERT INTO `message` VALUES ('10', '6', '4', '0', '0', '1492078190', '1492078190');
 INSERT INTO `message` VALUES ('11', '7', '6', '0', '0', '1492078205', '1492078744');
-INSERT INTO `message` VALUES ('12', '6', '4', '0', '0', '1492081518', '1492081518');
+INSERT INTO `message` VALUES ('12', '12', '4', '0', '0', '1492081518', '1492478540');
+INSERT INTO `message` VALUES ('13', '12', '2', '1', '0', '1492478620', '1492478650');
 
 -- ----------------------------
 -- Table structure for `navigation`
@@ -459,15 +460,21 @@ CREATE TABLE `post` (
   `add_time` int(11) NOT NULL COMMENT '添加时间',
   `update_time` int(11) NOT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of post
 -- ----------------------------
-INSERT INTO `post` VALUES ('2', '6', '0', 'sda', 'sdas ', null, '0', '1492134968', '1492135578');
-INSERT INTO `post` VALUES ('3', '7', '1', 'asd', 'dsada', null, '1', '1492134989', '1492134989');
-INSERT INTO `post` VALUES ('4', '4', '0', 'ssas', 'dada', '0', '1', '1492251867', '1492251867');
-INSERT INTO `post` VALUES ('5', '5', '0', 'asdsa', 'dasda', '1', '1', '1492251904', '1492251904');
+INSERT INTO `post` VALUES ('2', '6', '4', 'sda', 'sdas ', '1', '0', '1492134968', '1492514072');
+INSERT INTO `post` VALUES ('3', '7', '8', 'asd', 'dsada', '1', '1', '1492134989', '1492514013');
+INSERT INTO `post` VALUES ('4', '12', '6', 'ssas', 'dada', '0', '1', '1492251867', '1492514917');
+INSERT INTO `post` VALUES ('5', '12', '0', 'asdsa', 'dasda', '1', '1', '1492251904', '1492483948');
+INSERT INTO `post` VALUES ('6', '12', '3', 'sadd', 'da', '0', '1', '1492479290', '1492479290');
+INSERT INTO `post` VALUES ('7', '13', '5', '啊啊', 'sd', '0', '1', '1492482231', '1492482231');
+INSERT INTO `post` VALUES ('8', '12', '5', '王', '阿斯达', '1', '1', '1492486672', '1492486672');
+INSERT INTO `post` VALUES ('9', '6', '3', '王艳', '撒旦法', '1', '1', '1492494219', '1492513998');
+INSERT INTO `post` VALUES ('10', '12', '5', '啦啦啦', '安达市', '0', '1', '1492500863', '1492503823');
+INSERT INTO `post` VALUES ('11', '12', '8', '撒嗒啊啊啊大大', '撒嗒', '1', '1', '1492503765', '1492513843');
 
 -- ----------------------------
 -- Table structure for `post_cate`
@@ -483,7 +490,7 @@ CREATE TABLE `post_cate` (
   `add_time` int(11) NOT NULL COMMENT '添加时间',
   `update_time` int(11) NOT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of post_cate
@@ -491,9 +498,12 @@ CREATE TABLE `post_cate` (
 INSERT INTO `post_cate` VALUES ('1', '衣服', '0', '1', '0', '1', '1492138785', '1492152483');
 INSERT INTO `post_cate` VALUES ('2', 'sasa', '0', '', '0', '0', '1492151220', '1492151220');
 INSERT INTO `post_cate` VALUES ('3', 'sdas', '1', '', '0', '0', '1492245107', '1492245107');
-INSERT INTO `post_cate` VALUES ('4', 'admin', '2', '', '0', '0', '1492245120', '1492245120');
+INSERT INTO `post_cate` VALUES ('4', 'admin', '2', '', '0', '1', '1492245120', '1492416062');
 INSERT INTO `post_cate` VALUES ('5', 'sda', '3', '', '5', '1', '1492403035', '1492403035');
-INSERT INTO `post_cate` VALUES ('6', 'sdaa', '5', '', '33', '1', '1492403053', '1492403053');
+INSERT INTO `post_cate` VALUES ('6', 'sdaa', '1', '', '33', '1', '1492403053', '1492403053');
+INSERT INTO `post_cate` VALUES ('7', '萨达斯', '1', '', '0', '1', '1492504285', '1492504285');
+INSERT INTO `post_cate` VALUES ('8', '而非', '0', '', '0', '1', '1492504591', '1492504591');
+INSERT INTO `post_cate` VALUES ('9', '资讯从这些', '0', '', '0', '1', '1492505649', '1492505649');
 
 -- ----------------------------
 -- Table structure for `post_comment`
@@ -4016,8 +4026,8 @@ CREATE TABLE `user` (
 -- ----------------------------
 INSERT INTO `user` VALUES ('6', '13861048971', '13861048971@163.com', '', 'http://os.blog.163.com/common/ava.s?b=1&host=wlb.wlb', '女', '2017-04-04', '', '', '', '', '0', '1492069146', '1492399619', '0', '其他原因', '撒嗒', '1492069146', '0');
 INSERT INTO `user` VALUES ('7', '12345678941', '', '', 'http://os.blog.163.com/common/ava.s?b=1&host=wlb.wlb', '女', '', '', '', '', '', '1', '1492071976', '1492400210', '0', '多次发布违禁类容', '生生世世', '1492071976', '0');
-INSERT INTO `user` VALUES ('9', '13861048978', '', '', '/Public/upload/avatar/2017-04-17/58f423f19c06d.png', '女', '', '', '', '', '', '0', '1492394995', '1492399731', '0', '', 'aa', '1492394995', '0');
-INSERT INTO `user` VALUES ('10', '13860489711', '', '', '/Public/upload/avatar/2017-04-17/58f431f289bec.png', '', '', '', '', '', '', '1', '1492398598', '1492400555', '0', '', 'adsa', '1492398598', '0');
+INSERT INTO `user` VALUES ('9', '13861048978', '', '', '/Public/upload/avatar/2017-04-17/58f423f19c06d.png', '男', '', '', '', '', '', '0', '1492394995', '1492415788', '0', '', 'aa', '1492394995', '0');
+INSERT INTO `user` VALUES ('10', '13860489711', '', '', '/Public/upload/avatar/2017-04-17/58f431f289bec.png', '女', '', '', '', '', '', '1', '1492398598', '1492415782', '0', '', 'adsa', '1492398598', '0');
 INSERT INTO `user` VALUES ('11', '13861048973', '13861048971@163.com', '', '/Public/upload/avatar/2017-04-17/58f434a16ad8c.png', '女', '', '', '', '', '', '1', '1492399268', '1492402325', '0', '', '生生世世aa', '1492399268', '0');
 INSERT INTO `user` VALUES ('12', '12345678921', '', '', '/Public/upload/avatar/2017-04-17/58f4389965c7f.png', '男', '', '', '', '', '', '1', '1492400285', '1492402095', '0', '', '啥的', '1492400285', '0');
 INSERT INTO `user` VALUES ('13', '13861047971', '', '', '/Public/upload/avatar/2017-04-17/58f43c6c5b376.jpg', '男', '', '', '', '', '', '1', '1492401263', '1492402089', '0', '', '啊啊', '1492401263', '0');
