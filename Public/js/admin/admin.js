@@ -71,6 +71,7 @@
 				form.submit();
 		},200);
 	});
+	initMultiSelect();
 })();
 $(function(){
 	renderEditor();
@@ -204,7 +205,4 @@ $('.navigation-table').on('click',function(e){
 		selector='.pid'+pid;
 		$(selector).remove();
 	}
-});
-$('.multi-level-select').on('change',function(e){
-	multiLevel($(e.target));
 });
