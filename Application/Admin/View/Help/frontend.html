@@ -49,48 +49,14 @@
 	“编辑添加” ajaxEdit
 	“删除”     ajaxDel
 
-4.现的功能
-	时间选择控件 		在时间选择input标签中添加一个`laydate` class属性，如果需要精确到时间，请在input标签中添加`data-istime="true"`属性
+4.已实现的功能
+	时间选择控件          在时间选择input标签中添加一个`laydate` class属性，如果需要精确到时间，请在input标签中添加`data-istime="true"`属性
 							
-	radio			select/radio
-	方法及参数			radio($data)
-						{	
-						* @param array $data 选择按钮的信息
-						举例:$data = ['list'=> ['男'=>'男','女'=>'女'], 'name'=>'gender', 'checked'=>$row['gender']]
-							{
-							* @param array $data['list'] 是模型里取的信息
-							* @param string 'name'是字段名，同时也是radio的name值
-							* @param 'checked' 是radio的value值，是从list数组中获取的键值
-							}
-						}
-						
-	select			select/select
-	方法及参数			select($data)
-						{	
-						* @param array $data 选择框的信息
-						举例:$data = [[ 'name'=>'type', 'list' => $mod->typeArr]]
-							{
-							* @param array $data['list'] 是模型里定义好或者取数据库的信息
-							* @param string 'name'是字段名，同时也是select的name值
-							* @param option的value值是从list数组中获取的键值
-							}
-						}
-						
-	checkbox		select/checkbox
-	
-	
-	方法及参数			checkbox($data)
-						{	
-						* @param array $data 选择按钮的信息
-						* @param array $data['list'] 是模型里定义好或者取数据库的信息
-						* value值是从list数组中获取
-						* list的结构是:[['name'=>'', 'value'=>'value',checked=>true],['']]
-						}
-						
-						
-	
-	富文本框		edit/index 在textarea 的class属性添加"kind-editor"
-	日期选择控件  	在input 的class属性添加“lay-data”
+	多级下拉菜单          返回json数据中，如果子类为空请返回null，而不要返回空数组[]
+							
+	富文本框              edit/index 在textarea 的class属性添加"kind-editor"
+
+	时间范围选择控件      在需要的input标签中添加一个`daterange` class属性
 	</pre>	
 </div>
 <include file="Public:footer" />
