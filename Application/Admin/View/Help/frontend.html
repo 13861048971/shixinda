@@ -45,25 +45,9 @@
 	<pre>
 1.常用或基础函数写在一个js文件内
 
-2.模型需要实现的方法有:
-	编辑or添加
-	public edit($data, $id = null){ }
-	
-	//详情
-	public getInfo($id){}
-	
-	//格式化行
-	public parseRow($v){}
-	
-	//列表
-	public getList($con, $limit = 10, $order='id desc'){ }
-	
-	//分页列表
-	public getPageList($con, $field = '*', $limit = 15, $order = 'id desc', $group = ''){ }
-
-3.后台控制器代码复用 
-	“编辑添加”，ajaxEdit
-	“删除” 		ajaxDel
+2.常用ajax操作代码复用 
+	“编辑添加” ajaxEdit
+	“删除”     ajaxDel
 
 4.使用挂件已经实现的功能
 	图片上传 		upload/img  
