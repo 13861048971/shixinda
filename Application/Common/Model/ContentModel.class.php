@@ -1,6 +1,7 @@
 <?php
 use Think\Model;
 class ContentModel extends BaseModel {
+    public $cateList = [];
     
     public $statusArr = [  //可选的状态
         0 => '禁用',
@@ -50,8 +51,6 @@ class ContentModel extends BaseModel {
 	    }
 	
 	    $data['update_time'] = $data['add_time'] = time();
-	    //$cateRow = d('contentCate')->where(['name'=>$data['cateName']])->find();
-	    $data['cate_id'] = $cateRow['id'];
 	    if(!$this->create($data))
 	        return false;
 	
@@ -69,6 +68,22 @@ class ContentModel extends BaseModel {
 	        $data['list'][$k] = $this->parseRow($v);
 	    }
 	    return $data;
+	}
+	
+	public function getContentCateList($id,$i = 0){
+	    if($id>0){
+	        $contentCate = d('contentCate')->getInfo($id);//分类的信息
+	        $pid = (int)$contentCate['pid'];//信息的父级id
+	         
+	        $this->cateList[$i] = $contentCate;
+	         
+	        $i +=1;
+	        // var_dump($postCate);
+	        $this->getContentCateList($pid,$i);
+	         
+	    }
+	     
+	    return  $this->cateList;
 	}
 }
 

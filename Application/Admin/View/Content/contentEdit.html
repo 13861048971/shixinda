@@ -14,10 +14,8 @@
   </div>
    <div class="form-group">
     <label class="col-sm-2 control-label"><b class="red">*</b>分类名称:</label>
-    <div class="col-sm-5">
-	  <!--  <input name="cateName" type="text" required class="form-control" value="{$row.cateName}"> -->
-	  {:W('select/selectMuti', [$selectMuti])}
-	  	
+    <div class="col-sm-5">  
+	  {:W('select/contentCate')}	  	
     </div>
    </div>
    <div class="form-group">
@@ -30,7 +28,8 @@
   <div class="form-group">
     <label class="col-sm-2 control-label">发布时间:</label>
     <div class="col-sm-5">
-	   <input name="publish_time" type="text"class="form-control lay-date publish_time" value="{$row.publish_time}">
+	   <input name="publish_time" type="text" class="form-control lay-date publish_time" 
+	    value="{$row.publish_time}" >
     </div>
   </div>
   <div class="form-group">
