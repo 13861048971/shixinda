@@ -1132,7 +1132,11 @@ function initLayDate(node){
 	node.hide();
 	var time = node.val();
 	if(time){
-		time = date('Y-m-d h:i', time);
+		if(node.data('istime')){
+			time = date('Y-m-d h:i', time);
+		}else{
+			time = date('Y-m-d', time);
+		}
 	}
 	var html = '<div class="form-control"><input type="text" '
 	if(node.data('istime')){
