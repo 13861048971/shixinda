@@ -14,7 +14,7 @@ class ContentController extends PublicController {
 	//内容列表
     public function index(){
         $rightBtn = [
-            ['name' => '添加内容','url'=>u('contentEdit'), 'dialog' => 1, 'dialog-lg' => 1 ]
+            ['name' => '添加内容','url' => u('contentEdit'), 'dialog' => 1, 'dialog-lg' => 1 ]
         ];
         $this->setRightAction($rightBtn);
         $data = d('content')->getPageList($_GET);
@@ -27,15 +27,19 @@ class ContentController extends PublicController {
 	public function contentEdit(){
 	    $this->ajaxEdit('content', null, function($row, $mod){
 	    $list = d('contentCate')->getList(['pid'=>'0'],$limit=50);
-	    //ump($data);exit();
-	    $url = "/admin/user/contentCateChildren/pid/";
-	     $selectMuti = [
-	            "list" => $list,
-	            "url" => $url
-	        ];
+	    $url = "/admin/content/contentCateChildren/pid/";
+        $selectMuti = [
+                    'list'      => $list,
+                    'url'       => $url,
+                    'name'      => 'cate_id',
+                    'cateName'  => $row['cateName'] 
+        ];
+        if(!$row){
+            $row['publish_time'] = time();
+        }
+        //dump($row['title']);exit();
+        $this->assign('row',$row);
 	    $this->assign('selectMuti',$selectMuti);
-	    //dump($list);exit();
-	    //ajaxReturn(0,'子类获取成功',['list'=>$list]);   
 	    });
 	}
 	 
@@ -59,13 +63,9 @@ class ContentController extends PublicController {
 	
 	//内容分类获取子类
 	public function contentCateChildren($pid){
-	    $data = d('contentCate')->getList(['pid'=>$pid]);
-	    //ump($data);exit();
-	    $this->assign($data);
-	    $list = $data['list'];
+	    $list = d('contentCate')->getList(['pid'=>$pid]);
 	    ajaxReturn(0,'子类获取成功',['list'=>$list]);
-	    
-	}
+    }
 	
 	//分类编辑
 	public function contentCateEdit(){
@@ -131,12 +131,12 @@ class ContentController extends PublicController {
 	    $this->assign($data);
 	    $list = $data['list'];
 	    ajaxReturn(0,'子类获取成功',['list'=>$list]);
-	
 	}
 	
 	//导航管理编辑
 	public function navigationEdit(){
 	    $this->ajaxEdit('navigation', null, function($row, $mod){
+	        
 	    });
 	}
 	

@@ -1,5 +1,62 @@
 <include file="Public:header" />
 <div class="table-responsive">
+<h4>编码规范</h4>
+	<pre>
+1.缩进对齐
+	使用tab缩进
+	多行变量赋值,数组赋值,使用缩进和空格来对其, 如：
+		var name      = '';
+		var yourName  = '';
+		var arr       = new Array = [
+			'name',
+			'age',
+			'birthday',
+		];
+	
+	
+2.变量
+	变量名称使用有意义的英文字母  如: userPoint
+	普通的变量采用驼峰, 如 myName
+	
+	
+3.控制结构 if,for,foreach,while,switch
+	注意多个条件之间的空格 和 括号的位置 如:
+	if((con1 && con2) || con3){
+	}
+	
+4.函数名
+	采用驼峰
+	
+	
+5.嵌套深度
+	避免深层嵌套,深度不要超过3级
+	
+6.注释
+	添加应有的注释,函数和类必须有注释
+	当行注释 ,如://这是一个单行注释
+	多行注释, 如:(注意以"/**" 开始, "*/"结尾)
+		/**
+		 *
+		 *
+		 */
+	</pre>
 
+	<h4>项目规范</h4>
+	<pre>
+1.常用或基础函数写在一个js文件内
+
+2.常用ajax操作代码复用 
+	“编辑添加” ajaxEdit
+	“删除”     ajaxDel
+
+4.已实现的功能
+	时间选择控件          在时间选择input标签中添加一个`laydate` class属性，如果需要精确到时间，请在input标签中添加`data-istime="true"`属性
+							
+	多级下拉菜单          返回json数据中，如果子类为空请返回null，而不要返回空数组[]
+							
+	富文本框              edit/index 在textarea 的class属性添加"kind-editor"
+
+	时间范围选择控件      在需要的input标签中添加一个`daterange` class属性
+	</pre>	
 </div>
 <include file="Public:footer" />

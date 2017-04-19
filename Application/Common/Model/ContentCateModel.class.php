@@ -7,7 +7,7 @@ class ContentCateModel extends BaseModel {
     ];
     
     //列表
-    public function getList($con=[], $limit=5){
+    public function getList($con=[], $limit=50){
         $list = $this->where($con)->limit($limit)->select();
        
         foreach ($list as $k=>$v){

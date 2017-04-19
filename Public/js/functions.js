@@ -1132,16 +1132,28 @@ function initLayDate(node){
 	node.hide();
 	var time = node.val();
 	if(time){
-		time = date('Y-m-d', time);
+		if(node.data('istime')){
+			time = date('Y-m-d h:i', time);
+		}else{
+			time = date('Y-m-d', time);
+		}
 	}
-	var html = '<input type="text" onclick="window.laydate({choose:date2timestamp});" required value="'+ time +'" class="form-control">';
+	var html = '<div class="form-control"><input type="text" '
+	if(node.data('istime')){
+		config = 'onclick="window.laydate({istime:true,format:\'YYYY-MM-DD hh:mm\',choose:date2timestamp});"';
+	}else{
+		config = 'onclick="window.laydate({choose:date2timestamp});"';
+	}
+	html += config+' required value="'+ time +'"><label class="laydate-icon" '+config+'></label></div>';
 	node.after(html);
 }
 // 多级下拉菜单
 function initMultiSelect(){
+
 /*	if($('.multi-level-select select').val()){
 		multiLevel($('.multi-level-select select'));
 	}*/
+
 	$('.multi-level-select').on('change',function(e){
 		multiLevel($(e.target));
 	});

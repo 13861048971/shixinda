@@ -205,11 +205,13 @@ class PublicController extends Controller {
 		
 		if($id = (int)$_GET['id']){
 			$row = $mod->getInfo($id);
-			$this->assign('row', $row);
+			$this->assign('row',$row);
 		}
 		
 		if(is_callable($callback))
 			$callback($row, $mod);
+		//dump($row['publish_time']);exit();
+		
 		
 		if($mod->statusArr){
 			$statusList = [[ 'name'=>'status', 'list' => $mod->statusArr]];	
