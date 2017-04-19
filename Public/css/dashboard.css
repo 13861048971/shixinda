@@ -533,3 +533,13 @@ table td.right{text-align:right;}
   margin-left: 0;
   margin-right: 0;
 }
+.form-control input{
+  width: 80%;
+  border: none;
+  float: left;
+  outline: none;
+}
+.form-control .laydate-icon{
+    width: 30px;
+    float: right;
+}

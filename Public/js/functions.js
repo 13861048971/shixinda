@@ -1128,13 +1128,17 @@ function date2timestamp(time){
 	$('.lay-date').val(timestamp);
 }
 // 初始化日期控件，特定用于时间为时间戳格式的时间填写
-function initLayDate(node){
+function initLayDate(node,chooseTime){
 	node.hide();
 	var time = node.val();
 	if(time){
 		time = date('Y-m-d', time);
 	}
-	var html = '<input type="text" onclick="window.laydate({choose:date2timestamp});" required value="'+ time +'" class="form-control">';
+	var html = '<div class="form-control"><input type="text" onclick="window.laydate({'
+	if(chooseTime){
+		html += 'istime:true,format:\'YYYY-MM-DD hh:mm\',';
+	}
+	html += 'choose:date2timestamp});" required value="'+ time +'"><label class="laydate-icon"></label></div>';
 	node.after(html);
 }
 // 多级下拉菜单
