@@ -13,7 +13,7 @@ class SettingController extends PublicController {
 	
 	function config(){
 		$mod = d('config');
-		
+		var_dump($name);
 		if($name = $_POST['name']) {
 			$info = $mod->getInfo($name);
 			if(!$mod->edit($_POST, $info['name']))
@@ -22,6 +22,7 @@ class SettingController extends PublicController {
 		}
 		
 		$list = $mod->getList();
+		
 		$this->assign('tabList', $mod->nameArr);
 		$this->assign('list',	 $list);
 		$this->display('config');

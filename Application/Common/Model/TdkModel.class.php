@@ -6,6 +6,8 @@ class TdkModel extends BaseModel {
         'content' => 0,
         'post'    => 1
     ];
+    public $typeArr = ['内容','帖子'];
+    
     
     //列表
     public function getList($con=[], $limit=5){
@@ -16,6 +18,14 @@ class TdkModel extends BaseModel {
 	    return $list;
 	}
 	
+	//格式化行
+	public function parseRow($v){
+	    $v['publishTime'] = date("Y-m-d H:i:s",$v['publish_time']);
+	    $v['updateTime'] = date("Y-m-d H:i:s",$v['update_time']);
+	    $v['addTime'] = date("Y-m-d H:i:s",$v['add_time']);
+	    return $v;
+	}
+	
 	//详情
 	public function getInfo($id){
 	   $info = $this->where(['node_id'=>$id])->find();
@@ -23,25 +33,16 @@ class TdkModel extends BaseModel {
 	   return $info;
 	}
 	
-	//格式化行
-	public function parseRow($v){
-	    $cateRow = d('contentCate')->where([ 'id'=>$v['cate_id'] ])->find();
-	    $v['cateName'] = $cateRow['name'];
-	    $v['statusName'] = $this->statusArr[$v['status']];
-	    $v['publishTime'] = date("Y-m-d H:i:s",$v['publish_time']);
-	    $v['updateTime'] = date("Y-m-d H:i:s",$v['update_time']);
-	    $v['addTime'] = date("Y-m-d H:i:s",$v['add_time']);
-	    return $v;
-	}
-	
 	//添加或编辑
-	function edit($data){
-	    $tdkData = ['node_id'      => $data['id'] 
-	                ,'type'        => $this->statusArr[$data['type']]
-	                ,'title'       => $data['seo_title']
-	                ,'description' => $data['seo_description']
-	                ,'keywords'    => $data['seo_keywords']];
-	    
+	function edit($data,$id=null){
+	    $tdkData = [
+	        'node_id'      => $data['id'],
+	        'type'        => $this->statusArr[$data['type']],
+	        'title'       => $data['seo_title'],
+	        'description' => $data['seo_description'],
+	        'keywords'    => $data['seo_keywords']
+	    ];
+
 	    $return = $this->where(['node_id'=>$data['id']])->find();
 	    
 	    if($return){
@@ -75,20 +76,6 @@ class TdkModel extends BaseModel {
 	    return $data;
 	}
 	
-	public function getContentCateList($id,$i = 0){
-	    if($id>0){
-	        $contentCate = d('contentCate')->getInfo($id);//分类的信息
-	        $pid = (int)$contentCate['pid'];//信息的父级id
-	         
-	        $this->cateList[$i] = $contentCate;
-	         
-	        $i +=1;
-	        // var_dump($postCate);
-	        $this->getContentCateList($pid,$i);
-	         
-	    }
-	     
-	    return  $this->cateList;
-	}
+	
 }
 

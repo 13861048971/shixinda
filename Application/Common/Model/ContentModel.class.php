@@ -19,10 +19,10 @@ class ContentModel extends BaseModel {
 	
 	//详情
 	public function getInfo($id){
-	    $info = $this->find($id);
-	    if(!$info) return;
-	
-	    $info = $this->parseRow($info);
+	    $contentInfo = $this->find($id);
+	    if(!$contentInfo) return;
+	    $tdkInfo = d('tdk')->getInfo($id);
+	    $info = ['contentInfo'=>$contentInfo,'tdkInfo'=>$tdkInfo];
 	    return $info;
 	}
 	//格式化行
@@ -38,18 +38,17 @@ class ContentModel extends BaseModel {
 	
 	//添加或编辑
 	function edit($data, $id=null){
-	    $data['actions'] && $data['actions'] = serialize($data['actions']);
 	    if($id){
 	        $data['update_time'] = time();
-	        
 	        $return  = $this->data($data)->where('id=' . (int)$id)->save();
 	        if(false === $return){
 	            $this->lastError = '修改失败!';
 	            return false;
 	        }
+	        d('tdk')->edit($data);
 	        return $id;
 	    }
-	
+	  
 	    $data['update_time'] = $data['add_time'] = time();
 	    if(!$this->create($data))
 	        return false;
@@ -57,6 +56,8 @@ class ContentModel extends BaseModel {
 	        if(!($id = $this->add())){
 	            return $this->setError('添加失败!');
 	        }
+	        $data['id'] = $id;
+	        d('tdk')->edit($data);
 	        return $id;
 	}
 	

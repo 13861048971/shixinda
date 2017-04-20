@@ -61,6 +61,7 @@ class SelectWidget extends Controller{
 		return $this->index($data);
 	}
 	
+
 	/**
 	 * 生成radio
 	 * @param array $data 选择按钮的信息

@@ -2,49 +2,58 @@
 use Think\Controller;
 class IndexController extends PublicController {
 	public $userId;
-	public function index(){ return;
-		$city = $this->user['city'];
-		$field = 'if(city = "'. $city .'", 1, 0) as eqcity,id';
-		$phoMod = d('pho');
-		$con['status'] = 1;
-		$hotPho = $phoMod->getList($con, 10,  $field, 'eqcity desc,star desc');
-		$mod = d('meal');
-		$con['status'] = ['lt', 1];
-		$hotMeal = $mod->getList($con, 5);
-		!$hotMeal && $hotMeal = [];
-		foreach($hotMeal as $v){
-			$ids[] = $v['id'];
-		}
-		$con = $_GET;
-		$ids && $con['id'] = ['not in', $ids];
-		$con['status'] = ['lt', 1];
-		$starMeal = $mod->getList($con, 5, 'star desc');
-		!$starMeal && $starMeal = [];
-		
-		$data['slide'] = d('slide')->getList(null, 5);
-		$data['hotPho'] = $hotPho;
-		$hotMeal = array_merge($hotMeal, $starMeal);
-		$data['cityArr'] = $phoMod->cityArr;
-		
-		//热门套餐id
-		foreach($hotMeal as $v){
-			$idArr[] = $v['id'];
-		}
-		
-		$con = $_GET;
-		//不包含首页的热门套餐
-		$idArr && $con['id'] = ['not in', $idArr];
-		$con['status'] = ['lt', 1];
-		$mealList = d('meal')->getPageList($con);
-		if($_GET['page'] < 2){
-			!$hotMeal && $hotMeal = [];
-			!$mealList['list'] && $mealList['list'] = [];
-			$mealList['list'] = array_merge($hotMeal, $mealList['list']);
-		}
-		$data['mealList'] = $mealList;
-		ajaxReturn2(0,null, $data);
+
+	public function _initialize(){
+	    
 	}
 	
+	
+    //首页
+	public function index(){ 
+	    $configInfo = $this->config();
+        $about = $this->aboutOur();
+        $this->assign('aboutOur',$about);
+	    $this->assign('config',$configInfo);
+		$this->display();
+	}
+	
+	//产品展示
+	public function product(){
+	    $configInfo = $this->config();
+        $about = $this->aboutOur();
+        $this->assign('aboutOur',$about);
+	    $this->assign('config',$configInfo);
+	    $this->display();
+	}
+	
+	//新闻
+	public function news(){
+		$configInfo = $this->config();
+        $about = $this->aboutOur();
+        $this->assign('aboutOur',$about);
+	    $this->assign('config',$configInfo);
+	    $this->display();
+	}
+	
+	//服务
+	public function services(){
+	    $configInfo = $this->config();
+        $about = $this->aboutOur();
+        $this->assign('aboutOur',$about);
+	    $this->assign('config',$configInfo);
+	    $this->display();
+	}
+	
+	//案例
+	public function cases(){
+	    $configInfo = $this->config();
+        $about = $this->aboutOur();
+        $this->assign('aboutOur',$about);
+	    $this->assign('config',$configInfo);
+	    $this->display();
+	}
+	
+
 	/**
 	 * 套餐列表
 	 **/
@@ -364,5 +373,22 @@ class IndexController extends PublicController {
 	//支付结果通知
 	public function payNotify(){
 		d('order')->payNotify($_POST);
+	}
+	
+	//关于我们
+	public function aboutOur(){
+	    $mod = d('config');
+	    $info = $mod->getList();
+	    $info = $info['about']['node'];
+	    
+	    return $info;
+	}
+	//网站配置信息
+	public  function config(){
+	    $mod = d('config');
+	    $list = $mod->getList();
+	    $list = $list['config']['node'];
+
+	return $list;
 	}
 }

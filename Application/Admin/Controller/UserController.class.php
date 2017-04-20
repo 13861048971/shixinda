@@ -250,11 +250,8 @@ class UserController extends PublicController {
 	    if($id>0){
 	        $postCate = d('postCate')->getInfo($id);//分类的信息
 	        $pid = (int)$postCate['pid'];//信息的父级id
-	        
-	        $this->cateList[$i] = $postCate;
-	      
+	        $this->cateList[$i] = $postCate; 
 	        $i +=1;
-	       // var_dump($postCate);
 	        $this->getPostCateList($pid,$i);
 	        
 	    }
@@ -264,7 +261,10 @@ class UserController extends PublicController {
 	//帖子编辑
 	public function postEdit(){
 	    
-	    $this->ajaxEdit('post',null, function($row, $mod){  
+	    $this->ajaxEdit('post',null, function($row, $mod){
+	        $id = $_GET['id'];
+	        $tdkRow = d('tdk')->getInfo($id); //用模型传值
+	        $this->assign('tdkRow',$tdkRow);//用模型
 	    });
 	    
 	}

@@ -14,36 +14,41 @@ class PostModel extends BaseModel{
  
     function edit($data, $id=null){
         $data = $this->setValidate($data);
+        $modtdk = d('tdk');
         $tdkData = [  
             'type' =>$data['type'],
             'title' => $data['seo_title'],
             'keywords' => $data['seo_keywords'],
             'description' => $data['seo_description'] 
         ];
-        
-        $modtdk = d('tdk');
+             
         if($id){
-            $data['update_time'] = time();
+            $data['update_time'] = $tdkData['update_time'] = time();
             $data['id'] = $id;
             
             if(!$this->create($data))
                 return false;
-                if(false === $this->save() || false === $modtdk->where(['node_id'=>$id])->save($tdkData)){
-                    $this->lastError = '修改失败!';
-                    return false;
-                }
-                return $id;
+            
+            if(false === $this->save() || false === $modtdk->where(['node_id'=>$id])->save($tdkData)){
+                $this->lastError = '修改失败!';
+                return false;
+            }
+               
+            return $id;
         }
     
-        $data['add_time'] = $data['update_time'] = time();
+        $data['add_time'] = $data['update_time'] = $tdkData['update_time'] = time();
+        
         if(in_array($data['post_cate_id'], [null,0]))
-        {
+        {   //判断当前是否选择分类，如果没有则默认选择值为10，意思是未选择分类
             $data['post_cate_id'] = 10;
         }
+        
         if(!$this->create($data))
             return false;
-            if($id = $this->add()){
-                $tdkData['node_id'] = $id;
+            if($this->add()){
+                $tdkData['node_id'] = $this->add();
+                 
                 if(!($id = $modtdk->add($tdkData))){
                     return $this->setError('发送失败!');
                 }  
