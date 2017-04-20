@@ -9,7 +9,7 @@ class ConfigModel extends BaseModel{
 	public $nameArr = [
 		'SMS' 		=> '短信设置(云片)',
 		'message' 	=> '消息推送(友盟)',
-		'app' 		=> 'App配置',
+		'config' 		=> '网站配置',
 		'image' 	=> '切图配置',
 		'about' 	=> '关于我们',
 		'agreement' => '用户使用协议',
@@ -30,15 +30,15 @@ class ConfigModel extends BaseModel{
 			'nickname' 	=> ['label' => '推送管理员昵称', 'r' => 4, 'type'=>'text'],
 			'avatar' 	=> ['label' => '头像', 'r' => 4, 'type'=>'image'],
 		],
-		'app'=>[
-			'appName'	=> ['label'=>'App名称','r'=>5],
+		'config'=>[
+			'appName'	=> ['label'=>'网站名称','r'=>5],
 			'email'		=> ['label'=>'电子邮箱','r'=>5],
 			'cellphone'	=> ['label'=>'手机','r'=>5],
 			'telephone'	=> ['label'=>'电话','r'=>5],
 			'weixin'	=> ['label'=>'微信号','r'=>5],
 			'right'		=> ['label'=>'权限申明','r'=>5],
 			'icpNo'		=> ['label'=>'ICP备案号','r'=>5],
-			'down'		=> ['label'=>'下载地址','r'=>5],
+			'down'		=> ['label'=>'公司地址','r'=>5],
 			'workday'	=> ['label'=>'工作时间','value'=>'周一至周六 9:00－18:00']
 		],
 		'image'=>[

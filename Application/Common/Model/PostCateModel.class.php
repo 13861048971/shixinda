@@ -7,7 +7,6 @@ import('Org.Util.Validator');
 class PostCateModel extends BaseModel{
     public $cacheKey  = 'category_';
     public $statusArr = [0 => '关闭',	  1 => '启用' ];
-    public $typeArr   = [1 => '艺术类型', 2 => '地区'];
     
     protected $_validate;
     
