@@ -193,6 +193,7 @@ class PublicController extends Controller {
 	 */
 	protected function ajaxEdit($modName, $template = null, $callback = null,$success=''){
 		$mod = d($modName);
+		$modTdk = d('tdk');
 		if($_POST){ 
 			$data = $_POST;
 			$id   = (int)$_POST['id'];
@@ -210,7 +211,6 @@ class PublicController extends Controller {
 		
 		if(is_callable($callback))
 			$callback($row, $mod);
-		//dump($row['publish_time']);exit();
 		
 		
 		if($mod->statusArr){
@@ -225,13 +225,14 @@ class PublicController extends Controller {
 			$this->assign('statusList', $statusList);
 		}	
 		
-		if($mod->typeArr){
-		    $typeList = [[ 'name'=>'type', 'list' => $mod->typeArr]];
-		    if(isset($row['type'])){
-		        $typeList[0]['checked'] = $row['type'];
-		        $typeList[0]['selected'] = $row['type'];
+		if($modTdk->typeArr){
+		    $typeList = [[ 'name'=>'type', 'list' => $modTdk->typeArr]];
+		    $tdkRow = d('tdk')->getInfo($_GET['id']);
+		    if(isset($tdkRow['type'])){
+		        $typeList[0]['checked'] = $tdkRow['type'];
+		        $typeList[0]['selected'] = $tdkRow['type'];
 		    }
-		    if(!isset($row['status']))
+		    if(!isset($tdkRow['status']))
 		        $typeList[0]['checked'] = 1;
 		        	
 		        $this->assign('typeList', $typeList);
