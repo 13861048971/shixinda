@@ -671,8 +671,8 @@ function openInNewWindow(url, title) {
  */
 function renderEditor(parentNode){
 	var node = $('.kind-editor');
-	parentNode && (node = parentNode.find('.kind-editor'));	
-	// console.log(node);
+	parentNode && (node = parentNode.find('.kind-editor'));
+	
 	if(!node[0]) return;
 	if('undefined' == typeof KindEditor)
 		return console.warn('less kindEditor!');

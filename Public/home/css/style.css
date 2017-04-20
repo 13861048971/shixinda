@@ -125,11 +125,11 @@ h4 {
 /* =============================================================
    SLIDESHOW / CAROUSEL STYLES
  ============================================================ */
-
-#carousel-div {
-	border: 3px solid #e1e1e1;
+@media screen and (min-width: 768px){
+	.carousel-caption {
+		left: 10%;
+	}
 }
-
 .carousel-caption {
 	top: 50px;
 }
