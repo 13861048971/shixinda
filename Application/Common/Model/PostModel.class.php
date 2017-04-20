@@ -6,7 +6,7 @@ import('Org.Util.Validator');
  */
 class PostModel extends BaseModel{
     public $statusArr = ['不显示', '显示'];
-    public $typeArr = ['新闻', '短信'];
+
     public $cateList = [];
     /**
      * 编辑or添加
@@ -14,12 +14,21 @@ class PostModel extends BaseModel{
  
     function edit($data, $id=null){
         $data = $this->setValidate($data);
+        $tdkData = [  
+            'type' =>$data['type'],
+            'title' => $data['seo_title'],
+            'keywords' => $data['seo_keywords'],
+            'description' => $data['seo_description'] 
+        ];
+        
+        $modtdk = d('tdk');
         if($id){
             $data['update_time'] = time();
             $data['id'] = $id;
+            
             if(!$this->create($data))
                 return false;
-                if(false === $this->save()){
+                if(false === $this->save() || false === $modtdk->where(['node_id'=>$id])->save($tdkData)){
                     $this->lastError = '修改失败!';
                     return false;
                 }
@@ -33,11 +42,12 @@ class PostModel extends BaseModel{
         }
         if(!$this->create($data))
             return false;
-            if(!($id = $this->add()))
-                return $this->setError('发送失败!');
-                //     		if(!$this->sendMsg($id)){
-                //     			return $this->setError('发送消息失败!');
-                //     		}
+            if($id = $this->add()){
+                $tdkData['node_id'] = $id;
+                if(!($id = $modtdk->add($tdkData))){
+                    return $this->setError('发送失败!');
+                }  
+            }
                 return $id;
     }
     
