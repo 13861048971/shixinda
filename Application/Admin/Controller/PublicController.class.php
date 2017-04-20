@@ -183,7 +183,7 @@ class PublicController extends Controller {
 			return ajaxReturn(1, '缺少ID!');
 		if(!d($modName)->delete($id))
 			return ajaxReturn(1, '删除失败!');
-		ajaxReturn(0,'删除成功!');
+		//return ajaxReturn(0,'删除成功!');
 	}
 	
 	/**
@@ -191,7 +191,7 @@ class PublicController extends Controller {
 	 * @param string $modName  模型名称
 	 * @param string $template 模板地址
 	 */
-	protected function ajaxEdit($modName, $template = null, $callback = null,$success=''){
+protected function ajaxEdit($modName, $template = null, $callback = null,$success=''){
 		$mod = d($modName);
 		if($_POST){ 
 			$data = $_POST;
@@ -204,17 +204,18 @@ class PublicController extends Controller {
 		}
 		
 		if($id = (int)$_GET['id']){
-			$row = $mod->getInfo($id);
+			$list = $mod->getInfo($id);
+			$row = $list['contentInfo'];
+			$tdkRow = $list['tdkInfo'];
 			$this->assign('row',$row);
+			$this->assign('tdkRow',$tdkRow);
 		}
 		
 		if(is_callable($callback))
 			$callback($row, $mod);
-		//dump($row['publish_time']);exit();
-		
 		
 		if($mod->statusArr){
-			$statusList = [[ 'name'=>'status', 'list' => $mod->statusArr]];	
+			$statusList = [[ 'name' => 'status', 'list' => $mod->statusArr]];	
 			if(isset($row['status'])){
 				$statusList[0]['checked'] = $row['status'];
 				$statusList[0]['selected'] = $row['status'];
