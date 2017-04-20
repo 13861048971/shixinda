@@ -670,18 +670,20 @@ function openInNewWindow(url, title) {
  * 渲染编辑器
  */
 function renderEditor(parentNode){
-	var node = $('.kind-editor');	
-	parentNode && (node = parentNode.find('.kind-editor'));
-	
+	var node = $('.kind-editor');
+	parentNode && (node = parentNode.find('.kind-editor'));	
+	// console.log(node);
 	if(!node[0]) return;
 	if('undefined' == typeof KindEditor)
 		return console.warn('less kindEditor!');
 
 	setTimeout(function(){
-		var edit = KindEditor.create(node[0], {width:"100%",height:350,afterChange:function(){
-			if(!edit) return;
-			edit.sync();
-		}});
+		for(var k=0;k< node.length;k++){
+			var edit = KindEditor.create(node[k], {width:"100%",height:350,afterChange:function(){
+				if(!edit) return;
+				edit.sync();
+			}});
+		}
 	}, 200);
 }
 
