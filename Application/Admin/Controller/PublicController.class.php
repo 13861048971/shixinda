@@ -183,7 +183,7 @@ class PublicController extends Controller {
 			return ajaxReturn(1, '缺少ID!');
 		if(!d($modName)->delete($id))
 			return ajaxReturn(1, '删除失败!');
-		//return ajaxReturn(0,'删除成功!');
+		ajaxReturn(0,'删除成功!');
 	}
 	
 	/**
@@ -205,11 +205,8 @@ protected function ajaxEdit($modName, $template = null, $callback = null,$succes
 		}
 		
 		if($id = (int)$_GET['id']){
-			$list = $mod->getInfo($id);
-			$row = $list['contentInfo'];
-			$tdkRow = $list['tdkInfo'];
+			$row = $mod->getInfo($id);
 			$this->assign('row',$row);
-			$this->assign('tdkRow',$tdkRow);
 		}
 		
 		if(is_callable($callback))

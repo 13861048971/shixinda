@@ -45,12 +45,6 @@ class ContentController extends PublicController {
 	//内容删除
 	public function contentDel(){
 	    $this->ajaxDel('content');
-	    $id = $_GET['id'];
-	    //dump($id);exit();
-	    $return = d('tdk')->where(['node_id'=>$id])->delete();
-	    if(!$return)
-	        return ajaxReturn(1, '删除失败!');
-	    return ajaxReturn(1, '删除成功!');
 	}
 	
 	//内容分类
