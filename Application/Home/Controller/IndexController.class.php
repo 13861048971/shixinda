@@ -57,11 +57,26 @@ class IndexController extends PublicController {
 	    $this->assign('info',$info);
 	    $this->display();
 	}
+	
 	//新闻
 	public function news(){
-	
-	    $this->display();
+		/* $configInfo = $this->config();
+        $about = $this->aboutOur();
+        $this->assign('aboutOur',$about);
+	    $this->assign('config',$configInfo);
+	    $this->display(); */
+	    $data = d('admin/content')->getPageList();
+	    $hotList = d('admin/content')->getList([], 5, 'add_time desc'); 
+	    $this->assign('list', $data['list']);
+	    $this->assign('hotList', $hotList);
+	    $this->display('news');
 	}
+	
+	//新闻详情
+	public function newsDetail(){
+	    //TODO
+	}
+	
 	
 	//服务
 	public function services(){

@@ -12,59 +12,56 @@
 		</div>
 	</div>
 	<!-- BELOW SLIDESHOW SECTION END-->
+  
 	<div class="news-section">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-9">
+				 <foreach name="list" item="vo">	
 					<div class="row news-item">
+					<if condition = "$vo.cover neq null">
 						<div class="col-md-4 news-img">
-							<a href=""><img src="__PUBLIC__/home/img/portfolio/g.jpg" alt=""></a>
+							<a href=""><img src="{$vo.cover}" alt=""></a>
 						</div>
 						<div class="col-md-8">
-							<h3><a href="">新闻标题</a></h3>
-							<div class="news-text">新闻内容：balabalabalabalabalabalabalabalabalabalabalabalabalabala......</div>
+							<h3><a href="">{$vo.title}</a></h3>
+							<div class="news-text">{$vo.content}</div>
 						</div>
 						<div class="news-info">
-							<a href="">作者</a>·<span>发布时间</span>
+							<a href="">{$vo.author}</a>·<span>{$vo.publish_time}</span>
 						</div>
-					</div>
-					<div class="row news-item">
+					<else />
 						<div class="col-md-12">
-							<h3>新闻标题</h3>
-							<div class="news-text">新闻内容：balabalabalabalabalabalabalabalabalabalabalabalabalabala......</div>
+							<h3><a href="">{$vo.title}</a></h3>
+							<div class="news-text">{$vo.content}</div>
 						</div>
+						<div class="news-info">
+							<a href="">{$vo.author}</a>·<span>{$vo.publish_time}</span>
+						</div>
+					</if>	
 					</div>
-					<div class="row news-item">
-						<div class="col-md-4 news-img">
-							<img src="../../../Public/home/img/portfolio/g.jpg" alt="">
-						</div>
-						<div class="col-md-8">
-							<h3>新闻标题</h3>
-							<div class="news-text">新闻内容：balabalabalabalabalabalabalabalabalabalabalabalabalabala......</div>
-						</div>
-					</div>
+				</foreach>
 				</div>
+				
 				<div class="col-md-3">
 					<div class="news-link">
-						<h3>最新发布</h3>
-						<div><a href="">最新新闻1</a><span>时间</span></div>
-						<div><a href="">最新新闻2</a><span>时间</span></div>
-						<div><a href="">最新新闻3</a><span>时间</span></div>
-						<div><a href="">最新新闻4</a><span>时间</span></div>
-						<div><a href="">最新新闻5</a><span>时间</span></div>
+						<h3>热门新闻</h3>
+						<foreach name='hotList' item='vo'>
+						<div><a href="{:u('/Index/newsDetail',['id'=>$vo['id']])}">{$vo.title}</a><span>{$vo.addTime}</span></div>
+						</foreach>
 					</div>
 					<div class="news-link">
 						<h3>相关新闻</h3>
+						<foreach name='list' item='vo'>
 						<div><a href="">最新新闻1</a><span>时间</span></div>
-						<div><a href="">最新新闻2</a><span>时间</span></div>
-						<div><a href="">最新新闻3</a><span>时间</span></div>
-						<div><a href="">最新新闻4</a><span>时间</span></div>
-						<div><a href="">最新新闻5</a><span>时间</span></div>
+						</foreach>
 					</div>
 				</div>
+				
 			</div>
 		</div>
 	</div>
+	
 	<include file="Public:footer" />
 </body>
 </html>

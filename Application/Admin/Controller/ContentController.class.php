@@ -50,7 +50,7 @@ class ContentController extends PublicController {
 	//内容分类
 	public function contentCate(){
 	    $rightBtn = [
-	        ['name' => '添加内容','url'=>u('contentCateEdit'), 'dialog' => 1, 'dialog-lg' => 1 ]
+	        ['name' => '添加分类','url'=>u('contentCateEdit'), 'dialog' => 1, 'dialog-lg' => 1 ]
 	    ];
 	    $this->setRightAction($rightBtn);
         $data = d('contentCate')->getPageList(['p'=>$_GET['p'],'name'=>$_GET['name'],'pid'=>'0']);

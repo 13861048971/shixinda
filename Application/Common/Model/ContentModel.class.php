@@ -20,8 +20,8 @@ class ContentModel extends BaseModel {
     }
     
     //列表
-    public function getList($con=[], $limit=5){
-        $list = $this->where($con)->limit($limit)->select();
+    public function getList($con=[], $limit=5, $order='id desc'){
+        $list = $this->where($con)->order($order)->limit($limit)->select();
         foreach ($list as $k=>$v){
             $list[$k] = $this->parseRow($v);
         }
