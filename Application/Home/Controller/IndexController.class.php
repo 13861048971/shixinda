@@ -2,54 +2,57 @@
 use Think\Controller;
 class IndexController extends PublicController {
 	public $userId;
-
+    public $configInfo;//网站配置信息
+    public $about;//关于我们
 	public function _initialize(){
-	    
+	    $this->configInfo = $this->config();
+	    $this->about = $this->aboutOur();
+	    $navigation = d("navigation")->where(['pid'=>['eq',6]])->order('rank desc')->select();
+	    $childNavigation = d("navigation")->where(['pid'=>['neq',0]])->order('rank desc')->select();
+
+	    foreach ($navigation as $k=>$v){
+	        if($v['url'] == $_SERVER['REQUEST_URI'])
+	        $navigation[$k]['current'] = true;
+	        foreach ($childNavigation as $k2=>$v2) {
+	            if($v['id'] == $v2['pid']){
+	                $navigation[$k]['list'][] = $v2;
+	                 
+	            }
+	        }
+	    }
+	    $this->assign('navigation',$navigation);
+	    $this->assign('aboutOur',$this->about);
+	    $this->assign('config',$this->configInfo);
 	}
 	
 	
     //首页
 	public function index(){ 
-	    $configInfo = $this->config();
-        $about = $this->aboutOur();
-        $this->assign('aboutOur',$about);
-	    $this->assign('config',$configInfo);
+        
 		$this->display();
 	}
 	
 	//产品展示
 	public function product(){
-	    $configInfo = $this->config();
-        $about = $this->aboutOur();
-        $this->assign('aboutOur',$about);
-	    $this->assign('config',$configInfo);
+	  
 	    $this->display();
 	}
 	
 	//新闻
 	public function news(){
-		$configInfo = $this->config();
-        $about = $this->aboutOur();
-        $this->assign('aboutOur',$about);
-	    $this->assign('config',$configInfo);
+	
 	    $this->display();
 	}
 	
 	//服务
 	public function services(){
-	    $configInfo = $this->config();
-        $about = $this->aboutOur();
-        $this->assign('aboutOur',$about);
-	    $this->assign('config',$configInfo);
+	   
 	    $this->display();
 	}
 	
 	//案例
 	public function cases(){
-	    $configInfo = $this->config();
-        $about = $this->aboutOur();
-        $this->assign('aboutOur',$about);
-	    $this->assign('config',$configInfo);
+	 
 	    $this->display();
 	}
 	

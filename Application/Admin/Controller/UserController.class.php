@@ -93,10 +93,7 @@ class UserController extends PublicController {
 	}
 	//删除用户
 	public function del(){
-		if($id = (int)$_REQUEST['id']){
-			$this->mod->delete($id);
-			ajaxReturn(0, '删除成功!');
-		}
+        $this->ajaxDel('user');
 	}
 	
 	//登陆时间

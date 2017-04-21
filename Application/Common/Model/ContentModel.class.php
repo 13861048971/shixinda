@@ -8,6 +8,17 @@ class ContentModel extends BaseModel {
         1 => '启用'
     ];
     
+    protected $_validate;
+    
+    function __construct(){
+        parent::__construct();
+    
+        $this->_validate = [
+            ['cateName', 'require', '缺少分类!'],
+           // ['type', [1,2,3], '缺少类型!', 1, 'in'],
+        ];
+    }
+    
     //列表
     public function getList($con=[], $limit=5){
         $list = $this->where($con)->limit($limit)->select();
@@ -19,10 +30,11 @@ class ContentModel extends BaseModel {
 	
 	//详情
 	public function getInfo($id){
-	    $contentInfo = $this->find($id);
-	    if(!$contentInfo) return;
+	    $info = $this->find($id);
+	    if(!$info) return;
 	    $tdkInfo = d('tdk')->getInfo($id);
-	    $info = ['contentInfo'=>$contentInfo,'tdkInfo'=>$tdkInfo];
+	   
+	    $info['tdk'] = $tdkInfo;
 	    return $info;
 	}
 	//格式化行

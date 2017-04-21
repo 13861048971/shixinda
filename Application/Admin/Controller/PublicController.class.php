@@ -206,6 +206,7 @@ protected function ajaxEdit($modName, $template = null, $callback = null,$succes
 		
 		if($id = (int)$_GET['id']){
 			$row = $mod->getInfo($id);
+
 			$this->assign('row',$row);
 		}
 		

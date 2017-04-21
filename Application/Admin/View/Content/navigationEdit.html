@@ -12,7 +12,7 @@
 			<input name="name" required class="form-control" value="{$row.name}">
 		  </div>
 		</div>  
-		{:w('upload/img',["logo","logo",$row['logo'],true])}
+		{:w('upload/img',["logo","logo",$row['logo']])}
 		<div class="form-group">
 		 <label class="col-sm-2 control-label"><b class="red">*</b>链接地址:</label>
 		 <div class="col-sm-8">
@@ -28,7 +28,7 @@
 		<div class="form-group">
 		 <label class="col-sm-2 control-label"><b class="red">*</b>排序:</label>
 		 <div class="col-sm-8">
-			<input name="rank" required class="form-control" value="{$row.rank}">
+			<input name="rank"  class="form-control" value="{$row.rank}">
 		 </div>
 		</div>
 		<div class="col-sm-offset-2 col-sm-10">

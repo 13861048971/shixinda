@@ -8,6 +8,7 @@ class PostModel extends BaseModel{
     public $statusArr = ['不显示', '显示'];
 
     public $cateList = [];
+   
     /**
      * 编辑or添加
      */
@@ -39,10 +40,10 @@ class PostModel extends BaseModel{
     
         $data['add_time'] = $data['update_time'] = $tdkData['update_time'] = time();
         
-        if(in_array($data['post_cate_id'], [null,0]))
-        {   //判断当前是否选择分类，如果没有则默认选择值为10，意思是未选择分类
-            $data['post_cate_id'] = 10;
-        }
+//         if(in_array($data['post_cate_id'], [null,0]))
+//         {   //判断当前是否选择分类，如果没有则默认选择值为10，意思是未选择分类
+//             $data['post_cate_id'] = 10;
+//         }
         
         if(!$this->create($data))
             return false;
@@ -60,6 +61,7 @@ class PostModel extends BaseModel{
         $this->_validate = [
             ['title', 'require', '缺少标题!'],
             ['content', 'require', '缺少内容!',1],
+            ['post_cate_id', 'require', '缺少分类信息!',1],
         ];
     
         //只选了所有人
