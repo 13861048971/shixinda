@@ -143,11 +143,6 @@ a:hover{
 #menu-top li:hover ul{
 	display: block;
  }
-@media (min-width: 768px){
-	.navbar-nav>li {
-		float: right;
-	}
-}
 /* =============================================================
    SLIDESHOW / CAROUSEL STYLES
  ============================================================ */
