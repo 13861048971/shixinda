@@ -16,102 +16,25 @@
 		<div class="container">
 			<div class="row ">
 				<ul id="filters">
-					<li><span class="filter active" data-filter="landscape nature awesome">All </span></li>
-					<li><span class="filter active">/</span></li>
-					<li><span class="filter" data-filter="landscape">Landscape</span></li>
-					<li><span class="filter">/</span></li>
-					<li><span class="filter" data-filter="nature">Nature</span></li>
-					<li><span class="filter">/</span></li>
-					<li><span class="filter" data-filter="awesome">Awesome</span></li>
+				<li><span class="filter active" ><a href="{:U('product')}">全部</a> /</span></li>
+				<foreach name="ChildCateList" item="cate">
+					<li><span class="filter active" ><a href="{:U('product',['cate_id'=>$cate['id']])}">{$cate.name}</a> /</span></li>
+				</foreach>
 				</ul>
+				<foreach name="productList" item="product" >
 				<div class="col-md-4 ">
 					<div class="portfolio-item awesome mix_all" data-cat="awesome">
-						<img src="__PUBLIC__/home/img/portfolio/g.jpg" class="img-responsive " alt="" />
+						<img src="__ROOT__{$product.cover}" class="img-responsive " alt="" />
 						<div>
-							<p>项目名称</p>
-							<p>公司名称</p>
+							<p>{$product.title}</p>
+							<p></p>
 						</div>
 					</div>
 				</div>
-				<div class="col-md-4 ">
-					<div class="portfolio-item landscape mix_all" data-cat="landscape">
-						<img src="__PUBLIC__/home/img/portfolio/b.jpg" class="img-responsive " alt="" />
-						<div>
-							<p>项目名称</p>
-							<p>公司名称</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 ">
-					<div class="portfolio-item nature mix_all" data-cat="nature">
-						<img src="__PUBLIC__/home/img/portfolio/c.png" class="img-responsive " alt="" />
-						<div>
-							<p>项目名称</p>
-							<p>公司名称</p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row " style="padding-top: 50px;">
-				<div class="col-md-4 ">
-					<div class="portfolio-item nature mix_all" data-cat="nature">
-						<img src="__PUBLIC__/home/img/portfolio/d.jpg" class="img-responsive " alt="" />
-						<div>
-							<p>项目名称</p>
-							<p>公司名称</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 ">
-					<div class="portfolio-item nature mix_all" data-cat="nature">
-						<img src="__PUBLIC__/home/img/portfolio/e.jpg" class="img-responsive " alt="" />
-						<div>
-							<p>项目名称</p>
-							<p>公司名称</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 ">
-					<div class="portfolio-item nature mix_all" data-cat="nature">
-						<img src="__PUBLIC__/home/img/portfolio/h.jpg" class="img-responsive " alt="" />
-						<div>
-							<p>项目名称</p>
-							<p>公司名称</p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row " style="padding-top: 50px;">
-				<div class="col-md-4 ">
-					<div class="portfolio-item nature mix_all" data-cat="nature">
-						<img src="__PUBLIC__/home/img/portfolio/g.jpg" class="img-responsive " alt="" />
-						<div>
-							<p>项目名称</p>
-							<p>公司名称</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 ">
-					<div class="portfolio-item awesome mix_all" data-cat="awesome">
-						<img src="__PUBLIC__/home/img/portfolio/b.jpg" class="img-responsive " alt="" />
-						<div>
-							<p>项目名称</p>
-							<p>公司名称</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 ">
-					<div class="portfolio-item nature landscape mix_all" data-cat="nature landscape">
-						<img src="__PUBLIC__/home/img/portfolio/c.png" class="img-responsive " alt="" />
-						<div>
-							<p>项目名称</p>
-							<p>公司名称</p>
-						</div>
-					</div>
-				</div>
+				</foreach>
 			</div>
 		</div>
-	</div>
+	
 	<include file="Public:footer" />
 </body>
 </html>

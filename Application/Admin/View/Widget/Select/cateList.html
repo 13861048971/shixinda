@@ -5,7 +5,7 @@
 		<foreach name="cateList" item="vo" key="k">
 			<if condition="$k+1 neq $count">
 			
-				<select class="form-control" name="{$data.name}"  >
+				<select class="form-control"  name="{$data.name}"  >
 					<!-- <option value="{$vo.id}" >{$vo.name}</option> -->
 					<foreach name="vo.list" item="vo2" key="k2">
 						<if condition="$vo2['id'] eq $vo['id']">

@@ -7,12 +7,20 @@ class IndexController extends PublicController {
 	public function _initialize(){
 	    $this->configInfo = $this->config();
 	    $this->about = $this->aboutOur();
-	    $navigation = d("navigation")->where(['pid'=>['eq',6]])->order('rank desc')->select();
+	    $navigation = d("navigation")->where(['pid'=>['eq',6]])->order('rank ')->select();
 	    $childNavigation = d("navigation")->where(['pid'=>['neq',0]])->order('rank desc')->select();
-
+        $uri = $_SERVER['REQUEST_URI'];
 	    foreach ($navigation as $k=>$v){
-	        if($v['url'] == $_SERVER['REQUEST_URI'])
-	        $navigation[$k]['current'] = true;
+	        
+	        if(strpos(strtolower($uri), $v['url']) !== false){
+	            if(strtolower($uri) != '/' && $v['url'] != '/')
+	                $navigation[$k]['current'] = true;
+                if(strtolower($uri) == $v['url'] )
+                    $navigation[$k]['current'] = true;
+	        }
+	            
+	     
+	        
 	        foreach ($childNavigation as $k2=>$v2) {
 	            if($v['id'] == $v2['pid']){
 	                $navigation[$k]['list'][] = $v2;
@@ -34,10 +42,11 @@ class IndexController extends PublicController {
 	
 	//产品列表
 	public function product(){
-	    $productList = d('content')->getPageList();//产品列表页
+	    $productList = d('content')->getPageList($_GET);//产品列表页
 	    $CateChildren = d('contentCate')->getList(['pid'=>3]);//产品子类信息
 	    $productCateList = d('content')->getPageList(['cate_id'=>$_GET['cate_id']]);//产品根据分类获取列表
-	    
+	    $this->assign('ChildCateList',$CateChildren);
+	    $this->assign('productList',$productList['list']);
         $this->assign('list',$productList);
 	    $this->display();
 	}
