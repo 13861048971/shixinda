@@ -32,24 +32,22 @@
 				</div>
 				<div class="col-md-10">
 					<div class="navbar-collapse collapse">
-					<foreach name="navigation" item="v1" key="k1">
 						<ul id="menu-top" class="nav navbar-nav navbar-right">
-								
-							<li>
-							<if condition="$v1.current eq true">
-								<a href="{$v1.url}" class="menu-top-active" >{$v1.name}</a>
-								<else/>
-								<a href="{$v1.url}" >{$v1.name}</a>
-							</if>
-								<foreach name="v1.list" item="v2" key="k2">
-								<ul style="list-style:none;">
-									<li><a href="{$v2.url}"  class="">{$v2.name}</a></li>
-								</ul>
-								</foreach>
-							</li>
-							
+							<foreach name="navigation" item="v1" key="k1">
+								<li>
+								<if condition="$v1.current eq true">
+									<a href="{$v1.url}" class="menu-top-active" >{$v1.name}</a>
+									<else/>
+									<a href="{$v1.url}" >{$v1.name}</a>
+								</if>
+									<foreach name="v1.list" item="v2" key="k2">
+									<ul>
+										<li><a href="{$v2.url}"  class="">{$v2.name}</a></li>
+									</ul>
+									</foreach>
+								</li>
+							</foreach>
 						</ul>
-					</foreach>
 					</div>
 				</div>
 			</div>
