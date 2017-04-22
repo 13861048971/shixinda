@@ -40,11 +40,13 @@
 									<else/>
 									<a href="{$v1.url}" >{$v1.name}</a>
 								</if>
-									<foreach name="v1.list" item="v2" key="k2">
+									
 									<ul>
+									<foreach name="v1.list" item="v2" key="k2">
 										<li><a href="{$v2.url}"  class="">{$v2.name}</a></li>
-									</ul>
 									</foreach>
+									</ul>
+									
 								</li>
 							</foreach>
 						</ul>
