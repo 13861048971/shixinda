@@ -99,9 +99,9 @@ class BaseModel extends Model {
 		
 		$arr['list'] = $list;
 		!$arr['list'] && $arr['list'] = [];
-		if('Home' != MODULE_NAME){
-			$arr['pageVar'] = $pageVar;
-		}
+		
+		$arr['pageVar'] = $pageVar;
+		
 		return array_merge($arr,$page);
 	}
 	

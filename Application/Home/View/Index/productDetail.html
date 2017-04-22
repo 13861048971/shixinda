@@ -22,7 +22,8 @@
 								<foreach name="ChildCateList" item="cate">
 									<dt><span><a href="">{$cate.name}</a></span></dt>
 										<foreach name="cate.childInfo" item="info">
-											<dd><span><a href="{:U('productdetail',['id'=>$info['id']])}" data-id = {$info.id}>{$info.title}</a></span></dd>
+											<!-- <dd><span><a href="{:U('productdetail',['id'=>$info['id']])}" data-id = {$info.id}>{$info.title}</a></span></dd> -->
+											<dd><span><a href="#" data-id = {$info.id}>{$info.title}</a></span></dd>
 										</foreach>
 								</foreach>
 										

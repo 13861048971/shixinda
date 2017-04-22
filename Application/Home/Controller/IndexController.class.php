@@ -43,9 +43,8 @@ class IndexController extends PublicController {
 	//产品列表
 	public function product(){
 	    $productList = d('content')->getPageList($_GET,'','',3);//产品列表页
-// 	    var_dump($productList);exit();
+ 	    //var_dump($productList);exit();
 	    $CateChildren = d('contentCate')->getList(['pid'=>3]);//产品子类信息
-	    //$productCateList = d('content')->getPageList(['cate_id'=>$_GET['cate_id']],'','',6);//产品根据分类获取列表
 	    $this->assign('ChildCateList',$CateChildren);
 	    $this->assign('productList',$productList['list']);
         $this->assign('list',$productList);
@@ -65,15 +64,17 @@ class IndexController extends PublicController {
 	          }
 	      }
 	    }
-	    //var_dump($CateChildren);exit;
 	    $this->assign('productInfo',$productInfo);
 	    $this->assign('ChildCateList',$CateChildren);
 	    $this->display();
 	}
+	
+	//获取产品详情
 	public function ajaxProductInfo($id){
 	   $productInfo = d('content')->getInfo($id);
 	    ajaxReturn('0','',$productInfo);
 	}
+
 	//新闻
 	public function news(){
 		/* $configInfo = $this->config();
