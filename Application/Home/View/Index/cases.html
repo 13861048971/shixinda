@@ -5,94 +5,39 @@
 			<div class="row">
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 					<div class="txt-block">
-						<h1 class="head-line">案例展示</h1>
+						<h1 class="head-line">产品展示</h1>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	
-	<div class="container ">
-		<div class="row ">
-			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-				<h1 class="head-line">我们的客户</h1>
-				<br />
-			</div>
-		</div>
-		<div class="row ">
-			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-				<hr />
-				<div class="flexslider carousel">
-					<ul class="slides">
-						<li>
-							<img src="__PUBLIC__/home/img/client.jpg" />
-						</li>
-						<li>
-							<img src="__PUBLIC__/home/img/client.jpg" />
-						</li>
-						<li>
-							<img src="__PUBLIC__/home/img/client.jpg" />
-						</li>
-						<li>
-							<img src="__PUBLIC__/home/img/client.jpg" />
-						</li>
-						<li>
-							<img src="__PUBLIC__/home/img/client.jpg" />
-						</li>
-						<li>
-							<img src="__PUBLIC__/home/img/client.jpg" />
-						</li>
-						<li>
-							<img src="__PUBLIC__/home/img/client.jpg" />
-						</li>
-						<li>
-							<img src="__PUBLIC__/home/img/client.jpg" />
-						</li>
-						<li>
-							<img src="__PUBLIC__/home/img/client.jpg" />
-						</li>
-						<li>
-							<img src="__PUBLIC__/home/img/client.jpg" />
-						</li>
-						<li>
-							<img src="__PUBLIC__/home/img/client.jpg" />
-						</li>
-						<li>
-							<img src="__PUBLIC__/home/img/client.jpg" />
-						</li>
-						<li>
-							<img src="__PUBLIC__/home/img/client.jpg" />
-						</li>
-						<li>
-							<img src="__PUBLIC__/home/img/client.jpg" />
-						</li>
-						<li>
-							<img src="__PUBLIC__/home/img/client.jpg" />
-						</li>
-						<li>
-							<img src="__PUBLIC__/home/img/client.jpg" />
-						</li>
-						<li>
-							<img src="__PUBLIC__/home/img/client.jpg" />
-						</li>
-						<li>
-							<img src="__PUBLIC__/home/img/client.jpg" />
-						</li>
-						<li>
-							<img src="__PUBLIC__/home/img/client.jpg" />
-						</li>
-						<li>
-							<img src="__PUBLIC__/home/img/client.jpg" />
-						</li>
-					</ul>
+	<!-- BELOW SLIDESHOW SECTION END-->
+	<div class="just-sec" id="port-folio">
+		<div class="container">
+			<div class="row ">
+				<ul id="filters">
+				<li><span class="filter active" ><a href="{:U('product')}">全部</a> /</span></li>
+				<foreach name="ChildCateList" item="cate">
+					<li><span class="filter active" ><a href="{:U('product',['cate_id'=>$cate['id']])}">{$cate.name}</a> /</span></li>
+				</foreach>
+				</ul>
+				<foreach name="productList" item="product" >
+				<div class="col-md-4 ">
+					<div class="portfolio-item awesome mix_all" data-cat="awesome">
+						<div class="product-img">
+							<a href="{:U('productDetail',['id'=>$product['id']])}"><img src="__ROOT__{$product.cover}" class="img-responsive " alt="" /></a>
+						</div>						
+						<div>
+							<p>{$product.title}</p>
+							<p></p>
+						</div>
+					</div>
 				</div>
-				<hr />
-				<br />
+				</foreach>
 			</div>
+			<div class="pager" >{$list.pageVar}</div> 
 		</div>
-	</div>
 	
 	<include file="Public:footer" />
 </body>
-
 </html>

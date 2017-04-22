@@ -14,21 +14,21 @@
 		<div class="container">
 			<div class="row news-detail">
 				<div class="col-md-9">
-					<div class="news-title"><h2 style=font-family:"YaHei";text-align:center;>{$row.title}</h2></div>
-					<div class="news-info"><span>{$row.author}</span>.<span>{$row.publishTime}</span></div>
-					<div class="news-content">{$row.content}</div>
+					<div class="news-title"></div>
+					<div class="news-info"></div>
+					<div class="news-content"></div>
 				</div>
 				<div class="col-md-3">
 					<div class="news-link">
 						<h3>最新发布</h3>
-						<foreach name='hotList' item='vo'>
-						<div><a href="{:u('/Index/newsDetail',['id'=>$vo['id']])}">{$vo.title}</a>
-						     <span>{$vo.publisTime}</span>
-						</div>
-						</foreach>
+						<div><a href="">最新新闻1</a><span>时间</span></div>
+						<div><a href="">最新新闻2</a><span>时间</span></div>
+						<div><a href="">最新新闻3</a><span>时间</span></div>
+						<div><a href="">最新新闻4</a><span>时间</span></div>
+						<div><a href="">最新新闻5</a><span>时间</span></div>
 					</div>
 					<div class="news-link">
-						<h3>新闻</h3>
+						<h3>相关新闻</h3>
 						<div><a href="">最新新闻1</a><span>时间</span></div>
 						<div><a href="">最新新闻2</a><span>时间</span></div>
 						<div><a href="">最新新闻3</a><span>时间</span></div>
