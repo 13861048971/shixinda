@@ -7,39 +7,35 @@
 					<div class="row news-item">
 					<if condition = "$vo.cover neq null">
 						<div class="col-md-4 news-img">
-							<a href=""><img src="{$vo.cover}" alt=""></a>
+							<a href="{:u('/Index/newsDetail',['id'=>$vo['id']])}"><img src="{$vo.cover}" alt=""></a>
 						</div>
 						<div class="col-md-8">
-							<h3><a href="">{$vo.title}</a></h3>
+							<h3><a href="{:u('/Index/newsDetail',['id'=>$vo['id']])}">{$vo.title}</a></h3>
 							<div class="news-text">{$vo.content}</div>
 						</div>
 						<div class="news-info">
-							<a href="">{$vo.author}</a>·<span>{$vo.publish_time}</span>
+							<a href="{:u('/Index/newsDetail',['id'=>$vo['id']])}">{$vo.author}</a>·<span>{$vo.publishTime}</span>
 						</div>
 					<else />
 						<div class="col-md-12">
-							<h3><a href="">{$vo.title}</a></h3>
+							<h3><a href="{:u('/Index/newsDetail',['id'=>$vo['id']])}">{$vo.title}</a></h3>
 							<div class="news-text">{$vo.content}</div>
 						</div>
 						<div class="news-info">
-							<a href="">{$vo.author}</a>·<span>{$vo.publish_time}</span>
+							<a href="{:u('/Index/newsDetail',['id'=>$vo['id']])}">{$vo.author}</a>·<span>{$vo.publishTime}</span>
 						</div>
 					</if>	
 					</div>
+				
 				</foreach>
+				<div class="pager">{$pageVar}</div>	
 				</div>
 				
 				<div class="col-md-3">
 					<div class="news-link">
 						<h3>热门新闻</h3>
 						<foreach name='hotList' item='vo'>
-						<div><a href="{:u('/Index/newsDetail',['id'=>$vo['id']])}">{$vo.title}</a><span>{$vo.addTime}</span></div>
-						</foreach>
-					</div>
-					<div class="news-link">
-						<h3>相关新闻</h3>
-						<foreach name='list' item='vo'>
-						<div><a href="">最新新闻1</a><span>时间</span></div>
+						<div><a href="{:u('/Index/newsDetail',['id'=>$vo['id']])}">{$vo.title}</a><span>{$vo.publishTime}</span></div>
 						</foreach>
 					</div>
 				</div>

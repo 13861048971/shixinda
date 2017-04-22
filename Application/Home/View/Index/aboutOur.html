@@ -1,18 +1,12 @@
 <include file="Public:header" />
-<div class="news-section">
 		<div class="container">
-			<div class="row product-detail">
 				<div class="col-md-3">
 					<dl class="product-nav">
-						<dt class="product-intro">产品介绍</dt>
 						<foreach name="ChildCateList" item="cate">
 							<dd>
 								<dl>
-									<dt><span></span>{$cate.name}</dt>
 									<foreach name="cate.childInfo" item="info">
 										<dd><a href="{:U('productDetail',['id'=>$info['id']])}" onclick="return false;">{$info.title}</a></dd>
-									</foreach>
-
 									<div>tt</div><div></div>
 								</dl>
 							</dd>

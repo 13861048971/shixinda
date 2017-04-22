@@ -11,17 +11,20 @@ class IndexController extends PublicController {
 	    $childNavigation = d("navigation")->where(['pid'=>['neq',0]])->order('rank desc')->select();
         $uri = $_SERVER['REQUEST_URI'];
 	    foreach ($navigation as $k=>$v){
+	        
 	        if(strpos(strtolower($uri), $v['url']) !== false){
 	            if(strtolower($uri) != '/' && $v['url'] != '/')
 	                $navigation[$k]['current'] = true;
-	            
                 if(strtolower($uri) == $v['url'] )
                     $navigation[$k]['current'] = true;
 	        }
-	               
+	            
+	     
+	        
 	        foreach ($childNavigation as $k2=>$v2) {
 	            if($v['id'] == $v2['pid']){
-	                $navigation[$k]['list'][] = $v2;       
+	                $navigation[$k]['list'][] = $v2;
+	                 
 	            }
 	        }
 	    }
@@ -39,9 +42,9 @@ class IndexController extends PublicController {
 	
 	//产品列表
 	public function product(){
-	    $productList = d('content')->getPageList($_GET,'','',6);//产品列表页
- 	    //var_dump($productList);exit();
+	    $productList = d('content')->getPageList($_GET);//产品列表页
 	    $CateChildren = d('contentCate')->getList(['pid'=>3]);//产品子类信息
+	    $productCateList = d('content')->getPageList(['cate_id'=>$_GET['cate_id']]);//产品根据分类获取列表
 	    $this->assign('ChildCateList',$CateChildren);
 	    $this->assign('productList',$productList['list']);
         $this->assign('list',$productList);
@@ -49,53 +52,34 @@ class IndexController extends PublicController {
 	}
 	
 	//产品详情
-	public function productDetail(){
-	    $CateChildren = d('contentCate')->getList(['pid'=>3]);//产品分类信息
-	    $productInfo = d('content')->getInfo($_GET['id']);
-	    $product = d('content')->select();
-	    foreach ($CateChildren as $k=>$v){
-	      foreach ($product as $k1=>$v1){
-	          if($v1['cate_id'] == $v['id']){
-	              $CateChildren[$k]['childInfo'][] = $v1;
-	          }
-	      }
-	    }
-	    $this->assign('productInfo',$productInfo);
-	    $this->assign('ChildCateList',$CateChildren);
-	    if(IS_AJAX)
-	        return ajaxReturn(0,'',$productInfo);
+	public function productEdit(){
+	    $info = d('content')->getInfo($_GET['id']);
+	    $this->assign('info',$info);
 	    $this->display();
 	}
 	
-// 	//获取产品详情
-// 	public function ajaxProductInfo($id){
-// 	   $productInfo = d('content')->getInfo($id);
-// 	    ajaxReturn('0','',$productInfo);
-// 	}
-
 	//新闻
 	public function news(){
-		/* $configInfo = $this->config();
-        $about = $this->aboutOur();
-        $this->assign('aboutOur',$about);
-	    $this->assign('config',$configInfo);
-	    $this->display(); */
-	    $data = d('admin/content')->getPageList();
-	    $hotList = d('admin/content')->getList([], 5, 'add_time desc'); 
-	    $this->assign('list', $data['list']);
+	    $data = d('admin/content')->getPageList(['cate_id'=>'1'], '', 'add_time desc', 2);
+	    $hotList = d('admin/content')->getList(['cate_id'=>'1'], 5, 'click desc'); 
+	    $list = $data['list'];
+	    foreach($list as $k=>$v){
+	        $list[$k]['content'] =  mb_substr(strip_tags($v['content']), 0, 50);
+	    }
+	    $this->assign('pageVar', $data['pageVar']);
+	    $this->assign('list', $list);
 	    $this->assign('hotList', $hotList);
 	    $this->display('news');
 	}
 	
 	//新闻详情
 	public function newsDetail(){
-	    $data = d('admin/content')->getPageList();
-	    $hotList = d('admin/content')->getList([], 5, 'add_time desc');
-	    $this->assign('list', $data['list']);
+	    $id = $_GET['id'];
+	    $row = d('admin/content')->getInfo($id);
+	    $hotList = d('admin/content')->getList(['cate_id'=>'1'], 5, 'click desc');
 	    $this->assign('hotList', $hotList);
-	    $this->display('news');
-	    
-	    //TODO
+	    $this->assign('row',$row);
+	    $this->display('newsDetail');
 	}
 	
 	
@@ -109,6 +93,101 @@ class IndexController extends PublicController {
 	public function cases(){
 	 
 	    $this->display();
+	}
+
+	//关于我们
+	public function about(){
+		$info = d('config')->getInfo('about');
+		
+		$desc = strip_tags($info['value']['content']);
+		ajaxReturn2(0,'', ['desc'=>$desc]);
+		
+		
+	}
+	
+	//使用协议
+	public function agreement(){
+		$info = d('config')->getInfo('agreement');
+		
+		$desc = strip_tags($info['value']['content']);
+		
+		if($_GET['format'] == 'html'){
+			$this->assign('desc', $desc);
+			return $this->display();
+		}
+		ajaxReturn2(0,'', ['desc'=>$desc]);
+	}
+	
+	//使用协议
+	public function tradeNote(){
+		$info = d('config')->getInfo('trade_note');
+		
+		$desc = strip_tags($info['value']['content']);
+		ajaxReturn2(0,'', ['desc'=>$desc]);
+	}
+	
+	//吐槽我们
+	public function feedback(){
+		$mod = d('feedback');
+		
+		$data = [
+			'user_id'=>$this->user['id'], 
+			'desc' => htmlentities($_POST['desc']),
+		];
+		
+		if(!$mod->edit($data))
+			ajaxReturn2(1, $mod->getError());
+		
+		ajaxReturn2(0,'操作成功!');
+	}
+
+	//任务分享页面
+	public function taskShare(){
+		if( !($id = $_GET['id']) || !($row = d('task')->getInfo($id)) )
+			return ajaxReturn2(1, '任务不存在');
+		$client = $_GET['client'];
+		$row['joinList'] = d('join')->getList(['task_id'=>$id],4,'id desc');
+		$conf = d('config')->getInfo('app')['value'];
+		$link = $conf['down'];
+		$client == 'ios' && ($link = $conf['down_ios']);
+		$this->assign('downlink', $link);
+		$this->assign('row', $row);
+		$this->display();
+		exit;
+	}
+	//套餐分享页面
+	public function mealShare(){
+		if( !($id = $_GET['id']) || !($row = d('meal')->getInfo($id)) )
+			return ajaxReturn2(1, '套餐不存在');
+		$client = $_GET['client'];
+		
+		$conf = d('config')->getInfo('app')['value'];
+		$link = $conf['down'];
+		$client == 'ios' && ($link = $conf['down_ios']);
+		$this->assign('downlink', $link);
+		$this->assign('row', $row);
+		$this->display();
+		exit;
+	}
+	//摄影师分享页面
+	public function phoShare(){
+		if( !($id = $_GET['id']) || !($row = d('pho')->getInfo($id)) )
+			return ajaxReturn2(1, '任务不存在');
+		$client = $_GET['client'];
+		
+		$conf = d('config')->getInfo('app')['value'];
+		$link = $conf['down'];
+		$client == 'ios' && ($link = $conf['down_ios']);
+		$row['mealList'] = d('meal')->getList(['pho_id'=>$id]);
+		$this->assign('downlink', $link);
+		$this->assign('row', $row);
+		$this->display();
+		exit;
+	}
+
+	//支付结果通知
+	public function payNotify(){
+		d('order')->payNotify($_POST);
 	}
 	
 	//关于我们
