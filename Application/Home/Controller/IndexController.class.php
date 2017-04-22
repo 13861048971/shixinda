@@ -45,7 +45,7 @@ class IndexController extends PublicController {
 	   
  	    
 	    $CateChildren = d('contentCate')->getList(['pid'=>3]);//产品子类信息
-	    $cateIdArr = [];
+	    $cateIdArr = [0];
 	    foreach ($CateChildren as $k=>$v){
 	        $cateIdArr[] = $v['id'];
 	    }
