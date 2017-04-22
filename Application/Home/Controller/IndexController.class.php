@@ -60,6 +60,7 @@ class IndexController extends PublicController {
 	
 	//新闻
 	public function news(){
+	    //新闻详情
 	    $data = d('admin/content')->getPageList(['cate_id'=>'1'], '', 'add_time desc', 2);
 	    $hotList = d('admin/content')->getList(['cate_id'=>'1'], 5, 'click desc'); 
 	    $list = $data['list'];
