@@ -94,4 +94,22 @@ class PublicController extends Controller {
 		
 		return $output;
 	}
+	
+	/**
+	 * 分页
+	 * @param $mod
+	 * @param $order 排序字段
+	 * @param $perNum 每页条数
+	 * @param $pageVar 模板的分页视图变量名称
+	 * @return $list 数据变量
+	 */
+	public function page($mod, $order = 'id', $perNum = 15, $pageVar = 'page'){
+	    $count   = $mod->count();
+	    $Page    = new Think\Page($count, $perNum);
+	    $show    = $Page->show();
+	    $list 	 = $mod->order($order)->limit($Page->firstRow.','.$Page->listRows)->select();
+	    $this->assign($pageVar, $show);
+	    return $list;
+	}
+	
 }

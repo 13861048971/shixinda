@@ -58,7 +58,7 @@ class ContentCateModel extends BaseModel {
 	}
 	
 	//分页
-	function getPageList($con=[], $fields = 'id', $order = '', $perNum = 15){
+	function getPageList($con=[], $fields = '*', $order = 'id desc', $perNum = 15){
 	    $data = parent::getPageList($con, $fields, $order, $perNum);
 	    //$first = $this->where(['pid'=>0])->select();
 	    //dump($con);exit();
