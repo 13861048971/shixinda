@@ -89,6 +89,12 @@ class IndexController extends PublicController {
 	
 	//新闻详情
 	public function newsDetail(){
+	    $data = d('admin/content')->getPageList();
+	    $hotList = d('admin/content')->getList([], 5, 'add_time desc');
+	    $this->assign('list', $data['list']);
+	    $this->assign('hotList', $hotList);
+	    $this->display('news');
+	    
 	    //TODO
 	}
 	
