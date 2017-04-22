@@ -12,30 +12,25 @@
 	</div>
 	<div class="news-section">
 		<div class="container">
-			<div class="row news-detail">
+			<div class="row product-detail">
 				<div class="col-md-3">
 					<dl class="product-nav">
 						<dt>产品介绍</dt>
-						
+						<foreach name="ChildCateList" item="cate">
 							<dd>
 								<dl>
-								<foreach name="ChildCateList" item="cate">
-									<dt><span><a href="">{$cate.name}</a></span></dt>
-										<foreach name="cate.childInfo" item="info">
-											<dd><span><a href="{:U('productdetail',['id'=>$info['id']])}" data-id = {$info.id}>{$info.title}</a></span></dd>
-										</foreach>
-								</foreach>
-										
-								
+									<dt><span></span>{$cate.name}</dt>
+									<foreach name="cate.childInfo" item="info">
+										<dd data-id="{$info.id}"><span></span>{$info.title}</dd>
+									</foreach>
 								</dl>
 							</dd>
-						
+						</foreach>
 					</dl>
 				</div>
 				<div class="col-md-9">
-						<div class="product-title"> {$productInfo.title}</div>
-						<div class="product-content">{$productInfo.content}</div>
-
+					<div class="product-title"> {$productInfo.title}</div>
+					<div class="product-content">{$productInfo.content}</div>
 				</div>
 			</div>
 		</div>

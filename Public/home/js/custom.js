@@ -1,19 +1,13 @@
-﻿
-
-
-(function ($) {
+﻿(function ($) {
     "use strict";
     var mainApp = {
         slide_fun: function () {
             $('#carousel-div').carousel({
                 interval: 4000 //TIME IN MILLI SECONDS
             });
-
         },
         wow_fun: function () {
-
             new WOW().init();
-
         },
         gallery_fun: function () {
             /*====================================
@@ -34,8 +28,6 @@
                 filterSelector: '.filter',
                 effects: ['fade'],
                 easing: 'snap',
-
-
             });
         },
        
@@ -77,5 +69,27 @@ $('.flexslider').flexslider({
     }
 });
 });
+$('.product-detail').on('click',function(e){
+    var icon = $(e.target).find('span');
+    var node = $(e.target);
+    if(icon.css('transform') == 'matrix(6.12323e-17, 1, -1, 6.12323e-17, 0, 0)'){
+        icon.css('transform','rotate(0deg)');
+    }else if(node[0].nodeName == 'DT'){
+        icon.css('transform','rotate(90deg)');
+    }
+    
+    node.siblings('dd').slideToggle(200);
 
-
+    if(node[0].nodeName == 'DD'){
+        var url = "/home/index/ajaxProductInfo/id/"+node.data('id');
+        $.ajax({
+            url:url,
+            type:'get',
+            dataType:'json',
+            success:function(data){
+                $('.product-title').empty().append(data.data.title);
+                $('.product-content').empty().append(data.data.content);
+            }
+        });
+    }
+});

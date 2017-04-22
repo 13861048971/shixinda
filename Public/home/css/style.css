@@ -14,7 +14,7 @@ h4 {
 }
 a:hover{
 	color: #1C86EE !important;
-	background-color: #fff !important;
+	background-color: transparent !important;
 }
 .just-txt-div {
 	padding-bottom: 30px;
@@ -429,4 +429,37 @@ ul#filters {
 .news-link div span{
 	display: block;
 	font-size: 12px;
+}
+/*product-detail*/
+.product-nav {
+    width: 100%;
+    border: 1px solid #eee;
+}
+.product-nav dt {
+    width: 100%;
+    padding: 6px 0 6px 20px;
+    font-weight: 400;
+    background-color: #fafafa;
+}
+.product-nav dl dt {
+    padding: 6px 0 6px 20px;
+	cursor: pointer;
+}
+.product-nav dt span,
+.product-nav dd dl dd span {
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	background: url('../../css/images/icon-arrow.png') no-repeat center;
+	margin: 0 5px 0 0;
+}
+.product-nav dl {
+	margin: 0;
+}
+.product-nav dd dl dd{
+	display: none;
+	width: 100%;
+	padding: 6px 0 6px 40px;
+    background-color: #fafafa;
+	cursor: pointer;
 }
