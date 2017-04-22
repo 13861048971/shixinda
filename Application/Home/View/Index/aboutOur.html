@@ -1,0 +1,29 @@
+<include file="Public:header" />
+<div class="news-section">
+		<div class="container">
+			<div class="row product-detail">
+				<div class="col-md-3">
+					<dl class="product-nav">
+						<dt class="product-intro">产品介绍</dt>
+						<foreach name="ChildCateList" item="cate">
+							<dd>
+								<dl>
+									<dt><span></span>{$cate.name}</dt>
+									<foreach name="cate.childInfo" item="info">
+										<dd><a href="{:U('productDetail',['id'=>$info['id']])}" onclick="return false;">{$info.title}</a></dd>
+									</foreach>
+								</dl>
+							</dd>
+						</foreach>
+					</dl>
+				</div>
+				<div class="col-md-9">
+					<div class="product-title"> {$productInfo.title}</div>
+					<div class="product-content">{$productInfo.content}</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<include file="Public:footer" />
+</body>
+</html>
