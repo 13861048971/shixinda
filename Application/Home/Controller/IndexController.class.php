@@ -42,9 +42,9 @@ class IndexController extends PublicController {
 	
 	//产品列表
 	public function product(){
-	    $productList = d('content')->getPageList($_GET,'','',3);//产品列表页
- 	    //var_dump($productList);exit();
+	    $productList = d('content')->getPageList($_GET);//产品列表页
 	    $CateChildren = d('contentCate')->getList(['pid'=>3]);//产品子类信息
+	    $productCateList = d('content')->getPageList(['cate_id'=>$_GET['cate_id']]);//产品根据分类获取列表
 	    $this->assign('ChildCateList',$CateChildren);
 	    $this->assign('productList',$productList['list']);
         $this->assign('list',$productList);
@@ -52,46 +52,35 @@ class IndexController extends PublicController {
 	}
 	
 	//产品详情
-	public function productDetail(){
-	    $CateChildren = d('contentCate')->getList(['pid'=>3]);//产品分类信息
-	    $productInfo = d('content')->getInfo($_GET['id']);
-	    $product = d('content')->select();
-	
-	    foreach ($CateChildren as $k=>$v){
-	      foreach ($product as $k1=>$v1){
-	          if($v1['cate_id'] == $v['id']){
-	              $CateChildren[$k]['childInfo'][] = $v1;
-	          }
-	      }
-	    }
-	    $this->assign('productInfo',$productInfo);
-	    $this->assign('ChildCateList',$CateChildren);
+	public function productEdit(){
+	    $info = d('content')->getInfo($_GET['id']);
+	    $this->assign('info',$info);
 	    $this->display();
 	}
 	
-	//获取产品详情
-	public function ajaxProductInfo($id){
-	   $productInfo = d('content')->getInfo($id);
-	    ajaxReturn('0','',$productInfo);
-	}
-
 	//新闻
 	public function news(){
-		/* $configInfo = $this->config();
-        $about = $this->aboutOur();
-        $this->assign('aboutOur',$about);
-	    $this->assign('config',$configInfo);
-	    $this->display(); */
-	    $data = d('admin/content')->getPageList();
-	    $hotList = d('admin/content')->getList([], 5, 'add_time desc'); 
-	    $this->assign('list', $data['list']);
+	    $data = d('admin/content')->getPageList(['cate_id'=>'1'], '', 'add_time desc', 2);
+	    $hotList = d('admin/content')->getList(['cate_id'=>'1'], 5, 'click desc'); 
+	    $list = $data['list'];
+	    foreach($list as $k=>$v){
+	        $list[$k]['content'] =  mb_substr(strip_tags($v['content']), 0, 50);
+	    }
+	    $this->assign('pageVar', $data['pageVar']);
+	    $this->assign('list', $list);
 	    $this->assign('hotList', $hotList);
 	    $this->display('news');
 	}
 	
 	//新闻详情
 	public function newsDetail(){
-	    //TODO
+	    $id = $_GET['id'];
+	    $row = d('admin/content')->getInfo($id);
+	    $hotList = d('admin/content')->getList(['cate_id'=>'1'], 5, 'click desc');
+	    $this->assign('hotList', $hotList);
+	    //dump($row);exit();
+	    $this->assign('row',$row);
+	    $this->display('newsDetail');
 	}
 	
 	
