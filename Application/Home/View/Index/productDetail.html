@@ -21,7 +21,7 @@
 								<dl>
 									<dt><span></span>{$cate.name}</dt>
 									<foreach name="cate.childInfo" item="info">
-										<dd data-id="{$info.id}">{$info.title}</dd>
+										<dd><a href="{:U('productDetail',['id'=>$info['id']])}">{$info.title}</a></dd>
 									</foreach>
 								</dl>
 							</dd>
