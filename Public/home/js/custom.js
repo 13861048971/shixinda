@@ -74,21 +74,30 @@ $('.product-detail').on('click',function(e){
     if(node[0].className == 'product-intro'){
         return false;
     }
-    var icon = $(e.target).find('span');
-    if(icon.css('transform') == 'matrix(6.12323e-17, 1, -1, 6.12323e-17, 0, 0)'){
-        icon.css('transform','rotate(0deg)');
-    }else{
-        icon.css('transform','rotate(90deg)');
+    if(node[0].nodeName == 'SPAN'){
+        node = node.parents('dt');
     }
+    if(node[0].nodeName == 'A'){
+        node = node.parent('dd');
+    }
+    if(node.find('span')[0]){
+        var icon = node.find('span');
+        if(icon.css('transform') == 'matrix(6.12323e-17, 1, -1, 6.12323e-17, 0, 0)'){
+            icon.css('transform','rotate(0deg)');
+        }else{
+            icon.css('transform','rotate(90deg)');
+        }
+    }
+
     if(node[0].nodeName == 'DT'){
         node.siblings('dd').slideToggle(200);
     }
     if(node[0].nodeName == 'DD'){
+        var url = node.find('a').attr('href');
+
+        node.parents('.product-detail').find('dd').css('background-color','#fafafa');
         node.css('background-color','#eee');
-        node.siblings().css('background-color','#fafafa')
-    }
-    if(node[0].nodeName == 'DD'){
-        var url = "/home/index/ajaxProductInfo/id/"+node.data('id');
+
         $.ajax({
             url:url,
             type:'get',

@@ -466,3 +466,7 @@ ul#filters {
 	overflow: hidden;
 	white-space: nowrap;
 }
+.product-nav dd dl dd a{
+	color: #333;
+	text-decoration: none;
+}
