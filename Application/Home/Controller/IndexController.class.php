@@ -54,14 +54,35 @@ class IndexController extends PublicController {
 	
 	//产品详情
 	public function productDetail(){
-	    $CateChildren = d('contentCate')->getList(['pid'=>3]);//产品分类信息
+	    //$CateChildren = d('contentCate')->getList(['pid'=>3]);//产品分类信息
 	    $productInfo = d('content')->getInfo($_GET['id']);
-	    //var_dump($productInfo);exit;
+	   // $product = d('content')->select();
+	
+// 	    foreach ($CateChildren as $k=>$v){
+// 	      foreach ($product as $k1=>$v1){
+// 	          if($v1['cate_id'] == $v['id']){
+// 	              $CateChildren[$k]['childInfo'][] = $v1;
+// 	          }
+// 	      }
+// 	    }
+	    //var_dump($CateChildren);exit;
 	    $this->assign('productInfo',$productInfo);
-	    $this->assign('ChildCateList',$CateChildren);
+	    //$this->assign('ChildCateList',$CateChildren);
 	    $this->display();
 	}
-	
+	public function ajaxProductDetail(){
+	    $CateChildren = d('contentCate')->getList(['pid'=>3]);//产品分类信息
+	    $product = d('content')->select();
+	    foreach ($CateChildren as $k=>$v){
+	        foreach ($product as $k1=>$v1){
+	            if($v1['cate_id'] == $v['id']){
+	                $CateChildren[$k]['childInfo'][] = $v1;
+	            }
+	        }
+	    }
+	    
+	    ajaxReturn('0','',$CateChildren);
+	}
 	//新闻
 	public function news(){
 		/* $configInfo = $this->config();

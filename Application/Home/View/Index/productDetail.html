@@ -20,7 +20,10 @@
 							<dd>
 								<dl>
 								<foreach name="ChildCateList" item="cate">
-									<dt><span><a href="{:U('product',['cate_id'=>$cate['id']])}">{$cate.name}</a></span></dt>
+									<dt><span><a href="">{$cate.name}</a></span></dt>
+										<foreach name="cate.childInfo" item="info">
+											<dd><span><a href="{:U('productdetail',['id'=>$info['id']])}" data-id = {$info.id}>{$info.title}</a></span></dd>
+										</foreach>
 								</foreach>
 										
 								
@@ -32,7 +35,7 @@
 				<div class="col-md-9">
 						<div class="product-title"> {$productInfo.title}</div>
 						<div class="product-content">{$productInfo.content}</div>
-					
+
 				</div>
 			</div>
 		</div>
