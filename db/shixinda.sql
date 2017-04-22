@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2017-04-21 16:00:11
+Date: 2017-04-22 10:41:40
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -278,12 +278,16 @@ CREATE TABLE `content` (
   `add_time` int(11) unsigned NOT NULL COMMENT '添加时间',
   `update_time` int(11) unsigned NOT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of content
 -- ----------------------------
-INSERT INTO `content` VALUES ('1', '1', '实信达成立一周年纪念', '德玛西亚万岁', '张耀乐', '1', '/Public/upload/image/2017-04-21/58f9a4887a30f.png', '1492755560', '1492755607', '1492755607');
+INSERT INTO `content` VALUES ('2', '7', '微信公众号', '<h1 style=\"font-size:34px;font-weight:400;vertical-align:sub;\">\n	微信公众号\n</h1>\n&nbsp;<a class=\"edit-lemma cmn-btn-hover-blue cmn-btn-28 j-edit-link\"><span class=\"cmn-icon wiki-lemma-icons wiki-lemma-icons_edit-lemma\" style=\"font-family:baikeFont_layout;line-height:12px;vertical-align:text-top;color:#52A3F5;\"></span>编辑</a>\n<div class=\"lemma-summary\" style=\"font-size:14px;color:#333333;font-family:arial, 宋体, sans-serif;background-color:#FFFFFF;\">\n	<div class=\"para\">\n		微信公众号是开发者或商家在<a target=\"_blank\" href=\"http://baike.baidu.com/item/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%B9%B3%E5%8F%B0\">微信公众平台</a>上申请的应用账号，该帐号与QQ账号互通，通过公众号，商家可在微信平台上实现和特定群体的<a target=\"_blank\" href=\"http://baike.baidu.com/item/%E6%96%87%E5%AD%97\">文字</a>、<a target=\"_blank\" href=\"http://baike.baidu.com/item/%E5%9B%BE%E7%89%87\">图片</a>、<a target=\"_blank\" href=\"http://baike.baidu.com/item/%E8%AF%AD%E9%9F%B3\">语音</a>、<a target=\"_blank\" href=\"http://baike.baidu.com/item/%E8%A7%86%E9%A2%91\">视频</a>的全方位沟通、<a target=\"_blank\" href=\"http://baike.baidu.com/item/%E4%BA%92%E5%8A%A8/10073145\">互动</a>&nbsp;。形成了一种主流的线上线下微信互动营销方式。\n	</div>\n	<div class=\"para\">\n		正如线上线下微信<a target=\"_blank\" href=\"http://baike.baidu.com/item/%E4%BA%92%E5%8A%A8%E8%90%A5%E9%94%80\">互动营销</a>的代表微<a target=\"_blank\" href=\"http://baike.baidu.com/item/%E9%83%A8%E8%90%BD/24516\">部落</a>，率先提出标准的行业通用模板和深定制的微信平台开发理念相结合。形成了<a target=\"_blank\" href=\"http://baike.baidu.com/item/%E7%BA%BF%E4%B8%8A%E7%BA%BF%E4%B8%8B\">线上线下</a>微信互动营销的开放应用平台。\n	</div>\n</div>\n<div class=\"configModuleBanner\" style=\"color:#333333;font-family:arial, 宋体, sans-serif;font-size:12px;background-color:#FFFFFF;\">\n</div>\n<div id=\"hotspotmining\" class=\"clearfix\" style=\"margin:35px 0px;color:#333333;font-family:arial, 宋体, sans-serif;font-size:12px;background-color:#FFFFFF;\">\n	<div class=\"anchor-list\">\n		<a name=\"hotspotmining\"></a>\n	</div>\n	<ul class=\"hotspotminingNavbar clearfix\" style=\"background:#F1F5FB;\">\n		<li class=\"active\" style=\"font-size:14px;color:#FFFFFF;text-align:center;font-family:&quot;background:#71B3F7;\">\n			TA说\n		</li>\n	</ul>\n	<div id=\"hotspotminingContent-146107\" class=\"hotspotminingContent clearfix showPic\" style=\"padding:26px 26px 40px;background:#FAFCFF;\">\n		<div class=\"hotspotminingContent_pic \">\n			<a href=\"https://baike.baidu.com/tashuo/browse/content?id=f97c8e264484a302f4c2c25d\" target=\"_blank\"><img src=\"http://d.hiphotos.baidu.com/baike/whfpf%3D180%2C140%2C50/sign=cd346edfb91c8701d6e3e1a64142af17/d53f8794a4c27d1e315cebff11d5ad6eddc43897.jpg\" style=\"width:180px;height:140px;\" /></a>\n		</div>\n		<div class=\"hotspotminingContent_cnt \">\n			<div class=\"hotspotminingContent_cnt_tit\" style=\"font-weight:700;\">\n				<span class=\"hotspotminingContent_cnt_tit_tit\" style=\"font-size:14px;\"><a href=\"https://baike.baidu.com/tashuo/browse/content?id=f97c8e264484a302f4c2c25d\" target=\"_blank\">微信不能再打赏，苹果这笔“知识税”收得让人不服</a></span><img src=\"https://bkssl.bdimg.com/static/wiki-lemma/widget/lemma_content/configModule/hotspotmining/img/flag_new_c80aa2a.png\" /><span class=\"hotspotminingContent_cnt_tit_tim\" style=\"color:#999999;font-weight:400;\">2017-04-20 18:04</span>\n			</div>\n			<div class=\"hotspotminingContent_cnt_cnt\" style=\"color:#666666;\">\n				苹果并没有明指这是一个“知识税”，在它看来，这只是对它内部付费生态进行的正常规范，而且软件收入是它整体收入的重要部分；微信也没有明指这是一个“知识税”，因为微信与苹果的争端绝不仅仅只有内容一块战场。<a href=\"https://baike.baidu.com/tashuo/browse/content?id=f97c8e264484a302f4c2c25d\" target=\"_blank\">...详情</a>\n			</div>\n		</div>\n	</div>\n</div>', '加菲猫', '1', '/Public/upload/image/2017-04-21/58f9e0175c1bd.png', '1492770798', '1492770960', '1492770960');
+INSERT INTO `content` VALUES ('3', '8', 'Andriod App ', '<h1 style=\"font-size:34px;font-weight:400;vertical-align:sub;\">\n	app开发\n</h1>\n&nbsp;<a class=\"edit-lemma cmn-btn-hover-blue cmn-btn-28 j-edit-link\"><span class=\"cmn-icon wiki-lemma-icons wiki-lemma-icons_edit-lemma\" style=\"font-family:baikeFont_layout;line-height:12px;vertical-align:text-top;color:#52A3F5;\"></span>编辑</a>\n<div class=\"edit-prompt\" style=\"font-size:12px;margin:10px 0px;background:url(&quot;color:#666666;font-family:arial, 宋体, sans-serif;\">\n	本词条缺少<span style=\"font-weight:700;\">名片图</span>，补充相关内容使词条更完整，还能快速升级，赶紧来<a class=\"edit-prompt-link j-edit-link\">编辑</a>吧！\n</div>\n<div class=\"lemma-summary\" style=\"font-size:14px;color:#333333;font-family:arial, 宋体, sans-serif;background-color:#FFFFFF;\">\n	<div class=\"para\">\n		<a target=\"_blank\" href=\"http://baike.baidu.com/item/App%E5%BC%80%E5%8F%91\">App开发</a>，是指专注于手机<a target=\"_blank\" href=\"http://baike.baidu.com/item/%E5%BA%94%E7%94%A8%E8%BD%AF%E4%BB%B6\">应用软件</a>开发与服务。&nbsp;<a target=\"_blank\" href=\"http://baike.baidu.com/item/App/33589\">App</a>是application的缩写，通常专指手机上的应用软件，或称<a target=\"_blank\" href=\"http://baike.baidu.com/item/%E6%89%8B%E6%9C%BA%E5%AE%A2%E6%88%B7%E7%AB%AF\">手机客户端</a>。另外目前有很多在线app开发平台。\n	</div>\n	<div class=\"para\">\n		<a target=\"_blank\" href=\"http://baike.baidu.com/item/%E8%8B%B9%E6%9E%9C%E5%85%AC%E5%8F%B8\">苹果公司</a>的App store开创了手机软件业发展的新篇章，使得第三方软件的提供者参与其中的积极性空前高涨。随着智能手机越发普及、用户越发依赖手机软件商店，App开发的市场需求与发展前景也逐渐蓬勃，截止到2012年12月，App开发已变为<a target=\"_blank\" href=\"http://baike.baidu.com/item/%E7%BA%A2%E6%B5%B7%E5%B8%82%E5%9C%BA\">红海市场</a>。\n	</div>\n	<div class=\"para\">\n		当然移动互联网时代是全民的移动互联网时代，是每个人的时代，也是每个企业的时代。APP便捷了每个人的生活，APP开发让每个企业都开始了移动信息化进程。\n	</div>\n</div>', '张耀乐', '1', '/Public/upload/image/2017-04-21/58f9e0a8649fe.png', '1492770967', '1492771036', '1492771036');
+INSERT INTO `content` VALUES ('4', '9', 'iOS App', '<h1 style=\"font-size:34px;font-weight:400;vertical-align:sub;\">\n	app开发\n</h1>\n&nbsp;<a class=\"edit-lemma cmn-btn-hover-blue cmn-btn-28 j-edit-link\"><span class=\"cmn-icon wiki-lemma-icons wiki-lemma-icons_edit-lemma\" style=\"font-family:baikeFont_layout;line-height:12px;vertical-align:text-top;color:#52A3F5;\"></span>编辑</a>\n<div class=\"edit-prompt\" style=\"font-size:12px;margin:10px 0px;background:url(&quot;color:#666666;font-family:arial, 宋体, sans-serif;\">\n	本词条缺少<span style=\"font-weight:700;\">名片图</span>，补充相关内容使词条更完整，还能快速升级，赶紧来<a class=\"edit-prompt-link j-edit-link\">编辑</a>吧！\n</div>\n<div class=\"lemma-summary\" style=\"font-size:14px;color:#333333;font-family:arial, 宋体, sans-serif;background-color:#FFFFFF;\">\n	<div class=\"para\">\n		<a target=\"_blank\" href=\"http://baike.baidu.com/item/App%E5%BC%80%E5%8F%91\">App开发</a>，是指专注于手机<a target=\"_blank\" href=\"http://baike.baidu.com/item/%E5%BA%94%E7%94%A8%E8%BD%AF%E4%BB%B6\">应用软件</a>开发与服务。&nbsp;<a target=\"_blank\" href=\"http://baike.baidu.com/item/App/33589\">App</a>是application的缩写，通常专指手机上的应用软件，或称<a target=\"_blank\" href=\"http://baike.baidu.com/item/%E6%89%8B%E6%9C%BA%E5%AE%A2%E6%88%B7%E7%AB%AF\">手机客户端</a>。另外目前有很多在线app开发平台。\n	</div>\n	<div class=\"para\">\n		<a target=\"_blank\" href=\"http://baike.baidu.com/item/%E8%8B%B9%E6%9E%9C%E5%85%AC%E5%8F%B8\">苹果公司</a>的App store开创了手机软件业发展的新篇章，使得第三方软件的提供者参与其中的积极性空前高涨。随着智能手机越发普及、用户越发依赖手机软件商店，App开发的市场需求与发展前景也逐渐蓬勃，截止到2012年12月，App开发已变为<a target=\"_blank\" href=\"http://baike.baidu.com/item/%E7%BA%A2%E6%B5%B7%E5%B8%82%E5%9C%BA\">红海市场</a>。\n	</div>\n	<div class=\"para\">\n		当然移动互联网时代是全民的移动互联网时代，是每个人的时代，也是每个企业的时代。APP便捷了每个人的生活，APP开发让每个企业都开始了移动信息化进程。\n	</div>\n</div>', '张耀乐', '1', '/Public/upload/image/2017-04-21/58f9e0f38050b.png', '1492771045', '1492771115', '1492771115');
+INSERT INTO `content` VALUES ('5', '10', 'HTML5网站', '<h1 style=\"font-size:34px;font-weight:400;vertical-align:sub;\">\n	app开发\n</h1>\n&nbsp;<a class=\"edit-lemma cmn-btn-hover-blue cmn-btn-28 j-edit-link\"><span class=\"cmn-icon wiki-lemma-icons wiki-lemma-icons_edit-lemma\" style=\"font-family:baikeFont_layout;line-height:12px;vertical-align:text-top;color:#52A3F5;\"></span>编辑</a>\n<div class=\"edit-prompt\" style=\"font-size:12px;margin:10px 0px;background:url(&quot;color:#666666;font-family:arial, 宋体, sans-serif;\">\n	本词条缺少<span style=\"font-weight:700;\">名片图</span>，补充相关内容使词条更完整，还能快速升级，赶紧来<a class=\"edit-prompt-link j-edit-link\">编辑</a>吧！\n</div>\n<div class=\"lemma-summary\" style=\"font-size:14px;color:#333333;font-family:arial, 宋体, sans-serif;background-color:#FFFFFF;\">\n	<div class=\"para\">\n		<a target=\"_blank\" href=\"http://baike.baidu.com/item/App%E5%BC%80%E5%8F%91\">App开发</a>，是指专注于手机<a target=\"_blank\" href=\"http://baike.baidu.com/item/%E5%BA%94%E7%94%A8%E8%BD%AF%E4%BB%B6\">应用软件</a>开发与服务。&nbsp;<a target=\"_blank\" href=\"http://baike.baidu.com/item/App/33589\">App</a>是application的缩写，通常专指手机上的应用软件，或称<a target=\"_blank\" href=\"http://baike.baidu.com/item/%E6%89%8B%E6%9C%BA%E5%AE%A2%E6%88%B7%E7%AB%AF\">手机客户端</a>。另外目前有很多在线app开发平台。\n	</div>\n	<div class=\"para\">\n		<a target=\"_blank\" href=\"http://baike.baidu.com/item/%E8%8B%B9%E6%9E%9C%E5%85%AC%E5%8F%B8\">苹果公司</a>的App store开创了手机软件业发展的新篇章，使得第三方软件的提供者参与其中的积极性空前高涨。随着智能手机越发普及、用户越发依赖手机软件商店，App开发的市场需求与发展前景也逐渐蓬勃，截止到2012年12月，App开发已变为<a target=\"_blank\" href=\"http://baike.baidu.com/item/%E7%BA%A2%E6%B5%B7%E5%B8%82%E5%9C%BA\">红海市场</a>。\n	</div>\n	<div class=\"para\">\n		当然移动互联网时代是全民的移动互联网时代，是每个人的时代，也是每个企业的时代。APP便捷了每个人的生活，APP开发让每个企业都开始了移动信息化进程。\n	</div>\n</div>', '张耀乐', '1', '/Public/upload/image/2017-04-21/58f9e138079f1.jpg', '1492771118', '1492771154', '1492771154');
+INSERT INTO `content` VALUES ('6', '11', '微信小程序', '<h1 style=\"font-size:34px;font-weight:400;vertical-align:sub;\">\n	app开发\n</h1>\n&nbsp;<a class=\"edit-lemma cmn-btn-hover-blue cmn-btn-28 j-edit-link\"><span class=\"cmn-icon wiki-lemma-icons wiki-lemma-icons_edit-lemma\" style=\"font-family:baikeFont_layout;line-height:12px;vertical-align:text-top;color:#52A3F5;\"></span>编辑</a>\n<div class=\"edit-prompt\" style=\"font-size:12px;margin:10px 0px;background:url(&quot;color:#666666;font-family:arial, 宋体, sans-serif;\">\n	本词条缺少<span style=\"font-weight:700;\">名片图</span>，补充相关内容使词条更完整，还能快速升级，赶紧来<a class=\"edit-prompt-link j-edit-link\">编辑</a>吧！\n</div>\n<div class=\"lemma-summary\" style=\"font-size:14px;color:#333333;font-family:arial, 宋体, sans-serif;background-color:#FFFFFF;\">\n	<div class=\"para\">\n		<a target=\"_blank\" href=\"http://baike.baidu.com/item/App%E5%BC%80%E5%8F%91\">App开发</a>，是指专注于手机<a target=\"_blank\" href=\"http://baike.baidu.com/item/%E5%BA%94%E7%94%A8%E8%BD%AF%E4%BB%B6\">应用软件</a>开发与服务。&nbsp;<a target=\"_blank\" href=\"http://baike.baidu.com/item/App/33589\">App</a>是application的缩写，通常专指手机上的应用软件，或称<a target=\"_blank\" href=\"http://baike.baidu.com/item/%E6%89%8B%E6%9C%BA%E5%AE%A2%E6%88%B7%E7%AB%AF\">手机客户端</a>。另外目前有很多在线app开发平台。\n	</div>\n	<div class=\"para\">\n		<a target=\"_blank\" href=\"http://baike.baidu.com/item/%E8%8B%B9%E6%9E%9C%E5%85%AC%E5%8F%B8\">苹果公司</a>的App store开创了手机软件业发展的新篇章，使得第三方软件的提供者参与其中的积极性空前高涨。随着智能手机越发普及、用户越发依赖手机软件商店，App开发的市场需求与发展前景也逐渐蓬勃，截止到2012年12月，App开发已变为<a target=\"_blank\" href=\"http://baike.baidu.com/item/%E7%BA%A2%E6%B5%B7%E5%B8%82%E5%9C%BA\">红海市场</a>。\n	</div>\n	<div class=\"para\">\n		当然移动互联网时代是全民的移动互联网时代，是每个人的时代，也是每个企业的时代。APP便捷了每个人的生活，APP开发让每个企业都开始了移动信息化进程。\n	</div>\n</div>', '张耀乐', '1', '/Public/upload/image/2017-04-21/58f9e16330c76.png', '1492771156', '1492771204', '1492771204');
 
 -- ----------------------------
 -- Table structure for `content_cate`
@@ -298,16 +302,21 @@ CREATE TABLE `content_cate` (
   `add_time` int(11) unsigned NOT NULL COMMENT '添加时间',
   `update_time` int(11) unsigned NOT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of content_cate
 -- ----------------------------
 INSERT INTO `content_cate` VALUES ('1', '0', '新闻', '1', '0', '1492747828', '1492754347');
+INSERT INTO `content_cate` VALUES ('7', '3', '微信公众号', '1', '0', '1492770339', '1492770429');
 INSERT INTO `content_cate` VALUES ('3', '0', '产品', '1', '0', '1492747877', '1492755013');
 INSERT INTO `content_cate` VALUES ('4', '0', '案例', '1', '0', '1492747885', '1492754357');
 INSERT INTO `content_cate` VALUES ('5', '0', '关于我们', '1', '0', '1492747896', '1492747896');
 INSERT INTO `content_cate` VALUES ('6', '0', '客户评价', '1', '0', '1492747916', '1492747916');
+INSERT INTO `content_cate` VALUES ('8', '3', 'Andriod App', '1', '0', '1492770372', '1492770372');
+INSERT INTO `content_cate` VALUES ('9', '3', 'iOS App', '1', '0', '1492770391', '1492770391');
+INSERT INTO `content_cate` VALUES ('10', '3', 'HTML5网站', '1', '0', '1492770402', '1492770402');
+INSERT INTO `content_cate` VALUES ('11', '3', '微信小程序', '1', '0', '1492770412', '1492770412');
 
 -- ----------------------------
 -- Table structure for `feedback`
@@ -394,19 +403,23 @@ CREATE TABLE `navigation` (
   `add_time` int(10) unsigned NOT NULL COMMENT '增加时间',
   `update_time` int(10) unsigned NOT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of navigation
 -- ----------------------------
 INSERT INTO `navigation` VALUES ('7', '6', '首页', '', '/', '1', '1', '1492754742', '1492754894');
 INSERT INTO `navigation` VALUES ('6', '0', '顶部', '', '/', '0', '1', '1492754591', '1492754684');
-INSERT INTO `navigation` VALUES ('18', '8', '微信商城', '', '/', '0', '1', '1492759908', '1492759908');
+INSERT INTO `navigation` VALUES ('18', '8', '微信商城', '', '/Index/product/cate_id/11', '0', '1', '1492759908', '1492773919');
 INSERT INTO `navigation` VALUES ('8', '6', '产品展示', '', '/index/product', '2', '1', '1492754822', '1492755255');
 INSERT INTO `navigation` VALUES ('9', '6', '新闻资讯', '', '/index/news', '3', '1', '1492755064', '1492761528');
 INSERT INTO `navigation` VALUES ('10', '6', '案例展示', '', '/index/cases', '4', '1', '1492755150', '1492761205');
 INSERT INTO `navigation` VALUES ('11', '6', '服务项目', '', '/index/services', '5', '1', '1492755194', '1492761214');
-INSERT INTO `navigation` VALUES ('12', '6', '关于我们', '', '/index/', '6', '1', '1492755222', '1492761222');
+INSERT INTO `navigation` VALUES ('12', '6', '关于我们', '', '/index/aboutOur', '6', '1', '1492755222', '1492773788');
+INSERT INTO `navigation` VALUES ('19', '8', 'HTML5网站', '', '/Index/product/cate_id/10', '0', '1', '1492828618', '1492828618');
+INSERT INTO `navigation` VALUES ('20', '8', '微信公众号', '', '/Index/product/cate_id/7', '0', '1', '1492828663', '1492828663');
+INSERT INTO `navigation` VALUES ('21', '8', 'Andriod App', '', '/Index/product/cate_id/8', '0', '1', '1492828712', '1492828712');
+INSERT INTO `navigation` VALUES ('22', '8', 'iOS App', '', '/Index/product/cate_id/9', '0', '1', '1492828748', '1492828748');
 
 -- ----------------------------
 -- Table structure for `post`
@@ -3963,7 +3976,7 @@ CREATE TABLE `tdk` (
   `add_time` int(11) NOT NULL COMMENT '添加时间',
   `update_time` int(11) NOT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tdk
@@ -3981,6 +3994,11 @@ INSERT INTO `tdk` VALUES ('11', '0', '0', '', '', '', '0', '1492744362');
 INSERT INTO `tdk` VALUES ('12', '1', '0', '', '', '', '0', '1492744414');
 INSERT INTO `tdk` VALUES ('13', '0', '0', '', '', '', '0', '1492745498');
 INSERT INTO `tdk` VALUES ('14', '1', '1', '', '', '', '1492755607', '1492755607');
+INSERT INTO `tdk` VALUES ('15', '1', '2', '', '', '', '1492770960', '1492770960');
+INSERT INTO `tdk` VALUES ('16', '1', '3', 'App开发', 'App开发', '是指专注于手机应用软件开发与服务', '1492771036', '1492771036');
+INSERT INTO `tdk` VALUES ('17', '1', '4', '红海市场', 'App', 'APP开发让每个企业都开始了移动信息化进程', '1492771115', '1492771115');
+INSERT INTO `tdk` VALUES ('18', '1', '5', '南京真美', 'App开发', '当然移动互联网时代是全民的移动互联网时代，是每个人的时代，也是每个企业的时代。APP便捷了每个人的生活，APP开发让每个企业都开始了移动信息化进程。', '1492771154', '1492771154');
+INSERT INTO `tdk` VALUES ('19', '1', '6', '微信小程序', 'APP开发', '是指专注于手机应用软件开发与服务。 App是application的缩写，通常专指手机上的应用软件，或称手机客户端。另外目前有很多在线app开发平台。\n苹果公司的App store开创了手机软件业发展的新篇章，', '1492771204', '1492771204');
 
 -- ----------------------------
 -- Table structure for `user`
