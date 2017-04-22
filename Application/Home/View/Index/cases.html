@@ -3,19 +3,19 @@
 		<div class="container">
 			<div class="row ">
 				<ul id="filters">
-				<li><span class="filter active" ><a href="{:U('product')}">全部</a> /</span></li>
+				<li><span class="filter active" ><a href="{:U('cases',['pid'=>4])}">全部</a> /</span></li>
 				<foreach name="ChildCateList" item="cate">
-					<li><span class="filter active" ><a href="{:U('product',['cate_id'=>$cate['id']])}">{$cate.name}</a> /</span></li>
+					<li><span class="filter active" ><a href="{:U('cases',['cate_id'=>$cate['id']])}">{$cate.name}</a> /</span></li>
 				</foreach>
 				</ul>
-				<foreach name="productList" item="product" >
+				<foreach name="caseList" item="case" >
 				<div class="col-md-4 ">
 					<div class="portfolio-item awesome mix_all" data-cat="awesome">
 						<div class="product-img">
-							<a href="{:U('productDetail',['id'=>$product['id']])}"><img src="__ROOT__{$product.cover}" class="img-responsive " alt="" /></a>
+							<img src="__ROOT__{$case.cover}" class="img-responsive " alt="" />
 						</div>						
 						<div>
-							<p>{$product.title}</p>
+							<p>{$case.title}</p>
 							<p></p>
 						</div>
 					</div>

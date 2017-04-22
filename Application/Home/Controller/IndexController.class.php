@@ -42,9 +42,19 @@ class IndexController extends PublicController {
 	
 	//产品列表
 	public function product(){
-	    $productList = d('content')->getPageList($_GET);//产品列表页
+	   
+ 	    
 	    $CateChildren = d('contentCate')->getList(['pid'=>3]);//产品子类信息
-	    $productCateList = d('content')->getPageList(['cate_id'=>$_GET['cate_id']]);//产品根据分类获取列表
+	    $cateIdArr = [];
+	    foreach ($CateChildren as $k=>$v){
+	        $cateIdArr[] = $v['id'];
+	    }
+	    $con = ['cate_id'=>['in', $cateIdArr]];
+	    if($pid = (int)$_GET['cate_id'])
+	        $con = ['cate_id' => $pid];
+	    
+	    $productList = d('content')->getPageList($con,'','',6);//产品列表页
+	        
 	    $this->assign('ChildCateList',$CateChildren);
 	    $this->assign('productList',$productList['list']);
         $this->assign('list',$productList);
@@ -52,12 +62,31 @@ class IndexController extends PublicController {
 	}
 	
 	//产品详情
-	public function productEdit(){
-	    $info = d('content')->getInfo($_GET['id']);
-	    $this->assign('info',$info);
+	public function productDetail(){
+	    $CateChildren = d('contentCate')->getList(['pid'=>3]);//产品分类信息
+	    $productInfo = d('content')->getInfo($_GET['id']);
+	    $product = d('content')->where(['pid'=>3])->select();
+	    foreach ($CateChildren as $k=>$v){
+	      foreach ($product as $k1=>$v1){
+	          if($v1['cate_id'] == $v['id']){
+	              $CateChildren[$k]['childInfo'][] = $v1;
+	          }
+	      }
+	    }
+	    $this->assign('productInfo',$productInfo);
+	    $this->assign('ChildCateList',$CateChildren);
+	    if(IS_AJAX)
+	        return ajaxReturn(0,'',$productInfo);
 	    $this->display();
 	}
 	
+	
+// 	//获取产品详情
+// 	public function ajaxProductInfo($id){
+// 	   $productInfo = d('content')->getInfo($id);
+// 	    ajaxReturn('0','',$productInfo);
+// 	}
+
 	//新闻
 	public function news(){
 	    //新闻详情
@@ -89,10 +118,32 @@ class IndexController extends PublicController {
 	   
 	    $this->display();
 	}
-	
+	//取id集合
+	public function catePid($id){
+	    $cateinfo = d('contentCate')->where(['id'=>$id])->find();
+	    if($cateinfo['pid']!=0){
+	       $pid = $this->catePid($id);
+	    }else{
+	        return $cateinfo['id'];
+	    }
+	}
 	//案例
 	public function cases(){
-	 
+	    $CateChildren = d('contentCate')->getList(['pid'=>4]);//产品子类信息
+	    
+	    foreach ($CateChildren as $k=>$v){
+	        $cateIdArr[] = $v['id'];
+	    }
+	    //var_dump($cateIdArr);exit;
+        $con = ['cate_id'=>['in', $cateIdArr]];
+	    if($pid = (int)$_GET['cate_id'])
+	        $con = ['cate_id' => $pid];
+	    
+        $caseList = d('content')->getPageList($con,'','',6);//产品列表页
+	    $contentList = d('content')->select();
+	    $this->assign('ChildCateList',$CateChildren);
+	    $this->assign('caseList',$caseList['list']);
+        $this->assign('list',$caseList);
 	    $this->display();
 	}
 
