@@ -70,16 +70,23 @@ $('.flexslider').flexslider({
 });
 });
 $('.product-detail').on('click',function(e){
-    var icon = $(e.target).find('span');
     var node = $(e.target);
+    if(node[0].className == 'product-intro'){
+        return false;
+    }
+    var icon = $(e.target).find('span');
     if(icon.css('transform') == 'matrix(6.12323e-17, 1, -1, 6.12323e-17, 0, 0)'){
         icon.css('transform','rotate(0deg)');
-    }else if(node[0].nodeName == 'DT'){
+    }else{
         icon.css('transform','rotate(90deg)');
     }
-    
-    node.siblings('dd').slideToggle(200);
-
+    if(node[0].nodeName == 'DT'){
+        node.siblings('dd').slideToggle(200);
+    }
+    if(node[0].nodeName == 'DD'){
+        node.css('background-color','#eee');
+        node.siblings().css('background-color','#fafafa')
+    }
     if(node[0].nodeName == 'DD'){
         var url = "/home/index/ajaxProductInfo/id/"+node.data('id');
         $.ajax({

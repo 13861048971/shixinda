@@ -15,13 +15,13 @@
 			<div class="row product-detail">
 				<div class="col-md-3">
 					<dl class="product-nav">
-						<dt>产品介绍</dt>
+						<dt class="product-intro">产品介绍</dt>
 						<foreach name="ChildCateList" item="cate">
 							<dd>
 								<dl>
 									<dt><span></span>{$cate.name}</dt>
 									<foreach name="cate.childInfo" item="info">
-										<dd data-id="{$info.id}"><span></span>{$info.title}</dd>
+										<dd data-id="{$info.id}">{$info.title}</dd>
 									</foreach>
 								</dl>
 							</dd>

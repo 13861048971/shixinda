@@ -462,4 +462,7 @@ ul#filters {
 	padding: 6px 0 6px 40px;
     background-color: #fafafa;
 	cursor: pointer;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
 }
