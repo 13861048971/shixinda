@@ -24,7 +24,9 @@
 				<foreach name="productList" item="product" >
 				<div class="col-md-4 ">
 					<div class="portfolio-item awesome mix_all" data-cat="awesome">
-						<img src="__ROOT__{$product.cover}" class="img-responsive " alt="" />
+						<div class="product-img">
+							<img src="__ROOT__{$product.cover}" class="img-responsive " alt="" />
+						</div>						
 						<div>
 							<p>{$product.title}</p>
 							<p></p>
