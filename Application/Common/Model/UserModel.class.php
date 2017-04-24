@@ -26,14 +26,20 @@ class UserModel extends BaseModel{
 	    
 		if(!Org\Util\Validator::isMobile($mobile))
 			return $this->setError('手机号格式错误!');
+		
 		$con['mobile'] = htmlentities($mobile);
+		
 		$user = $this->where($con)->find();
+		
 		$id = $user['id'];
 		
 		if( !($pass1 = $this->getPass($pass) ) )
 			return false;
+			
 		if( $pass1 != $user['password'] )
 			return $this->setError('密码错误!');
+			
+		
 		//账号被封
 		if($user['status']){
 			return $this->setError('你的账号异常!');
@@ -211,6 +217,7 @@ class UserModel extends BaseModel{
 		}
 		
 		$conf = d('config')->getInfo('SMS')['value'];
+		
 		$appkey = $conf['appkey'];
 		$secret = $conf['secretKey'];
 		$code 	= $conf['param'];
@@ -219,10 +226,9 @@ class UserModel extends BaseModel{
 		
 		!$code && $code = 'code';
 		$vercode = rand(100000, 999999); 
-		
 		if(!$this->sendMsg($mobile, ['code'=>$vercode]))
 			return false;
-		
+			
 		session('msgvercode', $vercode);
 		session('msgLstTime', time());
 		return $vercode;
@@ -274,8 +280,10 @@ class UserModel extends BaseModel{
 		
 		if(!Org\Util\Validator::isMobile($mobile))
 			return $this->setError('手机号格式错误!');
+			
 		if( $vercode != session('msgvercode') && ($vercode && $vercode != $vercode2))
 			return $this->setError('验证码错误!');
+		
 		if( !($pass = $this->checkPass($pass)) )
 			return false;
 		

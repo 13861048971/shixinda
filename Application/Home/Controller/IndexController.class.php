@@ -4,8 +4,8 @@ class IndexController extends PublicController {
 	public $userId;
     public $configInfo;//网站配置信息
     public $about;//关于我们
-    public $user;
 	public function _initialize(){
+	    parent::_initialize();
 	    $this->configInfo = $this->config();
 	    $this->about = $this->aboutOur();
 	    $navigation = d("navigation")->where(['pid'=>['eq',6]])->order('rank ')->select();
@@ -20,7 +20,6 @@ class IndexController extends PublicController {
                     $navigation[$k]['current'] = true;
 	        }
 	            
-	     
 	        
 	        foreach ($childNavigation as $k2=>$v2) {
 	            if($v['id'] == $v2['pid']){
@@ -29,11 +28,6 @@ class IndexController extends PublicController {
 	            }
 	        }
 	    }
-	    //$this->user = session('user');//用户session
-// 	   session('user',['nickname'=>'王二麻','mobile'=>'13861048971']);
-// 	    session('user',['mobile'=>'13861048971']);
-	    //var_dump(session('user'));exit;
-	  //  $this->assign('user',session('user'));
 	    $this->assign('user',session('user'));
 	    $this->assign('navigation',$navigation);
 	    $this->assign('aboutOur',$this->about);
@@ -43,7 +37,7 @@ class IndexController extends PublicController {
 	
     //首页
 	public function index(){ 
-	    
+
 		$this->display();
 	}
 	
@@ -185,20 +179,40 @@ class IndexController extends PublicController {
 	public function login(){
 	    $mobile = $_POST['mobile'];
 	    $pass = $_POST['password'];
+
         $user = d('user')->login($mobile, $pass);
         
+        if($user)
+            $this->success('登录成功',"index");
         $this->display();
+	}
+	
+	//用户退出
+	
+	public function loginOut(){
+	    session('user',null);
+	    if(empty(session('user')))
+	    $this->success('退出成功','login');
 	}
 	
 	//用户注册
-	public function regist(){
+	public function register(){
 	    $mobile = $_POST['mobile'];
 	    $pass = $_POST['password'];
-	    $vercode = $_POST['vercode'];
+	    $vercode = $_POST['vcode'];
         $regist = d('user')->regist($mobile, $pass,$vercode);
+        if($regist)
+            $this->success('注册成功',"login");
         $this->display();
 	}
 	
+	//获取手机验证码
+	public function getVercode(){
+	    $mobile = $_POST['mobile'];
+	    $Vercode = d('user')->getVercode($mobile);
+	    ajaxReturn('获取验证码失败','',['list'=>$Vercode]);
+	  
+	}
 	//密码重置
 	public function passReset(){
 	    
@@ -206,13 +220,6 @@ class IndexController extends PublicController {
 	    
 	    return $id;
 	}
-	
-	//获取手机验证码
-	
-	public function getVercode(){
-	    $vercode = d('user')->getVercode2($_POST['mobile']);
-	    return $vercode;
-	}
-	
+		
 	
 }

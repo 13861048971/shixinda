@@ -13,11 +13,13 @@ class SettingController extends PublicController {
 	
 	function config(){
 		$mod = d('config');
-		var_dump($name);
+
 		if($name = $_POST['name']) {
 			$info = $mod->getInfo($name);
+
 			if(!$mod->edit($_POST, $info['name']))
 				return ajaxReturn(1, $mod->getError());
+			
 			return ajaxReturn(0, '修改成功!');
 		}
 		

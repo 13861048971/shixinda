@@ -17,7 +17,7 @@ class ConfigModel extends BaseModel{
 	];
 	public $form = [
 		'SMS' => [
-			'apikey' => ['label' => 'appkey', 'r' => 3, 'type'=>'text'],
+			'apikey' => ['label' => 'apikey', 'r' => 3, 'type'=>'text'],
 			'param'  => ['label'=>'验证码参数名', 'type'=>'text', 'r'=>4 ,'value'=>'code' ],
 			'code'   => ['label' => '验证码模板', 'type'=> 'text', 'r' => 4],
 			'vercode'=> ['label' => '专用验证码', 'type'=>'text', 'r'=>4],
@@ -62,9 +62,11 @@ class ConfigModel extends BaseModel{
 	 */
 	function edit($data, $name=null){
 		$data['value'] = serialize($data['config']);
+		
 		if($name){
 			$data['update_time'] = time();
 			$return  = $this->data($data)->where(['name'=>$name])->save();
+
 			if(!$return){
 				$this->lastError = '修改任务失败!';
 				return false;

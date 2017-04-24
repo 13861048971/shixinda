@@ -140,10 +140,11 @@ class BaseModel extends Model {
 		];
 		
 		$conf = d('config')->getInfo('SMS')['value'];
+		//var_dump($conf);exit;
 		
 		if('userBlock' == $type || 'verUnpass' == $type)
 			$varArr['phone'] = $conf['phone'];
-		
+			
 		if( !$typeArr[$type] || !($tplId = $conf[$type] ))
 			return $this->setError('模板不存在!');
 		import('Org.Yunpian.YunpianMessage');
@@ -154,6 +155,7 @@ class BaseModel extends Model {
 			\Think\Log::Write($res, "Err");
 			return $this->setError('发送短信失败,'.$arr['msg']);
 		}
+		
 		\Think\Log::Write($res, "Log");
 		return $arr;
 	}
