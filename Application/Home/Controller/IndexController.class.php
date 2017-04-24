@@ -182,7 +182,9 @@ class IndexController extends PublicController {
         $user = d('user')->login($mobile, $pass);
         
         if($user)
-            $this->success('登录成功',"index");
+            ajaxReturn('0','登录成功',['list'=>$user]);
+        if(!$user)
+            ajaxReturn('0','登录失败'.d('user')->getError());
         $this->display();
 	}
 	
@@ -191,7 +193,7 @@ class IndexController extends PublicController {
 	public function loginOut(){
 	    session('user',null);
 	    if(empty(session('user')))
-	    $this->success('退出成功','login');
+	    ajaxReturn(1,'退出成功');
 	}
 	
 	//用户注册
@@ -202,15 +204,19 @@ class IndexController extends PublicController {
         $regist = d('user')->regist($mobile, $pass,$vercode);
          //var_dump($regist);exit;
         if($regist)
-            $this->success('注册成功',"login");
+            ajaxReturn('0','注册成功,请登录',['list'=>$regist]);
+        if(!$regist)
+        ajaxReturn('1','注册失败'.d('user')->getError());
         $this->display();
 	}
 	
 	//获取手机验证码
 	public function getVercode(){
-	    $mobile = (int)$_POST['mobile'];
+	    $mobile = $_POST['mobile'];
 	    $Vercode = d('user')->getVercode($mobile);
-	    ajaxReturn('获取验证码失败','',['list'=>$Vercode]);
+	    if(!$Vercode)
+	        ajaxReturn('1','获取验证码失败'.d('user')->getError());
+	    ajaxReturn('0','验证码正确',['list'=>$Vercode]);
 	  
 	}
 	//密码重置
