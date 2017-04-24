@@ -36,14 +36,12 @@ class IndexController extends PublicController {
 	
     //首页
 	public function index(){ 
-        
+	    
 		$this->display();
 	}
 	
 	//产品列表
 	public function product(){
-	   
- 	    
 	    $CateChildren = d('contentCate')->getList(['pid'=>3]);//产品子类信息
 	    $cateIdArr = [0];
 	    foreach ($CateChildren as $k=>$v){
@@ -89,7 +87,7 @@ class IndexController extends PublicController {
 
 	//新闻
 	public function news(){
-	    //新闻详情
+	    //新闻
 	    $data = d('admin/content')->getPageList(['cate_id'=>'1'], '', 'add_time desc', 2);
 	    $hotList = d('admin/content')->getList(['cate_id'=>'1'], 5, 'click desc'); 
 	    $list = $data['list'];
@@ -147,12 +145,9 @@ class IndexController extends PublicController {
 	    $this->display();
 	}
 
-	//关于我们
+	//关于我们的列表
 	public function about(){
-		$info = d('config')->getInfo('about');
-		
-		$desc = strip_tags($info['value']['content']);
-		ajaxReturn2(0,'', ['desc'=>$desc]);
+        $this->display();
 		
 		
 	}
@@ -162,7 +157,7 @@ class IndexController extends PublicController {
 		d('order')->payNotify($_POST);
 	}
 	
-	//关于我们
+	//关于我们配置信息
 	public function aboutOur(){
 	    $mod = d('config');
 	    $info = $mod->getList();
