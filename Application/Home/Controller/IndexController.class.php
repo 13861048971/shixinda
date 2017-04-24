@@ -4,6 +4,7 @@ class IndexController extends PublicController {
 	public $userId;
     public $configInfo;//网站配置信息
     public $about;//关于我们
+    public $user;
 	public function _initialize(){
 	    $this->configInfo = $this->config();
 	    $this->about = $this->aboutOur();
@@ -28,6 +29,12 @@ class IndexController extends PublicController {
 	            }
 	        }
 	    }
+	    //$this->user = session('user');//用户session
+// 	   session('user',['nickname'=>'王二麻','mobile'=>'13861048971']);
+// 	    session('user',['mobile'=>'13861048971']);
+	    //var_dump(session('user'));exit;
+	  //  $this->assign('user',session('user'));
+	    $this->assign('user',session('user'));
 	    $this->assign('navigation',$navigation);
 	    $this->assign('aboutOur',$this->about);
 	    $this->assign('config',$this->configInfo);
@@ -176,15 +183,36 @@ class IndexController extends PublicController {
 	
 	//用户登录
 	public function login(){
-	   $this->display();
+	    $mobile = $_POST['mobile'];
+	    $pass = $_POST['password'];
+        $user = d('user')->login($mobile, $pass);
+        
+        $this->display();
 	}
 	
 	//用户注册
 	public function regist(){
-	    $this->display();
+	    $mobile = $_POST['mobile'];
+	    $pass = $_POST['password'];
+	    $vercode = $_POST['vercode'];
+        $regist = d('user')->regist($mobile, $pass,$vercode);
+        $this->display();
 	}
 	
-	//
+	//密码重置
+	public function passReset(){
+	    
+	    $id = d('user')->passReset($_POST);
+	    
+	    return $id;
+	}
+	
+	//获取手机验证码
+	
+	public function getVercode(){
+	    $vercode = d('user')->getVercode2($_POST['mobile']);
+	    return $vercode;
+	}
 	
 	
 }

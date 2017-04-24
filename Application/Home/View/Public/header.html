@@ -49,8 +49,16 @@
 									
 								</li>
 							</foreach>
-							<a href="" class="btn-login">登录</a>
-							<a href="" class="btn-register">注册</a>
+								<notempty name="user">
+									<notempty name="user.nickname">
+									<li><a>昵称：{$user.nickname}</a></li>
+									<else/>
+									<li><a>用户：{$user.mobile}</a></li>
+									</notempty>
+								<else/>
+								<li><a href="{:U('login')}">登录</a></li>
+								<li><a href="{:U('regist')}">注册</a></li>
+								</notempty>
 						</ul>
 					</div>
 				</div>
