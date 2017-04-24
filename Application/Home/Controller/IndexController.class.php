@@ -19,8 +19,7 @@ class IndexController extends PublicController {
                 if(strtolower($uri) == $v['url'] )
                     $navigation[$k]['current'] = true;
 	        }
-	            
-	        
+	             
 	        foreach ($childNavigation as $k2=>$v2) {
 	            if($v['id'] == $v2['pid']){
 	                $navigation[$k]['list'][] = $v2;
@@ -224,11 +223,5 @@ class IndexController extends PublicController {
 		
 	
 	//获取手机验证码
-	
-	public function getVercode(){
-	    $vercode = d('user')->getVercode($_POST['mobile']);
-	    return $vercode;
-	}
-	
-	
+
 }
