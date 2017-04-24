@@ -188,9 +188,11 @@ class IndexController extends PublicController {
 	        
             if(!$user)
                 ajaxReturn('1','登录失败'.d('user')->getError());
-	    }
+	    }else{
+$this->display(); 
+		}
 	    
-        $this->display(); 
+        
 	}
 	
 	//用户退出
@@ -204,6 +206,7 @@ class IndexController extends PublicController {
 	//用户注册
 	public function regist(){
 	    if(isset($_POST) && $_POST){
+			var_dump($_POST);
 	        $mobile = $_POST['mobile'];
 	        $pass = $_POST['password'];
 	        $vercode = $_POST['vcode'];

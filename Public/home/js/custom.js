@@ -138,7 +138,7 @@ $('.btn-vercode').on('click',function(){
         data:{mobile:mobile},
         dataType:'json',
         success:function(data){
-            if(data.data.list){
+            if(data.error == '0'){
                 var wait=60;
                 function time(btn) {
                     if (wait == 0) {
@@ -158,7 +158,41 @@ $('.btn-vercode').on('click',function(){
                 }
                 time($('.btn-vercode'));
             }else{
-                win.alert(data.error,'error');
+                win.alert(data.info,'error');
+            }
+        }
+    });
+});
+// 登录
+$('.btn-login').on('click',function(){
+    var form = $('form').serialize();
+    $.ajax({
+        url:'/login',
+        type:'post',
+        data:form,
+        dataType:'json',
+        success:function(data){
+            if(data.error != '0'){
+                win.alert(data.info,'error');
+            }else{
+                window.location.href='/index';
+            }
+        }
+    });
+});
+// 注册
+$('.btn-regist').on('click',function(){
+    var form = $('form').serialize();
+    $.ajax({
+        url:'/regist',
+        type:'post',
+        data:form,
+        dataType:'json',
+        success:function(data){
+            if(data.error != '0'){
+                win.alert(data.info,'error');
+            }else{
+                window.location.href='/index';
             }
         }
     });
