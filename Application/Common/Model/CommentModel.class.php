@@ -25,7 +25,7 @@ class CommentModel extends BaseModel{
         }
     
         $data['add_time'] = $data['update_time'] = time();
-        $data['type'] = $typeArr["data['type']"];
+        $data['type'] = $this->typeArr["data['type']"];
         if(!$this->create($data))
             return false;
             if(!($id = $this->add()))
