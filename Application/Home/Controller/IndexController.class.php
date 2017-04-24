@@ -177,7 +177,7 @@ class IndexController extends PublicController {
 	//用户登录
 	public function login(){
 	    if(isset($_POST) && $_POST){
-	        //var_dump($_POST);exit;
+	       
 	        $mobile = $_POST['mobile'];
 	        $pass = $_POST['password'];
 	        
