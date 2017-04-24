@@ -176,16 +176,21 @@ class IndexController extends PublicController {
 	
 	//用户登录
 	public function login(){
-	    $mobile = $_POST['mobile'];
-	    $pass = $_POST['password'];
-
-        $user = d('user')->login($mobile, $pass);
-        
-        if($user)
-            ajaxReturn('0','登录成功',['list'=>$user]);
-        if(!$user)
-            ajaxReturn('0','登录失败'.d('user')->getError());
-        $this->display();
+	    if(isset($_POST) && $_POST){
+	        //var_dump($_POST);exit;
+	        $mobile = $_POST['mobile'];
+	        $pass = $_POST['password'];
+	        
+	        $user = d('user')->login($mobile, $pass);
+	        
+	        if($user)
+	            ajaxReturn('0','登录成功',['list'=>$user]);
+	        
+            if(!$user)
+                ajaxReturn('1','登录失败'.d('user')->getError());
+	    }
+	    
+        $this->display(); 
 	}
 	
 	//用户退出
@@ -193,21 +198,26 @@ class IndexController extends PublicController {
 	public function loginOut(){
 	    session('user',null);
 	    if(empty(session('user')))
-	    ajaxReturn(1,'退出成功');
+	    ajaxReturn(0,'退出成功');
 	}
 	
 	//用户注册
 	public function regist(){
-	    $mobile = $_POST['mobile'];
-	    $pass = $_POST['password'];
-	    $vercode = $_POST['vcode'];
-        $regist = d('user')->regist($mobile, $pass,$vercode);
-         //var_dump($regist);exit;
-        if($regist)
-            ajaxReturn('0','注册成功,请登录',['list'=>$regist]);
-        if(!$regist)
-        ajaxReturn('1','注册失败'.d('user')->getError());
-        $this->display();
+	    if(isset($_POST) && $_POST){
+	        $mobile = $_POST['mobile'];
+	        $pass = $_POST['password'];
+	        $vercode = $_POST['vcode'];
+	        $regist = d('user')->regist($mobile, $pass,$vercode);
+	        
+	        if($regist)
+	            ajaxReturn('0','注册成功,请登录',['list'=>$regist]);
+	        
+            if(!$regist)
+                ajaxReturn('1','注册失败'.d('user')->getError());
+	    }
+	    
+        $this->display(); 
+        
 	}
 	
 	//获取手机验证码
