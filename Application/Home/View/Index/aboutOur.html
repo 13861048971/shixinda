@@ -1,28 +1,23 @@
-<include file="Public:header" />f
-		<div class="container">f
-				<div class="col-md-3">f
-					<dl class="product-nav">f
-						<foreach name="ChildCateList" item="cate">f
-							<dd>f
-								<dl>f
-									<foreach name="cate.childInfo" item="info">f
-										f<dd><a href="{:U('productDetail',['id'=>$info['id']])}" onclick="return false;">{$info.title}</a></dd>
-									<diasdav></diasdav>
-								</dl>f
-							</dd>fasdaas dsd
-						</foreach>f
-
-
-						
-					</dl>f
-				</div>f
-				<div class="col-md-9">f
-					<div class="product-title"wang> {$productInfo.title}</div>f
-					<div class="product-content">{$productInfo.content}</div>f
-				</div>f
-			</div>f
-		</div>f
-	</div>f
-<include file="Public:footer" />f
-</body>f
-</html>f
+<include file="Public:header" />
+		<div class="container">
+			<div class="col-md-3">
+				<dl class="product-nav">
+					<foreach name="ChildCateList" item="cate">
+						<dd>
+							<dl>
+								<foreach name="cate.childInfo" item="info">
+									<dd><a href="{:U('productDetail',['id'=>$info['id']])}" onclick="return false;">{$info.title}</a></dd>
+								</foreach>
+							</dl>
+						</dd>
+					</foreach>
+				</dl>
+			</div>
+			<div class="col-md-9">
+				<div class="product-title"> {$productInfo.title}</div>
+				<div class="product-content">{$productInfo.content}</div>
+			</div>
+		</div>
+<include file="Public:footer" />
+</body>
+</html>
