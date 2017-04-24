@@ -130,7 +130,7 @@ $('.commit-comment').on('click',function(){
     }
 });
 // 验证码
-$('.btn-vercode').on('click',function(e){
+$('.btn-vercode').on('click',function(){
     var mobile = $('.mobile').val();
     $.ajax({
         url:'/index/getVercode',
@@ -138,26 +138,27 @@ $('.btn-vercode').on('click',function(e){
         data:{mobile:mobile},
         dataType:'json',
         success:function(data){
-            console.log(data.data.list);
-            if(!data.data.list){
+            if(data.data.list){
                 var wait=60;
-                var btn = $(e.target)
                 function time(btn) {
                     if (wait == 0) {
                         btn.removeAttr("disabled");
-                        btn.value="获取验证码";
+                        btn.css('background-color','#1C86EE');
+                        btn.text('获取验证码');
                         wait = 60;
                     } else { 
-                        btn.Attr("disabled", true);
-                        btn.value="重新发送(" + wait + ")";
+                        btn.attr("disabled", true);
+                        btn.text('重新发送' + wait + 's');
+                        btn.css('background-color','#ddd');
                         wait--;
                         setTimeout(function() {
-                            time(o)
+                            time(btn)
                         }, 1000)
                     }
                 }
+                time($('.btn-vercode'));
             }else{
-                win.alert('获取验证码失败！','error');
+                win.alert(data.error,'error');
             }
         }
     });
