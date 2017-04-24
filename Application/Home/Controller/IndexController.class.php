@@ -157,86 +157,6 @@ class IndexController extends PublicController {
 		
 	}
 	
-	//使用协议
-	public function agreement(){
-		$info = d('config')->getInfo('agreement');
-		
-		$desc = strip_tags($info['value']['content']);
-		
-		if($_GET['format'] == 'html'){
-			$this->assign('desc', $desc);
-			return $this->display();
-		}
-		ajaxReturn2(0,'', ['desc'=>$desc]);
-	}
-	
-	//使用协议
-	public function tradeNote(){
-		$info = d('config')->getInfo('trade_note');
-		
-		$desc = strip_tags($info['value']['content']);
-		ajaxReturn2(0,'', ['desc'=>$desc]);
-	}
-	
-	//吐槽我们
-	public function feedback(){
-		$mod = d('feedback');
-		
-		$data = [
-			'user_id'=>$this->user['id'], 
-			'desc' => htmlentities($_POST['desc']),
-		];
-		
-		if(!$mod->edit($data))
-			ajaxReturn2(1, $mod->getError());
-		
-		ajaxReturn2(0,'操作成功!');
-	}
-
-	//任务分享页面
-	public function taskShare(){
-		if( !($id = $_GET['id']) || !($row = d('task')->getInfo($id)) )
-			return ajaxReturn2(1, '任务不存在');
-		$client = $_GET['client'];
-		$row['joinList'] = d('join')->getList(['task_id'=>$id],4,'id desc');
-		$conf = d('config')->getInfo('app')['value'];
-		$link = $conf['down'];
-		$client == 'ios' && ($link = $conf['down_ios']);
-		$this->assign('downlink', $link);
-		$this->assign('row', $row);
-		$this->display();
-		exit;
-	}
-	//套餐分享页面
-	public function mealShare(){
-		if( !($id = $_GET['id']) || !($row = d('meal')->getInfo($id)) )
-			return ajaxReturn2(1, '套餐不存在');
-		$client = $_GET['client'];
-		
-		$conf = d('config')->getInfo('app')['value'];
-		$link = $conf['down'];
-		$client == 'ios' && ($link = $conf['down_ios']);
-		$this->assign('downlink', $link);
-		$this->assign('row', $row);
-		$this->display();
-		exit;
-	}
-	//摄影师分享页面
-	public function phoShare(){
-		if( !($id = $_GET['id']) || !($row = d('pho')->getInfo($id)) )
-			return ajaxReturn2(1, '任务不存在');
-		$client = $_GET['client'];
-		
-		$conf = d('config')->getInfo('app')['value'];
-		$link = $conf['down'];
-		$client == 'ios' && ($link = $conf['down_ios']);
-		$row['mealList'] = d('meal')->getList(['pho_id'=>$id]);
-		$this->assign('downlink', $link);
-		$this->assign('row', $row);
-		$this->display();
-		exit;
-	}
-
 	//支付结果通知
 	public function payNotify(){
 		d('order')->payNotify($_POST);
@@ -258,4 +178,8 @@ class IndexController extends PublicController {
 
 	return $list;
 	}
+	
+	//用户登录
+	
+	
 }
