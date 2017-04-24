@@ -613,7 +613,17 @@ ul#filters {
 }
 .about-section .about-nav dl dd{
 	padding: 5px 0 5px 20px;
+	cursor: pointer;
+}
+.about-section .about-nav dl dd a{
+	color: #333;
 }
 .about-section .about-nav dl dd:hover{
-	background-color: 
+	background-color: #eee;
+}
+.about-section .about-nav dl dd:hover a{
+	color: #1C86EE;
+}
+.about-section .about-container{
+	border-top: 2px solid #eee;
 }
