@@ -201,6 +201,7 @@ class IndexController extends PublicController {
 	    $pass = $_POST['password'];
 	    $vercode = $_POST['vcode'];
         $regist = d('user')->regist($mobile, $pass,$vercode);
+         //var_dump($regist);exit;
         if($regist)
             $this->success('注册成功',"login");
         $this->display();

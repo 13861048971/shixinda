@@ -280,7 +280,7 @@ class UserModel extends BaseModel{
 		
 		if(!Org\Util\Validator::isMobile($mobile))
 			return $this->setError('手机号格式错误!');
-			
+			//echo 1;exit();
 		if( $vercode != session('msgvercode') && ($vercode && $vercode != $vercode2))
 			return $this->setError('验证码错误!');
 		
