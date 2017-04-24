@@ -109,3 +109,21 @@ $('.product-detail').on('click',function(e){
         });
     }
 });
+$('.commit-comment').on('click',function(){
+    var comment = $('.news-comment textarea').val();
+    var node_id = $('.news-detail').data('id');
+    var user_id = $('.news-comment-user').data('id');
+    console.log(comment);
+    if(comment){
+        $.ajax({
+            url:'/index/comment',
+            type:'post',
+            data:{node_id:node_id,comment:comment,user_id:user_id},
+            success:function(){
+                $('.news-comment textarea').val('');
+            }
+        });
+    }else{
+        win.alert('请填写评论内容！','error')
+    }
+})

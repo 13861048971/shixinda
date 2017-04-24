@@ -1,7 +1,7 @@
 <include file="Public:header" />
 	<div class="news-section">
 		<div class="container">
-			<div class="row news-detail">
+			<div class="row news-detail" data-id="{$row.id}">
 				<div class="col-md-9">
 					<div class="news-title"><h2>{$row.title}</h2></div>
 					<div class="news-info"><span>{$row.author}</span>.<span>{$row.publishTime}</span></div>
@@ -10,7 +10,7 @@
 						<h4>新闻评论</h4>
 						<textarea placeholder="请输入内容"></textarea>
 						<!-- <textarea placeholder="请登录后评论" disabled></textarea> -->
-						<div class="news-comment-user">
+						<div class="news-comment-user" data-id="{$user.id}">
 							<a href="/index/login">登录</a> 后评论
 							<!--<a href="">用户名</a>-->
 						</div>
