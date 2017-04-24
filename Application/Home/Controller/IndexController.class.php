@@ -196,7 +196,7 @@ class IndexController extends PublicController {
 	}
 	
 	//用户注册
-	public function register(){
+	public function regist(){
 	    $mobile = $_POST['mobile'];
 	    $pass = $_POST['password'];
 	    $vercode = $_POST['vcode'];
