@@ -552,26 +552,26 @@ ul#filters {
 }
 /*登录页面*/
 .login,
-.register{
+.regist{
 	margin-top: 50px;
 	height: 400px;
 }
 .login form,
-.register form{
+.regist form{
 	border: 1px solid #ccc;
 	border-radius: 5px;
 }
 .login .row,
-.register .row{
+.regist .row{
 	text-align: center;
 }
 .login label,
-.register label{
+.regist label{
 	width: 70px;
 	font-weight: 400;
 }
 .login input,
-.register input{
+.regist input{
 	width: 240px;
 	outline: none;
 	padding: 5px 10px 5px 10px;
@@ -582,7 +582,7 @@ ul#filters {
 	margin: 10px 0;
 }
 .login button,
-.register button{
+.regist button{
 	width: 240px;
 	margin: 10px 0 30px 73px;
 	border: 0;
@@ -591,13 +591,14 @@ ul#filters {
 	background-color: #1C86EE;
 	color: #fff;
 }
-.register .vcode input{
+.regist .vercode input{
 	width: 120px;
-	margin-right: 20px;
+	margin-right: 16px;
 }
-.register .vcode button{
+.regist .vercode button{
 	width: 100px;
 	font-size: 14px;
+	margin: 0;
 }
 /*关于我们*/
 .about-section{

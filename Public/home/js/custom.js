@@ -69,6 +69,7 @@ $('.flexslider').flexslider({
     }
 });
 });
+// 产品详情
 $('.product-detail').on('click',function(e){
     var node = $(e.target);
     if(node[0].className == 'product-intro'){
@@ -109,6 +110,7 @@ $('.product-detail').on('click',function(e){
         });
     }
 });
+// 新闻评论功能
 $('.commit-comment').on('click',function(){
     var comment = $('.news-comment textarea').val();
     var node_id = $('.news-detail').data('id');
@@ -126,4 +128,36 @@ $('.commit-comment').on('click',function(){
     }else{
         win.alert('请填写评论内容！','error')
     }
-})
+});
+// 验证码
+$('.btn-vercode').on('click',function(e){
+    var mobile = $('.mobile').val();
+    $.ajax({
+        url:'/index/getVercode',
+        type:'post',
+        data:{mobile:mobile},
+        success:function(data){
+            console.log(data);
+            if(data){
+                var wait=60;
+                var btn = $(e.target)
+                function time(btn) {
+                    if (wait == 0) {
+                        btn.removeAttr("disabled");
+                        btn.value="获取验证码";
+                        wait = 60;
+                    } else { 
+                        btn.Attr("disabled", true);
+                        btn.value="重新发送(" + wait + ")";
+                        wait--;
+                        setTimeout(function() {
+                            time(o)
+                        }, 1000)
+                    }
+                }
+            }else{
+                win.alert('获取验证码失败！','error');
+            }
+        }
+    });
+});

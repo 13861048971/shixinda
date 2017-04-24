@@ -223,4 +223,12 @@ class IndexController extends PublicController {
 	}
 		
 	
+	//获取手机验证码
+	
+	public function getVercode(){
+	    $vercode = d('user')->getVercode($_POST['mobile']);
+	    return $vercode;
+	}
+	
+	
 }
