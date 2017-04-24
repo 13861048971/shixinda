@@ -120,7 +120,7 @@ $('.commit-comment').on('click',function(){
         $.ajax({
             url:'/index/comment',
             type:'post',
-            data:{node_id:node_id,comment:comment,user_id:user_id},
+            data:{node_id:node_id,content:comment,user_id:user_id,type:'news'},
             success:function(){
                 $('.news-comment textarea').val('');
             }
@@ -139,7 +139,7 @@ $('.btn-vercode').on('click',function(e){
         dataType:'json',
         success:function(data){
             console.log(data.data.list);
-            if(data.data.list){
+            if(!data.data.list){
                 var wait=60;
                 var btn = $(e.target)
                 function time(btn) {
