@@ -85,18 +85,10 @@ class IndexController extends PublicController {
 	    $this->display();
 	}
 	
-	
-// 	//获取产品详情
-// 	public function ajaxProductInfo($id){
-// 	   $productInfo = d('content')->getInfo($id);
-// 	    ajaxReturn('0','',$productInfo);
-// 	}
-
 	//新闻
 	public function news(){
-	    //新闻
-	    $data = d('admin/content')->getPageList(['cate_id'=>'1'], '', 'add_time desc', 2);
-	    $hotList = d('admin/content')->getList(['cate_id'=>'1'], 5, 'click desc'); 
+	    $data = d('content')->getPageList(['cate_id'=>'1'], '', 'add_time desc', 2);
+	    $hotList = d('content')->getList(['cate_id'=>'1'], 5, 'click desc'); 
 	    $list = $data['list'];
 	    foreach($list as $k=>$v){
 	        $list[$k]['content'] =  mb_substr(strip_tags($v['content']), 0, 50);
@@ -104,21 +96,29 @@ class IndexController extends PublicController {
 	    $this->assign('pageVar', $data['pageVar']);
 	    $this->assign('list', $list);
 	    $this->assign('hotList', $hotList);
-	    $this->display('news');
+	    $this->display();
 	}
 	
 	//新闻详情
 	public function newsDetail(){
 	    $id = $_GET['id'];
-	    $row = d('admin/content')->getInfo($id);
-	    $hotList = d('admin/content')->getList(['cate_id'=>'1'], 5, 'click desc');
+	    $row = d('content')->getInfo($id);
+	    $hotList = d('content')->getList(['cate_id'=>'1'], 5, 'click desc');
+	    $data = d('comment')->getPageList(['node_id'=>$id, 'type'=>'news']);
+	    $this->assign('commentList', $data['list']);
+	    $this->assign('pageVar', $data['pageVar']);
 	    $this->assign('hotList', $hotList);
 	    $this->assign('row',$row);
-	    $this->display('newsDetail');
+	    $this->display();
 	}
 	
+	//用户评论
+	public function comment(){
+       
+	   
+	}
 	
-	//服务
+	//服务项目
 	public function services(){
 	   
 	    $this->display();
@@ -134,7 +134,7 @@ class IndexController extends PublicController {
 	}
 	//案例
 	public function cases(){
-	    $CateChildren = d('contentCate')->getList(['pid'=>4]);//产品子类信息
+	    $CateChildren = d('contentCate')->getList(['id'=>'4']);//产品子类信息
 	    
 	    foreach ($CateChildren as $k=>$v){
 	        $cateIdArr[] = $v['id'];

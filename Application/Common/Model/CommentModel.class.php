@@ -6,7 +6,7 @@ import('Org.Util.Validator');
  */
 class CommentModel extends BaseModel{
     public $statusArr = [1=>'显示', 0=>'不显示'];
-    public $typeArr = ['新闻', '短信'];
+    public $typeArr = ['news'=>'0', '短信'=>'1'];
     /**
      * 编辑or添加
      */
@@ -25,19 +25,16 @@ class CommentModel extends BaseModel{
         }
     
         $data['add_time'] = $data['update_time'] = time();
+        $data['type'] = $typeArr["data['type']"];
         if(!$this->create($data))
             return false;
             if(!($id = $this->add()))
-                return $this->setError('发送失败!');
-                //     		if(!$this->sendMsg($id)){
-                //     			return $this->setError('发送消息失败!');
-                //     		}
+                return $this->setError('添加失败!');
                 return $id;
     }
     
     function setValidate($data){
         $this->_validate = [
-            ['title', 'require', '缺少标题!'],
             ['content', 'require', '缺少内容!',1],
         ];
     
@@ -60,8 +57,8 @@ class CommentModel extends BaseModel{
      * 获取信息列表
      * @param array $arr
      */
-    public function getPageList($con, $fields = 'id',$order = 'id desc', $perNum = 10){
-        if($con['title']){
+    public function getPageList($con, $fields = '*',$order = 'id desc', $perNum = 2){
+       /*  if($con['title']){
             $con['title'] = ['like', '%' . $con['title'] . '%'];
         }
     
@@ -74,10 +71,10 @@ class CommentModel extends BaseModel{
             $is === '1' && $con['_string'] = 'id in '.$subQuery;
         }
         if( MODULE_NAME == 'Home' && $map){
-            $subQuery = $mod->field('msg_id as id')->where($map)->buildSql();
-            $fields = 'id, if((id in ' . $subQuery . '), 1,0) as readed';
-            $order = 'readed asc,id desc';
-        }
+            $subQuery = $mod->field('msg_id as id')->where($map)->buildSql(); $data['type']
+            //$fields = 'id, if((id in ' . $subQuery . '), 1,0) as readed';
+            //$order = 'readed asc,id desc';
+        } 
     
         isset($con['from']) && $con['from'] === '0' && $con['from'] = ['lt', 1];
         isset($con['cate']) && $con['cate'] === '0' && $con['cate'] = ['lt', 1];
@@ -86,7 +83,10 @@ class CommentModel extends BaseModel{
             $v = $this->getInfo($v['id']);
             $data['list'][$k] =  $this->parseRow($v);
              
-        }
+        } */
+        $con['type'] = $this->typeArr[$con['type']];
+        $data = parent::getPageList($con, $fields, $order, $perNum);
+      
         return $data;
     }
      

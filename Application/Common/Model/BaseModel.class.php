@@ -94,7 +94,7 @@ class BaseModel extends Model {
 		];
 		
 		if($fields) 
-			$this->field($fields);
+		 $this->field($fields);
 		$list 	 = $this->where($con)->order($order)->limit($Page->firstRow.','.$Page->listRows)->select();
 		
 		$arr['list'] = $list;

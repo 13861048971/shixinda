@@ -9,23 +9,24 @@
 					<div class="news-comment">
 						<h4>新闻评论</h4>
 						<textarea placeholder="请输入内容"></textarea>
-						<!--<textarea placeholder="请登录后评论" disabled></textarea>-->
+						<!-- <textarea placeholder="请登录后评论" disabled></textarea> -->
 						<div class="news-comment-user">
 							<a href="/index/login">登录</a> 后评论
 							<!--<a href="">用户名</a>-->
 						</div>
 						<button type="button" class="commit-comment">提交评论</button>
 						<dl class="news-comment-list">
-							<foreach>
+							<foreach name="commentList" item="vo">
 								<dd>
 									<dl>
 										<dt><div><a href=""><img src=""></a></div></dt>
-										<dd><a href="">用户名</a> · 时间</dd>
-										<dd>用户评论内容用户评论内容用户评论内容用户评论内容用户评论内容用户评论内容用户评论内容用户评论内容用户评论内容用户评论内容用户评论内容用户评论内容用户评论内容</dd>
+										<dd><a href="">{$vo.name}</a> · {$vo.addTime}</dd>
+										<dd>{$vo.content}</dd>
 										<dd><a href="" class="reply">回复</a></dd>
 									</dl>
 								</dd>
 							</foreach>
+							<div class="pager">{$pageVar}</div>	
 						</dl>
 					</div>
 				</div>
@@ -34,7 +35,7 @@
 						<h3>最新发布</h3>
 						<foreach name='hotList' item='vo'>
 						<div><a href="{:u('/Index/newsDetail',['id'=>$vo['id']])}">{$vo.title}</a>
-						     <span>{$vo.publisTime}</span>
+						     <span>{$vo.publishTime}</span>
 						</div>
 						</foreach>
 					</div>
@@ -48,8 +49,10 @@
 					</div>
 				</div>
 			</div>
-		</div>
 	</div>
+		
+	</div>
+	
 <include file="Public:footer" />
 </body>
 </html>
