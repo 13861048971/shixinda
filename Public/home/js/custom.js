@@ -136,9 +136,10 @@ $('.btn-vercode').on('click',function(e){
         url:'/index/getVercode',
         type:'post',
         data:{mobile:mobile},
+        dataType:'json',
         success:function(data){
-            console.log(data);
-            if(data){
+            console.log(data.data.list);
+            if(data.data.list){
                 var wait=60;
                 var btn = $(e.target)
                 function time(btn) {

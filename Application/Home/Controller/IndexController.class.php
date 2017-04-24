@@ -208,7 +208,7 @@ class IndexController extends PublicController {
 	
 	//获取手机验证码
 	public function getVercode(){
-	    $mobile = $_POST['mobile'];
+	    $mobile = (int)$_POST['mobile'];
 	    $Vercode = d('user')->getVercode($mobile);
 	    ajaxReturn('获取验证码失败','',['list'=>$Vercode]);
 	  
