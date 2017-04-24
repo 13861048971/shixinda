@@ -144,6 +144,31 @@ a:hover{
 #menu-top li:hover ul{
 	display: block;
  }
+#menu-top .btn-login{
+	display: inline-block;
+	line-height: 27px;
+	text-align: center;
+	width: 60px;
+	height: 27px;
+	border-radius: 3px;
+	border: 1px solid #1C86EE;
+	color: #1C86EE; 
+	font-size: 14px;
+	margin-top: 20px;
+}
+#menu-top .btn-register{
+	display: inline-block;
+	line-height: 27px;
+	text-align: center;
+	width: 60px;
+	height: 27px;
+	border-radius: 3px;
+	border: 1px solid #1C86EE;
+	background-color: #1C86EE;
+	color: #fff; 
+	font-size: 14px;
+	margin-top: 20px;
+}
 /* =============================================================
    SLIDESHOW / CAROUSEL STYLES
  ============================================================ */
