@@ -1,25 +1,16 @@
  <include file="Public:header" />
+ 	<div class="about-section">
 		<div class="container">
-				<div class="col-md-3">
-					<dl class="product-nav">
-						<foreach name="ChildCateList" item="cate">
-							<d>
-								<dl>
-									<foreach name="cate.childInfo" item="info">
-										<d><a href="{:U('productDetail',['id'=>$info['id']])}" onclick="return false;">{$info.title}</a></d>
-									<div></div>
-								</dl>
-							</d>
-						</foreach>
-
-
-						
-					</dl>
-				</div>
-				<div class="col-md-9">
-					<div class="product-title"> {$productInfo.title}</div>
-					<div class="product-content">{$productInfo.content}</div>
-				</div>
+			<div class="col-md-3 about-nav">
+				<dl>
+					<dt>关于我们</dt>
+					<dd><a href="">联系方式</a></dd>
+					<dd><a href="">公司地址</a></dd>
+				</dl>
+			</div>
+			<div class="col-md-9 about-container">
+				<div class="about-title"></div>
+				<div class="about-content"></div>
 			</div>
 		</div>
 	</div>
