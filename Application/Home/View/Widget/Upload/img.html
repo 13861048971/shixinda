@@ -6,7 +6,7 @@
 	</label>
 	<div class="col-sm-5">
 		<div class="input-group">
-		  <input type="text" name="{$img.name}" id="{$img.idName}" value="{$img.path}" class="form-control" placeholder="填写图片URL或者选择本地文件上传"  <if condition="$img['required']">required</if>>
+		  <input type="text" id="{$img.idName}" value="{$img.path}" class="form-control" placeholder="填写图片URL或者选择本地文件上传"  <if condition="$img['required']">required</if>>
 		  <span class="input-group-btn ">
 			<button class="btn btn-default upload-file" data-option="{urlContainer:'#{$img.idName}',preview:'.{$img.preview}',type:'{$img.type}', accept:{extensions: 'jpeg,jpg,png,gif,bmp', mimeTypes:'image/*'},maxSize:500}" type="button"><i class="entypo-popup"></i> 本地文件</button>
 		  </span>

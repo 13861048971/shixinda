@@ -24,6 +24,9 @@
 								<input type="text" class="col-md-4" name="nickname" value="{$user.nickname}">
 							</div>
 							{:W('upload/img', ['avatar','头像：', $user['avatar'], 'required', 'avatar' ])}
+							<div class="row" style="display:none;">
+								<input type="text" class="avatar-url" name="avatar">
+							</div>
 							<div class="row user-sex">
 								<label for="sex" class="col-md-2">性别：</label>
 								<div class="col-md-6">{:w('select/radio', $genderList)}</div>

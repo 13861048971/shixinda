@@ -245,6 +245,42 @@ $('.user-container .post-edit .commit-post').on('click',function(){
         }
     });
 });
+//账号修改
+$('.account-info-edit .commit-account').on('click',function(){
+    var avatar = $('#img-input-id-1').val();
+    $('.avatar-url').val(avatar);
+    var form = $('.account-info-edit').serialize();
+    $.ajax({
+        data:form,
+        url:'/User/userEdit',
+        dataType:'json',
+        type:'post',
+        success:function(data){
+            if(data.data){
+                win.alert(data.info, 'success');
+            }else{
+                win.alert(data.info, 'error');
+            }
+        }
+    });
+});
+//密码修改
+$('.modify-pass .commit-pass').on('click',function(){
+    var form = $('.modify-pass').serialize();
+    $.ajax({
+        data:form,
+        url:'/User/userEdit',
+        dataType:'json',
+        type:'post',
+        success:function(data){
+            if(data.data){
+                win.alert(data.info, 'success');
+            }else{
+                win.alert(data.info, 'error');
+            }
+        }
+    });
+});
 // 多级下拉菜单
 function initMulSel(){
 	$('.mul-select').on('change',function(e){
