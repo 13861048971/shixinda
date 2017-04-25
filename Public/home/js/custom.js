@@ -18,16 +18,16 @@
 
 //CLIENTS SECTION SCRIPTS
 $(window).load(function () {
-$('.flexslider').flexslider({
-    animation: "slide",
-    animationLoop: false,
-    itemWidth: 200,
-    itemMargin: 15,
-    pausePlay: false,
-    start: function (slider) {
-        $('body').removeClass('loading');
-    }
-});
+    $('.flexslider').flexslider({
+        animation: "slide",
+        animationLoop: false,
+        itemWidth: 200,
+        itemMargin: 15,
+        pausePlay: false,
+        start: function (slider) {
+            $('body').removeClass('loading');
+        }
+    });
 });
 // 产品详情
 $('.product-detail').on('click',function(e){
@@ -202,3 +202,29 @@ $('.menu-section .exit').on('click',function(e){
         }
     });
 });
+/**
+ * 渲染编辑器
+ */
+function renderEditor(parentNode){
+	var node = $('.kind-editor');
+	parentNode && (node = parentNode.find('.kind-editor'));
+	
+	if(!node[0]) return;
+	if('undefined' == typeof KindEditor)
+		return console.warn('less kindEditor!');
+
+	setTimeout(function(){
+		for(var k=0;k< node.length;k++){
+			var edit = KindEditor.create(node[k], {width:"82%",height:350,afterChange:function(){
+				if(!edit) return;
+				edit.sync();
+			}});
+		}
+	}, 200);
+};
+(function(){
+    if($('.user-container .post-edit')[0]){    
+        console.log($('.user-container .post-edit'));
+        renderEditor($('.user-container'));
+    }
+}());
