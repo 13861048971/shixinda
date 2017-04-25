@@ -138,12 +138,12 @@ class IndexController extends PublicController {
 	
 	//案例
 	public function cases(){
-	    $CateChildren = d('contentCate')->getList(['id'=>'4']);//产品子类信息
+	    $CateChildren = d('contentCate')->getList(['pid'=>'4']);//产品子类信息
 	    
 	    foreach ($CateChildren as $k=>$v){
 	        $cateIdArr[] = $v['id'];
 	    }
-	    //var_dump($cateIdArr);exit;
+
         $con = ['cate_id'=>['in', $cateIdArr]];
 	    if($pid = (int)$_GET['cate_id'])
 	        $con = ['cate_id' => $pid];
