@@ -12,19 +12,9 @@ class UserController extends PublicController{
 	}
 	
 	function index(){
-	    $this->display();
 		ajaxReturn2(0,'', ['user' => $this->user]);
 	}
 	
-	function postEdit(){
-	    ajaxReturn2(0,'', ['post' => '我是帖子编辑']);
-	    $this->display();
-	}
-	
-	function postManager(){
-	    ajaxReturn2(0,'', ['postManager' => '我是帖子列表']);
-	    $this->display();
-	}
 	//登陆
 	function login(){
 		if(IS_POST){
