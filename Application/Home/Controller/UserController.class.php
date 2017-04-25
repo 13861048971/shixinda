@@ -51,6 +51,13 @@ class UserController extends PublicController{
 	    $this->display();
 	}
 	
+	//帖子子类显示
+	public function postCateChildren(){
+	    $con = $_GET;
+	    $list = d('postCate')->getList($con);
+	    ajaxReturn(0,'',array('list'=>$list));
+	}
+	
 	//用户信息设置
 	function userEdit(){
 	    $id = $this->user['id'];

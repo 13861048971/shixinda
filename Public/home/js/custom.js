@@ -246,19 +246,19 @@ $('.user-container .post-edit .commit-post').on('click',function(){
     });
 });
 // 多级下拉菜单
-function initMultiSelect(){
-	$('.multi-level-select').on('change',function(e){
-		multiLevel($(e.target));
+function initMulSel(){
+	$('.mul-select').on('change',function(e){
+		multiLevelFun($(e.target));
 	});
 }
-function multiLevel(node){
+function multiLevelFun(node){
 	node.nextAll().remove();
 	if(!node.val()){
 		return false;
 	}
-	node.attr('name',node.parents('.multi-level-select').data('name'));
+	node.attr('name',node.parents('.mul-select').data('name'));
 	node.siblings().removeAttr('name');
-	url = node.parents('.multi-level-select').data('url')+node.val();
+	url = node.parents('.mul-select').data('url')+node.val();
 	$.ajax({
 		url:url,
 		type:'get',
@@ -276,3 +276,4 @@ function multiLevel(node){
 		}
 	});
 };
+initMulSel();
