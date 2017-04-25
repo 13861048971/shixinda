@@ -10,21 +10,59 @@ class UserController extends PublicController{
 		$this->mod = D('User');
 		$this->userId = $this->user['id'];
 	}
-	
+	//用户中心
 	function index(){
 	    $this->display();
-		ajaxReturn2(0,'', ['user' => $this->user]);
+		//ajaxReturn2(0,'', ['user' => $this->user]);
 	}
-	
+	//用户帖子编辑
 	function postEdit(){
-	    ajaxReturn2(0,'', ['post' => '我是帖子编辑']);
+	    $id = $_GET['id'];
+	    if(isset($_POST) && $_POST){
+	        $_POST['user_id'] = $this->user['id'];
+	        $_POST['status'] = 1;
+	        $data = d('post')->edit($_POST,$id);
+	        if($data)
+	            ajaxReturn(0,'操作成功',['list'=>$data]);
+	        if(!$data)
+	            ajaxReturn(1,d('post')->getError());
+	    }
+	    $postInfo = d('post')->getInfo($id);
+	    $this->assign('info',$postInfo);
+	    $this->display();
+        
+	   
+	}
+	
+	//帖子删除
+	public function postDel(){
+	    $this->ajaxDel('post');
+	}
+	
+	
+	//用户帖子管理
+	function postList(){
+	    $data = d('post')->getPageList(['user_id'=>$this->user['id']]);
+	    $this->assign('list',$data['list']);
 	    $this->display();
 	}
 	
-	function postManager(){
-	    ajaxReturn2(0,'', ['postManager' => '我是帖子列表']);
+	//用户信息设置
+	function userInfo(){
+	    $user = $this->user;
+	    $this->assign('user',$user);
 	    $this->display();
 	}
+	
+	//用户密码修改
+	function changePwd(){
+	    $data = d('user')->changePwd($_POST);
+	    if($data)
+	    ajaxReturn(0,'修改成功，请重新登录',['list'=>$data]);
+	    if(!$data)
+	        ajaxReturn(1,'修改失败'.d('user')->getError());
+	}
+	
 	//登陆
 	function login(){
 		if(IS_POST){

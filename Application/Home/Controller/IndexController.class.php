@@ -6,31 +6,7 @@ class IndexController extends PublicController {
     public $about;//关于我们
 	public function _initialize(){
 	    parent::_initialize();
-	    $this->configInfo = $this->config();
-	    $this->about = $this->aboutOur();
-	    $navigation = d("navigation")->where(['pid'=>['eq',6]])->order('rank ')->select();
-	    $childNavigation = d("navigation")->where(['pid'=>['neq',0]])->order('rank desc')->select();
-        $uri = $_SERVER['REQUEST_URI'];
-	    foreach ($navigation as $k=>$v){
-	        
-	        if(strpos(strtolower($uri), $v['url']) !== false){
-	            if(strtolower($uri) != '/' && $v['url'] != '/')
-	                $navigation[$k]['current'] = true;
-                if(strtolower($uri) == $v['url'] )
-                    $navigation[$k]['current'] = true;
-	        }
-	             
-	        foreach ($childNavigation as $k2=>$v2) {
-	            if($v['id'] == $v2['pid']){
-	                $navigation[$k]['list'][] = $v2;
-	                 
-	            }
-	        }
-	    }
-	    $this->assign('user',session('user'));
-	    $this->assign('navigation',$navigation);
-	    $this->assign('aboutOur',$this->about);
-	    $this->assign('config',$this->configInfo);
+	    
 	}
 	
 	
@@ -165,24 +141,7 @@ class IndexController extends PublicController {
 	public function payNotify(){
 		d('order')->payNotify($_POST);
 	}
-	
-	//关于我们配置信息
-	public function aboutOur(){
-	    $mod = d('config');
-	    $info = $mod->getList();
-	    $info = $info['about']['node'];
-	    
-	    return $info;
-	}
-	//网站配置信息
-	public  function config(){
-	    $mod = d('config');
-	    $list = $mod->getList();
-	    $list = $list['config']['node'];
 
-	return $list;
-	}
-	
 	//用户登录
 	public function login(){
 	    if(isset($_POST) && $_POST){

@@ -8,7 +8,31 @@ class PublicController extends Controller {
 	
 	public function _initialize(){
 		$this->session();
+		$this->configInfo = $this->config();
+		$this->about = $this->aboutOur();
+		$navigation = d("navigation")->where(['pid'=>['eq',6]])->order('rank ')->select();
+		$childNavigation = d("navigation")->where(['pid'=>['neq',0]])->order('rank desc')->select();
+		$uri = $_SERVER['REQUEST_URI'];
+		foreach ($navigation as $k=>$v){
+		     
+		    if(strpos(strtolower($uri), $v['url']) !== false){
+		        if(strtolower($uri) != '/' && $v['url'] != '/')
+		            $navigation[$k]['current'] = true;
+		            if(strtolower($uri) == $v['url'] )
+		                $navigation[$k]['current'] = true;
+		    }
 		
+		    foreach ($childNavigation as $k2=>$v2) {
+		        if($v['id'] == $v2['pid']){
+		            $navigation[$k]['list'][] = $v2;
+		
+		        }
+		    }
+		}
+		$this->assign('user',session('user'));
+		$this->assign('navigation',$navigation);
+		$this->assign('aboutOur',$this->about);
+		$this->assign('config',$this->configInfo);
 		if($this->user = self::isLogin()){
 			$this->assign('user', $this->user);
 			return;
@@ -16,6 +40,25 @@ class PublicController extends Controller {
 		// $this->user = d('user')->getInfo(23);return;
 		self::checkUrl();
 	}
+	
+	
+	//关于我们配置信息
+	public function aboutOur(){
+	    $mod = d('config');
+	    $info = $mod->getList();
+	    $info = $info['about']['node'];
+	     
+	    return $info;
+	}
+	//网站配置信息
+	public  function config(){
+	    $mod = d('config');
+	    $list = $mod->getList();
+	    $list = $list['config']['node'];
+	
+	    return $list;
+	}
+	
 	
 	//设置session
 	private function session(){
@@ -94,6 +137,61 @@ class PublicController extends Controller {
 		
 		return $output;
 	}
+	
+	/**
+	 * 编辑
+	 * @param string $modName  模型名称
+	 * @param string $template 模板地址
+	 */
+	protected function ajaxEdit($modName, $template = null, $callback = null,$success=''){
+	    $mod = d($modName);
+	    $modTdk = d('tdk');
+	    if($_POST){
+	        $data = $_POST;
+	        $id   = (int)$_POST['id'];
+	        $act = $id ? '编辑' : '添加';
+	        	
+	        if($mod->edit($data, $id))
+	            return ajaxReturn(0, ($success ? $success : $act) . '成功!');
+	            return ajaxReturn(1, $act . '失败,'. $mod->getError());
+	    }
+	
+	    if($id = (int)$_GET['id']){
+	        $row = $mod->getInfo($id);
+	
+	        $this->assign('row',$row);
+	    }
+	
+	    if(is_callable($callback))
+	        $callback($row, $mod);
+	        if($mod->statusArr){
+	            $statusList = [[ 'name' => 'status', 'list' => $mod->statusArr]];
+	            if(isset($row['status'])){
+	                $statusList[0]['checked'] = $row['status'];
+	                $statusList[0]['selected'] = $row['status'];
+	            }
+	            if(!isset($row['status']))
+	                $statusList[0]['checked'] = 1;
+	                	
+	                $this->assign('statusList', $statusList);
+	        }
+	
+	     
+	}
+	
+	/**
+	 * ajax 删除
+	 * @param string $modName
+	 * @return jsonString
+	 */
+	protected function ajaxDel($modName){
+	    if(!($id = (int)$_REQUEST['id']))
+	        return ajaxReturn(1, '缺少ID!');
+	        if(!d($modName)->delete($id))
+	            return ajaxReturn(1, '删除失败!');
+	            return ajaxReturn(0,'删除成功!');
+	}
+	
 	
 	/**
 	 * 分页
