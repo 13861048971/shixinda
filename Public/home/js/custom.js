@@ -197,3 +197,40 @@ $('.regist .btn-regist').on('click',function(){
         }
     });
 });
+// 重置密码
+$('.regist .pass-reset').on('click',function(){
+    var form = $('form').serialize();
+    $.ajax({
+        url:'/passReset',
+        type:'post',
+        data:form,
+        dataType:'json',
+        success:function(data){
+            if(data.error != '0'){
+                win.alert(data.info,'error');
+            }else{
+                window.location.href='/index';
+            }
+        }
+    });
+});
+//退出
+$('.menu-section .exit').on('click',function(e){
+    var url = $(e.target).attr('href');
+    $.ajax({
+        url:url,
+        type:'get',
+        dataType:'json',
+        success:function(data){
+            if(data.error == '0'){
+                win.alert(data.info,'success');
+                var href = window.location.href;
+                window.location.href = href;
+            }else{
+                win.alert(data.info,'error');
+                var href = window.location.href;
+                window.location.href = href;
+            }
+        }
+    });
+});

@@ -256,6 +256,20 @@ $this->display();
 	}
 		
 	
-	//获取手机验证码
-
+	// //获取手机验证码
+	// public function getVercode(){
+	//     $mobile = $_POST['mobile'];
+	//     $Vercode = d('user')->getVercode($mobile);
+	//     ajaxReturn('获取验证码失败','',['list'=>$Vercode]);
+	  
+	// }
+	// //密码重置
+	// public function passReset(){
+	    
+	//     $id = d('user')->passReset($_POST);
+	    
+	//     return $id;
+	// }
+	
+	
 }
