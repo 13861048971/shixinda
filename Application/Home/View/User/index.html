@@ -1,0 +1,61 @@
+<include file="Public:header" />
+<div class="user-section">
+		<div class="container">
+			<div class="col-md-3 user-nav">
+				<dl>
+					<dt>用户中心</dt>
+					<dd><a href="">帖子管理</a></dd>
+					<dd><a href="">账号管理</a></dd>
+				</dl>
+			</div>
+			<div class="col-md-9 user-container">
+				<!--<h4 class="post-manage-title">我的帖子</h4>-->
+				<h4 class="post-manage-title">编辑（添加）帖子</h4>
+				<!--<h4 class="post-manage-title">账号管理</h4>-->
+				<!--<h4 class="post-manage-title">修改密码</h4>-->
+				<!--帖子列表-->
+				<!--<div class="post-manage-list">
+					<dl>
+						<foreach>
+							<dd>
+								<div class="post-title"><h4><a href="">帖子标题</a></h4></div>
+								<div class="post-info">
+									<span>发布：2017.4.25 12：00</span>
+									<span>查看：12</span>
+									<span>评论：25</span>
+								</div>
+								<div class="post-control">
+									<a href="">编辑</a>
+									<a href="">删除</a>
+								</div>
+							</dd>
+						</foreach>
+					</dl>
+				</div>-->
+				<!--帖子列表end-->
+				<form class="post-edit">
+					<div class="row post-title">
+						<label for="post-title" class="col-md-2">标题：</label>
+						<input type="text" class="col-md-9" name="post-title" value="">
+					</div>
+					<div class="row post-cate">
+						<label for="post-cate" class="col-md-2">分类：</label>
+						<select name="post-cate" class="col-md-5">
+							<option value="">请选择</option>
+						</select>
+					</div>
+					<div class="row post-content">
+						<label for="post-content" class="col-md-2">内容：</label>
+						<textarea rows="" cols="" name="post-content" class="col-md-9"></textarea>
+					</div>
+					<div class="row">
+						<button type="button" class="commit-post col-md-offset-2">确定提交</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+<include file="Public:footer" />
+</body>
+
+</html>

@@ -52,17 +52,14 @@
 											<li><a href="{:U('loginOut')}" class="exit">退出</a></li>
 										</ul>
 									</li>
-									<!--<li><a>退出</a></li>-->
 									<else/>
 									<li>
 										<a>用户：{$user.mobile}</a>
 										<ul class="user-nav">
-											<li><a href="">用户中心</a></li>
+											<li><a href="{:U('user/index')}">用户中心</a></li>
 											<li><a href="{:U('loginOut')}" class="exit">退出</a></li>
 										</ul>
 									</li>
-									<!--<li><a href="{:U('loginOut')}">退出</a></li>-->
-									<li><a href="{:U('loginOut')}">个人中心</a></li>
 									</notempty>
 								<else/>
 								<a href="{:U('login')}" class="btn-login">登录</a>

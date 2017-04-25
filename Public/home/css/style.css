@@ -619,30 +619,96 @@ ul#filters {
 	float: right;
 }
 /*关于我们*/
-.about-section{
+/*用户中心*/
+.about-section,
+.user-section{
 	margin: 80px;
 }
-.about-section .about-nav dl{
+.about-section .about-nav dl,
+.user-section .user-nav dl{
 	border: 1px solid #eee;
 	background-color: #fafafa;
 	padding-bottom: 10px;
 }
-.about-section .about-nav dl dt{
+.about-section .about-nav dl dt,
+.user-section .user-nav dl dt{
 	padding: 10px 0 10px 20px;
 }
-.about-section .about-nav dl dd{
+.about-section .about-nav dl dd,
+.user-section .user-nav dl dd{
 	padding: 5px 0 5px 20px;
 	cursor: pointer;
 }
-.about-section .about-nav dl dd a{
+.about-section .about-nav dl dd a,
+.user-section .user-nav dl dd a{
 	color: #333;
 }
-.about-section .about-nav dl dd:hover{
+.about-section .about-nav dl dd:hover,
+.user-section .user-nav dl dd:hover{
 	background-color: #eee;
 }
-.about-section .about-nav dl dd:hover a{
+.about-section .about-nav dl dd:hover a,
+.user-section .user-nav dl dd:hover a{
 	color: #1C86EE;
 }
-.about-section .about-container{
+.about-section .about-container,
+.user-section .user-container{
 	border-top: 2px solid #eee;
+}
+.user-section .user-container .post-manage-title{
+	margin: 20px 0 0 0;
+}
+.user-container .post-manage-list,
+.user-container .post-edit{
+	margin: 20px 0 0 0;
+}
+.user-container .post-manage-list dl dd{
+	padding: 15px;
+	border-bottom: 1px solid #ccc;
+	overflow: hidden;
+}
+.user-container .post-title a{
+	color: #333;
+}
+.user-container .post-title h4{
+	margin: 0;
+}
+.user-container .post-info{
+	color: #979797;
+	width: 70%;
+	display: inline-block;
+	margin: 10px 0 0 0;
+}
+.user-container .post-control{
+	float: right;
+}
+.user-container .post-edit label{
+	text-align: right;
+	padding: 0 30px 0 0;
+	font-weight: 400;
+}
+.user-container .post-edit .row{
+	margin: 15px 0;
+}
+.user-container .post-edit input,
+.user-container .post-edit textarea,
+.user-container .post-edit select{
+	outline: none;
+	padding: 5px 10px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	resize: none;
+}
+.user-container .post-edit textarea{
+	height: 300px;
+}
+.user-container .post-edit .commit-post{
+	border:1px solid #1C86EE;
+	border-radius: 4px;
+	width: 80px;
+	height: 30px;
+	color: #fff;
+	cursor: pointer;
+	outline: none;
+	background-color: #1C86EE;
 }
