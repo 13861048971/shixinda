@@ -275,3 +275,4 @@ function multiLevel(node){
 		}
 	});
 };
+initMultiSelect();

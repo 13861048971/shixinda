@@ -136,11 +136,9 @@ class SelectWidget extends Controller{
 	    $con = $_GET;
 	    $con['pid'] = '0';
 	    $postCateInfo = d('postCate')->getList($con);//分类表所有信息
-	    $url = "/admin/user/postCateChildren/pid/";
-
+	    $url = "/index/user/postCateChildren/pid/";
+	    
 	    $row = d('post')->where(['id'=>$con['id']])->find();;
-
-	    $row = d('post')->where(['id'=>$con['id']])->find();
 	    $cateInfo = d('postCate')->getInfo((int)$row['post_cate_id']);
 
 	    $rowId = (int)$row['post_cate_id'];
