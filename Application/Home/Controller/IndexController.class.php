@@ -97,7 +97,7 @@ class IndexController extends PublicController {
 	    $id = $_GET['id'];
 	    $row = d('content')->getInfo($id);
 	    $hotList = d('content')->getList(['cate_id'=>'1'], 5, 'click desc');
-	    $data = d('comment')->getPageList(['node_id'=>$id, 'type'=>'news']);
+	    $data = d('comment')->getPageList(['node_id'=>$id, 'type'=>'news'], '*', 'add_time desc', 2);
 	    $this->assign('commentList', $data['list']);
 	    $this->assign('pageVar', $data['pageVar']);
 	    $this->assign('hotList', $hotList);

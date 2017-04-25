@@ -58,35 +58,11 @@ class CommentModel extends BaseModel{
      * @param array $arr
      */
     public function getPageList($con, $fields = '*',$order = 'id desc', $perNum = 2){
-       /*  if($con['title']){
-            $con['title'] = ['like', '%' . $con['title'] . '%'];
-        }
-    
-        $mod = d('user_msg_read');
-        ($uid = $this->user['id']) && ($map['user_id'] = $uid);
-        if(isset($con['isRead']) && $map){
-            $is = $con['isRead'];
-            $subQuery = $mod->field('msg_id as id')->where($map)->buildSql();
-            $is === '0' && $con['_string'] = 'id not in '.$subQuery;
-            $is === '1' && $con['_string'] = 'id in '.$subQuery;
-        }
-        if( MODULE_NAME == 'Home' && $map){
-            $subQuery = $mod->field('msg_id as id')->where($map)->buildSql(); $data['type']
-            //$fields = 'id, if((id in ' . $subQuery . '), 1,0) as readed';
-            //$order = 'readed asc,id desc';
-        } 
-    
-        isset($con['from']) && $con['from'] === '0' && $con['from'] = ['lt', 1];
-        isset($con['cate']) && $con['cate'] === '0' && $con['cate'] = ['lt', 1];
-        $data = parent::getPageList($con, $fields, $order, $perNum);
-        foreach($data['list'] as $k=>$v){
-            $v = $this->getInfo($v['id']);
-            $data['list'][$k] =  $this->parseRow($v);
-             
-        } */
         $con['type'] = $this->typeArr[$con['type']];
         $data = parent::getPageList($con, $fields, $order, $perNum);
-      
+        foreach($data['list'] as $k=>$v){
+            $data['list'][$k] =  $this->parseRow($v);
+            } 
         return $data;
     }
      
@@ -98,7 +74,6 @@ class CommentModel extends BaseModel{
         $list = $this->where($con)->order('rank')->limit($limit)->select();
         foreach($list as $k=>&$v){
             $list[$k] = $this->parseRow($v);
-            //     			$v = $this->getInfo($v['id']);
         }
         return $list;
     }
@@ -133,7 +108,6 @@ class CommentModel extends BaseModel{
                 $info['from']['avatar'] = $avatar;
         }
     
-        // $info['isRead'] = $this->read($id, $this->user['id'], false);
     
         if($info['cate'] == 2 && $info['node_id'])
             $info['artistImage'] = d('album')
@@ -146,10 +120,8 @@ class CommentModel extends BaseModel{
     }
     //格式化行
     public function parseRow($v){
-        $data = D('user')->where(['id'=>$v['user_id']])->select();
-        foreach ($data as $vo){
-            $v['username']=$vo['nickname'];
-        }
+        $v['updateTime'] = date("Y-m-d H:i:s",$v['update_time']);
+	    $v['addTime'] = date("Y-m-d H:i:s",$v['add_time']);
         return $v ;
     }
 }
