@@ -10,11 +10,13 @@
 						<h4>新闻评论</h4>
 						<if condition="$user neq null">
 						<textarea placeholder="请输入内容"></textarea>
+						<div class="news-comment-user" data-id="{$user.id}" data-avatar="{$user.avatar}">
+							<a href="">{$user.nickname}</a>
+						</div>						
 						<else/>
 						<textarea placeholder="请登录后评论" disabled></textarea>
-						<div class="news-comment-user" data-id="{$user.id}">
+						<div class="news-comment-user">
 							<a href="/index/login">登录</a> 后评论
-							<!--<a href="">用户名</a>-->
 						</div>
 						</if>
 						<button type="button" class="commit-comment">提交评论</button>
@@ -23,7 +25,7 @@
 								<dd>
 									<dl>
 										<dt><div><a href=""><img src="{$user.avatar}"></a></div></dt>
-										<dd><a href="">{$user.realname}</a> · {$vo.addTime}</dd>
+										<dd><a href="">{$user.nickname}</a> · {$vo.addTime}</dd>
 										<dd>{$vo.content}</dd>
 										<dd><a href="" class="reply">回复</a></dd>
 									</dl>

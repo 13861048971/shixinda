@@ -115,6 +115,9 @@ $('.commit-comment').on('click',function(){
     var comment = $('.news-comment textarea').val();
     var node_id = $('.news-detail').data('id');
     var user_id = $('.news-comment-user').data('id');
+    var avatar = $('.news-comment-user').data('avatar');
+    var nickname = $('.news-comment-user').find('a').text();
+
     console.log(comment);
     if(comment){
         $.ajax({
@@ -123,6 +126,8 @@ $('.commit-comment').on('click',function(){
             data:{node_id:node_id,content:comment,user_id:user_id,type:'news'},
             success:function(){
                 $('.news-comment textarea').val('');
+                var html = '<dd><dl><dt><div><a href=""><img src="'+avatar+'"></a></div></dt><dd><a href="">'+nickname+'</a> · 刚刚</dd><dd>'+comment+'</dd><dd><a href="" class="reply">回复</a></dd></dl></dd>';
+                $('.news-comment-list').prepend(html);
             }
         });
     }else{

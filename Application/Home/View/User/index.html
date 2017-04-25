@@ -9,28 +9,60 @@
 				</dl>
 			</div>
 			<div class="col-md-9 user-container">
-				<h4 class="post-manage-title">账号管理</h4>
-				<h4 class="post-manage-title">修改密码</h4>
-				<!--帖子列表-->
-				<div class="post-manage-list">
-					<dl>
-						<foreach>
-							<dd>
-								<div class="post-title"><h4><a href="">帖子标题</a></h4></div>
-								<div class="post-info">
-									<span>发布：2017.4.25 12：00</span>
-									<span>查看：12</span>
-									<span>评论：25</span>
-								</div>
-								<div class="post-control">
-									<a href="">编辑</a>
-									<a href="">删除</a>
-								</div>
-							</dd>
-						</foreach>
-					</dl>
+				<div class="row">
+					<div class="col-md-10">
+						<h4>账号管理</h4>
+						<form class="account-info-edit">
+							<div class="row user-account">
+								<span class="col-md-2">账号：</span>
+								<span class="col-md-6">123****1234</span>
+							</div>
+							<div class="row user-nickname">
+								<label for="nickname" class="col-md-2">昵称：</label>
+								<span>nickname</span>
+								<input type="text" class="col-md-3" name="nickname" value="">
+							</div>
+							<div class="row user-avatar">
+								<label for="avatar" class="col-md-2">头像：</label>
+								<input type="file" name="avatar">
+							</div>
+							<div class="row post-cate">
+								<label for="sex" class="col-md-2">性别：</label>
+								<input type="radio" name="sex" value="1">男 
+								<input type="radio" name="sex" value="0">女
+							</div>
+							<div class="row user-content">
+								<label for="content" class="col-md-2">我的签名：</label>
+								<textarea rows="" cols="" name="content" class="col-md-6" placeholder="最多200个字"></textarea>
+							</div>
+							<div class="row">
+								<button type="button" class="commit-account col-md-offset-2">确认修改</button>
+							</div>
+						</form>
+						<h4>修改密码</h4>
+						<form class="modify-pass">
+							<div class="row">
+								<label for="">原密码：</label>
+								<input type="password" name="old-pass">
+							</div>
+							<div class="row">
+								<label for="">新密码：</label>
+								<input type="password" name="new-pass">
+							</div>
+							<div class="row">
+								<label for="">确认新密码：</label>
+								<input type="password" name="confirm-pass">
+							</div>
+							<div class="row">
+								<button type="button" class="commit-pass col-md-offset-2">确认修改</button>
+							</div>
+						</form>
+					</div>
+					<div class="col-md-2">
+						<a href="">编辑</a>
+						<a href="">删除</a>
+					</div>
 				</div>
-				<!--帖子列表end-->
 			</div>
 		</div>
 	</div>
