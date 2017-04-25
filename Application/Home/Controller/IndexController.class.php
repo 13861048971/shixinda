@@ -203,6 +203,7 @@ class IndexController extends PublicController {
 	
 	//用户注册
 	public function regist(){
+	    
 	    if(isset($_POST) && $_POST){
 	        $mobile = $_POST['mobile'];
 	        $pass = $_POST['password'];
@@ -216,6 +217,8 @@ class IndexController extends PublicController {
                 ajaxReturn('1','注册失败'.d('user')->getError());
 	    }
 	    
+	    $act = $_REQUEST['act'];
+	    $this->assign('act',$act);
         $this->display(); 
         
 	}
@@ -231,10 +234,11 @@ class IndexController extends PublicController {
 	}
 	//密码重置
 	public function passReset(){
-	    
 	    $id = d('user')->passReset($_POST);
-	    
-	    return $id;
+	    if($id)
+	    ajaxReturn('0','修改成功');
+	    if(!$id)
+	        ajaxReturn('1',d('user')->getError());
 	}
 		
 	
