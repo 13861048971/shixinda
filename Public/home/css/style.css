@@ -156,7 +156,7 @@ a:hover{
 	font-size: 14px;
 	margin-top: 20px;
 }
-#menu-top .btn-register{
+#menu-top .btn-regist{
 	display: inline-block;
 	line-height: 27px;
 	text-align: center;
@@ -168,6 +168,9 @@ a:hover{
 	color: #fff; 
 	font-size: 14px;
 	margin-top: 21px;
+}
+.menu-section #menu-top .user-nav{
+	float: right;
 }
 /* =============================================================
    SLIDESHOW / CAROUSEL STYLES
@@ -593,6 +596,7 @@ ul#filters {
 	height: 32px;
 	background-color: #1C86EE;
 	color: #fff;
+	outline: none;
 }
 .regist .vercode input{
 	width: 120px;

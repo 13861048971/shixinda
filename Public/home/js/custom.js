@@ -164,7 +164,7 @@ $('.btn-vercode').on('click',function(){
     });
 });
 // 登录
-$('.btn-login').on('click',function(){
+$('.login .btn-login').on('click',function(){
     var form = $('form').serialize();
     $.ajax({
         url:'/login',
@@ -181,7 +181,7 @@ $('.btn-login').on('click',function(){
     });
 });
 // 注册
-$('.btn-regist').on('click',function(){
+$('.regist .btn-regist').on('click',function(){
     var form = $('form').serialize();
     $.ajax({
         url:'/regist',
