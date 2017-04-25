@@ -14,7 +14,10 @@
 					<input type="password" placeholder="请输入密码" name="password" value="">
 				</div>
 				<div class="row">
-					<a href="{:U('regist',['act'=>'passReset'])}">忘记密码</a>
+					<div class="keep-forget">
+						<input type="checkbox">记住
+						<a href="{:U('regist',['act'=>'passReset'])}">忘记密码</a>
+					</div>
 				</div>
 				<div class="row">
 					<button type="button" class="btn-login">登录</button>

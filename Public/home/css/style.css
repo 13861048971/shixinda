@@ -154,7 +154,7 @@ a:hover{
 	border: 1px solid #1C86EE;
 	color: #1C86EE; 
 	font-size: 14px;
-	margin-top: 20px;
+	margin:20px 10px 0 20px;
 }
 #menu-top .btn-regist{
 	display: inline-block;
@@ -559,9 +559,6 @@ ul#filters {
 	margin-top: 50px;
 	height: 400px;
 }
-.login h3{
-	
-}
 .login form,
 .regist form{
 	border: 1px solid #ccc;
@@ -606,6 +603,20 @@ ul#filters {
 	width: 100px;
 	font-size: 14px;
 	margin: 0;
+}
+.keep-forget{
+	width: 240px;
+	margin-left: 110px;
+	text-align: left;
+	overflow: hidden;
+}
+.keep-forget input{
+	width: 20px;
+	margin: 0;
+	outline: none;
+}
+.keep-forget a{
+	float: right;
 }
 /*关于我们*/
 .about-section{

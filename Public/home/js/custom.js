@@ -192,6 +192,7 @@ $('.regist .btn-regist').on('click',function(){
             if(data.error != '0'){
                 win.alert(data.info,'error');
             }else{
+                win.alert(data.info,'success');
                 window.location.href='/index';
             }
         }
@@ -201,14 +202,16 @@ $('.regist .btn-regist').on('click',function(){
 $('.regist .pass-reset').on('click',function(){
     var form = $('form').serialize();
     $.ajax({
-        url:'/passReset',
+        url:'/Index/passReset',
         type:'post',
         data:form,
         dataType:'json',
         success:function(data){
+            console.log(data);
             if(data.error != '0'){
                 win.alert(data.info,'error');
             }else{
+                win.alert(data.info,'success');
                 window.location.href='/index';
             }
         }
