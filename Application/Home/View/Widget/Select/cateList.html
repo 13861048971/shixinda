@@ -1,0 +1,47 @@
+
+<div data-name="{$data.name}" data-url="{$data.url}"class="multi-level-select">
+
+	<if condition="$count egt 1">
+		<foreach name="cateList" item="vo" key="k">
+			<if condition="$k+1 neq $count">
+			
+				<select class="col-md-2"  name="{$data.name}"  >
+					<!-- <option value="{$vo.id}" >{$vo.name}</option> -->
+					<foreach name="vo.list" item="vo2" key="k2">
+						<if condition="$vo2['id'] eq $vo['id']">
+						<option value="{$vo2.id}" selected>{$vo2.name}</option>
+						<else/>
+						<option value="{$vo2.id}" >{$vo2.name}</option>
+						</if>
+					</foreach>
+				</select>
+				<else/>
+				<select class="col-md-2" name="{$data.name}">
+					<foreach name="vo.list" item="vo2" key="k2">
+						<if condition="$vo2['id'] eq $vo['id']">
+						<option value="{$vo2.id}" selected>{$vo2.name}</option>
+						<else/>
+						<option value="{$vo2.id}" >{$vo2.name}</option>
+						</if>
+					</foreach>
+				</select>
+				<if condition="$child">
+					<select class="col-md-2" >
+						<option value="" >请选择</option>
+						<foreach name="child" item="cd">
+						<option value="{$cd.id}" >{$cd.name}</option>
+						</foreach>
+					</select>
+				</if>
+			</if>
+		</foreach>
+	<else/>
+		<select class="col-md-2" >
+				<option value="" >请选择</option>
+				<foreach name="list" item="v">
+				<option value="{$v.id}">{$v.name}</option>
+				</foreach>
+		</select>
+	</if>
+</div>
+
