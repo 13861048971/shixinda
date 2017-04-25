@@ -682,17 +682,25 @@ ul#filters {
 .user-container .post-control{
 	float: right;
 }
-.user-container .post-edit label{
+.user-container .post-edit label,
+.user-container .account-info-edit label,
+.user-container .modify-pass label,
+.user-container .user-account span:first-child{
 	text-align: right;
 	padding: 0 30px 0 0;
 	font-weight: 400;
 }
-.user-container .post-edit .row{
+.user-container .post-edit .row,
+.user-container .account-info-edit .row,
+.user-container .modify-pass .row{
 	margin: 15px 0;
 }
 .user-container .post-edit input,
 .user-container .post-edit textarea,
-.user-container .post-edit select{
+.user-container .post-edit select,
+.user-container .user-nickname input,
+.user-container .modify-pass input,
+.user-container .account-info-edit textarea{
 	outline: none;
 	padding: 5px 10px;
 	border: 1px solid #ccc;
@@ -702,7 +710,12 @@ ul#filters {
 .user-container .post-edit textarea{
 	height: 300px;
 }
-.user-container .post-edit .commit-post{
+.user-container .account-info-edit textarea{
+	height: 100px;
+}
+.user-container .post-edit .commit-post,
+.user-container .account-info-edit .commit-account,
+.user-container .modify-pass .commit-pass{
 	border:1px solid #1C86EE;
 	border-radius: 4px;
 	width: 80px;
@@ -711,4 +724,10 @@ ul#filters {
 	cursor: pointer;
 	outline: none;
 	background-color: #1C86EE;
+}
+.user-container .account-info-edit{
+	margin-bottom: 40px;
+}
+.user-container .account-control{
+	margin: 30px 0 0 0;
 }

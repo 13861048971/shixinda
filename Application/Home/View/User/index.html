@@ -6,6 +6,7 @@
 					<dt>用户中心</dt>
 					<dd><a href="">帖子管理</a></dd>
 					<dd><a href="">账号管理</a></dd>
+					<dd><a href="">退出</a></dd>
 				</dl>
 			</div>
 			<div class="col-md-9 user-container">
@@ -15,25 +16,25 @@
 						<form class="account-info-edit">
 							<div class="row user-account">
 								<span class="col-md-2">账号：</span>
-								<span class="col-md-6">123****1234</span>
+								<span>123****1234</span>
 							</div>
 							<div class="row user-nickname">
 								<label for="nickname" class="col-md-2">昵称：</label>
 								<span>nickname</span>
-								<input type="text" class="col-md-3" name="nickname" value="">
+								<input type="text" class="col-md-4" name="nickname" value="">
 							</div>
 							<div class="row user-avatar">
 								<label for="avatar" class="col-md-2">头像：</label>
 								<input type="file" name="avatar">
 							</div>
-							<div class="row post-cate">
+							<div class="row suer-sex">
 								<label for="sex" class="col-md-2">性别：</label>
 								<input type="radio" name="sex" value="1">男 
 								<input type="radio" name="sex" value="0">女
 							</div>
 							<div class="row user-content">
 								<label for="content" class="col-md-2">我的签名：</label>
-								<textarea rows="" cols="" name="content" class="col-md-6" placeholder="最多200个字"></textarea>
+								<textarea rows="" cols="" name="content" class="col-md-8" placeholder="最多200个字"></textarea>
 							</div>
 							<div class="row">
 								<button type="button" class="commit-account col-md-offset-2">确认修改</button>
@@ -42,23 +43,23 @@
 						<h4>修改密码</h4>
 						<form class="modify-pass">
 							<div class="row">
-								<label for="">原密码：</label>
-								<input type="password" name="old-pass">
+								<label for="" class="col-md-2">原密码：</label>
+								<input type="password" name="old-pass" class="col-md-5">
 							</div>
 							<div class="row">
-								<label for="">新密码：</label>
-								<input type="password" name="new-pass">
+								<label for="" class="col-md-2">新密码：</label>
+								<input type="password" name="new-pass" class="col-md-5">
 							</div>
 							<div class="row">
-								<label for="">确认新密码：</label>
-								<input type="password" name="confirm-pass">
+								<label for="" class="col-md-2">确认密码：</label>
+								<input type="password" name="confirm-pass" class="col-md-5">
 							</div>
 							<div class="row">
 								<button type="button" class="commit-pass col-md-offset-2">确认修改</button>
 							</div>
 						</form>
 					</div>
-					<div class="col-md-2">
+					<div class="col-md-2 account-control">
 						<a href="">编辑</a>
 						<a href="">删除</a>
 					</div>
