@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2017-04-24 18:34:44
+Date: 2017-04-25 14:36:12
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -280,7 +280,7 @@ CREATE TABLE `content` (
   `add_time` int(11) unsigned NOT NULL COMMENT '添加时间',
   `update_time` int(11) unsigned NOT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of content
@@ -421,7 +421,7 @@ CREATE TABLE `navigation` (
   `add_time` int(10) unsigned NOT NULL COMMENT '增加时间',
   `update_time` int(10) unsigned NOT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of navigation
@@ -438,6 +438,7 @@ INSERT INTO `navigation` VALUES ('19', '8', 'HTML5网站', '', '/Index/product/c
 INSERT INTO `navigation` VALUES ('20', '8', '微信公众号', '', '/Index/product/cate_id/7', '0', '1', '1492828663', '1492828663');
 INSERT INTO `navigation` VALUES ('21', '8', 'Andriod App', '', '/Index/product/cate_id/8', '0', '1', '1492828712', '1492828712');
 INSERT INTO `navigation` VALUES ('22', '8', 'iOS App', '', '/Index/product/cate_id/9', '0', '1', '1492828748', '1492828748');
+INSERT INTO `navigation` VALUES ('23', '6', '论坛', '', '/post', '7', '1', '1493101955', '1493102019');
 
 -- ----------------------------
 -- Table structure for `post`
@@ -3994,7 +3995,7 @@ CREATE TABLE `tdk` (
   `add_time` int(11) NOT NULL COMMENT '添加时间',
   `update_time` int(11) NOT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tdk
@@ -4028,6 +4029,7 @@ INSERT INTO `tdk` VALUES ('27', '1', '16', '', '', '', '1492858530', '1492858530
 INSERT INTO `tdk` VALUES ('28', '1', '17', '', '', '', '1492858563', '1492858563');
 INSERT INTO `tdk` VALUES ('29', '1', '18', '', '', '', '1492858627', '1492858627');
 INSERT INTO `tdk` VALUES ('30', '1', '19', '', '', '', '1493000333', '1493000333');
+INSERT INTO `tdk` VALUES ('31', '1', '20', '', '', '', '1493087994', '1493087994');
 
 -- ----------------------------
 -- Table structure for `user`
@@ -4066,7 +4068,7 @@ INSERT INTO `user` VALUES ('14', '18964562148', '', '58b2df7df1790af9619c5e0a251
 INSERT INTO `user` VALUES ('15', '18961841645', '', '5df9323ea238b49983a64219933b5e6f', '', null, '男', '', '', '', '', '', '0', '1493014028', '1493014028', '0', '', '', '1493014028', '0');
 INSERT INTO `user` VALUES ('16', '13861048972', '', 'c19fd740a33cf3d675c3c53dc534b4ee', '', null, '男', '', '', '', '', '', '0', '1493016075', '1493016075', '0', '', '', '1493016075', '0');
 INSERT INTO `user` VALUES ('17', '13861048973', '', '8cadbbfaa1ef350e2b56910ab6a52e88', '', null, '男', '', '', '', '', '', '0', '1493016280', '1493016280', '0', '', '', '1493016280', '0');
-INSERT INTO `user` VALUES ('18', '18961841640', '', 'c19fd740a33cf3d675c3c53dc534b4ee', '', null, '男', '', '', '', '', '', '0', '1493017499', '1493017499', '0', '', '', '1493019214', '0');
+INSERT INTO `user` VALUES ('18', '18961841640', '', 'c19fd740a33cf3d675c3c53dc534b4ee', '', null, '男', '', '', '', '', '', '0', '1493017499', '1493017499', '0', '', '', '1493089639', '0');
 INSERT INTO `user` VALUES ('19', '15156811083', '', 'c19fd740a33cf3d675c3c53dc534b4ee', '', null, '男', '', '', '', '', '', '0', '1493024528', '1493024528', '0', '', '', '1493024539', '0');
 INSERT INTO `user` VALUES ('20', '18961841571', '', 'c19fd740a33cf3d675c3c53dc534b4ee', '', null, '男', '', '', '', '', '', '0', '1493024607', '1493024607', '0', '', '', '1493024607', '0');
 INSERT INTO `user` VALUES ('21', '18974516541', '', 'c19fd740a33cf3d675c3c53dc534b4ee', '', null, '男', '', '', '', '', '', '0', '1493024634', '1493024634', '0', '', '', '1493024634', '0');
