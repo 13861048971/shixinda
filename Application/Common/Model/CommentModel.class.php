@@ -62,10 +62,9 @@ class CommentModel extends BaseModel{
         $data = parent::getPageList($con, $fields, $order, $perNum);
         foreach($data['list'] as $k=>$v){
             $data['list'][$k] =  $this->parseRow($v);
-            } 
         return $data;
-    }
-     
+        }
+    } 
     /**
      * 根据条件获取信息
      * @param array $con

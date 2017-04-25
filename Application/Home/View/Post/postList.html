@@ -1,0 +1,8 @@
+<include file="Public:header" />
+	<div> 
+		<foreach name="list" item="vo">
+			<div><a href="{:u('post/postDetail',['id'=>$vo['id']])}">{$vo.title}</a></div>  		
+		</foreach>
+		<div class="pager">{$pageVar}</div>	
+	</div>      
+<include file="Public:footer" />

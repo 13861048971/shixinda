@@ -89,7 +89,6 @@ class IndexController extends PublicController {
                  'content' => $_POST['content'],
                  'user_id' => $this->user['id']
         ]; 
-        //dump($data);exit();
         $id = d('comment')->edit($data);
 	    if(!$id)
 	        return ajaxreturn(1, '评论失败');

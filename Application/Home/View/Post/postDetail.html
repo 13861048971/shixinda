@@ -1,0 +1,35 @@
+<include file="Public:header" />
+					<div><h2>{$row.title}</h2></div>
+					<div><span>{$row.author}</span>.<span>{$row.addTime}</span></div>
+					<div>{$row.content}</div>
+					<div>
+						<h4>帖子评论</h4>
+						<if condition="$user neq null">
+						<textarea placeholder="请输入内容"></textarea>
+						<div>
+							<div><a href=""><img src="{$user.avatar}"></a></div><a href="">{$user.nickname}</a>
+						</div>						
+						<else/>
+						<textarea placeholder="请登录后评论" disabled></textarea>
+						<div class="news-comment-user">
+							<a href="/index/login">登录</a> 后评论
+						</div>
+						</if>
+						<button type="button" class="commit-comment">提交评论</button>
+						<dl class="news-comment-list">
+							<foreach name="commentList" item="vo">
+								<dd>
+									<dl>
+										<dt><div><a href=""><img src="{$user.avatar}"></a></div></dt>
+										<dd><a href="">{$user.nickname}</a> · {$vo.addTime}</dd>
+										<dd>{$vo.content}</dd>
+									</dl>
+								</dd>
+							</foreach>
+							<div class="pager">{$pageVar}</div>	
+						</dl>
+					</div>
+	
+<include file="Public:footer" />
+</body>
+</html>
