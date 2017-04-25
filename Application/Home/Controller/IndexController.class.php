@@ -101,14 +101,23 @@ class IndexController extends PublicController {
 	    $this->assign('commentList', $data['list']);
 	    $this->assign('pageVar', $data['pageVar']);
 	    $this->assign('hotList', $hotList);
-	    $this->assign('row',$row);
+	    $this->assign('row', $row);
+	    $this->assign('user', $this->user);
 	    $this->display();
 	}
 	
 	//用户评论
 	public function comment(){
-       
-	   
+        $data = ['node_id' => $_POST['node_id'],
+                 'type'    => $_POST['type'], 
+                 'content' => $_POST['content'],
+                 'user_id' => $this->user['id']
+        ]; 
+        //dump($data);exit();
+        $id = d('comment')->edit($data);
+	    if(!$id)
+	        return ajaxreturn(1, '评论失败');
+	    return ajaxreturn(0,'评论成功');
 	}
 	
 	//服务项目
@@ -116,6 +125,7 @@ class IndexController extends PublicController {
 	   
 	    $this->display();
 	}
+	
 	//取id集合
 	public function catePid($id){
 	    $cateinfo = d('contentCate')->where(['id'=>$id])->find();
@@ -125,6 +135,7 @@ class IndexController extends PublicController {
 	        return $cateinfo['id'];
 	    }
 	}
+	
 	//案例
 	public function cases(){
 	    $CateChildren = d('contentCate')->getList(['id'=>'4']);//产品子类信息
@@ -188,9 +199,11 @@ class IndexController extends PublicController {
 	        
             if(!$user)
                 ajaxReturn('1','登录失败'.d('user')->getError());
-	    }
+	    }else{
+$this->display(); 
+		}
 	    
-        $this->display(); 
+        
 	}
 	
 	//用户退出
@@ -205,6 +218,7 @@ class IndexController extends PublicController {
 	public function regist(){
 	    
 	    if(isset($_POST) && $_POST){
+			var_dump($_POST);
 	        $mobile = $_POST['mobile'];
 	        $pass = $_POST['password'];
 	        $vercode = $_POST['vcode'];

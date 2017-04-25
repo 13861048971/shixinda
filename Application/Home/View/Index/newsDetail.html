@@ -8,12 +8,15 @@
 					<div class="news-content">{$row.content}</div>
 					<div class="news-comment">
 						<h4>新闻评论</h4>
+						<if condition="$user neq null">
 						<textarea placeholder="请输入内容"></textarea>
-						<!-- <textarea placeholder="请登录后评论" disabled></textarea> -->
+						<else/>
+						<textarea placeholder="请登录后评论" disabled></textarea>
 						<div class="news-comment-user" data-id="{$user.id}">
 							<a href="/index/login">登录</a> 后评论
 							<!--<a href="">用户名</a>-->
 						</div>
+						</if>
 						<button type="button" class="commit-comment">提交评论</button>
 						<dl class="news-comment-list">
 							<foreach name="commentList" item="vo">
