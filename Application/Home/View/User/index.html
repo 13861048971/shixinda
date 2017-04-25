@@ -5,7 +5,7 @@
 				<dl>
 					<dt>用户中心</dt>
 					<dd><a href="{:U('user/postList')}">帖子管理</a></dd>
-					<dd><a href="">账号管理</a></dd>
+					<dd><a href="{:U('user/index')}">账号管理</a></dd>
 					<dd><a href="">退出</a></dd>
 				</dl>
 			</div>
@@ -17,21 +17,21 @@
 						<form class="account-info-edit">
 							<div class="row user-account">
 								<span class="col-md-2">账号：</span>
-								<span>123****1234</span>
+								<span>{$user.mobile}</span>
 							</div>
 							<div class="row user-nickname">
 								<label for="nickname" class="col-md-2">昵称：</label>
 								<span>nickname</span>
-								<input type="text" class="col-md-4" name="nickname" value="">
+								<input type="text" class="col-md-4" name="nickname" value="{$user.nickname}">
 							</div>
 							<div class="row user-avatar">
-								<label for="avatar" class="col-md-2">头像：</label>
-								<input type="file" name="avatar">
+								
+								{:W('upload/img', ['avatar','头像', $user['avatar'], 'required', 'avatar' ])}
+								
 							</div>
 							<div class="row suer-sex">
 								<label for="sex" class="col-md-2">性别：</label>
-								<input type="radio" name="sex" value="1">男 
-								<input type="radio" name="sex" value="0">女
+								{:w('select/radio', $genderList)}
 							</div>
 							<div class="row user-content">
 								<label for="content" class="col-md-2">我的签名：</label>

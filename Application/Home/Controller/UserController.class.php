@@ -9,9 +9,13 @@ class UserController extends PublicController{
 		parent::_initialize();
 		$this->mod = D('User');
 		$this->userId = $this->user['id'];
+		
 	}
 	//用户中心
 	function index(){
+	    $user = $this->user;
+	    $genderList = [['list'=> d('user')->genderArr, 'name'=>'gender', 'checked'=>$user['gender']]];
+	    $this->assign('genderList', $genderList);
 	    $this->display();
 		//ajaxReturn2(0,'', ['user' => $this->user]);
 	}
@@ -48,10 +52,14 @@ class UserController extends PublicController{
 	}
 	
 	//用户信息设置
-	function userInfo(){
-	    $user = $this->user;
-	    $this->assign('user',$user);
-	    $this->display();
+	function userEdit(){
+	    $id = $this->user['id'];
+	    if($_POST && isset($_POST))
+        $data = d('user')->edit($_POST, $id);
+	    if($data)
+	    ajaxReturn(0,'修改成功，请重新登录',['list'=>$data]);
+	    if(!$data)
+	        ajaxReturn(1,'修改失败'.d('user')->getError());
 	}
 	
 	//用户密码修改
