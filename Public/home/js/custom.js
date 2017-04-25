@@ -245,6 +245,7 @@ $('.user-container .post-edit .commit-post').on('click',function(){
         }
     });
 });
+// 多级下拉菜单
 function initMultiSelect(){
 	$('.multi-level-select').on('change',function(e){
 		multiLevel($(e.target));
