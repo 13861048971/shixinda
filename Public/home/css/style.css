@@ -751,3 +751,9 @@ ul#filters {
 .user-container .account-control{
 	margin: 30px 0 0 0;
 }
+.user-container .account-info-edit .input-group{
+	margin-left: -15px;
+}
+.user-container .account-info-edit .user-sex div{
+	margin-left: 10px;
+}

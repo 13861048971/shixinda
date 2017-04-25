@@ -224,7 +224,54 @@ function renderEditor(parentNode){
 };
 (function(){
     if($('.user-container .post-edit')[0]){    
-        console.log($('.user-container .post-edit'));
-        renderEditor($('.user-container'));
+        renderEditor($('.user-container .post-edit'));
     }
 }());
+// 编辑帖子
+$('.user-container .post-edit .commit-post').on('click',function(){
+    var url = '/User/postEdit/id/'+$('.post-edit .commit-post').data('id');
+    var form = $('.post-edit').serialize();
+    $.ajax({
+        url:url,
+        data:form,
+        type:'post',
+        dataType:'json',
+        success:function(data){
+            if(data.data){
+                win.alert(data.info, 'success');
+            }else{
+                win.alert(data.info, 'error');
+            }
+        }
+    });
+});
+function initMultiSelect(){
+	$('.multi-level-select').on('change',function(e){
+		multiLevel($(e.target));
+	});
+}
+function multiLevel(node){
+	node.nextAll().remove();
+	if(!node.val()){
+		return false;
+	}
+	node.attr('name',node.parents('.multi-level-select').data('name'));
+	node.siblings().removeAttr('name');
+	url = node.parents('.multi-level-select').data('url')+node.val();
+	$.ajax({
+		url:url,
+		type:'get',
+		dataType:'json',
+		success:function(data){
+			var sub = data.data.list;
+			if(sub){
+				var html = '<select class="col-md-2"><option value="">请选择</option>';
+				for(k in sub){
+					html+='<option value="'+sub[k].id+'">'+sub[k].name+'</option>';
+				}
+				html+='</select>';
+				node.after(html);
+			}
+		}
+	});
+};
