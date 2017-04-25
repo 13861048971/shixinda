@@ -126,7 +126,7 @@ $('.commit-comment').on('click',function(){
             data:{node_id:node_id,content:comment,user_id:user_id,type:'news'},
             success:function(){
                 $('.news-comment textarea').val('');
-                var html = '<dd><dl><dt><div><a href=""><img src="'+avatar+'"></a></div></dt><dd><a href="">'+nickname+'</a> · 刚刚</dd><dd>'+comment+'</dd><dd><a href="" class="reply">回复</a></dd></dl></dd>';
+                var html = '<dd><dl><dt><div><a href=""><img src="'+avatar+'"></a></div></dt><dd><a href="">'+nickname+'</a> · 刚刚</dd><dd>'+comment+'</dd></dl></dd>';
                 $('.news-comment-list').prepend(html);
             }
         });
