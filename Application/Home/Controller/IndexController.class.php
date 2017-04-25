@@ -216,6 +216,7 @@ $this->display();
 	
 	//用户注册
 	public function regist(){
+	    
 	    if(isset($_POST) && $_POST){
 			var_dump($_POST);
 	        $mobile = $_POST['mobile'];
@@ -230,6 +231,8 @@ $this->display();
                 ajaxReturn('1','注册失败'.d('user')->getError());
 	    }
 	    
+	    $act = $_REQUEST['act'];
+	    $this->assign('act',$act);
         $this->display(); 
         
 	}
@@ -245,10 +248,11 @@ $this->display();
 	}
 	//密码重置
 	public function passReset(){
-	    
 	    $id = d('user')->passReset($_POST);
-	    
-	    return $id;
+	    if($id)
+	    ajaxReturn('0','修改成功');
+	    if(!$id)
+	        ajaxReturn('1',d('user')->getError());
 	}
 		
 	
