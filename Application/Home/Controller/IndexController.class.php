@@ -158,9 +158,7 @@ class IndexController extends PublicController {
 
 	//关于我们的列表
 	public function about(){
-        $this->display();
-		
-		
+        $this->display();	
 	}
 	
 	//支付结果通知
