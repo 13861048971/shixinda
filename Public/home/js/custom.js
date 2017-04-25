@@ -98,7 +98,7 @@ $('.commit-comment').on('click',function(){
 $('.btn-vercode').on('click',function(){
     var mobile = $('.mobile').val();
     $.ajax({
-        url:'/index/getVercode',
+        url:'/User/getVercode',
         type:'post',
         data:{mobile:mobile},
         dataType:'json',
@@ -132,7 +132,7 @@ $('.btn-vercode').on('click',function(){
 $('.login .btn-login').on('click',function(){
     var form = $('form').serialize();
     $.ajax({
-        url:'/login',
+        url:'/User/login',
         type:'post',
         data:form,
         dataType:'json',
@@ -149,7 +149,7 @@ $('.login .btn-login').on('click',function(){
 $('.regist .btn-regist').on('click',function(){
     var form = $('form').serialize();
     $.ajax({
-        url:'/regist',
+        url:'/User/regist',
         type:'post',
         data:form,
         dataType:'json',
@@ -167,7 +167,7 @@ $('.regist .btn-regist').on('click',function(){
 $('.regist .pass-reset').on('click',function(){
     var form = $('form').serialize();
     $.ajax({
-        url:'/Index/passReset',
+        url:'/User/passReset',
         type:'post',
         data:form,
         dataType:'json',

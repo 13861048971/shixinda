@@ -48,8 +48,8 @@
 									<li>
 										<a>昵称：{$user.nickname}</a>
 										<ul class="user-nav">
-											<li><a href="">用户中心</a></li>
-											<li><a href="{:U('loginOut')}" class="exit">退出</a></li>
+											<li><a href="{:U('user/index')}">用户中心</a></li>
+											<li><a href="{:U('user/loginOut')}" class="exit">退出</a></li>
 										</ul>
 									</li>
 									<else/>
@@ -57,13 +57,13 @@
 										<a>用户：{$user.mobile}</a>
 										<ul class="user-nav">
 											<li><a href="{:U('user/index')}">用户中心</a></li>
-											<li><a href="{:U('loginOut')}" class="exit">退出</a></li>
+											<li><a href="{:U('user/loginOut')}" class="exit">退出</a></li>
 										</ul>
 									</li>
 									</notempty>
 								<else/>
-								<a href="{:U('login')}" class="btn-login">登录</a>
-								<a href="{:U('regist')}" class="btn-regist">注册</a>
+								<a href="{:U('/user/login')}" class="btn-login">登录</a>
+								<a href="{:U('/user/regist')}" class="btn-regist">注册</a>
 								</notempty>
 						</ul>
 					</div>

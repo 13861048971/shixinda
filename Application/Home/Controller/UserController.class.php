@@ -19,6 +19,78 @@ class UserController extends PublicController{
 	    $this->display();
 		//ajaxReturn2(0,'', ['user' => $this->user]);
 	}
+	
+	//用户登录
+	public function login(){
+	    if(isset($_POST) && $_POST){
+	
+	        $mobile = $_POST['mobile'];
+	        $pass = $_POST['password'];
+	         
+	        $user = d('user')->login($mobile, $pass);
+	         
+	        if($user)
+	            ajaxReturn('0','登录成功',['list'=>$user]);
+	             
+	            if(!$user)
+	                ajaxReturn('1','登录失败'.d('user')->getError());
+	    }else{
+	        $this->display();
+	    }
+	     
+	
+	}
+	
+	//用户退出
+	
+	public function loginOut(){
+	    session('user',null);
+	    if(empty(session('user')))
+	        ajaxReturn(0,'退出成功');
+	}
+	
+	//用户注册
+	public function regist(){
+	     
+	    if(isset($_POST) && $_POST){
+	        var_dump($_POST);
+	        $mobile = $_POST['mobile'];
+	        $pass = $_POST['password'];
+	        $vercode = $_POST['vcode'];
+	        $regist = d('user')->regist($mobile, $pass,$vercode);
+	         
+	        if($regist)
+	            ajaxReturn('0','注册成功,请登录',['list'=>$regist]);
+	             
+	            if(!$regist)
+	                ajaxReturn('1','注册失败'.d('user')->getError());
+	    }
+	     
+	    $act = $_REQUEST['act'];
+	    $this->assign('act',$act);
+	    $this->display();
+	
+	}
+	
+	//获取手机验证码
+	public function getVercode(){
+	    $mobile = $_POST['mobile'];
+	    $Vercode = d('user')->getVercode($mobile);
+	    if(!$Vercode)
+	        ajaxReturn('1','获取验证码失败'.d('user')->getError());
+	        ajaxReturn('0','验证码正确',['list'=>$Vercode]);
+	         
+	}
+	//密码重置
+	public function passReset(){
+	    $id = d('user')->passReset($_POST);
+	    if($id)
+	        ajaxReturn('0','修改成功');
+	        if(!$id)
+	            ajaxReturn('1',d('user')->getError());
+	}
+	
+	
 	//用户帖子编辑
 	function postEdit(){
 	    $id = $_GET['id'];
@@ -64,7 +136,7 @@ class UserController extends PublicController{
 	    if($_POST && isset($_POST))
         $data = d('user')->edit($_POST, $id);
 	    if($data)
-	    ajaxReturn(0,'修改成功，请重新登录',['list'=>$data]);
+	    ajaxReturn(0,'修改成功,请刷新页面',['list'=>$data]);
 	    if(!$data)
 	        ajaxReturn(1,'修改失败'.d('user')->getError());
 	}
@@ -78,54 +150,54 @@ class UserController extends PublicController{
 	        ajaxReturn(1,'修改失败'.d('user')->getError());
 	}
 	
-	//登陆
-	function login(){
-		if(IS_POST){
-			$mobile = $_POST['mobile'];
-			$password = $_POST['password'];
-			$vercode = $_POST['vercode'];
-			$userMod = d('user');
+// 	//登陆
+// 	function login(){
+// 		if(IS_POST){
+// 			$mobile = $_POST['mobile'];
+// 			$password = $_POST['password'];
+// 			$vercode = $_POST['vercode'];
+// 			$userMod = d('user');
 			
-			if($password){
-				if(!$userMod->login($mobile, $password))
-					return ajaxReturn2(1, $userMod->getError());
+// 			if($password){
+// 				if(!$userMod->login($mobile, $password))
+// 					return ajaxReturn2(1, $userMod->getError());
 			
-				return ajaxReturn2(0, '登录成功!',['user'=>session('user') ]);
-			}
-			//第三方登陆
-			if(!$userMod->login3($_POST))
-				return ajaxReturn2($userMod->getErrorCode(), $userMod->getError());
-			return ajaxReturn2(0, '登录成功!',['user'=>session('user') ]);
-		}
-		ajaxReturn2(1, '登录失败!');
-	}
+// 				return ajaxReturn2(0, '登录成功!',['user'=>session('user') ]);
+// 			}
+// 			//第三方登陆
+// 			if(!$userMod->login3($_POST))
+// 				return ajaxReturn2($userMod->getErrorCode(), $userMod->getError());
+// 			return ajaxReturn2(0, '登录成功!',['user'=>session('user') ]);
+// 		}
+// 		ajaxReturn2(1, '登录失败!');
+// 	}
 	
-	//验证码
-	function getvercode(){
-		$tel = $_GET['mobile'];
-		$mod = d('user');
-		$vercode = $mod->getVercode($tel);
-		if( !$vercode ){
-			return ajaxReturn2(1, $mod->getError());
-		}
-		return ajaxReturn2(0, '已发送!');
-	}
+// 	//验证码
+// 	function getvercode(){
+// 		$tel = $_GET['mobile'];
+// 		$mod = d('user');
+// 		$vercode = $mod->getVercode($tel);
+// 		if( !$vercode ){
+// 			return ajaxReturn2(1, $mod->getError());
+// 		}
+// 		return ajaxReturn2(0, '已发送!');
+// 	}
 	
-	//注册
-	function regist(){
-		if(IS_POST){
-			$mobile = $_POST['mobile'];
-			$pass = $_POST['password'];
-			$vercode = $_POST['vercode'];
-			$userMod = d('user');
+// 	//注册
+// 	function regist(){
+// 		if(IS_POST){
+// 			$mobile = $_POST['mobile'];
+// 			$pass = $_POST['password'];
+// 			$vercode = $_POST['vercode'];
+// 			$userMod = d('user');
 			
-			if($user = $userMod->regist($mobile, $pass, $vercode)){
-				return ajaxReturn2(0, '注册成功!', ['user' => $user]);
-			}
+// 			if($user = $userMod->regist($mobile, $pass, $vercode)){
+// 				return ajaxReturn2(0, '注册成功!', ['user' => $user]);
+// 			}
 			
-			return ajaxReturn2(1, $userMod->getError());
-		}
-	}
+// 			return ajaxReturn2(1, $userMod->getError());
+// 		}
+// 	}
 	
 	//退出
 	function logout(){
@@ -158,14 +230,14 @@ class UserController extends PublicController{
 		}
 	}
 	
-	//密码重置
-	function passReset(){
-		if($this->mod->passReset($_POST)){
-			session('user', null);
-			return ajaxReturn2(0, '重置成功,请重新登录');
-		}
-		return ajaxReturn2(1, $this->mod->getError());
-	}
+// 	//密码重置
+// 	function passReset(){
+// 		if($this->mod->passReset($_POST)){
+// 			session('user', null);
+// 			return ajaxReturn2(0, '重置成功,请重新登录');
+// 		}
+// 		return ajaxReturn2(1, $this->mod->getError());
+// 	}
 	
 	//关注
 	function attention(){

@@ -142,75 +142,7 @@ class IndexController extends PublicController {
 		d('order')->payNotify($_POST);
 	}
 
-	//用户登录
-	public function login(){
-	    if(isset($_POST) && $_POST){
-	       
-	        $mobile = $_POST['mobile'];
-	        $pass = $_POST['password'];
-	        
-	        $user = d('user')->login($mobile, $pass);
-	        
-	        if($user)
-	            ajaxReturn('0','登录成功',['list'=>$user]);
-	        
-            if(!$user)
-                ajaxReturn('1','登录失败'.d('user')->getError());
-	    }else{
-$this->display(); 
-		}
-	    
-        
-	}
 	
-	//用户退出
-	
-	public function loginOut(){
-	    session('user',null);
-	    if(empty(session('user')))
-	    ajaxReturn(0,'退出成功');
-	}
-	
-	//用户注册
-	public function regist(){
-	    
-	    if(isset($_POST) && $_POST){
-			var_dump($_POST);
-	        $mobile = $_POST['mobile'];
-	        $pass = $_POST['password'];
-	        $vercode = $_POST['vcode'];
-	        $regist = d('user')->regist($mobile, $pass,$vercode);
-	        
-	        if($regist)
-	            ajaxReturn('0','注册成功,请登录',['list'=>$regist]);
-	        
-            if(!$regist)
-                ajaxReturn('1','注册失败'.d('user')->getError());
-	    }
-	    
-	    $act = $_REQUEST['act'];
-	    $this->assign('act',$act);
-        $this->display(); 
-        
-	}
-	
-	//获取手机验证码
-	public function getVercode(){
-	    $mobile = $_POST['mobile'];
-	    $Vercode = d('user')->getVercode($mobile);
-	    if(!$Vercode)
-	        ajaxReturn('1','获取验证码失败'.d('user')->getError());
-	    ajaxReturn('0','验证码正确',['list'=>$Vercode]);
-	  
-	}
-	//密码重置
-	public function passReset(){
-	    $id = d('user')->passReset($_POST);
-	    if($id)
-	    ajaxReturn('0','修改成功');
-	    if(!$id)
-	        ajaxReturn('1',d('user')->getError());
-	}
 		
 	
 	// //获取手机验证码
