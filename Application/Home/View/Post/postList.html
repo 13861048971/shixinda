@@ -1,8 +1,41 @@
 <include file="Public:header" />
-	<div> 
-		<foreach name="list" item="vo">
-			<div><a href="{:u('post/postDetail',['id'=>$vo['id']])}">{$vo.title}</a></div>  		
-		</foreach>
-		<div class="pager">{$pageVar}</div>	
+	<div class="post-list-page"> 
+		<div class="container">
+			<div class="row post-classify-title">
+				<h2>微商城使用问题</h2>
+				<span>今日：<span>21</span></span>
+				<span>主题：<span>212121</span></span>
+			</div>
+			<div class="row post-list">
+				<div class="col-md-9">
+					<dl>
+					<foreach>
+						<dd class="post-list-item">
+							<a href=""><img src="" alt=""></a>
+							<div class="post-item-info">
+								<a href="">微商城使用问题</a>
+								<p>
+									<a href="">用户名</a>
+									<span><span>2017-4-26 15:43</span>发表</span>
+									<span>最后回复 用户名</span>
+								</p>
+							</div>
+							<span>0</span>
+						</dd>
+					</foreach>
+					</dl>
+				</div>
+				<div class="col-md-3">
+					<foreach>
+						<dl>
+							<dt>商户交流</dt>
+							<foreach>
+								<dd><a href="">商户交流信息</a></dd>
+							</foreach>
+						</dl>
+					</foreach>
+				</div>
+			</div>
+		</div>
 	</div>      
 <include file="Public:footer" />

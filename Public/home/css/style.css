@@ -799,11 +799,13 @@ ul#filters {
 	padding: 0;
 }
 /*帖子中心*/
-.post-index{
+.post-index,
+.post-list-page{
 	background-color: #f1f2f6;
 	padding: 40px 0 50px 0;
 }
-.post-index+div.footer-sec{
+.post-index+div.footer-sec,
+.post-list-page+div.footer-sec{
 	margin: 0;
 }
 .post-index .post-content-top div{
@@ -885,4 +887,77 @@ ul#filters {
 .post-index .post-classify ul li .post-classify-info p:last-child{
 	font-size: 13px;
 	color: #979797;
+}
+.post-list-page .post-classify-title h2{
+	display: inline-block;
+	margin: 0 15px 0 0;
+}
+.post-list-page .post-classify-title span span{
+	color: #1C86EE;
+}
+.post-list-page .post-list .col-md-9{
+	background-color: #fff;
+	padding: 20px;
+	margin: 15px 22px 0 0;
+	width: 73%;
+}
+.post-list-page .post-list .col-md-9 dl{
+	margin: 0;
+}
+.post-list-page .post-list .post-list-item{
+	border-bottom: 1px solid #ddd;
+	overflow: hidden;
+	padding: 15px 0;
+}
+.post-list-page .post-list .post-list-item img{
+	width: 50px;
+	height: 50px;
+	margin: 0 20px 0 0;
+	float: left;
+}
+.post-list-page .post-list .post-list-item .post-item-info{
+	float: left;
+}
+.post-list-page .post-list .post-list-item .post-item-info>a{
+	font-size: 18px;
+	margin: 0 0 10px 0;
+	width: 400px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+.post-list-page .post-list .post-list-item .post-item-info p{
+	margin: 5px 0 0 0;
+}
+.post-list-page .post-list .post-list-item .post-item-info p span{
+	color: #979797;
+}
+.post-list-page .post-list .post-list-item .post-item-info p span span{
+	color: #1C86EE;
+}
+.post-list-page .post-list .post-list-item>span{
+	float: right;
+	margin: 25px 10px 0 0;
+}
+.post-list-page .post-list .col-md-3{
+	margin-top: 15px;
+	padding: 0 5px;
+}
+.post-list-page .post-list .col-md-3 dl{
+	background-color: #fff; 
+	margin: 0 0 20px 0;
+	padding: 10px;
+}
+.post-list-page .post-list .col-md-3 dl dt{
+	padding: 10px;
+	font-size: 16px;
+	font-weight: 400;
+	border-bottom: 1px solid #ddd;
+}
+.post-list-page .post-list .col-md-3 dl dd{
+	padding: 10px;
+	border-bottom: 1px dashed #ddd;
+}
+.post-list-page .post-list .col-md-3 dl dd a{
+	color: #333;
 }
