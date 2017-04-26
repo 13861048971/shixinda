@@ -1,15 +1,19 @@
 <include file="Public:header" />
-	<div> 
-		<foreach name="list" item="v1">
-			<div>{$v1.name}</div>
-			<ul>  
-			<foreach name="v1.list" item="v2">
-				<li><a href="{:u('post/postList',['id'=>$v2['id']])}">{$v2.name}</a></li> 
-	        </foreach>
-	        </ul>		
-		</foreach>
-	</div>      
-	<div>
-	    
+	<div class="post-index"> 
+		<div class="container"> 
+			<!--<foreach name="list" item="v1">
+				<div>{$v1.name}</div>
+				<ul>  
+				<foreach name="v1.list" item="v2">
+					<li><a href="{:u('post/postList',['id'=>$v2['id']])}">{$v2.name}</a></li> 
+				</foreach>
+				</ul>		
+			</foreach>-->
+			<div class="row">
+				<div class="col-md-6"></div>
+				<div class="col-md-3"></div>
+				<div class="col-md-3"></div>
+			</div>
+		</div>
 	</div>
 <include file="Public:footer" /> 

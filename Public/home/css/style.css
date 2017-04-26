@@ -798,3 +798,11 @@ ul#filters {
 .user-container .post-content div{
 	padding: 0;
 }
+/*帖子中心*/
+.post-index{
+	background-color: #f1f2f6;
+	padding: 40px 0 50px 0;
+}
+.post-index+div.footer-sec{
+	margin: 0;
+}
