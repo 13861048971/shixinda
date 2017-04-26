@@ -270,7 +270,7 @@ $('.modify-pass .commit-pass').on('click',function(){
         var form = $('.modify-pass').serialize();
         $.ajax({
             data:form,
-            url:'/User/passReset',
+            url:'/User/changePwd',
             dataType:'json',
             type:'post',
             success:function(data){
