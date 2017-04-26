@@ -87,7 +87,7 @@ class PublicController extends Controller {
 	}
 	
 	//检测是否需要登录
-	static function checkUrl(){
+	public function checkUrl(){
 		$arr = [
 			'regist','getvercode','login', 'recvcode','passreset'
 		];
@@ -99,8 +99,8 @@ class PublicController extends Controller {
 		
 		$actName = strtolower(ACTION_NAME);
 		if(!in_array($actName, $arr)){
-			return ajaxReturn2(1, '你还没有登录!');
-			exit;
+		    //$this->error('您还未登录','/user/login');
+			$this->redirect('/user/login');
 		}
 	}
 	

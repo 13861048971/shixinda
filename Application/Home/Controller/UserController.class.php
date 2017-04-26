@@ -52,24 +52,23 @@ class UserController extends PublicController{
 	//用户注册
 	public function regist(){
 	     
-	    if(isset($_POST) && $_POST){
-	        var_dump($_POST);
-	        $mobile = $_POST['mobile'];
-	        $pass = $_POST['password'];
-	        $vercode = $_POST['vcode'];
-	        $regist = d('user')->regist($mobile, $pass,$vercode);
-	         
-	        if($regist)
-	            ajaxReturn('0','注册成功,请登录',['list'=>$regist]);
-	             
-	            if(!$regist)
-	                ajaxReturn('1','注册失败'.d('user')->getError());
-	    }
-	     
+        if(isset($_POST) && $_POST){
+            $mobile = $_POST['mobile'];
+            $pass = $_POST['password'];
+            $vercode = $_POST['vcode'];
+            $regist = d('user')->regist($mobile, $pass,$vercode);
+             
+            if($regist)
+                ajaxReturn('0','注册成功,请登录',['list'=>$regist]);
+                 
+                if(!$regist)
+                    ajaxReturn('1','注册失败'.d('user')->getError());
+        }
+         
 	    $act = $_REQUEST['act'];
 	    $this->assign('act',$act);
 	    $this->display();
-	
+
 	}
 	
 	//获取手机验证码
@@ -78,7 +77,7 @@ class UserController extends PublicController{
 	    $Vercode = d('user')->getVercode($mobile);
 	    if(!$Vercode)
 	        ajaxReturn('1','获取验证码失败'.d('user')->getError());
-	        ajaxReturn('0','验证码正确',['list'=>$Vercode]);
+	        ajaxReturn('0','已发送',['list'=>$Vercode]);
 	         
 	}
 	//密码重置
@@ -103,7 +102,7 @@ class UserController extends PublicController{
 	        if(!$data)
 	            ajaxReturn(1,d('post')->getError());
 	    }
-	    $postInfo = d('post')->getInfo($id);
+	    $postInfo = d('post')->where(['id'=>$id])->find();
 	    $this->assign('info',$postInfo);
 	    $this->display();
         
@@ -135,19 +134,20 @@ class UserController extends PublicController{
 	    $id = $this->user['id'];
 	    if($_POST && isset($_POST))
         $data = d('user')->edit($_POST, $id);
+	    
 	    if($data)
-	    ajaxReturn(0,'修改成功,请刷新页面',['list'=>$data]);
-	    if(!$data)
-	        ajaxReturn(1,'修改失败'.d('user')->getError());
+	       ajaxReturn(0,'修改成功,请刷新页面',['list'=>$data]);
+        ajaxReturn(1,'修改失败'.d('user')->getError());
 	}
 	
 	//用户密码修改
 	function changePwd(){
+	    //var_dump($_POST);
 	    $data = d('user')->changePwd($_POST);
+	    
 	    if($data)
-	    ajaxReturn(0,'修改成功，请重新登录',['list'=>$data]);
-	    if(!$data)
-	        ajaxReturn(1,'修改失败'.d('user')->getError());
+	       ajaxReturn(0,'修改成功，请重新登录',['list'=>$data]);
+        ajaxReturn(1,'修改失败'.d('user')->getError());
 	}
 	
 // 	//登陆

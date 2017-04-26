@@ -217,7 +217,6 @@ class UserModel extends BaseModel{
 		}
 		
 		$conf = d('config')->getInfo('SMS')['value'];
-		
 		$appkey = $conf['appkey'];
 		$secret = $conf['secretKey'];
 		$code 	= $conf['param'];
@@ -403,19 +402,19 @@ class UserModel extends BaseModel{
 	function changePwd($d){
 		$id = $this->user['id'];
 		if(!$id) return $this->setError('你还没有登录或者登录超时!');
-		$info = $this->getInfo($id);
-		
-		if(!$d['password'] || !$d['passwordNew'] || !$d['passwordNewCheck'])
+		$info = $this->find($id);
+
+		if(!$d['password'] || !$d['password_new'] || !$d['password_check'])
 			return $this->setError('参数不完整!');
 		
 		
-		if($d['passwordNew'] != $d['passwordNewCheck'])
+		if($d['password_new'] != $d['password_check'])
 			return $this->setError('新密码两次输入的不一致,请重新输入!');
 		
 		if(self::getPass($d['password']) != $info['password'])
 			return $this->setError('原密码不正确!');
 		
-		$data = array('password'=>$d['passwordNew']);
+		$data = array('password'=>self::getPass($d['password']));
 		if($this->edit($data, $id)){
 			session('user', $this->getInfo($id));
 			return true;
