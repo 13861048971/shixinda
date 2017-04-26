@@ -183,25 +183,22 @@ $('.regist .pass-reset').on('click',function(){
     });
 });
 //退出
-$('.menu-section .exit').on('click',function(e){
-    var url = $(e.target).attr('href');
+function loginOut(){
     $.ajax({
-        url:url,
+        url:'/user/loginOut',
         type:'get',
         dataType:'json',
         success:function(data){
             if(data.error == '0'){
                 win.alert(data.info,'success');
-                var href = window.location.href;
-                window.location.href = href;
+                window.location.href = '/';
             }else{
                 win.alert(data.info,'error');
-                var href = window.location.href;
-                window.location.href = href;
             }
         }
     });
-});
+}
+$('.login-out').on('click', loginOut);
 /**
  * 渲染编辑器
  */
@@ -215,7 +212,7 @@ function renderEditor(parentNode){
 
 	setTimeout(function(){
 		for(var k=0;k< node.length;k++){
-			var edit = KindEditor.create(node[k], {width:"82%",height:350,afterChange:function(){
+			var edit = KindEditor.create(node[k], {width:"100%",height:350,afterChange:function(){
 				if(!edit) return;
 				edit.sync();
 			}});
@@ -267,20 +264,27 @@ $('.account-info-edit .commit-account').on('click',function(){
 });
 //密码修改
 $('.modify-pass .commit-pass').on('click',function(){
-    var form = $('.modify-pass').serialize();
-    $.ajax({
-        data:form,
-        url:'/User/userEdit',
-        dataType:'json',
-        type:'post',
-        success:function(data){
-            if(data.data){
-                win.alert(data.info, 'success');
-            }else{
-                win.alert(data.info, 'error');
+    var newPass = $('.new-pass').val();
+    var confirmPass = $('.confirm-pass').val();
+    if(newPass == confirmPass){
+        var form = $('.modify-pass').serialize();
+        $.ajax({
+            data:form,
+            url:'/User/passReset',
+            dataType:'json',
+            type:'post',
+            success:function(data){
+                if(data.data){
+                    win.alert(data.info, 'success');
+                }else{
+                    win.alert(data.info, 'error');
+                }
             }
-        }
-    });
+        });
+    }else{
+        win.alert('新密码不一致','error');
+    }
+    
 });
 // 多级下拉菜单
 function initMulSel(){

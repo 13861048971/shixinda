@@ -34,30 +34,36 @@
 									<else/>
 									<a href="{$v1.url}" >{$v1.name}</a>
 								</if>
-									
 									<ul>
 									<foreach name="v1.list" item="v2" key="k2">
 										<li><a href="{$v2.url}"  class="">{$v2.name}</a></li>
 									</foreach>
 									</ul>
-									
 								</li>
 							</foreach>
 								<notempty name="user">
 									<notempty name="user.nickname">
 									<li>
-										<a>昵称：{$user.nickname}</a>
+										<div class="nav-avatar">
+											<img src="{$user.avatar}" alt="">
+										</div>
+										<a href="{:U('user/index')}">
+											{$user.nickname}
+										</a>
 										<ul class="user-nav">
 											<li><a href="{:U('user/index')}">用户中心</a></li>
-											<li><a href="{:U('user/loginOut')}" class="exit">退出</a></li>
+											<li><a href="javascript:void(0);" class="login-out">退出</a></li>
 										</ul>
 									</li>
 									<else/>
 									<li>
-										<a>用户：{$user.mobile}</a>
+										<div class="nav-avatar">
+											<img src="{$user.avatar}" alt="">
+										</div>
+										<a href="{:U('user/index')}">{$user.mobile}</a>
 										<ul class="user-nav">
 											<li><a href="{:U('user/index')}">用户中心</a></li>
-											<li><a href="{:U('user/loginOut')}" class="exit">退出</a></li>
+											<li><a href="javascript:void(0);" class="login-out">退出</a></li>
 										</ul>
 									</li>
 									</notempty>

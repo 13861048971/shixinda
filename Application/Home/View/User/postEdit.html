@@ -6,7 +6,7 @@
 					<dt>用户中心</dt>
 					<dd><a href="{:U('user/postList')}">帖子管理</a></dd>
 					<dd><a href="{:U('user/index')}">账号管理</a></dd>
-					<dd><a href="">退出</a></dd>
+					<dd><a href="javascript:void(0);" class="login-out">退出</a></dd>
 				</dl>
 			</div>
 			<div class="col-md-9 user-container">
@@ -22,8 +22,9 @@
 					</div>
 					<div class="row post-content">
 						<label for="post-content" class="col-md-2">内容：</label>
-						
-						<textarea rows="" cols="" name="content" class="col-md-9 kind-editor">{$info.content}</textarea>
+						<div class="col-md-9">
+							<textarea rows="" cols="" name="content" class="kind-editor">{$info.content}</textarea>
+						</div>
 					</div>
 					<div class="row">
 						<button type="button" class="commit-post col-md-offset-2" data-id="{$info.id}">确定提交</button>

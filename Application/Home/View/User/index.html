@@ -6,7 +6,7 @@
 					<dt>用户中心</dt>
 					<dd><a href="{:U('user/postList')}">帖子管理</a></dd>
 					<dd><a href="{:U('user/index')}">账号管理</a></dd>
-					<dd><a href="">退出</a></dd>
+					<dd><a href="javascript:void(0);" class="login-out">退出</a></dd>
 				</dl>
 			</div>
 			<div class="col-md-9 user-container">
@@ -43,15 +43,15 @@
 						<form class="modify-pass">
 							<div class="row">
 								<label for="" class="col-md-2">原密码：</label>
-								<input type="password" name="old-pass" class="col-md-5">
+								<input type="password" name="password" class="col-md-5">
 							</div>
 							<div class="row">
 								<label for="" class="col-md-2">新密码：</label>
-								<input type="password" name="new-pass" class="col-md-5">
+								<input type="password" name="password_new" class="col-md-5 new-pass">
 							</div>
 							<div class="row">
 								<label for="" class="col-md-2">确认密码：</label>
-								<input type="password" name="confirm-pass" class="col-md-5">
+								<input type="password" name="password_check" class="col-md-5 confirm-pass">
 							</div>
 							<div class="row">
 								<button type="button" class="commit-pass col-md-offset-2">确认修改</button>
@@ -62,7 +62,6 @@
 						<a href="">编辑</a>
 						<a href="">删除</a>
 					</div>
-
 				</div>
 			</div>
 		</div>
