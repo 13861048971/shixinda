@@ -551,6 +551,23 @@ ul#filters {
 	line-height: 50px;
 	margin: 0 0 0 15px;
 }
+.pager a{
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	border: 1px solid #ddd;
+}
+.pager span{
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	line-height: 30px;
+	margin: 0 4px;
+	text-align: center;
+	border: 1px solid #ddd;
+}
 /*product-detail*/
 .product-nav {
     width: 100%;
