@@ -239,6 +239,7 @@ $('.user-container .post-edit .commit-post').on('click',function(){
         success:function(data){
             if(data.data){
                 win.alert(data.info, 'success');
+                window.location.href = '/User/postList';
             }else{
                 win.alert(data.info, 'error');
             }
