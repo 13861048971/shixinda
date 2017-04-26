@@ -2,20 +2,20 @@
 	<div class="post-list-page"> 
 		<div class="container">
 			<div class="row post-classify-title">
-				<h2>微商城使用问题</h2>
+				<h2>{$name}</h2>
 				<span>今日：<span>21</span></span>
 				<span>主题：<span>212121</span></span>
 			</div>
 			<div class="row post-list">
 				<div class="col-md-9">
 					<dl>
-					<foreach>
+					<foreach name="list" item="vo">
 						<dd class="post-list-item">
 							<a href=""><img src="" alt=""></a>
 							<div class="post-item-info">
-								<a href="">微商城使用问题</a>
+								<a href="">{$vo.title}</a>
 								<p>
-									<a href="">用户名</a>
+									<a href="">{$user.nickname}</a>
 									<span><span>2017-4-26 15:43</span>发表</span>
 									<span>最后回复 用户名</span>
 								</p>
