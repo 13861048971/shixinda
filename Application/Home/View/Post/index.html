@@ -7,7 +7,7 @@
 					<h4>最新帖子</h4>
 					<ul>
 					<foreach name="newList" item="vo">
-						<li><a href="" title="{$vo.title}">{$vo.title}</a></li>
+						<li><a href="{:u('post/postDetail', ['id'=>$vo['id']])}" title="{$vo.title}">{$vo.title}</a></li>
 					</foreach>
 					</ul>
 				</div>
@@ -15,7 +15,7 @@
 					<h4>本周最热</h4>
 					<ul>
 					<foreach name="hotList" item="vo">
-						<li><a href="" title="{$vo.title}">{$vo.title}</a></li>
+						<li><a href="{:u('post/postDetail', ['id'=>$vo['id']])}" title="{$vo.title}">{$vo.title}</a></li>
 				    </foreach>		
 					</ul>
 				</div>
