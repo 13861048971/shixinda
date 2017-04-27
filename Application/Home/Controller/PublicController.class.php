@@ -94,7 +94,7 @@ class PublicController extends Controller {
 		
 		$ctr = strtolower(CONTROLLER_NAME);
 		
-		if( in_array($ctr, ['file','index']) )
+		if( in_array($ctr, ['file','index','post']) )
 			return true;
 		
 		$actName = strtolower(ACTION_NAME);

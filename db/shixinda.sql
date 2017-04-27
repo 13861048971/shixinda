@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2017-04-25 19:03:43
+Date: 2017-04-27 13:40:31
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -280,7 +280,7 @@ CREATE TABLE `content` (
   `add_time` int(11) unsigned NOT NULL COMMENT '添加时间',
   `update_time` int(11) unsigned NOT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of content
@@ -301,6 +301,8 @@ INSERT INTO `content` VALUES ('16', '16', '大河有限公司', '', '阿斯达',
 INSERT INTO `content` VALUES ('17', '17', '上海邮电公司', '', '阿斯达', '1', '0', '0', '/Public/upload/image/2017-04-22/58fb36c2483bf.jpg', '1492858531', '1492858563', '1492858563');
 INSERT INTO `content` VALUES ('18', '14', '南京大兵高铁公司', '', '阿斯达', '1', '0', '0', '/Public/upload/image/2017-04-22/58fb3702c7c98.jpg', '1492858603', '1492858627', '1492858627');
 INSERT INTO `content` VALUES ('19', '1', '习近平总书记考察广西在当地引起热烈反响', '<p style=\"font-family:SimSun;color:#2B2B2B;\">\n	春风拂面，喜润心田。连日来，壮乡儿女沉浸在激动和喜悦中。自治区党委、南宁市委、北海市委分别在第一时间召开常委扩大会议，认真学习习近平总书记考察广西时的重要讲话精神。广大干部群众通过网络、电视、报纸等，关注习近平总书记的考察行程，学习习近平总书记的重要讲话。大家纷纷表示，一定牢记嘱托、不负期许，把习近平总书记的亲切关怀转化为做好各项工作的强大动力，不断谱写“一带一路”建设新篇章。\n</p>\n<p style=\"font-family:SimSun;color:#2B2B2B;\">\n	<strong>奏响“一带一路”主旋律的广西音符</strong>\n</p>\n<p style=\"font-family:SimSun;color:#2B2B2B;\">\n	波斯的陶壶、<a href=\"http://country.huanqiu.com/sri_lanka\" class=\"linkAbout\" target=\"_blank\">斯里兰卡</a>的琥珀、<a href=\"http://country.huanqiu.com/malaysia\" class=\"linkAbout\" target=\"_blank\">马来西亚</a>的铜熏炉……北海市合浦县汉代文化博物馆里，沉淀着光阴印记的奇珍异宝，见证了古代海上丝绸之路的恢弘历史。\n</p>\n<p style=\"font-family:SimSun;color:#2B2B2B;\">\n	陪同习近平总书记考察博物馆的合浦县委书记王方红对记者说，“总书记指出，‘向海之路是一个国家发展的重要途径，这里围绕古代海上丝绸之路陈列的文物都是历史、是文化’。未来，我们要进一步挖掘好、保护好、传承好合浦海丝文化和汉文化，在保护好的前提下加强开发利用，把资源优势转化为产业优势。”\n</p>', '阿斯达', '1', '0', '0', '/Public/upload/image/2017-04-24/58fd604a943bd.png', '1493000243', '1493000333', '1493000333');
+INSERT INTO `content` VALUES ('21', '18', '公司简介', '<p style=\"font-size:17.28px;font-family:arial, &quot;\">\n	<img src=\"http://www.sin.net.cn/xw/clientImage/62/image/20160427/1461742063697545.jpg\" title=\"1461742063697545.jpg\" alt=\"5.jpg\" />\n</p>\n<p style=\"font-size:17.28px;font-family:arial, &quot;\">\n	<span style=\"font-size:18px;\">&nbsp; &nbsp; &nbsp; &nbsp;南京实信达网络有限公司是根据国家信息产业部与南京市人民政府签署的“部市合作协议”而成立的。为推动<span style=\"font-family:arial;font-size:18px;\">南京</span>国民经济与社会信息化的进程，促进<span style=\"font-family:arial;font-size:18px;\">南京</span>信息产业的发展。</span>\n</p>\n<p style=\"font-size:17.28px;font-family:arial, &quot;\">\n	<span style=\"font-size:18px;\">&nbsp; &nbsp; &nbsp; 经过多年的建设与发展，公司现已拥有基本覆盖全市范围的宽带网络。今后，公司将一如既往全力跟踪世界先进技术的发展，把各类技术高度融合在宽带信息网络平台中，为社会提供全方位的高速、安全、丰富、可靠的宽带信息网络业务。</span>\n</p>', '阿斯达', '1', '0', '0', '', '1493261124', '1493261147', '1493264539');
+INSERT INTO `content` VALUES ('22', '19', '公司信息', '<p style=\"text-align:left;\">\n	<img src=\"http://api.map.baidu.com/staticimage?center=118.786062%2C32.043255&zoom=15&width=558&height=360&markers=118.786062%2C32.043255&markerStyles=l%2CA\" alt=\"\" />\n</p>\n<p style=\"text-align:left;\">\n	公司名称：南京实信达网络科技有限公公司\n</p>\n<p style=\"text-align:left;\">\n	<span style=\"color:#FFFFFF;font-family:微软雅黑;font-size:14px;background-color:#FFFFFF;\"><span style=\"color:#000000;background-color:#FFFFFF;\">邮</span><span style=\"color:#000000;background-color:#FFFFFF;\">箱:1036820869@qq.com</span></span><span style=\"background-color:#FFFFFF;\"><span style=\"color:#000000;background-color:#FFFFFF;\"></span><span style=\"background-color:#FFFFFF;color:#000000;\"></span></span> \n</p>\n<p style=\"text-align:left;\">\n	<span style=\"background-color:#FFFFFF;\"><span style=\"background-color:#FFFFFF;color:#000000;\">联系电话：13861048971<br />\n</span></span> \n</p>\n<p style=\"text-align:left;\">\n	<span style=\"background-color:#FFFFFF;\"><span style=\"background-color:#FFFFFF;color:#000000;\">办公室电话：1212121<br />\n</span></span> \n</p>\n<p>\n	<br />\n</p>', '阿斯达', '1', '0', '0', '', '1493261149', '1493261166', '1493265145');
 
 -- ----------------------------
 -- Table structure for `content_cate`
@@ -315,7 +317,7 @@ CREATE TABLE `content_cate` (
   `add_time` int(11) unsigned NOT NULL COMMENT '添加时间',
   `update_time` int(11) unsigned NOT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of content_cate
@@ -335,6 +337,8 @@ INSERT INTO `content_cate` VALUES ('13', '4', '微信小程序', '1', '0', '1492
 INSERT INTO `content_cate` VALUES ('14', '4', 'Andriod App', '1', '0', '1492852990', '1492852990');
 INSERT INTO `content_cate` VALUES ('16', '4', 'iOS App', '1', '0', '1492858484', '1492858484');
 INSERT INTO `content_cate` VALUES ('17', '4', '微信公众号', '1', '0', '1492858505', '1492858505');
+INSERT INTO `content_cate` VALUES ('18', '5', '公司简介', '1', '0', '1493261303', '1493261303');
+INSERT INTO `content_cate` VALUES ('19', '5', '联系我们', '1', '0', '1493261314', '1493261314');
 
 -- ----------------------------
 -- Table structure for `feedback`
@@ -450,42 +454,44 @@ CREATE TABLE `post` (
   `post_cate_id` int(11) NOT NULL COMMENT '帖子分类id',
   `title` varchar(50) NOT NULL COMMENT '帖子标题',
   `content` text NOT NULL COMMENT '帖子内容',
+  `click` int(11) NOT NULL COMMENT '帖子点击次数',
   `status` int(1) NOT NULL COMMENT '0禁用1启用',
   `add_time` int(11) NOT NULL COMMENT '添加时间',
   `update_time` int(11) NOT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of post
 -- ----------------------------
-INSERT INTO `post` VALUES ('3', '18', '3', 'asd', '啊大神的', '1', '1492134989', '1493116416');
-INSERT INTO `post` VALUES ('4', '12', '2', 'ssas', 'dada', '1', '1492251867', '1492566893');
-INSERT INTO `post` VALUES ('6', '12', '3', 'sadd', 'da', '1', '1492479290', '1492479290');
-INSERT INTO `post` VALUES ('7', '13', '5', '啊啊', 'sd', '1', '1492482231', '1492482231');
-INSERT INTO `post` VALUES ('8', '12', '5', '王', '阿斯达', '1', '1492486672', '1492486672');
-INSERT INTO `post` VALUES ('9', '6', '3', '王艳', '撒旦法', '1', '1492494219', '1492513998');
-INSERT INTO `post` VALUES ('10', '12', '5', '啦啦啦', '安达市', '1', '1492500863', '1492503823');
-INSERT INTO `post` VALUES ('11', '12', '6', '撒嗒啊啊啊大大', '撒嗒', '1', '1492503765', '1492566228');
-INSERT INTO `post` VALUES ('12', '12', '6', 'ada地方', '的撒', '1', '1492566254', '1492567075');
-INSERT INTO `post` VALUES ('13', '12', '1', '发生的', '是v', '1', '1492566722', '1492567349');
-INSERT INTO `post` VALUES ('16', '12', '10', 'SAAB', '大声的', '1', '1492576661', '1492576661');
-INSERT INTO `post` VALUES ('17', '12', '10', '阿斯达', '打', '1', '1492576674', '1492576674');
-INSERT INTO `post` VALUES ('18', '12', '3', '撒嗒', '撒嗒', '1', '1492583619', '1492590298');
-INSERT INTO `post` VALUES ('19', '12', '9', '安达市', '打算', '1', '1492664339', '1492664339');
-INSERT INTO `post` VALUES ('22', '10', '9', '撒嗒222亲戚', '打', '1', '1492666865', '1492666865');
-INSERT INTO `post` VALUES ('23', '9', '9', '去去去', '亲戚', '1', '1492666940', '1492666940');
-INSERT INTO `post` VALUES ('24', '11', '1', '亲亲亲亲', '撒嗒', '1', '1492666988', '1492666988');
-INSERT INTO `post` VALUES ('25', '11', '1', '亲亲亲亲', '撒嗒', '1', '1492666995', '1492666995');
-INSERT INTO `post` VALUES ('26', '12', '9', '撒嗒222亲戚', '阿杜', '1', '1492667180', '1492667180');
-INSERT INTO `post` VALUES ('27', '12', '9', '撒嗒222亲戚', '阿杜', '1', '1492667185', '1492667185');
-INSERT INTO `post` VALUES ('28', '12', '9', '撒嗒222亲戚', '阿杜', '1', '1492667214', '1492667214');
-INSERT INTO `post` VALUES ('29', '13', '9', '撒嗒222亲戚', '阿杜', '1', '1492667273', '1492745485');
-INSERT INTO `post` VALUES ('30', '13', '9', '求求求求求', '安达市', '1', '1492668587', '1492745461');
-INSERT INTO `post` VALUES ('33', '13', '0', 'sd', 'sad', '1', '1492744362', '1492744362');
-INSERT INTO `post` VALUES ('34', '13', '0', 'sdf', 'ds', '1', '1492744414', '1492744414');
-INSERT INTO `post` VALUES ('35', '13', '0', 'asd', 'asd', '1', '1492745498', '1492745498');
-INSERT INTO `post` VALUES ('38', '18', '1', '撒嗒', '暗暗地', '1', '1493107649', '1493107649');
+INSERT INTO `post` VALUES ('3', '18', '3', 'asd', '啊大神的', '0', '1', '1492134989', '1493116416');
+INSERT INTO `post` VALUES ('4', '12', '2', 'ssas', 'dada', '0', '1', '1492251867', '1492566893');
+INSERT INTO `post` VALUES ('6', '12', '3', 'sadd', 'da', '0', '1', '1492479290', '1492479290');
+INSERT INTO `post` VALUES ('7', '13', '5', '啊啊', 'sd', '0', '1', '1492482231', '1492482231');
+INSERT INTO `post` VALUES ('8', '12', '5', '王', '阿斯达', '0', '1', '1492486672', '1492486672');
+INSERT INTO `post` VALUES ('9', '6', '3', '王艳', '撒旦法', '0', '1', '1492494219', '1492513998');
+INSERT INTO `post` VALUES ('10', '12', '5', '啦啦啦', '安达市', '0', '1', '1492500863', '1492503823');
+INSERT INTO `post` VALUES ('11', '12', '6', '撒嗒啊啊啊大大', '撒嗒', '0', '1', '1492503765', '1492566228');
+INSERT INTO `post` VALUES ('12', '12', '6', 'ada地方', '的撒', '0', '1', '1492566254', '1492567075');
+INSERT INTO `post` VALUES ('13', '12', '1', '发生的', '是v', '0', '1', '1492566722', '1492567349');
+INSERT INTO `post` VALUES ('16', '12', '10', 'SAAB', '大声的', '0', '1', '1492576661', '1492576661');
+INSERT INTO `post` VALUES ('17', '12', '10', '阿斯达', '打', '0', '1', '1492576674', '1492576674');
+INSERT INTO `post` VALUES ('18', '12', '3', '撒嗒', '撒嗒', '0', '1', '1492583619', '1492590298');
+INSERT INTO `post` VALUES ('19', '12', '9', '安达市', '打算', '0', '1', '1492664339', '1492664339');
+INSERT INTO `post` VALUES ('22', '10', '9', '撒嗒222亲戚', '打', '0', '1', '1492666865', '1492666865');
+INSERT INTO `post` VALUES ('23', '9', '9', '去去去', '亲戚', '0', '1', '1492666940', '1492666940');
+INSERT INTO `post` VALUES ('24', '11', '1', '亲亲亲亲', '撒嗒', '0', '1', '1492666988', '1492666988');
+INSERT INTO `post` VALUES ('25', '11', '1', '亲亲亲亲', '撒嗒', '0', '1', '1492666995', '1492666995');
+INSERT INTO `post` VALUES ('26', '12', '9', '撒嗒222亲戚', '阿杜', '0', '1', '1492667180', '1492667180');
+INSERT INTO `post` VALUES ('27', '12', '9', '撒嗒222亲戚', '阿杜', '0', '1', '1492667185', '1492667185');
+INSERT INTO `post` VALUES ('28', '12', '9', '撒嗒222亲戚', '阿杜', '0', '1', '1492667214', '1492667214');
+INSERT INTO `post` VALUES ('29', '13', '9', '撒嗒222亲戚', '阿杜', '0', '1', '1492667273', '1492745485');
+INSERT INTO `post` VALUES ('30', '13', '9', '求求求求求', '安达市', '0', '1', '1492668587', '1492745461');
+INSERT INTO `post` VALUES ('33', '13', '0', 'sd', 'sad', '0', '1', '1492744362', '1492744362');
+INSERT INTO `post` VALUES ('34', '13', '0', 'sdf', 'ds', '0', '1', '1492744414', '1492744414');
+INSERT INTO `post` VALUES ('35', '13', '0', 'asd', 'asd', '0', '1', '1492745498', '1492745498');
+INSERT INTO `post` VALUES ('38', '18', '1', '撒嗒', '暗暗地', '0', '1', '1493107649', '1493107649');
+INSERT INTO `post` VALUES ('39', '22', '1', '将军山一日游', '撒旦法', '0', '1', '1493260052', '1493260052');
 
 -- ----------------------------
 -- Table structure for `post_cate`
@@ -3995,7 +4001,7 @@ CREATE TABLE `tdk` (
   `add_time` int(11) NOT NULL COMMENT '添加时间',
   `update_time` int(11) NOT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tdk
@@ -4033,6 +4039,9 @@ INSERT INTO `tdk` VALUES ('31', '1', '20', '', '', '', '1493087994', '1493087994
 INSERT INTO `tdk` VALUES ('32', '0', '0', '', '', '', '0', '1493111944');
 INSERT INTO `tdk` VALUES ('33', '0', '0', '', '', '', '0', '1493111944');
 INSERT INTO `tdk` VALUES ('34', '0', '0', '', '', '', '0', '1493111944');
+INSERT INTO `tdk` VALUES ('35', '0', '0', '', '', '', '0', '1493260052');
+INSERT INTO `tdk` VALUES ('36', '1', '21', '', '', '', '1493261147', '1493264539');
+INSERT INTO `tdk` VALUES ('37', '1', '22', '', '', '', '1493261166', '1493265145');
 
 -- ----------------------------
 -- Table structure for `user`
@@ -4061,20 +4070,20 @@ CREATE TABLE `user` (
   `last_logout` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `weibo_id` (`weibo_id`,`qq_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('13', '13861047971', '13861048971@163.com', '', '/Public/upload/avatar/2017-04-17/58f43c6c5b376.jpg', 'df', '女', '2017-04-04', '', '', '', '', '1', '1492401263', '1492745406', '0', '', '啊啊', '1492401263', '0');
 INSERT INTO `user` VALUES ('14', '18964562148', '', '58b2df7df1790af9619c5e0a2519cb65', '', null, '男', '', '', '', '', '', '0', '1493013903', '1493013903', '0', '', '', '1493013903', '0');
 INSERT INTO `user` VALUES ('15', '18961841645', '', '5df9323ea238b49983a64219933b5e6f', '', null, '男', '', '', '', '', '', '0', '1493014028', '1493014028', '0', '', '', '1493014028', '0');
 INSERT INTO `user` VALUES ('16', '13861048972', '', 'c19fd740a33cf3d675c3c53dc534b4ee', '', null, '男', '', '', '', '', '', '0', '1493016075', '1493016075', '0', '', '', '1493016075', '0');
 INSERT INTO `user` VALUES ('17', '13861048973', '', '8cadbbfaa1ef350e2b56910ab6a52e88', '', null, '男', '', '', '', '', '', '0', '1493016280', '1493016280', '0', '', '', '1493016280', '0');
-INSERT INTO `user` VALUES ('18', '18961841640', '', 'c19fd740a33cf3d675c3c53dc534b4ee', '/Public/images/avatar.gif', null, '女', '', '', '', '', '', '0', '1493017499', '1493118055', '0', '', 'bbss', '1493117748', '0');
+INSERT INTO `user` VALUES ('18', '18961841640', '', 'c19fd740a33cf3d675c3c53dc534b4ee', '/Public/upload/avatar/2017-04-26/5900120bf20fe.jpg', null, '女', '', '', '', '', '', '0', '1493017499', '1493176845', '0', '', 'bbss', '1493176531', '0');
 INSERT INTO `user` VALUES ('19', '15156811083', '', 'c19fd740a33cf3d675c3c53dc534b4ee', '', null, '男', '', '', '', '', '', '0', '1493024528', '1493024528', '0', '', '', '1493024539', '0');
 INSERT INTO `user` VALUES ('20', '18961841571', '', 'c19fd740a33cf3d675c3c53dc534b4ee', '', null, '男', '', '', '', '', '', '0', '1493024607', '1493024607', '0', '', '', '1493024607', '0');
 INSERT INTO `user` VALUES ('21', '18974516541', '', 'c19fd740a33cf3d675c3c53dc534b4ee', '', null, '男', '', '', '', '', '', '0', '1493024634', '1493024634', '0', '', '', '1493024634', '0');
+INSERT INTO `user` VALUES ('22', '13861048971', '', 'c19fd740a33cf3d675c3c53dc534b4ee', '/Public/upload/avatar/2017-04-27/590154e96c267.jpg', null, '男', '', '', '', '', '', '0', '1493178203', '1493259513', '0', '', '赤心', '1493260767', '0');
 
 -- ----------------------------
 -- Table structure for `user_msg`

@@ -133,7 +133,17 @@ class IndexController extends PublicController {
 
 	//关于我们的列表
 	public function about(){
-        $this->display();	
+	    if($_GET['cate_id'] && !empty($_GET)){
+	        $contentInfo = d('content')->where($_GET)->find();
+	    }else{
+	        $contentInfo = d('content')->where(['cate_id'=>'18'])->find();
+	    }
+
+	    $CateChildren = d('contentCate')->getList(['pid'=>'5']);//产品子类信息
+        $this->assign('ChildCateList',$CateChildren);//分类信息
+        $this->assign('info',$contentInfo);//内容信息
+        $this->display();
+	
 	}
 	
 	//支付结果通知

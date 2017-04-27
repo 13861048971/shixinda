@@ -4,13 +4,14 @@
 			<div class="col-md-3 about-nav">
 				<dl>
 					<dt>关于我们</dt>
-					<dd><a href="">联系方式</a></dd>
-					<dd><a href="">公司地址</a></dd>
+					<foreach name="ChildCateList" item="v">
+					<dd><a href="{:U('about',['cate_id'=>$v['id']])}">{$v.name}</a></dd>
+					</foreach>
 				</dl>
 			</div>
 			<div class="col-md-9 about-container">
-				<div class="about-title"></div>
-				<div class="about-content"></div>
+				<div class="about-title">{$info.title}</div>
+				<div class="about-content">{$info.content}</div>
 			</div>
 		</div>
 	</div>
