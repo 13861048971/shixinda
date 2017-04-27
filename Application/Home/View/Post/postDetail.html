@@ -2,11 +2,11 @@
 	<div class="post-detail-page"> 
 		<div class="container">
 			<div class="row post-title">
-				<a href=""><img src="" alt=""></a>
-				<h3>帖子标题</h3>
+				<a href=""><img src="{$userRow.avatar}" alt=""></a>
+				<h3>{$postRow.title}</h3>
 				<p>
-					<a href="">用户名</a>
-					<span>2017-4-26 15:43 发表</span>
+					<a href="">{$userRow.nickname}</a>
+					<span>{$postRow.addTime}发表</span>
 					<span>阅读：<span>122</span></span>
 					<span>回复：<span>12</span></span>
 					<a href="">只看楼主</a>
@@ -16,7 +16,7 @@
 				<div class="col-md-9">
 					<div class="row post-content">
 						<div>
-							内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+						  {$postRow.content}
 						</div>
 						<div class="post-handle">
 							<a href="">收藏(12)</a>
