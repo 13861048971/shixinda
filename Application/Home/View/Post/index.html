@@ -14,13 +14,17 @@
 				<div class="col-md-3">
 					<h4>最新帖子</h4>
 					<ul>
-						<li><a href="" title="为什么社群运营这么难？为什么社群运营这么难？">为什么社群运营这么难？为什么社群运营这么难？</a></li>
+					<foreach name="newList" item="vo">
+						<li><a href="" title="{$vo.title}">{$vo.title}</a></li>
+					</foreach>
 					</ul>
 				</div>
 				<div class="col-md-3">
 					<h4>本周最热</h4>
 					<ul>
-						<li><a href="" title="为什么社群运营这么难？为什么社群运营这么难？">为什么社群运营这么难？为什么社群运营这么难？</a></li>
+					<foreach name="hotList" item="vo">
+						<li><a href="" title="{$vo.title}">{$vo.title}</a></li>
+				    </foreach>		
 					</ul>
 				</div>
 			</div>

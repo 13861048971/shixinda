@@ -10,8 +10,8 @@
 				<div class="col-md-9">
 					<dl class="post-list-filter">
 						<dt><a href="">全部</a></dt>
-						<foreach>
-							<dd><a href="">商品&店铺<small>(212121)</small></a></dd>
+						<foreach name="childrenList" item="vo">
+							<dd><a href="">{$vo.name}<small>({$vo.count})</small></a></dd>
 						</foreach>
 					</dl>
 					<dl>

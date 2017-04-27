@@ -131,9 +131,9 @@ class PostModel extends BaseModel{
      * 根据条件获取信息
      * @param array $con
      */
-    public function getList($con = null, $limit = 10){
+    public function getList($con = null, $limit = 10, $order){
         
-        $list = $this->where($con)->order('rank')->limit($limit)->select();
+        $list = $this->where($con)->order($order)->limit($limit)->select();
         foreach($list as $k=>&$v){
             $list[$k] = $this->parseRow($v);
             //     			$v = $this->getInfo($v['id']);
