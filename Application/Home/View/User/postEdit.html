@@ -4,8 +4,8 @@
 			<div class="col-md-3 user-nav">
 				<dl>
 					<dt>用户中心</dt>
-					<dd><a href="{:U('user/postList')}">帖子管理</a></dd>
 					<dd><a href="{:U('user/index')}">账号管理</a></dd>
+					<dd class="user-nav-actived"><a href="{:U('user/postList')}">帖子管理</a></dd>
 					<dd><a href="javascript:void(0);" class="login-out">退出</a></dd>
 				</dl>
 			</div>
@@ -13,16 +13,16 @@
 				<h4 class="post-manage-title">编辑（添加）帖子</h4>
 				<form class="post-edit" >
 					<div class="row post-title">
-						<label for="post-title" class="col-md-2">标题：</label>
-						<input type="text" class="col-md-9" name="title" value="{$info.title}">
+						<label for="post-title" class="col-md-2"><span>*</span>标题：</label>
+						<input type="text" class="col-md-10" name="title" value="{$info.title}">
 					</div>
 					<div class="row post-cate">
-						<label for="post-cate" class="col-md-2">分类：</label>
+						<label for="post-cate" class="col-md-2"><span>*</span>分类：</label>
 						{:W('select/postCate')}
 					</div>
 					<div class="row post-content">
-						<label for="post-content" class="col-md-2">内容：</label>
-						<div class="col-md-9">
+						<label for="post-content" class="col-md-2"><span>*</span>内容：</label>
+						<div class="col-md-10">
 							<textarea rows="" cols="" name="content" class="kind-editor">{$info.content}</textarea>
 						</div>
 					</div>

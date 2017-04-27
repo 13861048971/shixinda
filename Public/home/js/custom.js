@@ -243,6 +243,25 @@ $('.user-container .post-edit .commit-post').on('click',function(){
 		}
 	});
 });
+// 删除帖子
+$('.user-container .post-manage-list').on('click',function(e){
+	if($(e.target)[0].className == 'post-del'){
+		var url = '/User/postDel/id/'+$(e.target).data('id');
+		$.ajax({
+			url:url,
+			type:'get',
+			dataType:'json',
+			success:function(data){
+				if(data.error == '0'){
+					win.alert(data.info, 'success');
+					$(e.target).parents('dd').remove();
+				}else{
+					win.alert(data.info, 'error');
+				}
+			}
+		});
+	}
+});
 //账号修改
 $('.account-info-edit .commit-account').on('click',function(){
 	var avatar = $('#img-input-id-1').val();

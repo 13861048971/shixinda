@@ -4,8 +4,8 @@
 			<div class="col-md-3 user-nav">
 				<dl>
 					<dt>用户中心</dt>
-					<dd><a href="{:U('user/postList')}">帖子管理</a></dd>
 					<dd><a href="{:U('user/index')}">账号管理</a></dd>
+					<dd class="user-nav-actived"><a href="{:U('user/postList')}">帖子管理</a></dd>
 					<dd><a href="javascript:void(0);" class="login-out">退出</a></dd>
 				</dl>
 			</div>
@@ -24,7 +24,7 @@
 								</div>
 								<div class="post-control">
 									<a href="{:U('postEdit',['id'=>$v['id']])}" >编辑</a>
-									<a href="{:U('postDel',['id'=>$v['id']])}">删除</a>
+									<a class="post-del" href="javascript:void(0);" data-id="{$v.id}">删除</a>
 								</div>
 							</dd>
 						</foreach>

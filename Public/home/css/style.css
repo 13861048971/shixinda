@@ -799,6 +799,12 @@ ul#filters {
 .user-container .post-content div{
 	padding: 0;
 }
+.user-section .user-nav-actived{
+	background-color: #eee;
+}
+.user-container .post-edit label span{
+	color: #f33;
+}
 /*帖子中心*/
 .post-index,
 .post-list-page{
