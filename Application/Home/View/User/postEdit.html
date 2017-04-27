@@ -10,7 +10,10 @@
 				</dl>
 			</div>
 			<div class="col-md-9 user-container">
-				<h4 class="post-manage-title">编辑（添加）帖子</h4>
+				<h4 class="post-manage-title">
+				
+				<if condition="$info.id neq ''">编辑<else/>添加</if>帖子
+				</h4>
 				<form class="post-edit" >
 					<div class="row post-title">
 						<label for="post-title" class="col-md-2">标题：</label>
