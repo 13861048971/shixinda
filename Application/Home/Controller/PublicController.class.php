@@ -112,6 +112,24 @@ class PublicController extends Controller {
 		echo '当前页面不存在!';
 	}
 	
+	/**
+	 * 
+	 * @param string $mode 模型名称
+	 * @param int $id  文章在数据库中的id值
+	 */
+	function click($mode,$id){
+	    $mode = d($mode);
+	    $info = $mode->where(['id'=>$id])->find(); 
+	    $click = (int)$info['click']+1;
+	    $mode->data(['click'=>$click])->where(['id'=>$id])->save();
+	}
+	
+	/**
+	 * 
+	 * @param unknown $type
+	 * @param unknown $filename
+	 * @return number[]|string[]|NULL[]|unknown[]
+	 */
 	function upload($type, $filename){
 		$typeArr = ['image', 'avatar'];
 		!in_array($type, $typeArr) && $type = 'image';

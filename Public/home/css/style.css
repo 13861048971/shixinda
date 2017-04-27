@@ -551,23 +551,6 @@ ul#filters {
 	line-height: 50px;
 	margin: 0 0 0 15px;
 }
-.pager a{
-	display: inline-block;
-	width: 30px;
-	height: 30px;
-	line-height: 30px;
-	text-align: center;
-	border: 1px solid #ddd;
-}
-.pager span{
-	display: inline-block;
-	width: 30px;
-	height: 30px;
-	line-height: 30px;
-	margin: 0 4px;
-	text-align: center;
-	border: 1px solid #ddd;
-}
 /*product-detail*/
 .product-nav {
     width: 100%;
@@ -1129,9 +1112,19 @@ ul#filters {
 	font-size: 14px;
 }
 .post-detail-page .post-detail .back-list{
-	padding: 15px 20px 0 20px;
+	padding: 20px;
     background-color: #fff;
     margin: 2px 22px 0 0;
+}
+.post-detail-page .post-detail .back-list a{
+	display: block;
+	width: 80px;
+	height: 35px;
+	color: #fff !important;
+	background-color: #1C86EE !important;
+	line-height: 35px;
+	text-align: center;
+	margin: 0 auto;
 }
 /*分页样式*/
 .pager a{
