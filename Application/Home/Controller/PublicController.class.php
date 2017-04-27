@@ -98,8 +98,8 @@ class PublicController extends Controller {
 			return true;
 		
 		$actName = strtolower(ACTION_NAME);
+		
 		if(!in_array($actName, $arr)){
-		    //$this->error('您还未登录','/user/login');
 			$this->redirect('/user/login');
 		}
 	}
