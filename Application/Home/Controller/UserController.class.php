@@ -92,6 +92,7 @@ class UserController extends PublicController{
 	
 	//用户帖子编辑
 	function postEdit(){
+	    
 	    $id = $_GET['id'];
 	    if(isset($_POST) && $_POST){
 	        $_POST['user_id'] = $this->user['id'];

@@ -60,8 +60,9 @@ class PostController extends PublicController {
 	//获取帖子详情
 	public function postDetail(){
 	    $id = $_GET['id'];
-	    $row = d('post')->getInfo($id);
-	    $this->assign('row', $row);
+	    $post_info = d('post')->getInfo($id);
+	    $this->click('post',$id);//访问量+1
+	    $this->assign('info', $post_info);
 	    $this->display();
 	}
 	
