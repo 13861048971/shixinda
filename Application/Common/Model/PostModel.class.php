@@ -184,6 +184,13 @@ class PostModel extends BaseModel{
     }
     //格式化行
     public function parseRow($v){
+        
+        $v['num'] = d('postComment')->where(['post_id'=>$v['id']])->Count();
+        $v['statusName'] = $this->statusArr[$v['status']];
+        $v['publishTime'] = date("Y-m-d H:i:s",$v['publish_time']);
+        $v['update_time'] = date("Y-m-d H:i:s",$v['update_time']);
+        $v['add_time'] = date("Y-m-d H:i:s",$v['add_time']);
+        
         $data = D('user')->where(['id'=>$v['user_id']])->select();
         foreach ($data as $vo){
             $v['username']=$vo['nickname'];
