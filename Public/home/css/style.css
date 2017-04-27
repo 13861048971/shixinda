@@ -688,6 +688,8 @@ ul#filters {
 .about-section .about-nav dl dt,
 .user-section .user-nav dl dt{
 	padding: 10px 0 10px 20px;
+	font-size: 16px;
+	font-weight: 400;
 }
 .about-section .about-nav dl dd,
 .user-section .user-nav dl dd{

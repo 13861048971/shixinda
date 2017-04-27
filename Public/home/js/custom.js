@@ -338,3 +338,15 @@ function multiLevelFun(node){
 	});
 };
 initMulSel();
+// 关于我们导航选中状态
+(function(){
+	if($('.about-nav')[0]){
+		var url = window.location.href;
+		var nav = $('.about-nav').find('a');
+		for(var k=0;k<nav.length;k++){
+			if(nav[k].href == url){
+				nav[k].parentNode.style.backgroundColor='#eee';
+			}
+		}
+	}
+}());
