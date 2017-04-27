@@ -68,10 +68,19 @@ class PostController extends PublicController {
 	//获取帖子详情
 	public function postDetail(){
 	    $id = $_GET['id'];
-	    $userRow = d('post')->where(['id'=>$id])->find();
-	    
+	    $userId = d('post')->where(['id'=>$id])->getField('user_id');
+	    $userRow = d('user')->where(['id'=>$userId])->find();
 	    $postRow = d('post')->getInfo($id);
 	    $this->click('post',$id);//访问量+1
+	    $data = d('post_comment')->getPageList(['post_id'=>$id], '*', 'add_time desc', 5);
+	    foreach($data['list'] as $k=>$v){
+	        //$data['list'][$k]['userName'] = d('user')->where(['id'=>$v['user_id']])->getField('nickname');
+	        $data['list'][$k]['avatar'] = d('user')->where(['id'=>$v['user_id']])->getField('avatar');
+	    } 
+	    //dump($data['list']);exit();
+	    $this->assign('userRow', $userRow);
+	    $this->assign('list', $data['list']);
+	    $this->assign('pageVar', $data['pageVar']);
 	    $this->assign('postRow', $postRow);
 	    $this->display();
 	}
