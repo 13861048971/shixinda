@@ -1,35 +1,44 @@
 <include file="Public:header" />
-					<div><h2>{$row.title}</h2></div>
-					<div><span>{$row.author}</span>.<span>{$row.addTime}</span></div>
-					<div>{$row.content}</div>
-					<div>
-						<h4>帖子评论</h4>
-						<if condition="$user neq null">
-						<textarea placeholder="请输入内容"></textarea>
-						<div>
-							<div><a href=""><img src="{$user.avatar}"></a></div><a href="">{$user.nickname}</a>
-						</div>						
-						<else/>
-						<textarea placeholder="请登录后评论" disabled></textarea>
-						<div class="news-comment-user">
-							<a href="/index/login">登录</a> 后评论
-						</div>
-						</if>
-						<button type="button" class="commit-comment">提交评论</button>
-						<dl class="news-comment-list">
-							<foreach name="commentList" item="vo">
-								<dd>
-									<dl>
-										<dt><div><a href=""><img src="{$user.avatar}"></a></div></dt>
-										<dd><a href="">{$user.nickname}</a> · {$vo.addTime}</dd>
-										<dd>{$vo.content}</dd>
-									</dl>
-								</dd>
+	<div class="post-detail-page"> 
+		<div class="container">
+			<div class="row post-title">
+				<h2>{$name}</h2>
+				<span>今日：<span>21</span></span>
+				<span>主题：<span>212121</span></span>
+			</div>
+			<div class="row post-detail">
+				<div class="col-md-9">
+					<dl>
+					<foreach name="list" item="vo">
+						<dd class="post-list-item">
+							<a href=""><img src="" alt=""></a>
+							<div class="post-item-info">
+								<a href="{:U('post/postdetail',['id'=>$vo['id']])}">{$vo.title}</a>
+								<p>
+									<a href="">{$user.nickname}</a>
+									<span><span>2017-4-26 15:43</span>发表</span>
+									<span>最后回复 用户名</span>
+								</p>
+							</div>
+							<span>0</span>
+						</dd>
+					</foreach>
+					</dl>
+				</div>
+				<div class="col-md-3">
+					<a href="/User/postEdit">我要发帖</a>
+					<foreach>
+						<dl>
+							<dt>商户交流</dt>
+							<foreach>
+								<dd><a href="">商户交流信息</a></dd>
 							</foreach>
-							<div class="pager">{$pageVar}</div>	
 						</dl>
-					</div>
-	
+					</foreach>
+				</div>
+			</div>
+		</div>
+	</div>      
 <include file="Public:footer" />
 </body>
 </html>

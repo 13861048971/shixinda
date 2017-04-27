@@ -350,3 +350,16 @@ initMulSel();
 		}
 	}
 }());
+// 帖子列表过滤选中状态
+(function(){
+	if($('.post-list-filter')[0]){
+		var url = window.location.href;
+		var nav = $('.post-list-filter dd').find('a');
+		console.log(nav);
+		for(var k=0;k<nav.length;k++){
+			if(nav[k].href == url){
+				nav[k].style.color='#1C86EE';
+			}
+		}
+	}
+}());
