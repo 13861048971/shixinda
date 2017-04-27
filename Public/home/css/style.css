@@ -904,6 +904,19 @@ ul#filters {
 .post-list-page .post-list .col-md-9 dl{
 	margin: 0;
 }
+.post-list-page .post-list .post-list-filter dt{
+	display: inline-block;
+	margin: 0 10px 0 0;
+}
+.post-list-page .post-list .post-list-filter dd{
+	display: inline-block;
+	padding: 0 15px;
+	border-left: 1px solid #ddd;
+	line-height: 1.1;
+}
+.post-list-page .post-list .post-list-filter dd a{
+	color: #333;
+}
 .post-list-page .post-list .post-list-item{
 	border-bottom: 1px solid #ddd;
 	overflow: hidden;
