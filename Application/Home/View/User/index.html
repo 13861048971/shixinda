@@ -20,7 +20,6 @@
 							</div>
 							<div class="row user-nickname">
 								<label for="nickname" class="col-md-2">昵称：</label>
-								<span>nickname</span>
 								<input type="text" class="col-md-4" name="nickname" value="{$user.nickname}">
 							</div>
 							{:W('upload/img', ['avatar','头像：', $user['avatar'], 'required', 'avatar' ])}
@@ -57,10 +56,6 @@
 								<button type="button" class="commit-pass col-md-offset-2">确认修改</button>
 							</div>
 						</form>
-					</div>
-					<div class="col-md-2 account-control">
-						<a href="">编辑</a>
-						<a href="">删除</a>
 					</div>
 				</div>
 			</div>

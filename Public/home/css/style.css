@@ -716,6 +716,10 @@ ul#filters {
 .user-section .user-container .post-manage-title{
 	margin: 20px 0 0 0;
 }
+.user-section .user-container .post-manage-title a{
+	font-size: 14px;
+	float: right;
+}
 .user-container .post-manage-list,
 .user-container .post-edit{
 	margin: 20px 0 0 0;
@@ -785,9 +789,6 @@ ul#filters {
 }
 .user-container .account-info-edit{
 	margin-bottom: 40px;
-}
-.user-container .account-control{
-	margin: 30px 0 0 0;
 }
 .user-container .account-info-edit .input-group{
 	margin-left: -15px;
