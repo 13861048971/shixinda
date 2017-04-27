@@ -11,7 +11,9 @@
 					<dl class="post-list-filter">
 						<dt><a href="">全部</a></dt>
 						<foreach name="childrenList" item="vo">
-							<dd><a href="">{$vo.name}<small>({$vo.count})</small></a></dd>
+							<dd><a href="{:U('post/postList',['post_cate_id2'=>$post_cate_id2, 
+							'post_cate_id3'=>$vo['id']])}"><span <if condition="$post_cate_id3 eq $vo['id']">
+							style="color:blue" </if> >{$vo.name}</span><small>({$vo.count})</small></a></dd>
 						</foreach>
 					</dl>
 					<dl>
@@ -29,6 +31,7 @@
 							<span>0</span>
 						</dd>
 					</foreach>
+					<div class="page">{$pageVar}</div>
 					</dl>
 				</div>
 				<div class="col-md-3">

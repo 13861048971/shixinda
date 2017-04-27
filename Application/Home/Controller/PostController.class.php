@@ -25,17 +25,32 @@ class PostController extends PublicController {
 	 
 	//获取帖子列表
 	public function postList(){
-	    $post_cate_id = $_GET['id'];
+	    $post_cate_id2 = $_GET['post_cate_id2'];
+	    $post_cate_id3 = $_GET['post_cate_id3'];
 	    //三级分类列表
-	    $childrenList = d('postCate')->getList(['pid'=>$post_cate_id, 'status'=>1]);
+	    $childrenList = d('postCate')->getList(['pid'=>$post_cate_id2, 'status'=>1]);
 	    foreach($childrenList as $k=>$v){
 	        $childrenList[$k]['count'] = d('post')->where(['post_cate_id'=>$v['id']])->count();
+	        $idArr[$k] = $v['id'];
 	    }
 	    //二级分类名称
-	    $name = d('postCate')->where(['id'=>$post_cate_id])->getField('name');
-	    $data = d('post')->getPageList(['post_cate_id'=>$post_cate_id, 'status'=>'1'], '*', 'update_time desc', 1);
+	    $name = d('postCate')->where(['id'=>$post_cate_id2])->getField('name');
+	    $where['post_cate_id'] = array('in', $idArr);
+	    $map['post_cate_id'] = array('eq', $post_cate_id2);
+	    $map['_complex'] = $where;
+	    $map['_logic'] = 'or';
+	    if($post_cate_id2&&$post_cate_id3){
+	        $data = d('post')->getPageList(['post_cate_id'=>$post_cate_id3, 'status'=>'1'], '*', 'add_time desc', 3);
+	    }elseif($post_cate_id2){
+	        $data = d('post')->getPageList([$map, 'status'=>'1'], '*', 'add_time desc', 3);
+	        
+	    }
+	    
+	    //dump($data['list']);exit();
 	    $this->assign('childrenList', $childrenList);
 	    $this->assign('name', $name);
+	    $this->assign('post_cate_id2', $post_cate_id2);
+	    $this->assign('post_cate_id3', $post_cate_id3);
 	    $this->assign('list', $data['list']);
 	    $this->assign('user', $this->user);
 	    $this->assign('pageVar', $data['pageVar']);
