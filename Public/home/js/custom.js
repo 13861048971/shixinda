@@ -424,11 +424,38 @@ function postSupport(act){
 	var url = '/post/postSupport/act/'+act+'/id/'+post_id;
 	$.ajax({
 		url:url,
-		type:'post',
+		type:'get',
 		dataType:'json',
 		success:function(data){
 			if(!data.error){
-				win.alert(data.info, 'success');
+				if(data.status == 1){
+					win.alert(data.info, 'success');
+					var num = $('.post-support').find('span').text();
+					num = num.substr(1, num.length-2);
+					num = parseInt(num)-1;
+					$('.post-support')[0].innerHTML='赞<span>('+num+')</span>';
+				}
+				if(data.status == 2){
+					win.alert(data.info, 'success');
+					var num = $('.post-oppose').find('span').text();
+					num = num.substr(1, num.length-2);
+					num = parseInt(num)-1;
+					$('.post-oppose')[0].innerHTML='踩<span>('+num+')</span>';
+				}
+				if(data.status == 3){
+					win.alert(data.info, 'success');
+					var num = $('.post-support').find('span').text();
+					num = num.substr(1, num.length-2);
+					num = parseInt(num)+1;
+					$('.post-support')[0].innerHTML='已赞<span>('+num+')</span>';
+				}
+				if(data.status == 4){
+					win.alert(data.info, 'success');
+					var num = $('.post-oppose').find('span').text();
+					num = num.substr(1, num.length-2);
+					num = parseInt(num)+1;
+					$('.post-oppose')[0].innerHTML='已踩<span>('+num+')</span>';
+				}
 			}else{
 				win.alert(data.info, 'error');
 			}
