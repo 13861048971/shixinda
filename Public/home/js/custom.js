@@ -364,15 +364,16 @@ initMulSel();
 }());
 // 帖子详情收藏
 $('.post-handle .post-collect').on('click',function(){
+	var url = '/post/postCollect/id/'+$('.post-detail-page').data('id');
 	$.ajax({
-		url:'/post/postCollect',
+		url:url,
 		dataType:'json',
 		type:'get',
 		success:function(data){
-			if(data.error){
-				win.alert('data.info', 'success');
-				$('.post-collect').text('');
-				var numNode = $('.post-collect').find('span');
+			if(!data.error){
+				win.alert('data.info', 'success');var numNode = $('.post-collect').find('span');
+				console.log(numNode[0]+'');
+				$('.post-collect').text('收藏');
 				var num = numNode.text();
 				num = num.substr(1, num.length-2);
 				num = parseInt(num)+1;
