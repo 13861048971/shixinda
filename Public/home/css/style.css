@@ -1280,3 +1280,6 @@ ul#filters {
 	margin: 11px 8px 0 0;
 	cursor: pointer;
 }
+.post-index .post-index-banner .banner-control span.banner-cur{
+	background-color: #1C86EE;
+}

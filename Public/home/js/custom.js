@@ -392,6 +392,8 @@ function changeImg(index){
 	var rightTitle = (index*308)+"px";
 	$('.banner-img').animate({right:rightImg}, 2000);
 	$('.banner-title ul').animate({right:rightTitle}, 2000);
+	$('.banner-control span').removeClass();
+	$('.banner-control span')[index].className='banner-cur';
 }
 var curIndex = 0;
 var imgLen = $(".banner-img li").length;
@@ -415,7 +417,8 @@ function autoChangeAgain(curIndex){
 }
 $('.banner-control span').hover(function(){
 	var index = $(this).index();
-	$(this).css('background-color','#1C86EE');
+	$(this).siblings().removeClass();
+	$(this).addClass('banner-cur');
 	window.clearInterval(autoChange);
 	$('.banner-img').stop();
 	$('.banner-title ul').stop();
@@ -425,7 +428,6 @@ $('.banner-control span').hover(function(){
 	$('.banner-title ul').css('right',rightTitle);
 },function(){
 	var index = $(this).index();
-	$(this).css('background-color','#9b9999');
 	autoChangeAgain(index);
 });
 // 帖子评论
