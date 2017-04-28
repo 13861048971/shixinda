@@ -441,6 +441,7 @@ $('.btn-pub-comment').on('click',function(){
 			success:function(data){
 				if(!data.error){
 					win.alert(data.info, 'success');
+					$('.pub-comment textarea').val('');
 				}else{
 					win.alert(data.info, 'error');
 				}
