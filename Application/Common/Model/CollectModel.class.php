@@ -120,22 +120,7 @@ class CollectModel extends BaseModel {
 		return (int)$this->where($con)->count();
 	}
 	
-	//关注
-	function collect($nodeId, $userId, $type = 0){
-		if(!$nodeId) return $this->setError('缺少要关注的节点!');
-		if(!$userId) return $this->setError('缺少用户id!');
-		$con = ['type'=>$type, 'node_id'=> $nodeId, 'user_id'=>$userId];
-		
-		if($this->isCollect($nodeId, $userId, $type))
-			return true;
 
-		if(!$this->edit($con))
-			return false;
-		//更新关注数
-		$this->updateNum($nodeId, $type);
-		return true;
-	}
-	
 	//取消关注
 	function unCollect($nodeId, $userId, $type = 0){
 		$con = ['type'=>$type, 'node_id'=> $nodeId, 'user_id'=>$userId];

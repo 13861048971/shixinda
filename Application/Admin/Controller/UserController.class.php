@@ -358,31 +358,21 @@ class UserController extends PublicController {
 	public function report(){
 	    $this->setRightAction([[ 'name'=>'用户举报', 'dialog'=>true,
 	        'dialog-lg'=>true, 'url' => u('reportEdit') ]]);
-	    
 	    $con = $_GET;
-	    $data = d('report')->select();
-	    
-	    
-	    $this->assign('list',$data);
+	    $data = d('report')->getPageList($con);
+	    $this->assign($data);
 	    $this->assign('search', $_GET);
 	    $this->display();
 	}
 	
-	public function reportEdit(){
-	    $this->ajaxEdit('report',null,function(){
-	        $info = d('report')->where(['id'=>$_GET['id']])->find();
-	        $this->assign('row',$info);
-	    });
+    public function reportDel(){
+	    $this->ajaxDel('report');
 	}
 	
-// 	public function reportEdit(){
-// 	    $this->ajaxEdit('postCate',null, function($row, $mod){
-	        
-// 	    }
-// // 	    $info = d('report')->where(['id'=>$_GET['id']])->find();
-// // 	    var_dump($info);exit;
-// // 	    $this->assign('row',$info);
-// // 	    $this->di
-// 	}
 	
+	public function reportEdit(){
+	    $this->ajaxEdit('report',null,function(){
+	    
+	    });
+	}	
 }

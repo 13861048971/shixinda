@@ -111,14 +111,14 @@ class PostController extends PublicController {
 	    $this->assign('user', $this->user);
 	    $this->display();
 	}
-	/* 
-    //帖子收藏
-    public function postCollect(){
+
+//     //帖子收藏
+     public function postCollect(){
         if(!$this->user['id'])
            return ajaxReturn2(1,'请先登录');
-        //d(collect)->collect('post');
-    }
-     */
+        d(collect)->collect('post');
+     }
+   
     //帖子点赞或者踩
     public function postSupport(){
         if(!$this->user['id'])
