@@ -78,7 +78,6 @@ $('.commit-comment').on('click',function(){
 	var avatar = $('.news-comment-user').data('avatar');
 	var nickname = $('.news-comment-user').find('a').text();
 
-	console.log(comment);
 	if(comment){
 		$.ajax({
 			url:'/index/comment',
@@ -371,16 +370,74 @@ $('.post-handle .post-collect').on('click',function(){
 		type:'get',
 		success:function(data){
 			if(!data.error){
-				win.alert('data.info', 'success');var numNode = $('.post-collect').find('span');
-				console.log(numNode[0]+'');
-				$('.post-collect').text('收藏');
-				var num = numNode.text();
+				win.alert(data.info, 'success');
+				var num = $('.post-collect').find('span').text();
 				num = num.substr(1, num.length-2);
-				num = parseInt(num)+1;
-				num = parseInt(num)-1;
+				if(data.status){
+					num = parseInt(num)+1;
+					$('.post-collect')[0].innerHTML='已收藏<span>('+num+')</span>';
+				}else{
+					num = parseInt(num)-1;
+					$('.post-collect')[0].innerHTML='收藏<span>('+num+')</span>';
+				}
 			}else{
-				win.alert('data.info', 'error');
+				win.alert(data.info, 'error');
 			}
 		}	
 	})
+});
+// 帖子首页轮播图
+(function(){
+	if(!$('.post-index-banner')[0])
+		return;
+	
+	var index = 0;
+	function changeImg(index){
+		a
+	}
+}());
+// 帖子评论
+$('.btn-pub-comment').on('click',function(){
+	var comment = $('.pub-comment textarea').val();
+	var post_id = $('.post-detail-page').data('id');
+
+	if(comment){
+		$.ajax({
+			url:'/post/comment',
+			type:'post',
+			data:{post_id:post_id,content:comment},
+			success:function(data){
+				if(!data.error){
+					win.alert(data.info, 'success');
+				}else{
+					win.alert(data.info, 'error');
+				}
+			}
+		});
+	}else{
+		win.alert('请填写评论内容！','error')
+	}
+});
+// 帖子赞和踩
+function postSupport(act){
+	var post_id = $('.post-detail-page').data('id');
+	var url = '/post/postSupport/act/'+act+'/id/'+post_id;
+	$.ajax({
+		url:url,
+		type:'post',
+		dataType:'json',
+		success:function(data){
+			if(!data.error){
+				win.alert(data.info, 'success');
+			}else{
+				win.alert(data.info, 'error');
+			}
+		}
+	});
+};
+$('.post-detail-page .post-support').on('click', function(){
+	postSupport('zan');
+});
+$('.post-detail-page .post-oppose').on('click', function(){
+	postSupport('cai');
 });
