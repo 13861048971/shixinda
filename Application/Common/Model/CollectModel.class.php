@@ -3,9 +3,11 @@ use Think\Model;
 /**
  * 关注/喜欢/赞
  */
+
+
 class CollectModel extends BaseModel {
+    public $typeArr = ['post'=>1,'new'=>'2'];
 	public $cacheKey  = 'collect_';
-	public $typeArr = ['摄影师','套餐','任务'];
 	public $statusArr = [ 1=>'关注','取消关注'];
 	function __construct(){
 		parent::__construct();
@@ -15,7 +17,16 @@ class CollectModel extends BaseModel {
 		];
 	}
 	
-	
+	/**
+	 * $type string 是内容类型名称
+	 * 收藏
+	 */
+	public function collect($type){
+	    $data['type'] = $this->typeArr[$type];
+	    $data['node_id'] = $_GET['id'];
+	    $data['user_id'] = $this->user['id'];
+	    $this->edit($data);
+	}
 	
 	/**
 	 * 编辑or添加

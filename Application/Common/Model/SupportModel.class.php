@@ -5,7 +5,7 @@ use Think\Model;
  */
 class SupportModel extends BaseModel {
 	public $cacheKey  = 'support_';
-	public $typeArr = ['套餐赞'];
+	public $typeArr = ['post'=>1,'new'=>'2'];
 	protected $_validate;
 	
 	function __construct(){
@@ -31,18 +31,70 @@ class SupportModel extends BaseModel {
 		return $data;
 	}
 	
+	//点赞
+	public function support($type){
+	    $data = [
+            'user_id' => $this->user['id'],
+            'type' => $this->typeArr[$type],
+	        'node_id' =>$_GET['id']
+        ];
+	     
+	    $info = $this->where($data)->find();
+	    //当前用户有记录的时候
+	    if($info){
+	        if((int)$info['support'] == 1){
+	            if($_GET['act'] == 'zan'){
+	        
+	                if($this->where($data)->delete())
+	                    return ajaxReturn2(0,'取消赞成功',['status'=>1]);
+	            }else{
+	                $data['support'] = 0;
+	                
+	                if($this->edit($data))
+	                    return ajaxReturn2(0,'踩成功',['status'=>4]);;
+	            }
+	        }
+	         
+	        if((int)$info['support'] == 0){
+	            if($_GET['act'] == 'cai'){
+	                 
+	                if($this->where($data)->delete())
+	                    return ajaxReturn2(0,'取消踩成功',['status'=>2]);
+	            }else{
+	                $data['support'] = 1;
+	                if($this->edit($data))
+	                    return ajaxReturn2(0,'赞成功',['status'=>3]);
+	            }
+	        }
+	    }
+	    
+	    
+	    //当前用户没有记录的时候
+	    if($_GET['act'] == 'zan'){
+	        $data['support'] = 1;
+	        if($this->edit($data))
+	                    return ajaxReturn2(0,'赞成功',['status'=>3]);
+	    }
+	    
+	    if($_GET['act'] == 'cai'){
+	        $data['support'] = 0;
+	        if($this->edit($data))
+	            return ajaxReturn2(0,'踩成功',['status'=>4]);
+	    }
+	     
+	}
 	/**
 	 * 编辑or添加
 	 */
 	function edit($data){
-		$data = $this->setValidate($data, $id);
+		$data = $this->setValidate($data);
 		if(!$this->create($data))
 			return false;
 
 		if(!($id = $this->add())){
-			return $this->setError('添加失败!');
+			return 0;//操作失败
 		}
-		return $id;
+		return 1;//操作成功
 	}
 	/**
 	 * 赞的个数
