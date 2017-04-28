@@ -23,7 +23,7 @@ class CollectModel extends BaseModel {
 	function edit($data){
 	    $id = $this->where($data)->getField('id');
 	    if($this->where(['id'=>$id])->delete()){
-	        return ajaxReturn2(0,'取消收藏成功');
+	        return 1;
 	    }
 
 	    $data['update_time'] = $data['add_time'] = time();
@@ -31,9 +31,9 @@ class CollectModel extends BaseModel {
 	        return false;
 	
 	        if(!($this->add())){
-	            return ajaxReturn2(1,'收藏失败');
+	            return 2;
 	        }else{
-	            return ajaxReturn2(0,'收藏成功');
+	            return 3;
 	        }
 
 	}
