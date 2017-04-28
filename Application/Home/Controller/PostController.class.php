@@ -137,8 +137,8 @@ class PostController extends PublicController {
         $id = d('postComment')->edit($data);
         //dump($id);exit();
         if(!$id)
-            ajaxreturn(1, '评论失败');
-        ajaxreturn(0, '评论成功');
+            ajaxReturn(1, '评论失败');
+        ajaxReturn(0, '评论成功');
     }
     
     public function userInfo(){

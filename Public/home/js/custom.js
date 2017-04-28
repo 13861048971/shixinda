@@ -439,6 +439,7 @@ $('.btn-pub-comment').on('click',function(){
 			type:'post',
 			data:{post_id:post_id,content:comment},
 			success:function(data){
+				data = JSON.parse(data);
 				if(!data.error){
 					win.alert(data.info, 'success');
 					$('.pub-comment textarea').val('');
