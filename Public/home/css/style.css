@@ -1207,7 +1207,7 @@ ul#filters {
 	position: relative;
 }
 .post-index .post-index-banner .banner-img{
-	position: absolute;
+	position: relative;
 	list-style: none;
 	padding: 0;
 	overflow: hidden;
@@ -1244,7 +1244,7 @@ ul#filters {
 	width: 600%;
 	padding: 0;
 	overflow: hidden;
-	position: absolute;
+	position: relative;
 	height: 100%;
 	margin: 0;
 }

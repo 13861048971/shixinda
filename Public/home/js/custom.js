@@ -387,15 +387,47 @@ $('.post-handle .post-collect').on('click',function(){
 	})
 });
 // 帖子首页轮播图
-(function(){
-	if(!$('.post-index-banner')[0])
-		return;
-	
-	var index = 0;
-	function changeImg(index){
-		a
+function changeImg(index){
+	var rightImg = (index*514.8)+"px";
+	var rightTitle = (index*308)+"px";
+	$('.banner-img').animate({right:rightImg}, 2000);
+	$('.banner-title ul').animate({right:rightTitle}, 2000);
+}
+var curIndex = 0;
+var imgLen = $(".banner-img li").length;
+var autoChange = setInterval(function(){ 
+	if(curIndex < imgLen-1){ 
+		curIndex ++; 
+	}else{ 
+		curIndex = 0;
 	}
-}());
+	changeImg(curIndex); 
+},2500);
+function autoChangeAgain(curIndex){
+	autoChange = setInterval(function(){ 
+	if(curIndex < imgLen-1){ 
+		curIndex ++;
+	}else{ 
+		curIndex = 0;
+	}
+	changeImg(curIndex); 
+	},2500);
+}
+$('.banner-control span').hover(function(){
+	var index = $(this).index();
+	$(this).css('background-color','#1C86EE');
+	window.clearInterval(autoChange);
+	$('.banner-img').stop();
+	$('.banner-title ul').stop();
+	var rightImg = (index*514.8)+"px";
+	var rightTitle = (index*308)+"px";
+	$('.banner-img').css('right',rightImg);
+	$('.banner-title ul').css('right',rightTitle);
+},function(){
+	var index = $(this).index();
+	$(this).css('background-color','#9b9999');
+	autoChangeAgain(index);
+});
 // 帖子评论
 $('.btn-pub-comment').on('click',function(){
 	var comment = $('.pub-comment textarea').val();
@@ -468,3 +500,4 @@ $('.post-detail-page .post-support').on('click', function(){
 $('.post-detail-page .post-oppose').on('click', function(){
 	postSupport('cai');
 });
+//举报弹窗
