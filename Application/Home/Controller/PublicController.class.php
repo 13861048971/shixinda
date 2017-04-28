@@ -235,10 +235,6 @@ class PublicController extends Controller {
 	    $data['type'] = $this->typeArr[$type];
 	    $data['node_id'] = $_GET['id'];
 	    $data['user_id'] = $this->user['id'];
-	    if(d('collect')->edit($data))
-	       return ajaxReturn(0,'收藏成功');
-	    return ajaxReturn(1,$this->getError());
-
 	}
 	
 	/**

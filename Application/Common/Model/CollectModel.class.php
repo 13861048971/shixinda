@@ -25,8 +25,7 @@ class CollectModel extends BaseModel {
 	    if($this->where(['id'=>$id])->delete()){
 	        return ajaxReturn2(0,'取消收藏成功');
 	    }
-	        
-	
+
 	    $data['update_time'] = $data['add_time'] = time();
 	    if(!$this->create($data))
 	        return false;
