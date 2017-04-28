@@ -18,9 +18,9 @@ class PostController extends PublicController {
                 $list[$k1]['list'][$k2]['todayPostNum'] = d('post')->where($con)->count();
                 $list[$k1]['list'][$k2]['mainPostNum'] = d('post')->where(['post_cate_id' => ['in', $idArr1]])->count();
                 $idArr2 = d('post')->where(['post_cate_id' => ['in', $idArr1]])->getField('id', true);
-                
-                //$list[$k1]['list'][$k2]['replyPostNum'] = d('post_comment')->where(['post_id'=>['in', $idArr2]])->count();
-                //$list[$k1]['list'][$k2]['postNum'] = $list[$k1]['list'][$k2]['mainPostNum'] + $list[$k1]['list'][$k2]['replyPostNum'];
+                //dump($idArr2);exit();
+                $list[$k1]['list'][$k2]['replyPostNum'] = d('postComment')->where(['post_id'=>['in', $idArr2]])->count();
+                $list[$k1]['list'][$k2]['postNum'] = $list[$k1]['list'][$k2]['mainPostNum'] + $list[$k1]['list'][$k2]['replyPostNum'];
             }
             //dump($v2);exit();
             //dump($list[$k1]['list']);exit();
@@ -91,10 +91,10 @@ class PostController extends PublicController {
 	    if($_GET['viewHost']){
 	       $con['user_id'] = $userRow['id'];
 	    }
-	    $data = d('post_comment')->getPageList($con, '*', 'add_time desc', 5);//帖子评论信息
-	    $replyNum = d('post_comment')->where(['post_id'=>$id])->count();//帖子回复数 
+	    $data = d('postComment')->getPageList($con, '*', 'id asc', 5);//帖子评论信息
+	    $replyNum = d('postComment')->where(['post_id'=>$id])->count();//帖子回复数 
 	    
-	    //$collectNum = d('collect')->where(['type'=>'post', 'node_id'=>$id])->count();//收藏数
+	    $collectNum = d('collect')->where(['type'=>'post', 'node_id'=>$id])->count();//收藏数
 	    
 	    foreach($data['list'] as $k=>$v){
 	        $data['list'][$k]['avatar'] = d('user')->where(['id'=>$v['user_id']])->getField('avatar');
@@ -111,14 +111,14 @@ class PostController extends PublicController {
 	    $this->assign('user', $this->user);
 	    $this->display();
 	}
-
-//     //帖子收藏
-     public function postCollect(){
+	
+    //帖子收藏
+    public function postCollect(){
         if(!$this->user['id'])
            return ajaxReturn2(1,'请先登录');
         d(collect)->collect('post');
-     }
-   
+    }
+     
     //帖子点赞或者踩
     public function postSupport(){
         if(!$this->user['id'])
