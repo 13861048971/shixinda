@@ -1,8 +1,5 @@
 <?php
 use Think\Model;
-/**
- * 举报
- */
 class ReportModel extends BaseModel {
     public $statusArr = ['已处理', '待处理'];
     public $typeArr = ['post'=>1,'new'=>'2'];
@@ -52,13 +49,9 @@ class ReportModel extends BaseModel {
 	public function getInfo($id){
 		$info = $this->find($id);
 		if(!$info) return;
-	
-		$info['reportTypeName'] = $this->reportTypeArr[$info['report_type']];
 		$info['addTime'] = local_date($info['add_time']);
 		$info['updateTime'] = local_date($info['update_time']);
-		
 		$info['user'] = d('user')->getInfo($info['user_id']);;
-		$info['pho'] = d('pho')->getInfo($info['pho_id']);
 		return $info;
 	}
 	
