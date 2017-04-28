@@ -2,14 +2,18 @@
 	<div class="post-detail-page" data-id="{$postRow.id}"> 
 		<div class="container">
 			<div class="row post-title">
-				<a href=""><img src="{$userRow.avatar}" alt=""></a>
+				<a href="{:u('post/userInfo', ['userId'=>$userRow['id']])}"><img src="{$userRow.avatar}" alt=""></a>
 				<h3>{$postRow.title}</h3>
 				<p>
 					<a href="">{$userRow.nickname}</a>
 					<span>{$postRow.addTime}发表</span>
-					<span>阅读：<span>122</span></span>
-					<span>回复：<span>12</span></span>
-					<a href="{:u('/user/index')}">只看楼主</a>
+					<span>阅读：<span>{$postRow.click}</span></span>
+					<span>回复：<span>{$replyNum}</span></span>
+					<if condition="$viewHost neq 1">
+					 <a href="{:u('post/postDetail', ['id'=>$postRow['id'], 'viewHost'=>1])}">只看楼主</a>
+					<else/>
+					 <a href="{:u('post/postDetail', ['id'=>$postRow['id']])}">显示全部楼层</a>
+					</if>
 				</p>
 			</div>
 			<div class="row post-detail">
@@ -50,11 +54,14 @@
 					</div>
 					<div class="row post-pager"></div>
 					<div class="row back-list">
-						<a href="">返回列表</a>
+						<a href="{:u('post/postList', $idArr)}">返回列表</a>
 					</div>
 					<div class="row pub-comment">
-						<textarea rows="" cols="" placeholder="请填写评论内容"></textarea>
+					    <if condition="$user neq null">
+						 <textarea rows="" cols="" placeholder="请填写评论内容"></textarea>
+						<else/>
 						<textarea rows="" cols="" placeholder="请先登录后评论" disabled></textarea>
+						</if>
 						<button type="button" class="btn-pub-comment">发表评论</button>
 					</div>
 				</div>

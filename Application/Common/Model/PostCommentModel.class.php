@@ -28,11 +28,8 @@ class PostCommentModel extends BaseModel{
         if(!$this->create($data))
             return false;
             if(!($id = $this->add()))
-                return $this->setError('发送失败!');
-                //     		if(!$this->sendMsg($id)){
-                //     			return $this->setError('发送消息失败!');
-                //     		}
-                return $id;
+                return $this->setError('评论失败!');
+            return $id;
     }
     
     function setValidate($data){
