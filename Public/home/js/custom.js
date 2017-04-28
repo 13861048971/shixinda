@@ -397,7 +397,9 @@ function changeImg(index){
 }
 var curIndex = 0;
 var imgLen = $(".banner-img li").length;
-var autoChange = setInterval(function(){ 
+var autoChange = setInterval(function(){
+	if(!$('.post-index-banner')[0])
+		return false;
 	if(curIndex < imgLen-1){ 
 		curIndex ++; 
 	}else{ 
@@ -505,3 +507,9 @@ $('.post-detail-page .post-oppose').on('click', function(){
 	postSupport('cai');
 });
 //举报弹窗
+$('.post-detail-page .post-tip').on('click', function(){
+	$('.win-tip-container').show();
+});
+$('.win-tip-bg').on('click', function(){
+	$(this).parent().hide();
+})

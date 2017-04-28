@@ -5,6 +5,8 @@
 body {
 	font-family: '微软雅黑';
 	font-size: 14px;
+	position: relative;
+	z-index: 1;
 }
 
 h1,
@@ -1282,4 +1284,52 @@ ul#filters {
 }
 .post-index .post-index-banner .banner-control span.banner-cur{
 	background-color: #1C86EE;
+}
+/*举报弹窗*/
+.win-tip-container{
+	display: none;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	z-index: 15;
+}
+.win-tip-bg{
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, .4);
+	z-index: 15;
+}
+.win-tip-container .win-tip{
+	position: fixed;
+	width: 400px;
+	height: 250px;
+	background-color: #fff;
+	z-index: 15;
+	top: 30%;
+	left: 35%;
+	padding: 15px 20px;
+}
+.win-tip-container .win-tip h4{
+	margin: 0;
+}
+.win-tip-container .win-tip textarea{
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	width: 100%;
+	height: 70%;
+	margin: 10px 0 3px 0;
+	padding: 10px;
+	outline: none;
+	resize: none;
+}
+.win-tip-container .win-tip button{
+	border: 1px solid #1C86EE;
+	border-radius: 4px;
+	width: 70px;;
+	height: 30px;
+	color: #fff;
+	background-color: #1C86EE;
+	outline: none;
+	float: right;
 }

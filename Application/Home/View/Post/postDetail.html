@@ -1,4 +1,14 @@
 <include file="Public:header" />
+<div class="win-tip-container">
+	<div class="win-tip-bg">
+	</div>
+	<div class="win-tip">
+		<h4>举报内容</h4>
+		<textarea cols="30" rows="10" placeholder="五十字以内" maxlength="50"></textarea>
+		<button type="button">提交</button>
+	</div>
+</div>
+	
 	<div class="post-detail-page" data-id="{$postRow.id}"> 
 		<div class="container">
 			<div class="row post-title">
@@ -26,7 +36,7 @@
 							<a href="javascript:void(0);" class="post-collect">已收藏<span>(12)</span></a>
 							<a href="javascript:void(0);" class="post-support">赞<span>(12)</span></a>
 							<a href="javascript:void(0);" class="post-oppose">踩<span>(12)</span></a>
-							<p><a href="">举报</a></p>
+							<p><a href="javascript:void(0);" class="post-tip">举报</a></p>
 						</div>
 					</div>
 					<div class="row post-comment-item">
@@ -44,9 +54,9 @@
 									</div>
 								</li>
 								<li class="comment-handle">
-									<a href="">支持</a>
-									<a href="">反对</a>
-									<a href="">举报</a>
+									<a href="javascript:void(0);">支持</a>
+									<a href="javascript:void(0);">反对</a>
+									<a href="javascript:void(0);" class="post-tip">举报</a>
 								</li>
 							</ul>
 						</div>
@@ -80,8 +90,5 @@
 		</div>
 	</div>
 <include file="Public:footer" />
-<div class="win-tip-bg">
-	<div class="win-tip"></div>
-</div>
 </body>
 </html>
