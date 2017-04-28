@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2017-04-27 13:40:31
+Date: 2017-04-28 18:40:48
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -36,7 +36,7 @@ CREATE TABLE `admin` (
 -- ----------------------------
 -- Records of admin
 -- ----------------------------
-INSERT INTO `admin` VALUES ('1', '1', 'admin', 'e10adc3949ba59abbe56e057f20f883e', '100', '', '/Public/qrcode/2016-07-02/1467438415603.png', '1493015046', '0', '1467904390');
+INSERT INTO `admin` VALUES ('1', '1', 'admin', 'e10adc3949ba59abbe56e057f20f883e', '100', '', '/Public/qrcode/2016-07-02/1467438415603.png', '1493366912', '0', '1467904390');
 INSERT INTO `admin` VALUES ('2', '1', 'holahi', 'fcea920f7412b5da7be0cf42b8c93759', '0', '', '/Public/qrcode/2016-06-25/1466785122121.png', '0', '1466784503', '1466785436');
 
 -- ----------------------------
@@ -54,7 +54,7 @@ CREATE TABLE `admin_role` (
 -- ----------------------------
 -- Records of admin_role
 -- ----------------------------
-INSERT INTO `admin_role` VALUES ('1', '管理员', 'a:17:{i:0;s:15:\"index/adminlist\";i:1;s:15:\"index/adminedit\";i:2;s:14:\"index/admindel\";i:3;s:14:\"index/rolelist\";i:4;s:14:\"index/roleedit\";i:5;s:13:\"index/roledel\";i:6;s:10:\"user/index\";i:7;s:12:\"user/comment\";i:8;s:12:\"user/message\";i:9;s:13:\"user/postcate\";i:10;s:9:\"user/post\";i:11;s:16:\"user/postcomment\";i:12;s:13:\"content/index\";i:13;s:19:\"content/contentcate\";i:14;s:18:\"content/friendlink\";i:15;s:18:\"content/navigation\";i:16;s:13:\"setting/index\";}', '');
+INSERT INTO `admin_role` VALUES ('1', '管理员', 'a:18:{i:0;s:15:\"index/adminlist\";i:1;s:15:\"index/adminedit\";i:2;s:14:\"index/admindel\";i:3;s:14:\"index/rolelist\";i:4;s:14:\"index/roleedit\";i:5;s:13:\"index/roledel\";i:6;s:10:\"user/index\";i:7;s:12:\"user/comment\";i:8;s:12:\"user/message\";i:9;s:13:\"user/postcate\";i:10;s:9:\"user/post\";i:11;s:16:\"user/postcomment\";i:12;s:11:\"user/report\";i:13;s:13:\"content/index\";i:14;s:19:\"content/contentcate\";i:15;s:18:\"content/friendlink\";i:16;s:18:\"content/navigation\";i:17;s:13:\"setting/index\";}', '');
 INSERT INTO `admin_role` VALUES ('2', '会员管理员', 'a:5:{i:6;s:10:\"user/index\";i:7;s:13:\"user/userbill\";i:8;s:13:\"user/withdraw\";i:9;s:13:\"user/vipapply\";i:10;s:14:\"user/giftapply\";}', '');
 INSERT INTO `admin_role` VALUES ('3', '内容管理员', 'a:6:{i:11;s:9:\"cms/index\";i:12;s:12:\"cms/category\";i:13;s:10:\"cms/gossip\";i:14;s:13:\"cms/gossipcat\";i:15;s:9:\"cms/about\";i:16;s:11:\"cms/contact\";}', '');
 
@@ -202,7 +202,7 @@ CREATE TABLE `collect` (
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`),
   KEY `node_id` (`node_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of collect
@@ -210,6 +210,7 @@ CREATE TABLE `collect` (
 INSERT INTO `collect` VALUES ('1', '1', '2', '1', '1471014347');
 INSERT INTO `collect` VALUES ('2', '0', '2', '1', '1471014368');
 INSERT INTO `collect` VALUES ('5', '2', '1', '1', '1472711985');
+INSERT INTO `collect` VALUES ('9', '1', '22', '30', '1493374111');
 
 -- ----------------------------
 -- Table structure for `comment`
@@ -459,12 +460,12 @@ CREATE TABLE `post` (
   `add_time` int(11) NOT NULL COMMENT '添加时间',
   `update_time` int(11) NOT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of post
 -- ----------------------------
-INSERT INTO `post` VALUES ('3', '18', '3', 'asd', '啊大神的', '0', '1', '1492134989', '1493116416');
+INSERT INTO `post` VALUES ('3', '18', '3', 'asd', '啊大神的', '6', '1', '1492134989', '1493116416');
 INSERT INTO `post` VALUES ('4', '12', '2', 'ssas', 'dada', '0', '1', '1492251867', '1492566893');
 INSERT INTO `post` VALUES ('6', '12', '3', 'sadd', 'da', '0', '1', '1492479290', '1492479290');
 INSERT INTO `post` VALUES ('7', '13', '5', '啊啊', 'sd', '0', '1', '1492482231', '1492482231');
@@ -485,13 +486,13 @@ INSERT INTO `post` VALUES ('25', '11', '1', '亲亲亲亲', '撒嗒', '0', '1', 
 INSERT INTO `post` VALUES ('26', '12', '9', '撒嗒222亲戚', '阿杜', '0', '1', '1492667180', '1492667180');
 INSERT INTO `post` VALUES ('27', '12', '9', '撒嗒222亲戚', '阿杜', '0', '1', '1492667185', '1492667185');
 INSERT INTO `post` VALUES ('28', '12', '9', '撒嗒222亲戚', '阿杜', '0', '1', '1492667214', '1492667214');
-INSERT INTO `post` VALUES ('29', '13', '9', '撒嗒222亲戚', '阿杜', '0', '1', '1492667273', '1492745485');
-INSERT INTO `post` VALUES ('30', '13', '9', '求求求求求', '安达市', '0', '1', '1492668587', '1492745461');
+INSERT INTO `post` VALUES ('29', '13', '9', '撒嗒222亲戚', '阿杜', '1', '1', '1492667273', '1492745485');
+INSERT INTO `post` VALUES ('30', '13', '9', '求求求求求', '安达市', '18', '1', '1492668587', '1492745461');
 INSERT INTO `post` VALUES ('33', '13', '0', 'sd', 'sad', '0', '1', '1492744362', '1492744362');
 INSERT INTO `post` VALUES ('34', '13', '0', 'sdf', 'ds', '0', '1', '1492744414', '1492744414');
 INSERT INTO `post` VALUES ('35', '13', '0', 'asd', 'asd', '0', '1', '1492745498', '1492745498');
 INSERT INTO `post` VALUES ('38', '18', '1', '撒嗒', '暗暗地', '0', '1', '1493107649', '1493107649');
-INSERT INTO `post` VALUES ('39', '22', '1', '将军山一日游', '撒旦法', '0', '1', '1493260052', '1493260052');
+INSERT INTO `post` VALUES ('40', '22', '1', '让我们一起去玩吧', '撒嗒', '19', '1', '1493274697', '1493274697');
 
 -- ----------------------------
 -- Table structure for `post_cate`
@@ -536,12 +537,14 @@ CREATE TABLE `post_comment` (
   `add_time` int(11) NOT NULL COMMENT '添加时间',
   `update_time` int(11) NOT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of post_comment
 -- ----------------------------
 INSERT INTO `post_comment` VALUES ('6', '13', '0', 'dsf&nbsp;', '0', '1', '1492743351', '1492743351');
+INSERT INTO `post_comment` VALUES ('7', '12', '40', '', '0', '1', '0', '0');
+INSERT INTO `post_comment` VALUES ('8', '0', '40', '', '0', '0', '0', '0');
 
 -- ----------------------------
 -- Table structure for `region`
@@ -3972,20 +3975,46 @@ INSERT INTO `region` VALUES ('3407', '3401', '肥东县', '3', '0');
 INSERT INTO `region` VALUES ('3408', '3401', '肥西县', '3', '0');
 
 -- ----------------------------
+-- Table structure for `report`
+-- ----------------------------
+DROP TABLE IF EXISTS `report`;
+CREATE TABLE `report` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `node_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `type` int(10) NOT NULL,
+  `content` varchar(150) NOT NULL,
+  `status` int(1) NOT NULL,
+  `add_time` int(11) NOT NULL,
+  `update_time` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of report
+-- ----------------------------
+INSERT INTO `report` VALUES ('2', '1', '1', '1', '撒大声道', '1', '1493374761', '1493375326');
+INSERT INTO `report` VALUES ('3', '30', '22', '0', '萨达斯', '1', '1493375381', '1493375811');
+INSERT INTO `report` VALUES ('4', '30', '22', '0', '萨达斯的撒啊啊实打实', '0', '1493375422', '1493375676');
+INSERT INTO `report` VALUES ('5', '30', '22', '1', '色情广告', '1', '1493376014', '1493376014');
+
+-- ----------------------------
 -- Table structure for `support`
 -- ----------------------------
 DROP TABLE IF EXISTS `support`;
 CREATE TABLE `support` (
+  `id` int(11) NOT NULL,
   `type` tinyint(1) NOT NULL,
   `node_id` int(10) NOT NULL,
   `user_id` int(10) NOT NULL,
   `support` tinyint(1) NOT NULL,
-  PRIMARY KEY (`type`,`node_id`,`user_id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of support
 -- ----------------------------
+INSERT INTO `support` VALUES ('0', '1', '30', '22', '0');
 
 -- ----------------------------
 -- Table structure for `tdk`
@@ -4001,7 +4030,7 @@ CREATE TABLE `tdk` (
   `add_time` int(11) NOT NULL COMMENT '添加时间',
   `update_time` int(11) NOT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tdk
@@ -4042,6 +4071,7 @@ INSERT INTO `tdk` VALUES ('34', '0', '0', '', '', '', '0', '1493111944');
 INSERT INTO `tdk` VALUES ('35', '0', '0', '', '', '', '0', '1493260052');
 INSERT INTO `tdk` VALUES ('36', '1', '21', '', '', '', '1493261147', '1493264539');
 INSERT INTO `tdk` VALUES ('37', '1', '22', '', '', '', '1493261166', '1493265145');
+INSERT INTO `tdk` VALUES ('38', '0', '0', '', '', '', '0', '1493274697');
 
 -- ----------------------------
 -- Table structure for `user`
@@ -4083,7 +4113,7 @@ INSERT INTO `user` VALUES ('18', '18961841640', '', 'c19fd740a33cf3d675c3c53dc53
 INSERT INTO `user` VALUES ('19', '15156811083', '', 'c19fd740a33cf3d675c3c53dc534b4ee', '', null, '男', '', '', '', '', '', '0', '1493024528', '1493024528', '0', '', '', '1493024539', '0');
 INSERT INTO `user` VALUES ('20', '18961841571', '', 'c19fd740a33cf3d675c3c53dc534b4ee', '', null, '男', '', '', '', '', '', '0', '1493024607', '1493024607', '0', '', '', '1493024607', '0');
 INSERT INTO `user` VALUES ('21', '18974516541', '', 'c19fd740a33cf3d675c3c53dc534b4ee', '', null, '男', '', '', '', '', '', '0', '1493024634', '1493024634', '0', '', '', '1493024634', '0');
-INSERT INTO `user` VALUES ('22', '13861048971', '', 'c19fd740a33cf3d675c3c53dc534b4ee', '/Public/upload/avatar/2017-04-27/590154e96c267.jpg', null, '男', '', '', '', '', '', '0', '1493178203', '1493259513', '0', '', '赤心', '1493260767', '0');
+INSERT INTO `user` VALUES ('22', '13861048971', '', 'c19fd740a33cf3d675c3c53dc534b4ee', '/Public/upload/avatar/2017-04-27/590154e96c267.jpg', null, '男', '', '', '', '', '', '0', '1493178203', '1493259513', '0', '', '赤心', '1493373903', '0');
 
 -- ----------------------------
 -- Table structure for `user_msg`
