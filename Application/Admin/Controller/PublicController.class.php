@@ -11,7 +11,7 @@ class PublicController extends Controller {
 	public $parentUrl; //
 	public $mainTitle;
 	public $user;
-	
+	public $typeArr = ['帖子','新闻'];
 	public $adminActions;
 
 	public function _initialize(){	
@@ -225,7 +225,7 @@ protected function ajaxEdit($modName, $template = null, $callback = null,$succes
 		}	
 		
 		if($modTdk->typeArr){
-		    $typeList = [[ 'name'=>'type', 'list' => $modTdk->typeArr]];
+		    $typeList = [[ 'name'=>'type', 'list' => $this->typeArr]];
 		    $tdkRow = d('tdk')->getInfo($_GET['id']);
 		    if(isset($tdkRow['type'])){
 		        $typeList[0]['checked'] = $tdkRow['type'];
@@ -234,7 +234,7 @@ protected function ajaxEdit($modName, $template = null, $callback = null,$succes
 		    if(!isset($tdkRow['status']))
 		        $typeList[0]['checked'] = 1;
 		        	
-		        $this->assign('typeList', $typeList);
+ 		        $this->assign('typeList', $typeList);
 		}
 		
 		ajaxReturn(0, '',	['content'=>$this->fetch($template)]);

@@ -3,7 +3,7 @@ use Think\Controller;
 class UserController extends PublicController {
 	public $mod;
  	public $cateList = [];
-	
+ 
 	function _initialize(){
 		parent::_initialize();
 		$this->mod = D('user');
@@ -353,5 +353,36 @@ class UserController extends PublicController {
 	public function postCateDel(){
 	    $this->ajaxDel('postCate');
 	}
+	
+	//用户举报
+	public function report(){
+	    $this->setRightAction([[ 'name'=>'用户举报', 'dialog'=>true,
+	        'dialog-lg'=>true, 'url' => u('reportEdit') ]]);
+	    
+	    $con = $_GET;
+	    $data = d('report')->select();
+	    
+	    
+	    $this->assign('list',$data);
+	    $this->assign('search', $_GET);
+	    $this->display();
+	}
+	
+	public function reportEdit(){
+	    $this->ajaxEdit('report',null,function(){
+	        $info = d('report')->where(['id'=>$_GET['id']])->find();
+	        $this->assign('row',$info);
+	    });
+	}
+	
+// 	public function reportEdit(){
+// 	    $this->ajaxEdit('postCate',null, function($row, $mod){
+	        
+// 	    }
+// // 	    $info = d('report')->where(['id'=>$_GET['id']])->find();
+// // 	    var_dump($info);exit;
+// // 	    $this->assign('row',$info);
+// // 	    $this->di
+// 	}
 	
 }

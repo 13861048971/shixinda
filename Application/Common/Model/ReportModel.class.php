@@ -4,6 +4,8 @@ use Think\Model;
  * 举报
  */
 class ReportModel extends BaseModel {
+    public $statusArr = ['已处理', '待处理'];
+    public $typeArr = ['post'=>1,'new'=>'2'];
 	public $cacheKey  = 'report_';
 	public $reportTypeArr = [ 1=>'联系不上(手机无法接听)','诈骗,提前收取费用',
 		'信息违法虚假','涉黄违法','其他原因' ];
@@ -14,11 +16,15 @@ class ReportModel extends BaseModel {
 		
 		$this->_validate = [
 			['user_id', 	'require', 	'缺少用户id', 1],
-			['pho_id', 		'require', 	'缺少摄影师id', 1],
-			['report_type', 'require', 	'缺少举报类型!', 1],
+			['node_id', 		'require', 	'缺少内容id', 1],
+ 			['type', 'require', 	'缺少类型!', 1],
 		];
 	}
 	
+	
+// 	function report(){
+	    
+// 	}
 	/**
 	 * 编辑or添加
 	 */
@@ -42,6 +48,7 @@ class ReportModel extends BaseModel {
 		return $id;
 	}
 	
+
 	public function getInfo($id){
 		$info = $this->find($id);
 		if(!$info) return;
@@ -72,9 +79,12 @@ class ReportModel extends BaseModel {
 	}
 	
 	function getPageList($con, $fields = 'id', $order = 'id desc', $perNum = 15){
+	    
 		$data = parent::getPageList($con, $fields, $order, $perNum);
+		
 		foreach($data['list'] as $k=>$v){
-			$v = $this->getInfo($v['id']);
+		   
+			$v = $this->getInfo($v['id']); 
 			$data['list'][$k] = $v;
 		}
 	

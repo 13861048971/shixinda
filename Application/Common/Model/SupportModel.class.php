@@ -49,7 +49,6 @@ class SupportModel extends BaseModel {
 	                    return ajaxReturn2(0,'取消赞成功',['status'=>1]);
 	            }else{
 	                $data['support'] = 0;
-	                
 	                if($this->edit($data))
 	                    return ajaxReturn2(0,'踩成功',['status'=>4]);;
 	            }
@@ -67,7 +66,6 @@ class SupportModel extends BaseModel {
 	            }
 	        }
 	    }
-	    
 	    
 	    //当前用户没有记录的时候
 	    if($_GET['act'] == 'zan'){

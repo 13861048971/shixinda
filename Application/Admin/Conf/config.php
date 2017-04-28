@@ -31,6 +31,7 @@ return array(
 	        ['postCate','帖子分类'],
 	        ['post','帖子管理'],
 	        ['postComment','帖子评论'],
+		    ['report','用户举报'],
 	        
 	    ],
 		'content'=>[
@@ -58,6 +59,7 @@ return array(
 	        ['postCate','帖子分类'],
 	        ['post','帖子管理'],
 	        ['postComment','帖子评论'],
+		    ['report','用户举报'],
 	        
 	    ],
 		'content'=>[
