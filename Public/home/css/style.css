@@ -802,7 +802,7 @@ ul#filters {
 .post-detail-page+div.footer-sec{
 	margin: 0;
 }
-.post-index .post-content-top div{
+.post-index .post-content-top>div{
 	background-color: #fff;
 	height: 255px;
 	padding: 0;
@@ -1200,4 +1200,83 @@ ul#filters {
     color: #FFF;  
     font-weight: 700;  
     border-color: #50A8E6;  
-}  
+}
+/*帖子首页轮播图*/
+.post-index .post-index-banner{
+	overflow: hidden;
+	position: relative;
+}
+.post-index .post-index-banner .banner-img{
+	position: absolute;
+	list-style: none;
+	padding: 0;
+	overflow: hidden;
+	margin: 0;
+	width: 600%;
+	z-index: 1;
+	height: 255px;
+}
+.post-index .post-index-banner .banner-img li{
+	float: left;
+}
+.post-index .post-index-banner .banner-img img{
+	width: 514.8px;
+	height: 255px;
+}
+.post-index .post-index-banner .banner-img+div{
+	position: absolute;
+	bottom: 0;
+	height: 40px;
+	background-color: rgba(0, 0, 0, .3);
+	width: 100%;
+	z-index: 2;
+	overflow: hidden;
+}
+.post-index .post-index-banner .banner-title{
+	width: 60%;
+	overflow: hidden;
+	position: relative;
+	height: 100%;
+	float: left;
+}
+.post-index .post-index-banner .banner-title ul{
+	list-style: none;
+	width: 600%;
+	padding: 0;
+	overflow: hidden;
+	position: absolute;
+	height: 100%;
+	margin: 0;
+}
+.post-index .post-index-banner .banner-title ul li{
+	width: 308px;
+	float: left;
+	height: 100%;
+	padding: 0 0 0 30px;
+}
+.post-index .post-index-banner .banner-title ul li a{
+	display: block;
+	width: 308px;
+	height: 40px;
+	line-height: 40px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	cursor: pointer;
+}
+.post-index .post-index-banner .banner-control{
+	float: left;
+	width: 40%;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+}
+.post-index .post-index-banner .banner-control span{
+	display: inline-block;
+	width: 18px;
+	height: 18px;
+	border-radius: 10px;
+	background-color: #9b9999;
+	margin: 11px 8px 0 0;
+	cursor: pointer;
+}

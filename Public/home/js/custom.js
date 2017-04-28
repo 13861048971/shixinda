@@ -362,3 +362,24 @@ initMulSel();
 		}
 	}
 }());
+// 帖子详情收藏
+$('.post-handle .post-collect').on('click',function(){
+	$.ajax({
+		url:'/post/postCollect',
+		dataType:'json',
+		type:'get',
+		success:function(data){
+			if(data.error){
+				win.alert('data.info', 'success');
+				$('.post-collect').text('');
+				var numNode = $('.post-collect').find('span');
+				var num = numNode.text();
+				num = num.substr(1, num.length-2);
+				num = parseInt(num)+1;
+				num = parseInt(num)-1;
+			}else{
+				win.alert('data.info', 'error');
+			}
+		}	
+	})
+});
