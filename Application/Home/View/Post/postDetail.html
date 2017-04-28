@@ -2,21 +2,21 @@
 	<div class="post-detail-page"> 
 		<div class="container">
 			<div class="row post-title">
-				<a href=""><img src="" alt=""></a>
-				<h3>帖子标题</h3>
+				<a href=""><img src="{$userRow.avatar}" alt=""></a>
+				<h3>{$postRow.title}</h3>
 				<p>
-					<a href="">用户名</a>
-					<span>2017-4-26 15:43 发表</span>
+					<a href="">{$userRow.nickname}</a>
+					<span>{$postRow.addTime}发表</span>
 					<span>阅读：<span>122</span></span>
 					<span>回复：<span>12</span></span>
-					<a href="">只看楼主</a>
+					<a href="{:u('/user/index')}">只看楼主</a>
 				</p>
 			</div>
 			<div class="row post-detail">
 				<div class="col-md-9">
 					<div class="row post-content">
 						<div>
-							内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+						  {$postRow.content}
 						</div>
 						<div class="post-handle">
 							<a href="">收藏(12)</a>
@@ -26,16 +26,17 @@
 						</div>
 					</div>
 					<div class="row post-comment-item">
-						<div class="col-md-2"><a href=""><img src="" alt=""></a></div>
+					    <foreach name="list" item="vo">
+						<div class="col-md-2"><a href=""><img src="{$vo.avatar}" alt=""></a></div>
 						<div class="col-md-10">
 							<ul>
-								<li><a href="">用户名</a> 2017-4-27 17:09 发表<span class="comment-floor floor-2">沙发</span></li>
+								<li><a href="">{$vo.username}</a> {$vo.addTime} 发表<span class="comment-floor floor-2">沙发</span></li>
 								<li>
 									<div class="comment-content">
 										<blockquote cite="">
 											内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
 										</blockquote>
-										内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+										{$vo.content}
 									</div>
 								</li>
 								<li class="comment-handle">
@@ -45,6 +46,7 @@
 								</li>
 							</ul>
 						</div>
+						</foreach>
 					</div>
 					<div class="row post-pager"></div>
 					<div class="row back-list">

@@ -1,21 +1,13 @@
 <include file="Public:header" />
 	<div class="post-index"> 
 		<div class="container"> 
-			<!--<foreach name="list" item="v1">
-				<div>{$v1.name}</div>
-				<ul>  
-				<foreach name="v1.list" item="v2">
-					<li><a href="{:u('post/postList',['id'=>$v2['id']])}">{$v2.name}</a></li> 
-				</foreach>
-				</ul>		
-			</foreach>-->
 			<div class="row post-content-top">
 				<div class="col-md-6"></div>
 				<div class="col-md-3">
 					<h4>最新帖子</h4>
 					<ul>
 					<foreach name="newList" item="vo">
-						<li><a href="" title="{$vo.title}">{$vo.title}</a></li>
+						<li><a href="{:u('post/postDetail', ['id'=>$vo['id']])}" title="{$vo.title}">{$vo.title}</a></li>
 					</foreach>
 					</ul>
 				</div>
@@ -23,7 +15,7 @@
 					<h4>本周最热</h4>
 					<ul>
 					<foreach name="hotList" item="vo">
-						<li><a href="" title="{$vo.title}">{$vo.title}</a></li>
+						<li><a href="{:u('post/postDetail', ['id'=>$vo['id']])}" title="{$vo.title}">{$vo.title}</a></li>
 				    </foreach>		
 					</ul>
 				</div>
