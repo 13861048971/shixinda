@@ -463,7 +463,7 @@ class UserModel extends BaseModel{
 	
 	/**
 	 * 
-	 * @param int $id 用户id
+	 * @param int $id 根据用户id获取楼主信息
 	 */
 	function getUser($id){
 	   return $this->where(['id'=>$id])->find();
