@@ -151,6 +151,8 @@ class UserController extends PublicController{
         ajaxReturn(1,'修改失败'.d('user')->getError());
 	}
 	
+	
+	
 // 	//登陆
 // 	function login(){
 // 		if(IS_POST){

@@ -462,6 +462,13 @@ class UserModel extends BaseModel{
 	}
 	
 	/**
+	 * 
+	 * @param int $id 用户id
+	 */
+	function getUser($id){
+	   return $this->where(['id'=>$id])->find();
+	}
+	/**
 	 * 查找用户id
 	 */
 	function getUserId($mobile){
