@@ -89,13 +89,7 @@ class PostController extends PublicController {
     public function postCollect(){
         if(!$this->user['id'])
            return ajaxReturn2(1,'请先登录');
-        $data = $this->collect('post');
-        if($data == 1)
-            return ajaxReturn2(0,'取消收藏成功');
-        if($data == 2)
-            return ajaxReturn2(1,'收藏失败');
-        if($data == 3)
-            return ajaxReturn2(0,'收藏成功');
+        $this->collect('post');
     }
     
     //帖子点赞或者踩
