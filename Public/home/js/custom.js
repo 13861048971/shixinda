@@ -507,9 +507,35 @@ $('.post-detail-page .post-oppose').on('click', function(){
 	postSupport('cai');
 });
 //举报弹窗
+var post_report_id = '';
 $('.post-detail-page .post-tip').on('click', function(){
 	$('.win-tip-container').show();
+	var _this = $(this);
+	if(!_this.data('id')){
+		post_report_id = $('.post-detail-page').data('id');
+	}else{
+		post_report_id = _this.data('id');
+	}
+	return post_report_id;
 });
 $('.win-tip-bg').on('click', function(){
 	$(this).parent().hide();
-})
+});
+$('.win-tip button').on('click', function(){
+	var content = $('.win-tip textarea').val();
+	$.ajax({
+		url:'/post/postReport',
+		type:'post',
+		dataType:'json',
+		data:{content:content,post_id:post_report_id},
+		success:function(data){
+			if(!data.error){
+				win.alert(data.info, 'success');
+				$('.win-tip textarea').val('');
+				$('.win-tip').hide();
+			}else{
+				win.alert(data.info, 'error');
+			}
+		}
+	});
+});
