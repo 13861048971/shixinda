@@ -5,7 +5,7 @@ class PublicController extends Controller {
 
 	public $sid;
 	public $user;
-	
+	public $typeArr = ['post'=>1,'new'=>'2'];
 	public function _initialize(){
 		$this->session();
 		$this->configInfo = $this->config();
@@ -227,5 +227,25 @@ class PublicController extends Controller {
 	    $this->assign($pageVar, $show);
 	    return $list;
 	}
+	/**
+	 * $type string 是内容类型名称
+	 * 收藏
+	 */
+	public function collect($type){
+	    $data['type'] = $this->typeArr[$type];
+	    $data['node_id'] = $_GET['id'];
+	    $data['user_id'] = $this->user['id'];
+	    if(d('collect')->edit($data))
+	       return ajaxReturn(0,'收藏成功');
+	    return ajaxReturn(1,$this->getError());
+
+	}
 	
+	/**
+	 * $type string 是内容类型名称
+	 * 赞或者踩
+	 */
+	public function support(){
+	    
+	}
 }

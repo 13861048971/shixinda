@@ -85,5 +85,13 @@ class PostController extends PublicController {
 	    $this->display();
 	}
 	
-	
+    //帖子收藏
+    public function postCollect(){
+        $this->collect('post');
+    }
+    
+    //帖子点赞或者踩
+    public function postSupport(){
+        
+    }
 }

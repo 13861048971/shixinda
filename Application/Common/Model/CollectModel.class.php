@@ -15,29 +15,55 @@ class CollectModel extends BaseModel {
 		];
 	}
 	
+	
+	
 	/**
 	 * 编辑or添加
 	 */
-	function edit($data, $id=null){
-		if($id){
-			$data['update_time'] = time();
-			$return  = $this->data($data)->where('id=' . (int)$id)->save();
-			if(false === $return){
-				$this->lastError = '修改失败!';
-				return false;
-			}
-			return $id;
-		}
-		
-		$data['update_time'] = $data['add_time'] = time();
-		if(!$this->create($data))
-			return false;
+	function edit($data){
+	    $id = $this->where($data)->getField('id');
+	    if($this->where(['id'=>$id])->delete()){
+	        return ajaxReturn2(0,'取消收藏成功');
+	    }
+	        
+	
+	    $data['update_time'] = $data['add_time'] = time();
+	    if(!$this->create($data))
+	        return false;
+	
+	        if(!($this->add())){
+	            return ajaxReturn2(1,'收藏失败');
+	        }else{
+	            return ajaxReturn2(0,'收藏成功');
+	        }
 
-		if(!($id = $this->add())){
-			return $this->setError('添加失败!');
-		}
-		return $id;
 	}
+	
+	
+// 	/**
+// 	 * 编辑or添加
+// 	 */
+// 	function edit($data,$id=null){
+// // 	    $id = $this->where($data)->getField();
+// 		if($id){
+// 			$data['update_time'] = time();
+// 			$return  = $this->data($data)->where('id=' . (int)$id)->save();
+// 			if(false === $return){
+// 				$this->lastError = '修改失败!';
+// 				return false;
+// 			}
+// 			return $id;
+// 		}
+		
+// 		$data['update_time'] = $data['add_time'] = time();
+// 		if(!$this->create($data))
+// 			return false;
+
+// 		if(!($id = $this->add())){
+// 			return $this->setError('添加失败!');
+// 		}
+// 		return $id;
+// 	}
 	
 	public function getInfo($id){
 		$info = $this->find($id);
