@@ -20,6 +20,10 @@ class UserController extends PublicController{
 		//ajaxReturn2(0,'', ['user' => $this->user]);
 	}
 	
+	function personInfo(){
+	    $this->display();
+	}
+	
 	//用户登录
 	public function login(){
 	    if(isset($_POST) && $_POST){
