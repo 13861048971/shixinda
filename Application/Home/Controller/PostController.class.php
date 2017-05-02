@@ -92,7 +92,7 @@ class PostController extends PublicController {
 	    if($_GET['viewHost']){
 	       $con['user_id'] = $userRow['id'];
 	    }
-	    $data = d('postComment')->getPageList($con, '*', 'id asc', 5);//帖子评论信息
+	    $data = d('postComment')->getPageList($con, '*', 'add_time asc', 5);//帖子评论信息
 	    $replyNum = d('postComment')->where(['post_id'=>$id])->count();//帖子回复数 
 	    
 	    $collectNum = d('collect')->where(['type'=>'post', 'node_id'=>$id])->count();//收藏数
@@ -125,11 +125,6 @@ class PostController extends PublicController {
         if(!$id)
             ajaxReturn(1, '评论失败');
         ajaxReturn(0, '评论成功');
-    }
-	
-    //主帖人信息
-    public function userInfo(){
-        $userRow = d('user')->where(['id'=>$_GET['userId']])->find();
     }
     
     //帖子收藏

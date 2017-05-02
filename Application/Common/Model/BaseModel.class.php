@@ -73,7 +73,7 @@ class BaseModel extends Model {
 	/**
 	 * 获取带有分页的数据列表
 	 */
-	public function getPageList($con, $fields = 'id',$order = '', $perNum = 15){
+	public function getPageList($con, $fields = 'id', $order = '', $perNum = 15){
 		!$_GET['p'] && $_GET['p'] = $_GET['page'];
 		$_REQUEST['perNum'] > 0 && $perNum = (int)$_REQUEST['perNum'];
 		

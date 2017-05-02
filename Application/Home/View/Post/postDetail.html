@@ -11,7 +11,7 @@
 	<div class="post-detail-page" data-id="{$postRow.id}"> 
 		<div class="container">
 			<div class="row post-title">
-				<a href="{:u('post/userInfo', ['userId'=>$userRow['id']])}"><img src="{$userRow.avatar}" alt=""></a>
+				<a href="{:u('post/personInfo', ['userId'=>$userRow['id']])}"><img src="{$userRow.avatar}" alt=""></a>
 				<h3>{$postRow.title}</h3>
 				<p>
 					<a href="">{$userRow.nickname}</a>
@@ -40,7 +40,7 @@
 					</div>
 					<div class="row post-comment-item">
 					    <foreach name="list" item="vo">
-						<div class="col-md-2"><a href="{:u('post/userInfo', ['userId'=>$vo['user_id']])}"><img src="{$vo.avatar}" alt=""></a></div>
+						<div class="col-md-2"><a href="{:u('post/personInfo', ['userId'=>$vo['user_id']])}"><img src="{$vo.avatar}" alt=""></a></div>
 						<div class="col-md-10">
 							<ul>
 								<li><a href="">{$vo.username}</a> {$vo.addTime} 发表<span class="comment-floor floor-2">沙发</span></li>

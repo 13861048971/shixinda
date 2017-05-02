@@ -61,7 +61,7 @@ class PostCommentModel extends BaseModel{
         if($con['title']){
             $con['title'] = ['like', '%' . $con['title'] . '%'];
         }
-    
+        
         $mod = d('user_msg_read');
         ($uid = $this->user['id']) && ($map['user_id'] = $uid);
         if(isset($con['isRead']) && $map){
