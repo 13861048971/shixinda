@@ -40,7 +40,7 @@
 					</div>
 					<div class="row post-comment-item">
 					    <foreach name="list" item="vo">
-						<div class="col-md-2"><a href=""><img src="{$vo.avatar}" alt=""></a></div>
+						<div class="col-md-2"><a href="{:u('post/userInfo', ['userId'=>$vo['user_id']])}"><img src="{$vo.avatar}" alt=""></a></div>
 						<div class="col-md-10">
 							<ul>
 								<li><a href="">{$vo.username}</a> {$vo.addTime} 发表<span class="comment-floor floor-2">沙发</span></li>
