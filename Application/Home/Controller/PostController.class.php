@@ -12,18 +12,19 @@ class PostController extends PublicController {
                 $id = d('postCate')->where(['pid'=>$v2['id']])->getField('id');
                 $idArr1 = [$v2['id'], $id];
                 $con = [
-                        'add_time'     => ['gt', strtotime(date("Y-m-d"))],
-                        'post_cate_id' => ['in', $idArr1] 
-                       ];
+                    'add_time'     => ['gt', strtotime(date("Y-m-d"))],
+                    'post_cate_id' => ['in', $idArr1] 
+                ];
                 $list[$k1]['list'][$k2]['todayPostNum'] = d('post')->where($con)->count();
                 $list[$k1]['list'][$k2]['mainPostNum'] = d('post')->where(['post_cate_id' => ['in', $idArr1]])->count();
                 $idArr2 = d('post')->where(['post_cate_id' => ['in', $idArr1]])->getField('id', true);
-                //dump($idArr2);exit();
-                //$list[$k1]['list'][$k2]['replyPostNum'] = d('postComment')->where(['post_id'=>['in', $idArr2]])->count();
-                //$list[$k1]['list'][$k2]['postNum'] = $list[$k1]['list'][$k2]['mainPostNum'] + $list[$k1]['list'][$k2]['replyPostNum'];
+                if($idArr2 == []){
+                    $list[$k1]['list'][$k2]['replyPostNum'] = 0;
+                }else{
+                    $list[$k1]['list'][$k2]['replyPostNum'] = d('postComment')->where(['post_id'=>['in', $idArr2]])->count();
+                }
+                $list[$k1]['list'][$k2]['postNum'] = $list[$k1]['list'][$k2]['mainPostNum'] + $list[$k1]['list'][$k2]['replyPostNum']; 
             }
-            //dump($v2);exit();
-            //dump($list[$k1]['list']);exit();
         } 
         
         $this->assign('hotList', $hotList);
@@ -126,12 +127,11 @@ class PostController extends PublicController {
         ajaxReturn(0, '评论成功');
     }
 	
-    //发帖人信息
+    //主帖人信息
     public function userInfo(){
         $userRow = d('user')->where(['id'=>$_GET['userId']])->find();
     }
     
-	
     //帖子收藏
     public function postCollect(){
         if(!$this->user['id'])
