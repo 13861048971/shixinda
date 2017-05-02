@@ -26,6 +26,11 @@ class ReportModel extends BaseModel {
 	 * 编辑or添加
 	 */
 	function edit($data, $id=null){
+	    if($this->isReport($data)){
+	        $this->lastError = '您已举报!';
+	        return false;
+	    }
+	        
 		if($id){
 			$data['update_time'] = time();
 			$return  = $this->data($data)->where('id=' . (int)$id)->save();
@@ -45,7 +50,14 @@ class ReportModel extends BaseModel {
 		return $id;
 	}
 	
-
+/**
+ * 
+ * @param unknown $id
+ */
+	function isReport($data){
+	    return $this->where($data)->find();
+	}
+	
 	public function getInfo($id){
 		$info = $this->find($id);
 		if(!$info) return;

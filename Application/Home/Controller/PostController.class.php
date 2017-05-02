@@ -143,7 +143,7 @@ class PostController extends PublicController {
     public function postSupport(){
         if(!$this->user['id'])
             return ajaxReturn2(1,'请先登录');
-        d('support')->support('post');
+        d('support')->isSupport('post');
     }
     
     //帖子举报
@@ -176,8 +176,13 @@ class PostController extends PublicController {
     
     //用户主题
     function personTheme(){
-         
+        $data = d('post')->getPageList(['user_id'=>$_GET['id']]);
+        $this->assign('list',$data['list']);
+        $this->display();
     }
     
-    
+    //用户回复
+    function personReplay(){
+        
+    }
 }

@@ -32,7 +32,7 @@ class SupportModel extends BaseModel {
 	}
 	
 	//点赞
-	public function support($type){
+	public function isSupport($type){
 	    $data = [
             'user_id' => $this->user['id'],
             'type' => $this->typeArr[$type],
@@ -43,30 +43,11 @@ class SupportModel extends BaseModel {
 	    //当前用户有记录的时候
 	    if($info){
 	        if((int)$info['support'] == 1){
-	            if($_GET['act'] == 'zan'){
+	            return ajaxReturn2(0,'您已赞',['status'=>1]);
+	        }else{
+	            return ajaxReturn2(0,'您已踩',['status'=>2]);
+	        }	   
 	        
-	                if($this->where($data)->delete())
-	                    return ajaxReturn2(0,'取消赞成功',['status'=>1]);
-	            }else{
-	                $data['support'] = 0;
-	                if($this->edit($data))
-	                    return ajaxReturn2(0,'踩成功',['status'=>4]);;
-	            }
-	        }
-	         
-	        if((int)$info['support'] == 0){
-	            if($_GET['act'] == 'cai'){
-	                 
-	                if($this->where($data)->delete())
-	                    return ajaxReturn2(0,'取消踩成功',['status'=>2]);
-	            }else{
-	                $data['support'] = 1;
-	                if($this->edit($data))
-	                    return ajaxReturn2(0,'赞成功',['status'=>3]);
-	            }
-	        }
-	    }
-	    
 	    //当前用户没有记录的时候
 	    if($_GET['act'] == 'zan'){
 	        $data['support'] = 1;
@@ -94,6 +75,10 @@ class SupportModel extends BaseModel {
 		}
 		return 1;//操作成功
 	}
+	
+// 	function isSupport(){
+	    
+// 	}
 	/**
 	 * 赞的个数
 	 * @param int $nid 节点id
