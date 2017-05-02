@@ -158,7 +158,7 @@ class PostController extends PublicController {
                 'content' =>$_POST['content'],
                 'status' =>1
             ];
-            
+          
             $id = d('report')->edit($data);
             if($id)
                 return ajaxReturn2(0,'举报成功');

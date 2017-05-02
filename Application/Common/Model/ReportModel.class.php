@@ -26,8 +26,14 @@ class ReportModel extends BaseModel {
 	 * 编辑or添加
 	 */
 	function edit($data, $id=null){
-	    if($this->isReport($data)){
-	        $this->lastError = '您已举报!';
+	     
+	    $isreport = [
+                'user_id' => $data['user_id'],
+                'type' => $data['type'],
+                'node_id' =>$data['node_id'],
+            ];
+	    if($this->isReport($isreport)){
+	        $this->lastError = '您已举报过该内容!';
 	        return false;
 	    }
 	        
