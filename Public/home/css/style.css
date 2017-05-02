@@ -1383,9 +1383,6 @@ ul#filters {
 	border-right: 1px solid #ddd;
 	border-bottom: 1px solid #fff;
 }
-.person-index .info-container .person-data {
-	display: none;
-}
 .person-index .info-container .person-data dl {
 	padding: 15px 15px 0 15px;
 	margin: 0 20px;
@@ -1403,5 +1400,52 @@ ul#filters {
 	margin: 0 0 10px 0;
 }
 .person-index .info-container .person-post{
-	
+	padding: 15px 20px;
+}
+.person-index .info-container .person-post .switch-link{
+	padding: 0 15px 5px 15px;
+	border-bottom: 1px dashed #eee;
+}
+.person-index .info-container .person-post .switch-link a{
+	color: #333 !important;
+}
+.person-index .info-container .person-post .switch-link a.actived{
+	color: #1C86EE !important;
+}
+.person-index .info-container .person-post dl{
+	margin: 0;
+}
+.person-index .info-container .person-post dl.post-theme,
+.person-index .info-container .person-post dl.post-reply{
+	padding: 0 15px;
+}
+.person-index .info-container .person-post dl dl dd{
+	display: inline-block;
+}
+.person-index .info-container .person-post dl dt dl dd{
+	font-weight: 400;
+	background-color: #f1f2f6;
+	margin: 10px 0 0 0;
+	height: 30px;
+	line-height: 30px;
+}
+.person-index .info-container .person-post dl dd dl{
+	border-bottom: 1px dashed #eee;
+	padding: 7px 0;
+	overflow: hidden;
+}
+.person-index .info-container .person-post dl dd dl a{
+	color: #333;
+}
+.person-index .info-container .person-data {
+	display: none;
+}
+.person-index .info-container .person-post{
+	display: block;
+}
+.person-index .info-container .person-post .post-theme{
+	display: block;
+}
+.person-index .info-container .person-post .post-reply{
+	display: none;
 }
