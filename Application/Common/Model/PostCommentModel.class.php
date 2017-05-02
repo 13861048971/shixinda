@@ -57,15 +57,27 @@ class PostCommentModel extends BaseModel{
      * 获取信息列表
      * @param array $arr
      */
-    public function getPageList($con, $fields = 'id',$order = 'id desc', $perNum = 10){
+    public function getPageList($con, $fields = 'id', $order = '', $perNum = 10){
+        $p = $_GET['p'];
+        if(!$p){
+            $p = 1;
+        }
         $data = parent::getPageList($con, $fields, $order, $perNum);
         foreach($data['list'] as $k=>$v){
             $v = $this->getInfo($v['id']);
             $data['list'][$k] =  $this->parseRow($v);
-             
+            //论坛回帖楼层显示     
+            $data['list'][$k]['floor'] = ($p-1)*$perNum+$k+1;
+            $data['list'][$k]['floorName'] = $data['list'][$k]['floor'].'楼';
+            if($p == 1){
+                $k == 0 && $data['list'][$k]['floorName'] = '沙发';
+                $k == 1 && $data['list'][$k]['floorName'] = '板凳';
+            }
         }
+
         return $data;
     }
+    
      
     /**
      * 根据条件获取信息

@@ -75,6 +75,7 @@ class PostController extends PublicController {
 	//获取帖子详情
 	public function postDetail(){
 	    $id = $_GET['id'];
+	    $p = $_GET['p'];
 	    //判断帖子是二级分类还是三级分类
 	    $post_cate_id = d('post')->where(['id'=>$id])->getField('post_cate_id');
 	    $post_cate_pid = d('postCate')->where(['id'=>$post_cate_id])->getField('pid');
@@ -92,7 +93,9 @@ class PostController extends PublicController {
 	    if($_GET['viewHost']){
 	       $con['user_id'] = $userRow['id'];
 	    }
-	    $data = d('postComment')->getPageList($con, '*', 'id asc', 5);//帖子评论信息
+	    
+	    $data = d('postComment')->getPageList($con, '*', 'add_time', 5);//帖子评论信息
+	    
 	    $replyNum = d('postComment')->where(['post_id'=>$id])->count();//帖子回复数 
 	    
 	    $collectNum = d('collect')->where(['type'=>'post', 'node_id'=>$id])->count();//收藏数
@@ -100,14 +103,16 @@ class PostController extends PublicController {
 	    foreach($data['list'] as $k=>$v){
 	        $data['list'][$k]['avatar'] = d('user')->where(['id'=>$v['user_id']])->getField('avatar');
 	    } 
-	    //dump($data['list']);exit();
+	    //dump($data);exit();
+	    $this->assign('p', $p);
+	    $this->assign('pageVar', $data['pageVar']);
+	    $this->assign('proNum', $data['proNum']);
 	    $this->assign('viewHost', $_GET['viewHost']);
 	    $this->assign('collectNum', $collectNum);
 	    $this->assign('replyNum', $replyNum);
 	    $this->assign('idArr', $idArr);
 	    $this->assign('userRow', $userRow);
 	    $this->assign('list', $data['list']);
-	    $this->assign('pageVar', $data['pageVar']);
 	    $this->assign('postRow', $postRow);
 	    $this->assign('user', $this->user);
 	    $this->display();
@@ -189,6 +194,5 @@ class PostController extends PublicController {
     function personReplay(){
         
     }
-    
     
 }
