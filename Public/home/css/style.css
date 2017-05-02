@@ -1437,15 +1437,9 @@ ul#filters {
 .person-index .info-container .person-post dl dd dl a{
 	color: #333;
 }
-.person-index .info-container .person-data {
-	display: none;
-}
 .person-index .info-container .person-post{
-	display: block;
-}
-.person-index .info-container .person-post .post-theme{
-	display: block;
-}
+	display: none;
+}	
 .person-index .info-container .person-post .post-reply{
 	display: none;
 }
