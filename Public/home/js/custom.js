@@ -507,10 +507,11 @@ $('.post-detail-page .post-oppose').on('click', function(){
 	postSupport('cai');
 });
 //举报弹窗
-var post_report_id = '';
+var thisReport = '';
 $('.post-detail-page .post-tip').on('click', function(){
 	$('.win-tip-container').show();
 	thisReport = $(this);
+	return thisReport;
 });
 $('.win-tip-bg').on('click', function(){
 	$(this).parent().hide();
@@ -572,11 +573,35 @@ $('.person-index .switch-reply').on('click', function(){
 	$('.person-index .post-theme').hide();
 });
 // 帖子评论回复
+var thisReply = '';
 $('.win-reply span').on('click', function(){
 	$('.win-reply-container').hide();
 });
 $('.post-comment-item .comment-reply').on('click', function(){
+	$('.win-reply-container').show();
+	thisReply = $(this);
+	return thisReply;
+});
+$('.win-reply button').on('click', function(){
+	var content = $('.win-reply textarea').val();
+	if(!content){
+		win.alert('请填写回复内容！', 'error');
+		return false;
+	}
+	var post_id = thisReply.data('id');
 	$.ajax({
-		url:'',
-	})
+		url:'/post/personReplay',
+		type:'post',
+		dataType:'json',
+		data:{content:content,post_id:post_id},
+		success:function(data){
+			if(!data.error){
+				win.alert(data.info, 'success');
+				$('.win-reply textarea').val('');
+				$('.win-reply-container').hide();
+			}else{
+				win.alert(data.info, 'error');
+			}
+		}
+	});
 });

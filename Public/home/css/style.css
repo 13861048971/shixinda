@@ -1337,7 +1337,7 @@ ul#filters {
 }
 /*回复弹窗*/
 .win-reply-container{
-	display: block;
+	display: none;
 	position: fixed;
 	width: 100%;
 	height: 100%;
