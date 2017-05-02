@@ -112,6 +112,26 @@ class PostController extends PublicController {
 	    $this->display();
 	}
 	
+    //帖子评论
+    public function comment(){
+        $data = [
+            'user_id' => $this->user['id'],
+            'post_id' => $_POST['post_id'],
+            'content' => $_POST['content']
+        ];
+        
+        $id = d('postComment')->edit($data);
+        if(!$id)
+            ajaxReturn(1, '评论失败');
+        ajaxReturn(0, '评论成功');
+    }
+	
+    //发帖人信息
+    public function userInfo(){
+        $userRow = d('user')->where(['id'=>$_GET['userId']])->find();
+    }
+    
+	
     //帖子收藏
     public function postCollect(){
         if(!$this->user['id'])
