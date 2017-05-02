@@ -539,3 +539,28 @@ $('.win-tip button').on('click', function(){
 		}
 	});
 });
+// 其他用户主页显示控制
+$('.person-index .tab-data').on('click', function(){
+	$(this).addClass('tab-actived');
+	$('.person-index .tab-theme').removeClass('tab-actived');
+	$('.person-index .person-data').show();
+	$('.person-index .person-post').hide();
+});
+$('.person-index .tab-theme').on('click', function(){
+	$(this).addClass('tab-actived');
+	$('.person-index .tab-data').removeClass('tab-actived');
+	$('.person-index .person-post').show();
+	$('.person-index .person-data').hide();
+});
+$('.person-index .switch-theme').on('click', function(){
+	$(this).addClass('actived');
+	$('.person-index .switch-reply').removeClass('actived');
+	$('.person-index .post-theme').show();
+	$('.person-index .post-reply').hide();
+})
+$('.person-index .switch-reply').on('click', function(){
+	$(this).addClass('actived');
+	$('.person-index .switch-theme').removeClass('actived');
+	$('.person-index .post-reply').show();
+	$('.person-index .post-theme').hide();
+})
