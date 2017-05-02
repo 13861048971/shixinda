@@ -510,19 +510,22 @@ $('.post-detail-page .post-oppose').on('click', function(){
 var post_report_id = '';
 $('.post-detail-page .post-tip').on('click', function(){
 	$('.win-tip-container').show();
-	var _this = $(this);
-	if(!_this.data('id')){
-		post_report_id = $('.post-detail-page').data('id');
-	}else{
-		post_report_id = _this.data('id');
-	}
-	return post_report_id;
+	thisReport = $(this);
 });
 $('.win-tip-bg').on('click', function(){
 	$(this).parent().hide();
 });
 $('.win-tip button').on('click', function(){
 	var content = $('.win-tip textarea').val();
+	if(!content){
+		win.alert('请填写举报内容！', 'error');
+		return false;
+	}
+	if(!thisReport.data('id')){
+		var post_report_id = $('.post-detail-page').data('id');
+	}else{
+		var post_report_id = thisReport.data('id');
+	}
 	$.ajax({
 		url:'/post/postReport',
 		type:'post',
@@ -531,6 +534,7 @@ $('.win-tip button').on('click', function(){
 		success:function(data){
 			if(!data.error){
 				win.alert(data.info, 'success');
+				thisReport.text('已举报');
 				$('.win-tip textarea').val('');
 				$('.win-tip-container').hide();
 			}else{
