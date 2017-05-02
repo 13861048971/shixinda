@@ -564,8 +564,12 @@ ul#filters {
 .product-nav dt {
     width: 100%;
     padding: 6px 0 6px 20px;
-    font-weight: 400;
     background-color: #fafafa;
+    font-weight: 400;
+}
+.product-nav dt h4{
+	margin: 0;
+	font-size: 16px;
 }
 .product-nav dl dt {
     padding: 6px 0 6px 20px;
@@ -676,8 +680,12 @@ ul#filters {
 .about-section .about-nav dl dt,
 .user-section .user-nav dl dt{
 	padding: 10px 0 10px 20px;
+}
+.about-section .about-nav dl dt h4,
+.user-section .user-nav dl dt h4{
 	font-size: 16px;
 	font-weight: 400;
+	margin: 0;
 }
 .about-section .about-nav dl dd,
 .user-section .user-nav dl dd{
@@ -1167,7 +1175,6 @@ ul#filters {
 	float: right;
 }
 /*分页样式*/
-
 .pager span{
 	background-color: #428BCA;
 	border:1px solid #428BCA;

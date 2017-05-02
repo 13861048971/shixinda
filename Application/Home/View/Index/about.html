@@ -3,7 +3,7 @@
 		<div class="container">
 			<div class="col-md-3 about-nav">
 				<dl>
-					<dt>关于我们</dt>
+					<dt><h4>关于我们</h4></dt>
 					<foreach name="ChildCateList" item="v">
 					<dd><a href="{:U('about',['cate_id'=>$v['id']])}">{$v.name}</a></dd>
 					</foreach>
@@ -17,4 +17,4 @@
 	</div>
 <include file="Public:footer" />
 </body>
-</html> 
+</html>
