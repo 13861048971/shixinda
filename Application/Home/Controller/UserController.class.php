@@ -18,13 +18,7 @@ class UserController extends PublicController{
 	    $this->assign('genderList', $genderList);
 	    $this->display();
 		//ajaxReturn2(0,'', ['user' => $this->user]);
-	}
-	
-	//个人信息
-	function personInfo(){
-	    $personInfo = d('user')->getPerson($_GET['id']);
-	    $this->display();
-	}
+	}	
 	
 	//用户登录
 	public function login(){
@@ -219,27 +213,27 @@ class UserController extends PublicController{
 	}
 	
 	//个人资料
-	function profile(){
-		if(IS_POST){
-			$d = $_POST;
-			$arr = ['sex','nickname','avatar','weixin_id', 'qq_id', 'city', 'birthday'];
-			foreach($d as $k=>$v){
-				if($k == 'sex')
-					continue;
+// 	function profile(){
+// 		if(IS_POST){
+// 			$d = $_POST;
+// 			$arr = ['sex','nickname','avatar','weixin_id', 'qq_id', 'city', 'birthday'];
+// 			foreach($d as $k=>$v){
+// 				if($k == 'sex')
+// 					continue;
 				
-				if( !$d[$k] || !in_array($k, $arr) ){
-					unset($d[$k]);
-					continue;
-				}
-			}
+// 				if( !$d[$k] || !in_array($k, $arr) ){
+// 					unset($d[$k]);
+// 					continue;
+// 				}
+// 			}
 			
-			if(! ($userId = $this->mod->edit($d, $this->userId)) )
-				return ajaxReturn2(1, $this->mod->getError());
+// 			if(! ($userId = $this->mod->edit($d, $this->userId)) )
+// 				return ajaxReturn2(1, $this->mod->getError());
 			
-			$user = $this->mod->getInfo($userId);
-			return ajaxReturn2(0, '操作成功!',['user'=>$user]);
-		}
-	}
+// 			$user = $this->mod->getInfo($userId);
+// 			return ajaxReturn2(0, '操作成功!',['user'=>$user]);
+// 		}
+// 	}
 	
 // 	//密码重置
 // 	function passReset(){

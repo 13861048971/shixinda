@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2017-04-28 18:40:48
+Date: 2017-05-02 12:03:45
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -202,7 +202,7 @@ CREATE TABLE `collect` (
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`),
   KEY `node_id` (`node_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of collect
@@ -210,7 +210,7 @@ CREATE TABLE `collect` (
 INSERT INTO `collect` VALUES ('1', '1', '2', '1', '1471014347');
 INSERT INTO `collect` VALUES ('2', '0', '2', '1', '1471014368');
 INSERT INTO `collect` VALUES ('5', '2', '1', '1', '1472711985');
-INSERT INTO `collect` VALUES ('9', '1', '22', '30', '1493374111');
+INSERT INTO `collect` VALUES ('11', '1', '22', '30', '1493689078');
 
 -- ----------------------------
 -- Table structure for `comment`
@@ -487,12 +487,12 @@ INSERT INTO `post` VALUES ('26', '12', '9', '撒嗒222亲戚', '阿杜', '0', '1
 INSERT INTO `post` VALUES ('27', '12', '9', '撒嗒222亲戚', '阿杜', '0', '1', '1492667185', '1492667185');
 INSERT INTO `post` VALUES ('28', '12', '9', '撒嗒222亲戚', '阿杜', '0', '1', '1492667214', '1492667214');
 INSERT INTO `post` VALUES ('29', '13', '9', '撒嗒222亲戚', '阿杜', '1', '1', '1492667273', '1492745485');
-INSERT INTO `post` VALUES ('30', '13', '9', '求求求求求', '安达市', '18', '1', '1492668587', '1492745461');
+INSERT INTO `post` VALUES ('30', '13', '9', '求求求求求', '安达市', '20', '1', '1492668587', '1492745461');
 INSERT INTO `post` VALUES ('33', '13', '0', 'sd', 'sad', '0', '1', '1492744362', '1492744362');
 INSERT INTO `post` VALUES ('34', '13', '0', 'sdf', 'ds', '0', '1', '1492744414', '1492744414');
 INSERT INTO `post` VALUES ('35', '13', '0', 'asd', 'asd', '0', '1', '1492745498', '1492745498');
 INSERT INTO `post` VALUES ('38', '18', '1', '撒嗒', '暗暗地', '0', '1', '1493107649', '1493107649');
-INSERT INTO `post` VALUES ('40', '22', '1', '让我们一起去玩吧', '撒嗒', '19', '1', '1493274697', '1493274697');
+INSERT INTO `post` VALUES ('40', '22', '1', '让我们一起去玩吧', '撒嗒', '36', '1', '1493274697', '1493274697');
 
 -- ----------------------------
 -- Table structure for `post_cate`
@@ -3979,7 +3979,7 @@ INSERT INTO `region` VALUES ('3408', '3401', '肥西县', '3', '0');
 -- ----------------------------
 DROP TABLE IF EXISTS `report`;
 CREATE TABLE `report` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `node_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `type` int(10) NOT NULL,
@@ -4003,18 +4003,18 @@ INSERT INTO `report` VALUES ('5', '30', '22', '1', '色情广告', '1', '1493376
 -- ----------------------------
 DROP TABLE IF EXISTS `support`;
 CREATE TABLE `support` (
-  `id` int(11) NOT NULL,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `type` tinyint(1) NOT NULL,
   `node_id` int(10) NOT NULL,
   `user_id` int(10) NOT NULL,
   `support` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of support
 -- ----------------------------
-INSERT INTO `support` VALUES ('0', '1', '30', '22', '0');
+INSERT INTO `support` VALUES ('1', '1', '30', '22', '1');
 
 -- ----------------------------
 -- Table structure for `tdk`
@@ -4113,7 +4113,7 @@ INSERT INTO `user` VALUES ('18', '18961841640', '', 'c19fd740a33cf3d675c3c53dc53
 INSERT INTO `user` VALUES ('19', '15156811083', '', 'c19fd740a33cf3d675c3c53dc534b4ee', '', null, '男', '', '', '', '', '', '0', '1493024528', '1493024528', '0', '', '', '1493024539', '0');
 INSERT INTO `user` VALUES ('20', '18961841571', '', 'c19fd740a33cf3d675c3c53dc534b4ee', '', null, '男', '', '', '', '', '', '0', '1493024607', '1493024607', '0', '', '', '1493024607', '0');
 INSERT INTO `user` VALUES ('21', '18974516541', '', 'c19fd740a33cf3d675c3c53dc534b4ee', '', null, '男', '', '', '', '', '', '0', '1493024634', '1493024634', '0', '', '', '1493024634', '0');
-INSERT INTO `user` VALUES ('22', '13861048971', '', 'c19fd740a33cf3d675c3c53dc534b4ee', '/Public/upload/avatar/2017-04-27/590154e96c267.jpg', null, '男', '', '', '', '', '', '0', '1493178203', '1493259513', '0', '', '赤心', '1493373903', '0');
+INSERT INTO `user` VALUES ('22', '13861048971', '', 'c19fd740a33cf3d675c3c53dc534b4ee', '/Public/upload/avatar/2017-04-27/590154e96c267.jpg', null, '男', '', '', '', '', '', '0', '1493178203', '1493259513', '0', '', '赤心', '1493696583', '1493695468');
 
 -- ----------------------------
 -- Table structure for `user_msg`

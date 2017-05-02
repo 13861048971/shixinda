@@ -167,4 +167,17 @@ class PostController extends PublicController {
         
     }
     
+    //个人信息
+    function personInfo(){
+        $personInfo = d('user')->getPerson($_GET['id']);
+        $this->assign('list',$personInfo);
+        $this->display();
+    }
+    
+    //用户主题
+    function personTheme(){
+         
+    }
+    
+    
 }
