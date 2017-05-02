@@ -38,30 +38,29 @@ class SupportModel extends BaseModel {
             'type' => $this->typeArr[$type],
 	        'node_id' =>$_GET['id']
         ];
-	     
 	    $info = $this->where($data)->find();
+
 	    //当前用户有记录的时候
 	    if($info){
-	        if((int)$info['support'] == 1){
-	            return ajaxReturn2(0,'您已赞',['status'=>1]);
-	        }else{
-	            return ajaxReturn2(0,'您已踩',['status'=>2]);
-	        }	   
-	        
-	    //当前用户没有记录的时候
-	    if($_GET['act'] == 'zan'){
-	        $data['support'] = 1;
-	        if($this->edit($data))
-	                    return ajaxReturn2(0,'赞成功',['status'=>3]);
-	    }
-	    
-	    if($_GET['act'] == 'cai'){
-	        $data['support'] = 0;
-	        if($this->edit($data))
-	            return ajaxReturn2(0,'踩成功',['status'=>4]);
-	    }
-	     
-	}
+    	        if((int)$info['support'] == 1){
+    	            return ajaxReturn2(1,'您已赞',['status'=>1]);
+    	        }else{
+    	            return ajaxReturn2(1,'您已踩',['status'=>2]);
+    	        }	   
+	    }  
+    	    //当前用户没有记录的时候
+    	    if($_GET['act'] == 'zan'){
+    	        $data['support'] = 1;
+    	        if($this->edit($data))
+                    return ajaxReturn2(0,'赞成功',['status'=>3]);
+    	    }
+    	    
+    	    if($_GET['act'] == 'cai'){
+    	        $data['support'] = 0;
+    	        if($this->edit($data))
+    	            return ajaxReturn2(0,'踩成功',['status'=>4]);
+    	    } 
+    }
 	/**
 	 * 编辑or添加
 	 */
@@ -124,7 +123,7 @@ class SupportModel extends BaseModel {
 	 * @param array $con
 	 * @return array
 	 **/
-	public function getList($con, $limit = 50, $order = 'add_time desc'){
+	 function getList($con, $limit = 50, $order = 'add_time desc'){
 		$list = $this->where($con)->field('id')->limit($limit)->order($order)->select();
 		foreach($list as $k=>$v){
 			$list[$k] = $this->getInfo($v['id']);

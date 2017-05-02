@@ -186,25 +186,26 @@ class PostController extends PublicController {
         
     }
     
-    //帖子举报
-    public function postReport(){
-        if(!$this->user['id'])
-            return ajaxReturn2(1,'请先登录');
-        if($_POST && !empty($_POST)){
-            $data = [
-                'user_id' => $this->user['id'],
-                'type' => d('report')->typeArr['post'],
-                'node_id' =>$_POST['post_id'],
-                'content' =>$_POST['content'],
-                'status' =>1
-            ];
-            
-            $id = d('report')->edit($data);
-            if($id)
-                return ajaxReturn2(0,'举报成功');
-                return ajaxReturn2(1,d('report')->getError());
-        }
+//     //帖子举报
+//     public function postReport(){
         
-    }
+//         if(!$this->user['id'])
+//             return ajaxReturn2(1,'请先登录');
+//         if($_POST && !empty($_POST)){
+//             $data = [
+//                 'user_id' => $this->user['id'],
+//                 'type' => d('report')->typeArr['post'],
+//                 'node_id' =>$_POST['post_id'],
+//                 'content' =>$_POST['content'],
+//                 'status' =>1
+//             ];
+            
+//             $id = d('report')->edit($data);
+//             if($id)
+//                 return ajaxReturn2(0,'举报成功');
+//                 return ajaxReturn2(1,d('report')->getError());
+//         }
+        
+    //}
     
 }
