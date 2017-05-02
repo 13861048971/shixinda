@@ -20,7 +20,9 @@ class UserController extends PublicController{
 		//ajaxReturn2(0,'', ['user' => $this->user]);
 	}
 	
+	//个人信息
 	function personInfo(){
+	    $personInfo = d('user')->getPerson($_GET['id']);
 	    $this->display();
 	}
 	
@@ -48,7 +50,9 @@ class UserController extends PublicController{
 	//用户退出
 	
 	public function loginOut(){
-	    session('user',null);
+	    $outTime = d('user')->data(['id'=>$this->user['id'],'last_logout'=>time()])->save();
+	    if($outTime)
+	       session('user',null);
 	    if(empty(session('user')))
 	        ajaxReturn(0,'退出成功');
 	}

@@ -566,4 +566,27 @@ class UserModel extends BaseModel{
 	function _cacheReset($id){
 		return $this->resetCache($this->cacheKey.$id, 'UserInfo', $id);
 	}
+	
+	//获取个人信息
+	public function getPerson($id){
+	    $person = $this->where(['id'=>$id])->find();
+	    $person = $this->parseRow($person);
+	}
+	//格式化行
+	public function parseRow($v){
+	
+	    $v['commentNum'] = d('postComment')->where(['user_id'=>$v['id']])->Count();//回帖数
+	    $v['postNum'] = d('post')->where(['user_id'=>$v['id']])->Count(); //发主帖数
+	    $v['clickNum'] = d('support')->where(['support'=>(int)1,'user_id'=>$v['id']])->count();
+	    
+	    if($v['last_login'] > $v['last_logout'])
+	    $v['onLineTime'] = $v['last_logout']-$v['last_login'];
+	    
+	    $v['onLineTime'] = date("Y-m-d H:i:s",$v['onLineTime']);//在线时间
+	    $v['last_login'] = date("Y-m-d H:i:s",$v['last_login']);//最后一次登录时间
+	    $v['last_logout'] = date("Y-m-d H:i:s",$v['last_logout']);//最后退出时间
+	    $v['add_time'] = date("Y-m-d H:i:s",$v['add_time']);//注册时间
+	    
+	    return $v ;
+	}
 }

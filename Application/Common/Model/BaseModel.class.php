@@ -83,15 +83,7 @@ class BaseModel extends Model {
 		}
 		
 		$count   = $this->where($con)->count();
-
 		$Page    = new Think\Page($count, $perNum);
-		$Page->setConfig('header','<li class="rows">共<b>%TOTAL_ROW%</b>条记录 第<b>%NOW_PAGE%</b>页/共<b>%TOTAL_PAGE%</b>页</li>');
-		$Page->setConfig('prev','上一页');
-		$Page->setConfig('next','下一页');
-		$Page->setConfig('first','首页');
-		$Page->setConfig('last','末页');
-		$Page->setConfig('theme', '%FIRST%%UP_PAGE%%LINK_PAGE%%DOWN_PAGE%%END%%HEADER%');
-		$Page->lastSuffix = false;//最后一页不显示为总页数
 		$pageVar = $Page->show();
 		$page = [
 			'page'	=> (int)$Page->totalPages, 
@@ -104,6 +96,7 @@ class BaseModel extends Model {
 		if($fields) 
 		 $this->field($fields);
 		$list 	 = $this->where($con)->order($order)->limit($Page->firstRow.','.$Page->listRows)->select();
+		
 		$arr['list'] = $list;
 		!$arr['list'] && $arr['list'] = [];
 		
