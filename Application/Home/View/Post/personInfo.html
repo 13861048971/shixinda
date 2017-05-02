@@ -14,19 +14,22 @@
 				<div class="row tab-control">
 					<a href="javascript:void(0);" class="tab-actived tab-data">个人资料</a><a href="javascript:void(0);" class="tab-theme">主题</a>
 				</div>
+				<!-- 个人start -->
 				<div class="person-data">
+				
 					<dl class="row basic-info">
-						<dt>用户名(UID:11111111)</dt>
-						<dd>统计信息：回帖数2 | 主题数0 | 赞91</dd>
+						<dt><if condition="$person['nickname']">{$person.nickname}<else/>{$person.mobile}</if>(UID:{$person.id})</dt>
+						<dd>统计信息：回帖数{$person.commentNum} | 主题数{$person.postNum} | 赞{$person.zanNum}</dd>
 					</dl>
 					<dl class="row active-info">
 						<dt>活跃概况</dt>
-						<dd>在线时间：5小时</dd>
-						<dd>注册时间：2017-5-1 08:00</dd>
-						<dd>最后活动时间：2017-5-1 08:00</dd>
-						<dd>上次发表时间：2017-5-1 08:00</dd>
+						<dd>总在线时间：{$person.online_time}</dd>
+						<dd>注册时间：{$person.add_time}</dd>
+						<dd>最后活动时间：{$person.last_logout}</dd>
+						<dd>上次发帖时间：{$person.last_post_time}</dd>
 					</dl>
 				</div>
+				<!-- 个人end -->
 				<div class="person-post row">
 					<div class="switch-link">
 						<a href="javascript:void(0);" class="actived switch-theme">主题</a> | <a href="javascript:void(0);" class="switch-reply">回复</a>
@@ -39,13 +42,17 @@
 								<dd class="col-md-3">回复/查看</dd>
 							</dl>
 						</dt>
+						<!-- 主题start -->
 						<dd>
-							<dl class="row">
-								<dd class="col-md-6"><a href="">帖子标题</a></dd>
-								<dd class="col-md-3"><a href="">分类</a></dd>
-								<dd class="col-md-3">10/10</dd>
-							</dl>
+							<foreach name="postList" item="v">
+								<dl class="row">
+									<dd class="col-md-6"><a href=""><a href="{:U('post/postDetail',['id'=>$v['id']])}">{$v.title}</a></a></dd>
+									<dd class="col-md-3"><a href="">{$v.cateName}</a></dd>
+									<dd class="col-md-3">{$v.num}/{$v.click}</dd>
+								</dl>
+							</foreach>
 						</dd>
+						<!--主题start -->
 					</dl>
 					<dl class="post-reply">
 						<dt class="row">

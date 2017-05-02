@@ -570,19 +570,40 @@ class UserModel extends BaseModel{
 	//获取个人信息
 	public function getPerson($id){
 	    $person = $this->where(['id'=>$id])->find();
-	    $person = $this->parseRow($person);
+	    return $this->parseRow($person);
+	}
+	
+	//把秒转换成天数，小时数和分钟
+	public function secsToStr($secs) {
+	    if($secs>=86400){$days=floor($secs/86400);
+	    $secs=$secs%86400;
+	    $r=$days.' 天';
+	    if($secs>0){$r.='';}}
+	    if($secs>=3600){$hours=floor($secs/3600);
+	    $secs=$secs%3600;
+	    $r.=$hours.' 时';
+	    if($secs>0){$r.='';}}
+	    if($secs>=60){$minutes=floor($secs/60);
+	    $secs=$secs%60;
+	    $r.=$minutes.' 分';
+	    if($secs>0){$r.='';}}
+	    $r.=$secs.' 秒';
+	    return $r;
 	}
 	//格式化行
 	public function parseRow($v){
 	
 	    $v['commentNum'] = d('postComment')->where(['user_id'=>$v['id']])->Count();//回帖数
 	    $v['postNum'] = d('post')->where(['user_id'=>$v['id']])->Count(); //发主帖数
-	    $v['clickNum'] = d('support')->where(['support'=>(int)1,'user_id'=>$v['id']])->count();
-	    
+	    $v['zanNum'] = d('support')->where(['support'=>(int)1,'user_id'=>$v['id']])->count();//点赞数
+	    $vlastPost = d('post')->where(['user_id'=>$v['id']])->order('add_time desc')->limit(1)->find();//最后发的帖子
 	    if($v['last_login'] > $v['last_logout'])
-	    $v['onLineTime'] = $v['last_logout']-$v['last_login'];
-	    
-	    $v['onLineTime'] = date("Y-m-d H:i:s",$v['onLineTime']);//在线时间
+	        $online = time()-$v['last_login'];
+        if($v['last_login'] <= $v['last_logout'])
+	       $online = 0;
+        
+ 	    $v['online_time'] = $this->secsToStr($v['online_time'] + $online);//在线时间
+ 	    $v['last_post_time'] = date('Y-m-d H:i:s',$vlastPost['add_time']);//最后发帖时间
 	    $v['last_login'] = date("Y-m-d H:i:s",$v['last_login']);//最后一次登录时间
 	    $v['last_logout'] = date("Y-m-d H:i:s",$v['last_logout']);//最后退出时间
 	    $v['add_time'] = date("Y-m-d H:i:s",$v['add_time']);//注册时间

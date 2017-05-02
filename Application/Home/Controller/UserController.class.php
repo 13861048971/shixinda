@@ -44,7 +44,13 @@ class UserController extends PublicController{
 	//用户退出
 	
 	public function loginOut(){
-	    $outTime = d('user')->data(['id'=>$this->user['id'],'last_logout'=>time()])->save();
+	    $onlineTime = time()-$this->user['last_login'] + $this->user['online_time'];
+	    $data = [
+	        'id'=>$this->user['id'],
+	        'last_logout'=>time()
+	        
+	    ];
+	    $outTime = d('user')->data($data)->save();
 	    if($outTime)
 	       session('user',null);
 	    if(empty(session('user')))

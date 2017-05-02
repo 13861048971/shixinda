@@ -182,10 +182,12 @@ class PostModel extends BaseModel{
     
             return $info;
     }
+    
+    
     //格式化行
     public function parseRow($v){
-        
-        $v['num'] = d('postComment')->where(['post_id'=>$v['id']])->Count();
+        $v['num'] = d('postComment')->where(['post_id'=>$v['id']])->Count();//回复数量
+        $v['cateName'] = d('postCate')->where(['id'=>(int)$v['post_cate_id']])->getField('name');//帖子分类名
         $v['statusName'] = $this->statusArr[$v['status']];
         $v['publishTime'] = date("Y-m-d H:i:s",$v['publish_time']);
         $v['update_time'] = date("Y-m-d H:i:s",$v['update_time']);
