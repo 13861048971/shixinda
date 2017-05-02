@@ -1338,6 +1338,10 @@ ul#filters {
 	outline: none;
 	float: right;
 }
+.win-tip-container .win-tip h4 span{
+	cursor: pointer;
+	float: right;
+}
 /*其他用户主页*/
 .person-index .info-container{
 	width: 80%;

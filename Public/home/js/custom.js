@@ -515,6 +515,9 @@ $('.post-detail-page .post-tip').on('click', function(){
 $('.win-tip-bg').on('click', function(){
 	$(this).parent().hide();
 });
+$('.win-tip span').on('click', function(){
+	$('.win-tip-container').hide();
+});
 $('.win-tip button').on('click', function(){
 	var content = $('.win-tip textarea').val();
 	if(!content){
