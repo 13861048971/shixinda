@@ -570,4 +570,13 @@ $('.person-index .switch-reply').on('click', function(){
 	$('.person-index .switch-theme').removeClass('actived');
 	$('.person-index .post-reply').show();
 	$('.person-index .post-theme').hide();
-})
+});
+// 帖子评论回复
+$('.win-reply span').on('click', function(){
+	$('.win-reply-container').hide();
+});
+$('.post-comment-item .comment-reply').on('click', function(){
+	$.ajax({
+		url:'',
+	})
+});

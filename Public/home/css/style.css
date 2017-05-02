@@ -1262,6 +1262,7 @@ ul#filters {
 	text-overflow: ellipsis;
 	overflow: hidden;
 	cursor: pointer;
+	color: #fff !important;
 }
 .post-index .post-index-banner .banner-control{
 	float: left;
@@ -1331,6 +1332,53 @@ ul#filters {
 	float: right;
 }
 .win-tip-container .win-tip h4 span{
+	cursor: pointer;
+	float: right;
+}
+/*回复弹窗*/
+.win-reply-container{
+	display: block;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	z-index: 15;
+}
+.win-reply-container .win-reply{
+	position: fixed;
+	width: 500px;
+	height: 250px;
+	background-color: #fff;
+	z-index: 15;
+	top: 30%;
+	left: 32%;
+	padding: 15px 20px;
+	border: 1px solid #ddd;
+	box-shadow: 3px 3px 3px #ccc;
+}
+.win-reply-container .win-reply h4{
+	margin: 0;
+}
+.win-reply-container .win-reply textarea{
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	width: 100%;
+	height: 70%;
+	margin: 10px 0 3px 0;
+	padding: 10px;
+	outline: none;
+	resize: none;
+}
+.win-reply-container .win-reply button{
+	border: 1px solid #1C86EE;
+	border-radius: 4px;
+	width: 70px;;
+	height: 30px;
+	color: #fff;
+	background-color: #1C86EE;
+	outline: none;
+	float: right;
+}
+.win-reply-container .win-reply h4 span{
 	cursor: pointer;
 	float: right;
 }

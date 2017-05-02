@@ -8,6 +8,13 @@
 		<button type="button">提交</button>
 	</div>
 </div>
+<div class="win-reply-container">
+	<div class="win-reply">
+		<h4>回复评论<span>x</span></h4>
+		<textarea cols="30" rows="10" placeholder="请输入内容"></textarea>
+		<button type="button">提交</button>
+	</div>
+</div>
 	<div class="post-detail-page" data-id="{$postRow.id}"> 
 		<div class="container">
 			<div class="row post-title">
@@ -53,6 +60,7 @@
 									</div>
 								</li>
 								<li class="comment-handle">
+									<a href="javascript:void(0);" class="comment-reply">回复</a>
 									<a href="javascript:void(0);">支持</a>
 									<a href="javascript:void(0);">反对</a>
 									<a href="javascript:void(0);" class="post-tip" data-id="{$vo.id}">举报</a>
