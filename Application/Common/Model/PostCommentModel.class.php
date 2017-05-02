@@ -58,26 +58,6 @@ class PostCommentModel extends BaseModel{
      * @param array $arr
      */
     public function getPageList($con, $fields = 'id',$order = 'id desc', $perNum = 10){
-        if($con['title']){
-            $con['title'] = ['like', '%' . $con['title'] . '%'];
-        }
-        
-        $mod = d('user_msg_read');
-        ($uid = $this->user['id']) && ($map['user_id'] = $uid);
-        if(isset($con['isRead']) && $map){
-            $is = $con['isRead'];
-            $subQuery = $mod->field('msg_id as id')->where($map)->buildSql();
-            $is === '0' && $con['_string'] = 'id not in '.$subQuery;
-            $is === '1' && $con['_string'] = 'id in '.$subQuery;
-        }
-        if( MODULE_NAME == 'Home' && $map){
-            $subQuery = $mod->field('msg_id as id')->where($map)->buildSql();
-            $fields = 'id, if((id in ' . $subQuery . '), 1,0) as readed';
-            $order = 'readed asc,id desc';
-        }
-    
-        isset($con['from']) && $con['from'] === '0' && $con['from'] = ['lt', 1];
-        isset($con['cate']) && $con['cate'] === '0' && $con['cate'] = ['lt', 1];
         $data = parent::getPageList($con, $fields, $order, $perNum);
         foreach($data['list'] as $k=>$v){
             $v = $this->getInfo($v['id']);
@@ -143,6 +123,16 @@ class PostCommentModel extends BaseModel{
     }
     //格式化行
     public function parseRow($v){
+        $post = d('post')->where(['id'=>$v['post_id']])->find();
+        
+        $v['cateName'] = d('postCate')->where(['id'=>(int)$post['post_cate_id']])->getField('name');//帖子分类名
+        
+        $v['title'] = $post['title'];
+        
+        $v['clickNum'] = $post['click'];
+        
+        $v['replayNum'] = $this->where(['post_id'=>$post['id']])->Count();
+        
         $data = D('user')->where(['id'=>$v['user_id']])->select();
         foreach ($data as $vo){
             $v['username']=$vo['nickname'];

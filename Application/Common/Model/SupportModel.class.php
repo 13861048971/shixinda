@@ -59,7 +59,8 @@ class SupportModel extends BaseModel {
     	        $data['support'] = 0;
     	        if($this->edit($data))
     	            return ajaxReturn2(0,'踩成功',['status'=>4]);
-    	    } 
+    	    }
+	   
     }
 	/**
 	 * 编辑or添加

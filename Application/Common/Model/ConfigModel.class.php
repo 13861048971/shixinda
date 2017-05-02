@@ -39,7 +39,10 @@ class ConfigModel extends BaseModel{
 			'right'		=> ['label'=>'权限申明','r'=>5],
 			'icpNo'		=> ['label'=>'ICP备案号','r'=>5],
 			'down'		=> ['label'=>'公司地址','r'=>5],
-			'workday'	=> ['label'=>'工作时间','value'=>'周一至周六 9:00－18:00']
+			'workday'	=> ['label'=>'工作时间','r'=>5,'value'=>'周一至周六 9:00－18:00'],
+		    'seoTitle'  =>['label'=>'标题','r'=>5],
+		    'seoKeywords' =>['label'=>'关键词','r'=>5],
+		    'seoDescription' => ['label'=>'描述', 'type'=>'textarea']
 		],
 		'image'=>[
 			'thumb'	=>['label'=>'缩略图尺寸', 	'value'=>'150*150'],

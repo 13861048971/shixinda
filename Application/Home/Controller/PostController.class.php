@@ -169,14 +169,12 @@ class PostController extends PublicController {
     
     //别人用户信息
     function personInfo(){
-        $personInfo = d('user')->getPerson($_GET['userId']);
-        
-        $data = d('post')->getPageList(['user_id'=>$_GET['userId']]);
-        
+        $personInfo = d('user')->getPerson($_GET['userId']);//用户信息
+        $data = d('post')->getPageList(['user_id'=>$_GET['userId']]);//用户主贴
+        $repaly = d('postComment')->getPageList(['user_id'=>$_GET['userId']]);//回帖信息
+        $this->assign('personReplay',$repaly['list']);  
         $this->assign('postList',$data['list']);
-        
-        $this->assign('person',$personInfo);
-        
+        $this->assign('person',$personInfo); 
         $this->display();
     }
     
@@ -192,26 +190,5 @@ class PostController extends PublicController {
         
     }
     
-//     //帖子举报
-//     public function postReport(){
-        
-//         if(!$this->user['id'])
-//             return ajaxReturn2(1,'请先登录');
-//         if($_POST && !empty($_POST)){
-//             $data = [
-//                 'user_id' => $this->user['id'],
-//                 'type' => d('report')->typeArr['post'],
-//                 'node_id' =>$_POST['post_id'],
-//                 'content' =>$_POST['content'],
-//                 'status' =>1
-//             ];
-            
-//             $id = d('report')->edit($data);
-//             if($id)
-//                 return ajaxReturn2(0,'举报成功');
-//                 return ajaxReturn2(1,d('report')->getError());
-//         }
-        
-    //}
     
 }
