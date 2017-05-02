@@ -120,13 +120,6 @@ class CollectModel extends BaseModel {
 		return (int)$this->where($con)->count();
 	}
 	
-
-		if(!$this->edit($con))
-			return false;
-		//更新关注数
-		$this->updateNum($nodeId, $type);
-		return true;
-	} */
 	
 	//取消关注
 	function unCollect($nodeId, $userId, $type = 0){
