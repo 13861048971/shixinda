@@ -795,13 +795,15 @@ ul#filters {
 /*帖子中心*/
 .post-index,
 .post-list-page,
-.post-detail-page{
+.post-detail-page,
+.person-index{
 	background-color: #f1f2f6;
 	padding: 40px 0 50px 0;
 }
 .post-index+div.footer-sec,
 .post-list-page+div.footer-sec,
-.post-detail-page+div.footer-sec{
+.post-detail-page+div.footer-sec,
+.person-index+div.footer-sec{
 	margin: 0;
 }
 .post-index .post-content-top>div{
@@ -1332,4 +1334,74 @@ ul#filters {
 	background-color: #1C86EE;
 	outline: none;
 	float: right;
+}
+/*其他用户主页*/
+.person-index .info-container{
+	width: 80%;
+	margin: 0 auto;
+	background-color: #fff;
+}
+.person-index .info-container .row{
+	margin: 0;
+}
+.person-index .info-container .info-title{
+	padding: 15px 20px;
+}
+.person-index .info-container .info-title .col-md-2{
+	width: 10%;
+}
+.person-index .info-container .info-title .col-md-2 img{
+	width: 60px;
+	height: 60px;
+}
+.person-index .info-container .info-title h4{
+	margin: 5px 0 15px 0;
+}
+.person-index .info-container .tab-control{
+	border-bottom: 1px solid #ddd;
+	padding: 0 0 0 35px;
+}
+.person-index .info-container .tab-control a{
+	display: inline-block;
+	background-color: #eee !important;
+	padding: 0 10px;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	color: #333 !important;
+	text-decoration: none !important;
+	margin-bottom: -1px;
+	border-top: 1px solid #eee;
+	border-left: 1px solid #eee;
+	border-right: 1px solid #eee;
+	border-bottom: 1px solid #ddd;
+}
+.person-index .info-container .tab-control a.tab-actived{
+	background-color: #fff !important;
+	border-top: 1px solid #ddd;
+	border-left: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+	border-bottom: 1px solid #fff;
+}
+.person-index .info-container .person-data {
+	display: none;
+}
+.person-index .info-container .person-data dl {
+	padding: 15px 15px 0 15px;
+	margin: 0 20px;
+	border-bottom: 1px dashed #eee;
+}
+.person-index .info-container .person-data dl:last-child {
+	border-bottom: 0;
+}
+.person-index .info-container .person-data dl dt {
+	margin: 0 0 10px 0;
+}
+.person-index .info-container .person-data dl dd {
+	display: inline-block;
+	width: 33%;
+	margin: 0 0 10px 0;
+}
+.person-index .info-container .person-post{
+	
 }

@@ -390,8 +390,8 @@ $('.post-handle .post-collect').on('click',function(){
 function changeImg(index){
 	var rightImg = (index*514.8)+"px";
 	var rightTitle = (index*308)+"px";
-	$('.banner-img').animate({right:rightImg}, 2000);
-	$('.banner-title ul').animate({right:rightTitle}, 2000);
+	$('.banner-img').animate({right:rightImg}, 1000);
+	$('.banner-title ul').animate({right:rightTitle}, 1000);
 	$('.banner-control span').removeClass();
 	$('.banner-control span')[index].className='banner-cur';
 }
@@ -532,7 +532,7 @@ $('.win-tip button').on('click', function(){
 			if(!data.error){
 				win.alert(data.info, 'success');
 				$('.win-tip textarea').val('');
-				$('.win-tip').hide();
+				$('.win-tip-container').hide();
 			}else{
 				win.alert(data.info, 'error');
 			}
