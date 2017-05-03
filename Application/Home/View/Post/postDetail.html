@@ -55,7 +55,7 @@
 									<div class="comment-content">
 									   <if condition="$vo['reply_id'] neq 0"> 
 										<blockquote cite="">
-											{$vo.replyUserName}发表于{$vo.replyAddTime}{$vo.replyContent}
+											<span>{$vo.replyUserName} 发表于{$vo.replyAddTime}</span>{$vo.replyContent}
 										</blockquote>
 									   <else />
 									   </if>	

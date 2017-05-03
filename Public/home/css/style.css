@@ -1129,6 +1129,10 @@ ul#filters {
 	background-color: #fafafa;
 	font-size: 14px;
 }
+.post-detail-page .post-detail .post-comment-item .comment-content blockquote span{
+	display: block;
+	color: #979797;
+}
 .post-detail-page .post-detail .post-pager{
 	padding: 15px 20px;
     background-color: #fff;
