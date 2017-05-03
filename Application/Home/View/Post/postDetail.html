@@ -21,8 +21,8 @@
 				<a href="{:u('post/personInfo', ['userId'=>$userRow['id']])}"><img src="{$userRow.avatar}" alt=""></a>
 				<h3>{$postRow.title}</h3>
 				<p>
-					<a href="">{$userRow.nickname}</a>
-					<span>{$postRow.addTime}发表</span>
+					<a href="{:u('post/personInfo', ['userId'=>$userRow['id']])}">{$userRow.nickname}</a>
+					<span>{$postRow.addTime} 发表</span>
 					<span>阅读：<span>{$postRow.click}</span></span>
 					<span>回复：<span>{$replyNum}</span></span>
 					<if condition="$viewHost neq 1">
