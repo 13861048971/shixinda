@@ -600,6 +600,9 @@ ul#filters {
 	color: #333;
 	text-decoration: none;
 }
+.product-detail .product-title{
+	margin: 0;
+}
 /*登录页面*/
 .login,
 .regist{
