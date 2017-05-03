@@ -5,10 +5,12 @@ class PublicController extends Controller {
 
 	public $sid;
 	public $user;
+	public $config;
 	
 	public function _initialize(){
 		$this->session();
-		$this->configInfo = $this->config();
+		$this->config = $this->config();
+		$this->setTdk($this->config['seoTitle']['value'], $this->config['seoKeywords']['value'], $this->config['seoDescription']['value']);
 		$this->about = $this->aboutOur();
 		$navigation = d("navigation")->where(['pid'=>['eq',6]])->order('rank ')->select();
 		$childNavigation = d("navigation")->where(['pid'=>['neq',0]])->order('rank desc')->select();
@@ -32,7 +34,7 @@ class PublicController extends Controller {
 		$this->assign('user',session('user'));
 		$this->assign('navigation',$navigation);
 		$this->assign('aboutOur',$this->about);
-		$this->assign('config',$this->configInfo);
+		$this->assign('config',$this->config);//
 		if($this->user = self::isLogin()){
 			$this->assign('user', $this->user);
 			return;

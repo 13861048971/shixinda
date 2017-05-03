@@ -234,7 +234,7 @@ class UserController extends PublicController {
 	}
 	//帖子管理列表
 	public function post(){
-	    $this->setRightAction([[ 'name'=>'添加内容', 'dialog'=>true,
+	    $this->setRightAction([[ 'name'=>'添加帖子', 'dialog'=>true,
 	        'dialog-lg'=>true, 'url' => u('postEdit') ]]);
 	    $con = $_GET;
 	    $data = d('post')->getPageList($con);
@@ -259,8 +259,12 @@ class UserController extends PublicController {
 	public function postEdit(){
 	    
 	    $this->ajaxEdit('post',null, function($row, $mod){
-	        $id = $_GET['id'];
-	        $tdkRow = d('tdk')->getInfo($id); //用模型传值
+	        
+	        $con = [
+	            'node_id'=> $_GET['id'],
+	            'type' => d('tdk')->typeArr['post'],
+	        ];
+	        $tdkRow = d('tdk')->tdkInfo($con); //用模型传值
 	        $this->assign('tdkRow',$tdkRow);//用模型
 	    });
 	    

@@ -47,7 +47,8 @@ class UserController extends PublicController{
 	    $onlineTime = time()-$this->user['last_login'] + $this->user['online_time'];
 	    $data = [
 	        'id'=>$this->user['id'],
-	        'last_logout'=>time()
+	        'last_logout'=>time(),
+	        'online_time' =>$onlineTime,
 	        
 	    ];
 	    $outTime = d('user')->data($data)->save();

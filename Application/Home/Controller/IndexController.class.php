@@ -17,7 +17,14 @@ class IndexController extends PublicController {
 	}
 	
 	//产品列表
-	public function product(){
+	public function product(){    
+	    $con = [
+	        'node_id' => (int)$_GET['id'],
+	        'type' => d('tdk')->typeArr['contentCate']
+	    ];
+	    $tdkInfo = d('tdk')->tdkInfo($con);
+	    $this->setTdk($tdkInfo['title'], $tdkInfo['keywords'], $tdkInfo['description']);
+	    
 	    $CateChildren = d('contentCate')->getList(['pid'=>3]);//产品子类信息
 	    $cateIdArr = [0];
 	    foreach ($CateChildren as $k=>$v){
@@ -35,8 +42,16 @@ class IndexController extends PublicController {
 	    $this->display();
 	}
 	
+	
 	//产品详情
 	public function productDetail(){
+	    $con = [
+	        'node_id' => (int)$_GET['id'],
+	        'type' => d('tdk')->typeArr['content']
+	    ];
+	    $tdkInfo = d('tdk')->tdkInfo($con);
+	    
+	    $this->setTdk($tdkInfo['title'], $tdkInfo['keywords'], $tdkInfo['description']);
 	    $CateChildren = d('contentCate')->getList(['pid'=>3]);//产品分类信息
 	    $productInfo = d('content')->getInfo($_GET['id']);
 	    $product = d('content')->where(['pid'=>3])->select();

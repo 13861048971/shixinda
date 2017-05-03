@@ -1,6 +1,7 @@
 <?php
 use Think\Model;
 class BaseModel extends Model {
+    
 	public $lastError;
 	protected $errorCode;
 	public $user, $admin, $shop;

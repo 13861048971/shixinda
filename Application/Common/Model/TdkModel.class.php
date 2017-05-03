@@ -1,13 +1,12 @@
 <?php
 use Think\Model;
 class TdkModel extends BaseModel {
+    public $typeArr = ['post'=>1,'content'=>2,'contentCate'=>3];
     
     public $statusArr = [  //可选的状态
         'content' => 0,
         'post'    => 1
     ];
-    public $typeArr = ['内容','帖子'];
-    
     
     //列表
     public function getList($con=[], $limit=5){
@@ -33,11 +32,18 @@ class TdkModel extends BaseModel {
 	   return $info;
 	}
 	
+	//根据条件获取tdk信息
+	public function tdkInfo($con){
+	    $info = $this->where($con)->find();
+	    if(!$info) return;
+	    return $info;
+	}
+	
 	//添加或编辑
 	function edit($data,$id=null){
 	    $tdkData = [
 	        'node_id'      => $data['id'],
-	        'type'        => $this->statusArr[$data['type']],
+	        'type'        => $this->typeArr[$data['type']],
 	        'title'       => $data['seo_title'],
 	        'description' => $data['seo_description'],
 	        'keywords'    => $data['seo_keywords']
