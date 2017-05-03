@@ -192,7 +192,19 @@ class PostController extends PublicController {
     
     //用户回复
     function personReplay(){
-        
+        $reply_id = $_POST['reply_id'];   
+        $row = d('postComment')->where(['id'=>$reply_id])->find();
+        //dump($row);exit();
+        $data = [
+            'user_id'  => $this->user['id'],
+            'post_id'  => $row['post_id'], 
+            'content'  => $_POST['content'],
+            'reply_id' => $reply_id
+        ];
+        $id = d('postComment')->edit($data);
+        if(!$id)
+            ajaxReturn(1,'回复失败');
+        ajaxReturn(0, '回复成功'); 
     }
     
 }
