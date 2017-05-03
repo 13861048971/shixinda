@@ -5,7 +5,7 @@ use Think\Model;
  */
 class SupportModel extends BaseModel {
 	public $cacheKey  = 'support_';
-	public $typeArr = ['post'=>1,'new'=>'2'];
+	public $typeArr = ['post'=>1,'postComment'=>'2'];
 	protected $_validate;
 	
 	function __construct(){
@@ -80,14 +80,14 @@ class SupportModel extends BaseModel {
 	    
 // 	}
 	/**
-	 * 赞的个数
+	 * 赞或踩的个数
 	 * @param int $nid 节点id
 	 * @param int $type 
 	 * @param int $uid 用户id
 	 * @return int 
 	 */
-	public function getNum($nid, $type = 0, $uid=null){
-		$con = ['node_id'=>$nid, 'type'=>$type];
+	public function getNum($nid, $type = 0, $support = 1){
+		$con = ['node_id'=>$nid, 'type'=>$type, 'support'=>$support];
 		$uid && $con['user_id'] = $uid;
 		$num = $this->where($con)->count();	
 		return $num;

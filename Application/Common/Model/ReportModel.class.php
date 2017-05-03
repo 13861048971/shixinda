@@ -2,7 +2,7 @@
 use Think\Model;
 class ReportModel extends BaseModel {
     public $statusArr = ['已处理', '待处理'];
-    public $typeArr = ['post'=>1,'new'=>'2'];
+    public $typeArr = ['post'=>1,'postComment'=>'2'];
 	public $cacheKey  = 'report_';
 	public $reportTypeArr = [ 1=>'联系不上(手机无法接听)','诈骗,提前收取费用',
 		'信息违法虚假','涉黄违法','其他原因' ];

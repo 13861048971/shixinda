@@ -99,6 +99,7 @@ class CollectModel extends BaseModel {
 	 **/
 	public function getList($con, $limit = 50, $order = 'add_time desc'){
 		$list = $this->where($con)->field('id')->limit($limit)->order($order)->select();
+		dump($list);exit();
 		foreach($list as $k=>$v){
 			$list[$k] = $this->getInfo($v['id']);
 		}
@@ -115,6 +116,7 @@ class CollectModel extends BaseModel {
 	}
 
 	function getNum($nodeId, $type=0, $userId=null){
+	    //$type = $typeArr[$type];
 		$con = ['node_id'=>$nodeId, 'type'=>$type];
 		$userId && $con['user_id'] = $userId;
 		return (int)$this->where($con)->count();

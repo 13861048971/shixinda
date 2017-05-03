@@ -69,7 +69,8 @@ class ContentController extends PublicController {
 	//分类编辑
 	public function contentCateEdit(){
 	    $this->ajaxEdit('contentCate', null, function($row, $mod){
-	        
+	        $this->assign('row',$row);
+	        //dump($row);exit();
 	    });
 	}
 	
