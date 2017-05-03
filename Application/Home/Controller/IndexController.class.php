@@ -19,10 +19,11 @@ class IndexController extends PublicController {
 	//产品列表
 	public function product(){    
 	    $con = [
-	        'node_id' => (int)$_GET['id'],
+	        'node_id' => (int)$_GET['cate_id']?$_GET['cate_id']:3,
 	        'type' => d('tdk')->typeArr['contentCate']
 	    ];
 	    $tdkInfo = d('tdk')->tdkInfo($con);
+	    if($tdkInfo)
 	    $this->setTdk($tdkInfo['title'], $tdkInfo['keywords'], $tdkInfo['description']);
 	    
 	    $CateChildren = d('contentCate')->getList(['pid'=>3]);//产品子类信息
@@ -50,8 +51,9 @@ class IndexController extends PublicController {
 	        'type' => d('tdk')->typeArr['content']
 	    ];
 	    $tdkInfo = d('tdk')->tdkInfo($con);
-	    
+	    if($tdkInfo)
 	    $this->setTdk($tdkInfo['title'], $tdkInfo['keywords'], $tdkInfo['description']);
+	    
 	    $CateChildren = d('contentCate')->getList(['pid'=>3]);//产品分类信息
 	    $productInfo = d('content')->getInfo($_GET['id']);
 	    $product = d('content')->where(['pid'=>3])->select();
@@ -71,6 +73,14 @@ class IndexController extends PublicController {
 	
 	//新闻
 	public function news(){
+	    $con = [
+	        'node_id' => (int)$_GET['id'],
+	        'type' => d('tdk')->typeArr['content']
+	    ];
+	    $tdkInfo = d('tdk')->tdkInfo($con);
+	    if($tdkInfo)
+	        $this->setTdk($tdkInfo['title'], $tdkInfo['keywords'], $tdkInfo['description']);
+	    
 	    $data = d('content')->getPageList(['cate_id'=>'1'], '', 'add_time desc', 2);
 	    $hotList = d('content')->getList(['cate_id'=>'1'], 5, 'click desc'); 
 	    $list = $data['list'];

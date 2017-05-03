@@ -8,6 +8,7 @@ class PostModel extends BaseModel{
     public $statusArr = ['不显示', '显示'];
 
     public $cateList = [];
+    
    
     /**
      * 编辑or添加
@@ -16,35 +17,41 @@ class PostModel extends BaseModel{
     function edit($data, $id=null){
         $data = $this->setValidate($data);
         $modtdk = d('tdk');
-        $tdkData = [  
-            'type' =>$data['type'],
-            'title' => $data['seo_title'],
-            'keywords' => $data['seo_keywords'],
-            'description' => $data['seo_description'] 
+        $data['type'] = 'post';
+        
+        $tdkData = [
+            'node_id'      => $data['id'],
+            'type'        => $modtdk->typeArr['post'],
+            'title'       => $data['seo_title'],
+            'description' => $data['seo_description'],
+            'keywords'    => $data['seo_keywords']
         ];
-             
+        
         if($id){
-            $data['update_time'] = $tdkData['update_time'] = time();
-            $data['id'] = $id;
-            
+            $data['update_time'] =  time();
+
             if(!$this->create($data))
                 return false;
             
-            if(false === $this->save() || false === $modtdk->where(['node_id'=>$id])->save($tdkData)){
+            if(false === $this->save()){
                 $this->lastError = '修改失败!';
                 return false;
             }
-               
+            
+            if(false === $modtdk->edit($data)){
+               $this->lastError = 'tdk信息修改失败!';
+               return false;
+           }
+           
             return $id;
         }
-    
+        
         $data['add_time'] = $data['update_time'] = $tdkData['update_time'] = time();
-           
+          
+        
         if(!$this->create($data))
             return false;
-            if($this->add()){
-                $tdkData['node_id'] = $this->add();
-                 
+            if($tdkData['node_id'] = $this->add()){ 
                 if(!($id = $modtdk->add($tdkData))){
                     return $this->setError('发送失败!');
                 }  

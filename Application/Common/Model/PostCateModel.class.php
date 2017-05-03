@@ -23,8 +23,15 @@ class PostCateModel extends BaseModel{
      * 编辑or添加类目
      */
     function edit($data, $id=null){
-
-    
+        $modtdk = d('tdk');
+        $data['type'] = 'postCate';
+        $tdkData = [
+            'node_id'      => $id,
+            'type'        => $modtdk->typeArr['postCate'],
+            'title'       => $data['seo_title'],
+            'description' => $data['seo_description'],
+            'keywords'    => $data['seo_keywords']
+        ];
             if($id){
                 $data['update_time'] = time();
                 
@@ -35,16 +42,25 @@ class PostCateModel extends BaseModel{
                     $this->lastError = '修改类目失败!';
                     return false;
                 }
-//                 $this->updatePath($id);
+                
+                if(false === $modtdk->edit($data)){
+                    $this->lastError = 'tdk信息修改失败!';
+                    return false;
+                }
+
                 return $id;
             }
-    
-            $data['update_time'] = $data['add_time'] = time();
+   
+            $data['update_time'] = $data['add_time'] = $tdkData['add_time'] = $tdkData['update_time'] = time();
             if(!$this->create($data))
                 return false;
-                if(!($id = $this->add()))
-                    return $this->setError('添加类目失败!');
-                 //   $this->updatePath($id);
+            
+                if($tdkData['node_id'] = $this->add()){
+                    if(!($id = $modtdk->add($tdkData))){
+                        return $this->setError('发送失败!');
+                    }
+                }
+   
                     return $id;
     }
     

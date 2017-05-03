@@ -272,7 +272,14 @@ class UserController extends PublicController {
 	
 	//帖子删除
 	public function postDel(){
+	    $con = [
+	        'noid_id' =>$_GET['id'],
+	        'type' =>d('tdk')->typeArr['post']
+	    ];
+	    d('tdk')->where($con)->delete();
+	        
 	    $this->ajaxDel('post');
+	    
 	}
 	//帖子评论列表
 	public function postComment(){
@@ -346,15 +353,25 @@ class UserController extends PublicController {
 	        }else{
 	           $info = d('postCate')->where(['id'=>$con['id']])->find();
 	           $data = d('postCate')->where(['id'=>$info['pid']])->find();
-	       }
-	       
-	        $this->assign('pname',$data);
+	       } 
+	       $con = [
+	           'node_id'=> $_GET['id'],
+	           'type' => d('tdk')->typeArr['postCate'],
+	       ];
+	       $tdkRow = d('tdk')->tdkInfo($con); 
+	       $this->assign('tdkRow',$tdkRow);
+	       $this->assign('pname',$data);
 	    });
 	    
 	}
 	
 	//帖子分类删除
 	public function postCateDel(){
+	    $con = [
+	        'noid_id' =>$_GET['id'],
+	        'type' =>d('tdk')->typeArr['postCate']
+	    ];
+	    d('tdk')->where($con)->delete();
 	    $this->ajaxDel('postCate');
 	}
 	

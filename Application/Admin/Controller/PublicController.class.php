@@ -183,6 +183,7 @@ class PublicController extends Controller {
 			return ajaxReturn(1, '缺少ID!');
 		if(!d($modName)->delete($id))
 			return ajaxReturn(1, '删除失败!');
+		
 		return ajaxReturn(0,'删除成功!');
 	}
 	
@@ -193,7 +194,6 @@ class PublicController extends Controller {
 	 */
 protected function ajaxEdit($modName, $template = null, $callback = null,$success=''){
 		$mod = d($modName);
-		$modTdk = d('tdk');
 		if($_POST){ 
 			$data = $_POST;
 			$id   = (int)$_POST['id'];
@@ -223,19 +223,7 @@ protected function ajaxEdit($modName, $template = null, $callback = null,$succes
 			
 			$this->assign('statusList', $statusList);
 		}	
-		
-		if($modTdk->typeArr){
-		    $typeList = [[ 'name'=>'type', 'list' => $this->typeArr]];
-		    $tdkRow = d('tdk')->getInfo($_GET['id']);
-		    if(isset($tdkRow['type'])){
-		        $typeList[0]['checked'] = $tdkRow['type'];
-		        $typeList[0]['selected'] = $tdkRow['type'];
-		    }
-		    if(!isset($tdkRow['status']))
-		        $typeList[0]['checked'] = 1;
-		        	
- 		        $this->assign('typeList', $typeList);
-		}
+	
 		
 		ajaxReturn(0, '',	['content'=>$this->fetch($template)]);
 	}

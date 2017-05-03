@@ -6,7 +6,7 @@ use Think\Model;
 
 
 class CollectModel extends BaseModel {
-    public $typeArr = ['post'=>1,'new'=>'2'];
+    public $typeArr = ['post'=>1,'content'=>'2'];
 	public $cacheKey  = 'collect_';
 	public $statusArr = [ 1=>'关注','取消关注'];
 	function __construct(){

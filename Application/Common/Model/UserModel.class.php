@@ -30,6 +30,7 @@ class UserModel extends BaseModel{
 		$con['mobile'] = htmlentities($mobile);
 		
 		$user = $this->where($con)->find();
+	
 		
 		$id = $user['id'];
 		
@@ -41,8 +42,8 @@ class UserModel extends BaseModel{
 			
 		
 		//账号被封
-		if($user['status']){
-			return $this->setError('你的账号异常!');
+		if((int)$user['status'] == 0){
+			return $this->setError('你的账号异常,请联系管理员!');
 		}
 		
 		$this->save(['last_login'=>time(), 'id'=>$user['id']]);

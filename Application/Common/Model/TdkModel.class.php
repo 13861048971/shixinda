@@ -1,7 +1,12 @@
 <?php
 use Think\Model;
 class TdkModel extends BaseModel {
-    public $typeArr = ['post'=>1,'content'=>2,'contentCate'=>3];
+    public $typeArr = [
+        'post' => 1,
+        'content' => 2,
+        'contentCate' => 3,
+        'postCate' => 4
+    ];
     
     //列表
     public function getList($con=[], $limit=5){

@@ -1,6 +1,11 @@
 <?php
 use Think\Controller;
 class PostController extends PublicController {
+    
+    public function _initialize(){
+        parent::_initialize();
+         
+    }
     //获取帖子分类
 	public function index(){ 
 	    $hotList = d('post')->getList([], 7, 'click desc');
@@ -35,6 +40,16 @@ class PostController extends PublicController {
 	 
 	//获取帖子列表
 	public function postList(){
+	    
+	    $con = [
+	        'node_id' => (int)$_GET['post_cate_id']?$_GET['post_cate_id']:0,
+	        'type' => d('tdk')->typeArr['contentCate']
+	    ];
+	    $tdkInfo = d('tdk')->tdkInfo($con);
+	    if($tdkInfo)
+	    $this->setTdk($tdkInfo['title'], $tdkInfo['keywords'], $tdkInfo['description']);
+	    
+	    
 	    $post_cate_id2 = $_GET['post_cate_id2'];
 	    $post_cate_id3 = $_GET['post_cate_id3'];
 	    //三级分类列表
@@ -74,6 +89,17 @@ class PostController extends PublicController {
 	
 	//获取帖子详情
 	public function postDetail(){
+	    
+	    $con = [
+	        'node_id' => (int)$_GET['id'],
+	        'type' => d('tdk')->typeArr['post']
+	    ];
+	    $tdkInfo = d('tdk')->tdkInfo($con);
+	    if($tdkInfo)
+	    $this->setTdk($tdkInfo['title'], $tdkInfo['keywords'], $tdkInfo['description']);
+	    
+	    
+	    
 	    $id = $_GET['id'];
 	    $p = $_GET['p'];
 	    //判断帖子是二级分类还是三级分类
