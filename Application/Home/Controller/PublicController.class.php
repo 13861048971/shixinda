@@ -43,7 +43,23 @@ class PublicController extends Controller {
 		self::checkUrl();
 	}
 	
+	//tdk详情
+	public function tdkDetail(){
+	    $con = [
+	        'node_id' => (int)$_GET['id'],
+	        'type' => d('tdk')->typeArr['content']
+	    ];
+	    $tdkInfo = d('tdk')->tdkInfo($con);
+	    if($tdkInfo)
+	        $this->setTdk($tdkInfo['title'], $tdkInfo['keywords'], $tdkInfo['description']);
+	}
 	
+	//tdk列表
+	public function tdkList($con){
+	    $tdkInfo = d('tdk')->tdkInfo($con);
+	    if($tdkInfo)
+	        $this->setTdk($tdkInfo['title'], $tdkInfo['keywords'], $tdkInfo['description']);
+	}
 	public function setTdk($title,$keywords,$description){
 	    $this->assign('seo', ['title'=>$title,'keywords' => $keywords,'description' => $description]);
 	}

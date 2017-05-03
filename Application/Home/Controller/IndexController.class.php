@@ -22,9 +22,7 @@ class IndexController extends PublicController {
 	        'node_id' => (int)$_GET['cate_id']?$_GET['cate_id']:3,
 	        'type' => d('tdk')->typeArr['contentCate']
 	    ];
-	    $tdkInfo = d('tdk')->tdkInfo($con);
-	    if($tdkInfo)
-	    $this->setTdk($tdkInfo['title'], $tdkInfo['keywords'], $tdkInfo['description']);
+	    $this->tdkList($con);
 	    
 	    $CateChildren = d('contentCate')->getList(['pid'=>3]);//产品子类信息
 	    $cateIdArr = [0];
@@ -46,13 +44,7 @@ class IndexController extends PublicController {
 	
 	//产品详情
 	public function productDetail(){
-	    $con = [
-	        'node_id' => (int)$_GET['id'],
-	        'type' => d('tdk')->typeArr['content']
-	    ];
-	    $tdkInfo = d('tdk')->tdkInfo($con);
-	    if($tdkInfo)
-	    $this->setTdk($tdkInfo['title'], $tdkInfo['keywords'], $tdkInfo['description']);
+	   $this->tdkDetail();
 	    
 	    $CateChildren = d('contentCate')->getList(['pid'=>3]);//产品分类信息
 	    $productInfo = d('content')->getInfo($_GET['id']);
@@ -74,12 +66,10 @@ class IndexController extends PublicController {
 	//新闻
 	public function news(){
 	    $con = [
-	        'node_id' => (int)$_GET['id'],
-	        'type' => d('tdk')->typeArr['content']
+	        'node_id' => (int)$_GET['cate_id']?$_GET['cate_id']:1,
+	        'type' => d('tdk')->typeArr['contentCate']
 	    ];
-	    $tdkInfo = d('tdk')->tdkInfo($con);
-	    if($tdkInfo)
-	        $this->setTdk($tdkInfo['title'], $tdkInfo['keywords'], $tdkInfo['description']);
+	    $this->tdkList($con);
 	    
 	    $data = d('content')->getPageList(['cate_id'=>'1'], '', 'add_time desc', 2);
 	    $hotList = d('content')->getList(['cate_id'=>'1'], 5, 'click desc'); 
@@ -93,8 +83,10 @@ class IndexController extends PublicController {
 	    $this->display();
 	}
 	
+	
 	//新闻详情
 	public function newsDetail(){
+        $this->tdkDetail();
 	    $id = $_GET['id'];
 	    $row = d('content')->getInfo($id);
 	    $hotList = d('content')->getList(['cate_id'=>'1'], 5, 'click desc');
