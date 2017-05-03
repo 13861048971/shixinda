@@ -50,7 +50,8 @@
 							<div class="col-md-2"><a href="{:u('post/personInfo', ['userId'=>$vo['user_id']])}"><img src="{$vo.avatar}" alt=""></a></div>
 							<div class="col-md-10">
 								<ul>
-									<li><a href="">{$vo.userName}</a> {$vo.addTime} 发表<span class="comment-floor <if condition="$vo['floor'] lt 3">floor</if> ">{$vo.floorName}</span></li>
+									<li><a href="{:u('post/personInfo', ['userId'=>$vo['user_id']])}">{$vo.userName}</a> {$vo.addTime} 发表
+									    <span class="comment-floor <if condition="$vo['floor'] lt 3">floor-2</if> ">{$vo.floorName}</span></li>
 									<li>
 										<div class="comment-content">
 										<if condition="$vo['reply_id'] neq 0"> 

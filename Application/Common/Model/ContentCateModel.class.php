@@ -22,6 +22,8 @@ class ContentCateModel extends BaseModel {
 	    if(!$info) return;
 	
 	    $info = $this->parseRow($info);
+	    $tdkInfo = d('tdk')->getInfo($id);
+	    $info['tdk'] = $tdkInfo;
 	    return $info;
 	}
 	
@@ -44,6 +46,7 @@ class ContentCateModel extends BaseModel {
 	            $this->lastError = '修改失败!';
 	            return false;
 	        }
+	        d('tdk')->edit($data);
 	        return $id;
 	    }
 	
@@ -54,6 +57,8 @@ class ContentCateModel extends BaseModel {
 	        if(!($id = $this->add())){
 	            return $this->setError('添加失败!');
 	        }
+	        $data['id'] = $id;
+	        d('tdk')->edit($data);
 	        return $id;
 	}
 	

@@ -26,7 +26,7 @@ class ContentController extends PublicController {
     //内容编辑
 	public function contentEdit(){
 	    $this->ajaxEdit('content', null, function($row, $mod){
-	    $list = d('contentCate')->getList(['pid'=>'0'],$limit=50);
+	    $list = d('contentCate')->getList(['pid'=>'0'], $limit=50);
 	    $url = "/admin/content/contentCateChildren/pid/";
         $selectMuti = [
                     'list'      => $list,
