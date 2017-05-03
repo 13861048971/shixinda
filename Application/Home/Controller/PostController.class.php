@@ -194,7 +194,6 @@ class PostController extends PublicController {
     function personReplay(){
         $reply_id = $_POST['reply_id'];   
         $row = d('postComment')->where(['id'=>$reply_id])->find();
-        //dump($row);exit();
         $data = [
             'user_id'  => $this->user['id'],
             'post_id'  => $row['post_id'], 

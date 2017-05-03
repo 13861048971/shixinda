@@ -53,9 +53,12 @@
 							    <li><a href="">{$vo.username}</a> {$vo.addTime} 发表<span class="comment-floor <if condition="$vo['floor'] lt 3">floor-2</if> ">{$vo.floorName}</span></li>
 								<li>
 									<div class="comment-content">
+									   <if condition="$vo['reply_id'] neq 0"> 
 										<blockquote cite="">
 											{$vo.replyUserName}发表于{$vo.replyAddTime}{$vo.replyContent}
 										</blockquote>
+									   <else />
+									   </if>	
 										{$vo.content}
 									</div>
 								</li>

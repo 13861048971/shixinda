@@ -3,11 +3,6 @@ use Think\Model;
 class TdkModel extends BaseModel {
     public $typeArr = ['post'=>1,'content'=>2,'contentCate'=>3];
     
-    public $statusArr = [  //可选的状态
-        'content' => 0,
-        'post'    => 1
-    ];
-    
     //列表
     public function getList($con=[], $limit=5){
         $list = $this->where($con)->limit($limit)->select();
