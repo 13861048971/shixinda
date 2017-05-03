@@ -42,6 +42,11 @@ class PublicController extends Controller {
 	}
 	
 	
+	public function setTdk($title,$keywords,$description){
+	    $this->assign('seo', ['title'=>$title,'keywords' => $keywords,'description' => $description]);
+	}
+	
+	
 	//关于我们配置信息
 	public function aboutOur(){
 	    $mod = d('config');
@@ -55,7 +60,7 @@ class PublicController extends Controller {
 	    $mod = d('config');
 	    $list = $mod->getList();
 	    $list = $list['config']['node'];
-	
+	       
 	    return $list;
 	}
 	
