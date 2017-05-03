@@ -1092,6 +1092,9 @@ ul#filters {
 	overflow: hidden;
 	margin: 0 0 5px 0;
 }
+.post-detail-page .post-detail .post-comment-item .col-md-10 ul li:first-child{
+	color: #979797;
+}
 .post-detail-page .post-detail .post-comment-item .col-md-10 ul .comment-handle{
 	height: 30px;
 	line-height: 30px;
@@ -1116,8 +1119,7 @@ ul#filters {
 	border-radius: 4px;
 	float: right;
 }
-.post-detail-page .post-detail .post-comment-item .col-md-10 ul .floor-2,
-.post-detail-page .post-detail .post-comment-item .col-md-10 ul .floor-3{
+.post-detail-page .post-detail .post-comment-item .col-md-10 ul .floor{
 	background-color: #1C86EE;
 	color: #fff;
 }
