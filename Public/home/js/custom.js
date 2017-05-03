@@ -588,12 +588,12 @@ $('.win-reply button').on('click', function(){
 		win.alert('请填写回复内容！', 'error');
 		return false;
 	}
-	var post_id = thisReply.data('id');
+	var reply_id = thisReply.data('id');
 	$.ajax({
 		url:'/post/personReplay',
 		type:'post',
 		dataType:'json',
-		data:{content:content,post_id:post_id},
+		data:{content:content,reply_id:reply_id},
 		success:function(data){
 			if(!data.error){
 				win.alert(data.info, 'success');
