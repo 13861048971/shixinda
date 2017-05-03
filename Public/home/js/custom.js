@@ -466,20 +466,6 @@ function postSupport(act){
 		dataType:'json',
 		success:function(data){
 			if(!data.error){
-				if(data.status == 1){
-					win.alert(data.info, 'success');
-					var num = $('.post-support').find('span').text();
-					num = num.substr(1, num.length-2);
-					num = parseInt(num)-1;
-					$('.post-support')[0].innerHTML='赞<span>('+num+')</span>';
-				}
-				if(data.status == 2){
-					win.alert(data.info, 'success');
-					var num = $('.post-oppose').find('span').text();
-					num = num.substr(1, num.length-2);
-					num = parseInt(num)-1;
-					$('.post-oppose')[0].innerHTML='踩<span>('+num+')</span>';
-				}
 				if(data.status == 3){
 					win.alert(data.info, 'success');
 					var num = $('.post-support').find('span').text();
@@ -506,6 +492,38 @@ $('.post-detail-page .post-support').on('click', function(){
 $('.post-detail-page .post-oppose').on('click', function(){
 	postSupport('cai');
 });
+// 评论支持和反对
+function commentSupport(act, _this){
+	var id = _this.parents('.comment-handle').data('id');
+	var url = '/post/postSupport/act/'+act+'/id/'+id;
+	$.ajax({
+		url:url,
+		type:'get',
+		dataType:'json',
+		success:function(data){
+			if(!data.error){
+				if(data.status == 3){
+					win.alert(data.info, 'success');
+					_this.text('已支持');
+				}
+				if(data.status == 4){
+					win.alert(data.info, 'success');
+					_this.text('已反对');
+				}
+			}else{
+				win.alert(data.info, 'error');
+			}
+		}
+	});
+};
+$('.post-detail-page .comment-support').on('click', function(){
+	var _this = $(this);
+	commentSupport('zan', _this);
+});
+$('.post-detail-page .comment-oppose').on('click', function(){
+	var _this = $(this);
+	commentSupport('cai', _this);
+});
 //举报弹窗
 var thisReport = '';
 $('.post-detail-page .post-tip').on('click', function(){
@@ -525,10 +543,10 @@ $('.win-tip button').on('click', function(){
 		win.alert('请填写举报内容！', 'error');
 		return false;
 	}
-	if(!thisReport.data('id')){
+	if(!thisReport.parents('.comment-handle').data('id')){
 		var post_report_id = $('.post-detail-page').data('id');
 	}else{
-		var post_report_id = thisReport.data('id');
+		var post_report_id = thisReport.parents('.comment-handle').data('id');
 	}
 	$.ajax({
 		url:'/post/postReport',
