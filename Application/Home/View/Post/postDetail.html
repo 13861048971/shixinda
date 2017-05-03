@@ -45,35 +45,36 @@
 							<p><a href="javascript:void(0);" class="post-tip">举报</a></p>
 						</div>
 					</div>
-					<div class="row post-comment-item">
-					    <foreach name="list" item="vo" key="k">
-						<div class="col-md-2"><a href="{:u('post/personInfo', ['userId'=>$vo['user_id']])}"><img src="{$vo.avatar}" alt=""></a></div>
-						<div class="col-md-10">
-							<ul>
-							    <li><a href="">{$vo.username}</a> {$vo.addTime} 发表<span class="comment-floor <if condition="$vo['floor'] lt 3">floor-2</if> ">{$vo.floorName}</span></li>
-								<li>
-									<div class="comment-content">
-									   <if condition="$vo['reply_id'] neq 0"> 
-										<blockquote cite="">
-											<span>{$vo.replyUserName} 发表于{$vo.replyAddTime}</span>{$vo.replyContent}
-										</blockquote>
-									   <else />
-									   </if>	
-										{$vo.content}
-									</div>
-								</li>
-								<li class="comment-handle">
-									<a href="javascript:void(0);" class="comment-reply" data-id="{$vo.id}">回复</a>
-									<a href="javascript:void(0);">支持</a>
-									<a href="javascript:void(0);">反对</a>
-									<a href="javascript:void(0);" class="post-tip" data-id="{$vo.id}">举报</a>
-								</li>
-							</ul>
+					<foreach name="list" item="vo" key="k">
+						<div class="row post-comment-item">
+							<div class="col-md-2"><a href="{:u('post/personInfo', ['userId'=>$vo['user_id']])}"><img src="{$vo.avatar}" alt=""></a></div>
+							<div class="col-md-10">
+								<ul>
+									<li><a href="">{$vo.username}</a> {$vo.addTime} 发表<span class="comment-floor <if condition="$vo['floor'] lt 3">floor-2</if> ">{$vo.floorName}</span></li>
+									<li>
+										<div class="comment-content">
+										<if condition="$vo['reply_id'] neq 0"> 
+											<blockquote cite="">
+												<span>{$vo.replyUserName} 发表于{$vo.replyAddTime}</span>{$vo.replyContent}
+											</blockquote>
+										<else />
+										</if>	
+											{$vo.content}
+										</div>
+									</li>
+									<li class="comment-handle">
+										<a href="javascript:void(0);" class="comment-reply" data-id="{$vo.id}">回复</a>
+										<a href="javascript:void(0);">支持</a>
+										<a href="javascript:void(0);">反对</a>
+										<a href="javascript:void(0);" class="post-tip" data-id="{$vo.id}">举报</a>
+									</li>
+								</ul>
+							</div>
 						</div>
-						</foreach>
+					</foreach>
+					<div class="row post-pager">
 						<div class="page">{$pageVar}</div>
 					</div>
-					<div class="row post-pager"></div>
 					<div class="row back-list">
 						<a href="{:u('post/postList', $idArr)}">返回列表</a>
 					</div>

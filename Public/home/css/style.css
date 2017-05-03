@@ -1107,7 +1107,8 @@ ul#filters {
 }
 .post-detail-page .post-detail .post-comment-item .col-md-10 ul .comment-floor{
 	display: inline-block;
-	width: 45px;
+	min-width: 45px;
+	padding: 0 9px;
 	height: 26px;
 	background-color: #eee;
 	text-align: center;
