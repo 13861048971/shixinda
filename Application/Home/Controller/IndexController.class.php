@@ -130,6 +130,12 @@ class IndexController extends PublicController {
 	
 	//案例
 	public function cases(){
+	    $con = [
+	        'node_id' => (int)$_GET['cate_id']?$_GET['cate_id']:4,
+	        'type' => d('tdk')->typeArr['contentCate']
+	    ];
+	    $this->tdkList($con);
+	    
 	    $CateChildren = d('contentCate')->getList(['pid'=>'4']);//产品子类信息
 	    
 	    foreach ($CateChildren as $k=>$v){
