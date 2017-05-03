@@ -48,8 +48,7 @@ class PostCommentModel extends BaseModel{
             if($p == 1){
                 $k == 0 && $data['list'][$k]['floorName'] = '沙发';
                 $k == 1 && $data['list'][$k]['floorName'] = '板凳';
-            }
-            
+            }     
         }
         //dump($data['list']);exit();
         return $data;
@@ -85,6 +84,7 @@ class PostCommentModel extends BaseModel{
             $v['replyAddTime'] = date('Y-m-d H:i', $row['add_time']);
             $v['replyContent'] = $row['content'];
         }
+        $v['userName'] = d('user')->where(['id'=>$v['user_id']])->getField('nickname');
         $v['updateTime'] = date('Y-m-d H:i:s', $v['update_time']);
         $v['addTime'] 	= date('Y-m-d H:i:s', $v['add_time']);
         return $v ;
