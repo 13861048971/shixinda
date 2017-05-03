@@ -74,7 +74,7 @@ class ContentController extends PublicController {
 	}
 	
 	//添加内容子类
-	public function contentChildrenEdit(){
+	public function contentCateChildrenEdit(){
 	    $this->ajaxEdit('contentCate', null, function($row, $mod){
 	        $name = $_GET['name'];
 	        $id = $_GET['id'];

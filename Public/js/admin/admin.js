@@ -154,7 +154,7 @@ $('.content-cate-table').on('click',function(e){
 						html+='<td>'+sub[k].statusName+'</td>';
 					}
 					
-					html+='<td>'+sub[k].addTime+'</td><td>'+sub[k].updateTime+'</td><td width=200 class="handle"><a class="dialog add" dialog-lg="true" href="#" url="/admin/content/addContentChildren/id/'+sub[k].id+'/name/'+sub[k].name+'">添加子类</a>| <a class="dialog edit" dialog-lg="true" href="#" url="/admin/content/contentCateEdit/id/'+sub[k].id+'">编辑</a>| <a class="ajaxDel del" href="#" url="/admin/content/contentCateDel/id/'+sub[k].id+'">删除</a></td></tr>';
+					html+='<td>'+sub[k].addTime+'</td><td>'+sub[k].updateTime+'</td><td width=200 class="handle"><a class="dialog add" dialog-lg="true" href="#" url="/admin/content/contentCateChildrenEdit/id/'+sub[k].id+'/name/'+sub[k].name+'">添加子类</a>| <a class="dialog edit" dialog-lg="true" href="#" url="/admin/content/contentCateEdit/id/'+sub[k].id+'">编辑</a>| <a class="ajaxDel del" href="#" url="/admin/content/contentCateDel/id/'+sub[k].id+'">删除</a></td></tr>';
 					_this.parents('tr').after(html);
 				}
 			}
