@@ -476,6 +476,7 @@ function postSupport(act, _this){
 					if(data.status == 3){
 						win.alert(data.info, 'success');
 						var num = _this.find('span').text();
+						console.log(num);
 						num = num.substr(1, num.length-2);
 						num = parseInt(num)+1;
 						_this[0].innerHTML='已赞<span>('+num+')</span>';

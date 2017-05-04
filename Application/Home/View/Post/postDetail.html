@@ -84,11 +84,11 @@
 									</li>
 									<li class="comment-handle" data-id="{$vo.id}">
 										<a href="javascript:void(0);" class="comment-reply" data-id="{$vo.id}">回复</a>
-										<a href="javascript:void(0);" class="post-support">
+										<a href="javascript:void(0);" class="comment-support">
 							             <if condition="$vo['isSupport']">已</if>赞<span>({$vo.supportNum})</span>
 							            </a>
 				
-							            <a href="javascript:void(0);" class="post-oppose">
+							            <a href="javascript:void(0);" class="comment-oppose">
 							             <if condition="!$vo['isSupport']">已</if>踩<span>({$vo.notSupportNum})</span>
 							            </a>
 				
