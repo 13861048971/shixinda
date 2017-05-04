@@ -96,7 +96,6 @@ class PostModel extends BaseModel{
             $data['list'][$k]['lastReplyUserName'] = $postCommentList[0][userName];
             $data['list'][$k]['lastReplyUserId'] = $postCommentList[0][user_id];
         }
-        
         return $data;
     }
     

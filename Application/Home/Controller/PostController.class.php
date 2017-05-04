@@ -158,6 +158,7 @@ class PostController extends PublicController {
 	    
 	    $this->assign('p', $p);
 	    $this->assign('pageVar', $data['pageVar']);
+	    $this->assign('page', $data['page']);
 	    $this->assign('proNum', $data['proNum']);
 	    $this->assign('viewHost', $_GET['viewHost']);
 	    $this->assign('idArr', $idArr);

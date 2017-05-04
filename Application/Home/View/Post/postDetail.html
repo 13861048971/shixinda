@@ -103,9 +103,12 @@
 							</div>
 						</div>
 					</foreach>
-						<div class="row post-pager">
-							<div class="pager">{$pageVar}</div>
-						</div>
+					<if condition="$page egt 2">
+					<div class="row post-pager">
+						<div class="pager">{$pageVar}</div>
+					</div>
+					<else />
+					</if>
 					<div class="row back-list">
 						<a href="{:u('post/postList', $idArr)}">返回列表</a>
 					</div>
