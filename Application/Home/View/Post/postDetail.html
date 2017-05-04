@@ -41,7 +41,7 @@
 						<div class="post-handle">
 	                       					
 							<a href="javascript:void(0);" class="post-collect">
-								<if condition="!$postRow['isCollect']">已</if>收藏<span>({$postRow.collectNum})</span>
+								<if condition="$postRow['isCollect']">已</if>收藏<span>({$postRow.collectNum})</span>
 							</a>
 						  
 							<a href="javascript:void(0);" class="post-support">
@@ -49,7 +49,7 @@
 							</a>
 				
 							<a href="javascript:void(0);" class="post-oppose">
-							    <if condition="!$postRow['isSupport']">已</if>踩<span>({$postRow.notSupportNum})</span>
+							    <if condition="$postRow['isSupport'] heq 0">已</if>踩<span>({$postRow.notSupportNum})</span>
 							</a>
 				
 							<p>
@@ -59,8 +59,7 @@
 							<else />
 							  <a href="javascript:void(0);" class="post-tip">
 							       举报<span>({$postRow.reportNum})</span></a>
-							 </if> 
-							 
+							</if> 
 							</p>
 						</div>
 					</div>
@@ -89,7 +88,7 @@
 							            </a>
 				
 							            <a href="javascript:void(0);" class="comment-oppose">
-							             <if condition="!$vo['isSupport']">已</if>踩<span>({$vo.notSupportNum})</span>
+							             <if condition="$vo['isSupport'] heq 0">已</if>踩<span>({$vo.notSupportNum})</span>
 							            </a>
 				
 										<span>
