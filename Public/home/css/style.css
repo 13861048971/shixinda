@@ -177,6 +177,18 @@ a:hover{
 .menu-section #menu-top .user-nav{
 	float: right;
 }
+.menu-section #menu-top .user-nav .msg-num {
+	font-size: 4px;
+    padding: 0 3px 3px 3px;
+    border-radius: 20px;
+    background-color: #f33;
+    color: #fff;
+    margin: 0 7px;
+    display: inline-block;
+    min-width: 14px;
+    height: 15px;
+    text-align: center;
+}
 .menu-section #menu-top .nav-avatar+a{
 	padding: 0;
 	line-height: 70px;
@@ -725,7 +737,8 @@ ul#filters {
 .user-container .post-edit{
 	margin: 20px 0 0 0;
 }
-.user-container .post-manage-list dl dd{
+.user-container .post-manage-list dl dd,
+.user-container .message-list dl dd{
 	padding: 15px;
 	border-bottom: 1px solid #ccc;
 	overflow: hidden;
@@ -1499,4 +1512,54 @@ ul#filters {
 }	
 .person-index .info-container .person-post .post-reply{
 	display: none;
+}
+/*消息通知*/
+.user-section .tab-control{
+	margin: 20px 0 0 0;
+	padding: 0 0 0 20px;
+	border-bottom: 1px solid #eee;
+}
+.user-section .tab-control a{
+	padding: 0 20px;
+	display: inline-block;
+	text-align: center;
+	height: 35px;
+	line-height: 35px;
+	background-color: #eee !important;
+	color: #333 !important;
+	text-decoration: none !important;
+	margin-bottom: -1px;
+	border-top: 1px solid #eee;
+	border-left: 1px solid #eee;
+	border-right: 1px solid #eee;
+	border-bottom: 1px solid #eee;
+}
+.user-section .tab-control a.tab-actived{
+	background-color: #fff !important;
+	border-top: 1px solid #eee;
+	border-left: 1px solid #eee;
+	border-right: 1px solid #eee;
+	border-bottom: 1px solid #fff;
+}
+.user-section .message-list .message-thumb{
+	width: 600px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	float: left;
+}
+.user-section .message-list .message-thumb span{
+	padding: 2.5px;
+	display: inline-block;
+	border-radius: 5px;
+	margin: 0 5px 3px 0;
+	background-color: #ff4444;
+}
+.user-section .message-list .message-complete{
+	width: 700px;
+	float: left;
+	display: none;
+}
+.user-section .message-list .reply-time{
+	float: right;
 }
