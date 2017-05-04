@@ -24,7 +24,7 @@
 					<a href="{:u('post/personInfo', ['userId'=>$userRow['id']])}">{$userRow.nickname}</a>
 					<span>{$postRow.addTime} 发表</span>
 					<span>阅读：<span>{$postRow.click}</span></span>
-					<span>回复：<span>{$postRow.replyNum}</span></span>
+					<span>回复：<span>{$postRow.comment_num}</span></span>
 					<if condition="$viewHost neq 1">
 					 <a href="{:u('post/postDetail', ['id'=>$postRow['id'], 'viewHost'=>1])}">只看楼主</a>
 					<else/>
@@ -74,11 +74,11 @@
 										<div class="comment-content">
 										<if condition="$vo['reply_id'] neq 0"> 
 											<blockquote cite="">
-												<span>{$vo.replyUserName} 发表于{$vo.replyAddTime}</span>{$vo.replyContent}
+												<span data-id="{$vo.reply_id}">{$vo.replyUserName} 发表于{$vo.replyAddTime}</span>{$vo.replyContent}
 											</blockquote>
 										<else />
 										</if>	
-											{$vo.content}
+											{$vo.id}{$vo.content}
 										</div>
 									</li>
 									<li class="comment-handle" data-id="{$vo.id}">

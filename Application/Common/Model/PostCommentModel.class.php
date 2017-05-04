@@ -26,9 +26,11 @@ class PostCommentModel extends BaseModel{
         $data['add_time'] = $data['update_time'] = time();
         if(!$this->create($data))
             return false;
-            if(!($id = $this->add()))
-                return $this->setError('评论失败!');
-            return $id;
+        if(!($id = $this->add()))
+            return $this->setError('评论失败!');
+        $postComment = d('postComment')->where(['post_id'=>$data['post_id']])->count();
+        d('post')->where(['id'=>$data['post_id']])->setField('comment_num', $postComment);
+        return $id;
     }
     
 

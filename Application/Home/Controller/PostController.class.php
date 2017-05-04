@@ -76,7 +76,7 @@ class PostController extends PublicController {
 	    else{
 	        $data = d('post')->getPageList(['post_cate_id'=>$post_cate_id2, 'status'=>'1'], '*', 'add_time desc', 3);
 	    } 
-	    
+	    //dump($data['list']);exit();
 	    $this->assign('todayPostNum', $_GET['todayPostNum']);
 	    $this->assign('mainPostNum', $_GET['mainPostNum']);
 	    $this->assign('childrenList', $childrenList);
@@ -116,6 +116,7 @@ class PostController extends PublicController {
 	    $userId = d('post')->where(['id'=>$id])->getField('user_id');
 	    $userRow = d('user')->where(['id'=>$userId])->find();//发帖人信息
 	    $postRow = d('post')->getInfo($id);//帖子信息
+	    //dump($postRow);exit();
 	    $this->click('post',$id);//访问量+1
 	    $con = ['post_id'=>$id];
 	    if($_GET['viewHost']){
@@ -123,6 +124,7 @@ class PostController extends PublicController {
 	    }
 	    
 	    $data = d('postComment')->getPageList($con, '*', 'add_time', 5);//帖子评论信息
+	    //dump($data['list']);exit();
 	    //帖子评论信息的赞和踩状态
 	    foreach ($data['list'] as $k=>$v){
 	        $con = [
@@ -189,6 +191,7 @@ class PostController extends PublicController {
         if(!$id){
             ajaxReturn(1, '评论失败',['id'=>$id]);
         } 
+        
         ajaxReturn(0, '评论成功', ['id'=>$id]);
     }
 	

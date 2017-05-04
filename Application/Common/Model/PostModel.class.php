@@ -111,6 +111,7 @@ class PostModel extends BaseModel{
             $v = $this->getInfo($v['id']);
             $data['list'][$k] =  $this->parseRow($v);
              
+            $data['list'][$k]['comment_num'] = d('postComment')->where(['post_id'=>$v['id']])->count();
         }
         return $data;
     }
@@ -143,7 +144,6 @@ class PostModel extends BaseModel{
         $list = $this->where($con)->order($order)->limit($limit)->select();
         foreach($list as $k=>&$v){
             $list[$k] = $this->parseRow($v);
-            //     			$v = $this->getInfo($v['id']);
         }
         return $list;
     }
@@ -151,43 +151,6 @@ class PostModel extends BaseModel{
     public function getInfo($id){
         $info = $this->find($id);
         if(!$info) return;
-    
-        $info['updateTime'] = local_date($info['update_time'], 'Y-m-d H:i');
-        $info['addTime'] 	= local_date($info['add_time'], 'Y-m-d H:i');
-        $info['userName'] = d('user')->getInfo($info['user_id'])['username'];
-        !$info['title'] && $info['title'] = $info['content'];
-    
-        $type = $info['type'];
-        $info['typeName'] = $info['type_id'];
-        $info['cateName'] = $this->cateArr[$info['cate']];
-    
-        if($info['from']){
-            $from = d('user')->getInfo($info['from']);
-            $info['from'] = filter([$from], 'id,nickname,realname,mobile,avatar')[0];
-        }else{
-            $info['from'] = [
-                'realname' => '管理员',
-                'nickname' => '管理员',
-                'avatar' => '/Public/images/admin.jpg',
-                'isAdmin' => true,
-            ];
-            if($nickname = $this->config['nickname']){
-                $info['from']['nickname'] = $info['from']['realname'] = $nickname;
-            }
-            if($avatar = $this->config['avatar'])
-                $info['from']['avatar'] = $avatar;
-        }
-    
-       // $info['isRead'] = $this->read($id, $this->user['id'], false);
-    
-        if($info['cate'] == 2 && $info['node_id'])
-            $info['artistImage'] = d('album')
-            ->where(['type_id'=>$info['node_id']])
-            ->order('id desc')->getField('path');
-    
-    
-    
-            return $info;
     }
     
     
