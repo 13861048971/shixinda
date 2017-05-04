@@ -24,7 +24,9 @@
 								<p>
 									<a href="{:u('post/personInfo', ['userId'=>$user['id']])}">{$user.nickname}</a>
 									<span><span>{$vo.addTime}</span>发表</span>
-									<span>最后回复 用户名</span>
+									<span>最后回复 <a href="{:u('post/personInfo', ['userId'=>$vo['lastReplyUserId']])}">
+									               {$vo.lastReplyUserName}</a>
+									</span>
 								</p>
 							</div>
 							<span>0</span>

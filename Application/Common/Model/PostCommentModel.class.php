@@ -58,8 +58,8 @@ class PostCommentModel extends BaseModel{
      * 获取信息列表
      * @param array $con
      */
-    public function getList($con = null, $limit = 10){
-        $list = $this->where($con)->order('rank')->limit($limit)->select();
+    public function getList($con = null, $limit = 10, $order = 'rank'){
+        $list = $this->where($con)->order($order)->limit($limit)->select();
         foreach($list as $k=>&$v){
             $list[$k] = $this->parseRow($v);
         }
