@@ -400,18 +400,29 @@ class UserController extends PublicController{
 	
 	//消息通知
 	function message(){
-		$mod = d('userMsg');
-		$con = $_GET;
-		$con['_complex'] = [
-			'user_id' => $this->userId, 
-			"find_in_set('{$this->user[msgType]}',type_id)" => ['gt', 0],
-			'_logic'  => 'or',
-		];
+	    
+	    $this->display();
+	    
+// 		$mod = d('userMsg');
+// 		$con = $_GET;
+// 		$con['_complex'] = [
+// 			'user_id' => $this->userId, 
+// 			"find_in_set('{$this->user[msgType]}',type_id)" => ['gt', 0],
+// 			'_logic'  => 'or',
+// 		];
 		
-		$data = $mod->getPageList($con);
+// 		$data = $mod->getPageList($con);
 		
-		ajaxReturn2(0,'', $data);
+		
+		
+// 		ajaxReturn2(0,'', $data);
 	}
+	//系统消息
+	
+	function systemMessage(){
+	    $this->display();
+	}
+	
 	//消息详情
 	function messageDetail(){
 		$info = d('userMsg')->getInfo((int)$_GET['id']);
