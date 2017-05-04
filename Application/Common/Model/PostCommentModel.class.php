@@ -28,6 +28,7 @@ class PostCommentModel extends BaseModel{
             return false;
         if(!($id = $this->add()))
             return $this->setError('评论失败!');
+        //帖子的评论数量
         $postComment = d('postComment')->where(['post_id'=>$data['post_id']])->count();
         d('post')->where(['id'=>$data['post_id']])->setField('comment_num', $postComment);
         return $id;

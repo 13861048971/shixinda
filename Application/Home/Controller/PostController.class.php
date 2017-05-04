@@ -24,16 +24,10 @@ class PostController extends PublicController {
                 ];
                 $list[$k1]['list'][$k2]['todayPostNum'] = d('post')->where($con)->count();
                 $list[$k1]['list'][$k2]['mainPostNum'] = d('post')->where(['post_cate_id' => ['in', $idArr1]])->count();
-                $idArr2 = d('post')->where(['post_cate_id' => ['in', $idArr1]])->getField('id', true);
-                if($idArr2 == []){
-                    $list[$k1]['list'][$k2]['replyPostNum'] = 0;
-                }else{
-                    $list[$k1]['list'][$k2]['replyPostNum'] = d('postComment')->where(['post_id'=>['in', $idArr2]])->count();
-                }
+                $list[$k1]['list'][$k2]['replyPostNum'] = d('post')->where(['post_cate_id' => ['in', $idArr1]])->sum('comment_num');
                 $list[$k1]['list'][$k2]['postNum'] = $list[$k1]['list'][$k2]['mainPostNum'] + $list[$k1]['list'][$k2]['replyPostNum']; 
             }
         } 
-        //dump($list);exit();
         $this->assign('hotList', $hotList);
         $this->assign('newList', $newList);
         $this->assign('list', $list);
