@@ -74,11 +74,11 @@
 										<div class="comment-content">
 										<if condition="$vo['reply_id'] neq 0"> 
 											<blockquote cite="">
-												<span data-id="{$vo.reply_id}">{$vo.replyUserName} 发表于{$vo.replyAddTime}</span>{$vo.replyContent}
+												<span id="reply-{$vo.reply_id}">{$vo.replyUserName} 发表于{$vo.replyAddTime}</span>{$vo.replyContent}
 											</blockquote>
 										<else />
 										</if>	
-											{$vo.id}{$vo.content}
+											<span id="comment-{$vo.id}">{$vo.content}</span>
 										</div>
 									</li>
 									<li class="comment-handle" data-id="{$vo.id}">
