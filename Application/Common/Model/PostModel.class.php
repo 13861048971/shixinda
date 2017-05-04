@@ -21,7 +21,7 @@ class PostModel extends BaseModel{
         
         $tdkData = [
             'node_id'      => $data['id'],
-            'type'        => $modtdk->typeArr['post'],
+            'type'        => $modtdk->typeArr['回复信息'],
             'title'       => $data['seo_title'],
             'description' => $data['seo_description'],
             'keywords'    => $data['seo_keywords']

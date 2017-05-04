@@ -4,10 +4,16 @@ use Think\Model;
  * 消息管理
  */
 class UserMsgModel extends BaseModel {
+    public $statusArr = [1=>'显示', 0=>'不显示'];
 	public $cacheKey  = 'user_msg_';
-	public $typeArr = [1=>'所有人', '用户'];
+	public $typeArr = [ //消息类型
+	    '系统信息' => 0,
+        '评论信息' => 1,
+        '回复信息' => 2, 
+        '站内信息' => 3 
+    ];
 	public $cateArr = ['通知','投标','订单'];
-	public $typeIdArr;
+
 	protected $_validate;
 	private $config;
 	
@@ -27,7 +33,7 @@ class UserMsgModel extends BaseModel {
 	
 	function setValidate($data){
 		$this->_validate = [
-			['title', 'require', '缺少标题!'],
+			
 			['content', 'require', '缺少内容!',1],
 		];
 		
@@ -41,8 +47,8 @@ class UserMsgModel extends BaseModel {
 			$data['type_id'] = implode(',', $arr);
 		}
 
-		if(!$data['cate'] && !$data['type_id'] && !$data['user_id'])
-			return $this->setError('缺少推送人群!');
+// 		if(!$data['cate'] && !$data['type_id'] && !$data['user_id'])
+// 			return $this->setError('缺少推送人群!');
 		
 		return $data;
 	}
@@ -94,6 +100,8 @@ class UserMsgModel extends BaseModel {
 	 * 编辑or添加
 	 */
 	function edit($data, $id=null){	
+	    $data = $this->parseRow($data);
+	    $data['content'] = $data['user_name'].'您好，你有一条来自'.$data['from_user_name'].'的'.$data['type_name'];
 		$data = $this->setValidate($data);
 		if($id){
 			$data['update_time'] = time();
@@ -117,6 +125,7 @@ class UserMsgModel extends BaseModel {
 		}
 		return $id;
 	}
+	
 	
 	public function getInfo($id){
 		$info = $this->find($id);
@@ -271,8 +280,28 @@ class UserMsgModel extends BaseModel {
 		$data = parent::getPageList($con, $fields, $order, $perNum);
 		foreach($data['list'] as $k=>$v){
 			$v = $this->getInfo($v['id']);
-			$data['list'][$k] = $v;
+			$data['list'][$k] = $this->parseRow($v);
 		}
 		return $data;
+	}
+	
+	//格式化行
+	public function parseRow($v){
+	    $type = $this->typeArr;
+	    $type = array_flip($type);
+	    
+	    $v['type_name'] = $type[$v['type']];
+        (int)$v['user_id'] < 1 && $v['user_name'] = "所有用户";        
+	    (int)$v['user_id'] >= 1 && $v['user_name'] = d('user')->where(['id'=>$v['user_id']])->getfield('nickname');  
+	    
+	    if((int)$v['from_user_id'] < 1){
+	        $v['from_user_name'] = '系统信息';
+	    }else{
+	        $v['from_user_name'] = d('user')->where(['id'=>$v['from_user_id']])->getfield('nickname');
+	    }
+	     
+	    $v['add_time'] = date('Y-m-d H:i:s',$v['add_time']);
+	    $v['update_time'] = date('Y-m-d H:i:s',$v['update_time']);
+	    return $v ;
 	}
 }

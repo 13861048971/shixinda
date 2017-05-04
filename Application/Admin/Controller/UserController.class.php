@@ -215,7 +215,7 @@ class UserController extends PublicController {
 		$this->setRightAction([[ 'name'=>'添加消息', 'dialog'=>true, 
 			'dialog-lg'=>true, 'url' => u('messageEdit') ]]);
 		$con = $_GET;
-		$data = d('message')->getPageList($con); 
+		$data = d('userMsg')->getPageList($con); 
 		$this->assign($data);
 		$this->assign('search', $_GET);
 		$this->display();
@@ -223,14 +223,28 @@ class UserController extends PublicController {
 	
 	//消息编辑
 	public function messageEdit(){
-		$this->ajaxEdit('message',null, function(&$row, $mod){
+		$this->ajaxEdit('userMsg',null, function(&$row, $mod){
+		    $type = d('userMsg')->typeArr;
+		    $type = array_flip($type);
+            if($type){
+                $typeList = [[ 'name' => 'type', 'list' => $type]];
+                if(isset($row['type'])){
+                    $statusList[0]['checked'] = $row['type'];
+                    $statusList[0]['selected'] = $row['type'];
+                }
+                if(!isset($row['type']))
+                    $statusList[0]['checked'] = 1;
+                    	
+                    $this->assign('typeList', $typeList);
+            }
+            
 			
 		});
 	}
 	
 	//消息删除
 	public function messageDel(){
-		$this->ajaxDel('message');
+		$this->ajaxDel('userMsg');
 	}
 	//帖子管理列表
 	public function post(){
