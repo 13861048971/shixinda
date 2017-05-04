@@ -176,7 +176,15 @@ class PostController extends PublicController {
             'post_id' => $_POST['post_id'],
             'content' => $_POST['content']
         ];
-
+        
+        $messageData = [
+            'from_user_id' => $data['user_id'],
+            'node_id' => $data['post_id'],
+            'type' => d('userMsg')->typeArr['评论信息'],
+            'user_id' => d('post')->where(['id'=>$data['post_id']])->getfield('user_id'),
+        ]; 
+        d('userMsg')->edit($messageData);
+        
         $id = d('postComment')->edit($data);
         if(!$id){
             ajaxReturn(1, '评论失败',['id'=>$id]);
@@ -262,7 +270,7 @@ class PostController extends PublicController {
         
         $messageData = [
           'from_user_id' => $data['user_id'],
-            'node_id' => $data['post_id'],
+            'node_id' => $data['reply_id'],
             'type' => d('userMsg')->typeArr['回复信息'],
             'from_user_name' => $this->user['nickname'],
             'user_id' => d('postComment')->where(['id'=>$data['reply_id']])->getfield('user_id'),

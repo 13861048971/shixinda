@@ -288,6 +288,7 @@ class UserModel extends BaseModel{
 			return false;
 		
 		$data = ['mobile' => $mobile, 'password' => $pass];
+		$data['nickname'] = $this->greate_username(6); 
 		if($id = $this->edit($data)){
 			$user = $this->getInfo($id);
 			session('user', $user);
@@ -295,6 +296,19 @@ class UserModel extends BaseModel{
 		}
 		return false;
 	}
+	
+	//随机生成用户昵称
+	function greate_username( $length = 6 ) {
+	    // 密码字符集，可任意添加你需要的字符
+	    $chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
+	    $name = '';
+	    for ( $i = 0; $i < $length; $i++ ){
+	        $name .= $chars[ mt_rand(0, strlen($chars) - 1) ];
+	    }
+	    return $name;
+	}
+	// 调用该函数
+	
 	
 	/**
 	 * 检查密码

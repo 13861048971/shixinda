@@ -101,7 +101,7 @@ class UserMsgModel extends BaseModel {
 	 */
 	function edit($data, $id=null){	
 	    $data = $this->parseRow($data);
-	    $data['content'] = $data['user_name'].'您好，你有一条来自'.$data['from_user_name'].'的'.$data['type_name'];
+	    $data['content'] = $data['user_name'].'你有一条来自'.$data['from_user_name'].'的'.$data['type_name'];
 		$data = $this->setValidate($data);
 		if($id){
 			$data['update_time'] = time();
