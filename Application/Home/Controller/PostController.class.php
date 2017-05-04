@@ -261,7 +261,8 @@ class PostController extends PublicController {
         $id = d('postComment')->edit($data);
         if(!$id)
             ajaxReturn(1, '回复失败', ['id'=>$id]);
-        ajaxReturn(0, '回复成功', ['id'=>$id]); 
+        $reply = d('postComment')->getInfo($id);
+        ajaxReturn(0, '回复成功', ['reply'=>$reply]); 
     }
     
 }
