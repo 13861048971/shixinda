@@ -557,6 +557,10 @@ $('.win-tip button').on('click', function(){
 		success:function(data){
 			if(!data.error){
 				win.alert(data.info, 'success');
+				var num = thisReport.find('span').text();
+				num = num.substr(1, num.length-2);
+				num = parseInt(num)+1;
+				thisReport[0].innerHTML='已举报<span>('+num+')</span>';
 				$('.win-tip textarea').val('');
 				$('.win-tip-container').hide();
 			}else{

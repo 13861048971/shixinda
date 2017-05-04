@@ -116,7 +116,6 @@ class CollectModel extends BaseModel {
 	}
 
 	function getNum($nodeId, $type=0, $userId=null){
-	    //$type = $typeArr[$type];
 		$con = ['node_id'=>$nodeId, 'type'=>$type];
 		$userId && $con['user_id'] = $userId;
 		return (int)$this->where($con)->count();

@@ -199,12 +199,15 @@ class PostController extends PublicController {
         d('support')->isSupport('post');
     }
     
+    //帖子回复点赞或者踩
+    public function postCommentSupport(){
+        if(!$this->user['id'])
+            return ajaxReturn2(1,'请先登录');
+            d('support')->isSupport('postComment');
+    }
+    
     //帖子举报
     public function postReport(){
-        
-        $isReport = d('report')->where(['node_id'=>$_POST['post_id'], 'user_id'=>$this->user['id']])->getField('id');
-        if($isReport)
-            return ajaxReturn(1, '你已经举报过了');
         if(!$this->user['id'])
             return ajaxReturn2(1,'请先登录');
         if($_POST && !empty($_POST)){

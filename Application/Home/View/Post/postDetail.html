@@ -54,11 +54,11 @@
 				
 							<p>
 							<if condition="$postRow['isReport']">
-								<span >
-							      已举报({$postRow.reportNum})</span>
+							  <a href="javascript:void(0);">
+							       已举报({$postRow.reportNum})</a>
 							<else />
 							  <a href="javascript:void(0);" class="post-tip">
-							       举报({$postRow.reportNum})</a>
+							       举报<span>({$postRow.reportNum})</span></a>
 							 </if> 
 							 
 							</p>
@@ -92,7 +92,7 @@
 							             <if condition="!$vo['isSupport']">已</if>踩<span>({$vo.notSupportNum})</span>
 							            </a>
 				
-										<a>
+										<span>
 											<if condition="$vo['isReport']">
 												<a href="javascript:void(0);">
 											      已举报({$vo.reportNum})</a>
