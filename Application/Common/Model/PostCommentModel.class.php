@@ -50,7 +50,7 @@ class PostCommentModel extends BaseModel{
                 $k == 1 && $data['list'][$k]['floorName'] = '板凳';
             }     
         }
-        //dump($data['list']);exit();
+        //dump($data);exit();
         return $data;
     }
     

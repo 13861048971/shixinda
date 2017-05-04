@@ -24,7 +24,7 @@
 					<a href="{:u('post/personInfo', ['userId'=>$userRow['id']])}">{$userRow.nickname}</a>
 					<span>{$postRow.addTime} 发表</span>
 					<span>阅读：<span>{$postRow.click}</span></span>
-					<span>回复：<span>{$replyNum}</span></span>
+					<span>回复：<span>{$postRow.replyNum}</span></span>
 					<if condition="$viewHost neq 1">
 					 <a href="{:u('post/postDetail', ['id'=>$postRow['id'], 'viewHost'=>1])}">只看楼主</a>
 					<else/>
@@ -39,10 +39,29 @@
 						  {$postRow.content}
 						</div>
 						<div class="post-handle">
-							<a href="javascript:void(0);" class="post-collect">已收藏<span>(12)</span></a>
-							<a href="javascript:void(0);" class="post-support">赞<span>(12)</span></a>
-							<a href="javascript:void(0);" class="post-oppose">踩<span>(12)</span></a>
-							<p><a href="javascript:void(0);" class="post-tip">举报</a></p>
+	                       					
+							<a href="javascript:void(0);" class="post-collect">
+								<if condition="!$postRow['isCollect']">已</if>收藏<span>({$postRow.collectNum})</span>
+							</a>
+						  
+							<a href="javascript:void(0);" class="post-support">
+							    <if condition="$postRow['isSupport']">已</if>赞<span>({$postRow.supportNum})</span>
+							</a>
+				
+							<a href="javascript:void(0);" class="post-oppose">
+							    <if condition="!$postRow['isSupport']">已</if>踩<span>({$postRow.notSupportNum})</span>
+							</a>
+				
+							<p>
+							<if condition="$postRow['isReport']">
+								<span >
+							      已举报({$postRow.reportNum})</span>
+							<else />
+							  <a href="javascript:void(0);" class="post-tip">
+							       举报({$postRow.reportNum})</a>
+							 </if> 
+							 
+							</p>
 						</div>
 					</div>
 					<foreach name="list" item="vo" key="k">
@@ -65,17 +84,34 @@
 									</li>
 									<li class="comment-handle" data-id="{$vo.id}">
 										<a href="javascript:void(0);" class="comment-reply" data-id="{$vo.id}">回复</a>
-										<a href="javascript:void(0);" class="comment-support">赞</a>
-										<a href="javascript:void(0);" class="comment-oppose">踩</a>
-										<a href="javascript:void(0);" class="post-tip">举报</a>
+										<a href="javascript:void(0);" class="post-support">
+							             <if condition="$vo['isSupport']">已</if>赞<span>({$vo.supportNum})</span>
+							            </a>
+				
+							            <a href="javascript:void(0);" class="post-oppose">
+							             <if condition="!$vo['isSupport']">已</if>踩<span>({$vo.notSupportNum})</span>
+							            </a>
+				
+										<a>
+											<if condition="$vo['isReport']">
+												<a href="javascript:void(0);">
+											      已举报({$vo.reportNum})</a>
+											<else />
+											  <a href="javascript:void(0);" class="post-tip">
+											       举报<span>({$vo.reportNum})</span></a>
+											</if> 
+										 
+										</span>
 									</li>
 								</ul>
 							</div>
 						</div>
 					</foreach>
-					<div class="row post-pager">
-						<div class="page">{$pageVar}</div>
-					</div>
+			 
+						<div class="row post-pager">
+							<div class="page">{$pageVar}</div>
+						</div>
+					 
 					<div class="row back-list">
 						<a href="{:u('post/postList', $idArr)}">返回列表</a>
 					</div>
