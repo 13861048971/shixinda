@@ -460,11 +460,12 @@ $('.btn-pub-comment').on('click',function(){
 function postSupport(act, _this){
 	if(_this){
 		var id = _this.parents('.comment-handle').data('id');
+		var url = '/post/postCommentSupport/act/'+act+'/id/'+id;
 	}else{
 		var id = $('.post-detail-page').data('id');
+		var url = '/post/postSupport/act/'+act+'/id/'+id;
 	}
 	
-	var url = '/post/postSupport/act/'+act+'/id/'+id;
 	$.ajax({
 		url:url,
 		type:'get',
