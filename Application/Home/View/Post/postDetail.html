@@ -92,13 +92,13 @@
 							             <if condition="!$vo['isSupport']">已</if>踩<span>({$vo.notSupportNum})</span>
 							            </a>
 				
-										<span>
+										<a>
 											<if condition="$vo['isReport']">
-												<span >
-											      已举报({$vo.reportNum})</span>
+												<a href="javascript:void(0);">
+											      已举报({$vo.reportNum})</a>
 											<else />
 											  <a href="javascript:void(0);" class="post-tip">
-											       举报({$vo.reportNum})</a>
+											       举报<span>({$vo.reportNum})</span></a>
 											</if> 
 										 
 										</span>

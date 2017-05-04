@@ -475,11 +475,17 @@ function postSupport(act, _this){
 				if(_this){
 					if(data.status == 3){
 						win.alert(data.info, 'success');
-						_this.text('已赞');
+						var num = _this.find('span').text();
+						num = num.substr(1, num.length-2);
+						num = parseInt(num)+1;
+						_this[0].innerHTML='已赞<span>('+num+')</span>';
 					}
 					if(data.status == 4){
 						win.alert(data.info, 'success');
-						_this.text('已踩');
+						var num = _this.find('span').text();
+						num = num.substr(1, num.length-2);
+						num = parseInt(num)+1;
+						_this[0].innerHTML='已踩<span>('+num+')</span>';
 					}
 				}else{
 					if(data.status == 3){
@@ -550,7 +556,6 @@ $('.win-tip button').on('click', function(){
 		success:function(data){
 			if(!data.error){
 				win.alert(data.info, 'success');
-				thisReport.text('已举报');
 				$('.win-tip textarea').val('');
 				$('.win-tip-container').hide();
 			}else{
