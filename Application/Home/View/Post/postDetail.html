@@ -87,11 +87,9 @@
 										<a href="javascript:void(0);" class="comment-support">
 							             <if condition="$vo['isSupport']">已</if>赞<span>({$vo.supportNum})</span>
 							            </a>
-				
 							            <a href="javascript:void(0);" class="comment-oppose">
 							             <if condition="!$vo['isSupport']">已</if>踩<span>({$vo.notSupportNum})</span>
 							            </a>
-				
 										<span>
 											<if condition="$vo['isReport']">
 												<a href="javascript:void(0);">
@@ -99,19 +97,16 @@
 											<else />
 											  <a href="javascript:void(0);" class="post-tip">
 											       举报<span>({$vo.reportNum})</span></a>
-											</if> 
-										 
+											</if>
 										</span>
 									</li>
 								</ul>
 							</div>
 						</div>
 					</foreach>
-			 
 						<div class="row post-pager">
-							<div class="page">{$pageVar}</div>
+							<div class="pager">{$pageVar}</div>
 						</div>
-					 
 					<div class="row back-list">
 						<a href="{:u('post/postList', $idArr)}">返回列表</a>
 					</div>

@@ -447,6 +447,11 @@ $('.btn-pub-comment').on('click',function(){
 				if(!data.error){
 					win.alert(data.info, 'success');
 					$('.pub-comment textarea').val('');
+					var avatar = $('.nav-avatar img').attr('src');
+					var nickname = $('.nav-avatar+a').text();
+					var id = $('.nav-avatar').data('id');
+
+					var html = '<div class="row post-comment-item"><div class="col-md-2"><a href="/post/personInfo'+id+'"><img src="'+avatar+'" alt=""></a></div><div class="col-md-10"><ul><li><a href="/post/personInfo'+id+'">'+nickname+'</a> 刚刚 发表</li><li><div class="comment-content">'+comment+'</div></li><li class="comment-handle" data-id="{$vo.id}"><a href="javascript:void(0);" class="comment-reply" data-id="{$vo.id}">回复</a><a href="javascript:void(0);" class="comment-support">赞<span>(0)</span></a><a href="javascript:void(0);" class="comment-oppose">踩<span>(0)</span></a><span><a href="javascript:void(0);" class="post-tip">举报<span>(0)</span></a></span></li></ul></div></div>';
 				}else{
 					win.alert(data.info, 'error');
 				}

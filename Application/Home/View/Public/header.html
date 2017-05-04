@@ -45,7 +45,7 @@
 								<notempty name="user">
 									<notempty name="user.nickname">
 									<li>
-										<div class="nav-avatar">
+										<div class="nav-avatar" data-id="{$user.id}">
 											<img src="{$user.avatar}" alt="">
 										</div>
 										<a href="{:U('user/index')}">
@@ -58,7 +58,7 @@
 									</li>
 									<else/>
 									<li>
-										<div class="nav-avatar">
+										<div class="nav-avatar" data-id="{$user.id}">
 											<img src="{$user.avatar}" alt="">
 										</div>
 										<a href="{:U('user/index')}">{$user.mobile}</a>
