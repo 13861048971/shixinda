@@ -142,10 +142,12 @@ class PostController extends PublicController {
 	    $postRow['collectNum'] = d('collect')->getNum($id, d('collect')->typeArr['post'], '');//收藏数
 	    //判断收藏状态
 	    $postRow['isCollect'] = d('collect')->where(['node_id'=>$id, 'user_id'=>$this->user['id']])->getField('id');
+	    
 	    $postRow['supportNum'] = d('support')->getNum($id, d('support')->typeArr['post'], 1);//点赞数
 	    $postRow['notSupportNum'] = d('support')->getNum($id, d('support')->typeArr['post'], 0);//踩数
 	    //判断点赞状态
 	    $postRow['isSupport'] = d('support')->where(['node_id'=>$id, 'user_id'=>$this->user['id']])->getField('support');
+	    //dump($postRow['isSupport']);exit();
 	    //判断举报状态
 	    $postRow['isReport'] = d('report')->where(['node_id'=>$id, 'user_id'=>$this->user['id']])->getField('id');
 	    $postRow['reportNum'] = d('report')->getNum(['node_id'=>$id]);//举报数
@@ -175,9 +177,11 @@ class PostController extends PublicController {
         ];
         
         $id = d('postComment')->edit($data);
-        if(!$id)
-            ajaxReturn(1, '评论失败');
-        ajaxReturn(0, '评论成功');
+        if(!$id){
+            ajaxReturn(1, '评论失败',['id'=>$id]);
+        }
+           
+        ajaxReturn(0, '评论成功', ['id'=>$id]);
     }
 	
     //主帖人信息

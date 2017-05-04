@@ -451,7 +451,9 @@ $('.btn-pub-comment').on('click',function(){
 					var nickname = $('.nav-avatar+a').text();
 					var id = $('.nav-avatar').data('id');
 
-					var html = '<div class="row post-comment-item"><div class="col-md-2"><a href="/post/personInfo'+id+'"><img src="'+avatar+'" alt=""></a></div><div class="col-md-10"><ul><li><a href="/post/personInfo'+id+'">'+nickname+'</a> 刚刚 发表</li><li><div class="comment-content">'+comment+'</div></li><li class="comment-handle" data-id="{$vo.id}"><a href="javascript:void(0);" class="comment-reply" data-id="{$vo.id}">回复</a><a href="javascript:void(0);" class="comment-support">赞<span>(0)</span></a><a href="javascript:void(0);" class="comment-oppose">踩<span>(0)</span></a><span><a href="javascript:void(0);" class="post-tip">举报<span>(0)</span></a></span></li></ul></div></div>';
+					var html = '<div class="row post-comment-item"><div class="col-md-2"><a href="/post/personInfo'+id+'"><img src="'+avatar+'" alt=""></a></div><div class="col-md-10"><ul><li><a href="/post/personInfo'+id+'">'+nickname+'</a> 刚刚 发表</li><li><div class="comment-content">'+comment+'</div></li><li class="comment-handle" data-id="'+data.data.id+'"><a href="javascript:void(0);" class="comment-reply" data-id="'+data.data.id+'">回复</a> <a href="javascript:void(0);" class="comment-support">赞<span>(0)</span></a> <a href="javascript:void(0);" class="comment-oppose">踩<span>(0)</span></a><span><a href="javascript:void(0);" class="post-tip">举报<span>(0)</span></a></span></li></ul></div></div>';
+
+					$('.post-pager').before(html);
 				}else{
 					win.alert(data.info, 'error');
 				}
@@ -522,17 +524,17 @@ $('.post-detail-page .post-oppose').on('click', function(){
 	postSupport('cai');
 });
 // 评论支持和反对
-$('.post-detail-page .comment-support').on('click', function(){
+$('.post-detail-page').on('click','.comment-support', function(){
 	var _this = $(this);
 	postSupport('zan', _this);
 });
-$('.post-detail-page .comment-oppose').on('click', function(){
+$('.post-detail-page').on('click','.comment-oppose', function(){
 	var _this = $(this);
 	postSupport('cai', _this);
 });
 //举报弹窗
 var thisReport = '';
-$('.post-detail-page .post-tip').on('click', function(){
+$('.post-detail-page').on('click','.post-tip', function(){
 	$('.win-tip-container').show();
 	thisReport = $(this);
 	return thisReport;
@@ -577,34 +579,34 @@ $('.win-tip button').on('click', function(){
 // 其他用户主页显示控制
 $('.person-index .tab-data').on('click', function(){
 	$(this).addClass('tab-actived');
-	$('.person-index .tab-theme').removeClass('tab-actived');
+	$('.person-index .tab-subject').removeClass('tab-actived');
 	$('.person-index .person-data').show();
 	$('.person-index .person-post').hide();
 });
-$('.person-index .tab-theme').on('click', function(){
+$('.person-index .tab-subject').on('click', function(){
 	$(this).addClass('tab-actived');
 	$('.person-index .tab-data').removeClass('tab-actived');
 	$('.person-index .person-post').show();
 	$('.person-index .person-data').hide();
 });
-$('.person-index .switch-theme').on('click', function(){
+$('.person-index .switch-subject').on('click', function(){
 	$(this).addClass('actived');
 	$('.person-index .switch-reply').removeClass('actived');
-	$('.person-index .post-theme').show();
+	$('.person-index .post-subject').show();
 	$('.person-index .post-reply').hide();
 })
 $('.person-index .switch-reply').on('click', function(){
 	$(this).addClass('actived');
-	$('.person-index .switch-theme').removeClass('actived');
+	$('.person-index .switch-subject').removeClass('actived');
 	$('.person-index .post-reply').show();
-	$('.person-index .post-theme').hide();
+	$('.person-index .post-subject').hide();
 });
 // 帖子评论回复
 var thisReply = '';
 $('.win-reply span').on('click', function(){
 	$('.win-reply-container').hide();
 });
-$('.post-comment-item .comment-reply').on('click', function(){
+$('.post-detail-page').on('click','.comment-reply', function(){
 	$('.win-reply-container').show();
 	thisReply = $(this);
 	return thisReply;
@@ -626,6 +628,14 @@ $('.win-reply button').on('click', function(){
 				win.alert(data.info, 'success');
 				$('.win-reply textarea').val('');
 				$('.win-reply-container').hide();
+
+				var avatar = $('.nav-avatar img').attr('src');
+				var nickname = $('.nav-avatar+a').text();
+				var id = $('.nav-avatar').data('id');
+
+				var html = '<div class="row post-comment-item"><div class="col-md-2"><a href="/post/personInfo'+id+'"><img src="'+avatar+'" alt=""></a></div><div class="col-md-10"><ul><li><a href="/post/personInfo'+id+'">'+nickname+'</a> 刚刚 发表</li><li><div class="comment-content">'+comment+'</div></li><li class="comment-handle" data-id="'+data.data.id+'"><a href="javascript:void(0);" class="comment-reply" data-id="'+data.data.id+'">回复</a> <a href="javascript:void(0);" class="comment-support">赞<span>(0)</span></a> <a href="javascript:void(0);" class="comment-oppose">踩<span>(0)</span></a><span><a href="javascript:void(0);" class="post-tip">举报<span>(0)</span></a></span></li></ul></div></div>';
+
+				$('.post-pager').before(html);
 			}else{
 				win.alert(data.info, 'error');
 			}
