@@ -642,3 +642,8 @@ $('.win-reply button').on('click', function(){
 		}
 	});
 });
+// 消息通知切换
+$('.user-container .tab-control').on('click',function(e){
+	$(e.target).addClass('tab-actived');
+	$(e.target).siblings().removeClass('tab-actived');
+});
