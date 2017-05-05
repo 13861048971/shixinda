@@ -542,3 +542,15 @@ table td.right{text-align:right;}
     width: 30px;
     float: right;
 }
+.banner-block-edit{
+  padding: 0 !important;
+}
+.banner-block-edit label{
+  padding: 0 !important;
+}
+.banner-block-add,
+.banner-block-sub{
+  width: 24px;
+  height: 28px;
+  margin-right: 10px;
+}

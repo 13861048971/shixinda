@@ -1179,4 +1179,18 @@ function multiLevel(node){
 			}
 		}
 	});
+};
+// 轮播图区块添加行
+function bannerBlockEdit(ul){
+	ul.on('click','.banner-block-add',function(){
+		var node = ul.find('li:first').clone();
+		node.find(":input").each(function(i){
+            $(this).val("");
+        });
+		ul.append(node);
+		ul.find('li:last .banner-block-add').after('<button type="button" class="banner-block-sub">-</button>');
+	});
+	ul.on('click','.banner-block-sub',function(){
+		$(this).parents('li').remove();
+	});
 }
