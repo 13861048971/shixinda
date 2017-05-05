@@ -1,0 +1,38 @@
+<include file="Public:header" />
+<div class="table-responsive shrink user">
+	<form action="" class="form-inline search clearfix" method="GET">
+		<input type="text" class="form-control" name="title" placeholder="请输入标题" value="{$contentTitle}" />
+		<input type="submit"  class="form-control btn-info" value="搜索">       			     
+	</form>
+	<table class="table table-striped user-list">
+		<tr>  
+		  <th>#</th>
+		  <th>标题</th>
+		  <th>内容</th>
+		  <th>类型</th>
+		  <th>状态</th> 
+		  <th>添加时间</th> 
+		  <th>更新时间</th> 
+		  <th>操作</th>
+		</tr>
+		<foreach name="list" item="v">
+		<tr>
+			<td>{$v.id}</td>
+			<td>{$v.title}</td>
+			<td>{$v.content}</td>
+			<td>{$v.type}</td>
+			<td <if condition="$v['status'] eq 1"> class="green"</if>> {$v.statusName}</td>
+			<td>{$v.addTime}</td>
+			<td>{$v.updateTime}</td>
+			<td class="handle">
+				<a class="dialog edit" dialog-lg="true" href="#" url="{:u('blockEdit', ['id'=>$v['id'], 'type'=>$v['type']])}">编辑</a>|
+				<a class="ajaxDel del" href="#" url="{:u('blockDel','id=' . $v['id'])}">删除</a>
+			</td>
+		</tr>
+		</foreach>
+	</table>
+	<div class="pager">{$pageVar}</div>
+</div>
+<import type="css" file="js.lib.daterangepicker.daterangepicker-bs3" />
+<import file="js.admin.user,js.lib.daterangepicker.moment#min,js.lib.daterangepicker.daterangepicker,js.lib.laydate.laydate,js.lib.kindeditor.kindeditor" />
+<include file="Public:footer" />
