@@ -1,4 +1,11 @@
 <include file="Public:header" />
+<div class="win-reply-container">
+	<div class="win-reply">
+		<h4>站内信回复<span>x</span></h4>
+		<textarea cols="30" rows="10" placeholder="请输入内容"></textarea>
+		<button type="button">提交</button>
+	</div>
+</div>
 <div class="user-section">
 		<div class="container">
 			<div class="col-md-3 user-nav">
@@ -12,43 +19,38 @@
 			</div>
 			<div class="col-md-9 user-container">
 				<div class="tab-control">
-					<a href="{:U('user/message')}" class="tab-actived tab-message">所有消息</a><a href="{:U('user/message',['type'=>3])}" class="tab-actived tab-message">站内信</a><a href="{:U('user/message',['type'=>'帖子回复'])}" class="tab-reply">帖子回复</a><a href="{:U('user/message',['type'=>0])}" class="tab-system">系统通知</a>
+					<a href="{:U('user/message')}" class="tab-message">所有消息</a><a href="{:U('user/message',['type'=>3])}" class="tab-message">站内信</a><a href="{:U('user/message',['type'=>'帖子回复'])}" class="tab-reply">帖子回复</a><a href="{:U('user/message',['type'=>0])}" class="tab-system">系统通知</a>
 				</div>
 				<!--站内信列表start-->
 				<div class="message-list">
 					<dl>
-						
 						<foreach name="list" item="v">
 						<dd>
-							<div class="message-thumb"><if condition="$v['isRead'] eq false"><span></span></if>{$v.contentThumb}
-							
-							<in name="v.type" value="1,2">
-							<a href="{:U('post/postDetail',['id'=>$v['post_id'],'msg_id'=>$v['id']])}" class="show-complete">...查看详情</a>
-							</in>
-							
-							<if condition="$v['type'] eq 3">
-							<a  class="show-complete" data-id="{$v.id}>...查看详情</a>
-							</if>
-							</if>
-							
-							<if condition="$v['type'] eq 0">
-							<a  class="show-complete" data-id="{$v.id}">...查看详情</a>
-							</if>
-							
+							<div class="message-thumb">
+								<if condition="$v['isRead'] eq false">
+									<span class="icon-unread"></span>
+								</if>
+								<div>{$v.contentThumb}</div>
+								<in name="v.type" value="1,2">
+									<a href="{:U('post/postDetail',['id'=>$v['post_id'],'msg_id'=>$v['id']])}" class="show-complete">...查看详情</a>
+								</in>
+								<if condition="$v['type'] eq 3">
+									<a href="javascript:void(0);" class="show-complete" data-id="{$v.id}">...查看详情</a>
+								</if>
+								<if condition="$v['type'] eq 0">
+									<a href="javascript:void(0);" class="show-complete" data-id="{$v.id}">...查看详情</a>
+								</if>
 							</div>
-							<div class="message-complete">{$v.content}<a href="javascript:void(0);" class="hide-complete">...收起</a></div>
+							<div class="message-complete"><div>{$v.content}</div><a href="javascript:void(0);" class="hide-complete">...收起</a></div>
 							<div class="post-info">
 								<span>时间：{$v.add_time}</span>
 							</div>
 							<div class="post-control">
-								<in name="v.type" value="1,2"><a href="" >回复</a></in>
+								<in name="v.type" value="1,2"><a href="javascript:void(0);" class="msg-reply" data-user-id="{$v.user_id}">回复</a></in>
 								<if condition="($v['type'] neq 1) and ($v['type'] neq 2)"><a class="post-del" href="javascript:void(0);" data-id="">删除</a></if>
 							</div>
 						</dd>
 						</foreach>
-						
-						
-						
 					</dl>
 					
 					<div class="pager">{$pageVar}</div>

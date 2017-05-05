@@ -1547,12 +1547,16 @@ ul#filters {
 	overflow: hidden;
 	float: left;
 }
-.user-section .message-list .message-thumb span{
+.user-section .message-list .message-thumb span.icon-unread{
 	padding: 2.5px;
 	display: inline-block;
 	border-radius: 5px;
 	margin: 0 5px 3px 0;
 	background-color: #ff4444;
+}
+.user-section .message-list .message-thumb div,
+.user-section .message-list .message-complete div {
+	display: inline-block;
 }
 .user-section .message-list .message-complete{
 	width: 700px;

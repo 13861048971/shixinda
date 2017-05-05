@@ -647,14 +647,37 @@ $('.user-container .tab-control').on('click',function(e){
 	$(e.target).addClass('tab-actived');
 	$(e.target).siblings().removeClass('tab-actived');
 });
-// 站内信查看详情
+// 消息未读变已读
 $('.user-section .message-list').on('click','.show-complete', function(){
-	var node = $(this).parents('.message-thumb');
-	node.hide();
-	node.siblings('.message-complete').show();
-})
-$('.user-section .message-list').on('click','.hide-complete', function(){
-	var node = $(this).parents('.message-complete');
-	node.hide();
-	node.siblings('.message-thumb').show();
-})
+	var unread = $(this).siblings('.icon-unread');
+	if(!unread[0]){
+		return;
+	}
+	var url = '/user/messageRead/id/'+$(this).data('id');
+	$.ajax({
+		url:url,
+		dataType:'json',
+		type:'get',
+		success:function(data){
+			if(!data.error){
+				unread.remove();
+			}
+		}
+	})
+});
+// 消息通知tab选中状态
+(function(){
+	if($('.user-section .tab-control')[0]){
+		var url = window.location.href;
+		var nav = $('.tab-control').find('a');
+		for(var k=0;k<nav.length;k++){
+			if(nav[k].href == url){
+				nav[k].className+=' tab-actived';
+			}
+		}
+	}
+}());
+// 站内信回复
+$('.user-section .message-list').on('click', '.msg-reply', function(){
+	$('win-reply-container').show();
+});
