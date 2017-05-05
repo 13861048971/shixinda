@@ -1187,8 +1187,25 @@ function bannerBlockEdit(ul){
 		node.find(":input").each(function(i){
             $(this).val("");
         });
+		var row1 = ul.find('li:last');
+		var imgName = row1.find('div input').attr('name');
+		imgName = imgName.match(/image\[([0-9]+)\]/);
+
 		ul.append(node);
 		ul.find('li:last .banner-block-add').after('<button type="button" class="banner-block-sub">-</button>');
+
+		var row2 = ul.find('li:last');
+		var str = (parseInt(imgName[1])+2);
+		var imgName2 = row2.find('div input').attr('name');
+		var option = row2.find('div button').data('option');
+		var klass = row2.find('div img').attr('class');
+		option = option.replace(/img-input-id-([0-9]+)/, 'img-input-id-'+str);
+		option = option.replace(/img-preview-([0-9]+)/, 'img-preview-'+str);
+		klass = klass.replace(/img-preview-([0-9]+)/, 'img-preview-'+str);
+		row2.find('div input').attr('name','image['+str+']');
+		row2.find('div input').attr('id','img-input-id-'+str);
+		row2.find('div button').attr('data-option', option);
+		row2.find('div img').attr('class', klass);
 	});
 	ul.on('click','.banner-block-sub',function(){
 		$(this).parents('li').remove();
