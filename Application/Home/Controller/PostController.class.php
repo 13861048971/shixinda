@@ -122,7 +122,7 @@ class PostController extends PublicController {
 	       $con['user_id'] = $userRow['id'];
 	    }
 	    
-	    $data = d('postComment')->getPageList($con, '*', 'add_time', 5);//帖子评论信息
+	    $data = d('postComment')->getPageList($con, '*', 'add_time', 15);//帖子评论信息
 	    //帖子评论信息的赞和踩状态
 	    foreach ($data['list'] as $k=>$v){
 	        $con = [
