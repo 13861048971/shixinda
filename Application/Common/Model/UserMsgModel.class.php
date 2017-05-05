@@ -101,7 +101,8 @@ class UserMsgModel extends BaseModel {
 	 */
 	function edit($data, $id=null){	
 	    $data = $this->parseRow($data);
-	    $data['content'] = $data['user_name'].'你有一条来自'.$data['from_user_name'].'的'.$data['type_name'];
+	    if($data['type'] == ['in',[1,2]])
+	       $data['content'] = $data['user_name'].'你有一条来自'.$data['from_user_name'].'的'.$data['type_name'];
 		$data = $this->setValidate($data);
 		if($id){
 			$data['update_time'] = time();
@@ -257,11 +258,14 @@ class UserMsgModel extends BaseModel {
 	}
 	
 	public function getPageList($con, $fields = 'id',$order = 'id desc', $perNum = 10){
+	    if($con['type'] == '帖子回复')
+	        $con['type'] = ['in',[1,2]];
+	    
 		if($con['title']){
 			$con['title'] = ['like', '%' . $con['title'] . '%'];
 		}
 		
-		$mod = d('user_msg_read');
+ 		$mod = d('user_msg_read');
 		($uid = $this->user['id']) && ($map['user_id'] = $uid); 
 		if(isset($con['isRead']) && $map){
 			$is = $con['isRead'];
@@ -277,10 +281,13 @@ class UserMsgModel extends BaseModel {
 		
 		isset($con['from']) && $con['from'] === '0' && $con['from'] = ['lt', 1];
 		isset($con['cate']) && $con['cate'] === '0' && $con['cate'] = ['lt', 1];
+
 		$data = parent::getPageList($con, $fields, $order, $perNum);
 		foreach($data['list'] as $k=>$v){
 			$v = $this->getInfo($v['id']);
 			$data['list'][$k] = $this->parseRow($v);
+			//var_dump($data['list']);
+		
 		}
 		return $data;
 	}
@@ -299,7 +306,9 @@ class UserMsgModel extends BaseModel {
 	    }else{
 	        $v['from_user_name'] = d('user')->where(['id'=>$v['from_user_id']])->getfield('nickname');
 	    }
-	     
+	    strlen($v['content']) < 20?($v['contentThumb'] = $v['content']):($v['contentThumb'] = mb_substr($v['content'], 0,20));
+	    $v['post_id'] = d('postComment')->where(['id'=>$v['node_id']])->getfield('post_id'); 
+	    $v['post_id'] = $v['post_id'].'#comment-'.$v['node_id'];
 	    $v['add_time'] = date('Y-m-d H:i:s',$v['add_time']);
 	    $v['update_time'] = date('Y-m-d H:i:s',$v['update_time']);
 	    return $v ;

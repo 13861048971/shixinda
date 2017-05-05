@@ -31,6 +31,10 @@ class PublicController extends Controller {
 		        }
 		    }
 		}
+		$messageCount = d('UserMsg')->count();
+		$messageReadCount = d('UserMsg')->alias('a')->join("user_msg_read b on a.id=b.msg_id")->count();
+		$messageNoReadCount = $messageCount - $messageReadCount;
+		$this->assign('messageCount',$messageNoReadCount);
 		$this->assign('user',session('user'));
 		$this->assign('navigation',$navigation);
 		$this->assign('aboutOur',$this->about);

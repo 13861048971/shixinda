@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2017-05-04 16:43:33
+Date: 2017-05-05 15:18:54
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -165,6 +165,24 @@ INSERT INTO `album` VALUES ('126', '0', '2', '1', '/Public/upload/image/2016-08-
 INSERT INTO `album` VALUES ('127', '0', '2', '1', '/Public/upload/image/2016-08-10/57ab31fd64ad1.png', '', '15', '0', '1473657865', '1473657865');
 
 -- ----------------------------
+-- Table structure for `block`
+-- ----------------------------
+DROP TABLE IF EXISTS `block`;
+CREATE TABLE `block` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(200) NOT NULL,
+  `content` text NOT NULL,
+  `url` varchar(200) NOT NULL,
+  `cover` varchar(200) NOT NULL,
+  `status` int(10) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of block
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for `category`
 -- ----------------------------
 DROP TABLE IF EXISTS `category`;
@@ -202,7 +220,7 @@ CREATE TABLE `collect` (
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`),
   KEY `node_id` (`node_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of collect
@@ -214,6 +232,7 @@ INSERT INTO `collect` VALUES ('11', '1', '22', '30', '1493689078');
 INSERT INTO `collect` VALUES ('23', '1', '22', '29', '1493801992');
 INSERT INTO `collect` VALUES ('24', '1', '22', '41', '1493802271');
 INSERT INTO `collect` VALUES ('26', '1', '22', '42', '1493802695');
+INSERT INTO `collect` VALUES ('27', '1', '22', '40', '1493890538');
 
 -- ----------------------------
 -- Table structure for `comment`
@@ -458,6 +477,7 @@ CREATE TABLE `post` (
   `post_cate_id` int(11) NOT NULL COMMENT '帖子分类id',
   `title` varchar(50) NOT NULL COMMENT '帖子标题',
   `content` text NOT NULL COMMENT '帖子内容',
+  `comment_num` int(10) NOT NULL,
   `click` int(11) NOT NULL COMMENT '帖子点击次数',
   `status` int(1) NOT NULL COMMENT '0禁用1启用',
   `add_time` int(11) NOT NULL COMMENT '添加时间',
@@ -468,37 +488,37 @@ CREATE TABLE `post` (
 -- ----------------------------
 -- Records of post
 -- ----------------------------
-INSERT INTO `post` VALUES ('3', '18', '3', 'asd', '啊大神的', '6', '1', '1492134989', '1493116416');
-INSERT INTO `post` VALUES ('4', '12', '2', 'ssas', 'dada', '0', '1', '1492251867', '1492566893');
-INSERT INTO `post` VALUES ('6', '12', '3', 'sadd', 'da', '0', '1', '1492479290', '1492479290');
-INSERT INTO `post` VALUES ('7', '13', '5', '啊啊', 'sd', '0', '1', '1492482231', '1492482231');
-INSERT INTO `post` VALUES ('8', '12', '5', '王', '阿斯达', '0', '1', '1492486672', '1492486672');
-INSERT INTO `post` VALUES ('9', '6', '3', '王艳', '撒旦法', '0', '1', '1492494219', '1492513998');
-INSERT INTO `post` VALUES ('10', '12', '5', '啦啦啦', '安达市', '0', '1', '1492500863', '1492503823');
-INSERT INTO `post` VALUES ('11', '12', '6', '撒嗒啊啊啊大大', '撒嗒', '1', '1', '1492503765', '1492566228');
-INSERT INTO `post` VALUES ('12', '12', '6', 'ada地方', '的撒', '3', '1', '1492566254', '1492567075');
-INSERT INTO `post` VALUES ('13', '12', '1', '发生的', '是v', '0', '1', '1492566722', '1492567349');
-INSERT INTO `post` VALUES ('16', '12', '10', 'SAAB', '大声的', '0', '1', '1492576661', '1492576661');
-INSERT INTO `post` VALUES ('17', '12', '10', '阿斯达', '打', '0', '1', '1492576674', '1492576674');
-INSERT INTO `post` VALUES ('18', '12', '3', '撒嗒', '撒嗒', '0', '1', '1492583619', '1492590298');
-INSERT INTO `post` VALUES ('19', '12', '9', '安达市', '打算', '0', '1', '1492664339', '1492664339');
-INSERT INTO `post` VALUES ('22', '10', '9', '撒嗒222亲戚', '打', '0', '1', '1492666865', '1492666865');
-INSERT INTO `post` VALUES ('23', '9', '9', '去去去', '亲戚', '0', '1', '1492666940', '1492666940');
-INSERT INTO `post` VALUES ('24', '11', '1', '亲亲亲亲', '撒嗒', '0', '1', '1492666988', '1492666988');
-INSERT INTO `post` VALUES ('25', '11', '1', '亲亲亲亲', '撒嗒', '0', '1', '1492666995', '1492666995');
-INSERT INTO `post` VALUES ('26', '12', '9', '撒嗒222亲戚', '阿杜', '0', '1', '1492667180', '1492667180');
-INSERT INTO `post` VALUES ('27', '12', '9', '撒嗒222亲戚', '阿杜', '0', '1', '1492667185', '1492667185');
-INSERT INTO `post` VALUES ('28', '12', '9', '撒嗒222亲戚', '阿杜', '0', '1', '1492667214', '1492667214');
-INSERT INTO `post` VALUES ('29', '13', '9', '撒嗒222亲戚', '阿杜', '33', '1', '1492667273', '1492745485');
-INSERT INTO `post` VALUES ('30', '13', '9', '求求求求求', '安达市', '23', '1', '1492668587', '1492745461');
-INSERT INTO `post` VALUES ('33', '13', '0', 'sd', 'sad', '0', '1', '1492744362', '1492744362');
-INSERT INTO `post` VALUES ('34', '13', '0', 'sdf', 'ds', '7', '1', '1492744414', '1492744414');
-INSERT INTO `post` VALUES ('35', '13', '0', 'asd', 'asd', '5', '1', '1492745498', '1492745498');
-INSERT INTO `post` VALUES ('38', '18', '1', '撒嗒', '暗暗地', '5', '1', '1493107649', '1493107649');
-INSERT INTO `post` VALUES ('40', '22', '1', '让我们一起去玩吧', '撒嗒', '134', '1', '1493274697', '1493795671');
-INSERT INTO `post` VALUES ('41', '22', '9', '杰伦为什么要骂人民警察', '维护粉丝，爱粉丝如孩子', '16', '1', '1493712399', '1493795934');
-INSERT INTO `post` VALUES ('42', '22', '1', '自行车', '自行车', '4', '1', '1493787029', '1493787612');
-INSERT INTO `post` VALUES ('49', '22', '9', '试试', '撒嗒', '3', '1', '1493787529', '1493790991');
+INSERT INTO `post` VALUES ('3', '18', '3', 'asd', '啊大神的', '0', '6', '1', '1492134989', '1493116416');
+INSERT INTO `post` VALUES ('4', '12', '2', 'ssas', 'dada', '0', '0', '1', '1492251867', '1492566893');
+INSERT INTO `post` VALUES ('6', '12', '3', 'sadd', 'da', '0', '0', '1', '1492479290', '1492479290');
+INSERT INTO `post` VALUES ('7', '13', '5', '啊啊', 'sd', '0', '0', '1', '1492482231', '1492482231');
+INSERT INTO `post` VALUES ('8', '12', '5', '王', '阿斯达', '0', '0', '1', '1492486672', '1492486672');
+INSERT INTO `post` VALUES ('9', '6', '3', '王艳', '撒旦法', '0', '0', '1', '1492494219', '1492513998');
+INSERT INTO `post` VALUES ('10', '12', '5', '啦啦啦', '安达市', '0', '0', '1', '1492500863', '1492503823');
+INSERT INTO `post` VALUES ('11', '12', '6', '撒嗒啊啊啊大大', '撒嗒', '0', '1', '1', '1492503765', '1492566228');
+INSERT INTO `post` VALUES ('12', '12', '6', 'ada地方', '的撒', '0', '3', '1', '1492566254', '1492567075');
+INSERT INTO `post` VALUES ('13', '12', '1', '发生的', '是v', '0', '0', '1', '1492566722', '1492567349');
+INSERT INTO `post` VALUES ('16', '12', '10', 'SAAB', '大声的', '0', '0', '1', '1492576661', '1492576661');
+INSERT INTO `post` VALUES ('17', '12', '10', '阿斯达', '打', '0', '0', '1', '1492576674', '1492576674');
+INSERT INTO `post` VALUES ('18', '12', '3', '撒嗒', '撒嗒', '0', '0', '1', '1492583619', '1492590298');
+INSERT INTO `post` VALUES ('19', '12', '9', '安达市', '打算', '0', '0', '1', '1492664339', '1492664339');
+INSERT INTO `post` VALUES ('22', '10', '9', '撒嗒222亲戚', '打', '0', '0', '1', '1492666865', '1492666865');
+INSERT INTO `post` VALUES ('23', '9', '9', '去去去', '亲戚', '0', '0', '1', '1492666940', '1492666940');
+INSERT INTO `post` VALUES ('24', '11', '1', '亲亲亲亲', '撒嗒', '0', '0', '1', '1492666988', '1492666988');
+INSERT INTO `post` VALUES ('25', '11', '1', '亲亲亲亲', '撒嗒', '0', '0', '1', '1492666995', '1492666995');
+INSERT INTO `post` VALUES ('26', '12', '9', '撒嗒222亲戚', '阿杜', '0', '0', '1', '1492667180', '1492667180');
+INSERT INTO `post` VALUES ('27', '12', '9', '撒嗒222亲戚', '阿杜', '0', '0', '1', '1492667185', '1492667185');
+INSERT INTO `post` VALUES ('28', '12', '9', '撒嗒222亲戚', '阿杜', '0', '0', '1', '1492667214', '1492667214');
+INSERT INTO `post` VALUES ('29', '13', '9', '撒嗒222亲戚', '阿杜', '0', '33', '1', '1492667273', '1492745485');
+INSERT INTO `post` VALUES ('30', '13', '9', '求求求求求', '安达市', '0', '23', '1', '1492668587', '1492745461');
+INSERT INTO `post` VALUES ('33', '13', '0', 'sd', 'sad', '0', '0', '1', '1492744362', '1492744362');
+INSERT INTO `post` VALUES ('34', '13', '0', 'sdf', 'ds', '0', '7', '1', '1492744414', '1492744414');
+INSERT INTO `post` VALUES ('35', '13', '0', 'asd', 'asd', '0', '5', '1', '1492745498', '1492745498');
+INSERT INTO `post` VALUES ('38', '18', '1', '撒嗒', '暗暗地', '0', '5', '1', '1493107649', '1493107649');
+INSERT INTO `post` VALUES ('40', '22', '1', '让我们一起去玩吧', '撒嗒', '13', '162', '1', '1493274697', '1493795671');
+INSERT INTO `post` VALUES ('41', '22', '9', '杰伦为什么要骂人民警察', '维护粉丝，爱粉丝如孩子', '0', '17', '1', '1493712399', '1493795934');
+INSERT INTO `post` VALUES ('42', '22', '1', '自行车', '自行车', '0', '10', '1', '1493787029', '1493787612');
+INSERT INTO `post` VALUES ('49', '22', '9', '试试', '撒嗒', '0', '3', '1', '1493787529', '1493790991');
 
 -- ----------------------------
 -- Table structure for `post_cate`
@@ -538,40 +558,41 @@ CREATE TABLE `post_comment` (
   `user_id` int(11) NOT NULL COMMENT '用户id',
   `post_id` int(11) NOT NULL COMMENT '帖子id',
   `reply_id` int(10) NOT NULL,
-  `comment_num` int(10) NOT NULL,
   `content` text NOT NULL COMMENT '帖子内容',
   `status` int(1) NOT NULL COMMENT '0禁用1启用',
   `add_time` int(11) NOT NULL COMMENT '添加时间',
   `update_time` int(11) NOT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of post_comment
 -- ----------------------------
-INSERT INTO `post_comment` VALUES ('6', '13', '0', '0', '0', 'dsf&nbsp;', '1', '1492743351', '1492743351');
-INSERT INTO `post_comment` VALUES ('7', '12', '40', '0', '0', '', '1', '0', '0');
-INSERT INTO `post_comment` VALUES ('9', '22', '29', '0', '0', 'sdf', '0', '1493705830', '1493705830');
-INSERT INTO `post_comment` VALUES ('10', '22', '12', '0', '0', 'sd', '0', '1493710097', '1493710097');
-INSERT INTO `post_comment` VALUES ('11', '22', '40', '0', '0', 'sds', '0', '1493711347', '1493711347');
-INSERT INTO `post_comment` VALUES ('12', '22', '40', '0', '0', '的', '0', '1493783122', '1493783122');
-INSERT INTO `post_comment` VALUES ('13', '22', '29', '0', '0', '撒嗒', '0', '1493801887', '1493801887');
-INSERT INTO `post_comment` VALUES ('14', '22', '40', '11', '0', '刚刚好', '0', '1493802089', '1493802089');
-INSERT INTO `post_comment` VALUES ('15', '22', '40', '14', '0', '试试', '0', '1493802103', '1493802103');
-INSERT INTO `post_comment` VALUES ('16', '22', '40', '15', '0', '试试', '0', '1493802116', '1493802116');
-INSERT INTO `post_comment` VALUES ('17', '22', '40', '16', '0', '试试', '0', '1493802125', '1493802125');
-INSERT INTO `post_comment` VALUES ('18', '22', '40', '17', '0', '啊', '0', '1493802133', '1493802133');
-INSERT INTO `post_comment` VALUES ('19', '22', '40', '18', '0', '阿瑟', '0', '1493802138', '1493802138');
-INSERT INTO `post_comment` VALUES ('20', '22', '42', '0', '0', '是', '0', '1493882328', '1493882328');
-INSERT INTO `post_comment` VALUES ('21', '22', '42', '20', '0', '撒', '0', '1493882380', '1493882380');
-INSERT INTO `post_comment` VALUES ('22', '22', '42', '0', '0', '试试', '0', '1493882422', '1493882422');
-INSERT INTO `post_comment` VALUES ('23', '22', '42', '20', '0', '撒嗒', '0', '1493884144', '1493884144');
-INSERT INTO `post_comment` VALUES ('24', '22', '42', '23', '0', '我是大海', '0', '1493884378', '1493884378');
-INSERT INTO `post_comment` VALUES ('25', '22', '42', '0', '0', '是大家的', '0', '1493884626', '1493884626');
-INSERT INTO `post_comment` VALUES ('26', '22', '42', '23', '0', '阿萨德', '0', '1493884742', '1493884742');
-INSERT INTO `post_comment` VALUES ('27', '22', '42', '21', '0', '打算', '0', '1493884745', '1493884745');
-INSERT INTO `post_comment` VALUES ('28', '22', '40', '0', '0', '撒嗒', '0', '1493884854', '1493884854');
-INSERT INTO `post_comment` VALUES ('29', '22', '40', '28', '0', '打算啊', '0', '1493884859', '1493884859');
+INSERT INTO `post_comment` VALUES ('6', '13', '0', '0', 'dsf&nbsp;', '1', '1492743351', '1492743351');
+INSERT INTO `post_comment` VALUES ('7', '12', '40', '0', '', '1', '0', '0');
+INSERT INTO `post_comment` VALUES ('9', '22', '29', '0', 'sdf', '0', '1493705830', '1493705830');
+INSERT INTO `post_comment` VALUES ('10', '22', '12', '0', 'sd', '0', '1493710097', '1493710097');
+INSERT INTO `post_comment` VALUES ('11', '22', '40', '0', 'sds', '0', '1493711347', '1493711347');
+INSERT INTO `post_comment` VALUES ('12', '22', '40', '0', '的', '0', '1493783122', '1493783122');
+INSERT INTO `post_comment` VALUES ('13', '22', '29', '0', '撒嗒', '0', '1493801887', '1493801887');
+INSERT INTO `post_comment` VALUES ('14', '22', '40', '11', '刚刚好', '0', '1493802089', '1493802089');
+INSERT INTO `post_comment` VALUES ('15', '22', '40', '14', '试试', '0', '1493802103', '1493802103');
+INSERT INTO `post_comment` VALUES ('16', '22', '40', '15', '试试', '0', '1493802116', '1493802116');
+INSERT INTO `post_comment` VALUES ('17', '22', '40', '16', '试试', '0', '1493802125', '1493802125');
+INSERT INTO `post_comment` VALUES ('18', '22', '40', '17', '啊', '0', '1493802133', '1493802133');
+INSERT INTO `post_comment` VALUES ('19', '22', '40', '18', '阿瑟', '0', '1493802138', '1493802138');
+INSERT INTO `post_comment` VALUES ('20', '22', '42', '0', '是', '0', '1493882328', '1493882328');
+INSERT INTO `post_comment` VALUES ('21', '22', '42', '20', '撒', '0', '1493882380', '1493882380');
+INSERT INTO `post_comment` VALUES ('22', '22', '42', '0', '试试', '0', '1493882422', '1493882422');
+INSERT INTO `post_comment` VALUES ('23', '22', '42', '20', '撒嗒', '0', '1493884144', '1493884144');
+INSERT INTO `post_comment` VALUES ('24', '22', '42', '23', '我是大海', '0', '1493884378', '1493884378');
+INSERT INTO `post_comment` VALUES ('25', '22', '42', '0', '是大家的', '0', '1493884626', '1493884626');
+INSERT INTO `post_comment` VALUES ('26', '22', '42', '23', '阿萨德', '0', '1493884742', '1493884742');
+INSERT INTO `post_comment` VALUES ('27', '22', '42', '21', '打算', '0', '1493884745', '1493884745');
+INSERT INTO `post_comment` VALUES ('28', '22', '40', '0', '撒嗒', '0', '1493884854', '1493884854');
+INSERT INTO `post_comment` VALUES ('29', '22', '40', '28', '打算啊', '0', '1493884859', '1493884859');
+INSERT INTO `post_comment` VALUES ('30', '22', '40', '0', '大风车', '0', '1493959822', '1493959822');
+INSERT INTO `post_comment` VALUES ('31', '22', '40', '0', '阿斯达', '0', '1493959830', '1493959830');
 
 -- ----------------------------
 -- Table structure for `region`
@@ -4040,7 +4061,7 @@ CREATE TABLE `support` (
   `user_id` int(10) NOT NULL,
   `support` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of support
@@ -4049,6 +4070,8 @@ INSERT INTO `support` VALUES ('5', '1', '29', '22', '0');
 INSERT INTO `support` VALUES ('6', '1', '40', '22', '1');
 INSERT INTO `support` VALUES ('7', '1', '41', '22', '1');
 INSERT INTO `support` VALUES ('8', '1', '49', '22', '1');
+INSERT INTO `support` VALUES ('9', '2', '11', '22', '1');
+INSERT INTO `support` VALUES ('10', '2', '7', '22', '0');
 
 -- ----------------------------
 -- Table structure for `tdk`
@@ -4154,18 +4177,11 @@ CREATE TABLE `user_msg` (
   `update_time` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user_msg
 -- ----------------------------
-INSERT INTO `user_msg` VALUES ('2', '0', '0', '撒嗒222亲戚', '', '0', '1', '0', '阿萨德', '0', 'IOS 发送失败.Android 发送失败.', '1493867098', '1493880011');
-INSERT INTO `user_msg` VALUES ('3', '23', '0', '客户问卷', '', '0', '1', '0', '客户问卷', '0', 'IOS 发送失败.Android 发送失败.', '1493869438', '1493869438');
-INSERT INTO `user_msg` VALUES ('4', '23', '0', '阿瑟', '', '0', '1', '1', '阿萨德', '0', 'IOS 发送失败.Android 发送失败.', '1493869500', '1493869500');
-INSERT INTO `user_msg` VALUES ('5', '22', '22', '撒嗒222亲戚', '', '0', '1', '2', '阿萨德', '0', 'IOS 发送失败.Android 发送失败.', '1493869619', '1493869619');
-INSERT INTO `user_msg` VALUES ('6', '18', '22', '大话西游', '', '0', '1', '1', '大话西游', '0', 'IOS 发送失败.Android 发送失败.', '1493876902', '1493876902');
-INSERT INTO `user_msg` VALUES ('7', '23', '22', '各位用户请注意防火防盗防闺蜜', '', '0', '1', '3', '尴尬', '0', 'IOS 发送失败.Android 发送失败.', '1493879124', '1493879124');
-INSERT INTO `user_msg` VALUES ('8', '0', '0', '撒嗒', '', '0', '1', '1', '是', '0', 'IOS 发送失败.Android 发送失败.', '1493879459', '1493879459');
 INSERT INTO `user_msg` VALUES ('9', '22', '22', '', '', '0', '0', '2', '赤心您好，你有一条来自赤心的回复信息', '42', 'IOS 发送失败.Android 发送失败.', '1493884144', '1493884144');
 INSERT INTO `user_msg` VALUES ('10', '22', '22', '', '', '0', '0', '2', '赤心您好，你有一条来自赤心的回复信息', '42', 'IOS 发送失败.Android 发送失败.', '1493884378', '1493884378');
 INSERT INTO `user_msg` VALUES ('11', '22', '22', '', '', '0', '0', '1', '赤心您好，你有一条来自赤心的评论信息', '42', 'IOS 发送失败.Android 发送失败.', '1493884626', '1493884626');
@@ -4173,6 +4189,15 @@ INSERT INTO `user_msg` VALUES ('12', '22', '22', '', '', '0', '0', '2', '赤心�
 INSERT INTO `user_msg` VALUES ('13', '22', '22', '', '', '0', '0', '2', '赤心您好，你有一条来自赤心的回复信息', '21', 'IOS 发送失败.Android 发送失败.', '1493884745', '1493884745');
 INSERT INTO `user_msg` VALUES ('14', '22', '22', '', '', '0', '0', '1', '赤心您好，你有一条来自赤心的评论信息', '40', 'IOS 发送失败.Android 发送失败.', '1493884854', '1493884854');
 INSERT INTO `user_msg` VALUES ('15', '22', '22', '', '', '0', '0', '2', '赤心您好，你有一条来自赤心的回复信息', '28', 'IOS 发送失败.Android 发送失败.', '1493884859', '1493884859');
+INSERT INTO `user_msg` VALUES ('16', '22', '22', '', '', '0', '1', '0', '赤心你有一条来自赤心的系统信息', '0', 'IOS 发送失败.Android 发送失败.', '1493951488', '1493951488');
+INSERT INTO `user_msg` VALUES ('17', '22', '0', '', '', '0', '1', '0', '赤心你有一条来自系统信息的系统信息', '0', 'IOS 发送失败.Android 发送失败.', '1493951534', '1493951534');
+INSERT INTO `user_msg` VALUES ('18', '22', '22', '', '', '0', '1', '3', '赤心你有一条来自赤心的站内信息', '0', 'IOS 发送失败.Android 发送失败.', '1493951551', '1493951551');
+INSERT INTO `user_msg` VALUES ('19', '22', '22', '', '', '0', '0', '1', '赤心你有一条来自赤心的评论信息', '40', 'IOS 发送失败.Android 发送失败.', '1493959821', '1493959821');
+INSERT INTO `user_msg` VALUES ('20', '22', '22', '', '', '0', '0', '1', '赤心你有一条来自赤心的评论信息', '40', 'IOS 发送失败.Android 发送失败.', '1493959830', '1493959830');
+INSERT INTO `user_msg` VALUES ('21', '23', '0', '', '', '0', '1', '0', '张耀乐你有一条来自系统信息的系统信息', '0', 'IOS 发送失败.Android 发送失败.', '1493964746', '1493964746');
+INSERT INTO `user_msg` VALUES ('22', '22', '0', '', '', '0', '1', '0', '打阿斯达', '0', 'IOS 发送失败.Android 发送失败.', '1493965102', '1493965102');
+INSERT INTO `user_msg` VALUES ('23', '22', '0', '', '', '0', '1', '0', '是擦手打的撒大大撒旦撒旦撒撒旦撒大声道1111321，。、，。、，‘；‘我是大海即可关火凯撒金沙江的哈空间很大很深的绝杀艰苦的环境卡仕达酱看哈健康的撒谎的金卡阿阿阿阿阿阿阿阿阿阿阿阿阿阿阿阿阿阿阿阿阿阿阿阿阿是大家看；、‘、；‘、的；却看到了撒娇的；去看；节省空间里极其渴望健康’’’’', '0', 'IOS 发送失败.Android 发送失败.', '1493967677', '1493967677');
+INSERT INTO `user_msg` VALUES ('25', '22', '23', '', '', '0', '1', '3', '你在家干什么，<span>你在家干什么，</span><span>你在家干什么，</span><span>你在家干什么，</span><span>你在家干什么，</span><span>你在家干什么，</span>', '0', 'IOS 发送失败.Android 发送失败.', '1493968202', '1493968202');
 
 -- ----------------------------
 -- Table structure for `user_msg_read`
@@ -4189,4 +4214,13 @@ CREATE TABLE `user_msg_read` (
 -- ----------------------------
 INSERT INTO `user_msg_read` VALUES ('1', '2');
 INSERT INTO `user_msg_read` VALUES ('4', '2');
+INSERT INTO `user_msg_read` VALUES ('9', '22');
+INSERT INTO `user_msg_read` VALUES ('10', '22');
+INSERT INTO `user_msg_read` VALUES ('11', '22');
+INSERT INTO `user_msg_read` VALUES ('12', '22');
+INSERT INTO `user_msg_read` VALUES ('13', '22');
+INSERT INTO `user_msg_read` VALUES ('14', '22');
+INSERT INTO `user_msg_read` VALUES ('15', '22');
+INSERT INTO `user_msg_read` VALUES ('19', '22');
+INSERT INTO `user_msg_read` VALUES ('20', '22');
 INSERT INTO `user_msg_read` VALUES ('56', '1');

@@ -88,6 +88,8 @@ class PostController extends PublicController {
 	
 	//获取帖子详情
 	public function postDetail(){
+	    if($_GET['msg_id'])
+	        d('userMsg')->read($_GET['msg_id'], $this->user['id'], $read = true);
 	    
 	    $con = [
 	        'node_id' => (int)$_GET['id'],

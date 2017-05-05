@@ -118,6 +118,11 @@ class UserController extends PublicController{
         
 	   
 	}
+	//确认是否已读信息
+	function messageRead(){ 
+	    if($_GET['id'])
+	        d('userMsg')->read($_GET['msg_id'], $this->user['id'], $read = true);
+	}
 	
 	//帖子删除
 	public function postDel(){
@@ -401,18 +406,17 @@ class UserController extends PublicController{
 	//消息通知
 	function message(){
 	    
-	    $this->display();
-	    
-// 		$mod = d('userMsg');
-// 		$con = $_GET;
-// 		$con['_complex'] = [
-// 			'user_id' => $this->userId, 
-// 			"find_in_set('{$this->user[msgType]}',type_id)" => ['gt', 0],
-// 			'_logic'  => 'or',
-// 		];
+ 		$mod = d('userMsg');
+ 		$con = $_GET;
+ 		
+		$con['_complex'] = [
+			'user_id' => $this->userId, 
+		];
 		
-// 		$data = $mod->getPageList($con);
-		
+ 		$data = $mod->getPageList($con);
+ 		$this->assign($data);
+ 		//var_dump($data);exit;
+		$this->display();
 		
 		
 // 		ajaxReturn2(0,'', $data);

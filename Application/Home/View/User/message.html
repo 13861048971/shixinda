@@ -12,22 +12,43 @@
 			</div>
 			<div class="col-md-9 user-container">
 				<div class="tab-control">
-					<a href="javascript:void(0);" class="tab-actived tab-message">站内信</a><a href="javascript:void(0);" class="tab-reply">帖子回复</a><a href="javascript:void(0);" class="tab-system">系统通知</a>
+					<a href="{:U('user/message')}" class="tab-actived tab-message">所有消息</a><a href="{:U('user/message',['type'=>3])}" class="tab-actived tab-message">站内信</a><a href="{:U('user/message',['type'=>'帖子回复'])}" class="tab-reply">帖子回复</a><a href="{:U('user/message',['type'=>0])}" class="tab-system">系统通知</a>
 				</div>
 				<!--站内信列表start-->
 				<div class="message-list">
 					<dl>
+						
+						<foreach name="list" item="v">
 						<dd>
-							<div class="message-thumb"><span></span>消息缩略<a href="javascript:void(0);" class="show-complete">...查看详情</a></div>
-							<div class="message-complete">消息完整消息完整消息完整消息完整消息完整消息完整消息完整消息完整消息完整消息完整消息完整消息完整消息完整消息完整消息完整消息完整消息完整消息完整消息完整消息完整消息完整消息完整消息完整消息完整消息完整消息完整消息完整消息完整消息完整消息完整消息完整消息完整消息完整消息完整消息完整消息完整消息完整消息完整消息完整消息完整消息完整消息完整消息完整消息完整消息完整消息完整消息完整消息完整消息完整消息完整消息完整消息完整消息完整消息完整消息完整消息完整消息完整 <a href="javascript:void(0);" class="hide-complete">...收起</a></div>
+							<div class="message-thumb"><if condition="$v['isRead'] eq false"><span></span></if>{$v.contentThumb}
+							
+							<in name="v.type" value="1,2">
+							<a href="{:U('post/postDetail',['id'=>$v['post_id'],'msg_id'=>$v['id']])}" class="show-complete">...查看详情</a>
+							</in>
+							
+							<if condition="$v['type'] eq 3">
+							<a  class="show-complete" data-id="{$v.id}>...查看详情</a>
+							</if>
+							</if>
+							
+							<if condition="$v['type'] eq 0">
+							<a  class="show-complete" data-id="{$v.id}">...查看详情</a>
+							</if>
+							
+							</div>
+							<div class="message-complete">{$v.content}<a href="javascript:void(0);" class="hide-complete">...收起</a></div>
 							<div class="post-info">
-								<span>时间：2017-5-4</span>
+								<span>时间：{$v.add_time}</span>
 							</div>
 							<div class="post-control">
-								<a href="" >回复</a>
-								<a class="post-del" href="javascript:void(0);" data-id="">删除</a>
+								<in name="v.type" value="1,2"><a href="" >回复</a></in>
+								<if condition="($v['type'] neq 1) and ($v['type'] neq 2)"><a class="post-del" href="javascript:void(0);" data-id="">删除</a></if>
 							</div>
 						</dd>
+						</foreach>
+						
+						
+						
 					</dl>
 					
 					<div class="pager">{$pageVar}</div>
@@ -35,7 +56,7 @@
 				<!--站内信列表end-->
 				<!--帖子回复列表start-->
 					<div class="message-list">
-						<dl>
+					<!-- 	<dl>
 							<dd>
 								<div class="message-thumb"><span></span>消息缩略<a href="javascript:void(0);">...查看详情</a></div>
 								<div class="reply-time">
@@ -46,8 +67,8 @@
 						
 						<div class="pager">{$pageVar}</div>
 					</div>
-				<!--帖子回复列表end-->
-				<!--系统通知列表start-->
+				帖子回复列表end
+				系统通知列表start
 				<div class="message-list">
 					<dl>
 						<dd>
@@ -62,7 +83,7 @@
 					</dl>
 					
 					<div class="pager">{$pageVar}</div>
-				</div>
+				</div> -->
 				<!--系统通知列表end-->
 			</div>
 		</div>
