@@ -118,11 +118,6 @@ class UserController extends PublicController{
         
 	   
 	}
-	//确认是否已读信息
-	function messageRead(){ 
-	    if($_GET['id'])
-	        d('userMsg')->read($_GET['msg_id'], $this->user['id'], $read = true);
-	}
 	
 	//帖子删除
 	public function postDel(){
