@@ -678,6 +678,34 @@ $('.user-section .message-list').on('click','.show-complete', function(){
 	}
 }());
 // 站内信回复
+var msgReply = '';
 $('.user-section .message-list').on('click', '.msg-reply', function(){
-	$('win-reply-container').show();
+	$('.win-reply-container').show();
+	msgReply = $(this);
+});
+$('.win-msg-reply span').on('click', function(){
+	$('.win-reply-container').hide();
+});
+$('.win-msg-reply button').on('click', function(){
+	var content = $('.win-msg-reply textarea').val();
+	if(!content){
+		win.alert('请填写回复内容！', 'error');
+		return false;
+	}
+	var user_id = msgReply.data('user-id');
+	$.ajax({
+		url:'/user/messageSiteNew',
+		type:'post',
+		dataType:'json',
+		data:{content:content,user_id:user_id},
+		success:function(data){
+			if(!data.error){
+				win.alert(data.info, 'success');
+				$('.win-msg-reply textarea').val('');
+				$('.win-reply-container').hide();
+			}else{
+				win.alert(data.info, 'error');
+			}
+		}
+	});
 });

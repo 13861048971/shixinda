@@ -1365,7 +1365,8 @@ ul#filters {
 	height: 100%;
 	z-index: 15;
 }
-.win-reply-container .win-reply{
+.win-reply-container .win-reply,
+.win-reply-container .win-msg-reply{
 	position: fixed;
 	width: 500px;
 	height: 250px;
@@ -1377,10 +1378,12 @@ ul#filters {
 	border: 1px solid #ddd;
 	box-shadow: 3px 3px 3px #ccc;
 }
-.win-reply-container .win-reply h4{
+.win-reply-container .win-reply h4,
+.win-reply-container .win-msg-reply h4{
 	margin: 0;
 }
-.win-reply-container .win-reply textarea{
+.win-reply-container .win-reply textarea,
+.win-reply-container .win-msg-reply textarea{
 	border: 1px solid #ddd;
 	border-radius: 4px;
 	width: 100%;
@@ -1390,7 +1393,8 @@ ul#filters {
 	outline: none;
 	resize: none;
 }
-.win-reply-container .win-reply button{
+.win-reply-container .win-reply button,
+.win-reply-container .win-msg-reply button{
 	border: 1px solid #1C86EE;
 	border-radius: 4px;
 	width: 70px;;
@@ -1400,7 +1404,8 @@ ul#filters {
 	outline: none;
 	float: right;
 }
-.win-reply-container .win-reply h4 span{
+.win-reply-container .win-reply h4 span,
+.win-reply-container .win-msg-reply h4 span{
 	cursor: pointer;
 	float: right;
 }
