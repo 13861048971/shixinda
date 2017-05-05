@@ -15,21 +15,38 @@
     <label class="col-sm-2 control-label"><b class="red">*</b>内容:</label>
     <div class="col-sm-10">
     <ul class="banner-block-edit">
+     <if condition="$row['content'] neq null">
+       <foreach name="row.content" item="vo" key="k">
 	    <li class="form-group">   
 		    <label class="col-sm-4">
-		      <input name="url[0]" required class="form-control" value="{$vo.url}" placeholder="链接 ">
+		      <input name="url[{$k}]" required class="form-control" value="{$vo.url}" placeholder="链接 ">
 		    </label>
 		    <div class="col-sm-5">
 		      <div class="input-group ">
-				  {:w('upload/img2',["image[0]","",$row['content']])}
+				  {:w('upload/img2', $vo['imageArr'])}
 				</div>
 			</div>	
 			<div class="col-sm-2">
 			   	<button type="button" class="banner-block-add">+</button>
 			</div>
 		</li>
-		
-		
+		 
+		</foreach>
+	<else />	
+		<li class="form-group">   
+		    <label class="col-sm-4">
+		      <input name="url[0]" required class="form-control" value="" placeholder="链接 ">
+		    </label>
+		    <div class="col-sm-5">
+		      <div class="input-group ">
+				  {:w('upload/img2',["image[0]","",''])}
+				</div>
+			</div>	
+			<div class="col-sm-2">
+			   	<button type="button" class="banner-block-add">+</button>
+			</div>
+		</li>
+	</if>	
     </ul>    
     </div> 
   </div>

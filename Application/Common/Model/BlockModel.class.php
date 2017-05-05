@@ -35,6 +35,7 @@ class BlockModel extends BaseModel {
 	    $info = $this->find($id);
 	    if(!$info) return;
 	    $info = $this->parseRow($info);
+	    //dd($info);
 	    return $info;
 	}
 	//格式化行
@@ -46,11 +47,19 @@ class BlockModel extends BaseModel {
 	    $v['updateTime'] = date("Y-m-d H:i:s",$v['update_time']);
 	    $v['addTime'] = date("Y-m-d H:i:s",$v['add_time']);
 	    $v['content'] = json_decode($v['content'], true);
+	    
+	    foreach($v['content'] as $k2=>$v2){
+	        $v['content'][$k2]['imageArr'] = ['image['.$k2.']', '', $v2['image']];
+	    }
 	    return $v;
 	}
 	
 	//添加或编辑
 	function edit($data, $id=null){
+	    foreach ($data['url'] as $k=>$v){
+	        $arr[$k] = ['url'=>$v, 'image'=>$data['image'][$k]];
+	    }
+	    $data['content'] = json_encode($arr);
 	    if($id){
 	        $data['update_time'] = time();
 	        $return  = $this->data($data)->where('id=' . (int)$id)->save();
@@ -62,11 +71,9 @@ class BlockModel extends BaseModel {
 	        return $id;
 	    }
 	    
-	    foreach ($data['url'] as $k=>$v){
-	       $arr[$k] = ['url'=>$v, 'image'=>$data['image'][$k]];
-	    }
+	    
 	    $data['update_time'] = $data['add_time'] = time();
-	    $data['content'] = json_encode($arr);
+	    
 	    if(!$this->create($data))
 	        return false;
 	
