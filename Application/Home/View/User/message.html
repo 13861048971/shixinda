@@ -32,7 +32,7 @@
 								</if>
 								<div>{$v.contentThumb}</div>
 								<in name="v.type" value="1,2">
-									<a href="{:U('post/postDetail',['id'=>$v['post_id'],'msg_id'=>$v['id']])}" class="show-complete">...查看详情</a>
+									<a href="{$v['url']}" class="show-complete">...查看详情</a>
 								</in>
 								<if condition="$v['type'] eq 3">
 									<a href="javascript:void(0);" class="show-complete" data-id="{$v.id}">...查看详情</a>
