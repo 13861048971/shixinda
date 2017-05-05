@@ -126,8 +126,8 @@
 					<foreach>
 						<dl>
 							<dt>商户交流</dt>
-							<foreach>
-								<dd><a href="">商户交流信息</a></dd>
+							<foreach name='customList' item='vo'>
+								<dd><a href="{:u('post/postDetail', ['id'=>$vo['id']])}">{$vo.title}</a></dd>
 							</foreach>
 						</dl>
 					</foreach>
