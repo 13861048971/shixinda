@@ -34,6 +34,7 @@ class PublicController extends Controller {
 		$messageCount = d('UserMsg')->where(['user_id'=>session('user')['id']])->count();
 		$messageReadCount = d('UserMsg')->alias('a')->join("user_msg_read b on a.id=b.msg_id")->where(['b.user_id' => session('user')['id']])->count();
 		$messageNoReadCount = $messageCount - $messageReadCount;
+		//echo $messageCount;echo $messageReadCount;
 		$this->assign('messageCount',$messageNoReadCount);
 		
 		$this->assign('user',session('user'));

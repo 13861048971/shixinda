@@ -100,12 +100,13 @@ class UserMsgModel extends BaseModel {
 	 * 编辑or添加
 	 */
 	function edit($data, $id=null){	
-	    $data = $this->parseRow($data);
-	    if($data['type'] == ['in',[1,2]])
+	    $data = $this->parseRow($data);  
+	    if(in_array($data['type'],[1,2]))
 	       $data['content'] = $data['user_name'].'你有一条来自'.$data['from_user_name'].'的'.$data['type_name'];
 	    if($data['type'] == 3)
 	        $data['content'] = $data['from_user_name'].'对你说：'.$data['content'];
 		$data = $this->setValidate($data);
+		
 		if($id){
 			$data['update_time'] = time();
 			$data['id'] = $id;
@@ -122,6 +123,7 @@ class UserMsgModel extends BaseModel {
 		if(!$this->create($data))
 			return false;
 		if(!($id = $this->add()))
+		    
 			return $this->setError('发送失败!');
 		if(!$this->sendMsg($id)){
 			return $this->setError('发送消息失败!');

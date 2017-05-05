@@ -182,8 +182,9 @@ class PostController extends PublicController {
             'type' => d('userMsg')->typeArr['评论信息'],
             'user_id' => d('post')->where(['id'=>$data['post_id']])->getfield('user_id'),
         ]; 
-        d('userMsg')->edit($messageData);
-        
+        if(!d('userMsg')->edit($messageData)){
+            ajaxReturn(1, d('userMsg')->getError());
+        };
         $id = d('postComment')->edit($data);
         if(!$id){
             ajaxReturn(1, '评论失败',['id'=>$id]);

@@ -253,11 +253,11 @@ class UserModel extends BaseModel{
 			'cate'    => 0 , 
 		];
 		if($type){
-			$d['title'] = '你的账号已被系统管理封号处理,将无法登陆.';
-			$d['content'] = $d['title'].' 封号原因:'.$blockNote;
+		    $d['title'] = '你的账号已经解封,已恢复正常使用.';
+		    $d['content'] = $d['title'];
 		}else{
-			$d['title'] = '你的账号已经解封,已恢复正常使用.';
-			$d['content'] = $d['title'];
+		    $d['title'] = '你的账号已被系统管理封号处理,将无法登陆.';
+		    $d['content'] = $d['title'].' 封号原因:'.$blockNote;
 		}
 		$msgMod = d('userMsg');
 		$msgMod->edit($d);

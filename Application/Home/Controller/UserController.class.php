@@ -432,6 +432,22 @@ class UserController extends PublicController{
 	    ajaxReturn2(1,$mod->getError());
 	}
 	
+	//消息删除
+	function messageDel(){
+	    if(!($id = (int)$_REQUEST['id']))
+			return ajaxReturn(1, '缺少ID!');
+	   $data = d('userMsgRead')->where(['msg_id'=>$id])->find();
+	   if($data){
+	       if(!d('userMsg')->delete($id) || !d('userMsgRead')->where(['msg_id'=>$id])->delete())
+	           return ajaxReturn(1, '删除失败a!');
+	   }else{
+	       if(!d('userMsg')->delete($id))
+	           return ajaxReturn(1, '删除失败!');
+	   }
+		
+		
+		return ajaxReturn(0,'删除成功!');
+	}
 	//消息详情
 	function messageDetail(){
 		$info = d('userMsg')->getInfo((int)$_GET['id']);
