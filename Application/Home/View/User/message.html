@@ -7,13 +7,12 @@
 					<dd><a href="{:U('user/index')}">账号管理</a></dd>
 					<dd><a href="{:U('user/postList')}">帖子管理</a></dd>
 					<dd class="user-nav-actived"><a href="{:U('user/message')}">消息通知</a></dd>
-					<dd><a href="{:U('user/systemMessage')}">系统通知</a></dd>
 					<dd><a href="javascript:void(0);" class="login-out">退出</a></dd>
 				</dl>
 			</div>
 			<div class="col-md-9 user-container">
 				<div class="tab-control">
-					<a href="javascript:void(0);" class="tab-actived tab-message">站内信</a><a href="javascript:void(0);" class="tab-reply">帖子回复</a>
+					<a href="javascript:void(0);" class="tab-actived tab-message">站内信</a><a href="javascript:void(0);" class="tab-reply">帖子回复</a><a href="javascript:void(0);" class="tab-system">系统通知</a>
 				</div>
 				<!--站内信列表start-->
 				<div class="message-list">
@@ -48,6 +47,23 @@
 						<div class="pager">{$pageVar}</div>
 					</div>
 				<!--帖子回复列表end-->
+				<!--系统通知列表start-->
+				<div class="message-list">
+					<dl>
+						<dd>
+							<div class="message-thumb"><span></span>消息缩略<a href="javascript:void(0);">...查看详情</a></div>
+							<div class="post-info">
+								<span>时间：2017-5-4</span>
+							</div>
+							<div class="post-control">
+								<a class="post-del" href="javascript:void(0);" data-id="">删除</a>
+							</div>
+						</dd>
+					</dl>
+					
+					<div class="pager">{$pageVar}</div>
+				</div>
+				<!--系统通知列表end-->
 			</div>
 		</div>
 	</div>
