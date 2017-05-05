@@ -38,7 +38,8 @@ return array(
 			['index', 	 '内容列表'],
 			['contentCate', '内容分类'],
 		    ['friendLink','友情链接'],
-		    ['navigation','导航管理']
+		    ['navigation','导航管理'],
+		    ['block', '区块管理']
 		],
 		'setting'=>[
 			['index', '系统配置'],
@@ -66,7 +67,8 @@ return array(
 			['index', 	 '内容列表'],
 			['contentCate', '内容分类'],
 		    ['friendLink','友情链接'],
-		    ['navigation','导航管理']
+		    ['navigation','导航管理'],
+		    ['block', '区块管理']
 		],
 		'setting' => [
 			['index', '系统设置'],

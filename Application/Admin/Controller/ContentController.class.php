@@ -70,7 +70,6 @@ class ContentController extends PublicController {
 	public function contentCateEdit(){
 	    $this->ajaxEdit('contentCate', null, function($row, $mod){
 	        $this->assign('row',$row);
-	        //dump($row);exit();
 	    });
 	}
 	
@@ -146,7 +145,6 @@ class ContentController extends PublicController {
 	        $name = $_GET['name'];
 	        $id = $_GET['pid'];
 	        $parent = ['name'=>$name,'id'=>$id];
-	        //dump($data);exit();
 	        $this->assign('parent',$parent);
 	    });	        
 	}
@@ -154,5 +152,30 @@ class ContentController extends PublicController {
 	//导航管理删除
 	public function navigationDel(){
 	    $this->ajaxDel('navigation');
+	}
+	
+	//区块管理
+	public function block(){
+	    $rightBtn = [
+	        ['name'      => '添加新区块', 'dialog' => 1,
+	         'dialog-lg' => 1, 'list' => [['name'=>'轮播图区块', 'url'=> u('blockEdit', ['type'=>1])]]
+	        ]
+	    ];
+	    $this->setRightAction($rightBtn);
+	    $data = d('block')->getPageList([], '', 'add_time desc', '');
+	    $this->assign('list', $data['list']);
+	    $this->assign('pageVar', $data['pageVar']);
+	   
+	    $this->display();
+	}
+	
+	//区块管理编辑
+	public function blockEdit(){
+	    if($_GET['type'] == 1){
+	        $template = 'blockEdit1';
+	    }
+	    $this->ajaxEdit('block', $template, function($row, $mod){
+	         
+	    });
 	}
 }
