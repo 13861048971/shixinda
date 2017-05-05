@@ -176,16 +176,20 @@ class PostController extends PublicController {
             'content' => $_POST['content']
         ];
         
+        
+        
+        $id = d('postComment')->edit($data);
+        
         $messageData = [
             'from_user_id' => $data['user_id'],
-            'node_id' => $data['post_id'],
+            'node_id' => $id,
             'type' => d('userMsg')->typeArr['评论信息'],
             'user_id' => d('post')->where(['id'=>$data['post_id']])->getfield('user_id'),
-        ]; 
+        ];
         if(!d('userMsg')->edit($messageData)){
             ajaxReturn(1, d('userMsg')->getError());
         };
-        $id = d('postComment')->edit($data);
+        
         if(!$id){
             ajaxReturn(1, '评论失败',['id'=>$id]);
         } 
@@ -269,16 +273,18 @@ class PostController extends PublicController {
             'reply_id' => $reply_id
         ];
         
+        
+        $id = d('postComment')->edit($data);
         $messageData = [
-          'from_user_id' => $data['user_id'],
-            'node_id' => $data['reply_id'],
+            'from_user_id' => $data['user_id'],
+            'node_id' => $id,
             'type' => d('userMsg')->typeArr['回复信息'],
             'from_user_name' => $this->user['nickname'],
             'user_id' => d('postComment')->where(['id'=>$data['reply_id']])->getfield('user_id'),
         ];
         d('userMsg')->edit($messageData);
         
-        $id = d('postComment')->edit($data);
+        
         if(!$id)
             ajaxReturn(1, '回复失败', ['id'=>$id]);
         $reply = d('postComment')->getInfo($id);

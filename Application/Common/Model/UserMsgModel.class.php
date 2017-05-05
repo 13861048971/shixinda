@@ -290,8 +290,6 @@ class UserMsgModel extends BaseModel {
 		foreach($data['list'] as $k=>$v){
 			$v = $this->getInfo($v['id']);
 			$data['list'][$k] = $this->parseRow($v);
-			//var_dump($data['list']);
-		
 		}
 		return $data;
 	}
@@ -310,9 +308,15 @@ class UserMsgModel extends BaseModel {
 	    }else{
 	        $v['from_user_name'] = d('user')->where(['id'=>$v['from_user_id']])->getfield('nickname');
 	    }
+	    
 	    strlen($v['content']) < 20?($v['contentThumb'] = $v['content']):($v['contentThumb'] = mb_substr($v['content'], 0,20));
-	    $v['post_id'] = d('postComment')->where(['id'=>$v['node_id']])->getfield('post_id'); 
-	    $v['post_id'] = $v['post_id'].'#comment-'.$v['node_id'];
+	    $v['post_id'] = d('postComment')->where(['id'=>$v['node_id']])->getfield('post_id');
+	    //计算当前消息前面的该帖下面的所有消息
+	    $count = d('postComment')->where(['id'=>['lt',$v['node_id']],['post_id'=>$v['post_id']]])->count();
+	    //计算当前消息所属分页
+	    $v['p'] = ceil($count/15);
+	    //生成url定位当前消息的内容行
+	    $v['url'] = U('post/postDetail',['msg_id'=>$v['id'],'p'=>$v['p'],'id'=>$v['post_id']]).'#comment-'.$v['node_id'];
 	    $v['add_time'] = date('Y-m-d H:i:s',$v['add_time']);
 	    $v['update_time'] = date('Y-m-d H:i:s',$v['update_time']);
 	    return $v ;
