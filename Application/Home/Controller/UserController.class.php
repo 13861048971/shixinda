@@ -417,7 +417,7 @@ class UserController extends PublicController{
 	}
 	
 	//站内消息
-	function messageSite(){
+	function messageSiteNew(){
 	    $mod = d('userMsg');
 	    $data = [
 	        'user_id' =>$_POST['user_id'],
