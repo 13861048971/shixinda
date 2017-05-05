@@ -175,7 +175,7 @@ class ContentController extends PublicController {
 	        $template = 'blockEdit1';
 	    }
 	    $this->ajaxEdit('block', $template, function($row, $mod){
-	         
+	        
 	    });
 	}
 }
