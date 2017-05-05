@@ -26,28 +26,27 @@
 					<dl>
 						<foreach name="list" item="v">
 						<dd>
-							<div class="message-thumb"><if condition="$v['isRead'] eq false"><span></span></if>{$v.contentThumb}
-							
-							<in name="v.type" value="1,2">
-							<a href="{:U('post/postDetail',['id'=>$v['post_id'],'msg_id'=>$v['id']])}" class="show-complete">...查看详情</a>
-							</in>
-							
-							<if condition="$v['type'] eq 3">
-							<a  class="show-complete" data-id="{$v.id}">...查看详情</a>
-							</if>
-							</if>
-							
-							<if condition="$v['type'] eq 0">
-							<a  class="show-complete" data-id="{$v.id}">...查看详情</a>
-							</if>
-							
+							<div class="message-thumb">
+								<if condition="$v['isRead'] eq false">
+									<span class="icon-unread"></span>
+								</if>
+								<div>{$v.contentThumb}</div>
+								<in name="v.type" value="1,2">
+									<a href="{:U('post/postDetail',['id'=>$v['post_id'],'msg_id'=>$v['id']])}" class="show-complete">...查看详情</a>
+								</in>
+								<if condition="$v['type'] eq 3">
+									<a href="javascript:void(0);" class="show-complete" data-id="{$v.id}">...查看详情</a>
+								</if>
+								<if condition="$v['type'] eq 0">
+									<a href="javascript:void(0);" class="show-complete" data-id="{$v.id}">...查看详情</a>
+								</if>
 							</div>
 							<div class="message-complete"><div>{$v.content}</div><a href="javascript:void(0);" class="hide-complete">...收起</a></div>
 							<div class="post-info">
 								<span>时间：{$v.add_time}</span>
 							</div>
 							<div class="post-control">
-								<in name="v.type" value="1,2"><a href="javascript:void(0);" class="msg-reply" data-user-id="{$v.user_id}">回复</a></in>
+								<in name="v.type" value="3"><a href="javascript:void(0);" class="msg-reply" data-user-id="{$v.user_id}">回复</a></in>
 								<if condition="($v['type'] neq 1) and ($v['type'] neq 2)"><a class="post-del" href="javascript:void(0);" data-id="">删除</a></if>
 							</div>
 						</dd>

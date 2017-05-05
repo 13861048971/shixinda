@@ -642,11 +642,17 @@ $('.win-reply button').on('click', function(){
 		}
 	});
 });
-// 消息通知切换
-$('.user-container .tab-control').on('click',function(e){
-	$(e.target).addClass('tab-actived');
-	$(e.target).siblings().removeClass('tab-actived');
-});
+// 站内信查看详情
+$('.user-section .message-list').on('click','.show-complete', function(){
+	var node = $(this).parents('.message-thumb');
+	node.hide();
+	node.siblings('.message-complete').show();
+})
+$('.user-section .message-list').on('click','.hide-complete', function(){
+	var node = $(this).parents('.message-complete');
+	node.hide();
+	node.siblings('.message-thumb').show();
+})
 // 消息未读变已读
 $('.user-section .message-list').on('click','.show-complete', function(){
 	var unread = $(this).siblings('.icon-unread');
