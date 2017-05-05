@@ -103,6 +103,8 @@ class UserMsgModel extends BaseModel {
 	    $data = $this->parseRow($data);
 	    if($data['type'] == ['in',[1,2]])
 	       $data['content'] = $data['user_name'].'你有一条来自'.$data['from_user_name'].'的'.$data['type_name'];
+	    if($data['type'] == 3)
+	        $data['content'] = $data['from_user_name'].'对你说：'.$data['content'];
 		$data = $this->setValidate($data);
 		if($id){
 			$data['update_time'] = time();

@@ -9,7 +9,6 @@ class UserController extends PublicController{
 		parent::_initialize();
 		$this->mod = D('User');
 		$this->userId = $this->user['id'];
-		
 	}
 	//用户中心
 	function index(){
@@ -416,10 +415,21 @@ class UserController extends PublicController{
 		
 // 		ajaxReturn2(0,'', $data);
 	}
-	//系统消息
 	
-	function systemMessage(){
-	    $this->display();
+	//站内消息
+	function messageSite(){
+	    $mod = d('userMsg');
+	    $data = [
+	        'user_id' =>$_POST['user_id'],
+	        'content' => $_POST['content'],
+	        'from_user_id' =>$this->user['id'],
+	        'type' => d('userMsg')->typeArr['站内信息'],
+	    ];
+	    $id = $mod->edit($data);
+	    if($id){
+	        ajaxReturn2(0,'操作成功');
+	    }
+	    ajaxReturn2(1,$mod->getError());
 	}
 	
 	//消息详情
