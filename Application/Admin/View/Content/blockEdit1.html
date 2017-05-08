@@ -17,17 +17,22 @@
     <ul class="banner-block-edit">
      <if condition="$row['content'] neq null">
        <foreach name="row.content" item="vo" key="k">
-					<li class="form-group">   
-						<label class="col-sm-4">
-							<input name="url[{$k}]" required class="form-control" value="{$vo.url}" placeholder="链接 ">
-						</label>
-						<div class="col-sm-5">
-							<div class="input-group ">
-								{:w('upload/img2', $vo['imageArr'])}
+					<li class="form-group"> 
+						<div class="row">
+							<input name="url[{$k}]" required class="form-control banner-url col-sm-8" value="{$vo.url}" placeholder="链接">
+							<div class="col-sm-2">
+									<button type="button" class="banner-block-add">+</button>
 							</div>
-						</div>	
-						<div class="col-sm-2">
-								<button type="button" class="banner-block-add">+</button>
+						</div>
+						<div class="row">
+							<div class="col-sm-5">
+								<input name="ptitle[{$k}]" required class="form-control banner-title" value="" placeholder="标题">
+							</div>
+							<div class="col-sm-4">
+								<div class="input-group upload-img">
+									{:w('upload/img2',$vo['imageArr'])}
+								</div>
+							</div>	
 						</div>
 					</li>
 			</foreach>
