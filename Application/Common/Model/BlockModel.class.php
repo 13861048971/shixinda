@@ -35,7 +35,6 @@ class BlockModel extends BaseModel {
 	    $info = $this->find($id);
 	    if(!$info) return;
 	    $info = $this->parseRow($info);
-	    //dd($info);
 	    return $info;
 	}
 	//格式化行
@@ -46,6 +45,7 @@ class BlockModel extends BaseModel {
 	    $v['publishTime'] = date("Y-m-d H:i:s",$v['publish_time']);
 	    $v['updateTime'] = date("Y-m-d H:i:s",$v['update_time']);
 	    $v['addTime'] = date("Y-m-d H:i:s",$v['add_time']);
+	    $v['typeName'] = $this->typeArr[$v['type']];
 	    $v['content'] = json_decode($v['content'], true);
 	    
 	    foreach($v['content'] as $k2=>$v2){
