@@ -554,3 +554,9 @@ table td.right{text-align:right;}
   height: 28px;
   margin-right: 10px;
 }
+.banner-block-edit li .col-sm-4{
+  padding: 0;
+}
+.banner-block-edit li .col-sm-4 .col-sm-10{
+  padding: 0;
+}

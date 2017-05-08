@@ -1188,7 +1188,7 @@ function bannerBlockEdit(ul){
             $(this).val("");
         });
 		var row1 = ul.find('li:last');
-		var imgID = row1.find('div input').attr('id');
+		var imgID = row1.find('div div input').attr('id');
 		imgID = imgID.match(/img-input-id-([0-9]+)/);
 
 		ul.append(node);
@@ -1201,9 +1201,10 @@ function bannerBlockEdit(ul){
 		option = option.replace(/img-input-id-([0-9]+)/, 'img-input-id-'+str);
 		option = option.replace(/img-preview-([0-9]+)/, 'img-preview-'+str);
 		klass = klass.replace(/img-preview-([0-9]+)/, 'img-preview-'+str);
-		row2.find('div input').attr('name','image['+str+']');
+		row2.find('div div input').attr('name','image['+str+']');
 		row2.find('label input').attr('name','url['+str+']');
-		row2.find('div input').attr('id','img-input-id-'+str);
+		row2.find('div div input').attr('id','img-input-id-'+str);
+		row2.find('div input').attr('name','ptitle['+str+']');
 		row2.find('div button').attr('data-option', option);
 		row2.find('div img').attr('class', klass);
 	});
