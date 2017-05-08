@@ -1291,15 +1291,15 @@ ul#filters {
 	width: 40%;
 	height: 40px;
 	line-height: 40px;
-	text-align: center;
+	text-align: right;
 }
 .post-index .post-index-banner .banner-control span{
 	display: inline-block;
-	width: 18px;
-	height: 18px;
+	width: 15px;
+	height: 15px;
 	border-radius: 10px;
 	background-color: #9b9999;
-	margin: 11px 8px 0 0;
+	margin: 14px 8px 0 0;
 	cursor: pointer;
 }
 .post-index .post-index-banner .banner-control span.banner-cur{
