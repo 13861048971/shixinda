@@ -56,8 +56,9 @@ class BlockModel extends BaseModel {
 	//添加或编辑
 	function edit($data, $id=null){
 	    foreach ($data['url'] as $k=>$v){
-	        $arr[$k] = ['url'=>$v, 'image'=>$data['image'][$k], 'title'=>$data['ptitle'][$k]];
+	        $arr[] = ['url'=>$v, 'image'=>$data['image'][$k], 'title'=>$data['ptitle'][$k]];
 	    }
+	    
 	    $data['content'] = json_encode($arr);
 	    if($id){
 	        $data['update_time'] = time();
@@ -66,7 +67,6 @@ class BlockModel extends BaseModel {
 	            $this->lastError = '修改失败!';
 	            return false;
 	        }
-	        
 	        return $id;
 	    }
 	    

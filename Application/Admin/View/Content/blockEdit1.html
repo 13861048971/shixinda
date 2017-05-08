@@ -17,46 +17,51 @@
     <ul class="banner-block-edit">
      <if condition="$row['content'] neq null">
        <foreach name="row.content" item="vo" key="k">
-					<li class="form-group"> 
-						<div class="row">
-							<input name="url[{$k}]" required class="form-control banner-url col-sm-8" value="{$vo.url}" placeholder="链接">
-							<div class="col-sm-2">
-									<button type="button" class="banner-block-add">+</button>
-									<button type="button" class="banner-block-sub">-</button>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-sm-5">
-								<input name="ptitle[{$k}]" required class="form-control banner-title" value="{$vo.title}" placeholder="标题">
-							</div>
-							<div class="col-sm-4">
-								<div class="input-group upload-img">
-									{:w('upload/img2',$vo['imageArr'])}
-								</div>
-							</div>	
-						</div>
-					</li>
-			</foreach>
-		<else />	
 			<li class="form-group"> 
 				<div class="row">
-					<input name="url[1]" required class="form-control banner-url col-sm-8" value="" placeholder="链接">
+					<input name="url[{$k}]" required class="form-control banner-url col-sm-8" value="{$vo.url}" placeholder="链接">
 					<div class="col-sm-2">
-							<button type="button" class="banner-block-add">+</button>
+						<button type="button" class="banner-block-add">+</button>
+						   <if condition="$k gt 0">	
 							<button type="button" class="banner-block-sub">-</button>
+						   </if>	
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-sm-5">
-						<input name="ptitle[1]" required class="form-control banner-title" value="" placeholder="标题">
+						<input name="ptitle[{$k}]" required class="form-control banner-title" value="{$vo.title}" placeholder="标题">
 					</div>
 					<div class="col-sm-4">
 						<div class="input-group upload-img">
-							{:w('upload/img2',["image[1]","",''])}
+							{:w('upload/img2',$vo['imageArr'])}
 						</div>
 					</div>	
 				</div>
 			</li>
+		</foreach>
+	<else />	
+		<li class="form-group"> 
+			<div class="row">
+				<input name="url[1]" required class="form-control banner-url col-sm-8" value="" placeholder="链接">
+				<div class="col-sm-2">
+						<button type="button" class="banner-block-add">+</button>
+					  <if condition="$k gt 0">	
+						<button type="button" class="banner-block-sub">-</button>
+					  <else />
+					  </if>	
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-5">
+					<input name="ptitle[1]" required class="form-control banner-title" value="" placeholder="标题">
+				</div>
+				<div class="col-sm-4">
+					<div class="input-group upload-img">
+						{:w('upload/img2',["image[1]","",''])}
+					</div>
+				</div>	
+			</div>
+		</li>
 		</if>	
     </ul>    
     </div> 
