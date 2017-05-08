@@ -1183,7 +1183,7 @@ function multiLevel(node){
 // 轮播图区块添加行
 function bannerBlockEdit(ul){
 	ul.on('click','.banner-block-add',function(){
-		var node = ul.find('li:first').clone();
+		var node = $(this).parents('li').clone();
 		node.find(":input").each(function(i){
             $(this).val("");
         });
@@ -1192,7 +1192,6 @@ function bannerBlockEdit(ul){
 		imgID = imgID.match(/img-input-id-([0-9]+)/);
 
 		ul.append(node);
-		ul.find('li:last .banner-block-add').after('<button type="button" class="banner-block-sub">-</button>');
 
 		var row2 = ul.find('li:last');
 		var str = (parseInt(imgID[1])+1);
