@@ -178,4 +178,9 @@ class ContentController extends PublicController {
 	        
 	    });
 	}
+	
+	//区块管理删除
+	public function blockDel(){
+	    $this->ajaxDel('block');
+	}
 }
