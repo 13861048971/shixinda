@@ -560,3 +560,7 @@ table td.right{text-align:right;}
 .banner-block-edit li .col-sm-4 .col-sm-10{
   padding: 0;
 }
+.banner-block-edit .banner-url{
+  margin: 0 0 15px 15px;
+  width: 76%;
+}

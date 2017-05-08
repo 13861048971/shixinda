@@ -1188,7 +1188,7 @@ function bannerBlockEdit(ul){
             $(this).val("");
         });
 		var row1 = ul.find('li:last');
-		var imgID = row1.find('div div input').attr('id');
+		var imgID = row1.find('.upload-img input').attr('id');
 		imgID = imgID.match(/img-input-id-([0-9]+)/);
 
 		ul.append(node);
@@ -1196,17 +1196,17 @@ function bannerBlockEdit(ul){
 
 		var row2 = ul.find('li:last');
 		var str = (parseInt(imgID[1])+1);
-		var option = row2.find('div button').data('option');
-		var klass = row2.find('div img').attr('class');
+		var option = row2.find('.upload-img button').data('option');
+		var klass = row2.find('.upload-img img').attr('class');
 		option = option.replace(/img-input-id-([0-9]+)/, 'img-input-id-'+str);
 		option = option.replace(/img-preview-([0-9]+)/, 'img-preview-'+str);
 		klass = klass.replace(/img-preview-([0-9]+)/, 'img-preview-'+str);
-		row2.find('div div input').attr('name','image['+str+']');
-		row2.find('label input').attr('name','url['+str+']');
-		row2.find('div div input').attr('id','img-input-id-'+str);
-		row2.find('div input').attr('name','ptitle['+str+']');
-		row2.find('div button').attr('data-option', option);
-		row2.find('div img').attr('class', klass);
+		row2.find('.upload-img input').attr('name','image['+str+']');
+		row2.find('.banner-url').attr('name','url['+str+']');
+		row2.find('.upload-img input').attr('id','img-input-id-'+str);
+		row2.find('.banner-title').attr('name','ptitle['+str+']');
+		row2.find('.upload-img button').attr('data-option', option);
+		row2.find('.upload-img img').attr('class', klass);
 	});
 	ul.on('click','.banner-block-sub',function(){
 		$(this).parents('li').remove();
