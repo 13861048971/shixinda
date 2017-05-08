@@ -1188,15 +1188,14 @@ function bannerBlockEdit(ul){
             $(this).val("");
         });
 		var row1 = ul.find('li:last');
-		var imgName = row1.find('div input').attr('name');
-		imgName = imgName.match(/image\[([0-9]+)\]/);
+		var imgID = row1.find('div input').attr('id');
+		imgID = imgID.match(/img-input-id-([0-9]+)/);
 
 		ul.append(node);
 		ul.find('li:last .banner-block-add').after('<button type="button" class="banner-block-sub">-</button>');
 
 		var row2 = ul.find('li:last');
-		var str = (parseInt(imgName[1])+2);
-		var imgName2 = row2.find('div input').attr('name');
+		var str = (parseInt(imgID[1])+1);
 		var option = row2.find('div button').data('option');
 		var klass = row2.find('div img').attr('class');
 		option = option.replace(/img-input-id-([0-9]+)/, 'img-input-id-'+str);
