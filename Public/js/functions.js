@@ -1202,6 +1202,7 @@ function bannerBlockEdit(ul){
 		option = option.replace(/img-preview-([0-9]+)/, 'img-preview-'+str);
 		klass = klass.replace(/img-preview-([0-9]+)/, 'img-preview-'+str);
 		row2.find('div input').attr('name','image['+str+']');
+		row2.find('label input').attr('name','url['+str+']');
 		row2.find('div input').attr('id','img-input-id-'+str);
 		row2.find('div button').attr('data-option', option);
 		row2.find('div img').attr('class', klass);
