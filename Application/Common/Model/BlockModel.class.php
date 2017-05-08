@@ -17,7 +17,6 @@ class BlockModel extends BaseModel {
     
         $this->_validate = [
             ['cateName', 'require', '缺少分类!'],
-           // ['type', [1,2,3], '缺少类型!', 1, 'in'],
         ];
     }
     
@@ -57,7 +56,7 @@ class BlockModel extends BaseModel {
 	//添加或编辑
 	function edit($data, $id=null){
 	    foreach ($data['url'] as $k=>$v){
-	        $arr[$k] = ['url'=>$v, 'image'=>$data['image'][$k]];
+	        $arr[$k] = ['url'=>$v, 'image'=>$data['image'][$k], 'title'=>$data['ptitle'][$k]];
 	    }
 	    $data['content'] = json_encode($arr);
 	    if($id){
