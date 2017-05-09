@@ -660,7 +660,7 @@ $('.user-section .message-list').on('click', '.post-del', function(){
 	$.ajax({
 		url:url,
 		dataType:'json',
-		type:'post',
+		type:'get',
 		success:function(data){
 			if(!data.error){
 				win.alert(data.info, 'success');
