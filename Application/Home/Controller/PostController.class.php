@@ -7,25 +7,55 @@ class PostController extends PublicController {
          
     }
     //获取帖子分类
-	public function index(){ 
-	    $hotList = d('post')->getList([], 7, 'click desc');
-	    $newList = d('post')->getList([], 7, 'add_time desc');
-        $list = d('postCate')->getList(['pid'=>'0', 'status'=>'1']);
-        //dump($list);exit();
-        foreach($list as $k1=>$v1){
-            //dump($v1);exit();
-            $list[$k1]['list'] = d('postCate')->getList(['pid'=>$list[$k1]['id'], 'status'=>'1']);
-            foreach($list[$k1]['list'] as $k2=>$v2){
-                $id = d('postCate')->where(['pid'=>$v2['id']])->getField('id');
-                $idArr1 = [$v2['id'], $id];
+	public function index(){
+	    $hotList = d('post')->getPostList([], 7, 'click desc');
+	    $newList = d('post')->getPostList([], 7, 'add_time desc');
+	    
+        $list = d('postCate')->getList(['status'=>'1'],100);
+        
+        
+        
+        foreach ($list as $k=>$v){
+            if($v['pid'] == 0 ){
+                $list1[] = $v;
+                unset($list[$k]);
+            } 
+        }
+        foreach ($list as $k1=>$v1){
+            foreach($list1 as $k2=>$v2){
+                if($v1['pid'] == $v2['id']){
+                    $list1[$k2]['list'][] = $v1;
+                    unset($list[$k1]);
+                }         
+            }    
+        }
+        
+        foreach ($list as $k=>$v){
+            foreach ($list1 as $k1=>$v1){
+                foreach ($v1['list'] as $k2=>$v2){
+                    if($v['pid'] != $v2['id']) continue;
+                    $list1[$k1]['list'][$k2]['list'][] = $v;
+                }
+                
+            }
+        }
+
+        foreach ($list1 as $k1=>$v1){
+            
+            foreach ($list1[$k1]['list'] as $k2=>$v2){
+                $idArr = [];
+                foreach ($v2['list'] as $k3=>$v3){
+                    $idArr[$k3] = $v3['id'];    
+                }
+                $idArr[] = $v2['id'];
                 $con = [
                     'add_time'     => ['gt', strtotime(date("Y-m-d"))],
-                    'post_cate_id' => ['in', $idArr1] 
+                    'post_cate_id' => ['in', $idArr]
                 ];
-                $list[$k1]['list'][$k2]['todayPostNum'] = d('post')->where($con)->count();
-                $list[$k1]['list'][$k2]['mainPostNum'] = d('post')->where(['post_cate_id' => ['in', $idArr1]])->count();
-                $list[$k1]['list'][$k2]['replyPostNum'] = d('post')->where(['post_cate_id' => ['in', $idArr1]])->sum('comment_num');
-                $list[$k1]['list'][$k2]['postNum'] = $list[$k1]['list'][$k2]['mainPostNum'] + $list[$k1]['list'][$k2]['replyPostNum']; 
+                $list1[$k1]['list'][$k2]['todayPostNum'] = d('post')->where($con)->count();
+                $list1[$k1]['list'][$k2]['mainPostNum'] = d('post')->where(['post_cate_id' => ['in', $idArr]])->count();
+                $list1[$k1]['list'][$k2]['replyPostNum'] = d('post')->where(['post_cate_id' => ['in', $idArr]])->sum('comment_num');
+                $list1[$k1]['list'][$k2]['postNum'] = $list1[$k1]['list'][$k2]['mainPostNum'] + $list1[$k1]['list'][$k2]['replyPostNum'];
             }
         } 
         $block = d('block')->getInfo('1');
@@ -33,7 +63,7 @@ class PostController extends PublicController {
         $this->assign('hotList', $hotList);
         $this->assign('block', $block);
         $this->assign('newList', $newList);
-        $this->assign('list', $list);
+        $this->assign('list', $list1);
 		$this->display();
 	}
 	 
@@ -69,7 +99,7 @@ class PostController extends PublicController {
 	        if($post_cate_id2&&$post_cate_id3){
 	            $data = d('post')->getPageList(['post_cate_id'=>$post_cate_id3, 'status'=>'1'], '*', 'add_time desc', 3);
 	        }elseif($post_cate_id2){
-	            $data = d('post')->getPageList([$map, 'status'=>'1'], '*', 'add_time desc', 3);
+	            $data = d('post')->getPageList([$map, 'status'=>'1'], '*', 'add_time desc');
 	        }
 	    }
 	    else{

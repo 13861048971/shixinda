@@ -137,6 +137,21 @@ class PostModel extends BaseModel{
         $info = $this->parseRow($info);
         return $info;
     }
+    /**
+     * 获取帖子列表信息
+     * @param array $con
+     */
+    public function getPostList($con = null, $limit = 10, $order){
+        $list = $this->where($con)->order($order)->limit($limit)->select();
+        foreach($list as $k=>$v){
+            $v['statusName'] = $this->statusArr[$v['status']];
+            $v['publishTime'] = date("Y-m-d H:i:s",$v['publish_time']);
+            $v['update_time'] = date("Y-m-d H:i:s",$v['update_time']);
+            $v['add_time'] = date("Y-m-d H:i:s",$v['add_time']);
+            $list[$k] = $v;
+        }
+        return $list;
+    }
     
     
     //格式化行

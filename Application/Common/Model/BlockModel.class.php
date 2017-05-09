@@ -36,6 +36,7 @@ class BlockModel extends BaseModel {
 	    $info = $this->parseRow($info);
 	    return $info;
 	}
+	
 	//格式化行
 	public function parseRow($v){
 	    $cateRow = d('contentCate')->where([ 'id'=>$v['cate_id'] ])->find();
@@ -100,7 +101,6 @@ class BlockModel extends BaseModel {
 	        $this->cateList[$i] = $contentCate;
 	         
 	        $i +=1;
-	        // var_dump($postCate);
 	        $this->getContentCateList($pid,$i);
 	         
 	    }
