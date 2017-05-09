@@ -126,7 +126,7 @@ class UserController extends PublicController{
 	
 	//用户帖子管理
 	function postList(){
-	    $data = d('post')->getPageList(['user_id'=>$this->user['id']]);
+	    $data = d('post')->getPageList(['user_id'=>$this->user['id']],null);
 	    $this->assign('list',$data['list']);
 	    $this->display();
 	}
@@ -218,37 +218,7 @@ class UserController extends PublicController{
 		return ajaxReturn2(0, '已退出登录!');
 	}
 	
-	//个人资料
-// 	function profile(){
-// 		if(IS_POST){
-// 			$d = $_POST;
-// 			$arr = ['sex','nickname','avatar','weixin_id', 'qq_id', 'city', 'birthday'];
-// 			foreach($d as $k=>$v){
-// 				if($k == 'sex')
-// 					continue;
-				
-// 				if( !$d[$k] || !in_array($k, $arr) ){
-// 					unset($d[$k]);
-// 					continue;
-// 				}
-// 			}
-			
-// 			if(! ($userId = $this->mod->edit($d, $this->userId)) )
-// 				return ajaxReturn2(1, $this->mod->getError());
-			
-// 			$user = $this->mod->getInfo($userId);
-// 			return ajaxReturn2(0, '操作成功!',['user'=>$user]);
-// 		}
-// 	}
-	
-// 	//密码重置
-// 	function passReset(){
-// 		if($this->mod->passReset($_POST)){
-// 			session('user', null);
-// 			return ajaxReturn2(0, '重置成功,请重新登录');
-// 		}
-// 		return ajaxReturn2(1, $this->mod->getError());
-// 	}
+
 	
 	//关注
 	function attention(){

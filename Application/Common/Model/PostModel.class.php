@@ -90,7 +90,6 @@ class PostModel extends BaseModel{
        
         $data = parent::getPageList($con, $fields, $order, $perNum);
         foreach($data['list'] as $k=>$v){
-            $v = $this->getInfo($v['id']);
             $data['list'][$k] =  $this->parseRow($v);
             $postCommentList = d('postComment')->getList(['post_id'=>$v['id']], '', 'add_time desc');
             $data['list'][$k]['lastReplyUserName'] = $postCommentList[0][userName];
@@ -145,10 +144,9 @@ class PostModel extends BaseModel{
         $v['num'] = d('postComment')->where(['post_id'=>$v['id']])->Count();//回复数量
         $v['cateName'] = d('postCate')->where(['id'=>(int)$v['post_cate_id']])->getField('name');//帖子分类名
         $v['statusName'] = $this->statusArr[$v['status']];
-        $v['publishTime'] = date("Y-m-d H:i:s",$v['publish_time']);
-        $v['update_time'] = date("Y-m-d H:i:s",$v['update_time']);
+        $v['publishTime'] = date('Y-m-d H:i:s',$v['publish_time']);
+        $v['update_time'] = date('Y-m-d H:i:s',$v['update_time']);
         $v['add_time'] = date("Y-m-d H:i:s",$v['add_time']);
-        
         $data = D('user')->where(['id'=>$v['user_id']])->select();
         foreach ($data as $vo){
             $v['username']=$vo['nickname'];
