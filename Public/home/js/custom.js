@@ -653,6 +653,24 @@ $('.user-section .message-list').on('click','.hide-complete', function(){
 	node.hide();
 	node.siblings('.message-thumb').show();
 })
+// 站内信删除
+$('.user-section .message-list').on('click', '.post-del', function(){
+	var _this = $(this);
+	var url = '/user/messageDel/id/'+_this.data('id');
+	$.ajax({
+		url:url,
+		dataType:'json',
+		type:'post',
+		success:function(data){
+			if(!data.error){
+				win.alert(data.info, 'success');
+				_this.parents('dd').remove();
+			}else{
+				win.alert(data.info, 'error');
+			}
+		}
+	});
+});
 // 消息未读变已读
 $('.user-section .message-list').on('click','.show-complete', function(){
 	var unread = $(this).siblings('.icon-unread');

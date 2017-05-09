@@ -47,7 +47,7 @@
 							</div>
 							<div class="post-control">
 								<in name="v.type" value="3"><a href="javascript:void(0);" class="msg-reply" data-user-id="{$v.user_id}">回复</a></in>
-								<if condition="($v['type'] neq 1) and ($v['type'] neq 2)"><a class="post-del" href="{:U('user/messageDel',['id'=>$v['id']])}" data-id="">删除</a></if>
+								<if condition="($v['type'] neq 1) and ($v['type'] neq 2)"><a class="post-del" href="javascript:void(0);" data-id="{$v.id}">删除</a></if>
 							</div>
 						</dd>
 						</foreach>
