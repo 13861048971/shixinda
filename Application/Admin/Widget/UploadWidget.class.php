@@ -39,7 +39,7 @@ class UploadWidget extends Controller{
 		$img['preview'] .= 'img-preview-'  . self::$imgNum;
 		$this->assign('img', $img);
 		if($return){
-			return $this->fetch('Widget:upload:img');
+			return $this->fetch('Widget:Upload:img');
 		}
 		$this->display('Widget:Upload:img');
 	}
