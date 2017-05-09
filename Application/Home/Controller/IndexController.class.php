@@ -96,7 +96,7 @@ class IndexController extends PublicController {
 	    $this->assign('hotList', $hotList);
 	    $this->assign('row', $row);
 	    $this->assign('user', $this->user);
-	    $this->display();
+	    $this->display('newsDetail');
 	}
 	
 	//用户评论

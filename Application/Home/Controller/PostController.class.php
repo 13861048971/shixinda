@@ -86,7 +86,7 @@ class PostController extends PublicController {
 	    $this->assign('list', $data['list']);
 	    $this->assign('user', $this->user);
 	    $this->assign('pageVar', $data['pageVar']);
-	    $this->display();
+	    $this->display('postList');
 	}
 	
 	//获取帖子详情

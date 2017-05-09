@@ -147,7 +147,7 @@ class IndexController extends PublicController {
 		$data = d('adminRole')->getPageList();
 		$this->assign($data);
 		$this->setRightAction($rightBtn);
-		$this->display();
+		$this->display('roleList');
 	}
 	
 	public function roleEdit(){

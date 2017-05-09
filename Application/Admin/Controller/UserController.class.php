@@ -303,7 +303,7 @@ class UserController extends PublicController {
 	    $data = d('postComment')->getPageList($con);
 	    $this->assign($data);
 	    $this->assign('search', $_GET);
-	    $this->display();
+	    $this->display('postComment');
 	}
 	
 	//帖子评论编辑
@@ -349,7 +349,7 @@ class UserController extends PublicController {
 	    $list = d('postCate')->getList($con,'15');
 	    $this->assign('list',$list);
 	    $this->assign('search', $_GET);
-	    $this->display();
+	    $this->display('postCate');
 	}
 	//子类显示
 	public function postCateChildren(){
