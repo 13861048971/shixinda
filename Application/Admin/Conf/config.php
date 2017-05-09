@@ -81,13 +81,4 @@ return array(
 			['goods', 	'产品设计规范'],
 		],
 	],
-    //配置数据库
-    'DB_CONFIG' => array(
-        'db_type'  => 'mysql',
-        'db_user'  => 'root',
-        'db_pwd'   => '1234',
-        'db_host'  => 'localhost',
-        'db_name'  => 'shixinda',
-        'db_charset'=>    'utf8',
-    ),
 );
