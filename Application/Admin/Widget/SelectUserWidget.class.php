@@ -1,6 +1,6 @@
 <?php 
 /**
- * Éú³Éselect±íµ¥¿Ø¼þ
+ * ï¿½ï¿½ï¿½ï¿½selectï¿½ï¿½ï¿½Ø¼ï¿½
  **/
 use Think\Controller;
 
@@ -15,7 +15,7 @@ class SelectUserWidget extends Controller{
 			$this->assign('user', $user);
 		}
 		$this->assign('name', $name);
-		$this->display('Widget:selectUser:index');
+		$this->display('Widget:SelectUser:index');
 	}
 }
 
