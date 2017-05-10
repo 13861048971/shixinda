@@ -8,15 +8,14 @@ class PublicController extends Controller {
 	public $config;
 	
 	public function _initialize(){
-		$this->session();
-		$this->config = $this->config();
+ 		$this->session();
+ 		$this->config = $this->config();
 		$this->setTdk($this->config['seoTitle']['value'], $this->config['seoKeywords']['value'], $this->config['seoDescription']['value']);
 		$this->about = $this->aboutOur();
 		$navigation = d("navigation")->where(['pid'=>['eq',6]])->order('rank ')->select();
-		$childNavigation = d("navigation")->where(['pid'=>['neq',0]])->order('rank desc')->select();
+ 		$childNavigation = d("navigation")->where(['pid'=>['neq',0]])->order('rank desc')->select();
 		$uri = $_SERVER['REQUEST_URI'];
-		foreach ($navigation as $k=>$v){
-		     
+		foreach ($navigation as $k=>$v){    
 		    if(strpos(strtolower($uri), $v['url']) !== false){
 		        if(strtolower($uri) != '/' && $v['url'] != '/')
 		            $navigation[$k]['current'] = true;
@@ -27,16 +26,16 @@ class PublicController extends Controller {
 		    foreach ($childNavigation as $k2=>$v2) {
 		        if($v['id'] == $v2['pid']){
 		            $navigation[$k]['list'][] = $v2;
-		
 		        }
 		    }
 		}
-		$messageCount = d('UserMsg')->where(['user_id'=>session('user')['id']])->count();
-		$messageReadCount = d('UserMsg')->alias('a')->join("user_msg_read b on a.id=b.msg_id")->where(['b.user_id' => session('user')['id']])->count();
-		$messageNoReadCount = $messageCount - $messageReadCount;
-		//echo $messageCount;echo $messageReadCount;
-		$this->assign('messageCount',$messageNoReadCount);
-		
+		if(session('user')['id']){
+		    $messageCount = d('UserMsg')->where(['user_id'=>session('user')['id']])->count();
+		    $messageReadCount = d('UserMsg')->alias('a')->join("user_msg_read b on a.id=b.msg_id")->where(['b.user_id' => session('user')['id']])->count();
+		    $messageNotReadCount = $messageCount - $messageReadCount;
+		    $this->assign('messageCount',$messageNotReadCount);
+		}
+
 		$this->assign('user',session('user'));
 		$this->assign('navigation',$navigation);
 		$this->assign('aboutOur',$this->about);
@@ -92,7 +91,6 @@ class PublicController extends Controller {
 	//设置session
 	private function session(){
 		$sid = $_REQUEST['sid'];
-		
 		if($sid && strlen($sid) != 26){
 			return ajaxReturn2(1, '错误的会话id!');
 		}

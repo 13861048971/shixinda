@@ -498,7 +498,6 @@ class UserModel extends BaseModel{
 		}
 		if(isset($arr['status']) && '0' === $arr['status'] )
 			$arr['status'] = ['lt', 1];
-		
 		$data = parent::getPageList($arr, $fields, $order, $limit);
 		foreach($data['list'] as $k=>$v){
 			$data['list'][$k] = $this->getInfo($v['id']);
@@ -525,8 +524,6 @@ class UserModel extends BaseModel{
 		$info['updateTime'] = local_date($info['update_time']);
 		$info['lastLogin'] = local_date($info['last_login']);
 		!$info['avatar'] && $info['avatar'] = '/Public/images/avatar.gif';
-		$info['cityName'] = d('region')->getName($info['city']);
-	
 		unset($info['password']);
 		
 		return $info;

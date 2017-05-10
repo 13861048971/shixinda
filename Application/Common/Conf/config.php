@@ -25,4 +25,7 @@ return array(
 	'DB_PWD'    => '1234', // 密码
 	'DB_PORT'   => 3306, // 端口
 	'DB_PREFIX' => '',
+    
+    //错误
+    'LOG_LEVEL' =>'EMERG,ALERT,CRIT,ERR', // 只记录EMERG ALERT CRIT ERR 错误
 );

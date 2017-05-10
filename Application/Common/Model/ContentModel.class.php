@@ -77,7 +77,6 @@ class ContentModel extends BaseModel {
 	//分页
 	function getPageList($con=[], $fields = '*', $order = '', $perNum = 15){
 	    $data = parent::getPageList($con, $fields, $order, $perNum);
-	
 	    foreach($data['list'] as $k=>$v){
 	        $data['list'][$k] = $this->parseRow($v);
 	    }

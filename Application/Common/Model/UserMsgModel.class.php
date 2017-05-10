@@ -17,20 +17,6 @@ class UserMsgModel extends BaseModel {
 	protected $_validate;
 	private $config;
 	
-	function __construct(){
-		parent::__construct();
-		$this->config = d('config')->getInfo('message')['value'];
-		$phoType = d('category')->getList();
-		$arr = [];
-		foreach($phoType as $v){
-			$arr[$v['id']] = $v['name'];
-		}
-		$this->typeIdArr = [
-			2 => [ -2 =>'普通用户', -1 => '个人摄影师', 0=> '机构摄影师'],
-			3 => $arr
-		];
-	}
-	
 	function setValidate($data){
 		$this->_validate = [
 			
@@ -100,7 +86,19 @@ class UserMsgModel extends BaseModel {
 	 * 编辑or添加
 	 */
 	function edit($data, $id=null){	
-	    $data = $this->parseRow($data);  
+	    $type = $this->typeArr;
+	    $type = array_flip($type);
+	    $data['type_name'] = $type[$data['type']];
+	    (int)$data['user_id'] < 1 && $data['user_name'] = "所有用户";
+	    (int)$data['user_id'] >= 1 && $data['user_name'] = d('user')->where(['id'=>$data['user_id']])->getfield('nickname');
+	     
+	    if((int)$data['from_user_id'] < 1){
+	        $data['from_user_name'] = '系统信息';
+	    }else{
+	        $data['from_user_name'] = d('user')->where(['id'=>$$data['from_user_id']])->getfield('nickname');
+	    }
+	    
+	    
 	    if(in_array($data['type'],[1,2]))
 	       $data['content'] = $data['user_name'].'你有一条来自'.$data['from_user_name'].'的'.$data['type_name'];
 	    if($data['type'] == 3)
@@ -262,15 +260,17 @@ class UserMsgModel extends BaseModel {
 	}
 	
 	public function getPageList($con, $fields = 'id',$order = 'id desc', $perNum = 10){
+	    
 	    if($con['type'] == '帖子回复')
 	        $con['type'] = ['in',[1,2]];
 	    
-		if($con['title']){
+		if(isset($con['title']) && $con['title']){
 			$con['title'] = ['like', '%' . $con['title'] . '%'];
 		}
 		
  		$mod = d('user_msg_read');
 		($uid = $this->user['id']) && ($map['user_id'] = $uid); 
+		
 		if(isset($con['isRead']) && $map){
 			$is = $con['isRead'];
 			$subQuery = $mod->field('msg_id as id')->where($map)->buildSql();
@@ -279,36 +279,22 @@ class UserMsgModel extends BaseModel {
 		}
 		if( MODULE_NAME == 'Home' && $map){
 			$subQuery = $mod->field('msg_id as id')->where($map)->buildSql();
-			$fields = 'id, if((id in ' . $subQuery . '), 1,0) as readed';
+			$fields = '*, if((id in ' . $subQuery . '), 1,0) as readed';
 			$order = 'readed asc,id desc';
 		}
-		
-		isset($con['from']) && $con['from'] === '0' && $con['from'] = ['lt', 1];
-		isset($con['cate']) && $con['cate'] === '0' && $con['cate'] = ['lt', 1];
 
 		$data = parent::getPageList($con, $fields, $order, $perNum);
 		foreach($data['list'] as $k=>$v){
-			$v = $this->getInfo($v['id']);
 			$data['list'][$k] = $this->parseRow($v);
 		}
+		//var_dump($data);exit;
 		return $data;
 	}
 	
 	//格式化行
 	public function parseRow($v){
-	    $type = $this->typeArr;
-	    $type = array_flip($type);
-	    
-	    $v['type_name'] = $type[$v['type']];
-        (int)$v['user_id'] < 1 && $v['user_name'] = "所有用户";        
-	    (int)$v['user_id'] >= 1 && $v['user_name'] = d('user')->where(['id'=>$v['user_id']])->getfield('nickname');  
-	    
-	    if((int)$v['from_user_id'] < 1){
-	        $v['from_user_name'] = '系统信息';
-	    }else{
-	        $v['from_user_name'] = d('user')->where(['id'=>$v['from_user_id']])->getfield('nickname');
-	    }
-	    
+ 
+	    $v['readed']?($v['isRead'] = true):($v['isRead'] = false);
 	    strlen($v['content']) < 20?($v['contentThumb'] = $v['content']):($v['contentThumb'] = mb_substr($v['content'], 0,20));
 	    $v['post_id'] = d('postComment')->where(['id'=>$v['node_id']])->getfield('post_id');
 	    //计算当前消息前面的该帖下面的所有消息

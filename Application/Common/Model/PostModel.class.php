@@ -156,6 +156,7 @@ class PostModel extends BaseModel{
     
     //格式化行
     public function parseRow($v){
+       
         $v['cateName'] = d('postCate')->where(['id'=>(int)$v['post_cate_id']])->getField('name');//帖子分类名
         $v['statusName'] = $this->statusArr[$v['status']];
         $v['update_time'] = date('Y-m-d H:i:s',$v['update_time']);

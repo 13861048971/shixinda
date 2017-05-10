@@ -2,12 +2,10 @@
 use Think\Controller;
 use Think\Verify;
 class UserController extends PublicController{
-	public $mod;
 	public $userId;
 	
 	function _initialize(){
 		parent::_initialize();
-		$this->mod = D('User');
 		$this->userId = $this->user['id'];
 	}
 	//用户中心
@@ -126,6 +124,7 @@ class UserController extends PublicController{
 	
 	//用户帖子管理
 	function postList(){
+	  
 	    $data = d('post')->getPageList(['user_id'=>$this->user['id']],null);
 	    $this->assign('list',$data['list']);
 	    $this->display();
@@ -158,218 +157,65 @@ class UserController extends PublicController{
 	       ajaxReturn(0,'修改成功，请重新登录',['list'=>$data]);
         ajaxReturn(1,'修改失败'.d('user')->getError());
 	}
-	
-	
-	
-// 	//登陆
-// 	function login(){
-// 		if(IS_POST){
-// 			$mobile = $_POST['mobile'];
-// 			$password = $_POST['password'];
-// 			$vercode = $_POST['vercode'];
-// 			$userMod = d('user');
-			
-// 			if($password){
-// 				if(!$userMod->login($mobile, $password))
-// 					return ajaxReturn2(1, $userMod->getError());
-			
-// 				return ajaxReturn2(0, '登录成功!',['user'=>session('user') ]);
-// 			}
-// 			//第三方登陆
-// 			if(!$userMod->login3($_POST))
-// 				return ajaxReturn2($userMod->getErrorCode(), $userMod->getError());
-// 			return ajaxReturn2(0, '登录成功!',['user'=>session('user') ]);
-// 		}
-// 		ajaxReturn2(1, '登录失败!');
-// 	}
-	
-// 	//验证码
-// 	function getvercode(){
-// 		$tel = $_GET['mobile'];
-// 		$mod = d('user');
-// 		$vercode = $mod->getVercode($tel);
-// 		if( !$vercode ){
-// 			return ajaxReturn2(1, $mod->getError());
-// 		}
-// 		return ajaxReturn2(0, '已发送!');
-// 	}
-	
-// 	//注册
-// 	function regist(){
-// 		if(IS_POST){
-// 			$mobile = $_POST['mobile'];
-// 			$pass = $_POST['password'];
-// 			$vercode = $_POST['vercode'];
-// 			$userMod = d('user');
-			
-// 			if($user = $userMod->regist($mobile, $pass, $vercode)){
-// 				return ajaxReturn2(0, '注册成功!', ['user' => $user]);
-// 			}
-			
-// 			return ajaxReturn2(1, $userMod->getError());
-// 		}
-// 	}
-	
+
 	//退出
 	function logout(){
 		$d = ['id' => $this->userId, 'last_logout'=>time()];
-		$this->mod->data($d)->save();
+		d('user')->data($d)->save();
 		session('user', null);
 		return ajaxReturn2(0, '已退出登录!');
 	}
 	
 
 	
-	//关注
-	function attention(){
-		$mod = d('collect');
-		$type = (int)$_POST['type'];
-		$status = (int)$_POST['status'];
-		$nodeId = (int)$_POST['node_id'];
+// 	//关注
+// 	function attention(){
+// 		$mod = d('collect');
+// 		$type = (int)$_POST['type'];
+// 		$status = (int)$_POST['status'];
+// 		$nodeId = (int)$_POST['node_id'];
 		
-		if(1 == $status){
-			if($mod->collect($nodeId, $this->userId, $type))
-				return ajaxReturn2(0, '已关注!');
-		}
-		if(2 == $status){
-			if($mod->unCollect($nodeId, $this->userId, $type))
-				return ajaxReturn2(0, '已取消关注!');
-		}
-		ajaxReturn2(1, '操作失败,'.$mod->getError());
-	}
+// 		if(1 == $status){
+// 			if($mod->collect($nodeId, $this->userId, $type))
+// 				return ajaxReturn2(0, '已关注!');
+// 		}
+// 		if(2 == $status){
+// 			if($mod->unCollect($nodeId, $this->userId, $type))
+// 				return ajaxReturn2(0, '已取消关注!');
+// 		}
+// 		ajaxReturn2(1, '操作失败,'.$mod->getError());
+// 	}
 	
-	//邀约套餐
-	function inviteMeal(){
-		$mod = d('order');
-		$data = $_POST;
-		$meal = d('meal')->getInfo($data['node_id']);
-		if(!$meal)
-			return ajaxReturn2(1, '套餐不存在!');
+// 	//邀约套餐
+// 	function inviteMeal(){
+// 		$mod = d('order');
+// 		$data = $_POST;
+// 		$meal = d('meal')->getInfo($data['node_id']);
+// 		if(!$meal)
+// 			return ajaxReturn2(1, '套餐不存在!');
 		
-		$data['type'] = 1;
-		$data['user_id'] = $this->userId;
-		if($id = $mod->edit($data)){
-			$d = [
-				'cate'      => 2,
-				'node_id'	=> $id, 
-				'from'		=> $data['user_id'], 
-				'user_id'	=> $meal['pho_id'],
-				'title' 	=> '发起了一个套餐订单 金额: ￥'. $meal['price'],
-			];
-			$d['content'] = $d['title'];
-			d('userMsg')->edit($d);	
+// 		$data['type'] = 1;
+// 		$data['user_id'] = $this->userId;
+// 		if($id = $mod->edit($data)){
+// 			$d = [
+// 				'cate'      => 2,
+// 				'node_id'	=> $id, 
+// 				'from'		=> $data['user_id'], 
+// 				'user_id'	=> $meal['pho_id'],
+// 				'title' 	=> '发起了一个套餐订单 金额: ￥'. $meal['price'],
+// 			];
+// 			$d['content'] = $d['title'];
+// 			d('userMsg')->edit($d);	
 			
 			
-			return ajaxReturn2(0, '下单成功',['id'=>$id]);
-		}
-		return ajaxReturn2(1, $mod->getError());
-	}
-	
-	//订单列表
-	function myOrder(){
-		$mod = d('order');
-		$arr = [
-			['in', [0]], //待付款
-			['in', [1]], //待确认
-			['in', [2]], //拍摄中
-			['in', [3,4]], //已完成
-			['in', [8,9]], //已关闭
-		];
-		$tab = $_GET['tab'];
-		$tab = $arr[$tab];
-		$tab && $con['status'] = $tab;
-		$con['user_id'] = $this->userId; 
-		$data = $mod->getPageList($con);
-		
-		ajaxReturn2(0, '', $data);
-	}
-	//订单详情
-	function orderDetail(){
-		$mod = d('order');
-		$id = (int)$_GET['id'];
-		$row = $mod->getInfo($id);
-		
-		if(!$row) 
-			return ajaxReturn2(1, '订单不存在!');
-		if($row['pho_id'] != $this->userId && $row['user_id'] != $this->userId)
-			return ajaxReturn2(1, '非法操作!');
-		return ajaxReturn2(0,null, ['order'=>$row]);
-	}
-	
-	//用户退单
-	function orderCancel(){
-		$mod = d('order');
-		if($mod->cancel($_POST)){
-			return ajaxReturn2(0, '操作成功!');
-		}
-		return ajaxReturn2(1, $mod->getError());
-	}
-	
-	//订单完工
-	function orderDone(){
-		$mod = d('order');
-		if($mod->done($_POST)){
-			return ajaxReturn2(0, '操作成功!');
-		}
-		return ajaxReturn2(1, $mod->getError());
-	}
-	
-	//取支付参数
-	function checkout(){
-		$mod = d('order');
-		$id = (int)$_REQUEST['id'];
-		$pay = (int)$_REQUEST['pay'];
-		if($param = $mod->payParam($id, $pay)){
-			return ajaxReturn2(0,'',['param'=> $param]);
-		}
-		
-		ajaxReturn2(1, $mod->getError());
-	}
-	
-	function checkout2(){
-		$mod = d('order');
-		$id = (int)$_POST['id'];
-		$pay = (int)$_POST['pay'];
-		if($param = $mod->checkout($id, $pay)){
-			return ajaxReturn2(0,'',['param'=> $param]);
-		}
-		
-		ajaxReturn2(1, $mod->getError());
-	}
-	
-	//订单举报
-	function orderReport(){
-		$mod = d('order');
-		$id = (int)$_POST['id'];
-		$row = $mod->getInfo($id);
-		if(!$row) 
-			return ajaxReturn2(1, '订单不存在!');
-		if($row['user_id'] != $this->userId)
-			return ajaxReturn2(1, '非法操作!');
-		if($row['report_type'] > 0)
-			return ajaxReturn2(1, '你已操作过了!');
-		if($mod->report($id, $_POST['report_type'], $_POST['report_note']))
-			return ajaxReturn2(0, '操作成功!');
-		return ajaxReturn2(1, $mod->getError());
-	}
-	
-	//举报摄影师
-	function phoReport(){
-		$mod = d('report');
-		$d = $_POST;
-		$d['user_id'] = $this->userId;
-		
-		if($d['user_id'] == $d['pho_id'])
-			return ajaxReturn2(1, '你不能举报自己!');
-		
-		if($mod->edit($d))
-			return ajaxReturn2(0, '举报成功!');
-		return ajaxReturn2(1, $mod->getError());
-	}
+// 			return ajaxReturn2(0, '下单成功',['id'=>$id]);
+// 		}
+// 		return ajaxReturn2(1, $mod->getError());
+// 	}
 	
 	//消息通知
 	function message(){
-	    
+	  // return  $this->display();
  		$mod = d('userMsg');
  		$con = $_GET;
  		
@@ -377,9 +223,8 @@ class UserController extends PublicController{
 			'user_id' => $this->userId, 
 		];
 		
- 		$data = $mod->getPageList($con);
+ 		$data = $mod->getPageList($con,"");
  		$this->assign($data);
- 		//var_dump($data);exit;
 		$this->display();
 		
 		

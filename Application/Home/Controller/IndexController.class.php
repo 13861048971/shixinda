@@ -17,13 +17,12 @@ class IndexController extends PublicController {
 	}
 	
 	//产品列表
-	public function product(){    
+	public function product(){  
 	    $con = [
 	        'node_id' => (int)$_GET['cate_id']?$_GET['cate_id']:3,
 	        'type' => d('tdk')->typeArr['contentCate']
 	    ];
 	    $this->tdkList($con);
-	    
 	    $CateChildren = d('contentCate')->getList(['pid'=>3]);//产品子类信息
 	    $cateIdArr = [0];
 	    foreach ($CateChildren as $k=>$v){
@@ -32,7 +31,7 @@ class IndexController extends PublicController {
 	    $con = ['cate_id'=>['in', $cateIdArr]];
 	    if($pid = (int)$_GET['cate_id'])
 	        $con = ['cate_id' => $pid];
-	    
+	      
 	    $productList = d('content')->getPageList($con,'','',6);//产品列表页
 	        
 	    $this->assign('ChildCateList',$CateChildren);

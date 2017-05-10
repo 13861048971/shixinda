@@ -215,7 +215,7 @@ class UserController extends PublicController {
 		$this->setRightAction([[ 'name'=>'添加消息', 'dialog'=>true, 
 			'dialog-lg'=>true, 'url' => u('messageEdit') ]]);
 		$con = $_GET;
-		$data = d('userMsg')->getPageList($con); 
+		$data = d('userMsg')->getPageList($con,""); 
 		$this->assign($data);
 		$this->assign('search', $_GET);
 		$this->display();
@@ -251,7 +251,7 @@ class UserController extends PublicController {
 	    $this->setRightAction([[ 'name'=>'添加帖子', 'dialog'=>true,
 	        'dialog-lg'=>true, 'url' => u('postEdit') ]]);
 	    $con = $_GET;
-	    $data = d('post')->getPageList($con);
+	    $data = d('post')->getPageList($con,null);
 	    $this->assign($data);
 	    $this->assign('search', $_GET);
 	    $this->display();
