@@ -76,9 +76,6 @@ class SupportModel extends BaseModel {
 		return 1;//操作成功
 	}
 	
-// 	function isSupport(){
-	    
-// 	}
 	/**
 	 * 赞或踩的个数
 	 * @param int $nid 节点id

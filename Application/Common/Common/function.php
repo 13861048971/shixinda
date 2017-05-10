@@ -547,3 +547,15 @@ function msubstr($str, $start=0, $length, $charset="utf-8", $suffix=true) {
 	} 
     return $slice;
 }
+
+/**
+ * 获取列表的ID数组
+ * @param array $list 列表
+ */
+function getIdArr($list, $field = 'id'){
+    $idArr = [];
+    foreach ($list as $k=>$v){
+        $idArr[] = $v[$field];
+    }
+    return $idArr;
+}

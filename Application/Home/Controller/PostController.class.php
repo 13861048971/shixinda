@@ -63,29 +63,26 @@ class PostController extends PublicController {
 	 
 	//获取帖子列表
 	public function postList(){
-	    
 	    $con = [
 	        'node_id' => (int)$_GET['post_cate_id']?$_GET['post_cate_id']:0,
 	        'type' => d('tdk')->typeArr['contentCate']
 	    ];
-	    
 	    $tdkInfo = d('tdk')->tdkInfo($con);
 	    
 	    if($tdkInfo)
-	    $this->setTdk($tdkInfo['title'], $tdkInfo['keywords'], $tdkInfo['description']);
+	       $this->setTdk($tdkInfo['title'], $tdkInfo['keywords'], $tdkInfo['description']);
 	    
 	    //商户交流的帖子列表
 	    $customList = d('post')->getPostList([], 6, 'add_time desc');
 	    
 	    $post_cate_id2 = $_GET['post_cate_id2'];
 	    $post_cate_id3 = $_GET['post_cate_id3'];
+	    
 	    //三级分类列表
 	    $childrenList = d('postCate')->getList(['pid'=>$post_cate_id2, 'status'=>1]);
-	    
+	 
 	    if($childrenList){
-	        
 	        foreach($childrenList as $k=>$v){
-	            
 	            $childrenList[$k]['count'] = d('post')->where(['post_cate_id'=>$v['id']])->count();
 	            $idArr[$k] = $v['id'];
 	        }
@@ -97,14 +94,13 @@ class PostController extends PublicController {
 	        $map['post_cate_id'] = array('eq', $post_cate_id2);
 	        $map['_complex'] = $where;
 	        $map['_logic'] = 'or';
-	        if($post_cate_id2&&$post_cate_id3){
+	        if($post_cate_id2 && $post_cate_id3){
 	            $data = d('post')->getPageList(['post_cate_id'=>$post_cate_id3, 'status'=>'1'], '*', 'add_time desc', 3);
 	        }elseif($post_cate_id2){
 	            $data = d('post')->getPageList([$map, 'status'=>'1'], '*', 'add_time desc');
 	        }
-	        return $this->display();
+	       
 	    }
-	    
 	    else{
 	        $data = d('post')->getPageList(['post_cate_id'=>$post_cate_id2, 'status'=>'1'], '*', 'add_time desc', 3);
 	    } 
@@ -124,19 +120,21 @@ class PostController extends PublicController {
 	
 	//获取帖子详情
 	public function postDetail(){
+	    
 	    if($_GET['msg_id'])
 	        d('userMsg')->read($_GET['msg_id'], $this->user['id'], $read = true);
-	    
+	        
 	    $con = [
 	        'node_id' => (int)$_GET['id'],
 	        'type' => d('tdk')->typeArr['post']
 	    ];
 	    $tdkInfo = d('tdk')->tdkInfo($con);
+	    
 	    if($tdkInfo)
 	    $this->setTdk($tdkInfo['title'], $tdkInfo['keywords'], $tdkInfo['description']);
 	    
 	    //商户交流的帖子列表
-	    $customList = d('post')->getList([], 6, 'add_time desc');
+	    $customList = d('post')->getPostList([], 6, 'add_time desc');
 	    
 	    $id = $_GET['id'];
 	    $p = $_GET['p'];
@@ -144,6 +142,7 @@ class PostController extends PublicController {
 	    $post_cate_id = d('post')->where(['id'=>$id])->getField('post_cate_id');
 	    $post_cate_pid = d('postCate')->where(['id'=>$post_cate_id])->getField('pid');
 	    $post_cate_ppid = d('postCate')->where(['id'=>$post_cate_pid])->getField('pid');
+	    
 	    if($post_cate_ppid == 0){
 	        $idArr = ['post_cate_id2'=>$post_cate_id];
 	    }else{
@@ -152,6 +151,7 @@ class PostController extends PublicController {
 	    $userId = d('post')->where(['id'=>$id])->getField('user_id');
 	    $userRow = d('user')->where(['id'=>$userId])->find();//发帖人信息
 	    $postRow = d('post')->getInfo($id);//帖子信息
+	    
 	    $this->click('post',$id);//访问量+1
 	    $con = ['post_id'=>$id];
 	    if($_GET['viewHost']){
@@ -159,22 +159,23 @@ class PostController extends PublicController {
 	    }
 	    
 	    $data = d('postComment')->getPageList($con, '*', 'add_time', 15);//帖子评论信息
+	    
 	    //帖子评论信息的赞和踩状态
 	    foreach ($data['list'] as $k=>$v){
+	        
 	        $con = [
 	            'node_id' => $v['id'], 
 	            'user_id' => $this->user['id'], 
 	            'type'    => d('support')->typeArr['postComment']
 	            ];
+	        
 	        $data['list'][$k]['isSupport'] = d('support')->where($con)->getField('support');//回复点赞状态
 	        $data['list'][$k]['supportNum'] = d('support')->getNum($v['id'], d('support')->typeArr['postComment'], 1);//回复点赞数
 	        $data['list'][$k]['notSupportNum'] = d('support')->getNum($v['id'], d('support')->typeArr['postComment'], 0);//回复踩数
 	        $data['list'][$k]['isReport'] = d('report')->where(['node_id'=>$v['id'], 'user_id'=>$this->user['id']])->getField('id');//举报状态
-	        $data['list'][$k]['reportNum'] = d('report')->getNum(['node_id'=>$v['id']]);//举报数
+	        $data['list'][$k]['reportNum'] = d('report')->getNum(['node_id'=>$v['id']]);//举报数  
 	    }
 	    
-	    
-	    $postRow['replyNum'] = d('postComment')->where(['post_id'=>$id])->count();//帖子回复数 
 	    $postRow['collectNum'] = d('collect')->getNum($id, d('collect')->typeArr['post'], '');//收藏数
 	    //判断收藏状态
 	    $postRow['isCollect'] = d('collect')->where(['node_id'=>$id, 'user_id'=>$this->user['id']])->getField('id');
@@ -185,7 +186,7 @@ class PostController extends PublicController {
 	    //判断举报状态
 	    $postRow['isReport'] = d('report')->where(['node_id'=>$id, 'user_id'=>$this->user['id']])->getField('id');
 	    $postRow['reportNum'] = d('report')->getNum(['node_id'=>$id]);//举报数
-	   
+	    
 	    foreach($data['list'] as $k=>$v){
 	        $data['list'][$k]['avatar'] = d('user')->where(['id'=>$v['user_id']])->getField('avatar');
 	    } 

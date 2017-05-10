@@ -88,12 +88,26 @@ class PostModel extends BaseModel{
     */
     public function getPageList($con, $fields = 'id',$order = 'id desc', $perNum = 10){ 
         $data = parent::getPageList($con, $fields, $order, $perNum);
-        
-        foreach($data['list'] as $k=>$v){
-            $data['list'][$k] =  $this->parseRow($v);
-            $postComment = d('postComment')->where(['post_id'=>$v['id']])->order('add_time desc')->find();
-            $data['list'][$k]['lastReplyUserName'] = d('user')->where(['id'=>$postComment['user_id']])->getField('nickname');
-            $data['list'][$k]['lastReplyUserId'] = $postComment[user_id];  
+        $idArr = getIdArr($data['list']);
+        $subQuery = d('postComment')->where(['post_id' => ['in', $idArr]])->group('post_id')
+            ->field('max(id)')->buildsql();
+        $postCommentList = d('postComment')->where("id in $subQuery")->select();
+        $userIdArr = getIdArr($postCommentList, 'user_id');
+        $userList = d('user')->where(['id' => ['in', $userIdArr]])->select();
+        foreach($data['list'] as $k1=>$v1){
+            $data['list'][$k1] =  $this->parseRow($v1);
+            foreach($postCommentList as $k2=>$v2){
+                foreach ($userList as $k3=>$v3){
+                    if($v1['id'] == $v2['post_id']){
+                        if($v3['id'] == $v2['user_id']){
+                            $data['list'][$k1]['lastReplyUserName'] = $v3['nickname'];
+                            $data['list'][$k1]['lastReplyUserId'] = $v3['id'];
+                        }    
+                       
+                    }    
+                }   
+                
+            }
         }  
         return $data;
     }
@@ -145,9 +159,8 @@ class PostModel extends BaseModel{
         $list = $this->where($con)->order($order)->limit($limit)->select();
         foreach($list as $k=>$v){
             $v['statusName'] = $this->statusArr[$v['status']];
-            $v['publishTime'] = date("Y-m-d H:i:s",$v['publish_time']);
-            $v['update_time'] = date("Y-m-d H:i:s",$v['update_time']);
-            $v['add_time'] = date("Y-m-d H:i:s",$v['add_time']);
+            $v['updateTime'] = date("Y-m-d H:i",$v['update_time']);
+            $v['addTime'] = date("Y-m-d H:i",$v['add_time']);
             $list[$k] = $v;
         }
         return $list;
@@ -156,14 +169,14 @@ class PostModel extends BaseModel{
     
     //格式化行
     public function parseRow($v){
-       
-        $v['cateName'] = d('postCate')->where(['id'=>(int)$v['post_cate_id']])->getField('name');//帖子分类名
+        if(MODULE_NAME == 'Admin')
+            $v['cateName'] = d('postCate')->where(['id'=>(int)$v['post_cate_id']])->getField('name');//帖子分类名
         $v['statusName'] = $this->statusArr[$v['status']];
-        $v['update_time'] = date('Y-m-d H:i:s',$v['update_time']);
-        $v['add_time'] = date("Y-m-d H:i:s",$v['add_time']);
+        $v['updateTime'] = date('Y-m-d H:i',$v['update_time']);
+        $v['addTime'] = date("Y-m-d H:i",$v['add_time']);
         $row = D('user')->where(['id'=>$v['user_id']])->find();
         $v['username']=$row['nickname'];
-       
         return $v ;
-    }
+    }  
+    
 }
