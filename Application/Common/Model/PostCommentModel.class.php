@@ -65,7 +65,7 @@ class PostCommentModel extends BaseModel{
         $list = $this->where($con)->order($order)->limit($limit)->select();
         foreach($list as $k=>&$v){
             $list[$k] = $this->parseRow($v);
-        }
+        } 
         return $list;
     }
     

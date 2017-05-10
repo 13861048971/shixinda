@@ -86,15 +86,15 @@ class PostModel extends BaseModel{
     * {@inheritDoc}
     * @see BaseModel::getPageList()
     */
-    public function getPageList($con, $fields = 'id',$order = 'id desc', $perNum = 10){
-       
+    public function getPageList($con, $fields = 'id',$order = 'id desc', $perNum = 10){ 
         $data = parent::getPageList($con, $fields, $order, $perNum);
+        
         foreach($data['list'] as $k=>$v){
             $data['list'][$k] =  $this->parseRow($v);
-            $postCommentList = d('postComment')->getList(['post_id'=>$v['id']], '', 'add_time desc');
-            $data['list'][$k]['lastReplyUserName'] = $postCommentList[0][userName];
-            $data['list'][$k]['lastReplyUserId'] = $postCommentList[0][user_id];
-        }
+            $postComment = d('postComment')->where(['post_id'=>$v['id']])->order('add_time desc')->find();
+            $data['list'][$k]['lastReplyUserName'] = d('user')->where(['id'=>$postComment['user_id']])->getField('nickname');
+            $data['list'][$k]['lastReplyUserId'] = $postComment[user_id];  
+        }  
         return $data;
     }
     
@@ -156,16 +156,13 @@ class PostModel extends BaseModel{
     
     //格式化行
     public function parseRow($v){
-        $v['num'] = d('postComment')->where(['post_id'=>$v['id']])->Count();//回复数量
         $v['cateName'] = d('postCate')->where(['id'=>(int)$v['post_cate_id']])->getField('name');//帖子分类名
         $v['statusName'] = $this->statusArr[$v['status']];
-        $v['publishTime'] = date('Y-m-d H:i:s',$v['publish_time']);
         $v['update_time'] = date('Y-m-d H:i:s',$v['update_time']);
         $v['add_time'] = date("Y-m-d H:i:s",$v['add_time']);
-        $data = D('user')->where(['id'=>$v['user_id']])->select();
-        foreach ($data as $vo){
-            $v['username']=$vo['nickname'];
-        }
+        $row = D('user')->where(['id'=>$v['user_id']])->find();
+        $v['username']=$row['nickname'];
+       
         return $v ;
     }
 }

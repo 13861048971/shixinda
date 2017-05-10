@@ -3,17 +3,13 @@ use Think\Controller;
 class PostController extends PublicController {
     
     public function _initialize(){
-        parent::_initialize();
-         
+        parent::_initialize();  
     }
     //获取帖子分类
 	public function index(){
 	    $hotList = d('post')->getPostList([], 7, 'click desc');
 	    $newList = d('post')->getPostList([], 7, 'add_time desc');
-	    
         $list = d('postCate')->getList(['status'=>'1'],100);
-        
-        
         
         foreach ($list as $k=>$v){
             if($v['pid'] == 0 ){
@@ -29,7 +25,6 @@ class PostController extends PublicController {
                 }         
             }    
         }
-        
         foreach ($list as $k=>$v){
             foreach ($list1 as $k1=>$v1){
                 foreach ($v1['list'] as $k2=>$v2){
@@ -41,7 +36,6 @@ class PostController extends PublicController {
         }
 
         foreach ($list1 as $k1=>$v1){
-            
             foreach ($list1[$k1]['list'] as $k2=>$v2){
                 $idArr = [];
                 foreach ($v2['list'] as $k3=>$v3){
@@ -74,24 +68,31 @@ class PostController extends PublicController {
 	        'node_id' => (int)$_GET['post_cate_id']?$_GET['post_cate_id']:0,
 	        'type' => d('tdk')->typeArr['contentCate']
 	    ];
+	    
 	    $tdkInfo = d('tdk')->tdkInfo($con);
+	    
 	    if($tdkInfo)
 	    $this->setTdk($tdkInfo['title'], $tdkInfo['keywords'], $tdkInfo['description']);
 	    
 	    //商户交流的帖子列表
-	    $customList = d('post')->getList([], 6, 'add_time desc');
+	    $customList = d('post')->getPostList([], 6, 'add_time desc');
 	    
 	    $post_cate_id2 = $_GET['post_cate_id2'];
 	    $post_cate_id3 = $_GET['post_cate_id3'];
 	    //三级分类列表
 	    $childrenList = d('postCate')->getList(['pid'=>$post_cate_id2, 'status'=>1]);
+	    
 	    if($childrenList){
+	        
 	        foreach($childrenList as $k=>$v){
+	            
 	            $childrenList[$k]['count'] = d('post')->where(['post_cate_id'=>$v['id']])->count();
 	            $idArr[$k] = $v['id'];
 	        }
+	       
 	        //二级分类名称
 	        $name = d('postCate')->where(['id'=>$post_cate_id2])->getField('name');
+	        
 	        $where['post_cate_id'] = array('in', $idArr);
 	        $map['post_cate_id'] = array('eq', $post_cate_id2);
 	        $map['_complex'] = $where;
@@ -101,11 +102,13 @@ class PostController extends PublicController {
 	        }elseif($post_cate_id2){
 	            $data = d('post')->getPageList([$map, 'status'=>'1'], '*', 'add_time desc');
 	        }
+	        return $this->display();
 	    }
+	    
 	    else{
 	        $data = d('post')->getPageList(['post_cate_id'=>$post_cate_id2, 'status'=>'1'], '*', 'add_time desc', 3);
 	    } 
-	   
+	 
 	    $this->assign('customList', $customList);
 	    $this->assign('todayPostNum', $_GET['todayPostNum']);
 	    $this->assign('mainPostNum', $_GET['mainPostNum']);
@@ -208,8 +211,6 @@ class PostController extends PublicController {
             'post_id' => $_POST['post_id'],
             'content' => $_POST['content']
         ];
-        
-        
         
         $id = d('postComment')->edit($data);
         
