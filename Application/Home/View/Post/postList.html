@@ -22,7 +22,7 @@
 							<div class="post-item-info">
 								<a href="{:U('post/postdetail',['id'=>$vo['id']])}">{$vo.title}</a>
 								<p>
-									<a href="{:u('post/personInfo', ['userId'=>$user['id']])}">{$user.nickname}</a>
+									<a href="{:u('post/personInfo', ['userId'=>$user['id']])}">{$vo.username}</a>
 									<span><span>{$vo.addTime}</span>发表</span>
 									<span>最后回复 <a href="{:u('post/personInfo', ['userId'=>$vo['lastReplyUserId']])}">
 									               {$vo.lastReplyUserName}</a>

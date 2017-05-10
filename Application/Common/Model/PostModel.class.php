@@ -169,8 +169,9 @@ class PostModel extends BaseModel{
     
     //格式化行
     public function parseRow($v){
-        if(MODULE_NAME == 'Admin')
+        if(MODULE_NAME == 'Admin'){
             $v['cateName'] = d('postCate')->where(['id'=>(int)$v['post_cate_id']])->getField('name');//帖子分类名
+        }
         $v['statusName'] = $this->statusArr[$v['status']];
         $v['updateTime'] = date('Y-m-d H:i',$v['update_time']);
         $v['addTime'] = date("Y-m-d H:i",$v['add_time']);

@@ -113,7 +113,6 @@ class PostController extends PublicController {
 	    $this->assign('post_cate_id2', $post_cate_id2);
 	    $this->assign('post_cate_id3', $post_cate_id3);
 	    $this->assign('list', $data['list']);
-	    $this->assign('user', $this->user);
 	    $this->assign('pageVar', $data['pageVar']);
 	    $this->display('postList');
 	}
