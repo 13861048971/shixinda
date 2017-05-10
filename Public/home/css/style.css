@@ -1223,9 +1223,11 @@ ul#filters {
 	padding: 6px 12px;
 }
 /*帖子首页轮播图*/
-.post-index .post-index-banner{
+.post-index .post-content-top div.post-index-banner{
 	overflow: hidden;
 	position: relative;
+	width: 514.8px;
+	height: 255px;
 }
 .post-index .post-index-banner .banner-img{
 	position: relative;
