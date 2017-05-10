@@ -36,6 +36,7 @@ class PublicController extends Controller {
 		    $this->assign('messageCount',$messageNotReadCount);
 		}
 
+		
 		$this->assign('user',session('user'));
 		$this->assign('navigation',$navigation);
 		$this->assign('aboutOur',$this->about);
