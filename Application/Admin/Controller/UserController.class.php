@@ -300,7 +300,7 @@ class UserController extends PublicController {
 	    $this->setRightAction([[ 'name'=>'帖子评论', 'dialog'=>true,
 	        'dialog-lg'=>true, 'url' => u('postCommentEdit') ]]);
 	    $con = $_GET;
-	    $data = d('postComment')->getPageList($con);
+	    $data = d('postComment')->getPageList($con,null);
 	    $this->assign($data);
 	    $this->assign('search', $_GET);
 	    $this->display('postComment');

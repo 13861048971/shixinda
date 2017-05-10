@@ -13,8 +13,7 @@
 	<table class="table table-striped">
 		<tr>  
 		  <th>#</th>
-		  <th>标题</th>
-		  <th>发帖人</th>
+		  <th>发言人</th>
 		  <th>主贴标题</th>
 		  <th>状态</th>
 		  <th width="250">添加/更新</th>
@@ -23,7 +22,6 @@
 		<foreach name="list" item="v">
 		<tr>
 			<td>{$v.id}</td>
-			<td>{$v.title}</td>
 			<td>{$v.username}</td>
 			<td>{$v.title}</td>
 			<td class="<if condition="$v['status'] gt 0">green</if>"><if condition="$v['status'] gt 0">显示 <else/>不显示</if></td>

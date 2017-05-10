@@ -293,16 +293,17 @@ class UserMsgModel extends BaseModel {
 	
 	//格式化行
 	public function parseRow($v){
- 
-	    $v['readed']?($v['isRead'] = true):($v['isRead'] = false);
-	    strlen($v['content']) < 20?($v['contentThumb'] = $v['content']):($v['contentThumb'] = mb_substr($v['content'], 0,20));
-	    $v['post_id'] = d('postComment')->where(['id'=>$v['node_id']])->getfield('post_id');
-	    //计算当前消息前面的该帖下面的所有消息
-	    $count = d('postComment')->where(['id'=>['lt',$v['node_id']],['post_id'=>$v['post_id']]])->count();
-	    //计算当前消息所属分页
-	    $v['p'] = ceil($count/15);
-	    //生成url定位当前消息的内容行
-	    $v['url'] = U('post/postDetail',['msg_id'=>$v['id'],'p'=>$v['p'],'id'=>$v['post_id']]).'#comment-'.$v['node_id'];
+         if(MODULE_NAME == 'Home'){
+            $v['readed']?($v['isRead'] = true):($v['isRead'] = false);
+            strlen($v['content']) < 20?($v['contentThumb'] = $v['content']):($v['contentThumb'] = mb_substr($v['content'], 0,20));
+            $v['post_id'] = d('postComment')->where(['id'=>$v['node_id']])->getfield('post_id');
+            //计算当前消息前面的该帖下面的所有消息
+            $count = d('postComment')->where(['id'=>['lt',$v['node_id']],['post_id'=>$v['post_id']]])->count();
+            //计算当前消息所属分页
+            $v['p'] = ceil($count/15);
+            //生成url定位当前消息的内容行
+            $v['url'] = U('post/postDetail',['msg_id'=>$v['id'],'p'=>$v['p'],'id'=>$v['post_id']]).'#comment-'.$v['node_id'];
+        }
 	    $v['add_time'] = date('Y-m-d H:i:s',$v['add_time']);
 	    $v['update_time'] = date('Y-m-d H:i:s',$v['update_time']);
 	    return $v ;

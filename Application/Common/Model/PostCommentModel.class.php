@@ -43,6 +43,7 @@ class PostCommentModel extends BaseModel{
         $p = $_GET['p'];
         !$p && $p = 1;
         $data = parent::getPageList($con, $fields, $order, $perNum);
+       // var_dump($data);
         foreach($data['list'] as $k=>$v){
             $data['list'][$k] = $this->parseRow($v);
             //论坛回帖楼层显示     
@@ -89,6 +90,10 @@ class PostCommentModel extends BaseModel{
         $v['userName'] = d('user')->where(['id'=>$v['user_id']])->getField('nickname');
         $v['updateTime'] = date('Y-m-d H:i:s', $v['update_time']);
         $v['addTime'] 	= date('Y-m-d H:i:s', $v['add_time']);
+        $row = D('user')->where(['id'=>$v['user_id']])->find();
+        $postInfo = d('post')->where(['id'=>$v['post_id']])->find();
+        $v['title'] = $postInfo['title'];
+        $v['username']=$row['nickname'];
         return $v ;
     }
 }

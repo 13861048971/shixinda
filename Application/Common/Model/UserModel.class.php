@@ -604,7 +604,6 @@ class UserModel extends BaseModel{
 	}
 	//格式化行
 	public function parseRow($v){
-	
 	    $v['commentNum'] = d('postComment')->where(['user_id'=>$v['id']])->Count();//回帖数
 	    $v['postNum'] = d('post')->where(['user_id'=>$v['id']])->Count(); //发主帖数
 	    $v['zanNum'] = d('support')->where(['support'=>(int)1,'user_id'=>$v['id']])->count();//点赞数
