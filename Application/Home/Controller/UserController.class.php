@@ -14,7 +14,6 @@ class UserController extends PublicController{
 	    $genderList = [['list'=> d('user')->genderArr, 'name'=>'gender', 'checked'=>$user['gender']]];
 	    $this->assign('genderList', $genderList);
 	    $this->display();
-		//ajaxReturn2(0,'', ['user' => $this->user]);
 	}	
 	
 	//用户登录
@@ -34,8 +33,6 @@ class UserController extends PublicController{
 	    }else{
 	        $this->display();
 	    }
-	     
-	
 	}
 	
 	//用户退出
@@ -112,8 +109,6 @@ class UserController extends PublicController{
 	    $postInfo = d('post')->where(['id'=>$id])->find();
 	    $this->assign('info',$postInfo);
 	    $this->display();
-        
-	   
 	}
 	
 	//帖子删除
@@ -150,7 +145,6 @@ class UserController extends PublicController{
 	
 	//用户密码修改
 	function changePwd(){
-	    //var_dump($_POST);
 	    $data = d('user')->changePwd($_POST);
 	    
 	    if($data)
@@ -166,56 +160,8 @@ class UserController extends PublicController{
 		return ajaxReturn2(0, '已退出登录!');
 	}
 	
-
-	
-// 	//关注
-// 	function attention(){
-// 		$mod = d('collect');
-// 		$type = (int)$_POST['type'];
-// 		$status = (int)$_POST['status'];
-// 		$nodeId = (int)$_POST['node_id'];
-		
-// 		if(1 == $status){
-// 			if($mod->collect($nodeId, $this->userId, $type))
-// 				return ajaxReturn2(0, '已关注!');
-// 		}
-// 		if(2 == $status){
-// 			if($mod->unCollect($nodeId, $this->userId, $type))
-// 				return ajaxReturn2(0, '已取消关注!');
-// 		}
-// 		ajaxReturn2(1, '操作失败,'.$mod->getError());
-// 	}
-	
-// 	//邀约套餐
-// 	function inviteMeal(){
-// 		$mod = d('order');
-// 		$data = $_POST;
-// 		$meal = d('meal')->getInfo($data['node_id']);
-// 		if(!$meal)
-// 			return ajaxReturn2(1, '套餐不存在!');
-		
-// 		$data['type'] = 1;
-// 		$data['user_id'] = $this->userId;
-// 		if($id = $mod->edit($data)){
-// 			$d = [
-// 				'cate'      => 2,
-// 				'node_id'	=> $id, 
-// 				'from'		=> $data['user_id'], 
-// 				'user_id'	=> $meal['pho_id'],
-// 				'title' 	=> '发起了一个套餐订单 金额: ￥'. $meal['price'],
-// 			];
-// 			$d['content'] = $d['title'];
-// 			d('userMsg')->edit($d);	
-			
-			
-// 			return ajaxReturn2(0, '下单成功',['id'=>$id]);
-// 		}
-// 		return ajaxReturn2(1, $mod->getError());
-// 	}
-	
 	//消息通知
 	function message(){
-	  // return  $this->display();
  		$mod = d('userMsg');
  		$con = $_GET;
  		
@@ -227,8 +173,6 @@ class UserController extends PublicController{
  		$this->assign($data);
 		$this->display();
 		
-		
-// 		ajaxReturn2(0,'', $data);
 	}
 	
 	//站内消息
@@ -287,114 +231,6 @@ class UserController extends PublicController{
 		
 		$this->assign($data);
 		$this->display();
-	}
-	
-	//添加任务
-	function taskAdd(){
-		$mod = d('task');
-		$data = $_POST;
-		$data['user_id'] = $this->userId;
-		if($id = $mod->edit($data)){
-			return ajaxReturn2(0, '操作成功!',['id'=>$id]);
-		}
-		return ajaxReturn2(1, $mod->getError());
-	}
-	
-	//任务详情
-	function taskDetail(){
-		if($id = (int)$_GET['id'])
-			ajaxReturn2(0,'', ['task'=>d('task')->getInfo($id)]);
-	}
-	
-	//任务取消
-	function taskCancel(){
-		$mod = d('task');
-		if($mod->cancel($_POST))
-			return ajaxReturn2(0,'操作成功!');
-		
-		return ajaxReturn2(1, $mod->getError());
-	}
-	
-	//删除任务
-	function taskDel(){
-		$mod = d('task');
-		if($id = (int)$_POST['id']){
-			if($mod->where(['user_id' => $this->id, 'id' => $id])->delete())
-				return ajaxReturn2(0,'操作成功!');
-		}
-		return ajaxReturn2(1,'操作失败!');
-	}
-	
-	//投标列表
-	function taskJoinList(){
-		$task_id = (int)$_GET['task_id'];
-		$con['task_id'] = $task_id;
-		$mod = d('join');
-		$data = $mod->getPageList($con);
-		ajaxReturn2(0,'', $data);
-	}
-	
-	//投标详情
-	function taskJoinDetail(){
-		$id = (int)$_GET['id'];
-		$join = d('join')->getInfo($id);
-		$task = $join['task'];
-		if(in_array($this->userId, [$join['user_id'], $task['user_id']]))
-			return ajaxReturn2(0,'', ['join'=>$join]);
-		
-		ajaxReturn2(1,'没有权限!');
-	}
-	
-	//投标拒绝
-	function taskJoinRefuse(){
-		$mod = d('join');
-		$data = $_POST;
-		$data['user_id'] = $this->userId;
-		if($mod->refuse($data)){
-			return ajaxReturn2(0, '操作成功!');
-		}
-		return ajaxReturn2(1, $mod->getError());
-	}
-	
-	//投标接受并下单
-	function taskJoinReceive(){
-		$mod = d('join');
-		$data = $_POST;
-		$data['user_id'] = $this->userId;
-		if($order_id = $mod->receive($data)){
-			return ajaxReturn2(0, '操作成功!', ['id'=>$order_id]);
-		}
-		return ajaxReturn2(1, $mod->getError());
-	}
-	
-	//我的喜欢
-	function myAttention(){
-		$mod = d('collect');
-		$con = $_GET;
-		$con['user_id'] = $this->userId;
-		$data = $mod->getPageList($con);
-		ajaxReturn2(0,'',$data);
-	}
-	
-	//我发布的任务
-	function myTask(){
-		$con = $_GET;
-		$tabArr = [['lt', 1],['gt', 0]];
-		$tab = $con['tab'];
-		isset($tab) && $tabArr[$tab] && ($con['status'] = $tabArr[$tab]);
-		$con['user_id'] = $this->userId;
-		$data = d('task')->getPageList($con);
-		$data['sortArr'] = ["默认排序",'出价排序','火热排序'];
-		ajaxReturn2(0,'', $data);
-	}
-	
-	//查看交易状态
-	function tradeQuery(){
-		$mod = d('order');
-		$id = (int)$_GET['id'];
-		if($res = $mod->tradeQuery($id))
-			return ajaxReturn2(0,'', ['result' => $res ]);
-		ajaxReturn2(1, $mod->getError());
 	}
 	
 	//新消息
