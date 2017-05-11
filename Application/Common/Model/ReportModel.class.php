@@ -89,14 +89,14 @@ class ReportModel extends BaseModel {
 		return $list;
 	}
 	
-	function getPageList($con, $fields = 'id', $order = 'id desc', $perNum = 15){
-	    
+	function getPageList($con, $fields = 'id', $order = 'id desc', $perNum = 15){  
 		$data = parent::getPageList($con, $fields, $order, $perNum);
 		$userId = getIdArr($data['list'],'user_id');
 		$userList = d('user')->where(['id'=>['in',$userId]])->select();
+		
 		foreach($data['list'] as $k=>$v){
-        
 			$data['list'][$k] = $this->parseRow($v);
+			
 			foreach ($userList as $k1 =>$v1){
 			    if($v['user_id'] == $v1['id']){
 			        isset($v1['nickname']) && $v1['nickname'] ? 
@@ -104,7 +104,6 @@ class ReportModel extends BaseModel {
 			    }
 			}
 		}
-	
 		return $data;
 	}
 	
