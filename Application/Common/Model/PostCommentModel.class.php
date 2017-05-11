@@ -43,9 +43,13 @@ class PostCommentModel extends BaseModel{
         $p = $_GET['p'];
         !$p && $p = 1;
         $data = parent::getPageList($con, $fields, $order, $perNum);
+        //评论用户id数组
         $idArr1 = getIdArr($data['list'], 'user_id');
+        //回复帖子id数组
         $idArr2 = getIdArr($data['list'], 'reply_id');
+        //回复帖的用户id数组
         $idArr3 = $this->where(['id'=>['in', $idArr2]])->getField('user_id', true);
+        //回复帖列表
         $postCommentList = $this->where(['id' => ['in', $idArr2]])->select();
         $userList1 = d('user')->where(['id' => ['in', $idArr1]])->select();
         $userList2 = d('user')->where(['id' => ['in', $idArr3]])->select();
@@ -54,9 +58,7 @@ class PostCommentModel extends BaseModel{
             //获取评论的信息
             foreach($userList1 as $k1=>$v1){
                 if($v1['id'] == $v['user_id']){
-                    $data['list'][$k]['userName'] = $v1['nickname'];
-                    $data['list'][$k]['addTime'] = date('Y-m-d H:i', $v['add_time']);
-                    $data['list'][$k]['updateTime'] = date('Y-m-d H:i', $v['update_time']);
+                    $data['list'][$k]['userName'] = $v1['nickname']; 
                 }
             } 
             //论坛回帖楼层显示
@@ -102,12 +104,13 @@ class PostCommentModel extends BaseModel{
         $info = $this->find($id);
         if(!$info) return;
         $info = $this->parseRow($info);
-       
         return $info;
     }
     
     //格式化行
     public function parseRow($v){
+        $v['addTime'] = date('Y-m-d H:i', $v['add_time']);
+        $v['updateTime'] = date('Y-m-d H:i', $v['update_time']);
         $row = D('user')->where(['id'=>$v['user_id']])->find();
         $postInfo = d('post')->where(['id'=>$v['post_id']])->find();
         $v['title'] = $postInfo['title'];
