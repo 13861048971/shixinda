@@ -94,8 +94,29 @@ class PostModel extends BaseModel{
         $postCommentList = d('postComment')->where("id in $subQuery")->select();
         $userIdArr = getIdArr($postCommentList, 'user_id');
         $userList = d('user')->where(['id' => ['in', $userIdArr]])->select();
+        if(MODULE_NAME == 'Admin'){
+            $postCateIdArr = getIdArr($data['list'],'post_cate_id');
+            $postCateList = d('postCate')->where(['id'=>['in',$postCateIdArr]])->select();
+            $postUserIdArr = getIdArr($data['list'],'user_id');
+            $postUserIdArr = array_unique($postUserIdArr);
+            $postUserList = d('user')->where(['id'=>['in',$postUserIdArr]])->select();
+         }
         foreach($data['list'] as $k1=>$v1){
             $data['list'][$k1] =  $this->parseRow($v1);
+            if(MODULE_NAME == 'Admin'){
+                foreach ($postCateList as $kc => $vc){
+                    if($v1['post_cate_id'] == $vc['id']){
+                    $data['list'][$k1]['cateName'] = $vc['name'];
+                    }
+                }
+                foreach ($postUserList as $ku => $vu){
+                    if($v1['user_id'] == $vu['id']){
+                        isset($vu['nickname']) && $vu['nickname']?($data['list'][$k1]['userName'] = $vu['nickname']):
+                        $data['list'][$k1]['userName'] = $vu['mobile'];  
+                    }
+                }
+            }
+            
             foreach($postCommentList as $k2=>$v2){
                 foreach ($userList as $k3=>$v3){
                     if($v1['id'] == $v2['post_id']){
@@ -169,14 +190,9 @@ class PostModel extends BaseModel{
     
     //格式化行
     public function parseRow($v){
-        if(MODULE_NAME == 'Admin'){
-            $v['cateName'] = d('postCate')->where(['id'=>(int)$v['post_cate_id']])->getField('name');//帖子分类名
-        }
         $v['statusName'] = $this->statusArr[$v['status']];
         $v['updateTime'] = date('Y-m-d H:i',$v['update_time']);
         $v['addTime'] = date("Y-m-d H:i",$v['add_time']);
-        $row = D('user')->where(['id'=>$v['user_id']])->find();
-        $v['username']=$row['nickname'];
         return $v;
     }  
     
