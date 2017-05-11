@@ -43,9 +43,13 @@ class PostCommentModel extends BaseModel{
         $p = $_GET['p'];
         !$p && $p = 1;
         $data = parent::getPageList($con, $fields, $order, $perNum);
+        //评论用户id数组
         $idArr1 = getIdArr($data['list'], 'user_id');
+        //回复帖子id数组
         $idArr2 = getIdArr($data['list'], 'reply_id');
+        //回复帖的用户id数组
         $idArr3 = $this->where(['id'=>['in', $idArr2]])->getField('user_id', true);
+        //回复帖列表
         $postCommentList = $this->where(['id' => ['in', $idArr2]])->select();
         $userList1 = d('user')->where(['id' => ['in', $idArr1]])->select();
         $userList2 = d('user')->where(['id' => ['in', $idArr3]])->select();
@@ -113,7 +117,6 @@ class PostCommentModel extends BaseModel{
         $info = $this->find($id);
         if(!$info) return;
         $info = $this->parseRow($info);
-       
         return $info;
     }
     
