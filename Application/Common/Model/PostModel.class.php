@@ -123,11 +123,9 @@ class PostModel extends BaseModel{
                         if($v3['id'] == $v2['user_id']){
                             $data['list'][$k1]['lastReplyUserName'] = $v3['nickname'];
                             $data['list'][$k1]['lastReplyUserId'] = $v3['id'];
-                        }    
-                       
+                        }      
                     }    
-                }   
-                
+                }      
             }
         }  
         return $data;

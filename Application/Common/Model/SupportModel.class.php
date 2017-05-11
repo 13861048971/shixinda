@@ -17,7 +17,7 @@ class SupportModel extends BaseModel {
 			['user_id', 	 'require', 	'缺少用户id!', 1],
 			['node_id', 	 'require', 	'缺少新鲜事id!', 1],
 		];
-
+        
 		!$data['type']  && $data['type'] = 0;
 		$con = [
 			'type'	 =>	(int)$data['type'],
@@ -85,9 +85,15 @@ class SupportModel extends BaseModel {
 	 */
 	public function getNum($nid, $type = 0, $support = 1){
 		$con = ['node_id'=>$nid, 'type'=>$type, 'support'=>$support];
-		$uid && $con['user_id'] = $uid;
 		$num = $this->where($con)->count();	
 		return $num;
+	}
+	
+	//点赞数值数组
+	public function getNumArr($idArr, $type = 0, $support = 1){
+        $con = ['node_id'=>['in', $idArr], 'type'=>$type, 'support'=>$support];
+        $num = $this->where($con)->group('node_id')->field('count(id) num, node_id')->select();
+	    return $num;
 	}
 	
 	public function getInfo($id){

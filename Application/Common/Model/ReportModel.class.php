@@ -77,6 +77,11 @@ class ReportModel extends BaseModel {
 		return $this->where($con)->count();
 	}
 	
+	function getNumArr($idArr){
+	    $num = $this->where(['node_id'=>['in', $idArr]])->group('node_id')
+	       ->field('count(id) num, node_id')->select();
+	    return $num;
+	}
 	/**
 	 * @param array $con
 	 * @return array

@@ -156,24 +156,55 @@ class PostController extends PublicController {
 	    if($_GET['viewHost']){
 	       $con['user_id'] = $userRow['id'];
 	    }
-	   
-	    $data = d('postComment')->getPageList($con, '*', 'add_time', 15);//帖子评论信息
 	    
+	    $data = d('postComment')->getPageList($con, '*', 'add_time', 15);//帖子评论信息
+	    //评论的id数组
+	    $idArr1 = getIdArr($data['list']);
+	    //trace($idArr1);
+	    //点赞的类型值
+	    $type = d('support')->typeArr['postComment'];
+	    //评论点赞状态列表
+	    $isSupportList = d('support')->where(['node_id'=>['in', $idArr1], 'type'=>$type])->select();
+	    //评论点赞数列表
+	    $supportNumList = d('support')->getNumArr($idArr1, $type, 1);
+	    //评论踩数列表
+	    $notSupportNumList = d('support')->getNumArr($idArr1, $type, 0);
+	    //举报状态列表
+	    $isReportList = d('report')->where(['node_id'=>['in', $idArr1], 'user_id'=>$this->user['id']])->field('id,node_id')->select();
+	    //举报数列表
+	    $reportNumList = d('report')->getNumArr($idArr1);
+	    //dump($isReportList);exit();
 	    //帖子评论信息的赞和踩状态
-	    foreach ($data['list'] as $k=>$v){
-	        
-	        $con = [
-	            'node_id' => $v['id'], 
-	            'user_id' => $this->user['id'], 
-	            'type'    => d('support')->typeArr['postComment']
-	            ];
-	        
-	        $data['list'][$k]['isSupport'] = d('support')->where($con)->getField('support');//回复点赞状态
-	        $data['list'][$k]['supportNum'] = d('support')->getNum($v['id'], d('support')->typeArr['postComment'], 1);//回复点赞数
-	        $data['list'][$k]['notSupportNum'] = d('support')->getNum($v['id'], d('support')->typeArr['postComment'], 0);//回复踩数
-	        $data['list'][$k]['isReport'] = d('report')->where(['node_id'=>$v['id'], 'user_id'=>$this->user['id']])->getField('id');//举报状态
-	        $data['list'][$k]['reportNum'] = d('report')->getNum(['node_id'=>$v['id']]);//举报数  
-	        
+	    foreach ($data['list'] as $k=>$v){ 
+	       foreach ($isSupportList as $k1=>$v1){
+	           if($v1['node_id'] == $v['id']){
+	               $data['list'][$k]['isSupport'] = $v1['support'];
+	           }
+           }
+           $data['list'][$k]['supportNum'] = 0;
+	       foreach ($supportNumList as $k1=>$v1){
+	           if($v1['node_id'] == $v['id']){
+	               $data['list'][$k]['supportNum'] = $v1['num'];
+	           }
+	       } 
+	       $data['list'][$k]['notSupportNum'] = 0;
+	       foreach ($notSupportNumList as $k1=>$v1){
+	           if($v1['node_id'] == $v['id']){
+	               $data['list'][$k]['notSupportNum'] = $v1['num'];
+	           }
+	       }
+	       foreach ($isReportList as $k1=>$v1){
+	           if($v1['node_id'] == $v['id']){
+	               $data['list'][$k]['isReport'] = $v1['id'];
+	           }
+	       }
+	       $data['list'][$k]['reportNum'] = 0;
+	       foreach ($reportNumList as $k1=>$v1){
+	           if($v1['node_id'] == $v['id']){
+	               $data['list'][$k]['reportNum'] = $v1['num'];
+	           }
+	       }
+
 	    }
 	    //return $this->display();
 	    $postRow['collectNum'] = d('collect')->getNum($id, d('collect')->typeArr['post'], '');//收藏数

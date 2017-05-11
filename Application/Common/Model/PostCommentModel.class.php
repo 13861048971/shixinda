@@ -34,7 +34,6 @@ class PostCommentModel extends BaseModel{
         return $id;
     }
     
-
     /**
      * 获取信息列表及分页
      * @param array $arr
@@ -45,14 +44,19 @@ class PostCommentModel extends BaseModel{
         $data = parent::getPageList($con, $fields, $order, $perNum);
         //评论用户id数组
         $idArr1 = getIdArr($data['list'], 'user_id');
+        if($idArr1 != [])
+            $userList1 = d('user')->where(['id' => ['in', $idArr1]])->select();
         //回复帖子id数组
         $idArr2 = getIdArr($data['list'], 'reply_id');
-        //回复帖的用户id数组
-        $idArr3 = $this->where(['id'=>['in', $idArr2]])->getField('user_id', true);
-        //回复帖列表
-        $postCommentList = $this->where(['id' => ['in', $idArr2]])->select();
-        $userList1 = d('user')->where(['id' => ['in', $idArr1]])->select();
-        $userList2 = d('user')->where(['id' => ['in', $idArr3]])->select();
+        if($idArr2 != []){
+            //回复帖的用户id数组
+            $idArr3 = $this->where(['id'=>['in', $idArr2]])->getField('user_id', true);
+            //回复帖列表
+            $postCommentList = $this->where(['id' => ['in', $idArr2]])->select();
+        }      
+        if($idArr3 != [])
+            $userList2 = d('user')->where(['id' => ['in', $idArr3]])->select();
+
         //主帖信息
         $postIdArr = getIdArr($data['list'],'post_id');
         $postList = d('post')->where(['id' => ['in',$postIdArr]])->select();
@@ -81,24 +85,26 @@ class PostCommentModel extends BaseModel{
                 $k == 1 && $data['list'][$k]['floorName'] = '板凳';
             }
             //获取回复的信息
-            foreach ($postCommentList as $k2=>$v2){
-                if($v2['id'] == $v['reply_id']){
-                    foreach ($userList2 as $k3=>$v3){
-                        if($v3['id'] == $v2['user_id']){
-                            $data['list'][$k]['replyUserName'] = $v3['nickname'];
-                            $data['list'][$k]['replyContent'] = $v2['content'];
-                            $data['list'][$k]['replyAddTime'] = date('Y-m-d H:i', $v2['add_time']);
-                            $data['list'][$k]['replyUpdateTime'] = date('Y-m-d H:i', $v2['update_time']);
-                            
+            if($postCommentList && $userList2){
+                foreach ($postCommentList as $k2=>$v2){
+                    if($v2['id'] == $v['reply_id']){
+                        foreach ($userList2 as $k3=>$v3){
+                            if($v3['id'] == $v2['user_id']){
+                                $data['list'][$k]['replyUserName'] = $v3['nickname'];
+                                $data['list'][$k]['replyContent'] = $v2['content'];
+                                $data['list'][$k]['replyAddTime'] = date('Y-m-d H:i', $v2['add_time']);
+                                $data['list'][$k]['replyUpdateTime'] = date('Y-m-d H:i', $v2['update_time']);
+                
+                            }
                         }
                     }
-                }
+                }    
             }
+            
         }
         return $data;
     }
 
-    
     /**
      * 获取信息列表
      * @param array $con
