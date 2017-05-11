@@ -16,7 +16,6 @@
 	});
 }(jQuery));
 
-//CLIENTS SECTION SCRIPTS
 $(window).load(function () {
 	$('.flexslider').flexslider({
 		animation: "slide",
@@ -198,9 +197,7 @@ function loginOut(){
 	});
 }
 $('.login-out').on('click', loginOut);
-/**
- * 渲染编辑器
- */
+// 渲染编辑器
 function renderEditor(parentNode){
 	var node = $('.kind-editor');
 	parentNode && (node = parentNode.find('.kind-editor'));
