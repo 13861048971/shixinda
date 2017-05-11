@@ -55,7 +55,6 @@ class PostCommentModel extends BaseModel{
         $userList2 = d('user')->where(['id' => ['in', $idArr3]])->select();
         //主帖信息
         $postIdArr = getIdArr($data['list'],'post_id');
-        $postIdArr = array_unique($postIdArr);
         $postList = d('post')->where(['id' => ['in',$postIdArr]])->select();
         
         foreach($data['list'] as $k=>$v){

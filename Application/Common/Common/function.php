@@ -555,7 +555,10 @@ function msubstr($str, $start=0, $length, $charset="utf-8", $suffix=true) {
 function getIdArr($list, $field = 'id'){
     $idArr = [];
     foreach ($list as $k=>$v){
-        $idArr[] = $v[$field];
+        if(!in_array($v[$field], $idArr)){
+            $idArr[] = $v[$field];
+        } 
     }
+    
     return $idArr;
 }

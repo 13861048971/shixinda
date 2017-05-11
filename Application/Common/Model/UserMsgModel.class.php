@@ -290,7 +290,6 @@ class UserMsgModel extends BaseModel {
 		    $from_id = getIdArr($data['list'],'from_user_id');
 		    $user_id = getIdArr($data['list'],'user_id');
 		    $idArr = array_merge($from_id,$user_id);
-		    $idArr = array_unique($idArr);
 		    $userList = d('user')->where(['id'=>['in',$idArr]])->select();
 		}else{
 		    $nodeIdArr = getIdArr($data['list'],'node_id');
