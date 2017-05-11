@@ -119,7 +119,7 @@ class PostController extends PublicController {
 	
 	//获取帖子详情
 	public function postDetail(){
-	    
+	   
 	    if($_GET['msg_id'])
 	        d('userMsg')->read($_GET['msg_id'], $this->user['id'], $read = true);
 	        
@@ -156,7 +156,7 @@ class PostController extends PublicController {
 	    if($_GET['viewHost']){
 	       $con['user_id'] = $userRow['id'];
 	    }
-	    
+	   
 	    $data = d('postComment')->getPageList($con, '*', 'add_time', 15);//帖子评论信息
 	    
 	    //帖子评论信息的赞和踩状态
@@ -173,8 +173,9 @@ class PostController extends PublicController {
 	        $data['list'][$k]['notSupportNum'] = d('support')->getNum($v['id'], d('support')->typeArr['postComment'], 0);//回复踩数
 	        $data['list'][$k]['isReport'] = d('report')->where(['node_id'=>$v['id'], 'user_id'=>$this->user['id']])->getField('id');//举报状态
 	        $data['list'][$k]['reportNum'] = d('report')->getNum(['node_id'=>$v['id']]);//举报数  
+	        
 	    }
-	    
+	    //return $this->display();
 	    $postRow['collectNum'] = d('collect')->getNum($id, d('collect')->typeArr['post'], '');//收藏数
 	    //判断收藏状态
 	    $postRow['isCollect'] = d('collect')->where(['node_id'=>$id, 'user_id'=>$this->user['id']])->getField('id');

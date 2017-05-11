@@ -43,21 +43,48 @@ class PostCommentModel extends BaseModel{
         $p = $_GET['p'];
         !$p && $p = 1;
         $data = parent::getPageList($con, $fields, $order, $perNum);
-       // var_dump($data);
+        $idArr1 = getIdArr($data['list'], 'user_id');
+        $idArr2 = getIdArr($data['list'], 'reply_id');
+        $idArr3 = $this->where(['id'=>['in', $idArr2]])->getField('user_id', true);
+        $postCommentList = $this->where(['id' => ['in', $idArr2]])->select();
+        $userList1 = d('user')->where(['id' => ['in', $idArr1]])->select();
+        $userList2 = d('user')->where(['id' => ['in', $idArr3]])->select();
         foreach($data['list'] as $k=>$v){
             $data['list'][$k] = $this->parseRow($v);
-            //论坛回帖楼层显示     
+            //获取评论的信息
+            foreach($userList1 as $k1=>$v1){
+                if($v1['id'] == $v['user_id']){
+                    $data['list'][$k]['userName'] = $v1['nickname'];
+                    $data['list'][$k]['addTime'] = date('Y-m-d H:i', $v['add_time']);
+                    $data['list'][$k]['updateTime'] = date('Y-m-d H:i', $v['update_time']);
+                }
+            } 
+            //论坛回帖楼层显示
             $data['list'][$k]['floor'] = ($p-1)*$perNum+$k+1;
             $data['list'][$k]['floorName'] = $data['list'][$k]['floor'].'楼';
             if($p == 1){
                 $k == 0 && $data['list'][$k]['floorName'] = '沙发';
                 $k == 1 && $data['list'][$k]['floorName'] = '板凳';
-            }     
+            }
+            //获取回复的信息
+            foreach ($postCommentList as $k2=>$v2){
+                if($v2['id'] == $v['reply_id']){
+                    foreach ($userList2 as $k3=>$v3){
+                        if($v3['id'] == $v2['user_id']){
+                            $data['list'][$k]['replyUserName'] = $v3['nickname'];
+                            $data['list'][$k]['replyContent'] = $v2['content'];
+                            $data['list'][$k]['replyAddTime'] = date('Y-m-d H:i', $v2['add_time']);
+                            $data['list'][$k]['replyUpdateTime'] = date('Y-m-d H:i', $v2['update_time']);
+                        }
+                    }
+                }
+            }
         }
+        
         return $data;
     }
+
     
-     
     /**
      * 获取信息列表
      * @param array $con
@@ -81,19 +108,10 @@ class PostCommentModel extends BaseModel{
     
     //格式化行
     public function parseRow($v){
-        if($v['reply_id']){
-            $row = $this->where(['id'=>$v['reply_id']])->find();
-            $v['replyUserName'] = d('user')->where(['id'=>$row['user_id']])->getField('nickname');
-            $v['replyAddTime'] = date('Y-m-d H:i', $row['add_time']);
-            $v['replyContent'] = $row['content'];
-        }
-        $v['userName'] = d('user')->where(['id'=>$v['user_id']])->getField('nickname');
-        $v['updateTime'] = date('Y-m-d H:i:s', $v['update_time']);
-        $v['addTime'] 	= date('Y-m-d H:i:s', $v['add_time']);
         $row = D('user')->where(['id'=>$v['user_id']])->find();
         $postInfo = d('post')->where(['id'=>$v['post_id']])->find();
         $v['title'] = $postInfo['title'];
         $v['username']=$row['nickname'];
-        return $v ;
+        return $v;
     }
 }

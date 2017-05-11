@@ -177,7 +177,7 @@ class PostModel extends BaseModel{
         $v['addTime'] = date("Y-m-d H:i",$v['add_time']);
         $row = D('user')->where(['id'=>$v['user_id']])->find();
         $v['username']=$row['nickname'];
-        return $v ;
+        return $v;
     }  
     
 }
