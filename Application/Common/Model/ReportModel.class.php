@@ -92,13 +92,26 @@ class ReportModel extends BaseModel {
 	function getPageList($con, $fields = 'id', $order = 'id desc', $perNum = 15){
 	    
 		$data = parent::getPageList($con, $fields, $order, $perNum);
-		
+		$userId = getIdArr($data['list'],'user_id');
+		$userList = d('user')->where(['id'=>['in',$userId]])->select();
 		foreach($data['list'] as $k=>$v){
-		   
-			$v = $this->getInfo($v['id']); 
-			$data['list'][$k] = $v;
+        
+			$data['list'][$k] = $this->parseRow($v);
+			foreach ($userList as $k1 =>$v1){
+			    if($v['user_id'] == $v1['id']){
+			        isset($v1['nickname']) && $v1['nickname'] ? 
+			        ($data['list'][$k]['userName'] = $v1['nickname']):($data['list'][$k]['userName'] = $v1['mobile']);
+			    }
+			}
 		}
 	
 		return $data;
+	}
+	
+	//格式化行
+	public function parseRow($v){ 
+	    $v['updateTime'] = date('Y-m-d H:i',$v['update_time']);
+	    $v['addTime'] = date("Y-m-d H:i",$v['add_time']);
+	    return $v;
 	}
 }

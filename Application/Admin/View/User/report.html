@@ -24,10 +24,10 @@
 		<tr>
 			<td>{$v.id}</td>
 			<td>{$v.title}</td>
-			<td>{$v.user.nickname}</td>
+			<td>{$v.userName}</td>
 			<td>{$v.content}</td>
 			<td class="<if condition="$v['status'] gt 0">green</if>"><if condition="$v['status'] gt 0">显示 <else/>不显示</if></td>
-			<td >{$v.add_time} / {$v.update_time}</td>
+			<td >{$v.addTime} / {$v.updateTime}</td>
 			<td width=200 class="handle">
 				<a class="dialog edit" dialog-lg="true" href="#" url="{:u('reportEdit','id=' . $v['id'])}">编辑</a> 
 				<a class="ajaxDel del" href="#" url="{:u('reportDel','id=' . $v['id'])}">删除</a>

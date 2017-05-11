@@ -120,8 +120,8 @@ class CommentModel extends BaseModel{
     //格式化行
     public function parseRow($v){
 
-        $v['updateTime'] = date("Y-m-d H:i:s",$v['update_time']);
-	    $v['addTime'] = date("Y-m-d H:i:s",$v['add_time']);
+        $v['updateTime'] = date("Y-m-d H:i",$v['update_time']);
+	    $v['addTime'] = date("Y-m-d H:i",$v['add_time']);
         return $v ;
     }
 }

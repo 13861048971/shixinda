@@ -394,7 +394,7 @@ class UserController extends PublicController {
 	    $this->setRightAction([[ 'name'=>'用户举报', 'dialog'=>true,
 	        'dialog-lg'=>true, 'url' => u('reportEdit') ]]);
 	    $con = $_GET;
-	    $data = d('report')->getPageList($con);
+	    $data = d('report')->getPageList($con,null);
 	    $this->assign($data);
 	    $this->assign('search', $_GET);
 	    $this->display();
