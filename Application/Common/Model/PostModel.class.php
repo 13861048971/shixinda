@@ -94,8 +94,10 @@ class PostModel extends BaseModel{
         $postCommentList = d('postComment')->where("id in $subQuery")->select();
         $userIdArr = getIdArr($postCommentList, 'user_id');
         $userList = d('user')->where(['id' => ['in', $userIdArr]])->select();
+        //仅后台Admin模块执行
         if(MODULE_NAME == 'Admin'){
             $postCateIdArr = getIdArr($data['list'],'post_cate_id');
+            $postCateIdArr = array_unique($postCateIdArr);
             $postCateList = d('postCate')->where(['id'=>['in',$postCateIdArr]])->select();
             $postUserIdArr = getIdArr($data['list'],'user_id');
             $postUserIdArr = array_unique($postUserIdArr);
@@ -103,6 +105,7 @@ class PostModel extends BaseModel{
          }
         foreach($data['list'] as $k1=>$v1){
             $data['list'][$k1] =  $this->parseRow($v1);
+            //仅后台Admin模块执行
             if(MODULE_NAME == 'Admin'){
                 foreach ($postCateList as $kc => $vc){
                     if($v1['post_cate_id'] == $vc['id']){
