@@ -40,8 +40,6 @@ class ContentModel extends BaseModel {
 	}
 	//格式化行
 	public function parseRow($v){
-	    $cateRow = d('contentCate')->where([ 'id'=>$v['cate_id'] ])->find();
-	    $v['cateName'] = $cateRow['name'];
 	    $v['statusName'] = $this->statusArr[$v['status']];
 	    $v['publishTime'] = date("Y-m-d H:i:s",$v['publish_time']);
 	    $v['updateTime'] = date("Y-m-d H:i:s",$v['update_time']);
@@ -75,10 +73,17 @@ class ContentModel extends BaseModel {
 	}
 	
 	//分页
-	function getPageList($con=[], $fields = '*', $order = '', $perNum = 15){
+	function getPageList($con=[], $fields = '*', $order = '', $perNum = 15){ 
 	    $data = parent::getPageList($con, $fields, $order, $perNum);
+	    $cateIdArr = getIdArr($data['list'],'cate_id');
+	    $cateList = d('contentCate')->where([ 'cate_id'=>[in,$cateIdArr]])->select();
 	    foreach($data['list'] as $k=>$v){
 	        $data['list'][$k] = $this->parseRow($v);
+	        foreach ($cateList as $k1=>$v1){
+	            if($v['cate_id'] == $v1['id']){
+	                $data['list'][$k]['cateName'] = $v1['name'];
+	            }
+	        }
 	    }
 	    return $data;
 	}

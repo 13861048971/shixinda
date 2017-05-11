@@ -95,7 +95,7 @@ class UserMsgModel extends BaseModel {
 	    if((int)$data['from_user_id'] < 1){
 	        $data['from_user_name'] = '系统信息';
 	    }else{
-	        $data['from_user_name'] = d('user')->where(['id'=>$$data['from_user_id']])->getfield('nickname');
+	        $data['from_user_name'] = d('user')->where(['id'=>$data['from_user_id']])->getfield('nickname');
 	    }
 	    
 	    
@@ -281,13 +281,55 @@ class UserMsgModel extends BaseModel {
 			$subQuery = $mod->field('msg_id as id')->where($map)->buildSql();
 			$fields = '*, if((id in ' . $subQuery . '), 1,0) as readed';
 			$order = 'readed asc,id desc';
-		}
+		}else{
+		    
+		} 
 
 		$data = parent::getPageList($con, $fields, $order, $perNum);
+		if( MODULE_NAME == 'Admin'){
+		    $from_id = getIdArr($data['list'],'from_user_id');
+		    $user_id = getIdArr($data['list'],'user_id');
+		    $idArr = array_merge($from_id,$user_id);
+		    $idArr = array_unique($idArr);
+		    $userList = d('user')->where(['id'=>['in',$idArr]])->select();
+		}else{
+		    $nodeIdArr = getIdArr($data['list'],'node_id');
+		    $postComentList = d('postComment')->where(['id'=>['in',$nodeIdArr]])->select();
+		}
+	
 		foreach($data['list'] as $k=>$v){
 			$data['list'][$k] = $this->parseRow($v);
+			if( MODULE_NAME == 'Admin'){
+			    foreach ($userList as $k1=>$v1){
+			        if($data['list'][$k]['user_id'] == $v1['id']){
+			            if(isset($v1['nickname']) && $v1['nickname']){
+			                $data['list'][$k]['user_name'] = $v1['nickname'];
+			            }else{
+			                $data['list'][$k]['user_name'] = $v1['mobile'];
+			            }
+			        }
+			        if($data['list'][$k]['from_user_id'] == $v1['id']){
+			            if(isset($v1['nickname']) && $v1['nickname']){
+			                $data['list'][$k]['from_user_name'] = $v1['nickname'];
+			            }else{
+			                $data['list'][$k]['from_user_name'] = $v1['mobile'];
+			            }
+			    
+			        }
+			    }
+			}else{
+			    foreach ($postComentList as $k2 => $v2){
+			        if($v2['id'] == $v['node_id']){
+			            //计算当前消息前面的该帖下面的所有消息
+			            $count = d('postComment')->where(['id'=>['lt',$v['node_id']],['post_id'=>$v2['post_id']]])->count();
+			            $v['p'] = ceil($count/15);
+			            //生成url定位当前消息的内容行
+			            $data['list'][$k]['url'] = U('post/postDetail',['msg_id'=>$v['id'],'p'=>$v['p'],'id'=>$v2['post_id']]).'#comment-'.$v['node_id'];
+			        }
+			    }
+			}	
 		}
-		//var_dump($data);exit;
+
 		return $data;
 	}
 	
@@ -295,17 +337,18 @@ class UserMsgModel extends BaseModel {
 	public function parseRow($v){
          if(MODULE_NAME == 'Home'){
             $v['readed']?($v['isRead'] = true):($v['isRead'] = false);
-            strlen($v['content']) < 20?($v['contentThumb'] = $v['content']):($v['contentThumb'] = mb_substr($v['content'], 0,20));
-            $v['post_id'] = d('postComment')->where(['id'=>$v['node_id']])->getfield('post_id');
-            //计算当前消息前面的该帖下面的所有消息
-            $count = d('postComment')->where(['id'=>['lt',$v['node_id']],['post_id'=>$v['post_id']]])->count();
-            //计算当前消息所属分页
-            $v['p'] = ceil($count/15);
-            //生成url定位当前消息的内容行
-            $v['url'] = U('post/postDetail',['msg_id'=>$v['id'],'p'=>$v['p'],'id'=>$v['post_id']]).'#comment-'.$v['node_id'];
-        }
-	    $v['add_time'] = date('Y-m-d H:i:s',$v['add_time']);
-	    $v['update_time'] = date('Y-m-d H:i:s',$v['update_time']);
+   
+        }else{
+            $type = $this->typeArr;
+            $type = array_flip($type);
+            $v['type_name'] = $type[$v['type']];
+            (int)$v['user_id'] < 1 && $v['user_name'] = "所有用户";
+            if((int)$v['from_user_id'] < 1)
+                $v['from_user_name'] = '系统信息';
+        } 
+        strlen($v['content']) < 20?($v['contentThumb'] = $v['content']):($v['contentThumb'] = mb_substr($v['content'], 0,20));
+	    $v['addTime'] = date('Y-m-d H:i',$v['add_time']);
+	    $v['updateTime'] = date('Y-m-d H:i',$v['update_time']);
 	    return $v ;
 	}
 }

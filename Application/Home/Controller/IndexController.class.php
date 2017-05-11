@@ -42,10 +42,9 @@ class IndexController extends PublicController {
 	
 	
 	//产品详情
-	public function productDetail(){
-	   $this->tdkDetail();
-	    
-	    $CateChildren = d('contentCate')->getList(['pid'=>3]);//产品分类信息
+	public function productDetail(){ 
+	   $this->tdkDetail(); 
+	    $CateChildren = d('contentCate')->where(['pid'=>3])->select();//产品分类信息
 	    $productInfo = d('content')->getInfo($_GET['id']);
 	    $product = d('content')->where(['pid'=>3])->select();
 	    foreach ($CateChildren as $k=>$v){
@@ -134,14 +133,12 @@ class IndexController extends PublicController {
 	        'type' => d('tdk')->typeArr['contentCate']
 	    ];
 	    $this->tdkList($con);
-	    
-	    $CateChildren = d('contentCate')->getList(['pid'=>'4']);//产品子类信息
-	    
+	    $CateChildren = d('contentCate')->where(['pid'=>'4'])->select();//产品子类信息
 	    foreach ($CateChildren as $k=>$v){
 	        $cateIdArr[] = $v['id'];
 	    }
-
         $con = ['cate_id'=>['in', $cateIdArr]];
+        
 	    if($pid = (int)$_GET['cate_id'])
 	        $con = ['cate_id' => $pid];
 	    
@@ -161,7 +158,7 @@ class IndexController extends PublicController {
 	        $contentInfo = d('content')->where(['cate_id'=>'18'])->find();
 	    }
 
-	    $CateChildren = d('contentCate')->getList(['pid'=>'5']);//产品子类信息
+	    $CateChildren = d('contentCate')->where(['pid'=>'5'])->select();//产品子类信息
         $this->assign('ChildCateList',$CateChildren);//分类信息
         $this->assign('info',$contentInfo);//内容信息
         $this->display();
