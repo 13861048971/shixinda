@@ -206,7 +206,7 @@ class PostController extends PublicController {
 	       }
 
 	    }
-	    //return $this->display();
+	    
 	    $postRow['collectNum'] = d('collect')->getNum($id, d('collect')->typeArr['post'], '');//收藏数
 	    //判断收藏状态
 	    $postRow['isCollect'] = d('collect')->where(['node_id'=>$id, 'user_id'=>$this->user['id']])->getField('id');
@@ -217,11 +217,18 @@ class PostController extends PublicController {
 	    //判断举报状态
 	    $postRow['isReport'] = d('report')->where(['node_id'=>$id, 'user_id'=>$this->user['id']])->getField('id');
 	    $postRow['reportNum'] = d('report')->getNum(['node_id'=>$id]);//举报数
-	    
+	    //评论的用户id数组
+	    $idArr2 = getIdArr($data['list'], 'user_id');
+	    //评论的用户列表
+	    $userList = d('user')->where(['id'=>['in', $idArr2]])->select();
 	    foreach($data['list'] as $k=>$v){
-	        $data['list'][$k]['avatar'] = d('user')->where(['id'=>$v['user_id']])->getField('avatar');
+	        foreach($userList as $k1=>$v1){
+	            if($v['user_id'] == $v1['id']){
+	                $data['list'][$k]['avatar'] = $v1['avatar'];
+	            }
+	        }
 	    } 
-	    
+
 	    $this->assign('p', $p);
 	    $this->assign('customList', $customList);
 	    $this->assign('pageVar', $data['pageVar']);
