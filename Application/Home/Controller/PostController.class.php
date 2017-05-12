@@ -237,7 +237,7 @@ class PostController extends PublicController {
 	    $this->assign('list', $data['list']);
 	    $this->assign('postRow', $postRow);
 	    $this->assign('user', $this->user);
-	    $this->display();
+	    $this->display('postDetail');
 	}
 	
     //帖子评论
