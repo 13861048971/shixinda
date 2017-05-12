@@ -119,7 +119,7 @@ class PostController extends PublicController {
 	
 	//获取帖子详情
 	public function postDetail(){
-	   
+	    
 	    if($_GET['msg_id'])
 	        d('userMsg')->read($_GET['msg_id'], $this->user['id'], $read = true);
 	        
@@ -131,7 +131,7 @@ class PostController extends PublicController {
 	    
 	    if($tdkInfo)
 	    $this->setTdk($tdkInfo['title'], $tdkInfo['keywords'], $tdkInfo['description']);
-	    
+
 	    //商户交流的帖子列表
 	    $customList = d('post')->getPostList([], 6, 'add_time desc');
 	    
@@ -142,11 +142,10 @@ class PostController extends PublicController {
 	    $post_cate_pid = d('postCate')->where(['id'=>$post_cate_id])->getField('pid');
 	    $post_cate_ppid = d('postCate')->where(['id'=>$post_cate_pid])->getField('pid');
 	    
-	    if($post_cate_ppid == 0){
-	        $idArr = ['post_cate_id2'=>$post_cate_id];
-	    }else{
+	    $idArr = ['post_cate_id2'=>$post_cate_id];
+	    if($post_cate_ppid > 0)
 	        $idArr = ['post_cate_id2'=>$post_cate_pid, 'post_cate_id3'=>$post_cate_id];
-	    }
+	    
 	    $userId = d('post')->where(['id'=>$id])->getField('user_id');
 	    $userRow = d('user')->where(['id'=>$userId])->find();//发帖人信息
 	    $postRow = d('post')->getInfo($id);//帖子信息
@@ -160,7 +159,6 @@ class PostController extends PublicController {
 	    $data = d('postComment')->getPageList($con, '*', 'add_time', 15);//帖子评论信息
 	    //评论的id数组
 	    $idArr1 = getIdArr($data['list']);
-	    //trace($idArr1);
 	    //点赞的类型值
 	    $type = d('support')->typeArr['postComment'];
 	    //评论点赞状态列表
