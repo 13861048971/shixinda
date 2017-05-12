@@ -52,7 +52,7 @@ class PostController extends PublicController {
                 $list1[$k1]['list'][$k2]['postNum'] = $list1[$k1]['list'][$k2]['mainPostNum'] + $list1[$k1]['list'][$k2]['replyPostNum'];
             }
         } 
-        $block = d('block')->getInfo('1');
+        $block = d('block')->getInfo('9');
         
         $this->assign('hotList', $hotList);
         $this->assign('block', $block);
@@ -152,17 +152,17 @@ class PostController extends PublicController {
 	    
 	    $this->click('post',$id);//访问量+1
 	    $con = ['post_id'=>$id];
-	    if($_GET['viewHost']){
+	    if($_GET['viewHost']){ 
 	       $con['user_id'] = $userRow['id'];
 	    }
-	    
 	    $data = d('postComment')->getPageList($con, '*', 'add_time', 15);//帖子评论信息
+        //dump($data);exit();
 	    //评论的id数组
 	    $idArr1 = getIdArr($data['list']);
 	    //点赞的类型值
 	    $type = d('support')->typeArr['postComment'];
 	    //评论点赞状态列表
-	    $isSupportList = d('support')->where(['node_id'=>['in', $idArr1], 'type'=>$type])->select();
+	    $isSupportList = d('support')->where(['node_id'=>['in', $idArr1], 'type'=>$type])->select(false);
 	    //评论点赞数列表
 	    $supportNumList = d('support')->getNumArr($idArr1, $type, 1);
 	    //评论踩数列表
@@ -202,7 +202,6 @@ class PostController extends PublicController {
 	               $data['list'][$k]['reportNum'] = $v1['num'];
 	           }
 	       }
-
 	    }
 	    
 	    $postRow['collectNum'] = d('collect')->getNum($id, d('collect')->typeArr['post'], '');//收藏数

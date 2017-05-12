@@ -84,7 +84,7 @@ class ContentModel extends BaseModel {
 	                $data['list'][$k]['cateName'] = $v1['name'];
 	            }
 	        }
-	    }
+	    } 
 	    return $data;
 	}
 	

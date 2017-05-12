@@ -61,22 +61,21 @@ class IndexController extends PublicController {
 	    $this->display();
 	}
 	
-	//新闻
+	//新闻列表
 	public function news(){
 	    $con = [
 	        'node_id' => (int)$_GET['cate_id']?$_GET['cate_id']:1,
 	        'type' => d('tdk')->typeArr['contentCate']
 	    ];
 	    $this->tdkList($con);
-	    
 	    $data = d('content')->getPageList(['cate_id'=>'1'], '', 'add_time desc', 2);
-	    $hotList = d('content')->getList(['cate_id'=>'1'], 5, 'click desc'); 
-	    $list = $data['list'];
-	    foreach($list as $k=>$v){
-	        $list[$k]['content'] =  mb_substr(strip_tags($v['content']), 0, 50);
+	    $hotList = d('content')->getList(['cate_id'=>'1'], 5, 'click desc'); 	    
+	    foreach($data['list'] as $k=>$v){
+	        $data['list'][$k]['content'] =  mb_substr(strip_tags($v['content']), 0, 50);
 	    }
+	    
 	    $this->assign('pageVar', $data['pageVar']);
-	    $this->assign('list', $list);
+	    $this->assign('list',$data['list']);
 	    $this->assign('hotList', $hotList);
 	    $this->display();
 	}

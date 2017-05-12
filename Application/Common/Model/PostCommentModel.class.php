@@ -44,22 +44,23 @@ class PostCommentModel extends BaseModel{
         $data = parent::getPageList($con, $fields, $order, $perNum);
         //评论用户id数组
         $idArr1 = getIdArr($data['list'], 'user_id');
-        if($idArr1 != [])
+        if($idArr1)
             $userList1 = d('user')->where(['id' => ['in', $idArr1]])->select();
         //回复帖子id数组
         $idArr2 = getIdArr($data['list'], 'reply_id');
-        if($idArr2 != []){
+        if($idArr2){
             //回复帖的用户id数组
             $idArr3 = $this->where(['id'=>['in', $idArr2]])->getField('user_id', true);
             //回复帖列表
             $postCommentList = $this->where(['id' => ['in', $idArr2]])->select();
         }      
-        if($idArr3 != [])
+        if($idArr3)
             $userList2 = d('user')->where(['id' => ['in', $idArr3]])->select();
 
         //主帖信息
         $postIdArr = getIdArr($data['list'],'post_id');
-        $postList = d('post')->where(['id' => ['in',$postIdArr]])->select();
+        if($postIdArr)
+            $postList = d('post')->where(['id' => ['in',$postIdArr]])->select(); 
         
         foreach($data['list'] as $k=>$v){
             $data['list'][$k] = $this->parseRow($v);
@@ -75,7 +76,7 @@ class PostCommentModel extends BaseModel{
                         $data['list'][$k]['title'] = $vp['title'];
                     }
                 }
-            }
+            } 
             
             //论坛回帖楼层显示
             $data['list'][$k]['floor'] = ($p-1)*$perNum+$k+1;
