@@ -14,7 +14,7 @@ class ContentController extends PublicController {
 	//内容列表
     public function index(){
         $rightBtn = [
-            ['name' => '添加内容','url' => u('contentEdit'), 'dialog' => 1, 'dialog-lg' => 1 ]
+            ['name' => '添加内容', 'url' => u('contentEdit'), 'dialog' => 1, 'dialog-lg' => 1 ]
         ];
         $this->setRightAction($rightBtn);
         $data = d('content')->getPageList($_GET);
@@ -162,10 +162,10 @@ class ContentController extends PublicController {
 	        ]
 	    ];
 	    $this->setRightAction($rightBtn);
-	    $data = d('block')->getPageList([], '', 'add_time desc', '');
+	    $data = d('block')->getPageList($_GET, '', 'add_time desc', '');
 	    $this->assign('list', $data['list']);
 	    $this->assign($data);
-	   
+	    $this->assign('blockTitle', $_GET['title']);
 	    $this->display();
 	}
 	

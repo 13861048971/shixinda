@@ -86,7 +86,7 @@ class IndexController extends PublicController {
 	public function newsDetail(){
         $this->tdkDetail();
 	    $id = $_GET['id'];
-	    $row = d('content')->getInfo($id);
+	    $row = d('content')->getContent($id);
 	    $hotList = d('content')->getList(['cate_id'=>'1'], 5, 'click desc');
 	    $data = d('comment')->getPageList(['node_id'=>$id, 'type'=>'news'], '*', 'add_time desc', 2);
 	    $this->assign('commentList', $data['list']);

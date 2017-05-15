@@ -2,6 +2,7 @@
 use Think\Model;
 class ContentModel extends BaseModel {
     public $cateList = [];
+    public $cacheContentKey = '_cacheContent_';
     
     public $statusArr = [  //可选的状态
         0 => '禁用',
@@ -38,6 +39,17 @@ class ContentModel extends BaseModel {
 	    $info['tdk'] = $tdkInfo;
 	    return $info;
 	}
+	
+	//添加内容缓存
+	protected function _cacheContent($id){
+	    return $this->getInfo($id);
+	}
+	//获取可以缓存的内容
+	public function getContent($id){
+	    $key =  $this->cacheContentKey. $id;
+	    return $this->getCache($key, 'content', $id);  
+	} 
+	
 	//格式化行
 	public function parseRow($v){
 	    $v['statusName'] = $this->statusArr[$v['status']];
@@ -57,6 +69,7 @@ class ContentModel extends BaseModel {
 	            return false;
 	        }
 	        d('tdk')->edit($data);
+	        $this->resetCache($this->cacheContentKey.$id, 'content', $id);
 	        return $id;
 	    }
 	  
