@@ -90,6 +90,7 @@ class BlockModel extends BaseModel {
 	    foreach($data['list'] as $k=>$v){
 	        $data['list'][$k] = $this->parseRow($v);
 	    }
+
 	    return $data;
 	}
 	

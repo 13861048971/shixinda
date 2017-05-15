@@ -156,22 +156,24 @@ class PostController extends PublicController {
 	       $con['user_id'] = $userRow['id'];
 	    }
 	    $data = d('postComment')->getPageList($con, '*', 'add_time', 15);//帖子评论信息
-        //dump($data);exit();
+
 	    //评论的id数组
 	    $idArr1 = getIdArr($data['list']);
-	    //点赞的类型值
-	    $type = d('support')->typeArr['postComment'];
-	    //评论点赞状态列表
-	    $isSupportList = d('support')->where(['node_id'=>['in', $idArr1], 'type'=>$type])->select(false);
-	    //评论点赞数列表
-	    $supportNumList = d('support')->getNumArr($idArr1, $type, 1);
-	    //评论踩数列表
-	    $notSupportNumList = d('support')->getNumArr($idArr1, $type, 0);
-	    //举报状态列表
-	    $isReportList = d('report')->where(['node_id'=>['in', $idArr1], 'user_id'=>$this->user['id']])->field('id,node_id')->select();
-	    //举报数列表
-	    $reportNumList = d('report')->getNumArr($idArr1);
-	    //dump($isReportList);exit();
+	    if($idArr1){
+	        //点赞的类型值
+	        $type = d('support')->typeArr['postComment'];
+	        //评论点赞状态列表
+	        $isSupportList = d('support')->where(['node_id'=>['in', $idArr1], 'type'=>$type])->select(false);
+	        //评论点赞数列表
+	        $supportNumList = d('support')->getNumArr($idArr1, $type, 1);
+	        //评论踩数列表
+	        $notSupportNumList = d('support')->getNumArr($idArr1, $type, 0);
+	        //举报状态列表
+	        $isReportList = d('report')->where(['node_id'=>['in', $idArr1], 'user_id'=>$this->user['id']])->field('id,node_id')->select();
+	        //举报数列表
+	        $reportNumList = d('report')->getNumArr($idArr1);
+	    }
+
 	    //帖子评论信息的赞和踩状态
 	    foreach ($data['list'] as $k=>$v){ 
 	       foreach ($isSupportList as $k1=>$v1){
