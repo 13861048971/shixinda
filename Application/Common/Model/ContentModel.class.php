@@ -85,6 +85,7 @@ class ContentModel extends BaseModel {
 	            }
 	        }
 	    } 
+	    
 	    return $data;
 	}
 	

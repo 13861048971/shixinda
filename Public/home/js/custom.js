@@ -390,7 +390,9 @@ function changeImg(index){
 	$('.banner-img').animate({right:rightImg}, 1000);
 	$('.banner-title ul').animate({right:rightTitle}, 1000);
 	$('.banner-control span').removeClass();
-	$('.banner-control span')[index].className = 'banner-cur';
+	if($('.banner-control span')[index]){
+		$('.banner-control span')[index].className = 'banner-cur';
+	}
 }
 var curIndex = 0;
 var imgLen = $(".banner-img li").length;
