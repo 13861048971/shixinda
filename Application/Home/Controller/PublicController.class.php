@@ -12,23 +12,7 @@ class PublicController extends Controller {
  		$this->config = $this->config();
 		$this->setTdk($this->config['seoTitle']['value'], $this->config['seoKeywords']['value'], $this->config['seoDescription']['value']);
 		$this->about = $this->aboutOur();
-		$navigation = d("navigation")->where(['pid'=>['eq',6]])->order('rank ')->select();
- 		$childNavigation = d("navigation")->where(['pid'=>['neq',0]])->order('rank desc')->select();
-		$uri = $_SERVER['REQUEST_URI'];
-		foreach ($navigation as $k=>$v){    
-		    if(strpos(strtolower($uri), $v['url']) !== false){
-		        if(strtolower($uri) != '/' && $v['url'] != '/')
-		            $navigation[$k]['current'] = true;
-		            if(strtolower($uri) == $v['url'] )
-		                $navigation[$k]['current'] = true;
-		    }
 		
-		    foreach ($childNavigation as $k2=>$v2) {
-		        if($v['id'] == $v2['pid']){
-		            $navigation[$k]['list'][] = $v2;
-		        }
-		    }
-		}
 		if(session('user')['id']){
 		    $messageCount = d('UserMsg')->where(['user_id'=>session('user')['id']])->count();
 		    $messageReadCount = d('UserMsg')->alias('a')->join("user_msg_read b on a.id=b.msg_id")->where(['b.user_id' => session('user')['id']])->count();
@@ -38,7 +22,7 @@ class PublicController extends Controller {
 
 		
 		$this->assign('user',session('user'));
-		$this->assign('navigation',$navigation);
+		$this->assign('navigation',d('navigation')->getNavigation());
 		$this->assign('aboutOur',$this->about);
 		$this->assign('config',$this->config);//
 		if($this->user = self::isLogin()){

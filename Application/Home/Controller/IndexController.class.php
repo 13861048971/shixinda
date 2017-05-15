@@ -46,7 +46,8 @@ class IndexController extends PublicController {
 	   $this->tdkDetail(); 
 	    $CateChildren = d('contentCate')->where(['pid'=>3])->select();//产品分类信息
 	    $productInfo = d('content')->getInfo($_GET['id']);
-	    $product = d('content')->where(['pid'=>3])->select();
+	    $cateArr = getIdArr($CateChildren);
+ 	    $product = d('content')->where(['cate_id' => ['in',$cateArr]])->select();
 	    foreach ($CateChildren as $k=>$v){
 	      foreach ($product as $k1=>$v1){
 	          if($v1['cate_id'] == $v['id']){
@@ -138,11 +139,10 @@ class IndexController extends PublicController {
 	    }
         $con = ['cate_id'=>['in', $cateIdArr]];
         
-	    if($pid = (int)$_GET['cate_id'])
+	    if($_GET['cate_id'] && $pid = (int)$_GET['cate_id'])
 	        $con = ['cate_id' => $pid];
-	    
         $caseList = d('content')->getPageList($con,'','',6);//产品列表页
-	    $contentList = d('content')->select();
+// 	    $contentList = d('content')->where($con)->select();
 	    $this->assign('ChildCateList',$CateChildren);
 	    $this->assign('caseList',$caseList['list']);
         $this->assign('list',$caseList);

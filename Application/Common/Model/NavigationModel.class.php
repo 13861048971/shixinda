@@ -6,6 +6,8 @@ class NavigationModel extends BaseModel {
         1 => '启用'
     ];
     
+    public $cacheNavigationKey = '_cacheNavigation';
+    
     //列表
     public function getList($con=[], $limit=5){
         $list = $this->where($con)->limit($limit)->select();
@@ -23,6 +25,38 @@ class NavigationModel extends BaseModel {
 	    $info = $this->parseRow($info);
 	    return $info;
 	}
+	
+	//缓存所有导航信息
+	protected  function _cacheNavigation(){
+	    $navigation = d("navigation")->where(['pid'=>['eq',6]])->order('rank ')->select();
+	    $childNavigation = d("navigation")->where(['pid'=>['neq',0]])->order('rank desc')->select();
+	    foreach ($navigation as $k=>$v){
+	        foreach ($childNavigation as $k2=>$v2) {
+	            if($v['id'] == $v2['pid']){
+	                $navigation[$k]['list'][] = $v2;
+	            }
+	        }
+	    }
+	    return $navigation;
+	}
+	
+	//获取导航数据缓存信息
+	public function getNavigation(){
+	    
+	    $navigation = $this->getCache($this->cacheNavigationKey, 'navigation');
+	    $uri = $_SERVER['REQUEST_URI'];
+	    foreach ($navigation as $k=>$v){
+	        if(strpos(strtolower($uri), $v['url']) !== false){
+	            if(strtolower($uri) != '/' && $v['url'] != '/')
+	                $navigation[$k]['current'] = true;
+	                if(strtolower($uri) == $v['url'] )
+	                    $navigation[$k]['current'] = true;
+	        }
+	    }
+	    return $navigation;
+	}
+	
+	
 	//格式化行
 	public function parseRow($v){
 	    $v['num'] = $this->where(['pid'=>$v['id']])->Count();
@@ -43,6 +77,7 @@ class NavigationModel extends BaseModel {
 	            $this->lastError = '修改失败!';
 	            return false;
 	        }
+	        $this->resetCache($this->cacheNavigationKey, 'navigation');
 	        return $id;
 	    }
 	
