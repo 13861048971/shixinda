@@ -23,7 +23,14 @@
 								<label for="nickname" class="col-md-2">昵称：</label>
 								<input type="text" class="col-md-4" name="nickname" value="{$user.nickname}">
 							</div>
-							{:W('upload/img', ['avatar','头像：', $user['avatar'], 'required', 'avatar' ])}
+							<div class="row user-avatar">
+								<label for="avatar" class="col-md-2">头像：</label>
+								<input type="file" name="file0" id="file0" multiple="multiple">
+								<span style="display:block;cursor:pointer;width:50px;height:30px;background-color:#4646ff;" class="save"></span>
+								<div class="row">
+									<img style="max-width:100%;" src="" id="img0">
+								</div>
+							</div>
 							<div class="row" style="display:none;">
 								<input type="text" class="avatar-url" name="avatar">
 							</div>
@@ -63,6 +70,42 @@
 		</div>
 	</div>
 <include file="Public:footer" />
+<script>
+		$.fn.cropper;
+	$("#file0").change(function(){
+		var objUrl = getObjectURL(this.files[0]) ;
+		if (objUrl) {
+			$("#img0").attr("src", objUrl) ;
+		}
+		$('.user-avatar>div>img').cropper({
+			aspectRatio: 1 / 1,
+			crop: function() {
+			}
+		}); 
+		$('.user-avatar>div>img').cropper('replace', objUrl);
+	}) ;
+	//建立一个可存取到该file的url
+	function getObjectURL(file) {
+		var url = null ; 
+		if (window.createObjectURL!=undefined) { // basic
+			url = window.createObjectURL(file) ;
+		} else if (window.URL!=undefined) { // mozilla(firefox)
+			url = window.URL.createObjectURL(file) ;
+		} else if (window.webkitURL!=undefined) { // webkit or chrome
+			url = window.webkitURL.createObjectURL(file) ;
+		}
+		return url ;
+	}
+	$('.save').on('click', function(){
+		var data = $('.user-avatar>div>img').cropper("getCroppedCanvas").toBlob(function(blob) {
+							var file = blob;
+							var url = getObjectURL(file);
+							$("#img0").attr("src", url);
+							$('.cropper-container').remove();
+							$('.user-avatar>div>img').removeClass();
+						},'image/jpeg');
+					});
+</script>
 </body>
 
 </html>
