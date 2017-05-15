@@ -293,6 +293,7 @@ class UserMsgModel extends BaseModel {
 		    $userList = d('user')->where(['id'=>['in',$idArr]])->select();
 		}else{
 		    $nodeIdArr = getIdArr($data['list'],'node_id');
+		    if($nodeIdArr)
 		    $postComentList = d('postComment')->where(['id'=>['in',$nodeIdArr]])->select();
 		}
 	
