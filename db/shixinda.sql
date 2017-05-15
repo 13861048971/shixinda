@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2017-05-09 16:28:51
+Date: 2017-05-15 15:14:18
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -222,7 +222,7 @@ CREATE TABLE `collect` (
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`),
   KEY `node_id` (`node_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of collect
@@ -232,9 +232,9 @@ INSERT INTO `collect` VALUES ('2', '0', '2', '1', '1471014368');
 INSERT INTO `collect` VALUES ('5', '2', '1', '1', '1472711985');
 INSERT INTO `collect` VALUES ('11', '1', '22', '30', '1493689078');
 INSERT INTO `collect` VALUES ('23', '1', '22', '29', '1493801992');
-INSERT INTO `collect` VALUES ('24', '1', '22', '41', '1493802271');
 INSERT INTO `collect` VALUES ('26', '1', '22', '42', '1493802695');
 INSERT INTO `collect` VALUES ('27', '1', '22', '40', '1493890538');
+INSERT INTO `collect` VALUES ('28', '1', '22', '41', '1494319953');
 
 -- ----------------------------
 -- Table structure for `comment`
@@ -326,7 +326,7 @@ INSERT INTO `content` VALUES ('16', '16', '大河有限公司', '', '阿斯达',
 INSERT INTO `content` VALUES ('17', '17', '上海邮电公司', '', '阿斯达', '1', '0', '0', '/Public/upload/image/2017-04-22/58fb36c2483bf.jpg', '1492858531', '1492858563', '1492858563');
 INSERT INTO `content` VALUES ('18', '14', '南京大兵高铁公司', '', '阿斯达', '1', '0', '0', '/Public/upload/image/2017-04-22/58fb3702c7c98.jpg', '1492858603', '1492858627', '1492858627');
 INSERT INTO `content` VALUES ('19', '1', '习近平总书记考察广西在当地引起热烈反响', '<p style=\"font-family:SimSun;color:#2B2B2B;\">\n	春风拂面，喜润心田。连日来，壮乡儿女沉浸在激动和喜悦中。自治区党委、南宁市委、北海市委分别在第一时间召开常委扩大会议，认真学习习近平总书记考察广西时的重要讲话精神。广大干部群众通过网络、电视、报纸等，关注习近平总书记的考察行程，学习习近平总书记的重要讲话。大家纷纷表示，一定牢记嘱托、不负期许，把习近平总书记的亲切关怀转化为做好各项工作的强大动力，不断谱写“一带一路”建设新篇章。\n</p>\n<p style=\"font-family:SimSun;color:#2B2B2B;\">\n	<strong>奏响“一带一路”主旋律的广西音符</strong>\n</p>\n<p style=\"font-family:SimSun;color:#2B2B2B;\">\n	波斯的陶壶、<a href=\"http://country.huanqiu.com/sri_lanka\" class=\"linkAbout\" target=\"_blank\">斯里兰卡</a>的琥珀、<a href=\"http://country.huanqiu.com/malaysia\" class=\"linkAbout\" target=\"_blank\">马来西亚</a>的铜熏炉……北海市合浦县汉代文化博物馆里，沉淀着光阴印记的奇珍异宝，见证了古代海上丝绸之路的恢弘历史。\n</p>\n<p style=\"font-family:SimSun;color:#2B2B2B;\">\n	陪同习近平总书记考察博物馆的合浦县委书记王方红对记者说，“总书记指出，‘向海之路是一个国家发展的重要途径，这里围绕古代海上丝绸之路陈列的文物都是历史、是文化’。未来，我们要进一步挖掘好、保护好、传承好合浦海丝文化和汉文化，在保护好的前提下加强开发利用，把资源优势转化为产业优势。”\n</p>', '阿斯达', '1', '0', '0', '/Public/upload/image/2017-04-24/58fd604a943bd.png', '1493000243', '1493000333', '1493804596');
-INSERT INTO `content` VALUES ('21', '18', '公司简介', '<p style=\"font-size:17.28px;font-family:arial, &quot;\">\n	<img src=\"http://www.sin.net.cn/xw/clientImage/62/image/20160427/1461742063697545.jpg\" title=\"1461742063697545.jpg\" alt=\"5.jpg\" />\n</p>\n<p style=\"font-size:17.28px;font-family:arial, &quot;\">\n	<span style=\"font-size:18px;\">&nbsp; &nbsp; &nbsp; &nbsp;南京实信达网络有限公司是根据国家信息产业部与南京市人民政府签署的“部市合作协议”而成立的。为推动<span style=\"font-family:arial;font-size:18px;\">南京</span>国民经济与社会信息化的进程，促进<span style=\"font-family:arial;font-size:18px;\">南京</span>信息产业的发展。</span>\n</p>\n<p style=\"font-size:17.28px;font-family:arial, &quot;\">\n	<span style=\"font-size:18px;\">&nbsp; &nbsp; &nbsp; 经过多年的建设与发展，公司现已拥有基本覆盖全市范围的宽带网络。今后，公司将一如既往全力跟踪世界先进技术的发展，把各类技术高度融合在宽带信息网络平台中，为社会提供全方位的高速、安全、丰富、可靠的宽带信息网络业务。</span>\n</p>', '阿斯达', '1', '0', '0', '', '1493261124', '1493261147', '1493264539');
+INSERT INTO `content` VALUES ('21', '18', '公司简介', '<p style=\"font-size:17.28px;font-family:arial,;\">\n	<br />\n</p>\n<p style=\"font-size:17.28px;font-family:arial,;\">\n	<span style=\"font-size:18px;\"> 南京实信达网络有限公司是根据国家信息产业部与南京市人民政府签署的“部市合作协议”而成立的。为推动<span style=\"font-family:arial;font-size:18px;\">南京</span>国民经济与社会信息化的进程，促进<span style=\"font-family:arial;font-size:18px;\">南京</span>信息产业的发展。</span> \n</p>\n<p style=\"font-size:17.28px;font-family:arial,;\">\n	<span style=\"font-size:18px;\"> 经过多年的建设与发展，公司现已拥有基本覆盖全市范围的宽带网络。今后，公司将一如既往全力跟踪世界先进技术的发展，把各类技术高度融合在宽带信息网络平台中，为社会提供全方位的高速、安全、丰富、可靠的宽带信息网络业务。</span> \n</p>', '阿斯达', '1', '0', '0', '', '1493261124', '1493261147', '1494573154');
 INSERT INTO `content` VALUES ('22', '19', '公司信息', '<p style=\"text-align:left;\">\n	<img src=\"http://api.map.baidu.com/staticimage?center=118.786062%2C32.043255&zoom=15&width=558&height=360&markers=118.786062%2C32.043255&markerStyles=l%2CA\" alt=\"\" />\n</p>\n<p style=\"text-align:left;\">\n	公司名称：南京实信达网络科技有限公公司\n</p>\n<p style=\"text-align:left;\">\n	<span style=\"color:#FFFFFF;font-family:微软雅黑;font-size:14px;background-color:#FFFFFF;\"><span style=\"color:#000000;background-color:#FFFFFF;\">邮</span><span style=\"color:#000000;background-color:#FFFFFF;\">箱:1036820869@qq.com</span></span><span style=\"background-color:#FFFFFF;\"><span style=\"color:#000000;background-color:#FFFFFF;\"></span><span style=\"background-color:#FFFFFF;color:#000000;\"></span></span> \n</p>\n<p style=\"text-align:left;\">\n	<span style=\"background-color:#FFFFFF;\"><span style=\"background-color:#FFFFFF;color:#000000;\">联系电话：13861048971<br />\n</span></span> \n</p>\n<p style=\"text-align:left;\">\n	<span style=\"background-color:#FFFFFF;\"><span style=\"background-color:#FFFFFF;color:#000000;\">办公室电话：1212121<br />\n</span></span> \n</p>\n<p>\n	<br />\n</p>', '阿斯达', '1', '0', '0', '', '1493261149', '1493261166', '1493265145');
 
 -- ----------------------------
@@ -485,21 +485,21 @@ CREATE TABLE `post` (
   `add_time` int(11) NOT NULL COMMENT '添加时间',
   `update_time` int(11) NOT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of post
 -- ----------------------------
 INSERT INTO `post` VALUES ('3', '18', '3', 'asd', '啊大神的', '0', '6', '1', '1492134989', '1493116416');
-INSERT INTO `post` VALUES ('4', '12', '2', 'ssas', 'dada', '0', '0', '1', '1492251867', '1492566893');
-INSERT INTO `post` VALUES ('6', '12', '3', 'sadd', 'da', '0', '0', '1', '1492479290', '1492479290');
+INSERT INTO `post` VALUES ('4', '17', '2', 'ssas', 'dada', '0', '0', '1', '1492251867', '1492566893');
+INSERT INTO `post` VALUES ('6', '17', '3', 'sadd', 'da', '0', '0', '1', '1492479290', '1492479290');
 INSERT INTO `post` VALUES ('7', '13', '5', '啊啊', 'sd', '0', '0', '1', '1492482231', '1492482231');
 INSERT INTO `post` VALUES ('8', '12', '5', '王', '阿斯达', '0', '0', '1', '1492486672', '1492486672');
 INSERT INTO `post` VALUES ('9', '6', '3', '王艳', '撒旦法', '0', '0', '1', '1492494219', '1492513998');
 INSERT INTO `post` VALUES ('10', '12', '5', '啦啦啦', '安达市', '0', '0', '1', '1492500863', '1492503823');
 INSERT INTO `post` VALUES ('11', '12', '6', '撒嗒啊啊啊大大', '撒嗒', '0', '1', '1', '1492503765', '1492566228');
-INSERT INTO `post` VALUES ('12', '12', '6', 'ada地方', '的撒', '0', '3', '1', '1492566254', '1492567075');
-INSERT INTO `post` VALUES ('13', '12', '1', '发生的', '是v', '0', '0', '1', '1492566722', '1492567349');
+INSERT INTO `post` VALUES ('12', '12', '6', 'ada地方', '的撒', '2', '5', '1', '1492566254', '1492567075');
+INSERT INTO `post` VALUES ('13', '22', '1', '发生的', '是v', '0', '0', '1', '1492566722', '1494552028');
 INSERT INTO `post` VALUES ('16', '12', '10', 'SAAB', '大声的', '0', '0', '1', '1492576661', '1492576661');
 INSERT INTO `post` VALUES ('17', '12', '10', '阿斯达', '打', '0', '0', '1', '1492576674', '1492576674');
 INSERT INTO `post` VALUES ('18', '12', '3', '撒嗒', '撒嗒', '0', '0', '1', '1492583619', '1492590298');
@@ -511,17 +511,15 @@ INSERT INTO `post` VALUES ('25', '11', '1', '亲亲亲亲', '撒嗒', '0', '0', 
 INSERT INTO `post` VALUES ('26', '12', '9', '撒嗒222亲戚', '阿杜', '0', '0', '1', '1492667180', '1492667180');
 INSERT INTO `post` VALUES ('27', '12', '9', '撒嗒222亲戚', '阿杜', '0', '0', '1', '1492667185', '1492667185');
 INSERT INTO `post` VALUES ('28', '12', '9', '撒嗒222亲戚', '阿杜', '0', '0', '1', '1492667214', '1492667214');
-INSERT INTO `post` VALUES ('29', '13', '9', '撒嗒222亲戚', '阿杜', '0', '33', '1', '1492667273', '1492745485');
+INSERT INTO `post` VALUES ('29', '13', '9', '撒嗒222亲戚', '阿杜', '0', '35', '1', '1492667273', '1492745485');
 INSERT INTO `post` VALUES ('30', '13', '9', '求求求求求', '安达市', '0', '23', '1', '1492668587', '1492745461');
 INSERT INTO `post` VALUES ('33', '13', '0', 'sd', 'sad', '0', '0', '1', '1492744362', '1492744362');
 INSERT INTO `post` VALUES ('34', '13', '0', 'sdf', 'ds', '0', '7', '1', '1492744414', '1492744414');
-INSERT INTO `post` VALUES ('35', '13', '0', 'asd', 'asd', '0', '5', '1', '1492745498', '1492745498');
-INSERT INTO `post` VALUES ('38', '18', '1', '撒嗒', '暗暗地', '0', '6', '1', '1493107649', '1493107649');
-INSERT INTO `post` VALUES ('40', '22', '1', '让我们一起去玩吧', '撒嗒', '40', '228', '1', '1493274697', '1493795671');
-INSERT INTO `post` VALUES ('41', '22', '9', '杰伦为什么要骂人民警察', '维护粉丝，爱粉丝如孩子', '0', '18', '1', '1493712399', '1493795934');
-INSERT INTO `post` VALUES ('42', '22', '1', '自行车', '自行车', '0', '14', '1', '1493787029', '1493787612');
-INSERT INTO `post` VALUES ('49', '22', '9', '试试', '撒嗒', '0', '5', '1', '1493787529', '1493790991');
-INSERT INTO `post` VALUES ('50', '22', '9', 'dsf', 'sdf', '0', '0', '1', '1494314588', '1494314588');
+INSERT INTO `post` VALUES ('35', '13', '0', 'asd', 'asd', '0', '8', '1', '1492745498', '1492745498');
+INSERT INTO `post` VALUES ('38', '18', '1', '撒嗒', '暗暗地', '0', '16', '1', '1493107649', '1493107649');
+INSERT INTO `post` VALUES ('40', '22', '1', '让我们一起去玩吧', '撒嗒', '46', '256', '1', '1493274697', '1493795671');
+INSERT INTO `post` VALUES ('41', '22', '9', '杰伦为什么要骂人民警察', '维护粉丝，爱粉丝如孩子', '0', '23', '1', '1493712399', '1493795934');
+INSERT INTO `post` VALUES ('42', '22', '1', '自行车', '自行车', '0', '16', '1', '1493787029', '1493787612');
 
 -- ----------------------------
 -- Table structure for `post_cate`
@@ -566,7 +564,7 @@ CREATE TABLE `post_comment` (
   `add_time` int(11) NOT NULL COMMENT '添加时间',
   `update_time` int(11) NOT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=66 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of post_comment
@@ -623,6 +621,13 @@ INSERT INTO `post_comment` VALUES ('55', '22', '40', '0', '大风起兮云凤阳
 INSERT INTO `post_comment` VALUES ('56', '22', '40', '55', '大大的哥哥', '0', '1493980769', '1493980769');
 INSERT INTO `post_comment` VALUES ('57', '22', '40', '0', '大海怎么变懒的', '0', '1493981324', '1493981324');
 INSERT INTO `post_comment` VALUES ('58', '22', '40', '49', '撒嗒圣埃蒂安', '0', '1493981349', '1493981349');
+INSERT INTO `post_comment` VALUES ('59', '22', '40', '0', 'sada是否大是大非', '0', '1494386978', '1494386978');
+INSERT INTO `post_comment` VALUES ('60', '22', '12', '0', 'gg', '0', '1494403418', '1494403418');
+INSERT INTO `post_comment` VALUES ('61', '22', '40', '0', '盛大的', '0', '1494473983', '1494473983');
+INSERT INTO `post_comment` VALUES ('62', '22', '40', '61', '撒嗒', '0', '1494473996', '1494473996');
+INSERT INTO `post_comment` VALUES ('63', '22', '40', '0', 'sdf', '0', '1494489052', '1494489052');
+INSERT INTO `post_comment` VALUES ('64', '22', '40', '0', 'sf', '0', '1494489055', '1494489055');
+INSERT INTO `post_comment` VALUES ('65', '22', '40', '0', 'sdf', '0', '1494489068', '1494489068');
 
 -- ----------------------------
 -- Table structure for `region`
@@ -4117,7 +4122,7 @@ CREATE TABLE `tdk` (
   `add_time` int(11) DEFAULT NULL COMMENT '添加时间',
   `update_time` int(11) NOT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=74 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=76 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tdk
@@ -4141,6 +4146,8 @@ INSERT INTO `tdk` VALUES ('70', '2', '19', '习近平总书记考察广西在当
 INSERT INTO `tdk` VALUES ('71', '3', '17', '微信小程序', '微信小程序', '微信小程序', '1493806050', '1493806050');
 INSERT INTO `tdk` VALUES ('72', '3', '16', 'iOS App', 'iOS App', 'iOS App', '1493806060', '1493806060');
 INSERT INTO `tdk` VALUES ('73', '1', '50', '', '', '', null, '1494314588');
+INSERT INTO `tdk` VALUES ('74', '1', '13', '', '', '', '1494552028', '1494552028');
+INSERT INTO `tdk` VALUES ('75', '2', '21', '', '', '', '1494573103', '1494573154');
 
 -- ----------------------------
 -- Table structure for `user`
@@ -4181,7 +4188,7 @@ INSERT INTO `user` VALUES ('17', '13861048973', '', '8cadbbfaa1ef350e2b56910ab6a
 INSERT INTO `user` VALUES ('18', '18961841640', '', 'c19fd740a33cf3d675c3c53dc534b4ee', '/Public/upload/avatar/2017-04-26/5900120bf20fe.jpg', null, '女', '', '', '', '', '', '1', '1493017499', '1493800297', '0', '', 'bbss', '1493969946', '1493969962', '16');
 INSERT INTO `user` VALUES ('20', '18961841571', '', 'c19fd740a33cf3d675c3c53dc534b4ee', '', null, '男', '', '', '', '', '', '0', '1493024607', '1493024607', '0', '', '', '1493024607', '0', '0');
 INSERT INTO `user` VALUES ('21', '18974516541', '', 'c19fd740a33cf3d675c3c53dc534b4ee', '', null, '男', '', '', '', '', '', '0', '1493024634', '1493024634', '0', '', '', '1493024634', '0', '0');
-INSERT INTO `user` VALUES ('22', '13861048971', '', 'c19fd740a33cf3d675c3c53dc534b4ee', '/Public/upload/avatar/2017-04-27/590154e96c267.jpg', null, '男', '', '', '', '', '', '1', '1493178203', '1493978271', '0', '辅导书', '赤心', '1494314557', '1494238612', '458916');
+INSERT INTO `user` VALUES ('22', '13861048971', '', 'c19fd740a33cf3d675c3c53dc534b4ee', '/Public/upload/avatar/2017-04-27/590154e96c267.jpg', null, '男', '', '', '', '', '', '1', '1493178203', '1493978271', '0', '辅导书', '赤心', '1494826974', '1494388503', '532468');
 INSERT INTO `user` VALUES ('23', '13861048979', '13861048971@163.com', '', '/Public/upload/avatar/2017-05-03/59099691ef1f3.jpg', '', '男', '2010-05-05', '', '', '', '', '1', '1493800601', '1493800601', '0', '', '张耀乐', '1493800601', '0', '0');
 INSERT INTO `user` VALUES ('24', '16487154781', '', 'c19fd740a33cf3d675c3c53dc534b4ee', '', null, '男', '', '', '', '', '', '0', '1493800643', '1493800709', '0', '', '', '1493800643', '1493800862', '219');
 INSERT INTO `user` VALUES ('25', '18351868050', '', '6d87417435fa1201dca0b5a1e9982398', '', null, '男', '', '', '', '', '', '1', '1493864883', '1493864883', '0', '', '', '1493864883', '1493865120', '237');
@@ -4208,7 +4215,7 @@ CREATE TABLE `user_msg` (
   `update_time` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user_msg
@@ -4220,13 +4227,10 @@ INSERT INTO `user_msg` VALUES ('13', '22', '22', '', '', '0', '0', '2', '赤心�
 INSERT INTO `user_msg` VALUES ('14', '22', '22', '', '', '0', '0', '1', '赤心您好，你有一条来自赤心的评论信息', '40', 'IOS 发送失败.Android 发送失败.', '1493884854', '1493884854');
 INSERT INTO `user_msg` VALUES ('15', '22', '22', '', '', '0', '0', '2', '赤心您好，你有一条来自赤心的回复信息', '28', 'IOS 发送失败.Android 发送失败.', '1493884859', '1493884859');
 INSERT INTO `user_msg` VALUES ('17', '22', '0', '', '', '0', '1', '0', '赤心你有一条来自系统信息的系统信息', '0', 'IOS 发送失败.Android 发送失败.', '1493951534', '1493951534');
-INSERT INTO `user_msg` VALUES ('18', '22', '22', '', '', '0', '1', '3', '赤心你有一条来自赤心的站内信息', '0', 'IOS 发送失败.Android 发送失败.', '1493951551', '1493951551');
 INSERT INTO `user_msg` VALUES ('19', '22', '22', '', '', '0', '0', '1', '赤心你有一条来自赤心的评论信息', '40', 'IOS 发送失败.Android 发送失败.', '1493959821', '1493959821');
 INSERT INTO `user_msg` VALUES ('20', '22', '22', '', '', '0', '0', '1', '赤心你有一条来自赤心的评论信息', '40', 'IOS 发送失败.Android 发送失败.', '1493959830', '1493959830');
 INSERT INTO `user_msg` VALUES ('21', '23', '0', '', '', '0', '1', '0', '张耀乐你有一条来自系统信息的系统信息', '0', 'IOS 发送失败.Android 发送失败.', '1493964746', '1493964746');
 INSERT INTO `user_msg` VALUES ('22', '22', '0', '', '', '0', '1', '0', '打阿斯达', '0', 'IOS 发送失败.Android 发送失败.', '1493965102', '1493965102');
-INSERT INTO `user_msg` VALUES ('25', '22', '23', '', '', '0', '1', '3', '你在家干什么，<span>你在家干什么，</span><span>你在家干什么，</span><span>你在家干什么，</span><span>你在家干什么，</span><span>你在家干什么，</span>', '0', 'IOS 发送失败.Android 发送失败.', '1493968202', '1493968202');
-INSERT INTO `user_msg` VALUES ('26', '22', '22', '', '', '0', '1', '3', '赤心对你说：阿散酸', '0', 'IOS 发送失败.Android 发送失败.', '1493975454', '1493975454');
 INSERT INTO `user_msg` VALUES ('27', '22', '22', '', '', '0', '1', '3', '赤心对你说：阿散酸', '0', 'IOS 发送失败.Android 发送失败.', '1493975707', '1493975707');
 INSERT INTO `user_msg` VALUES ('28', '22', '22', '', '', '0', '1', '3', '赤心对你说：阿散酸', '0', 'IOS 发送失败.Android 发送失败.', '1493975782', '1493975782');
 INSERT INTO `user_msg` VALUES ('29', '22', '0', '你的账号已经解封,已恢复正常使用.', '', '0', '1', '0', '你的账号已经解封,已恢复正常使用.', '0', 'IOS 发送失败.Android 发送失败.', '1493977255', '1493977255');
@@ -4236,12 +4240,19 @@ INSERT INTO `user_msg` VALUES ('32', '22', '0', '你的账号已被系统管理�
 INSERT INTO `user_msg` VALUES ('33', '22', '0', '你的账号已被系统管理封号处理,将无法登陆.', '', '0', '1', '0', '你的账号已被系统管理封号处理,将无法登陆. 封号原因:', '0', 'IOS 发送失败.Android 发送失败.', '1493977981', '1493977981');
 INSERT INTO `user_msg` VALUES ('34', '22', '0', '你的账号已经解封,已恢复正常使用.', '', '0', '1', '0', '你的账号已经解封,已恢复正常使用.', '0', 'IOS 发送失败.Android 发送失败.', '1493978005', '1493978005');
 INSERT INTO `user_msg` VALUES ('35', '22', '0', '你的账号已被系统管理封号处理,将无法登陆.', '', '0', '1', '0', '你的账号已被系统管理封号处理,将无法登陆. 封号原因:辅导书', '0', 'IOS 发送失败.Android 发送失败.', '1493978016', '1493978016');
-INSERT INTO `user_msg` VALUES ('36', '22', '0', '你的账号已经解封,已恢复正常使用.', '', '0', '1', '0', '你的账号已经解封,已恢复正常使用.', '0', 'IOS 发送失败.Android 发送失败.', '1493978271', '1493978271');
 INSERT INTO `user_msg` VALUES ('37', '22', '22', '', '', '0', '1', '1', '赤心你有一条来自赤心的评论信息', '40', 'IOS 发送失败.Android 发送失败.', '1493980090', '1493980090');
 INSERT INTO `user_msg` VALUES ('38', '22', '22', '', '', '0', '1', '1', '赤心你有一条来自赤心的评论信息', '55', 'IOS 发送失败.Android 发送失败.', '1493980465', '1493980465');
 INSERT INTO `user_msg` VALUES ('39', '22', '22', '', '', '0', '1', '2', '赤心你有一条来自赤心的回复信息', '56', 'IOS 发送失败.Android 发送失败.', '1493980769', '1493980769');
 INSERT INTO `user_msg` VALUES ('40', '22', '22', '', '', '0', '1', '1', '赤心你有一条来自赤心的评论信息', '57', 'IOS 发送失败.Android 发送失败.', '1493981324', '1493981324');
 INSERT INTO `user_msg` VALUES ('41', '22', '22', '', '', '0', '1', '2', '赤心你有一条来自赤心的回复信息', '58', 'IOS 发送失败.Android 发送失败.', '1493981349', '1493981349');
+INSERT INTO `user_msg` VALUES ('42', '22', '22', '', '', '0', '1', '1', '赤心你有一条来自的评论信息', '59', 'IOS 发送失败.Android 发送失败.', '1494386979', '1494386979');
+INSERT INTO `user_msg` VALUES ('43', '27', '22', '', '', '0', '1', '0', '你有一条来自的评论信息', '60', 'IOS 发送失败.Android 发送失败.', '1494403418', '1494474937');
+INSERT INTO `user_msg` VALUES ('44', '22', '22', '', '', '0', '1', '1', '赤心你有一条来自赤心的评论信息', '61', 'IOS 发送失败.Android 发送失败.', '1494473983', '1494473983');
+INSERT INTO `user_msg` VALUES ('45', '22', '22', '', '', '0', '1', '2', '赤心你有一条来自赤心的回复信息', '62', 'IOS 发送失败.Android 发送失败.', '1494473996', '1494473996');
+INSERT INTO `user_msg` VALUES ('46', '22', '22', '', '', '0', '1', '3', '赤心对你说：盛大的', '0', 'IOS 发送失败.Android 发送失败.', '1494474467', '1494474467');
+INSERT INTO `user_msg` VALUES ('47', '22', '22', '', '', '0', '1', '1', '赤心你有一条来自赤心的评论信息', '63', 'IOS 发送失败.Android 发送失败.', '1494489052', '1494489052');
+INSERT INTO `user_msg` VALUES ('48', '22', '22', '', '', '0', '1', '1', '赤心你有一条来自赤心的评论信息', '64', 'IOS 发送失败.Android 发送失败.', '1494489055', '1494489055');
+INSERT INTO `user_msg` VALUES ('49', '22', '22', '', '', '0', '1', '1', '赤心你有一条来自赤心的评论信息', '65', 'IOS 发送失败.Android 发送失败.', '1494489068', '1494489068');
 
 -- ----------------------------
 -- Table structure for `user_msg_read`
@@ -4266,12 +4277,9 @@ INSERT INTO `user_msg_read` VALUES ('13', '22');
 INSERT INTO `user_msg_read` VALUES ('14', '22');
 INSERT INTO `user_msg_read` VALUES ('15', '22');
 INSERT INTO `user_msg_read` VALUES ('17', '22');
-INSERT INTO `user_msg_read` VALUES ('18', '22');
 INSERT INTO `user_msg_read` VALUES ('19', '22');
 INSERT INTO `user_msg_read` VALUES ('20', '22');
 INSERT INTO `user_msg_read` VALUES ('22', '22');
-INSERT INTO `user_msg_read` VALUES ('25', '22');
-INSERT INTO `user_msg_read` VALUES ('26', '22');
 INSERT INTO `user_msg_read` VALUES ('27', '22');
 INSERT INTO `user_msg_read` VALUES ('28', '22');
 INSERT INTO `user_msg_read` VALUES ('29', '22');
@@ -4281,10 +4289,14 @@ INSERT INTO `user_msg_read` VALUES ('32', '22');
 INSERT INTO `user_msg_read` VALUES ('33', '22');
 INSERT INTO `user_msg_read` VALUES ('34', '22');
 INSERT INTO `user_msg_read` VALUES ('35', '22');
-INSERT INTO `user_msg_read` VALUES ('36', '22');
 INSERT INTO `user_msg_read` VALUES ('37', '22');
 INSERT INTO `user_msg_read` VALUES ('38', '22');
 INSERT INTO `user_msg_read` VALUES ('39', '22');
 INSERT INTO `user_msg_read` VALUES ('40', '22');
 INSERT INTO `user_msg_read` VALUES ('41', '22');
+INSERT INTO `user_msg_read` VALUES ('42', '22');
+INSERT INTO `user_msg_read` VALUES ('44', '22');
+INSERT INTO `user_msg_read` VALUES ('45', '22');
+INSERT INTO `user_msg_read` VALUES ('46', '22');
+INSERT INTO `user_msg_read` VALUES ('47', '22');
 INSERT INTO `user_msg_read` VALUES ('56', '1');
