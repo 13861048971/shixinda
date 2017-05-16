@@ -1,7 +1,7 @@
 <?php
 return array(
 	//'配置项'=>'配置值'
-	'SHOW_PAGE_TRACE'	=> fale,
+	'SHOW_PAGE_TRACE'	=> false,
 	'URL_ROUTER_ON'   => true,
 	'URL_ROUTE_RULES'=> [
 		'/^regist$/' 	=> 	'user/regist',
