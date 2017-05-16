@@ -93,7 +93,7 @@ class PostModel extends BaseModel{
             ->field('max(id)')->buildsql();
         $postCommentList = d('postComment')->where("id in $subQuery")->select();
         $userIdArr = getIdArr($postCommentList, 'user_id');
-        $userIdArr && $userList = d('user')->where(['id' => ['in', [0]]])->select();
+        $userIdArr && $userList = d('user')->where(['id' => ['in', $userIdArr]])->select();
         //仅后台Admin模块执行
         if(MODULE_NAME == 'Admin'){
             $postCateIdArr = getIdArr($data['list'],'post_cate_id');

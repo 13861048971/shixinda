@@ -5,7 +5,19 @@ class ContentCateModel extends BaseModel {
         0 => '禁用',
         1 => '启用'
     ];
+    public $cacheTdkKey = '_cacheChildCateArr';
     
+    //缓存tdk信息
+    protected  function _cacheChildCateArr($con){
+        $tdkInfo = $this->getList($con);
+        return $tdkInfo;
+    }
+    
+    //获取tdk数据缓存信息
+    public function getChildCateArr($con){
+        $tdkinfo = $this->getCache($this->cacheTdkKey.$con['pid'], 'ChildCateArr',$con);
+        return $tdkinfo;
+    }
     //列表
     public function getList($con=[], $limit=50){
         $list = $this->where($con)->limit($limit)->select();
@@ -41,6 +53,8 @@ class ContentCateModel extends BaseModel {
 	function edit($data, $id=null){
 	    $data['actions'] && $data['actions'] = serialize($data['actions']);
 	    if($id){
+	        $cateInfo = $this->where(['id' => $id])->find();
+	        $this->resetCache($this->cacheTdkKey.$cateInfo['pid'], 'ChildCateArr');
 	        $data['update_time'] = time();
 	        $return  = $this->data($data)->where('id=' . (int)$id)->save();
 	        if(false === $return){
@@ -58,6 +72,8 @@ class ContentCateModel extends BaseModel {
 	        if(!($id = $this->add())){
 	            return $this->setError('添加失败!');
 	        }
+	        $cateInfo = $this->where(['id' => $id])->find();
+	        $this->resetCache($this->cacheTdkKey.$cateInfo['pid'], 'ChildCateArr');
 	        $data['id'] = $id;
 	        d('tdk')->edit($data);
 	        return $id;

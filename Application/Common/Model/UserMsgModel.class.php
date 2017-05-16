@@ -44,7 +44,7 @@ class UserMsgModel extends BaseModel {
 	 * @param int $id
 	 * @return bool
 	 */
-	public function sendMsg($id){
+	public function sendMesg($id){
 		import('Common.Common.Umeng.Umeng');
 		$data = $this->getInfo($id);
 
@@ -124,7 +124,7 @@ class UserMsgModel extends BaseModel {
 		if(!($id = $this->add()))
 		    
 			return $this->setError('发送失败!');
-		if(!$this->sendMsg($id)){
+		if(!$this->sendMesg($id)){
 			return $this->setError('发送消息失败!');
 		}
 		return $id;

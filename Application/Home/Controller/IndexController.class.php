@@ -22,7 +22,7 @@ class IndexController extends PublicController {
 	        'type' => d('tdk')->typeArr['contentCate']
 	    ];
 	    $this->tdkList($con);
-	    $CateChildren = d('contentCate')->getList(['pid'=>3]);//产品子类信息
+	    $CateChildren = d('contentCate')->getChildCateArr(['pid'=>3]);//产品子类缓存信息
 	    $cateIdArr = [0];
 	    foreach ($CateChildren as $k=>$v){
 	        $cateIdArr[] = $v['id'];
@@ -43,7 +43,7 @@ class IndexController extends PublicController {
 	//产品详情
 	public function productDetail(){ 
         $this->tdkDetail(); 
-	    $CateChildren = d('contentCate')->where(['pid'=>3])->select();//产品分类信息
+	    $CateChildren = d('contentCate')->getChildCateArr(['pid'=>3]);;//产品缓存分类信息
 	    $productInfo = d('content')->getInfo($_GET['id']);
 	    $cateArr = getIdArr($CateChildren);
  	    $product = d('content')->where(['cate_id' => ['in',$cateArr]])->select();
