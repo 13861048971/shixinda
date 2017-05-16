@@ -317,19 +317,30 @@ class PostController extends PublicController {
     //别人用户信息
     function personInfo(){
         $personInfo = d('user')->getPerson($_GET['userId']);//用户信息
-        $data = d('post')->getPageList(['user_id'=>$_GET['userId']]);//用户主贴
-        $repaly = d('postComment')->getPageList(['user_id'=>$_GET['userId']]);//回帖信息
-        $this->assign('personReplay',$repaly['list']);  
-        $this->assign('postList',$data['list']);
-        $this->assign('person',$personInfo); 
+        $this->assign('person',$personInfo);
+        if($_GET['act'] == 'original' ){
+            $data = d('post')->getPageList(['user_id'=>$_GET['userId']],'*','id desc');//用户主贴
+            $this->assign('postList',$data['list']);
+            return $this->display();
+        }
+        if($_GET['act'] == 'replay'){
+            $repaly = d('postComment')->getPageList(['user_id'=>$_GET['userId']],'*');//回帖信息
+            $this->assign('personReplay',$repaly['list']);
+           return $this->display();
+        }
+        
         $this->display();
     }
     
-    //用户主题
-    function personTheme(){
+    //用户主贴
+    function personPostInfo(){
         $data = d('post')->getPageList(['user_id'=>$_GET['id']]);
         $this->assign('list',$data['list']);
         $this->display();
+    }
+    //用户回帖信息
+    function personReplayPostInfo(){
+        $repalyInfo = d('postComment')->getPageList(['user_id'=>$_GET['userId']]);//回帖信息
     }
     
     //用户回复

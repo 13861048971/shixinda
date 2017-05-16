@@ -32,7 +32,7 @@
 				<!-- 个人end -->
 				<div class="person-post row">
 					<div class="switch-link">
-						<a href="javascript:void(0);" class="actived switch-subject">主题</a> | <a href="javascript:void(0);" class="switch-reply">回复</a>
+						<a href="{:U('post/personInfo',['userId'=>$person['id'],'act' => 'original'])}" class="actived switch-subject">主题</a> | <a href="{:U('post/personInfo',['userId'=>$person['id'],'act' => 'replay'])}" class="switch-reply">回复</a>
 					</div>
 					<dl class="post-subject">
 						<dt>
@@ -48,7 +48,7 @@
 								<dl class="row">
 									<dd class="col-md-6"><a href=""><a href="{:U('post/postDetail',['id'=>$v['id']])}">{$v.title}</a></a></dd>
 									<dd class="col-md-3"><a href="">{$v.cateName}</a></dd>
-									<dd class="col-md-3">{$v.num}/{$v.click}</dd>
+									<dd class="col-md-3">{$v.comment_num}/{$v.click}</dd>
 								</dl>
 							</foreach>
 							<div class="pager">{$pageVar}</div>

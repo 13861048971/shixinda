@@ -67,9 +67,12 @@ class PostCommentModel extends BaseModel{
 
         //主帖信息
         $postIdArr = getIdArr($data['list'],'post_id');
-        if($postIdArr)
-            $postList = d('post')->where(['id' => ['in',$postIdArr]])->select(); 
-        
+        if($postIdArr){
+            $postList = d('post')->where(['id' => ['in',$postIdArr]])->select();
+            $postCateIdArr = getIdArr($postList,'post_cate_id');
+            $postCateList = d('postCate')->where(['id' => ['in',$postCateIdArr]])->select();
+        }
+            
         foreach($data['list'] as $k=>$v){
             $data['list'][$k] = $this->parseRow($v);
             //获取评论的信息
@@ -78,13 +81,19 @@ class PostCommentModel extends BaseModel{
                     $data['list'][$k]['userName'] = $v1['nickname'];    
                 }
             }
-            if( MODULE_NAME == 'Admin'){
-                foreach($postList as $kp => $vp){
-                    if($v['post_id'] == $vp['id']){
-                        $data['list'][$k]['title'] = $vp['title'];
+            //获取主贴标题
+            foreach($postList as $kp => $vp){
+                if($v['post_id'] == $vp['id']){
+                    $data['list'][$k]['title'] = $vp['title'];
+                }
+                //获取主贴分类
+                foreach($postCateList as $kCate => $vCate){
+                    if($vp['post_cate_id'] == $vCate['id']){
+                        $data['list'][$k]['cateName'] = $vCate['name'];
                     }
                 }
-            } 
+            }
+            
             
             //论坛回帖楼层显示
             $data['list'][$k]['floor'] = ($p-1)*$perNum+$k+1;

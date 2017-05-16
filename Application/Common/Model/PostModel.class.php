@@ -93,18 +93,14 @@ class PostModel extends BaseModel{
             ->field('max(id)')->buildsql();
         $postCommentList = d('postComment')->where("id in $subQuery")->select();
         $userIdArr = getIdArr($postCommentList, 'user_id');
-        $userIdArr && $userList = d('user')->where(['id' => ['in', $userIdArr]])->select();
-        //仅后台Admin模块执行
-        if(MODULE_NAME == 'Admin'){
-            $postCateIdArr = getIdArr($data['list'],'post_cate_id');
-            $postCateList = d('postCate')->where(['id'=>['in',$postCateIdArr]])->select();
-            $postUserIdArr = getIdArr($data['list'],'user_id');
-            $postUserList = d('user')->where(['id'=>['in',$postUserIdArr]])->select();
-         }
+        $userIdArr && $userList = d('user')->where(['id' => ['in', $userIdArr]])->select(); 
+        $postCateIdArr = getIdArr($data['list'],'post_cate_id');
+        $postCateList = d('postCate')->where(['id'=>['in',$postCateIdArr]])->select();
+        $postUserIdArr = getIdArr($data['list'],'user_id');
+        $postUserList = d('user')->where(['id'=>['in',$postUserIdArr]])->select();
+         
         foreach($data['list'] as $k1=>$v1){
             $data['list'][$k1] =  $this->parseRow($v1);
-            //仅后台Admin模块执行
-            if(MODULE_NAME == 'Admin'){
                 foreach ($postCateList as $kc => $vc){
                     if($v1['post_cate_id'] == $vc['id']){
                     $data['list'][$k1]['cateName'] = $vc['name'];
@@ -114,8 +110,7 @@ class PostModel extends BaseModel{
                     if($v1['user_id'] == $vu['id']){
                         isset($vu['nickname']) && $vu['nickname']?($data['list'][$k1]['userName'] = $vu['nickname']):($data['list'][$k1]['userName'] = $vu['mobile']);  
                     }
-                }
-            }
+                } 
             
             foreach($postCommentList as $k2=>$v2){
                 foreach ($userList as $k3=>$v3){
