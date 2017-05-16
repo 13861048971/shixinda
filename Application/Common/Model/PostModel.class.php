@@ -6,7 +6,7 @@ import('Org.Util.Validator');
  */
 class PostModel extends BaseModel{
     public $statusArr = ['不显示', '显示'];
-
+    public $cachePostKey = '_cachePost_';
     public $cateList = [];
     
    
@@ -45,7 +45,7 @@ class PostModel extends BaseModel{
            
             return $id;
         }
-        
+        $this->resetCache($this->cachePostKey.$id, 'post', $id);
         $data['add_time'] = $data['update_time'] = $tdkData['update_time'] = time();
           
         
@@ -170,6 +170,15 @@ class PostModel extends BaseModel{
         $info = $this->parseRow($info);
         return $info;
     }
+    //添加内容缓存
+	protected  function _cachePost($id){
+	    return $this->getInfo($id);
+	}
+	//获取可以缓存的内容
+	public function getPost($id){
+	    $key = $this->cachePostKey. $id;
+	    return $this->getCache($key, 'post', $id);
+	}
     /**
      * 获取帖子列表信息
      * @param array $con

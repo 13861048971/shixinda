@@ -52,7 +52,7 @@ class PostController extends PublicController {
                 $list1[$k1]['list'][$k2]['postNum'] = $list1[$k1]['list'][$k2]['mainPostNum'] + $list1[$k1]['list'][$k2]['replyPostNum'];
             }
         } 
-        $block = d('block')->getInfo('9');
+        $block = d('block')->getBlock('9');
         
         $this->assign('hotList', $hotList);
         $this->assign('block', $block);
@@ -148,7 +148,7 @@ class PostController extends PublicController {
 	    
 	    $userId = d('post')->where(['id'=>$id])->getField('user_id');
 	    $userRow = d('user')->where(['id'=>$userId])->find();//发帖人信息
-	    $postRow = d('post')->getInfo($id);//帖子信息
+	    $postRow = d('post')->getPost($id);//帖子信息
 	    
 	    $this->click('post',$id);//访问量+1
 	    $con = ['post_id'=>$id];

@@ -5,8 +5,7 @@ class IndexController extends PublicController {
     public $configInfo;//网站配置信息
     public $about;//关于我们
 	public function _initialize(){
-	    parent::_initialize();
-	    
+	    parent::_initialize(); 
 	}
 	
 	

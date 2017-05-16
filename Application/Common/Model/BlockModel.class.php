@@ -1,6 +1,7 @@
 <?php
 use Think\Model;
 class BlockModel extends BaseModel {
+    public $cacheBlockKey = '_cacheBlock_';
     public $typeArr = [ //可选类型
         1 => '轮播图'
     ];
@@ -37,6 +38,15 @@ class BlockModel extends BaseModel {
 	    return $info;
 	}
 	
+	//添加内容缓存
+	protected  function _cacheBlock($id){
+	    return $this->getInfo($id);
+	}
+	//获取可以缓存的内容
+	public function getBlock($id){
+	    $key = $this->cacheBlockKey. $id;
+	    return $this->getCache($key, 'block', $id);
+	}
 	//格式化行
 	public function parseRow($v){
 	    $cateRow = d('contentCate')->where([ 'id'=>$v['cate_id'] ])->find();
@@ -68,6 +78,7 @@ class BlockModel extends BaseModel {
 	            $this->lastError = '修改失败!';
 	            return false;
 	        }
+	        $this->resetCache($this->cacheBlockKey.$id, 'block', $id);
 	        return $id;
 	    }
 	    
