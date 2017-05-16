@@ -725,6 +725,29 @@ $('.person-index .switch-reply').on('click', function(){
 	$('.person-index .post-reply').show();
 	$('.person-index .post-subject').hide();
 });
+if($('.person-index')[0]){
+	var url = window.location.href;
+	if(url.match(/.+\/([a-z]+)/)[1]=='original'){
+		$('.person-index .tab-subject').addClass('tab-actived');
+		$('.person-index .tab-data').removeClass('tab-actived');
+		$('.person-index .switch-subject').addClass('actived');
+		$('.person-index .switch-reply').removeClass('actived');
+		$('.person-index .person-post').show();
+		$('.person-index .person-data').hide();
+		$('.person-index .post-subject').show();
+		$('.person-index .post-reply').hide();
+	}
+	if(url.match(/.+\/([a-z]+)/)[1]=='reply'){
+		$('.person-index .tab-subject').addClass('tab-actived');
+		$('.person-index .tab-data').removeClass('tab-actived');
+		$('.person-index .switch-reply').addClass('actived');
+		$('.person-index .switch-subject').removeClass('actived');
+		$('.person-index .person-post').show();
+		$('.person-index .person-data').hide();
+		$('.person-index .post-reply').show();
+		$('.person-index .post-subject').hide();
+	}
+}
 // 帖子评论回复
 var thisReply = '';
 $('.win-reply span').on('click', function(){
