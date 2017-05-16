@@ -49,10 +49,7 @@ class BlockModel extends BaseModel {
 	}
 	//格式化行
 	public function parseRow($v){
-	    $cateRow = d('contentCate')->where([ 'id'=>$v['cate_id'] ])->find();
-	    $v['cateName'] = $cateRow['name'];
 	    $v['statusName'] = $this->statusArr[$v['status']];
-	    $v['publishTime'] = date("Y-m-d H:i:s",$v['publish_time']);
 	    $v['updateTime'] = date("Y-m-d H:i:s",$v['update_time']);
 	    $v['addTime'] = date("Y-m-d H:i:s",$v['add_time']);
 	    $v['typeName'] = $this->typeArr[$v['type']];
@@ -100,8 +97,8 @@ class BlockModel extends BaseModel {
 	
 	    foreach($data['list'] as $k=>$v){
 	        $data['list'][$k] = $this->parseRow($v);
-	    }
-
+	    } 
+        //dump($data['pageVar']);exit(); 
 	    return $data;
 	}
 	

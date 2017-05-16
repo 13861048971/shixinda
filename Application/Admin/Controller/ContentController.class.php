@@ -162,7 +162,7 @@ class ContentController extends PublicController {
 	        ]
 	    ];
 	    $this->setRightAction($rightBtn);
-	    $data = d('block')->getPageList($_GET, '', 'add_time desc', '');
+	    $data = d('block')->getPageList($_GET, '*', 'add_time desc');
 	    $this->assign('list', $data['list']);
 	    $this->assign($data);
 	    $this->assign('blockTitle', $_GET['title']);
@@ -175,7 +175,7 @@ class ContentController extends PublicController {
 	        $template = 'blockEdit1';
 	    }
 	    $this->ajaxEdit('block', $template, function($row, $mod){
-	        
+	         
 	    });
 	}
 	

@@ -174,11 +174,13 @@ class PostModel extends BaseModel{
 	protected  function _cachePost($id){
 	    return $this->getInfo($id);
 	}
+	
 	//获取可以缓存的内容
 	public function getPost($id){
 	    $key = $this->cachePostKey. $id;
 	    return $this->getCache($key, 'post', $id);
 	}
+	
     /**
      * 获取帖子列表信息
      * @param array $con

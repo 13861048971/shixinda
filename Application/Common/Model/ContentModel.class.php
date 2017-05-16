@@ -101,7 +101,7 @@ class ContentModel extends BaseModel {
 	            }
 	        }
 	    } 
-	    
+	    //dump($data['pageVar']);exit();
 	    return $data;
 	}
 	
