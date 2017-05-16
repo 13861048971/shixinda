@@ -329,8 +329,6 @@ $('.user-container .post-manage-list').on('click',function(e){
 });
 //账号修改
 $('.account-info-edit .commit-account').on('click',function(){
-	var avatar = $('#img-input-id-1').val();
-	$('.avatar-url').val(avatar);
 	var form = $('.account-info-edit').serialize();
 	$.ajax({
 		data:form,
@@ -348,6 +346,7 @@ $('.account-info-edit .commit-account').on('click',function(){
 });
 if($('.upload-clip-img')[0]){
 	$('.upload-file').on('click',function(){
+		$("#file0").val('');
 		$("#file0").click();
 		$.fn.cropper;
 	});
@@ -358,7 +357,7 @@ if($('.upload-clip-img')[0]){
 				$("#img0").attr("src", objUrl) ;
 			}
 			$('.upload-clip-img .img-preview>img').cropper({
-				aspectRatio: 1 / 1,
+				aspectRatio: 1/1,
 				crop: function() {}
 			}); 
 			$('.upload-clip-img .img-preview>img').cropper('replace', objUrl);
@@ -383,7 +382,7 @@ if($('.upload-clip-img')[0]){
 			var url = getObjectURL(blob);
 			$("#img0").attr("src", url);
 			var form = new FormData();
-			form.append("avatar", blob);
+			form.append("file", blob);
 			$.ajax({
 				processData: false,
 				contentType: false,
@@ -392,40 +391,17 @@ if($('.upload-clip-img')[0]){
 				dataType:'json',
 				type:'post',
 				success:function(data){
-					if(data.data){
-						win.alert(data.info, 'success');
+					if(!data.err){
+						$('form .avatar-url').attr('value',data.src);
 					}else{
-						win.alert(data.info, 'error');
+						win.alert(data.msg, 'error');
 					}
 				}
 			});
 		},'image/jpeg',0.8);
 		$('.upload-clip-img .img-preview>img').cropper('destroy');
 	});
-	// $('.account-info-edit').on('click','input[type=radio]',function(){
-	// 	$('.account-info-edit input[type=radio]').removeAttr('data-checked');
-	// 	$(this).attr('data-checked','checked');
-	// })
 }
-// $('.account-info-edit .commit-account').on('click',function(){
-// 	var form = new FormData();
-// 	form.append("avatar", avatarFile);
-// 	$.ajax({
-// 		processData: false,
-//     	contentType: false,
-// 		data:form,
-// 		url:'/file/upload',
-// 		dataType:'json',
-// 		type:'post',
-// 		success:function(data){
-// 			if(data.data){
-// 				win.alert(data.info, 'success');
-// 			}else{
-// 				win.alert(data.info, 'error');
-// 			}
-// 		}
-// 	});
-// });
 //密码修改
 $('.modify-pass .commit-pass').on('click',function(){
 	var newPass = $('.new-pass').val();
