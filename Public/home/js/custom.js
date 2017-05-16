@@ -328,79 +328,11 @@ $('.user-container .post-manage-list').on('click',function(e){
 	}
 });
 //账号修改
-// $('.account-info-edit .commit-account').on('click',function(){
-// 	var avatar = $('#img-input-id-1').val();
-// 	$('.avatar-url').val(avatar);
-// 	var form = $('.account-info-edit').serialize();
-// 	$.ajax({
-// 		data:form,
-// 		url:'/User/userEdit',
-// 		dataType:'json',
-// 		type:'post',
-// 		success:function(data){
-// 			if(data.data){
-// 				win.alert(data.info, 'success');
-// 			}else{
-// 				win.alert(data.info, 'error');
-// 			}
-// 		}
-// 	});
-//});
-if($('.account-info-edit')[0]){
-	$.fn.cropper;
-	$("#file0").change(function(){
-		var objUrl = getObjectURL(this.files[0]) ;
-		if (objUrl) {
-			$("#img0").attr("src", objUrl) ;
-		}
-		$('.user-avatar>div>img').cropper({
-			aspectRatio: 1 / 1,
-			crop: function() {
-			}
-		}); 
-		$('.user-avatar>div>img').cropper('replace', objUrl);
-	}) ;
-	//建立一个可存取到该file的url
-	function getObjectURL(file) {
-		var url = null ; 
-		if (window.createObjectURL!=undefined) { // basic
-			url = window.createObjectURL(file) ;
-		} else if (window.URL!=undefined) { // mozilla(firefox)
-			url = window.URL.createObjectURL(file) ;
-		} else if (window.webkitURL!=undefined) { // webkit or chrome
-			url = window.webkitURL.createObjectURL(file) ;
-		}
-		return url ;
-	}
-	var avatarFile='';
-	$('.save').on('click', function(){
-		var data = $('.user-avatar>div>img').cropper("getCroppedCanvas").toBlob(function(blob) {
-			avatarFile = blob;
-			var url = getObjectURL(avatarFile);
-			$("#img0").attr("src", url);
-			$('.cropper-container').remove();
-			$('.user-avatar>div>img').removeClass();
-		},'image/jpeg',0.8);
-	});
-	$('.account-info-edit').on('click','input[type=radio]',function(){
-		$('.account-info-edit input[type=radio]').removeAttr('data-checked');
-		$(this).attr('data-checked','checked');
-	})
-}
 $('.account-info-edit .commit-account').on('click',function(){
-	var thisForm = $(this).parents('form');
-	var form = new FormData(thisForm);
-	form.append("avatar", avatarFile);
-	thisForm.find('[name]').each(function(){
-		if(!($(this).attr('type')=='radio' && !$(this).attr('data-checked'))){
-			var key = $(this).attr('name');
-			var value = $(this).val();
-			form.append(key, value);
-		}
-	})
+	var avatar = $('#img-input-id-1').val();
+	$('.avatar-url').val(avatar);
+	var form = $('.account-info-edit').serialize();
 	$.ajax({
-		processData: false,
-    	contentType: false,
 		data:form,
 		url:'/User/userEdit',
 		dataType:'json',
@@ -414,6 +346,86 @@ $('.account-info-edit .commit-account').on('click',function(){
 		}
 	});
 });
+if($('.upload-clip-img')[0]){
+	$('.upload-file').on('click',function(){
+		$("#file0").click();
+		$.fn.cropper;
+	});
+	$("#file0").change(function(){
+		if(this.files[0]){
+			var objUrl = getObjectURL(this.files[0]) ;
+			if (objUrl) {
+				$("#img0").attr("src", objUrl) ;
+			}
+			$('.upload-clip-img .img-preview>img').cropper({
+				aspectRatio: 1 / 1,
+				crop: function() {}
+			}); 
+			$('.upload-clip-img .img-preview>img').cropper('replace', objUrl);
+		}
+	}) ;
+	//建立一个可存取到该file的url
+	function getObjectURL(file) {
+		var url = null ; 
+		if (window.createObjectURL!=undefined) { // basic
+			url = window.createObjectURL(file) ;
+		} else if (window.URL!=undefined) { // mozilla(firefox)
+			url = window.URL.createObjectURL(file) ;
+		} else if (window.webkitURL!=undefined) { // webkit or chrome
+			url = window.webkitURL.createObjectURL(file) ;
+		}
+		return url ;
+	}
+	$('.save').on('click', function(){
+		if(!$('.cropper-container')[0])
+			return;
+		var data = $('.upload-clip-img .img-preview>img').cropper("getCroppedCanvas").toBlob(function(blob) {
+			var url = getObjectURL(blob);
+			$("#img0").attr("src", url);
+			var form = new FormData();
+			form.append("avatar", blob);
+			$.ajax({
+				processData: false,
+				contentType: false,
+				data:form,
+				url:'/file/upload',
+				dataType:'json',
+				type:'post',
+				success:function(data){
+					if(data.data){
+						win.alert(data.info, 'success');
+					}else{
+						win.alert(data.info, 'error');
+					}
+				}
+			});
+		},'image/jpeg',0.8);
+		$('.upload-clip-img .img-preview>img').cropper('destroy');
+	});
+	// $('.account-info-edit').on('click','input[type=radio]',function(){
+	// 	$('.account-info-edit input[type=radio]').removeAttr('data-checked');
+	// 	$(this).attr('data-checked','checked');
+	// })
+}
+// $('.account-info-edit .commit-account').on('click',function(){
+// 	var form = new FormData();
+// 	form.append("avatar", avatarFile);
+// 	$.ajax({
+// 		processData: false,
+//     	contentType: false,
+// 		data:form,
+// 		url:'/file/upload',
+// 		dataType:'json',
+// 		type:'post',
+// 		success:function(data){
+// 			if(data.data){
+// 				win.alert(data.info, 'success');
+// 			}else{
+// 				win.alert(data.info, 'error');
+// 			}
+// 		}
+// 	});
+// });
 //密码修改
 $('.modify-pass .commit-pass').on('click',function(){
 	var newPass = $('.new-pass').val();

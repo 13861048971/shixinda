@@ -737,6 +737,9 @@ ul#filters {
 .user-container .post-edit{
 	margin: 20px 0 0 0;
 }
+.user-container .account-info-edit .user-avatar>div{
+	padding: 0;
+}
 .user-container .post-manage-list dl dd,
 .user-container .message-list dl dd{
 	padding: 15px;
@@ -1572,4 +1575,9 @@ ul#filters {
 }
 .user-section .message-list .reply-time{
 	float: right;
+}
+/*图片裁剪上传*/
+.upload-clip-img .img-preview{
+	width: 500px;
+	margin: 15px 0 0 0;
 }
