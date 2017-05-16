@@ -88,7 +88,7 @@ class ConfigModel extends BaseModel{
 		return $name;
 	}
 	
-	function getPageList($con, $fields = 'id'){
+	function getPageList($con, $fields = 'id',$order = '',$perNum = 15){
 		$data = parent::getPageList($con, $fields);
 		foreach($data['list'] as $k=>$v){
 			$data['list'][$k] = $this->getInfo($v['id']);
