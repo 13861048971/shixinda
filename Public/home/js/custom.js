@@ -28,6 +28,75 @@ $(window).load(function () {
 		}
 	});
 });
+/**
+ * 小弹窗
+ **/
+function smWin(info){
+	if(!info) info = '';
+	var style='<style id="sm-win-style">'+
+				'.sm-win{position:fixed;border:1px solid #faebcc;color:#8a6d3b;background:#fcf8e3;padding:8px 10px; '+
+				' z-index:19991015; display:none;opacity:0.9}'+
+				'.sm-win.error{background:#f2dede;border:1px solid #ebccd1;color:#a94442}'+
+				'.sm-win.success{background:#dff0d8;border:1px solid #d6e9c6;color:#3c763d}'+
+				'.sm-win.left-bottom{display:block; left:0; bottom:10px;}'+
+				'.sm-win.center{width: auto;display: table;margin-left: auto; margin-right: auto;}'+
+			  '</style>';
+	var html = '<div class="sm-win"><span>' + info + '</span></div>';
+	var node = $(html);
+	this.add = function(){
+		if(!$('#sm-win-style').get(0))
+			$('head').append(style);
+		$('body').append(node); return node; 
+	};
+	this.del = function(){ node.remove(); };
+	this.show= function(str,pos){
+		if(str) node.find('span').text(str);
+		node.show();
+		this.setPosition('center');
+		return this;
+	}
+	this.hide = function(sec){ node.fadeOut(sec); }
+	this.alert = function(info, type){ 
+		this.show(info, 'center');
+		if(!type) type = 'error';
+		node.removeClass('error').removeClass('success').addClass(type);
+		setTimeout(function(){
+			node.fadeOut(300); return;
+			node.animate({left:0},800,function(){ node.hide(); });
+		}, 2500);
+	}
+	this.getWin = function(){ return node; };
+	this.loading = function(){ 
+		node.show().find('span').text('加载数据中...');	
+		node.addClass('left-bottom'); 
+	}
+	//@param string   "lb", 'center'
+	this.setPosition = function(pos){
+		if('lb' == pos)
+			node.removeClass('center').addClass('left-bottom');
+		if('center' == pos)
+			setPos(node);	
+	}
+	this.add();
+}
+function setPos(jNode, pos){
+	if(!pos) pos = 'center';
+	
+	var top = ($('html').get(0).clientHeight - jNode.height()) / 2;
+	var left = ($('html').get(0).clientWidth - jNode.width()) / 2;
+	left = left>0 ? left : 0;
+	top  = top > 0 ? top : 0;
+	top = top > 40 ? (top - 40) : top;
+	
+	var scrollTop = $('html').scrollTop() || $('body').scrollTop();
+	top = jNode.css('position') == 'absolute' ?  scrollTop + top : top;
+	jNode.css({"top":top,"left":left});
+}
+$(function(){
+	window.win = new smWin();
+	//状态小弹窗
+	window.floatWin = new smWin(); 
+});
 // 产品详情
 $('.product-detail').on('click',function(e){
 	var node = $(e.target);
@@ -259,11 +328,79 @@ $('.user-container .post-manage-list').on('click',function(e){
 	}
 });
 //账号修改
+// $('.account-info-edit .commit-account').on('click',function(){
+// 	var avatar = $('#img-input-id-1').val();
+// 	$('.avatar-url').val(avatar);
+// 	var form = $('.account-info-edit').serialize();
+// 	$.ajax({
+// 		data:form,
+// 		url:'/User/userEdit',
+// 		dataType:'json',
+// 		type:'post',
+// 		success:function(data){
+// 			if(data.data){
+// 				win.alert(data.info, 'success');
+// 			}else{
+// 				win.alert(data.info, 'error');
+// 			}
+// 		}
+// 	});
+//});
+if($('.account-info-edit')[0]){
+	$.fn.cropper;
+	$("#file0").change(function(){
+		var objUrl = getObjectURL(this.files[0]) ;
+		if (objUrl) {
+			$("#img0").attr("src", objUrl) ;
+		}
+		$('.user-avatar>div>img').cropper({
+			aspectRatio: 1 / 1,
+			crop: function() {
+			}
+		}); 
+		$('.user-avatar>div>img').cropper('replace', objUrl);
+	}) ;
+	//建立一个可存取到该file的url
+	function getObjectURL(file) {
+		var url = null ; 
+		if (window.createObjectURL!=undefined) { // basic
+			url = window.createObjectURL(file) ;
+		} else if (window.URL!=undefined) { // mozilla(firefox)
+			url = window.URL.createObjectURL(file) ;
+		} else if (window.webkitURL!=undefined) { // webkit or chrome
+			url = window.webkitURL.createObjectURL(file) ;
+		}
+		return url ;
+	}
+	var avatarFile='';
+	$('.save').on('click', function(){
+		var data = $('.user-avatar>div>img').cropper("getCroppedCanvas").toBlob(function(blob) {
+			avatarFile = blob;
+			var url = getObjectURL(avatarFile);
+			$("#img0").attr("src", url);
+			$('.cropper-container').remove();
+			$('.user-avatar>div>img').removeClass();
+		},'image/jpeg',0.8);
+	});
+	$('.account-info-edit').on('click','input[type=radio]',function(){
+		$('.account-info-edit input[type=radio]').removeAttr('data-checked');
+		$(this).attr('data-checked','checked');
+	})
+}
 $('.account-info-edit .commit-account').on('click',function(){
-	var avatar = $('#img-input-id-1').val();
-	$('.avatar-url').val(avatar);
-	var form = $('.account-info-edit').serialize();
+	var thisForm = $(this).parents('form');
+	var form = new FormData(thisForm);
+	form.append("avatar", avatarFile);
+	thisForm.find('[name]').each(function(){
+		if(!($(this).attr('type')=='radio' && !$(this).attr('data-checked'))){
+			var key = $(this).attr('name');
+			var value = $(this).val();
+			form.append(key, value);
+		}
+	})
 	$.ajax({
+		processData: false,
+    	contentType: false,
 		data:form,
 		url:'/User/userEdit',
 		dataType:'json',
