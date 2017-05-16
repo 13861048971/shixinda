@@ -323,7 +323,7 @@ class PostController extends PublicController {
             $this->assign('postList',$data['list']);
             return $this->display();
         }
-        if($_GET['act'] == 'replay'){
+        if($_GET['act'] == 'reply'){
             $repaly = d('postComment')->getPageList(['user_id'=>$_GET['userId']],'*');//回帖信息
             $this->assign('personReplay',$repaly['list']);
            return $this->display();

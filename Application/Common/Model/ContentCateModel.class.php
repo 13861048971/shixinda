@@ -5,18 +5,26 @@ class ContentCateModel extends BaseModel {
         0 => '禁用',
         1 => '启用'
     ];
-    public $cacheTdkKey = '_cacheChildCateArr';
+    public $cacheChildCateKey = '_cacheChildCateArr';
     
     //缓存tdk信息
     protected  function _cacheChildCateArr($con){
-        $tdkInfo = $this->getList($con);
-        return $tdkInfo;
+        $cateChildren = $this->getList($con);
+        $cateArr = getIdArr($cateChildren);
+        $product = d('content')->where(['cate_id' => ['in',$cateArr]])->select();
+        foreach ($cateChildren as $k=>$v){
+            foreach ($product as $k1=>$v1){
+                if($v1['cate_id'] == $v['id']){
+                    $cateChildren[$k]['childInfo'][] = $v1;
+                }
+            }
+        }
+        return $cateChildren;
     }
     
-    //获取tdk数据缓存信息
+    //获取ChildCate数据缓存信息
     public function getChildCateArr($con){
-        $tdkinfo = $this->getCache($this->cacheTdkKey.$con['pid'], 'ChildCateArr',$con);
-        return $tdkinfo;
+        return $this->getCache($this->cacheChildCateKey.$con['pid'], 'ChildCateArr',$con);
     }
     //列表
     public function getList($con=[], $limit=50){

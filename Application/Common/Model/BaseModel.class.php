@@ -27,13 +27,13 @@ class BaseModel extends Model {
 	
 	//获取缓存
 	protected function getCache($key, $method, $param = ''){
-		$data = s($key);
-		if(!$data){
+		$cacheData = s($key);
+		if(!$cacheData){
 			$method = '_cache' . $method;
-			$data = $this->$method($param);
-			s($key, $data);
+			$cacheData = ['key' => $key, 'value' => $this->$method($param)];
+			s($key, $cacheData);
 		}
-		return $data;
+		return $cacheData['value'];
 	}
 	
 	//删除缓存
@@ -45,7 +45,9 @@ class BaseModel extends Model {
 	protected function resetCache($key, $method, $param = ''){
 		$method = '_cache' . ucfirst($method);
 		$data = $this->$method($param);	
-		s($key, $data);
+		$cacheData = ['key' => $key, 'value' => $data];
+		s($key, $cacheData);
+		
 		return $data;
 	}
 	

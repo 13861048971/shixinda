@@ -24,8 +24,8 @@ class TdkModel extends BaseModel {
 	}
 	
 	//获取tdk数据缓存信息
-	public function getTdk($con){ 
-	    $tdkinfo = $this->getCache($this->cacheTdkKey.$con['node_id'], 'tdk',$con);
+	public function getTdk($con){
+	    $tdkinfo = $this->getCache($this->cacheTdkKey.$con['node_id'].'-'.$con['type'], 'tdk',$con);
 	    return $tdkinfo;
 	}
 	
@@ -64,7 +64,7 @@ class TdkModel extends BaseModel {
 	    $return = $this->where(['node_id'=>$data['id']])->find();
 	    
 	    if($return){
-	        $this->resetCache($this->cacheTdkKey.$return['node_id'], 'Tdk');
+	        $this->resetCache($this->cacheTdkKey.$return['node_id'].'-'.$return['type'], 'Tdk');
 	        $tdkData['id'] = $return['id'];
 	        $tdkData['update_time'] = time();
 	        $return = $this->data($tdkData)->save();

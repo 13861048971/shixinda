@@ -44,16 +44,7 @@ class IndexController extends PublicController {
 	public function productDetail(){ 
         $this->tdkDetail(); 
 	    $CateChildren = d('contentCate')->getChildCateArr(['pid'=>3]);;//产品缓存分类信息
-	    $productInfo = d('content')->getInfo($_GET['id']);
-	    $cateArr = getIdArr($CateChildren);
- 	    $product = d('content')->where(['cate_id' => ['in',$cateArr]])->select();
-	    foreach ($CateChildren as $k=>$v){
-	      foreach ($product as $k1=>$v1){
-	          if($v1['cate_id'] == $v['id']){
-	              $CateChildren[$k]['childInfo'][] = $v1;
-	          }
-	      }
-	    }
+	    $productInfo = d('content')->getContent($_GET['id']);
 	    $this->assign('productInfo',$productInfo);
 	    $this->assign('ChildCateList',$CateChildren);
 	    if(IS_AJAX)

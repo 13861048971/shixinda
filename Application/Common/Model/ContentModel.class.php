@@ -34,9 +34,6 @@ class ContentModel extends BaseModel {
 	    $info = $this->find($id);
 	    if(!$info) return;
 	    $info = $this->parseRow($info);
-	    $tdkInfo = d('tdk')->getInfo($id);
-	    
-	    $info['tdk'] = $tdkInfo;
 	    return $info;
 	}
 	
