@@ -39,14 +39,14 @@ class PublicController extends Controller {
 	        'node_id' => (int)$_GET['id'],
 	        'type' => d('tdk')->typeArr['content']
 	    ];
-	    $tdkInfo = d('tdk')->tdkInfo($con);
+	    $tdkInfo = d('tdk')->getTdk($con);
 	    if($tdkInfo)
 	        $this->setTdk($tdkInfo['title'], $tdkInfo['keywords'], $tdkInfo['description']);
 	}
 	
 	//tdk列表
 	public function tdkList($con){
-	    $tdkInfo = d('tdk')->tdkInfo($con);
+	    $tdkInfo = d('tdk')->getTdk($con);
 	    if($tdkInfo)
 	        $this->setTdk($tdkInfo['title'], $tdkInfo['keywords'], $tdkInfo['description']);
 	}

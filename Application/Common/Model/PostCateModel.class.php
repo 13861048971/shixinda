@@ -186,7 +186,8 @@ class PostCateModel extends BaseModel{
     
     //格式化行
     public function parseRow($v){
-        $v['num'] = d('postCate')->where(['pid'=>$v['id']])->Count();
+        if(MODULE_NAME == 'Admin')
+            $v['num'] = d('postCate')->where(['pid'=>$v['id']])->Count();
         $v['addTime'] = date('Y-m-d H:i',$v['add_time']);
         $v['updateTime'] = date('Y-m-d H:i',$v['update_time']);
         return $v ;

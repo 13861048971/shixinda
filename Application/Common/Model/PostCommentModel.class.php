@@ -5,6 +5,7 @@ import('Org.Util.Validator');
  * 用户模型
  */
 class PostCommentModel extends BaseModel{
+    public $cacheCountKey = '_cacheCount';
     public $statusArr = [1=>'显示', 0=>'不显示'];
     public $typeArr = ['新闻', '短信'];
     /**
@@ -12,6 +13,7 @@ class PostCommentModel extends BaseModel{
      */
     function edit($data, $id=null){
         if($id){
+            
             $data['update_time'] = time();
             $data['id'] = $id;
             if(!$this->create($data))
@@ -26,8 +28,14 @@ class PostCommentModel extends BaseModel{
         $data['add_time'] = $data['update_time'] = time();
         if(!$this->create($data))
             return false;
-        if(!($id = $this->add()))
+        if(!($id = $this->add())){
             return $this->setError('评论失败!');
+        }else{
+            $commentInfo = $this->where(['id' => $id])->find();
+            if($commentInfo)
+                $this->resetCache($this->cacheCountKey.$commentInfo['post_id'].$commentInfo['id'], 'Count');
+        }
+            
         //帖子的评论数量
         $postComment = d('postComment')->where(['post_id'=>$data['post_id']])->count();
         d('post')->where(['id'=>$data['post_id']])->setField('comment_num', $postComment);
@@ -105,7 +113,19 @@ class PostCommentModel extends BaseModel{
         }
         return $data;
     }
-
+    //缓存数量
+    //d('postComment')->where(['id'=>['lt',$v['node_id']],['post_id'=>$v2['post_id']]])->count();
+    protected  function _cacheCount($con){
+        $count = $this->where($con)->count();
+        return $count;
+    }
+    
+    //获取缓存数目信息
+    public function getPostCommentCount($con){
+        $count = $this->getCache($this->cacheCountKey.$con['post_id'].$con['node_id'], 'Count',$con);
+        return $count;
+    }
+    
     /**
      * 获取信息列表
      * @param array $con

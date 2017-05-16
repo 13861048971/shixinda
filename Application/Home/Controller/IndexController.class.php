@@ -42,7 +42,7 @@ class IndexController extends PublicController {
 	
 	//产品详情
 	public function productDetail(){ 
-	   $this->tdkDetail(); 
+        $this->tdkDetail(); 
 	    $CateChildren = d('contentCate')->where(['pid'=>3])->select();//产品分类信息
 	    $productInfo = d('content')->getInfo($_GET['id']);
 	    $cateArr = getIdArr($CateChildren);
@@ -141,7 +141,6 @@ class IndexController extends PublicController {
 	    if($_GET['cate_id'] && $pid = (int)$_GET['cate_id'])
 	        $con = ['cate_id' => $pid];
         $caseList = d('content')->getPageList($con,'','',6);//产品列表页
-// 	    $contentList = d('content')->where($con)->select();
 	    $this->assign('ChildCateList',$CateChildren);
 	    $this->assign('caseList',$caseList['list']);
         $this->assign('list',$caseList);

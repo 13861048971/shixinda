@@ -8,6 +8,7 @@ class TdkModel extends BaseModel {
         'postCate' => 4
     ];
     
+    public $cacheTdkKey = '_cacheTdk';
     //列表
     public function getList($con=[], $limit=5){
         $list = $this->where($con)->limit($limit)->select();
@@ -15,6 +16,17 @@ class TdkModel extends BaseModel {
             $list[$k] = $this->parseRow($v);
         }
 	    return $list;
+	}
+	//缓存tdk信息
+	protected  function _cacheTdk($con){
+	    $tdkInfo = $this->tdkInfo($con);
+	    return $tdkInfo;
+	}
+	
+	//获取tdk数据缓存信息
+	public function getTdk($con){ 
+	    $tdkinfo = $this->getCache($this->cacheTdkKey.$con['node_id'], 'tdk',$con);
+	    return $tdkinfo;
 	}
 	
 	//格式化行
@@ -52,6 +64,7 @@ class TdkModel extends BaseModel {
 	    $return = $this->where(['node_id'=>$data['id']])->find();
 	    
 	    if($return){
+	        $this->resetCache($this->cacheTdkKey.$return['node_id'], 'Tdk');
 	        $tdkData['id'] = $return['id'];
 	        $tdkData['update_time'] = time();
 	        $return = $this->data($tdkData)->save();

@@ -67,10 +67,7 @@ class PostController extends PublicController {
 	        'node_id' => (int)$_GET['post_cate_id']?$_GET['post_cate_id']:0,
 	        'type' => d('tdk')->typeArr['contentCate']
 	    ];
-	    $tdkInfo = d('tdk')->tdkInfo($con);
-	    
-	    if($tdkInfo)
-	       $this->setTdk($tdkInfo['title'], $tdkInfo['keywords'], $tdkInfo['description']);
+	    $this->tdkList($con);
 	    
 	    //商户交流的帖子列表
 	    $customList = d('post')->getPostList([], 6, 'add_time desc');
@@ -127,10 +124,11 @@ class PostController extends PublicController {
 	        'node_id' => (int)$_GET['id'],
 	        'type' => d('tdk')->typeArr['post']
 	    ];
-	    $tdkInfo = d('tdk')->tdkInfo($con);
+	    $this->tdkList($con);
+// 	    $tdkInfo = d('tdk')->tdkInfo($con);
 	    
-	    if($tdkInfo)
-	    $this->setTdk($tdkInfo['title'], $tdkInfo['keywords'], $tdkInfo['description']);
+// 	    if($tdkInfo)
+// 	    $this->setTdk($tdkInfo['title'], $tdkInfo['keywords'], $tdkInfo['description']);
 
 	    //商户交流的帖子列表
 	    $customList = d('post')->getPostList([], 6, 'add_time desc');

@@ -86,6 +86,7 @@ class UserMsgModel extends BaseModel {
 	 * 编辑or添加
 	 */
 	function edit($data, $id=null){	
+	    
 	    $type = $this->typeArr;
 	    $type = array_flip($type);
 	    $data['type_name'] = $type[$data['type']];
@@ -321,7 +322,12 @@ class UserMsgModel extends BaseModel {
 			    foreach ($postComentList as $k2 => $v2){
 			        if($v2['id'] == $v['node_id']){
 			            //计算当前消息前面的该帖下面的所有消息
-			            $count = d('postComment')->where(['id'=>['lt',$v['node_id']],['post_id'=>$v2['post_id']]])->count();
+			            $con = [
+			                'id'=>['lt',$v['node_id']],
+			                'post_id'=>$v2['post_id']
+			                
+			            ];
+			            $count = d('postComment')->getPostCommentCount($con);
 			            $v['p'] = ceil($count/15);
 			            //生成url定位当前消息的内容行
 			            $data['list'][$k]['url'] = U('post/postDetail',['msg_id'=>$v['id'],'p'=>$v['p'],'id'=>$v2['post_id']]).'#comment-'.$v['node_id'];
