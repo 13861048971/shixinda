@@ -36,29 +36,39 @@ class SupportModel extends BaseModel {
 	    $data = [
             'user_id' => $this->user['id'],
             'type' => $this->typeArr[$type],
-	        'node_id' =>$_GET['id']
+	        'node_id' =>$_GET['id'],
         ];
+	    $messageData = [
+	        'from_user_id' => $data['user_id'],
+	        'node_id' => $data['node_id'],
+	        'type' => d('userMsg')->typeArr['点赞信息'],
+	        'user_id' => d('post')->where(['id'=>$data['node_id']])->getfield('user_id'),
+	    ];
 	    $info = $this->where($data)->find();
 
 	    //当前用户有记录的时候
 	    if($info){
     	        if((int)$info['support'] == 1){
-    	            return ajaxReturn2(1,'您已赞',['status'=>1]);
+    	            return ajaxReturn2(1,'您已赞',['status'=>1,'id'=>$info['id']]);
     	        }else{
-    	            return ajaxReturn2(1,'您已踩',['status'=>2]);
+    	            return ajaxReturn2(1,'您已踩',['status'=>2,'id'=>$info['id']]);
     	        }	   
 	    }  
     	    //当前用户没有记录的时候
     	    if($_GET['act'] == 'zan'){
     	        $data['support'] = 1;
-    	        if($this->edit($data))
-                    return ajaxReturn2(0,'赞成功',['status'=>3]);
+    	        if($id = $this->edit($data))
+    	            
+    	            if(!d('userMsg')->edit($messageData)){
+    	                ajaxReturn(1, d('userMsg')->getError());
+    	            };
+                    return ajaxReturn2(0,'赞成功',['status'=>3,'id'=>$id]);
     	    }
     	    
     	    if($_GET['act'] == 'cai'){
     	        $data['support'] = 0;
-    	        if($this->edit($data))
-    	            return ajaxReturn2(0,'踩成功',['status'=>4]);
+    	        if($id = $this->edit($data))
+    	            return ajaxReturn2(0,'踩成功',['status'=>4,'id'=>$id]);
     	    }
 	   
     }

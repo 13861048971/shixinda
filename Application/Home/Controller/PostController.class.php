@@ -282,11 +282,16 @@ class PostController extends PublicController {
     public function postSupport(){
         if(!$this->user['id'])
             return ajaxReturn2(1,'请先登录');
-        d('support')->isSupport('post');
+        $support = d('support')->isSupport('post');
     }
     
     //帖子回复点赞或者踩
     public function postCommentSupport(){
+        $data = [
+            'user_id' => $this->user['id'],
+            'post_id' => $_GET['post_id'],
+        ];
+   
         if(!$this->user['id'])
             return ajaxReturn2(1,'请先登录');
             d('support')->isSupport('postComment');

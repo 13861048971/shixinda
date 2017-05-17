@@ -10,7 +10,8 @@ class UserMsgModel extends BaseModel {
 	    '系统信息' => 0,
         '评论信息' => 1,
         '回复信息' => 2, 
-        '站内信息' => 3 
+        '站内信息' => 3,
+	    '点赞信息' =>4
     ];
 	public $cateArr = ['通知','投标','订单'];
 
@@ -100,11 +101,12 @@ class UserMsgModel extends BaseModel {
 	        empty($fromUser['nickname'])?($data['from_user_name'] = $fromUser['mobile']):($data['from_user_name'] = $fromUser['nickname']);
 	    }
   
-	    if(in_array($data['type'],[1,2]))
+	    if(in_array($data['type'],[1,2,4]))
 	       $data['content'] = $data['user_name'].'你有一条来自'.$data['from_user_name'].'的'.$data['type_name'];
 	    if($data['type'] == 3)
 	        $data['content'] = $data['from_user_name'].'对你说：'.$data['content'];
-		$data = $this->setValidate($data);
+	    if($data['type_name']!='点赞信息')
+		  $data = $this->setValidate($data);
 		
 		if($id){
 			$data['update_time'] = time();
@@ -330,7 +332,14 @@ class UserMsgModel extends BaseModel {
 			            $count = d('postComment')->getPostCommentCount($con);
 			            $v['p'] = ceil($count/15);
 			            //生成url定位当前消息的内容行
-			            $data['list'][$k]['url'] = U('post/postDetail',['msg_id'=>$v['id'],'p'=>$v['p'],'id'=>$v2['post_id']]).'#comment-'.$v['node_id'];
+			    
+			            if((int)$data['list'][$k]['type'] == 4){
+			                $data['list'][$k]['url'] = U('post/postDetail',['id'=>$data['list'][$k]['node_id']]);
+			            }else{
+			                $data['list'][$k]['url'] = U('post/postDetail',['msg_id'=>$v['id'],'p'=>$v['p'],'id'=>$v2['post_id']]).'#comment-'.$v['node_id'];
+			            }
+			                
+			            
 			        }
 			    }
 			}	
