@@ -87,10 +87,6 @@ class PostModel extends BaseModel{
     */
     public function getPageList($con, $fields = 'id',$order = 'id desc', $perNum = 10){ 
         $data = parent::getPageList($con, $fields, $order, $perNum);
-        //帖子列表的id数组
-        $idArr = getIdArr($data['list']);
-        //发帖人的id数组
-        $idArr1 = getIdArr($data['list'], user_id);
         $subQuery = d('postComment')->where(['post_id' => ['in', $idArr]])->group('post_id')
             ->field('max(id)')->buildsql();
         $postCommentList = d('postComment')->where("id in $subQuery")->select();
@@ -100,9 +96,11 @@ class PostModel extends BaseModel{
         if(MODULE_NAME == 'Admin'){
             $postCateIdArr = getIdArr($data['list'],'post_cate_id');
             $postCateList = d('postCate')->where(['id'=>['in',$postCateIdArr]])->select();
-        }    
-            $postUserIdArr = getIdArr($data['list'],'user_id');
-            $postUserList = d('user')->where(['id'=>['in',$postUserIdArr]])->select();
+        } 
+        //发帖人的id数组
+        $postUserIdArr = getIdArr($data['list'],'user_id');
+        //发帖人信息
+        $postUserList = d('user')->where(['id'=>['in',$postUserIdArr]])->select();
          
         foreach($data['list'] as $k1=>$v1){
             $data['list'][$k1] =  $this->parseRow($v1);
