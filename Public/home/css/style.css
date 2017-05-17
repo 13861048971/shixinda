@@ -132,6 +132,7 @@ a:hover{
 	 list-style: none;
 	 position: absolute;
 	 background-color: #fff;
+	 box-shadow: 2px 3px 7px 0px #eee, 1px 1px 4px 0px #eee;
  }
 #menu-top ul li a{
 	display: block;
