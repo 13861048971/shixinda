@@ -92,6 +92,71 @@ function setPos(jNode, pos){
 	top = jNode.css('position') == 'absolute' ?  scrollTop + top : top;
 	jNode.css({"top":top,"left":left});
 }
+/**
+ * 图片上传裁剪，依赖jQuery,Bootstrap
+ * @param src string 初始图片地址
+ * @param aspectRario NaN(num/num) 裁剪比例
+ * @param callback function 回调函数
+ */
+function imgUploadClip(src,aspectRatio,callback){
+	var html = '<button class="btn btn-default upload-file" type="button">本地文件</button><input type="file" id="file0" multiple="multiple" style="display:none"><div class="img-area"><div class="img-operate"><img src="'+src+'" id="img0"></div><div class="img-handle" style="display:none;"><div class="img-preview" style="overflow:hidden;"><img src="" alt=""></div><button class="btn btn-default save" type="button">裁剪</button></div></div>';
+	$('.img-upload-clip').append(html);
+	$('.upload-file').on('click',function(){
+		$("#file0").val('');
+		$("#file0").click();
+		$.fn.cropper;
+	});
+	$("#file0").change(function(){
+		if(this.files[0]){
+			var objUrl = getObjectURL(this.files[0]) ;
+			if (objUrl) {
+				$("#img0").attr("src", objUrl) ;
+			}
+			$('.img-upload-clip .img-handle').show();
+			$('.img-upload-clip .img-operate>img').cropper({
+				aspectRatio: aspectRatio,
+				crop: function() {},
+				preview:'.img-upload-clip .img-preview'
+			}); 
+			$('.img-upload-clip .img-operate>img').cropper('replace', objUrl);
+		}
+	});
+	//建立一个可存取到该file的url
+	function getObjectURL(file) {
+		var url = null ; 
+		if (window.createObjectURL!=undefined) { // basic
+			url = window.createObjectURL(file) ;
+		} else if (window.URL!=undefined) { // mozilla(firefox)
+			url = window.URL.createObjectURL(file) ;
+		} else if (window.webkitURL!=undefined) { // webkit or chrome
+			url = window.webkitURL.createObjectURL(file) ;
+		}
+		return url ;
+	}
+	$('.save').on('click', function(){
+		if(!$('.cropper-container')[0])
+			return;
+		var data = $('.img-upload-clip .img-operate>img').cropper("getCroppedCanvas").toBlob(function(blob) {
+			var url = getObjectURL(blob);
+			$("#img0").attr("src", url);
+			var form = new FormData();
+			form.append("file", blob);
+			$.ajax({
+				processData: false,
+				contentType: false,
+				data:form,
+				url:'/file/upload',
+				dataType:'json',
+				type:'post',
+				success:function(data){
+					callback(data);
+				}
+			});
+		},'image/jpeg',0.8);
+		$('.img-upload-clip .img-handle').hide();
+		$('.img-upload-clip .img-operate>img').cropper('destroy');
+	});
+};
 $(function(){
 	window.win = new smWin();
 	//状态小弹窗
@@ -344,64 +409,19 @@ $('.account-info-edit .commit-account').on('click',function(){
 		}
 	});
 });
-if($('.upload-clip-img')[0]){
-	$('.upload-file').on('click',function(){
-		$("#file0").val('');
-		$("#file0").click();
-		$.fn.cropper;
-	});
-	$("#file0").change(function(){
-		if(this.files[0]){
-			var objUrl = getObjectURL(this.files[0]) ;
-			if (objUrl) {
-				$("#img0").attr("src", objUrl) ;
+(function(){
+	if($('.img-upload-clip')[0]){
+		var src = $('.img-upload-clip').data('src');
+		function callback(data){
+			if(!data.err){
+				$('form .avatar-url').attr('value',data.src);
+			}else{
+				win.alert(data.msg, 'error');
 			}
-			$('.upload-clip-img .img-preview>img').cropper({
-				aspectRatio: 1/1,
-				crop: function() {}
-			}); 
-			$('.upload-clip-img .img-preview>img').cropper('replace', objUrl);
 		}
-	}) ;
-	//建立一个可存取到该file的url
-	function getObjectURL(file) {
-		var url = null ; 
-		if (window.createObjectURL!=undefined) { // basic
-			url = window.createObjectURL(file) ;
-		} else if (window.URL!=undefined) { // mozilla(firefox)
-			url = window.URL.createObjectURL(file) ;
-		} else if (window.webkitURL!=undefined) { // webkit or chrome
-			url = window.webkitURL.createObjectURL(file) ;
-		}
-		return url ;
+		imgUploadClip(src,1/1,callback);
 	}
-	$('.save').on('click', function(){
-		if(!$('.cropper-container')[0])
-			return;
-		var data = $('.upload-clip-img .img-preview>img').cropper("getCroppedCanvas").toBlob(function(blob) {
-			var url = getObjectURL(blob);
-			$("#img0").attr("src", url);
-			var form = new FormData();
-			form.append("file", blob);
-			$.ajax({
-				processData: false,
-				contentType: false,
-				data:form,
-				url:'/file/upload',
-				dataType:'json',
-				type:'post',
-				success:function(data){
-					if(!data.err){
-						$('form .avatar-url').attr('value',data.src);
-					}else{
-						win.alert(data.msg, 'error');
-					}
-				}
-			});
-		},'image/jpeg',0.8);
-		$('.upload-clip-img .img-preview>img').cropper('destroy');
-	});
-}
+}());
 //密码修改
 $('.modify-pass .commit-pass').on('click',function(){
 	var newPass = $('.new-pass').val();

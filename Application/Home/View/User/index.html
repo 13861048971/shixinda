@@ -25,15 +25,8 @@
 							</div>
 							<div class="row user-avatar">
 								<label for="avatar" class="col-md-2">头像：</label>
-								<div class="col-md-8">
-									<div class="upload-clip-img">
-										<button class="btn btn-default upload-file" type="button">本地文件</button>
-										<button class="btn btn-default save" type="button">裁剪</button>
-										<input type="file" id="file0" multiple="multiple" style="display:none">
-										<div class="img-preview">
-											<img style="max-width:100%;" src="" id="img0">
-										</div>
-									</div>
+								<div class="col-md-10">
+									<div class="img-upload-clip" data-src="{$user.avatar}"></div>
 								</div>
 							</div>
 							<div class="row" style="display:none;">
