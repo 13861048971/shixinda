@@ -47,8 +47,7 @@ class PostModel extends BaseModel{
         }
         $this->resetCache($this->cachePostKey.$id, 'post', $id);
         $data['add_time'] = $data['update_time'] = $tdkData['update_time'] = time();
-          
-        
+
         if(!$this->create($data))
             return false;
             if($tdkData['node_id'] = $this->add()){ 
@@ -79,7 +78,7 @@ class PostModel extends BaseModel{
         if(!$data['cate'] && !$data['type_id'] && !$data['user_id'])
             return $this->setError('缺少推送人群!');
     
-            return $data;
+        return $data;
     }
    /**
     * 获取帖子列表
@@ -88,16 +87,22 @@ class PostModel extends BaseModel{
     */
     public function getPageList($con, $fields = 'id',$order = 'id desc', $perNum = 10){ 
         $data = parent::getPageList($con, $fields, $order, $perNum);
+        //帖子列表的id数组
         $idArr = getIdArr($data['list']);
+        //发帖人的id数组
+        $idArr1 = getIdArr($data['list'], user_id);
         $subQuery = d('postComment')->where(['post_id' => ['in', $idArr]])->group('post_id')
             ->field('max(id)')->buildsql();
         $postCommentList = d('postComment')->where("id in $subQuery")->select();
         $userIdArr = getIdArr($postCommentList, 'user_id');
-        $userIdArr && $userList = d('user')->where(['id' => ['in', $userIdArr]])->select(); 
-        $postCateIdArr = getIdArr($data['list'],'post_cate_id');
-        $postCateList = d('postCate')->where(['id'=>['in',$postCateIdArr]])->select();
-        $postUserIdArr = getIdArr($data['list'],'user_id');
-        $postUserList = d('user')->where(['id'=>['in',$postUserIdArr]])->select();
+        $userIdArr && $userList = d('user')->where(['id' => ['in', $userIdArr]])->select();
+        //仅后台Admin模块执行
+        if(MODULE_NAME == 'Admin'){
+            $postCateIdArr = getIdArr($data['list'],'post_cate_id');
+            $postCateList = d('postCate')->where(['id'=>['in',$postCateIdArr]])->select();
+        }    
+            $postUserIdArr = getIdArr($data['list'],'user_id');
+            $postUserList = d('user')->where(['id'=>['in',$postUserIdArr]])->select();
          
         foreach($data['list'] as $k1=>$v1){
             $data['list'][$k1] =  $this->parseRow($v1);
@@ -122,6 +127,13 @@ class PostModel extends BaseModel{
                     }    
                 }      
             }
+            
+            foreach ($postUserList as $k2=>$v2){
+                    if($v1['user_id'] == $v2['id']){
+                            $data['list'][$k1]['avatar'] = $v2['avatar'];
+                    }
+            } 
+            
         }  
         return $data;
     }

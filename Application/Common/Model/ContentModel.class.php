@@ -16,7 +16,6 @@ class ContentModel extends BaseModel {
     
         $this->_validate = [
             ['cateName', 'require', '缺少分类!'],
-           // ['type', [1,2,3], '缺少类型!', 1, 'in'],
         ];
     }
     
@@ -50,9 +49,9 @@ class ContentModel extends BaseModel {
 	//格式化行
 	public function parseRow($v){
 	    $v['statusName'] = $this->statusArr[$v['status']];
-	    $v['publishTime'] = date("Y-m-d H:i:s",$v['publish_time']);
-	    $v['updateTime'] = date("Y-m-d H:i:s",$v['update_time']);
-	    $v['addTime'] = date("Y-m-d H:i:s",$v['add_time']);
+	    $v['publishTime'] = date("Y-m-d H:i",$v['publish_time']);
+	    $v['updateTime'] = date("Y-m-d H:i",$v['update_time']);
+	    $v['addTime'] = date("Y-m-d H:i",$v['add_time']);
 	    return $v;
 	}
 	
@@ -98,7 +97,6 @@ class ContentModel extends BaseModel {
 	            }
 	        }
 	    } 
-	    //dump($data['pageVar']);exit();
 	    return $data;
 	}
 	
@@ -110,7 +108,6 @@ class ContentModel extends BaseModel {
 	        $this->cateList[$i] = $contentCate;
 	         
 	        $i +=1;
-	        // var_dump($postCate);
 	        $this->getContentCateList($pid,$i);
 	         
 	    }

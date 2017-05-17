@@ -50,8 +50,8 @@ class BlockModel extends BaseModel {
 	//格式化行
 	public function parseRow($v){
 	    $v['statusName'] = $this->statusArr[$v['status']];
-	    $v['updateTime'] = date("Y-m-d H:i:s",$v['update_time']);
-	    $v['addTime'] = date("Y-m-d H:i:s",$v['add_time']);
+	    $v['updateTime'] = date("Y-m-d H:i",$v['update_time']);
+	    $v['addTime'] = date("Y-m-d H:i",$v['add_time']);
 	    $v['typeName'] = $this->typeArr[$v['type']];
 	    $v['content'] = json_decode($v['content'], true);
 	    

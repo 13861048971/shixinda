@@ -18,11 +18,11 @@
 					<dl>
 					<foreach name="list" item="vo">
 						<dd class="post-list-item">
-							<a href="{:u('post/personInfo', ['userId'=>$user['id']])}"><img src="{$user.avatar}" alt=""></a>
+							<a href="{:u('post/personInfo', ['userId'=>$vo['user_id']])}"><img src="{$vo.avatar}" alt=""></a>
 							<div class="post-item-info">
 								<a href="{:U('post/postdetail',['id'=>$vo['id']])}">{$vo.title}</a>
 								<p>
-									<a href="{:u('post/personInfo', ['userId'=>$user['id']])}">{$vo.username}</a>
+									<a href="{:u('post/personInfo', ['userId'=>$vo['user_id']])}">{$vo.username}</a>
 									<span><span>{$vo.addTime}</span>发表</span>
 									<span>最后回复 <a href="{:u('post/personInfo', ['userId'=>$vo['lastReplyUserId']])}">
 									               {$vo.lastReplyUserName}</a>

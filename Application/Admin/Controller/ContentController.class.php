@@ -162,7 +162,7 @@ class ContentController extends PublicController {
 	        ]
 	    ];
 	    $this->setRightAction($rightBtn);
-	    $data = d('block')->getPageList($_GET, '*', 'add_time desc');
+	    $data = d('block')->getPageList($_GET, '*', 'add_time desc', '15');
 	    $this->assign('list', $data['list']);
 	    $this->assign($data);
 	    $this->assign('blockTitle', $_GET['title']);

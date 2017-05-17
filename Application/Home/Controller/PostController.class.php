@@ -30,11 +30,10 @@ class PostController extends PublicController {
                 foreach ($v1['list'] as $k2=>$v2){
                     if($v['pid'] != $v2['id']) continue;
                     $list1[$k1]['list'][$k2]['list'][] = $v;
-                }
-                
+                }  
             }
         }
-
+           
         foreach ($list1 as $k1=>$v1){
             foreach ($list1[$k1]['list'] as $k2=>$v2){
                 $idArr = [];
@@ -53,6 +52,7 @@ class PostController extends PublicController {
             }
         } 
         $block = d('block')->getBlock('1');
+        
         
         $this->assign('hotList', $hotList);
         $this->assign('block', $block);
@@ -96,12 +96,11 @@ class PostController extends PublicController {
 	        }elseif($post_cate_id2){
 	            $data = d('post')->getPageList([$map, 'status'=>'1'], '*', 'add_time desc');
 	        }
-	       
 	    }
 	    else{
 	        $data = d('post')->getPageList(['post_cate_id'=>$post_cate_id2, 'status'=>'1'], '*', 'add_time desc', 3);
 	    } 
-	 
+
 	    $this->assign('customList', $customList);
 	    $this->assign('todayPostNum', $_GET['todayPostNum']);
 	    $this->assign('mainPostNum', $_GET['mainPostNum']);
