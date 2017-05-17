@@ -7,12 +7,12 @@
 						<img src="{$person.avatar}" alt="">
 					</div>
 					<div class="col-md-10">
-						<h4>用户名</h4>
+						<h4>用户名:<if condition="$person['nickname']">{$person.nickname}<else/>{$person.mobile}</if></h4>
 						<a href="">http://shixinda.cc/user/personInfo/userId/{$person.id}</a>
 					</div>
 				</div>
 				<div class="row tab-control">
-					<a href="javascript:void(0);" class="tab-actived tab-data">个人资料</a><a href="javascript:void(0);" class="tab-subject">主题</a>
+					<a href="javascript:void(0);" class="tab-actived tab-data">个人资料</a><a href="{:U('post/personInfo',['userId'=>$person['id'],'act' => 'original'])}" class="tab-subject">主题</a>
 				</div>
 				<!-- 个人start -->
 				<div class="person-data">

@@ -52,7 +52,7 @@ class PostController extends PublicController {
                 $list1[$k1]['list'][$k2]['postNum'] = $list1[$k1]['list'][$k2]['mainPostNum'] + $list1[$k1]['list'][$k2]['replyPostNum'];
             }
         } 
-        $block = d('block')->getBlock('9');
+        $block = d('block')->getBlock('1');
         
         $this->assign('hotList', $hotList);
         $this->assign('block', $block);
@@ -330,17 +330,6 @@ class PostController extends PublicController {
         }
         
         $this->display();
-    }
-    
-    //用户主贴
-    function personPostInfo(){
-        $data = d('post')->getPageList(['user_id'=>$_GET['id']]);
-        $this->assign('list',$data['list']);
-        $this->display();
-    }
-    //用户回帖信息
-    function personReplayPostInfo(){
-        $repalyInfo = d('postComment')->getPageList(['user_id'=>$_GET['userId']]);//回帖信息
     }
     
     //用户回复
