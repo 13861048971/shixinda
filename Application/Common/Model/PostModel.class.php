@@ -87,6 +87,8 @@ class PostModel extends BaseModel{
     */
     public function getPageList($con, $fields = 'id',$order = 'id desc', $perNum = 10){ 
         $data = parent::getPageList($con, $fields, $order, $perNum);
+        //帖子列表的id数组
+        $idArr = getIdArr($data['list']);
         $subQuery = d('postComment')->where(['post_id' => ['in', $idArr]])->group('post_id')
             ->field('max(id)')->buildsql();
         $postCommentList = d('postComment')->where("id in $subQuery")->select();
