@@ -96,10 +96,10 @@ class UserMsgModel extends BaseModel {
 	    if((int)$data['from_user_id'] < 1){
 	        $data['from_user_name'] = '系统信息';
 	    }else{
-	        $data['from_user_name'] = d('user')->where(['id'=>$data['from_user_id']])->getfield('nickname');
+	        $fromUser = d('user')->where(['id'=>$data['from_user_id']])->find();
+	        empty($fromUser['nickname'])?($data['from_user_name'] = $fromUser['mobile']):($data['from_user_name'] = $fromUser['nickname']);
 	    }
-	    
-	    
+  
 	    if(in_array($data['type'],[1,2]))
 	       $data['content'] = $data['user_name'].'你有一条来自'.$data['from_user_name'].'的'.$data['type_name'];
 	    if($data['type'] == 3)
