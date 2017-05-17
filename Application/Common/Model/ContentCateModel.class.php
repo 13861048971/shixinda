@@ -63,7 +63,6 @@ class ContentCateModel extends BaseModel {
 	    $data['actions'] && $data['actions'] = serialize($data['actions']);
 	    if($id){
 	        $cateInfo = $this->where(['id' => $id])->find();
-	        $this->resetCache($this->cacheTdkKey.$cateInfo['pid'], 'ChildCateArr');
 	        $data['update_time'] = time();
 	        $return  = $this->data($data)->where('id=' . (int)$id)->save();
 	        if(false === $return){
@@ -82,7 +81,6 @@ class ContentCateModel extends BaseModel {
 	            return $this->setError('添加失败!');
 	        }
 	        $cateInfo = $this->where(['id' => $id])->find();
-	        $this->resetCache($this->cacheTdkKey.$cateInfo['pid'], 'ChildCateArr');
 	        $data['id'] = $id;
 	        d('tdk')->edit($data);
 	        return $id;
