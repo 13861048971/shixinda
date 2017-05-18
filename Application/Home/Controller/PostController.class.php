@@ -290,8 +290,9 @@ class PostController extends PublicController {
         $data = [
             'user_id' => $this->user['id'],
             'post_id' => $_GET['post_id'],
+            'id' => $_GET['id']
         ];
-   
+
         if(!$this->user['id'])
             return ajaxReturn2(1,'请先登录');
             d('support')->isSupport('postComment');

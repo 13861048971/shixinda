@@ -37,13 +37,25 @@ class SupportModel extends BaseModel {
             'user_id' => $this->user['id'],
             'type' => $this->typeArr[$type],
 	        'node_id' =>$_GET['id'],
+	        'post_id' =>$_GET['post_id']
         ];
-	    $messageData = [
-	        'from_user_id' => $data['user_id'],
-	        'node_id' => $data['node_id'],
-	        'type' => d('userMsg')->typeArr['点赞信息'],
-	        'user_id' => d('post')->where(['id'=>$data['node_id']])->getfield('user_id'),
-	    ];
+	    if($type == 'post'){
+	        $messageData = [
+	            'from_user_id' => $data['user_id'],
+	            'node_id' => $data['node_id'],
+	            'type' => d('userMsg')->typeArr['点赞信息'],
+	            'user_id' => d('post')->where(['id'=>$data['node_id']])->getfield('user_id'),
+	        ];
+	    }else{
+	        $messageData = [
+	            'from_user_id' => $data['user_id'],
+	            'node_id' => $data['node_id'],
+	            'post_id' => $data['post_id'],
+	            'type' => d('userMsg')->typeArr['点赞信息'],
+	            'user_id' => d('postComment')->where(['id'=>$data['id']])->getfield('user_id'),
+	        ];
+	    }
+	    
 	    $info = $this->where($data)->find();
 
 	    //当前用户有记录的时候
@@ -70,8 +82,8 @@ class SupportModel extends BaseModel {
     	        if($id = $this->edit($data))
     	            return ajaxReturn2(0,'踩成功',['status'=>4,'id'=>$id]);
     	    }
-	   
-    }
+                     	   
+    }                           
 	/**
 	 * 编辑or添加
 	 */

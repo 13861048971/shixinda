@@ -147,12 +147,10 @@ class PostModel extends BaseModel{
         if($id > 0){
             $postCate = d('postCate')->getInfo($id);//分类的信息
             $pid = (int)$postCate['pid'];//信息的父级id
-            
             $this->cateList[$i] = $postCate;
             $i +=1;
             
             $this->getPostCateList($pid,$i);
-             
         }
          
         return  $this->cateList;
