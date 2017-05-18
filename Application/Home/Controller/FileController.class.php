@@ -1,10 +1,5 @@
 <?php
 use Think\Controller;
-// Vendor('Qiniu.Auth','','.class.php');
-// Vendor('Qiniu.Zone','','.class.php');
-// Vendor('Qiniu.Config','','.class.php');
-// import('Vendor.Qiniu.Auth');
-// import('Vendor.Qiniu.Storage.UploadManager');
 Vendor('Vendor.Qiniu.GetToken','','.class.php');
 /**
  * 上传文件接口
