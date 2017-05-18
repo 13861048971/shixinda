@@ -28,4 +28,12 @@ return array(
     
     //错误
     'LOG_LEVEL' =>'EMERG,ALERT,CRIT,ERR', // 只记录EMERG ALERT CRIT ERR 错误
+    
+    //七牛云
+    'QINIUYUN' => array (
+            'secrectKey' => 'Wpf7-OJZL-S93oGYcWCpXL88N0T7nikWVk9LepmB', 
+            'accessKey' => 'h7hX1-X0WlqlIxILxl09xaiKmc4EqZ6NH1lkfbte',
+            'domain' => 'img.qiniu.mallshangyun.com',
+            'bucket' => 'shixinda', 
+    ),
 );
