@@ -1,6 +1,6 @@
 <?php
 use Think\Controller;
-Vendor('Vendor.Qiniu.GetToken','','.class.php');
+Vendor('Qiniu.Auth','','.class.php');
 /**
  * 上传文件接口
  */
@@ -8,8 +8,8 @@ Vendor('Vendor.Qiniu.GetToken','','.class.php');
 class FileController extends PublicController {
     //获取七牛云的token
     function getQiNiuToken(){
-        $auth = new \Vendor\Qiniu\GetToken(c('QINIUYUN')['accessKey'],c('QINIUYUN')['secrectKey']);
-        $upToken = $auth->getUploadToken(c('QINIUYUN')['bucket'],$_POST['imageName']);
+        $auth = new \Qiniu\Auth(c('QINIUYUN')['accessKey'],c('QINIUYUN')['secrectKey']);   
+        $upToken = $auth->uploadToken(c('QINIUYUN')['bucket'],$_POST['imageName']);
         return  ajaxReturn(0,'',['token'=>$upToken]);
     }
     
