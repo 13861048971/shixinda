@@ -610,8 +610,9 @@ $('.btn-pub-comment').on('click',function(){
 // 帖子赞和踩
 function postSupport(act, _this){
 	if(_this){
+		var post_id = $('.post-detail-page').data('id');
 		var id = _this.parents('.comment-handle').data('id');
-		var url = '/post/postCommentSupport/act/'+act+'/id/'+id;
+		var url = '/post/postCommentSupport/post_id/'+post_id+'/act/'+act+'/id/'+id;
 	}else{
 		var id = $('.post-detail-page').data('id');
 		var url = '/post/postSupport/act/'+act+'/id/'+id;
