@@ -93,20 +93,20 @@ class UserMsgModel extends BaseModel {
 	    $data['type_name'] = $type[$data['type']];
 	    (int)$data['user_id'] < 1 && $data['user_name'] = "所有用户";
 	    (int)$data['user_id'] >= 1 && $data['user_name'] = d('user')->where(['id'=>$data['user_id']])->getfield('nickname');
-	     
+	      
 	    if((int)$data['from_user_id'] < 1){
 	        $data['from_user_name'] = '系统信息';
 	    }else{
 	        $fromUser = d('user')->where(['id'=>$data['from_user_id']])->find();
 	        empty($fromUser['nickname'])?($data['from_user_name'] = $fromUser['mobile']):($data['from_user_name'] = $fromUser['nickname']);
 	    }
-  
+        
 	    if(in_array($data['type'],[1,2,4]))
-	       $data['content'] = $data['user_name'].'你有一条来自'.$data['from_user_name'].'的'.$data['type_name'];
+            $data['content'] = $data['user_name'].'你有一条来自'.$data['from_user_name'].'的'.$data['type_name'];
 	    if($data['type'] == 3)
-	        $data['content'] = $data['from_user_name'].'对你说：'.$data['content'];
+            $data['content'] = $data['from_user_name'].'对你说：'.$data['content'];
 	    if($data['type_name']!='点赞信息')
-		  $data = $this->setValidate($data);
+            $data = $this->setValidate($data);
 		
 		if($id){
 			$data['update_time'] = time();
@@ -124,8 +124,7 @@ class UserMsgModel extends BaseModel {
 		if(!$this->create($data))
 			return false;
 		if(!($id = $this->add()))
-		    
-			return $this->setError('发送失败!');
+            return $this->setError('发送失败!');
 		if(!$this->sendMesg($id)){
 			return $this->setError('发送消息失败!');
 		}

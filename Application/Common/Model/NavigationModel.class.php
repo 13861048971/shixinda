@@ -53,6 +53,7 @@ class NavigationModel extends BaseModel {
 	                    $navigation[$k]['current'] = true;
 	        }
 	    }
+	    //dump($navigation);exit();
 	    return $navigation;
 	}
 	

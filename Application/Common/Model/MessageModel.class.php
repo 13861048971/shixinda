@@ -65,7 +65,6 @@ class MessageModel extends BaseModel{
     			$con['title'] = ['like', '%' . $con['title'] . '%'];
     			$con['from_user_id'] = ['like', '%' . $con['from_user_id'] . '%'];
     			$con['user_id'] = ['like', '%' . $con['user_id'] . '%'];
-    		
     		}
     		
     		$mod = d('user_msg_read');
