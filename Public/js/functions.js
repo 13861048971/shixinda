@@ -819,7 +819,20 @@ function uploadFile(btnSelector){
 	
 	fileBtn.change(function(){ 
 		if(!this.files[0]) return;
-		upload(this.name, this.files[0]); 
+		var fileName = this.files[0].name;
+		// token获取
+		$.ajax({
+			url:'/File/getQiNiuToken',
+			type:'post',
+			data:{'imageName':fileName},
+			dataType:'json',
+			success:function(data){
+				if(!data.error){
+					var token = data.data.token;
+					upload(this.name, this.files[0], token);
+				}
+			}
+		});
 	});
 	
 	$(document).on('click', btnSelector, function(){
@@ -845,15 +858,16 @@ function uploadFile(btnSelector){
 	 * 上传
 	 * @param file file
 	 */
-	function upload(name, file){
+	function upload(name, file, token){
 		var data = new FormData();
 		var read = new FileReader();
 		data.append(name, file);
-		data.append('type', options.type);
+		data.append("token", token);
+		// data.append('type', options.type);
 		progressNode.width(0).show().html('0%');
 		preview.hide();
 		$.ajax({
-			url:'/file/upload',
+			url:'http://upload.qiniu.com/',
 			type:'post',
 			data:data,
 			dataType: 'JSON',  
@@ -872,7 +886,7 @@ function uploadFile(btnSelector){
 			contentType: false,
 			complete : function(){ progressNode.hide(); },
 			success:function(info){
-				var src = info.src;
+				var src = info.key;
 				if(!src) return console.warn('need src!');
 				add(src, info.thumb);
 			}

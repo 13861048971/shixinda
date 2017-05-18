@@ -15,7 +15,7 @@ class FileController extends PublicController {
     function getQiNiuToken(){
         $auth = new \Vendor\Qiniu\GetToken(c('QINIUYUN')['accessKey'],c('QINIUYUN')['secrectKey']);
         
-        $upToken = $auth->getUploadToken(c('QINIUYUN')['bucket'],$_GET['imageName']);
+        $upToken = $auth->getUploadToken(c('QINIUYUN')['bucket'],$_POST['imageName']);
         return  ajaxReturn(0,'',['token'=>$upToken]);
     }
     

@@ -94,9 +94,9 @@ function setPos(jNode, pos){
 }
 /**
  * 图片上传裁剪，依赖jQuery,Bootstrap
- * @param src string 初始图片地址
- * @param aspectRario NaN(num/num) 裁剪比例
- * @param callback function 回调函数
+ * @param string src 初始图片地址
+ * @param NaN(num/num) aspectRario 裁剪比例
+ * @param function callback 回调函数
  */
 function imgUploadClip(src,aspectRatio,callback){
 	var html = '<button class="btn btn-default upload-file" type="button">上传图片</button><input type="file" id="file0" multiple="multiple" style="display:none"><div class="img-area"><div class="img-operate"><img src="'+src+'" id="img0"></div><div class="img-handle" style="display:none;"><div class="img-preview" style="overflow:hidden;"><img src="" alt=""></div><button class="btn btn-default save" type="button">裁剪</button></div></div>';
@@ -106,9 +106,11 @@ function imgUploadClip(src,aspectRatio,callback){
 		$("#file0").click();
 		$.fn.cropper;
 	});
+	var fileName = '';
 	$("#file0").change(function(){
 		if(this.files[0]){
 			var objUrl = getObjectURL(this.files[0]) ;
+			fileName = this.files[0].name;
 			if (objUrl) {
 				$("#img0").attr("src", objUrl) ;
 			}
@@ -136,25 +138,40 @@ function imgUploadClip(src,aspectRatio,callback){
 	$('.save').on('click', function(){
 		if(!$('.cropper-container')[0])
 			return;
+		// token获取
+		var token = '';
+		var url = '/File/getQiNiuToken';
+		$.ajax({
+			url:url,
+			type:'post',
+			data:{'imageName':fileName},
+			dataType:'json',
+			success:function(data){
+				if(!data.error){
+					token = data.data.token;
+				}
+			}
+		});
 		var data = $('.img-upload-clip .img-operate>img').cropper("getCroppedCanvas").toBlob(function(blob) {
 			var url = getObjectURL(blob);
 			$("#img0").attr("src", url);
 			var form = new FormData();
 			form.append("file", blob);
+			form.append("token", token);
 			$.ajax({
 				processData: false,
 				contentType: false,
 				data:form,
-				url:'/file/upload',
+				url:'http://upload.qiniu.com/',
 				dataType:'json',
 				type:'post',
 				success:function(data){
 					callback(data);
+					$('.img-upload-clip .img-handle').hide();
+					$('.img-upload-clip .img-operate>img').cropper('destroy');
 				}
 			});
 		},'image/jpeg',0.8);
-		$('.img-upload-clip .img-handle').hide();
-		$('.img-upload-clip .img-operate>img').cropper('destroy');
 	});
 };
 $(function(){
@@ -412,14 +429,15 @@ $('.account-info-edit .commit-account').on('click',function(){
 (function(){
 	if($('.img-upload-clip')[0]){
 		var src = $('.img-upload-clip').data('src');
+		var aspectRatio = 1/1;
 		function callback(data){
-			if(!data.err){
-				$('form .avatar-url').attr('value',data.src);
+			if(!data.error){
+				$('form .avatar-url').attr('value',data.key);
 			}else{
-				win.alert(data.msg, 'error');
+				win.alert(data.error, 'error');
 			}
 		}
-		imgUploadClip(src,1/1,callback);
+		imgUploadClip(src,aspectRatio,callback)
 	}
 }());
 //密码修改
