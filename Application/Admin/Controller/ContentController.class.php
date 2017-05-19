@@ -39,6 +39,7 @@ class ContentController extends PublicController {
         
         $this->assign('row',$row);
 	    $this->assign('selectMuti',$selectMuti);
+	    $this->assign('qiNiuYunImgName',c('QINIUYUN.imgName'));
 	    });
 	}
 	 
@@ -104,6 +105,7 @@ class ContentController extends PublicController {
 	//链接编辑
 	public function friendLinkEdit(){
 	    $this->ajaxEdit('friendLink', null, function($row, $mod){
+	        $this->assign('qiNiuYunImgName',c('QINIUYUN.imgName'));
 	    });
 	}
 	
@@ -135,7 +137,7 @@ class ContentController extends PublicController {
 	//导航管理编辑
 	public function navigationEdit(){
 	    $this->ajaxEdit('navigation', null, function($row, $mod){
-	        
+	       $this->assign('qiNiuYunImgName',c('QINIUYUN.imgName'));    
 	    });
 	}
 	
@@ -175,7 +177,7 @@ class ContentController extends PublicController {
 	        $template = 'blockEdit1';
 	    }
 	    $this->ajaxEdit('block', $template, function($row, $mod){
-	         
+	        $this->assign('qiNiuYunImgName',c('QINIUYUN.imgName'));
 	    });
 	}
 	

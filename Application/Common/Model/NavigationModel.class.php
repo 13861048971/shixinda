@@ -62,9 +62,10 @@ class NavigationModel extends BaseModel {
 	public function parseRow($v){
 	    $v['num'] = $this->where(['pid'=>$v['id']])->Count();
 	    $v['statusName'] = $this->statusArr[$v['status']];
-	    $v['publishTime'] = date("Y-m-d H:i:s",$v['publish_time']);
-	    $v['updateTime'] = date("Y-m-d H:i:s",$v['update_time']);
-	    $v['addTime'] = date("Y-m-d H:i:s",$v['add_time']);
+	    $v['publishTime'] = date("Y-m-d H:i",$v['publish_time']);
+	    $v['updateTime'] = date("Y-m-d H:i",$v['update_time']);
+	    $v['addTime'] = date("Y-m-d H:i",$v['add_time']);
+	    $v['logo'] = getImage($v['logo'], -1);
 	    return $v;
 	}
 	

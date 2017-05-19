@@ -11,8 +11,15 @@ class UserController extends PublicController{
 	//用户中心
 	function index(){
 	    $user = $this->user;
-	    $genderList = [['list'=> d('user')->genderArr, 'name'=>'gender', 'checked'=>$user['gender']]];
+	    $genderList = [
+	        [
+	            'list' => d('user')->genderArr, 
+	            'name' => 'gender',
+	            'checked' => $user['gender']
+	        ]
+	    ];
 	    $this->assign('genderList', $genderList);
+	    $this->assign('qiNiuYunImgName',c('QINIUYUN.imgName'));
 	    $this->display();
 	}	
 	

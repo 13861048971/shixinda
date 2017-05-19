@@ -327,7 +327,6 @@ class UserMsgModel extends BaseModel {
 			            $con = [
 			                'id'=>['lt',$v['node_id']],
 			                'post_id'=>$v2['post_id']
-			                
 			            ];
 			            $count = d('postComment')->getPostCommentCount($con);
 			            $v['p'] = ceil($count/15);

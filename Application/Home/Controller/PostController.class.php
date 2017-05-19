@@ -100,7 +100,7 @@ class PostController extends PublicController {
 	    else{
 	        $data = d('post')->getPageList(['post_cate_id'=>$post_cate_id2, 'status'=>'1'], '*', 'add_time desc', 3);
 	    } 
-
+        //dump($data);exit();
 	    $this->assign('customList', $customList);
 	    $this->assign('todayPostNum', $_GET['todayPostNum']);
 	    $this->assign('mainPostNum', $_GET['mainPostNum']);
@@ -145,6 +145,7 @@ class PostController extends PublicController {
 	    
 	    $userId = d('post')->where(['id'=>$id])->getField('user_id');
 	    $userRow = d('user')->where(['id'=>$userId])->find();//发帖人信息
+	    $userRow['avatar'] = getImage($userRow['avatar'], -1);
 	    $postRow = d('post')->getPost($id);//帖子信息
 	    
 	    $this->click('post',$id);//访问量+1
@@ -264,11 +265,6 @@ class PostController extends PublicController {
         } 
         
         ajaxReturn(0, '评论成功', ['id'=>$id]);
-    }
-	
-    //主帖人信息
-    public function userInfo(){
-        $userRow = d('user')->where(['id'=>$_GET['userId']])->find();
     }
     
     //帖子收藏

@@ -54,9 +54,9 @@ class BlockModel extends BaseModel {
 	    $v['addTime'] = date("Y-m-d H:i",$v['add_time']);
 	    $v['typeName'] = $this->typeArr[$v['type']];
 	    $v['content'] = json_decode($v['content'], true);
-	    
+	 
 	    foreach($v['content'] as $k2=>$v2){
-	        $v['content'][$k2]['imageArr'] = ['image['.$k2.']', '', $v2['image']];
+	        $v['content'][$k2]['imageArr'] = [getImage('image['.$k2.']', -1), '', getImage($v2['image'], -1)];
 	    }
 	    return $v;
 	}
