@@ -385,7 +385,7 @@ ul#filters {
 }
 
 #filters li {
-	display: -webkit-inline-box;
+	display: inline-block;
 }
 
 #filters li span {
