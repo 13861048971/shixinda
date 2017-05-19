@@ -88,7 +88,7 @@ class ContentModel extends BaseModel {
 	    
 	    $cateIdArr = getIdArr($data['list'],'cate_id'); 
 	    if($cateIdArr)
-	    $cateList = d('contentCate')->where([ 'id'=>['in',$cateIdArr]])->select(); 
+	    $cateList = d('contentCate')->where(['id'=>['in',$cateIdArr]])->select(); 
 	    foreach($data['list'] as $k=>$v){
 	        $data['list'][$k] = $this->parseRow($v);
 	        foreach ($cateList as $k1=>$v1){

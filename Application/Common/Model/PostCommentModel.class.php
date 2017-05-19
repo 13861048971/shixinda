@@ -93,8 +93,7 @@ class PostCommentModel extends BaseModel{
                     }
                 }
             }
-            
-            
+  
             //论坛回帖楼层显示
             $data['list'][$k]['floor'] = ($p-1)*$perNum+$k+1;
             $data['list'][$k]['floorName'] = $data['list'][$k]['floor'].'楼';

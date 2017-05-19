@@ -11,7 +11,8 @@ class UserMsgModel extends BaseModel {
         '评论信息' => 1,
         '回复信息' => 2, 
         '站内信息' => 3,
-	    '点赞信息' =>4
+	    '点赞信息' => 4,
+	    '评论点赞' => 5
     ];
 	public $cateArr = ['通知','投标','订单'];
 
@@ -101,7 +102,7 @@ class UserMsgModel extends BaseModel {
 	        empty($fromUser['nickname'])?($data['from_user_name'] = $fromUser['mobile']):($data['from_user_name'] = $fromUser['nickname']);
 	    }
         
-	    if(in_array($data['type'],[1,2,4]))
+	    if(in_array($data['type'],[1,2,4,5]))
             $data['content'] = $data['user_name'].'你有一条来自'.$data['from_user_name'].'的'.$data['type_name'];
 	    if($data['type'] == 3)
             $data['content'] = $data['from_user_name'].'对你说：'.$data['content'];

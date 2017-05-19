@@ -59,7 +59,7 @@ class IndexController extends PublicController {
 	        'type' => d('tdk')->typeArr['contentCate']
 	    ];
 	    $this->tdkList($con);
-	    $data = d('content')->getPageList(['cate_id'=>'1'], '', 'add_time desc', 2);
+	    $data = d('content')->getPageList(['cate_id'=>'1'], '', 'add_time desc', 15);
 	    $hotList = d('content')->getList(['cate_id'=>'1'], 5, 'click desc'); 	    
 	    foreach($data['list'] as $k=>$v){
 	        $data['list'][$k]['content'] =  mb_substr(strip_tags($v['content']), 0, 50);
