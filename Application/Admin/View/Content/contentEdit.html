@@ -14,7 +14,7 @@
   </div>
    <div class="form-group">
     <label class="col-sm-2 control-label"><b class="red">*</b>分类名称:</label>
-    <div class="col-sm-5 upload-type" data-type="">  
+    <div class="col-sm-5">  
 	  {:W('select/contentCate')}	  	
     </div>
    </div>
@@ -25,7 +25,7 @@
     </div>
   </div>
   {:w('upload/img',["cover","封面",$row['cover']])}
-  <div class="form-group">
+  <div class="form-group upload-type" data-type="{$qiNiuYunImgName.contentCover}" >
     <label class="col-sm-2 control-label">发布时间:</label>
     <div class="col-sm-5">
 	   <input name="publish_time"  data-istime="true" type="text" class="form-control lay-date publish_time" 

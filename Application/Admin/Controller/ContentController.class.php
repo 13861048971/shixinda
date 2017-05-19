@@ -39,6 +39,7 @@ class ContentController extends PublicController {
         
         $this->assign('row',$row);
 	    $this->assign('selectMuti',$selectMuti);
+	    $this->assign('qiNiuYunImgName',c('QINIUYUN.imgName'));
 	    });
 	}
 	 
