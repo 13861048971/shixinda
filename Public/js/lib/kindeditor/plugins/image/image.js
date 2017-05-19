@@ -109,7 +109,8 @@ KindEditor.plugin('image', function(K) {
 							return;
 						}
 						dialog.showLoading(self.lang('uploadLoading'));
-						uploadbutton.submit();
+						// uploadbutton.submit();
+						uploadQiniu();
 						localUrlBox.val('');
 						return;
 					}
@@ -217,6 +218,51 @@ KindEditor.plugin('image', function(K) {
 		uploadbutton.fileBox.change(function(e) {
 			localUrlBox.val(uploadbutton.fileBox.val());
 		});
+		var uploadQiniu = function qiniu(){
+			var file = document.getElementsByClassName('ke-upload-file').imgFile.files[0];
+			var fileName = 'image/';
+			fileName += date('y-m-d',time())+'/';
+			fileName += time().toString()+Math.round(Math.random()*8999+1000+1).toString()+file.name.match(/\.[a-z]+$/)[0];
+			$.ajax({
+				url:'/File/getQiNiuToken',
+				type:'post',
+				data:{'imageName':fileName},
+				dataType:'json',
+				success:function(data){
+					if(!data.error){
+						var token = data.data.token;
+						domain = data.data.domain;
+						thumb = data.data.imgStyle[0];
+						upload(file.name, file, token);
+					}
+				}
+			});
+			/**
+			 * 上传
+			 * @param file file
+			 */
+			function upload(name, file, token){
+				var data = new FormData();
+				var read = new FileReader();
+				data.append('file', file);
+				data.append("token", token);
+				data.append("key", fileName);
+				$.ajax({
+					url:'http://up-z2.qiniu.com/',
+					type:'post',
+					data:data,
+					dataType: 'JSON',  
+					cache: false,
+					processData: false,  
+					contentType: false,
+					success:function(info){
+						var src = info.key;
+						if(!src) return console.warn('need src!');
+						uploadbutton.options.afterUpload.call(uploadbutton,{"error":0,"url":domain+src});
+					}
+				});
+			}
+		}
 		if (allowFileManager) {
 			viewServerBtn.click(function(e) {
 				self.loadPlugin('filemanager', function() {

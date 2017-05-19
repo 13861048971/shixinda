@@ -143,7 +143,9 @@ function imgUploadClip(src,aspectRatio,callback){
 			}else{
 				var imgType = 'images';
 			}
-			fileName = imgType+'/'+date('y-m-d',time())+'/'+time()+this.files[0].name
+			fileName = imgType+'/';
+			fileName += date('y-m-d',time())+'/';
+			fileName += time().toString()+Math.round(Math.random()*8999+1000+1).toString()+this.files[0].name.match(/\.[a-z]+$/)[0];
 			if (objUrl) {
 				$("#img0").attr("src", objUrl) ;
 			}
