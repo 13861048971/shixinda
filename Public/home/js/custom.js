@@ -435,7 +435,7 @@ $('.account-info-edit .commit-account').on('click',function(){
 		var aspectRatio = 1/1;
 		function callback(data){
 			if(!data.error){
-				$('form .avatar-url').attr('value',data.key);
+				$('form .avatar-url').attr('value', data.key);
 			}else{
 				win.alert(data.error, 'error');
 			}

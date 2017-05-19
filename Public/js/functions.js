@@ -815,6 +815,7 @@ function uploadFile(btnSelector){
 	var fileBtn = $('<input type="file" name="file" class="hidden" />');
 	var fileName = '';
 	var domain = '';
+	var thumb = '';
 	$('body').append(fileBtn);
 	
 	var input, preview;
@@ -833,6 +834,7 @@ function uploadFile(btnSelector){
 				if(!data.error){
 					var token = data.data.token;
 					domain = data.data.domain;
+					thumb = data.data.imgStyle[0];
 					upload(_this.name, _this.files[0], token);
 				}
 			}
@@ -855,7 +857,7 @@ function uploadFile(btnSelector){
 	 */
 	function add(src, thumb){
 		input[0] && input.val(src);
-		preview[0] && preview.attr('src', src) && preview.show();
+		preview[0] && preview.attr('src', 'http://qiniu.img.mallshangyun.com/'+src+thumb) && preview.show();
 	}
 	
 	/**
@@ -892,7 +894,7 @@ function uploadFile(btnSelector){
 			success:function(info){
 				var src = info.key;
 				if(!src) return console.warn('need src!');
-				add(src, info.thumb);
+				add(src, thumb);
 			}
 		});
 	}
