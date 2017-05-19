@@ -96,7 +96,7 @@ class ContentController extends PublicController {
 	        ['name' => '添加新连接', 'url'=> u('friendLinkEdit'), 'dialog' => 1, 'dialog-lg' => 1 ]
 	    ];
 	    $this->setRightAction($rightBtn);
-	    $data = d('friendLink')->getPageList($_GET);
+	    $data = d('friendLink')->getPageList($_GET,null);
 	    $this->assign($data);
 	    $this->assign('linkName',$_GET['name']);
 	    $this->display('friendLink','list');
@@ -120,7 +120,7 @@ class ContentController extends PublicController {
 	        ['name' => '添加新导航','url'=> u('navigationEdit'), 'dialog' => 1, 'dialog-lg' => 1 ]
 	    ];
 	    $this->setRightAction($rightBtn);
-	    $data = d('navigation')->getPageList(['p'=>$_GET['p'],'name'=>$_GET['name'],'pid'=>'0']);
+	    $data = d('navigation')->getPageList(['p'=>$_GET['p'],'name'=>$_GET['name'],'pid'=>'0'],null);
 	    $this->assign($data);
 	    $this->assign('navigationName',$_GET['name']);
 	    $this->display('navigation','list');

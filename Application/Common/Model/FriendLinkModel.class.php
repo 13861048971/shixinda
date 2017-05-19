@@ -19,10 +19,19 @@ class FriendLinkModel extends BaseModel {
 	public function getInfo($id){
 	    $info = $this->find($id);
 	    if(!$info) return;
-	
-	    $info = $this->parseRow($info);
+	    $info = $this->parseInfoRow($info);
 	    return $info;
 	}
+	
+	//格式化Info
+	public function  parseInfoRow($v){
+	    $v['statusName'] = $this->statusArr[$v['status']];
+	    $v['publishTime'] = date("Y-m-d H:i",$v['publish_time']);
+	    $v['updateTime'] = date("Y-m-d H:i",$v['update_time']);
+	    $v['addTime'] = date("Y-m-d H:i",$v['add_time']);
+	    return $v;
+	}
+	
 	//格式化行
 	public function parseRow($v){
 	    $v['statusName'] = $this->statusArr[$v['status']];
@@ -61,7 +70,7 @@ class FriendLinkModel extends BaseModel {
 	    $data = parent::getPageList($con, $fields, $order, $perNum);
 	    
 	    foreach($data['list'] as $k=>$v){
-	        $data['list'][$k] = $this->getInfo($v['id']);
+	        $data['list'][$k] = $this->parseRow($v);
 	    }
 	    return $data;
 	}

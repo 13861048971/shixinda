@@ -22,7 +22,7 @@ class NavigationModel extends BaseModel {
 	    $info = $this->find($id);
 	    if(!$info) return;
 	
-	    $info = $this->parseRow($info);
+	    $info = $this->parseInfoRow($info);
 	    return $info;
 	}
 	
@@ -57,6 +57,15 @@ class NavigationModel extends BaseModel {
 	    return $navigation;
 	}
 	
+	//格式化info
+	public function parseInfoRow($v){
+	    $v['num'] = $this->where(['pid'=>$v['id']])->Count();
+	    $v['statusName'] = $this->statusArr[$v['status']];
+	    $v['publishTime'] = date("Y-m-d H:i",$v['publish_time']);
+	    $v['updateTime'] = date("Y-m-d H:i",$v['update_time']);
+	    $v['addTime'] = date("Y-m-d H:i",$v['add_time']);
+	    return $v;
+	}
 	
 	//格式化行
 	public function parseRow($v){
@@ -98,7 +107,7 @@ class NavigationModel extends BaseModel {
 	    $data = parent::getPageList($con, $fields, $order, $perNum);
 	
 	    foreach($data['list'] as $k=>$v){
-	        $data['list'][$k] = $this->getInfo($v['id']);
+	        $data['list'][$k] = $this->parseRow($v);
 	    }
 	    return $data;
 	}
