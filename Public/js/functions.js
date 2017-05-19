@@ -816,14 +816,18 @@ function uploadFile(btnSelector){
 	var fileName = '';
 	var domain = '';
 	var thumb = '';
-	console.log(btnSelector);
 	$('body').append(fileBtn);
 	
 	var input, preview;
 	
 	fileBtn.change(function(){ 
 		if(!this.files[0]) return;
-		fileName = (new Date()).valueOf()+Math.round(Math.random()*1000+1)+this.files[0].name;
+		if($('.upload-type').data('type')){
+			var imgType = $('.upload-type').data('type');
+		}else{
+			var imgType = 'images';
+		}
+		fileName = imgType+'/'+date('y-m-d',time())+'/'+time()
 		var _this = this;
 		// token获取
 		$.ajax({

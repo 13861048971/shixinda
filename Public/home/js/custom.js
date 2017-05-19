@@ -28,6 +28,34 @@ $(window).load(function () {
 		}
 	});
 });
+//日期格式化
+function date(format, UnixTime) {
+	this_Date = new Date(UnixTime?(parseInt(UnixTime)*1000):(new Date().getTime()));
+	var weekday = new Array('Sunday', 
+	'Monday', 
+	'Tuesday', 
+	'Wednesday', 
+	'Thursday', 
+	'Friday', 
+	'Saturday');
+	return format.replace(/y/i, this_Date.getFullYear()).
+	replace('m', parseInt(this_Date.getMonth()+1) < 10 ? 
+	'0'+parseInt(this_Date.getMonth()+1) : parseInt(this_Date.getMonth()+1)).
+	replace('d', parseInt(this_Date.getDate()) < 10 ? 
+	'0'+this_Date.getDate() : this_Date.getDate()).
+	replace(/h/i, this_Date.getHours() < 10 ? 
+	'0' + this_Date.getHours() : this_Date.getHours()).
+	replace('i', this_Date.getMinutes() < 10 ? 
+	'0' + this_Date.getMinutes() : this_Date.getMinutes()).
+	replace('s', this_Date.getSeconds() < 10 ? 
+	'0' + this_Date.getSeconds() : this_Date.getSeconds()).
+	replace('w', this_Date.getDay()).
+	replace('W', weekday[this_Date.getDay()]);
+}
+//时间戳函数
+function time() {
+	return parseInt(new Date().getTime()/1000);
+}
 /**
  * 小弹窗
  **/
@@ -110,9 +138,12 @@ function imgUploadClip(src,aspectRatio,callback){
 	$("#file0").change(function(){
 		if(this.files[0]){
 			var objUrl = getObjectURL(this.files[0]) ;
-			// fileName = (new Date()).valueOf()+Math.round(Math.random()*1000+1);
-			// fileName += this.files[0].name;
-			fileName = 'avatar/'+this.files[0].name
+			if($('.img-upload-clip').data('type')){
+				var imgType = $('.img-upload-clip').data('type');
+			}else{
+				var imgType = 'images';
+			}
+			fileName = imgType+'/'+date('y-m-d',time())+'/'+time()+this.files[0].name
 			if (objUrl) {
 				$("#img0").attr("src", objUrl) ;
 			}
