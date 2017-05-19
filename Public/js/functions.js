@@ -827,7 +827,7 @@ function uploadFile(btnSelector){
 		}else{
 			var imgType = 'images';
 		}
-		fileName = imgType+'/'+date('y-m-d',time())+'/'+time()
+		fileName = imgType+'/'+date('y-m-d',time())+'/'+time()+this.files[0].name;
 		var _this = this;
 		// token获取
 		$.ajax({
