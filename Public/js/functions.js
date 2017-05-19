@@ -816,6 +816,7 @@ function uploadFile(btnSelector){
 	var fileName = '';
 	var domain = '';
 	var thumb = '';
+	console.log(btnSelector);
 	$('body').append(fileBtn);
 	
 	var input, preview;

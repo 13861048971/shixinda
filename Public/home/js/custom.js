@@ -110,8 +110,9 @@ function imgUploadClip(src,aspectRatio,callback){
 	$("#file0").change(function(){
 		if(this.files[0]){
 			var objUrl = getObjectURL(this.files[0]) ;
-			fileName = (new Date()).valueOf()+Math.round(Math.random()*1000+1);
-			fileName += this.files[0].name;
+			// fileName = (new Date()).valueOf()+Math.round(Math.random()*1000+1);
+			// fileName += this.files[0].name;
+			fileName = 'avatar/'+this.files[0].name
 			if (objUrl) {
 				$("#img0").attr("src", objUrl) ;
 			}
