@@ -813,13 +813,15 @@ function uploadFile(btnSelector){
 	var options;
 	var progressNode = $('<span class="process"></span>');
 	var fileBtn = $('<input type="file" name="file" class="hidden" />');
+	var fileName = '';
 	$('body').append(fileBtn);
 	
 	var input, preview;
 	
 	fileBtn.change(function(){ 
 		if(!this.files[0]) return;
-		var fileName = this.files[0].name;
+		fileName = (new Date()).valueOf()+Math.round(Math.random()*1000+1)+this.files[0].name;
+		var _this = this;
 		// token获取
 		$.ajax({
 			url:'/File/getQiNiuToken',
@@ -829,7 +831,7 @@ function uploadFile(btnSelector){
 			success:function(data){
 				if(!data.error){
 					var token = data.data.token;
-					upload(this.name, this.files[0], token);
+					upload(_this.name, _this.files[0], token);
 				}
 			}
 		});
@@ -863,11 +865,11 @@ function uploadFile(btnSelector){
 		var read = new FileReader();
 		data.append(name, file);
 		data.append("token", token);
-		// data.append('type', options.type);
+		data.append("key", fileName);
 		progressNode.width(0).show().html('0%');
 		preview.hide();
 		$.ajax({
-			url:'http://upload.qiniu.com/',
+			url:'http://up-z2.qiniu.com/',
 			type:'post',
 			data:data,
 			dataType: 'JSON',  
