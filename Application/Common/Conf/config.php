@@ -36,7 +36,7 @@ return array(
         'domain' => 'http://qiniu.img.mallshangyun.com/',
         'bucket' => 'shixinda',
         'imgStyle' => [
-            '250_250_thumb'
+            '-250_250_thumb'
         ]
     )
             
