@@ -110,7 +110,8 @@ function imgUploadClip(src,aspectRatio,callback){
 	$("#file0").change(function(){
 		if(this.files[0]){
 			var objUrl = getObjectURL(this.files[0]) ;
-			fileName = this.files[0].name;
+			fileName = (new Date()).valueOf()+Math.round(Math.random()*1000+1);
+			fileName += this.files[0].name;
 			if (objUrl) {
 				$("#img0").attr("src", objUrl) ;
 			}
@@ -157,12 +158,13 @@ function imgUploadClip(src,aspectRatio,callback){
 			$("#img0").attr("src", url);
 			var form = new FormData();
 			form.append("file", blob);
+			form.append('key', fileName);
 			form.append("token", token);
 			$.ajax({
 				processData: false,
 				contentType: false,
 				data:form,
-				url:'http://upload.qiniu.com/',
+				url:'http://up-z2.qiniu.com/',
 				dataType:'json',
 				type:'post',
 				success:function(data){
