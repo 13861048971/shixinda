@@ -2,6 +2,7 @@
 /**
  * 常用函数
  */
+
 /*
  * 身份证号验证(兼容15，18位)
  * 返回数组 status = 0;
@@ -504,13 +505,13 @@ function isChild($child, $pClass){
 /**
  * 获取图片缩略图,or 中型图
  * @param string $src 图片路径
- * @param int	 $type 1.缩略图 2.中型图
+ * @param int	 $type -1.原图 >=0.样式图
  */
-function getImage($src, $type = 1){
-	$type =  1 == $type ? '_thumb.' : '_medium.';
-	$arr = explode('.', $src);
-	$ext = end($arr);
-	return str_replace('.' . $ext, $type.$ext, $src);
+function getImage($src, $type = 0){
+	$src = c('QINIUYUN.domain').$src;
+	if($type < 0)
+	    return $src;
+	return $src . '-' .c('QINIUYUN.imgStyle')[$type]; 
 }
 
 /**

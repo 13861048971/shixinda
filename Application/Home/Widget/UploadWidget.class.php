@@ -28,8 +28,7 @@ class UploadWidget extends Controller{
 		$img = self::$img;
 		if(is_array($name)) extract($name);
 		
-		$path  ? ($img['path'] = c('QINIUYUN.domain').$path) : null;
-		var_dump($img);exit;
+		$path  ? $img['path'] = $path : null;
 		!$path &&  ($path = $value);
 		$label ? $img['label']  	= $label : null;
 		$name  ? $img['name']  		= $name  : null;
@@ -38,6 +37,7 @@ class UploadWidget extends Controller{
 		self::$imgNum++;
 		$img['idName']  .= 'img-input-id-' . self::$imgNum;
 		$img['preview'] .= 'img-preview-'  . self::$imgNum;
+		$img['prevImg'] = getImage($path,0);
 		$this->assign('img', $img);
 		if($return){
 			return $this->fetch('Widget:upload:img');

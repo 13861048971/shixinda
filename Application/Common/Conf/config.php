@@ -35,6 +35,9 @@ return array(
         'accessKey' => 'h7hX1-X0WlqlIxILxl09xaiKmc4EqZ6NH1lkfbte',
         'domain' => 'http://qiniu.img.mallshangyun.com/',
         'bucket' => 'shixinda',
+        'imgStyle' => [
+            '250_250_thumb'
+        ]
     )
             
    

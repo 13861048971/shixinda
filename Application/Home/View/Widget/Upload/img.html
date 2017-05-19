@@ -15,7 +15,7 @@
 
 	<div class="col-sm-1">
 	  <if condition="$img['path']">
-		<a target="_blank" href="javascript:openInNewWindow('{$img.path}')"  type="image/jpeg;"><img class="{$img.preview}" src="{$img.path}"  style="height:60px"></a>
+		<a target="_blank" href="javascript:openInNewWindow('{$img.prevImg}')"  type="image/jpeg;"><img class="{$img.preview}" src="{$img.prevImg}"  style="height:60px"></a>
 	  <else/>
 	    <img class="{$img.preview}"  style="height:60px" />
 	  </if>

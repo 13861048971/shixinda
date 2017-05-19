@@ -10,7 +10,7 @@ class FileController extends PublicController {
     function getQiNiuToken(){
         $auth = new \Qiniu\Auth(c('QINIUYUN')['accessKey'],c('QINIUYUN')['secrectKey']);   
         $upToken = $auth->uploadToken(c('QINIUYUN')['bucket'],$_POST['imageName']);
-        return  ajaxReturn(0,'',['token'=>$upToken,'domain' => c('QINIUYUN.domain')]);
+        return  ajaxReturn(0,'',['token'=>$upToken,'domain' => c('QINIUYUN.domain'),'imgStyle' => c('QINIUYUN.imgStyle')]);
     }
     
 	function image(){
