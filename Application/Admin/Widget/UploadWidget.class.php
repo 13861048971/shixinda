@@ -67,6 +67,7 @@ class UploadWidget extends Controller{
 	    self::$imgNum++;
 	    $img['idName']  .= 'img-input-id-' . self::$imgNum;
 	    $img['preview'] .= 'img-preview-'  . self::$imgNum;
+	    $img['prevImg'] = getImage($path);
 	    $this->assign('img', $img);
 	    if($return){
 	        return $this->fetch('Widget:upload:img');

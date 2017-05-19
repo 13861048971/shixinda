@@ -52,8 +52,6 @@ class PostController extends PublicController {
             }
         } 
         $block = d('block')->getBlock('1');
-        
-        
         $this->assign('hotList', $hotList);
         $this->assign('block', $block);
         $this->assign('newList', $newList);

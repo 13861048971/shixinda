@@ -32,7 +32,10 @@ class ContentModel extends BaseModel {
 	public function getInfo($id){
 	    $info = $this->find($id);
 	    if(!$info) return;
-	    $info = $this->parseRow($info);
+	    $v['statusName'] = $this->statusArr[$v['status']];
+	    $v['publishTime'] = date("Y-m-d H:i",$v['publish_time']);
+	    $v['updateTime'] = date("Y-m-d H:i",$v['update_time']);
+	    $v['addTime'] = date("Y-m-d H:i",$v['add_time']);
 	    return $info;
 	}
 	

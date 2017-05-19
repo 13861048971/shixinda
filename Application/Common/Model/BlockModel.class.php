@@ -34,19 +34,22 @@ class BlockModel extends BaseModel {
 	public function getInfo($id){
 	    $info = $this->find($id);
 	    if(!$info) return;
-	    $info = $this->parseRow($info);
-	    return $info;
+	   
+	    return $this->parseRow($info);
 	}
 	
 	//添加内容缓存
 	protected  function _cacheBlock($id){
-	    return $this->getInfo($id);
+	    $blockInfo = $this->where(['id' => $id])->find();
+	    $blockInfo = $this->parseRow($blockInfo);
+	    return $blockInfo;
 	}
 	//获取可以缓存的内容
 	public function getBlock($id){
 	    $key = $this->cacheBlockKey. $id;
 	    return $this->getCache($key, 'block', $id);
 	}
+	
 	//格式化行
 	public function parseRow($v){
 	    $v['statusName'] = $this->statusArr[$v['status']];
@@ -54,10 +57,13 @@ class BlockModel extends BaseModel {
 	    $v['addTime'] = date("Y-m-d H:i",$v['add_time']);
 	    $v['typeName'] = $this->typeArr[$v['type']];
 	    $v['content'] = json_decode($v['content'], true);
-	 
+	    
 	    foreach($v['content'] as $k2=>$v2){
-	        $v['content'][$k2]['imageArr'] = [getImage('image['.$k2.']', -1), '', getImage($v2['image'], -1)];
+	       $v['content'][$k2]['imageArr'] = ['image['.$k2.']', '', $v2['image']];
+	       $v['content'][$k2]['qiNiuImage'] = getImage($v2['image'],-1);
 	    }
+	    
+	   
 	    return $v;
 	}
 	
