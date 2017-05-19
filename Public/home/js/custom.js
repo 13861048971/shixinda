@@ -150,31 +150,34 @@ function imgUploadClip(src,aspectRatio,callback){
 			success:function(data){
 				if(!data.error){
 					token = data.data.token;
+					uploadQiniu(fileName,token);
 				}
 			}
 		});
-		var data = $('.img-upload-clip .img-operate>img').cropper("getCroppedCanvas").toBlob(function(blob) {
-			var url = getObjectURL(blob);
-			var form = new FormData();
-			form.append("file", blob);
-			form.append('key', fileName);
-			form.append("token", token);
-			win.alert('图片上传中', 'info');
-			$.ajax({
-				processData: false,
-				contentType: false,
-				data:form,
-				url:'http://up-z2.qiniu.com/',
-				dataType:'json',
-				type:'post',
-				success:function(data){
-					callback(data);
-					$('.img-upload-clip .img-handle').hide();
-					$('.img-upload-clip .img-operate>img').cropper('destroy');
-					$("#img0").attr("src", url);
-				}
-			});
-		},'image/jpeg',0.8);
+		function uploadQiniu(fileName,token){
+				$('.img-upload-clip .img-operate>img').cropper("getCroppedCanvas").toBlob(function(blob) {
+				var url = getObjectURL(blob);
+				var form = new FormData();
+				form.append("file", blob);
+				form.append('key', fileName);
+				form.append("token", token);
+				win.alert('图片上传中', 'info');
+				$.ajax({
+					processData: false,
+					contentType: false,
+					data:form,
+					url:'http://up-z2.qiniu.com/',
+					dataType:'json',
+					type:'post',
+					success:function(data){
+						callback(data);
+						$('.img-upload-clip .img-handle').hide();
+						$('.img-upload-clip .img-operate>img').cropper('destroy');
+						$("#img0").attr("src", url);
+					}
+				});
+			},'image/jpeg',0.8);
+		}
 	});
 };
 $(function(){
@@ -435,7 +438,7 @@ $('.account-info-edit .commit-account').on('click',function(){
 		var aspectRatio = 1/1;
 		function callback(data){
 			if(!data.error){
-				$('form .avatar-url').attr('value', data.key);
+				$('form .avatar-url').attr('value',  data.key);
 			}else{
 				win.alert(data.error, 'error');
 			}
