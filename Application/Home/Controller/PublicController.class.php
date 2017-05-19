@@ -19,8 +19,6 @@ class PublicController extends Controller {
 		    $messageNotReadCount = $messageCount - $messageReadCount;
 		    $this->assign('messageCount',$messageNotReadCount);
 		}
-
-		session('user')['avatar'] = getImage(session('user')['avatar']);
 		$this->assign('user',session('user'));
 		$this->assign('navigation',d('navigation')->getNavigation());
 		$this->assign('aboutOur',$this->about);

@@ -134,6 +134,7 @@ class UserController extends PublicController{
 	
 	//用户信息设置
 	function userEdit(){
+	    var_dump($_POST);
 	    $id = $this->user['id'];
 	    if($_POST && isset($_POST))
         $data = d('user')->edit($_POST, $id);

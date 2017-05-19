@@ -511,7 +511,7 @@ function getImage($src, $type = 0){
 	$src = c('QINIUYUN.domain').$src;
 	if($type < 0)
 	    return $src;
-	return $src . '-' .c('QINIUYUN.imgStyle')[$type]; 
+	return $src .c('QINIUYUN.imgStyle')[$type]; 
 }
 
 /**

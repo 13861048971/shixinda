@@ -523,7 +523,7 @@ class UserModel extends BaseModel{
 		$info['addTime'] = local_date($info['add_time']);
 		$info['updateTime'] = local_date($info['update_time']);
 		$info['lastLogin'] = local_date($info['last_login']);
-		!$info['avatar'] && $info['avatar'] = '/Public/images/avatar.gif';
+		!$info['avatar'] ? ($info['avatar'] = '/Public/images/avatar.gif'):($info['avatar'] = getImage($info['avatar']));
 		unset($info['password']);
 		
 		return $info;
