@@ -28,7 +28,8 @@ class UploadWidget extends Controller{
 		$img = self::$img;
 		if(is_array($name)) extract($name);
 		
-		$path  ? $img['path']  		= $path  : null;
+		$path  ? ($img['path'] = c('QINIUYUN.domain').$path) : null;
+		var_dump($img);exit;
 		!$path &&  ($path = $value);
 		$label ? $img['label']  	= $label : null;
 		$name  ? $img['name']  		= $name  : null;

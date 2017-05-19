@@ -31,9 +31,11 @@ return array(
     
     //七牛云
     'QINIUYUN' => array (
-            'secrectKey' => 'Wpf7-OJZL-S93oGYcWCpXL88N0T7nikWVk9LepmB', 
-            'accessKey' => 'h7hX1-X0WlqlIxILxl09xaiKmc4EqZ6NH1lkfbte',
-            'domain' => 'img.qiniu.mallshangyun.com',
-            'bucket' => 'shixinda', 
-    ),
+        'secrectKey' => 'Wpf7-OJZL-S93oGYcWCpXL88N0T7nikWVk9LepmB',
+        'accessKey' => 'h7hX1-X0WlqlIxILxl09xaiKmc4EqZ6NH1lkfbte',
+        'domain' => 'http://qiniu.img.mallshangyun.com/',
+        'bucket' => 'shixinda',
+    )
+            
+   
 );
