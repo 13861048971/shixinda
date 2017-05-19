@@ -70,7 +70,6 @@ class SupportModel extends BaseModel {
     	    if($_GET['act'] == 'zan'){
     	        $data['support'] = 1;
     	        if($id = $this->edit($data))
-    	            
     	            if(!d('userMsg')->edit($messageData)){
     	                ajaxReturn(1, d('userMsg')->getError());
     	            };
@@ -81,8 +80,7 @@ class SupportModel extends BaseModel {
     	        $data['support'] = 0;
     	        if($id = $this->edit($data))
     	            return ajaxReturn2(0,'踩成功',['status'=>4,'id'=>$id]);
-    	    }
-                     	   
+    	    }           	   
     }                           
 	/**
 	 * 编辑or添加

@@ -48,7 +48,7 @@ class ContentModel extends BaseModel {
 	
 	//格式化行
 	public function parseRow($v){
-	    $v['cover'] = getImage($v['cover']);
+	    $v['cover'] = getImage($v['cover'], -1);
 	    $v['statusName'] = $this->statusArr[$v['status']];
 	    $v['publishTime'] = date("Y-m-d H:i",$v['publish_time']);
 	    $v['updateTime'] = date("Y-m-d H:i",$v['update_time']);

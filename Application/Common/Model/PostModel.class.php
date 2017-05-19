@@ -13,7 +13,6 @@ class PostModel extends BaseModel{
     /**
      * 编辑or添加
      */
- 
     function edit($data, $id=null){
         $data = $this->setValidate($data);
         $modtdk = d('tdk');
@@ -130,7 +129,7 @@ class PostModel extends BaseModel{
             
             foreach ($postUserList as $k2=>$v2){
                     if($v1['user_id'] == $v2['id']){
-                            $data['list'][$k1]['avatar'] = $v2['avatar'];
+                            $data['list'][$k1]['avatar'] = getImage($v2['avatar'], -1);
                     }
             } 
             

@@ -54,6 +54,7 @@ class PostCommentModel extends BaseModel{
         $idArr1 = getIdArr($data['list'], 'user_id');
         if($idArr1)
             $userList1 = d('user')->where(['id' => ['in', $idArr1]])->select();
+
         //回复帖子id数组
         $idArr2 = getIdArr($data['list'], 'reply_id');
         if($idArr2){
@@ -78,7 +79,8 @@ class PostCommentModel extends BaseModel{
             //获取评论的信息
             foreach($userList1 as $k1=>$v1){
                 if($v1['id'] == $v['user_id']){
-                    $data['list'][$k]['userName'] = $v1['nickname'];    
+                    $data['list'][$k]['userName'] = $v1['nickname'];
+                    $data['list'][$k]['avatar'] = getImage($v1['avatar'], -1);
                 }
             }
             //获取主贴标题
@@ -116,9 +118,9 @@ class PostCommentModel extends BaseModel{
                         }
                     }
                 }    
-            }
-            
+            }   
         }
+
         return $data;
     }
     //缓存数量
