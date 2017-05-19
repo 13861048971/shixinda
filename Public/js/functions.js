@@ -814,6 +814,7 @@ function uploadFile(btnSelector){
 	var progressNode = $('<span class="process"></span>');
 	var fileBtn = $('<input type="file" name="file" class="hidden" />');
 	var fileName = '';
+	var domain = '';
 	$('body').append(fileBtn);
 	
 	var input, preview;
@@ -831,6 +832,7 @@ function uploadFile(btnSelector){
 			success:function(data){
 				if(!data.error){
 					var token = data.data.token;
+					domain = data.data.domain;
 					upload(_this.name, _this.files[0], token);
 				}
 			}

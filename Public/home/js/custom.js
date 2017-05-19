@@ -155,11 +155,11 @@ function imgUploadClip(src,aspectRatio,callback){
 		});
 		var data = $('.img-upload-clip .img-operate>img').cropper("getCroppedCanvas").toBlob(function(blob) {
 			var url = getObjectURL(blob);
-			$("#img0").attr("src", url);
 			var form = new FormData();
 			form.append("file", blob);
 			form.append('key', fileName);
 			form.append("token", token);
+			win.alert('图片上传中', 'info');
 			$.ajax({
 				processData: false,
 				contentType: false,
@@ -171,6 +171,7 @@ function imgUploadClip(src,aspectRatio,callback){
 					callback(data);
 					$('.img-upload-clip .img-handle').hide();
 					$('.img-upload-clip .img-operate>img').cropper('destroy');
+					$("#img0").attr("src", url);
 				}
 			});
 		},'image/jpeg',0.8);
