@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2017-05-15 15:14:18
+Date: 2017-05-19 18:51:09
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -36,7 +36,7 @@ CREATE TABLE `admin` (
 -- ----------------------------
 -- Records of admin
 -- ----------------------------
-INSERT INTO `admin` VALUES ('1', '1', 'admin', 'e10adc3949ba59abbe56e057f20f883e', '100', '', '/Public/qrcode/2016-07-02/1467438415603.png', '1494311555', '0', '1467904390');
+INSERT INTO `admin` VALUES ('1', '1', 'admin', 'e10adc3949ba59abbe56e057f20f883e', '100', '', '/Public/qrcode/2016-07-02/1467438415603.png', '1494844712', '0', '1467904390');
 INSERT INTO `admin` VALUES ('2', '1', 'holahi', 'fcea920f7412b5da7be0cf42b8c93759', '0', '', '/Public/qrcode/2016-06-25/1466785122121.png', '0', '1466784503', '1466785436');
 
 -- ----------------------------
@@ -182,7 +182,7 @@ CREATE TABLE `block` (
 -- ----------------------------
 -- Records of block
 -- ----------------------------
-INSERT INTO `block` VALUES ('1', '的方式方法上方的', '[{\"url\":\"http:\\/\\/shixinda.cc\\/post\\/postDetail\\/id\\/40\",\"image\":\"\\/Public\\/upload\\/image\\/2017-05-09\\/59117d867b5d1.png\",\"title\":\"\\u672a\\u6765\\u79d1\\u6280\\u5f88\\u53d1\\u8fbe\"},{\"url\":\"http:\\/\\/shixinda.cc\\/post\\/postDetail\\/id\\/40\",\"image\":\"\\/Public\\/upload\\/image\\/2017-05-09\\/59117d897879c.jpg\",\"title\":\"\\u672a\\u6765\\u79d1\\u6280\\u5f88\\u53d1\\u8fbe\"},{\"url\":\"http:\\/\\/shixinda.cc\\/post\\/postDetail\\/id\\/40\",\"image\":\"\\/Public\\/upload\\/image\\/2017-05-09\\/59117d8c211c3.png\",\"title\":\"\\u672a\\u6765\\u79d1\\u6280\\u5f88\\u53d1\\u8fbe\"},{\"url\":\"http:\\/\\/shixinda.cc\\/post\\/postDetail\\/id\\/40\",\"image\":\"\\/Public\\/upload\\/image\\/2017-05-09\\/59117bfde43bb.png\",\"title\":\"\\u672a\\u6765\\u79d1\\u6280\\u5f88\\u53d1\\u8fbe\"}]', '1', '1', '1494318084', '1494318477');
+INSERT INTO `block` VALUES ('1', '的方式方法上方的', '[{\"url\":\"http:\\/\\/shixinda.cc\\/post\\/postDetail\\/id\\/40\",\"image\":\"images\\/2017-05-19\\/1495185034\",\"title\":\"\\u672a\\u6765\\u79d1\\u6280\\u5f88\\u53d1\\u8fbe\"},{\"url\":\"http:\\/\\/shixinda.cc\\/post\\/postDetail\\/id\\/40\",\"image\":\"images\\/2017-05-19\\/1495185157\",\"title\":\"\\u672a\\u6765\\u79d1\\u6280\\u5f88\\u53d1\\u8fbe\"},{\"url\":\"http:\\/\\/shixinda.cc\\/post\\/postDetail\\/id\\/40\",\"image\":\"images\\/2017-05-19\\/1495185201\",\"title\":\"\\u672a\\u6765\\u79d1\\u6280\\u5f88\\u53d1\\u8fbe\"},{\"url\":\"http:\\/\\/shixinda.cc\\/post\\/postDetail\\/id\\/40\",\"image\":\"images\\/2017-05-19\\/1495187076\",\"title\":\"\\u672a\\u6765\\u79d1\\u6280\\u5f88\\u53d1\\u8fbe\"}]', '1', '1', '1494318084', '1495187080');
 
 -- ----------------------------
 -- Table structure for `category`
@@ -222,7 +222,7 @@ CREATE TABLE `collect` (
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`),
   KEY `node_id` (`node_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of collect
@@ -233,8 +233,9 @@ INSERT INTO `collect` VALUES ('5', '2', '1', '1', '1472711985');
 INSERT INTO `collect` VALUES ('11', '1', '22', '30', '1493689078');
 INSERT INTO `collect` VALUES ('23', '1', '22', '29', '1493801992');
 INSERT INTO `collect` VALUES ('26', '1', '22', '42', '1493802695');
-INSERT INTO `collect` VALUES ('27', '1', '22', '40', '1493890538');
 INSERT INTO `collect` VALUES ('28', '1', '22', '41', '1494319953');
+INSERT INTO `collect` VALUES ('30', '1', '22', '40', '1495009572');
+INSERT INTO `collect` VALUES ('31', '1', '22', '38', '1495010778');
 
 -- ----------------------------
 -- Table structure for `comment`
@@ -310,22 +311,22 @@ CREATE TABLE `content` (
 -- ----------------------------
 -- Records of content
 -- ----------------------------
-INSERT INTO `content` VALUES ('2', '7', '微信公众号', '<p style=\"color:#666666;font-family:arial, 宋体, sans-serif;font-size:12px;\">\n	<img src=\"http://api.map.baidu.com/staticimage?center=118.802891%2C32.064735&zoom=11&width=558&height=360&markers=118.802891%2C32.064735&markerStyles=l%2CA\" alt=\"\" /><img src=\"http://api.map.baidu.com/staticimage?center=121.473704%2C31.230393&zoom=11&width=558&height=360&markers=121.473704%2C31.230393&markerStyles=l%2CA\" alt=\"\" />\n</p>\n<p style=\"color:#666666;font-family:arial, 宋体, sans-serif;font-size:12px;\">\n	本词条缺少<span style=\"font-weight:700;\">名片图</span>，补充相关内容使词条更完整，还能快速升级，赶紧来<a class=\"edit-prompt-link j-edit-link\">编辑</a>吧！\n</p>\n<div class=\"lemma-summary\" style=\"color:#333333;font-size:14px;font-family:arial, 宋体, sans-serif;background-color:#FFFFFF;\">\n	<div class=\"para\">\n		<a target=\"_blank\" href=\"http://baike.baidu.com/item/App%E5%BC%80%E5%8F%91\">App开发</a>，是指专注于手机<a target=\"_blank\" href=\"http://baike.baidu.com/item/%E5%BA%94%E7%94%A8%E8%BD%AF%E4%BB%B6\">应用软件</a>开发与服务。&nbsp;<a target=\"_blank\" href=\"http://baike.baidu.com/item/App/33589\">App</a>是application的缩写，通常专指手机上的应用软件，或称<a target=\"_blank\" href=\"http://baike.baidu.com/item/%E6%89%8B%E6%9C%BA%E5%AE%A2%E6%88%B7%E7%AB%AF\">手机客户端</a>。另外目前有很多在线app开发平台。\n	</div>\n	<div class=\"para\">\n		<a target=\"_blank\" href=\"http://baike.baidu.com/item/%E8%8B%B9%E6%9E%9C%E5%85%AC%E5%8F%B8\">苹果公司</a>的App store开创了手机软件业发展的新篇章，使得第三方软件的提供者参与其中的积极性空前高涨。随着智能手机越发普及、用户越发依赖手机软件商店，App开发的市场需求与发展前景也逐渐蓬勃，截止到2012年12月，App开发已变为<a target=\"_blank\" href=\"http://baike.baidu.com/item/%E7%BA%A2%E6%B5%B7%E5%B8%82%E5%9C%BA\">红海市场</a>。\n	</div>\n	<div class=\"para\">\n		当然移动互联网时代是全民的移动互联网时代，是每个人的时代，也是每个企业的时代。APP便捷了每个人的生活，APP开发让每个企业都开始了移动信息化进程。\n	</div>\n</div>', '加菲猫', '1', '0', '0', '/Public/upload/image/2017-04-21/58f9e0175c1bd.png', '1492770798', '1492770960', '1492833163');
-INSERT INTO `content` VALUES ('3', '8', 'Andriod App ', '<h1 style=\"font-size:34px;font-weight:400;vertical-align:sub;\">\n	<img src=\"/Public/upload/image/2017/04/22/1492833228477.png\" alt=\"\" /><br />\n</h1>\n<h1 style=\"font-size:34px;font-weight:400;vertical-align:sub;\">\n	app开发\n</h1>\n<a class=\"edit-lemma cmn-btn-hover-blue cmn-btn-28 j-edit-link\"><span class=\"cmn-icon wiki-lemma-icons wiki-lemma-icons_edit-lemma\" style=\"font-family:baikeFont_layout;line-height:12px;vertical-align:text-top;color:#52A3F5;\"></span>编辑</a> <div class=\"edit-prompt\" style=\"font-size:12px;margin:10px 0px;background:url(\" color:#666666;font-family:arial,=\"\" 宋体,=\"\" sans-serif;\"=\"\">\n	本词条缺少<span style=\"font-weight:700;\">名片图</span>，补充相关内容使词条更完整，还能快速升级，赶紧来<a class=\"edit-prompt-link j-edit-link\">编辑</a>吧！\n	</div>\n	<div class=\"lemma-summary\" style=\"font-size:14px;color:#333333;font-family:arial, 宋体, sans-serif;background-color:#FFFFFF;\">\n		<div class=\"para\">\n			<a target=\"_blank\" href=\"http://baike.baidu.com/item/App%E5%BC%80%E5%8F%91\">App开发</a>，是指专注于手机<a target=\"_blank\" href=\"http://baike.baidu.com/item/%E5%BA%94%E7%94%A8%E8%BD%AF%E4%BB%B6\">应用软件</a>开发与服务。 <a target=\"_blank\" href=\"http://baike.baidu.com/item/App/33589\">App</a>是application的缩写，通常专指手机上的应用软件，或称<a target=\"_blank\" href=\"http://baike.baidu.com/item/%E6%89%8B%E6%9C%BA%E5%AE%A2%E6%88%B7%E7%AB%AF\">手机客户端</a>。另外目前有很多在线app开发平台。\n		</div>\n		<div class=\"para\">\n			<a target=\"_blank\" href=\"http://baike.baidu.com/item/%E8%8B%B9%E6%9E%9C%E5%85%AC%E5%8F%B8\">苹果公司</a>的App store开创了手机软件业发展的新篇章，使得第三方软件的提供者参与其中的积极性空前高涨。随着智能手机越发普及、用户越发依赖手机软件商店，App开发的市场需求与发展前景也逐渐蓬勃，截止到2012年12月，App开发已变为<a target=\"_blank\" href=\"http://baike.baidu.com/item/%E7%BA%A2%E6%B5%B7%E5%B8%82%E5%9C%BA\">红海市场</a>。\n		</div>\n		<div class=\"para\">\n			当然移动互联网时代是全民的移动互联网时代，是每个人的时代，也是每个企业的时代。APP便捷了每个人的生活，APP开发让每个企业都开始了移动信息化进程。\n		</div>\n	</div>', '张耀乐', '1', '0', '0', '/Public/upload/image/2017-04-21/58f9e0a8649fe.png', '1492770967', '1492771036', '1492833231');
-INSERT INTO `content` VALUES ('4', '9', 'iOS App', '<h1 style=\"font-size:34px;font-weight:400;vertical-align:sub;\">\n	<img src=\"/Public/upload/image/2017/04/22/14928332714304.png\" alt=\"\" /><br />\n</h1>\n<h1 style=\"font-size:34px;font-weight:400;vertical-align:sub;\">\n	app开发\n</h1>\n<a class=\"edit-lemma cmn-btn-hover-blue cmn-btn-28 j-edit-link\"><span class=\"cmn-icon wiki-lemma-icons wiki-lemma-icons_edit-lemma\" style=\"font-family:baikeFont_layout;line-height:12px;vertical-align:text-top;color:#52A3F5;\"></span>编辑</a> <div class=\"edit-prompt\" style=\"font-size:12px;margin:10px 0px;background:url(\" color:#666666;font-family:arial,=\"\" 宋体,=\"\" sans-serif;\"=\"\">\n	本词条缺少<span style=\"font-weight:700;\">名片图</span>，补充相关内容使词条更完整，还能快速升级，赶紧来<a class=\"edit-prompt-link j-edit-link\">编辑</a>吧！\n	</div>\n	<div class=\"lemma-summary\" style=\"font-size:14px;color:#333333;font-family:arial, 宋体, sans-serif;background-color:#FFFFFF;\">\n		<div class=\"para\">\n			<a target=\"_blank\" href=\"http://baike.baidu.com/item/App%E5%BC%80%E5%8F%91\">App开发</a>，是指专注于手机<a target=\"_blank\" href=\"http://baike.baidu.com/item/%E5%BA%94%E7%94%A8%E8%BD%AF%E4%BB%B6\">应用软件</a>开发与服务。 <a target=\"_blank\" href=\"http://baike.baidu.com/item/App/33589\">App</a>是application的缩写，通常专指手机上的应用软件，或称<a target=\"_blank\" href=\"http://baike.baidu.com/item/%E6%89%8B%E6%9C%BA%E5%AE%A2%E6%88%B7%E7%AB%AF\">手机客户端</a>。另外目前有很多在线app开发平台。\n		</div>\n		<div class=\"para\">\n			<a target=\"_blank\" href=\"http://baike.baidu.com/item/%E8%8B%B9%E6%9E%9C%E5%85%AC%E5%8F%B8\">苹果公司</a>的App store开创了手机软件业发展的新篇章，使得第三方软件的提供者参与其中的积极性空前高涨。随着智能手机越发普及、用户越发依赖手机软件商店，App开发的市场需求与发展前景也逐渐蓬勃，截止到2012年12月，App开发已变为<a target=\"_blank\" href=\"http://baike.baidu.com/item/%E7%BA%A2%E6%B5%B7%E5%B8%82%E5%9C%BA\">红海市场</a>。\n		</div>\n		<div class=\"para\">\n			当然移动互联网时代是全民的移动互联网时代，是每个人的时代，也是每个企业的时代。APP便捷了每个人的生活，APP开发让每个企业都开始了移动信息化进程。\n		</div>\n	</div>', '张耀乐', '1', '0', '0', '/Public/upload/image/2017-04-21/58f9e0f38050b.png', '1492771045', '1492771115', '1492833273');
-INSERT INTO `content` VALUES ('5', '10', 'HTML5网站', '<h1 style=\"font-size:34px;font-weight:400;vertical-align:sub;\">\n	<img src=\"/Public/upload/image/2017/04/22/14928332424447.png\" alt=\"\" /><br />\n</h1>\n<h1 style=\"font-size:34px;font-weight:400;vertical-align:sub;\">\n	app开发\n</h1>\n<a class=\"edit-lemma cmn-btn-hover-blue cmn-btn-28 j-edit-link\"><span class=\"cmn-icon wiki-lemma-icons wiki-lemma-icons_edit-lemma\" style=\"font-family:baikeFont_layout;line-height:12px;vertical-align:text-top;color:#52A3F5;\"></span>编辑</a> <div class=\"edit-prompt\" style=\"font-size:12px;margin:10px 0px;background:url(\" color:#666666;font-family:arial,=\"\" 宋体,=\"\" sans-serif;\"=\"\">\n	本词条缺少<span style=\"font-weight:700;\">名片图</span>，补充相关内容使词条更完整，还能快速升级，赶紧来<a class=\"edit-prompt-link j-edit-link\">编辑</a>吧！\n	</div>\n	<div class=\"lemma-summary\" style=\"font-size:14px;color:#333333;font-family:arial, 宋体, sans-serif;background-color:#FFFFFF;\">\n		<div class=\"para\">\n			<a target=\"_blank\" href=\"http://baike.baidu.com/item/App%E5%BC%80%E5%8F%91\">App开发</a>，是指专注于手机<a target=\"_blank\" href=\"http://baike.baidu.com/item/%E5%BA%94%E7%94%A8%E8%BD%AF%E4%BB%B6\">应用软件</a>开发与服务。 <a target=\"_blank\" href=\"http://baike.baidu.com/item/App/33589\">App</a>是application的缩写，通常专指手机上的应用软件，或称<a target=\"_blank\" href=\"http://baike.baidu.com/item/%E6%89%8B%E6%9C%BA%E5%AE%A2%E6%88%B7%E7%AB%AF\">手机客户端</a>。另外目前有很多在线app开发平台。\n		</div>\n		<div class=\"para\">\n			<a target=\"_blank\" href=\"http://baike.baidu.com/item/%E8%8B%B9%E6%9E%9C%E5%85%AC%E5%8F%B8\">苹果公司</a>的App store开创了手机软件业发展的新篇章，使得第三方软件的提供者参与其中的积极性空前高涨。随着智能手机越发普及、用户越发依赖手机软件商店，App开发的市场需求与发展前景也逐渐蓬勃，截止到2012年12月，App开发已变为<a target=\"_blank\" href=\"http://baike.baidu.com/item/%E7%BA%A2%E6%B5%B7%E5%B8%82%E5%9C%BA\">红海市场</a>。\n		</div>\n		<div class=\"para\">\n			当然移动互联网时代是全民的移动互联网时代，是每个人的时代，也是每个企业的时代。APP便捷了每个人的生活，APP开发让每个企业都开始了移动信息化进程。\n		</div>\n	</div>', '张耀乐', '1', '0', '0', '/Public/upload/image/2017-04-21/58f9e138079f1.jpg', '1492771118', '1492771154', '1492833244');
-INSERT INTO `content` VALUES ('6', '11', '微信小程序', '<h1 style=\"font-size:34px;font-weight:400;vertical-align:sub;\">', '张耀乐', '1', '0', '0', '/Public/upload/image/2017-04-21/58f9e16330c76.png', '1492771156', '1492771204', '1492833260');
-INSERT INTO `content` VALUES ('9', '7', '克兰德有限公公司合作', '<img src=\"/Public/upload/image/2017/04/22/14928430266317.png\" alt=\"\" />', '阿斯达', '1', '0', '0', '/Public/upload/image/2017-04-22/58fafa09d23ee.png', '1492842967', '1492843028', '1492843715');
-INSERT INTO `content` VALUES ('10', '8', '住百家有限公司合作', '<img src=\"/Public/upload/image/2017/04/22/14928430744574.png\" alt=\"\" />', '阿斯达', '1', '0', '0', '/Public/upload/image/2017-04-22/58fafa3a3da70.png', '1492843031', '1492843075', '1492843723');
-INSERT INTO `content` VALUES ('11', '10', '大卫德有限公司合作', '<img src=\"/Public/upload/image/2017/04/22/14928431294170.png\" alt=\"\" />', '阿斯达', '1', '0', '0', '/Public/upload/image/2017-04-22/58fafa7429c0a.png', '1492843081', '1492843130', '1492843729');
-INSERT INTO `content` VALUES ('12', '12', '长江公司', '', '阿斯达', '1', '0', '0', '/Public/upload/image/2017-04-22/58fb26b7949fa.png', '1492854248', '1492854290', '1492854456');
-INSERT INTO `content` VALUES ('13', '13', '大桥公司', '', '阿斯达', '1', '0', '0', '/Public/upload/image/2017-04-22/58fb26afeac00.png', '1492854294', '1492854313', '1492854449');
-INSERT INTO `content` VALUES ('14', '14', '长江大桥公司', '', '阿斯达', '1', '0', '0', '/Public/upload/image/2017-04-22/58fb263995400.png', '1492854315', '1492854330', '1492854330');
-INSERT INTO `content` VALUES ('15', '12', '长江公司长江公司', '', '阿斯达', '1', '0', '0', '/Public/upload/image/2017-04-22/58fb264c88762.png', '1492854332', '1492854349', '1492854349');
-INSERT INTO `content` VALUES ('16', '16', '大河有限公司', '', '阿斯达', '1', '0', '0', '/Public/upload/image/2017-04-22/58fb3696ad9b6.jpg', '1492858508', '1492858530', '1492858530');
-INSERT INTO `content` VALUES ('17', '17', '上海邮电公司', '', '阿斯达', '1', '0', '0', '/Public/upload/image/2017-04-22/58fb36c2483bf.jpg', '1492858531', '1492858563', '1492858563');
-INSERT INTO `content` VALUES ('18', '14', '南京大兵高铁公司', '', '阿斯达', '1', '0', '0', '/Public/upload/image/2017-04-22/58fb3702c7c98.jpg', '1492858603', '1492858627', '1492858627');
-INSERT INTO `content` VALUES ('19', '1', '习近平总书记考察广西在当地引起热烈反响', '<p style=\"font-family:SimSun;color:#2B2B2B;\">\n	春风拂面，喜润心田。连日来，壮乡儿女沉浸在激动和喜悦中。自治区党委、南宁市委、北海市委分别在第一时间召开常委扩大会议，认真学习习近平总书记考察广西时的重要讲话精神。广大干部群众通过网络、电视、报纸等，关注习近平总书记的考察行程，学习习近平总书记的重要讲话。大家纷纷表示，一定牢记嘱托、不负期许，把习近平总书记的亲切关怀转化为做好各项工作的强大动力，不断谱写“一带一路”建设新篇章。\n</p>\n<p style=\"font-family:SimSun;color:#2B2B2B;\">\n	<strong>奏响“一带一路”主旋律的广西音符</strong>\n</p>\n<p style=\"font-family:SimSun;color:#2B2B2B;\">\n	波斯的陶壶、<a href=\"http://country.huanqiu.com/sri_lanka\" class=\"linkAbout\" target=\"_blank\">斯里兰卡</a>的琥珀、<a href=\"http://country.huanqiu.com/malaysia\" class=\"linkAbout\" target=\"_blank\">马来西亚</a>的铜熏炉……北海市合浦县汉代文化博物馆里，沉淀着光阴印记的奇珍异宝，见证了古代海上丝绸之路的恢弘历史。\n</p>\n<p style=\"font-family:SimSun;color:#2B2B2B;\">\n	陪同习近平总书记考察博物馆的合浦县委书记王方红对记者说，“总书记指出，‘向海之路是一个国家发展的重要途径，这里围绕古代海上丝绸之路陈列的文物都是历史、是文化’。未来，我们要进一步挖掘好、保护好、传承好合浦海丝文化和汉文化，在保护好的前提下加强开发利用，把资源优势转化为产业优势。”\n</p>', '阿斯达', '1', '0', '0', '/Public/upload/image/2017-04-24/58fd604a943bd.png', '1493000243', '1493000333', '1493804596');
+INSERT INTO `content` VALUES ('2', '7', '咪咕吗米哦微信公众号', '<p style=\"color:#666666;font-family:arial, 宋体, sans-serif;font-size:12px;\">\n	<img src=\"http://api.map.baidu.com/staticimage?center=118.802891%2C32.064735&zoom=11&width=558&height=360&markers=118.802891%2C32.064735&markerStyles=l%2CA\" alt=\"\" /><img src=\"http://api.map.baidu.com/staticimage?center=121.473704%2C31.230393&zoom=11&width=558&height=360&markers=121.473704%2C31.230393&markerStyles=l%2CA\" alt=\"\" /> \n</p>\n<p style=\"color:#666666;font-family:arial, 宋体, sans-serif;font-size:12px;\">\n	本词条缺少<span style=\"font-weight:700;\">名片图</span>，补充相关内容使词条更完整，还能快速升级，赶紧来<a class=\"edit-prompt-link j-edit-link\">编辑</a>吧！\n</p>\n<div class=\"lemma-summary\" style=\"color:#333333;font-size:14px;font-family:arial, 宋体, sans-serif;background-color:#FFFFFF;\">\n	<div class=\"para\">\n		<a target=\"_blank\" href=\"http://baike.baidu.com/item/App%E5%BC%80%E5%8F%91\">App开发</a>，是指专注于手机<a target=\"_blank\" href=\"http://baike.baidu.com/item/%E5%BA%94%E7%94%A8%E8%BD%AF%E4%BB%B6\">应用软件</a>开发与服务。 <a target=\"_blank\" href=\"http://baike.baidu.com/item/App/33589\">App</a>是application的缩写，通常专指手机上的应用软件，或称<a target=\"_blank\" href=\"http://baike.baidu.com/item/%E6%89%8B%E6%9C%BA%E5%AE%A2%E6%88%B7%E7%AB%AF\">手机客户端</a>。另外目前有很多在线app开发平台。\n	</div>\n	<div class=\"para\">\n		<a target=\"_blank\" href=\"http://baike.baidu.com/item/%E8%8B%B9%E6%9E%9C%E5%85%AC%E5%8F%B8\">苹果公司</a>的App store开创了手机软件业发展的新篇章，使得第三方软件的提供者参与其中的积极性空前高涨。随着智能手机越发普及、用户越发依赖手机软件商店，App开发的市场需求与发展前景也逐渐蓬勃，截止到2012年12月，App开发已变为<a target=\"_blank\" href=\"http://baike.baidu.com/item/%E7%BA%A2%E6%B5%B7%E5%B8%82%E5%9C%BA\">红海市场</a>。\n	</div>\n	<div class=\"para\">\n		当然移动互联网时代是全民的移动互联网时代，是每个人的时代，也是每个企业的时代。APP便捷了每个人的生活，APP开发让每个企业都开始了移动信息化进程。\n	</div>\n</div>', '加菲猫', '1', '0', '0', '1495173146441QQ1.png', '1492770798', '1492770960', '1495173171');
+INSERT INTO `content` VALUES ('3', '8', '叮咚叮咚Andriod App ', '<h1 style=\"font-size:34px;font-weight:400;vertical-align:sub;\">\n	<img src=\"/Public/upload/image/2017/04/22/1492833228477.png\" alt=\"\" /><br />\n</h1>\n<h1 style=\"font-size:34px;font-weight:400;vertical-align:sub;\">\n	app开发\n</h1>\n<a class=\"edit-lemma cmn-btn-hover-blue cmn-btn-28 j-edit-link\"><span class=\"cmn-icon wiki-lemma-icons wiki-lemma-icons_edit-lemma\" style=\"font-family:baikeFont_layout;line-height:12px;vertical-align:text-top;color:#52A3F5;\"></span>编辑</a> <div class=\"edit-prompt\" style=\"font-size:12px;margin:10px 0px;background:url(\" color:#666666;font-family:arial,=\"\" 宋体,=\"\" sans-serif;\"=\"\">\n	本词条缺少<span style=\"font-weight:700;\">名片图</span>，补充相关内容使词条更完整，还能快速升级，赶紧来<a class=\"edit-prompt-link j-edit-link\">编辑</a>吧！\n	</div>\n	<div class=\"lemma-summary\" style=\"font-size:14px;color:#333333;font-family:arial, 宋体, sans-serif;background-color:#FFFFFF;\">\n		<div class=\"para\">\n			<a target=\"_blank\" href=\"http://baike.baidu.com/item/App%E5%BC%80%E5%8F%91\">App开发</a>，是指专注于手机<a target=\"_blank\" href=\"http://baike.baidu.com/item/%E5%BA%94%E7%94%A8%E8%BD%AF%E4%BB%B6\">应用软件</a>开发与服务。 <a target=\"_blank\" href=\"http://baike.baidu.com/item/App/33589\">App</a>是application的缩写，通常专指手机上的应用软件，或称<a target=\"_blank\" href=\"http://baike.baidu.com/item/%E6%89%8B%E6%9C%BA%E5%AE%A2%E6%88%B7%E7%AB%AF\">手机客户端</a>。另外目前有很多在线app开发平台。\n		</div>\n		<div class=\"para\">\n			<a target=\"_blank\" href=\"http://baike.baidu.com/item/%E8%8B%B9%E6%9E%9C%E5%85%AC%E5%8F%B8\">苹果公司</a>的App store开创了手机软件业发展的新篇章，使得第三方软件的提供者参与其中的积极性空前高涨。随着智能手机越发普及、用户越发依赖手机软件商店，App开发的市场需求与发展前景也逐渐蓬勃，截止到2012年12月，App开发已变为<a target=\"_blank\" href=\"http://baike.baidu.com/item/%E7%BA%A2%E6%B5%B7%E5%B8%82%E5%9C%BA\">红海市场</a>。\n		</div>\n		<div class=\"para\">\n			当然移动互联网时代是全民的移动互联网时代，是每个人的时代，也是每个企业的时代。APP便捷了每个人的生活，APP开发让每个企业都开始了移动信息化进程。\n		</div>\n	</div>', '张耀乐', '1', '0', '0', '149516599976188E54109E58E41C0119A3C395286CD64.jpg', '1492770967', '1492771036', '1495166034');
+INSERT INTO `content` VALUES ('4', '9', '深圳收尾ISAiOS App', '<h1 style=\"font-size:34px;font-weight:400;vertical-align:sub;\">\n	<img src=\"/Public/upload/image/2017/04/22/14928332714304.png\" alt=\"\" /><br />\n</h1>\n<h1 style=\"font-size:34px;font-weight:400;vertical-align:sub;\">\n	app开发\n</h1>\n<a class=\"edit-lemma cmn-btn-hover-blue cmn-btn-28 j-edit-link\"><span class=\"cmn-icon wiki-lemma-icons wiki-lemma-icons_edit-lemma\" style=\"font-family:baikeFont_layout;line-height:12px;vertical-align:text-top;color:#52A3F5;\"></span>编辑</a> <div class=\"edit-prompt\" style=\"font-size:12px;margin:10px 0px;background:url(\" color:#666666;font-family:arial,=\"\" 宋体,=\"\" sans-serif;\"=\"\">\n	本词条缺少<span style=\"font-weight:700;\">名片图</span>，补充相关内容使词条更完整，还能快速升级，赶紧来<a class=\"edit-prompt-link j-edit-link\">编辑</a>吧！\n	</div>\n	<div class=\"lemma-summary\" style=\"font-size:14px;color:#333333;font-family:arial, 宋体, sans-serif;background-color:#FFFFFF;\">\n		<div class=\"para\">\n			<a target=\"_blank\" href=\"http://baike.baidu.com/item/App%E5%BC%80%E5%8F%91\">App开发</a>，是指专注于手机<a target=\"_blank\" href=\"http://baike.baidu.com/item/%E5%BA%94%E7%94%A8%E8%BD%AF%E4%BB%B6\">应用软件</a>开发与服务。 <a target=\"_blank\" href=\"http://baike.baidu.com/item/App/33589\">App</a>是application的缩写，通常专指手机上的应用软件，或称<a target=\"_blank\" href=\"http://baike.baidu.com/item/%E6%89%8B%E6%9C%BA%E5%AE%A2%E6%88%B7%E7%AB%AF\">手机客户端</a>。另外目前有很多在线app开发平台。\n		</div>\n		<div class=\"para\">\n			<a target=\"_blank\" href=\"http://baike.baidu.com/item/%E8%8B%B9%E6%9E%9C%E5%85%AC%E5%8F%B8\">苹果公司</a>的App store开创了手机软件业发展的新篇章，使得第三方软件的提供者参与其中的积极性空前高涨。随着智能手机越发普及、用户越发依赖手机软件商店，App开发的市场需求与发展前景也逐渐蓬勃，截止到2012年12月，App开发已变为<a target=\"_blank\" href=\"http://baike.baidu.com/item/%E7%BA%A2%E6%B5%B7%E5%B8%82%E5%9C%BA\">红海市场</a>。\n		</div>\n		<div class=\"para\">\n			当然移动互联网时代是全民的移动互联网时代，是每个人的时代，也是每个企业的时代。APP便捷了每个人的生活，APP开发让每个企业都开始了移动信息化进程。\n		</div>\n	</div>', '张耀乐', '1', '0', '0', '14951742870533.png', '1492771045', '1492771115', '1495174290');
+INSERT INTO `content` VALUES ('5', '10', '上海蓝天HTML5网站', '<h1 style=\"font-size:34px;font-weight:400;vertical-align:sub;\">\n	<img src=\"/Public/upload/image/2017/04/22/14928332424447.png\" alt=\"\" /><br />\n</h1>\n<h1 style=\"font-size:34px;font-weight:400;vertical-align:sub;\">\n	app开发\n</h1>\n<a class=\"edit-lemma cmn-btn-hover-blue cmn-btn-28 j-edit-link\"><span class=\"cmn-icon wiki-lemma-icons wiki-lemma-icons_edit-lemma\" style=\"font-family:baikeFont_layout;line-height:12px;vertical-align:text-top;color:#52A3F5;\"></span>编辑</a> <div class=\"edit-prompt\" style=\"font-size:12px;margin:10px 0px;background:url(\" color:#666666;font-family:arial,=\"\" 宋体,=\"\" sans-serif;\"=\"\">\n	本词条缺少<span style=\"font-weight:700;\">名片图</span>，补充相关内容使词条更完整，还能快速升级，赶紧来<a class=\"edit-prompt-link j-edit-link\">编辑</a>吧！\n	</div>\n	<div class=\"lemma-summary\" style=\"font-size:14px;color:#333333;font-family:arial, 宋体, sans-serif;background-color:#FFFFFF;\">\n		<div class=\"para\">\n			<a target=\"_blank\" href=\"http://baike.baidu.com/item/App%E5%BC%80%E5%8F%91\">App开发</a>，是指专注于手机<a target=\"_blank\" href=\"http://baike.baidu.com/item/%E5%BA%94%E7%94%A8%E8%BD%AF%E4%BB%B6\">应用软件</a>开发与服务。 <a target=\"_blank\" href=\"http://baike.baidu.com/item/App/33589\">App</a>是application的缩写，通常专指手机上的应用软件，或称<a target=\"_blank\" href=\"http://baike.baidu.com/item/%E6%89%8B%E6%9C%BA%E5%AE%A2%E6%88%B7%E7%AB%AF\">手机客户端</a>。另外目前有很多在线app开发平台。\n		</div>\n		<div class=\"para\">\n			<a target=\"_blank\" href=\"http://baike.baidu.com/item/%E8%8B%B9%E6%9E%9C%E5%85%AC%E5%8F%B8\">苹果公司</a>的App store开创了手机软件业发展的新篇章，使得第三方软件的提供者参与其中的积极性空前高涨。随着智能手机越发普及、用户越发依赖手机软件商店，App开发的市场需求与发展前景也逐渐蓬勃，截止到2012年12月，App开发已变为<a target=\"_blank\" href=\"http://baike.baidu.com/item/%E7%BA%A2%E6%B5%B7%E5%B8%82%E5%9C%BA\">红海市场</a>。\n		</div>\n		<div class=\"para\">\n			当然移动互联网时代是全民的移动互联网时代，是每个人的时代，也是每个企业的时代。APP便捷了每个人的生活，APP开发让每个企业都开始了移动信息化进程。\n		</div>\n	</div>', '张耀乐', '1', '0', '0', '149517318453688E54109E58E41C0119A3C395286CD64.jpg', '1492771118', '1492771154', '1495173185');
+INSERT INTO `content` VALUES ('6', '11', '沃德天有限公司强力合作微信小程序', '<h1 style=\"font-size:34px;font-weight:400;vertical-align:sub;\">', '张耀乐', '1', '0', '0', '14951743065434.png', '1492771156', '1492771204', '1495174307');
+INSERT INTO `content` VALUES ('9', '7', '克兰德有限公公司合作', '<img src=\"/Public/upload/image/2017/04/22/14928430266317.png\" alt=\"\" />', '阿斯达', '1', '0', '0', '14951742979414.png', '1492842967', '1492843028', '1495174299');
+INSERT INTO `content` VALUES ('10', '8', '住百家有限公司合作', '<img src=\"/Public/upload/image/2017/04/22/14928430744574.png\" alt=\"\" />', '阿斯达', '1', '0', '0', '14951743163554.png', '1492843031', '1492843075', '1495174318');
+INSERT INTO `content` VALUES ('11', '10', '大卫德有限公司合作', '<img src=\"/Public/upload/image/2017/04/22/14928431294170.png\" alt=\"\" />', '阿斯达', '1', '0', '0', '1495174326158QQ2.png', '1492843081', '1492843130', '1495174330');
+INSERT INTO `content` VALUES ('12', '12', '长江公司', '', '阿斯达', '1', '0', '0', '1495174349254QQ1.png', '1492854248', '1492854290', '1495174350');
+INSERT INTO `content` VALUES ('13', '13', '大桥公司', '', '阿斯达', '1', '0', '0', '1495174360839QQ2.png', '1492854294', '1492854313', '1495174361');
+INSERT INTO `content` VALUES ('14', '14', '长江大桥公司', '', '阿斯达', '1', '0', '0', '1495174369659QQ1.png', '1492854315', '1492854330', '1495174370');
+INSERT INTO `content` VALUES ('15', '12', '长江公司长江公司', '', '阿斯达', '1', '0', '0', '149517437914588E54109E58E41C0119A3C395286CD64.jpg', '1492854332', '1492854349', '1495174382');
+INSERT INTO `content` VALUES ('16', '16', '大河有限公司', '', '阿斯达', '1', '0', '0', '14951744030323.png', '1492858508', '1492858530', '1495174403');
+INSERT INTO `content` VALUES ('17', '17', '上海邮电公司', '', '阿斯达', '1', '0', '0', '14951743942252.png', '1492858531', '1492858563', '1495174394');
+INSERT INTO `content` VALUES ('18', '14', '南京大兵高铁公司', '', '阿斯达', '1', '0', '0', '1495174410251QQ3.png', '1492858603', '1492858627', '1495174411');
+INSERT INTO `content` VALUES ('19', '1', '习近平总书记考察广西在当地引起热烈反响', '<p style=\"font-family:SimSun;color:#2B2B2B;\">\n	春风拂面，喜润心田。连日来，壮乡儿女沉浸在激动和喜悦中。自治区党委、南宁市委、北海市委分别在第一时间召开常委扩大会议，认真学习习近平总书记考察广西时的重要讲话精神。广大干部群众通过网络、电视、报纸等，关注习近平总书记的考察行程，学习习近平总书记的重要讲话。大家纷纷表示，一定牢记嘱托、不负期许，把习近平总书记的亲切关怀转化为做好各项工作的强大动力，不断谱写“一带一路”建设新篇章。\n</p>\n<p style=\"font-family:SimSun;color:#2B2B2B;\">\n	<strong>奏响“一带一路”主旋律的广西音符</strong>\n</p>\n<p style=\"font-family:SimSun;color:#2B2B2B;\">\n	波斯的陶壶、<a href=\"http://country.huanqiu.com/sri_lanka\" class=\"linkAbout\" target=\"_blank\">斯里兰卡</a>的琥珀、<a href=\"http://country.huanqiu.com/malaysia\" class=\"linkAbout\" target=\"_blank\">马来西亚</a>的铜熏炉……北海市合浦县汉代文化博物馆里，沉淀着光阴印记的奇珍异宝，见证了古代海上丝绸之路的恢弘历史。\n</p>\n<p style=\"font-family:SimSun;color:#2B2B2B;\">\n	陪同习近平总书记考察博物馆的合浦县委书记王方红对记者说，“总书记指出，‘向海之路是一个国家发展的重要途径，这里围绕古代海上丝绸之路陈列的文物都是历史、是文化’。未来，我们要进一步挖掘好、保护好、传承好合浦海丝文化和汉文化，在保护好的前提下加强开发利用，把资源优势转化为产业优势。”\n</p>', '阿斯达', '1', '0', '0', '14951744261443.png', '1493000243', '1493000333', '1495174427');
 INSERT INTO `content` VALUES ('21', '18', '公司简介', '<p style=\"font-size:17.28px;font-family:arial,;\">\n	<br />\n</p>\n<p style=\"font-size:17.28px;font-family:arial,;\">\n	<span style=\"font-size:18px;\"> 南京实信达网络有限公司是根据国家信息产业部与南京市人民政府签署的“部市合作协议”而成立的。为推动<span style=\"font-family:arial;font-size:18px;\">南京</span>国民经济与社会信息化的进程，促进<span style=\"font-family:arial;font-size:18px;\">南京</span>信息产业的发展。</span> \n</p>\n<p style=\"font-size:17.28px;font-family:arial,;\">\n	<span style=\"font-size:18px;\"> 经过多年的建设与发展，公司现已拥有基本覆盖全市范围的宽带网络。今后，公司将一如既往全力跟踪世界先进技术的发展，把各类技术高度融合在宽带信息网络平台中，为社会提供全方位的高速、安全、丰富、可靠的宽带信息网络业务。</span> \n</p>', '阿斯达', '1', '0', '0', '', '1493261124', '1493261147', '1494573154');
 INSERT INTO `content` VALUES ('22', '19', '公司信息', '<p style=\"text-align:left;\">\n	<img src=\"http://api.map.baidu.com/staticimage?center=118.786062%2C32.043255&zoom=15&width=558&height=360&markers=118.786062%2C32.043255&markerStyles=l%2CA\" alt=\"\" />\n</p>\n<p style=\"text-align:left;\">\n	公司名称：南京实信达网络科技有限公公司\n</p>\n<p style=\"text-align:left;\">\n	<span style=\"color:#FFFFFF;font-family:微软雅黑;font-size:14px;background-color:#FFFFFF;\"><span style=\"color:#000000;background-color:#FFFFFF;\">邮</span><span style=\"color:#000000;background-color:#FFFFFF;\">箱:1036820869@qq.com</span></span><span style=\"background-color:#FFFFFF;\"><span style=\"color:#000000;background-color:#FFFFFF;\"></span><span style=\"background-color:#FFFFFF;color:#000000;\"></span></span> \n</p>\n<p style=\"text-align:left;\">\n	<span style=\"background-color:#FFFFFF;\"><span style=\"background-color:#FFFFFF;color:#000000;\">联系电话：13861048971<br />\n</span></span> \n</p>\n<p style=\"text-align:left;\">\n	<span style=\"background-color:#FFFFFF;\"><span style=\"background-color:#FFFFFF;color:#000000;\">办公室电话：1212121<br />\n</span></span> \n</p>\n<p>\n	<br />\n</p>', '阿斯达', '1', '0', '0', '', '1493261149', '1493261166', '1493265145');
 
@@ -401,11 +402,13 @@ CREATE TABLE `friend_link` (
   `add_time` int(11) unsigned NOT NULL COMMENT '增加时间',
   `update_time` int(11) unsigned NOT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of friend_link
 -- ----------------------------
+INSERT INTO `friend_link` VALUES ('12', '阿达撒点', 'friendLinkLog/2017-05-19/14951902053.png', 'http://shixinda.cc/user/index', '1', '1495190216', '1495190216');
+INSERT INTO `friend_link` VALUES ('11', 'sdfs', 'friendLinkLog/2017-05-19/1495189568QQ1.png', 'dsf', '0', '1495173211', '1495189573');
 
 -- ----------------------------
 -- Table structure for `message`
@@ -456,7 +459,7 @@ CREATE TABLE `navigation` (
 -- Records of navigation
 -- ----------------------------
 INSERT INTO `navigation` VALUES ('7', '6', '首页', '', '/', '1', '1', '1492754742', '1492754894');
-INSERT INTO `navigation` VALUES ('6', '0', '顶部', '', '/', '0', '1', '1492754591', '1492754684');
+INSERT INTO `navigation` VALUES ('6', '0', '顶部', 'navigationLog/2017-05-19/1495189302QQ1.png', '/', '0', '1', '1492754591', '1495189309');
 INSERT INTO `navigation` VALUES ('18', '8', '微信商城', '', '/Index/product/cate_id/11', '0', '1', '1492759908', '1492773919');
 INSERT INTO `navigation` VALUES ('8', '6', '产品展示', '', '/index/product', '2', '1', '1492754822', '1492755255');
 INSERT INTO `navigation` VALUES ('9', '6', '新闻资讯', '', '/index/news', '3', '1', '1492755064', '1492761528');
@@ -467,7 +470,7 @@ INSERT INTO `navigation` VALUES ('19', '8', 'HTML5网站', '', '/Index/product/c
 INSERT INTO `navigation` VALUES ('20', '8', '微信公众号', '', '/Index/product/cate_id/7', '0', '1', '1492828663', '1492828663');
 INSERT INTO `navigation` VALUES ('21', '8', 'Andriod App', '', '/Index/product/cate_id/8', '0', '1', '1492828712', '1492828712');
 INSERT INTO `navigation` VALUES ('22', '8', 'iOS App', '', '/Index/product/cate_id/9', '0', '1', '1492828748', '1492828748');
-INSERT INTO `navigation` VALUES ('23', '6', '论坛', '', '/post', '7', '1', '1493101955', '1493102019');
+INSERT INTO `navigation` VALUES ('23', '6', '论坛', 'navigationLog/2017-05-19/149518761288E54109E58E41C0119A3C395286CD64.jpg', '/post', '7', '1', '1493101955', '1495187636');
 
 -- ----------------------------
 -- Table structure for `post`
@@ -485,7 +488,7 @@ CREATE TABLE `post` (
   `add_time` int(11) NOT NULL COMMENT '添加时间',
   `update_time` int(11) NOT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of post
@@ -497,9 +500,9 @@ INSERT INTO `post` VALUES ('7', '13', '5', '啊啊', 'sd', '0', '0', '1', '14924
 INSERT INTO `post` VALUES ('8', '12', '5', '王', '阿斯达', '0', '0', '1', '1492486672', '1492486672');
 INSERT INTO `post` VALUES ('9', '6', '3', '王艳', '撒旦法', '0', '0', '1', '1492494219', '1492513998');
 INSERT INTO `post` VALUES ('10', '12', '5', '啦啦啦', '安达市', '0', '0', '1', '1492500863', '1492503823');
-INSERT INTO `post` VALUES ('11', '12', '6', '撒嗒啊啊啊大大', '撒嗒', '0', '1', '1', '1492503765', '1492566228');
+INSERT INTO `post` VALUES ('11', '12', '6', '撒嗒啊啊啊大大', '撒嗒', '1', '2', '1', '1492503765', '1492566228');
 INSERT INTO `post` VALUES ('12', '12', '6', 'ada地方', '的撒', '2', '5', '1', '1492566254', '1492567075');
-INSERT INTO `post` VALUES ('13', '22', '1', '发生的', '是v', '0', '0', '1', '1492566722', '1494552028');
+INSERT INTO `post` VALUES ('13', '22', '1', '发生的', '是v', '0', '1', '1', '1492566722', '1494552028');
 INSERT INTO `post` VALUES ('16', '12', '10', 'SAAB', '大声的', '0', '0', '1', '1492576661', '1492576661');
 INSERT INTO `post` VALUES ('17', '12', '10', '阿斯达', '打', '0', '0', '1', '1492576674', '1492576674');
 INSERT INTO `post` VALUES ('18', '12', '3', '撒嗒', '撒嗒', '0', '0', '1', '1492583619', '1492590298');
@@ -511,15 +514,21 @@ INSERT INTO `post` VALUES ('25', '11', '1', '亲亲亲亲', '撒嗒', '0', '0', 
 INSERT INTO `post` VALUES ('26', '12', '9', '撒嗒222亲戚', '阿杜', '0', '0', '1', '1492667180', '1492667180');
 INSERT INTO `post` VALUES ('27', '12', '9', '撒嗒222亲戚', '阿杜', '0', '0', '1', '1492667185', '1492667185');
 INSERT INTO `post` VALUES ('28', '12', '9', '撒嗒222亲戚', '阿杜', '0', '0', '1', '1492667214', '1492667214');
-INSERT INTO `post` VALUES ('29', '13', '9', '撒嗒222亲戚', '阿杜', '0', '35', '1', '1492667273', '1492745485');
-INSERT INTO `post` VALUES ('30', '13', '9', '求求求求求', '安达市', '0', '23', '1', '1492668587', '1492745461');
+INSERT INTO `post` VALUES ('29', '13', '9', '撒嗒222亲戚', '阿杜', '0', '37', '1', '1492667273', '1492745485');
+INSERT INTO `post` VALUES ('30', '13', '9', '求求求求求', '安达市', '0', '42', '1', '1492668587', '1492745461');
 INSERT INTO `post` VALUES ('33', '13', '0', 'sd', 'sad', '0', '0', '1', '1492744362', '1492744362');
 INSERT INTO `post` VALUES ('34', '13', '0', 'sdf', 'ds', '0', '7', '1', '1492744414', '1492744414');
-INSERT INTO `post` VALUES ('35', '13', '0', 'asd', 'asd', '0', '8', '1', '1492745498', '1492745498');
-INSERT INTO `post` VALUES ('38', '18', '1', '撒嗒', '暗暗地', '0', '16', '1', '1493107649', '1493107649');
-INSERT INTO `post` VALUES ('40', '22', '1', '让我们一起去玩吧', '撒嗒', '46', '256', '1', '1493274697', '1493795671');
-INSERT INTO `post` VALUES ('41', '22', '9', '杰伦为什么要骂人民警察', '维护粉丝，爱粉丝如孩子', '0', '23', '1', '1493712399', '1493795934');
-INSERT INTO `post` VALUES ('42', '22', '1', '自行车', '自行车', '0', '16', '1', '1493787029', '1493787612');
+INSERT INTO `post` VALUES ('35', '13', '0', 'asd', 'asd', '0', '9', '1', '1492745498', '1492745498');
+INSERT INTO `post` VALUES ('38', '18', '1', '撒嗒', '暗暗地', '0', '27', '1', '1493107649', '1493107649');
+INSERT INTO `post` VALUES ('40', '22', '1', '让我们一起去玩吧', '撒嗒', '47', '295', '1', '1493274697', '1493795671');
+INSERT INTO `post` VALUES ('41', '22', '9', '杰伦为什么要骂人民警察', '维护粉丝，爱粉丝如孩子', '2', '40', '1', '1493712399', '1493795934');
+INSERT INTO `post` VALUES ('42', '22', '1', '自行车', '自行车', '0', '32', '1', '1493787029', '1493787612');
+INSERT INTO `post` VALUES ('43', '22', '9', '咨询咨询', '咨询咨询咨询咨询咨询咨询', '2', '13', '1', '1494924119', '1494924119');
+INSERT INTO `post` VALUES ('44', '22', '10', '撒嗒哈哈嘿哟', '阿斯达撒上', '0', '7', '1', '1495012369', '1495012369');
+INSERT INTO `post` VALUES ('45', '22', '9', '撒大大撒大大', '撒大大', '0', '3', '1', '1495014045', '1495014045');
+INSERT INTO `post` VALUES ('46', '22', '10', '大撒', '啊实打实', '0', '1', '1', '1495014843', '1495014843');
+INSERT INTO `post` VALUES ('47', '22', '9', '阿斯达', '撒嗒', '0', '3', '1', '1495015069', '1495015069');
+INSERT INTO `post` VALUES ('48', '22', '10', 'SAAB', '萨达斯', '0', '4', '1', '1495015386', '1495015386');
 
 -- ----------------------------
 -- Table structure for `post_cate`
@@ -564,7 +573,7 @@ CREATE TABLE `post_comment` (
   `add_time` int(11) NOT NULL COMMENT '添加时间',
   `update_time` int(11) NOT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=66 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=72 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of post_comment
@@ -628,6 +637,12 @@ INSERT INTO `post_comment` VALUES ('62', '22', '40', '61', '撒嗒', '0', '14944
 INSERT INTO `post_comment` VALUES ('63', '22', '40', '0', 'sdf', '0', '1494489052', '1494489052');
 INSERT INTO `post_comment` VALUES ('64', '22', '40', '0', 'sf', '0', '1494489055', '1494489055');
 INSERT INTO `post_comment` VALUES ('65', '22', '40', '0', 'sdf', '0', '1494489068', '1494489068');
+INSERT INTO `post_comment` VALUES ('66', '22', '41', '0', '454', '0', '1494918719', '1494918719');
+INSERT INTO `post_comment` VALUES ('67', '22', '43', '0', '撒大大', '0', '1494924127', '1494924127');
+INSERT INTO `post_comment` VALUES ('68', '22', '43', '67', '阿斯达撒嗒', '0', '1494924131', '1494924131');
+INSERT INTO `post_comment` VALUES ('69', '22', '40', '0', 'adsda', '0', '1495005601', '1495005601');
+INSERT INTO `post_comment` VALUES ('70', '22', '41', '0', 'dadsa', '0', '1495005654', '1495005654');
+INSERT INTO `post_comment` VALUES ('71', '22', '11', '0', '飒飒的', '0', '1495006774', '1495006774');
 
 -- ----------------------------
 -- Table structure for `region`
@@ -4096,7 +4111,7 @@ CREATE TABLE `support` (
   `user_id` int(10) NOT NULL,
   `support` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of support
@@ -4106,7 +4121,15 @@ INSERT INTO `support` VALUES ('6', '1', '40', '22', '1');
 INSERT INTO `support` VALUES ('7', '1', '41', '22', '1');
 INSERT INTO `support` VALUES ('8', '1', '49', '22', '1');
 INSERT INTO `support` VALUES ('9', '2', '11', '22', '1');
-INSERT INTO `support` VALUES ('10', '2', '7', '22', '0');
+INSERT INTO `support` VALUES ('17', '1', '30', '22', '1');
+INSERT INTO `support` VALUES ('18', '1', '43', '22', '1');
+INSERT INTO `support` VALUES ('19', '1', '44', '22', '1');
+INSERT INTO `support` VALUES ('20', '2', '48', '22', '1');
+INSERT INTO `support` VALUES ('21', '1', '38', '22', '1');
+INSERT INTO `support` VALUES ('22', '1', '45', '22', '1');
+INSERT INTO `support` VALUES ('23', '1', '46', '22', '1');
+INSERT INTO `support` VALUES ('24', '1', '47', '22', '1');
+INSERT INTO `support` VALUES ('25', '1', '48', '22', '1');
 
 -- ----------------------------
 -- Table structure for `tdk`
@@ -4122,7 +4145,7 @@ CREATE TABLE `tdk` (
   `add_time` int(11) DEFAULT NULL COMMENT '添加时间',
   `update_time` int(11) NOT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=76 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=89 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tdk
@@ -4134,20 +4157,33 @@ INSERT INTO `tdk` VALUES ('4', '2', '24', '亲亲亲亲', 'asd', 'asd', '1492666
 INSERT INTO `tdk` VALUES ('6', '2', '28', '撒嗒222亲戚', 'adsd', 'adsa', '1492667214', '1492667214');
 INSERT INTO `tdk` VALUES ('7', '2', '29', '撒嗒222亲戚', 'adsd', 'ads', '1492667273', '1492745485');
 INSERT INTO `tdk` VALUES ('8', '2', '30', '去阿斯达', '撒发个', '', '1492677242', '1492745461');
-INSERT INTO `tdk` VALUES ('16', '3', '3', 'App开发', 'App开发', '是指专注于手机应用软件开发与服务', '1492771036', '1493789857');
-INSERT INTO `tdk` VALUES ('17', '3', '4', '红海市场', 'App', 'APP开发让每个企业都开始了移动信息化进程', '1492771115', '1493805975');
-INSERT INTO `tdk` VALUES ('18', '2', '5', '南京真美', 'App开发', '当然移动互联网时代是全民的移动互联网时代，是每个人的时代，也是每个企业的时代。APP便捷了每个人的生活，APP开发让每个企业都开始了移动信息化进程。', '1492771154', '1492833244');
-INSERT INTO `tdk` VALUES ('19', '2', '6', '微信小程序', 'APP开发', '是指专注于手机应用软件开发与服务。 App是application的缩写，通常专指手机上的应用软件，或称手机客户端。另外目前有很多在线app开发平台。\n苹果公司的App store开创了手机软件业发展的新篇章，', '1492771204', '1492833260');
-INSERT INTO `tdk` VALUES ('66', '4', '9', '资讯从这些', '资讯从这些', '资讯从这些', '1493795147', '1493795147');
+INSERT INTO `tdk` VALUES ('16', '2', '3', '', '', '', '1492771036', '1495166034');
+INSERT INTO `tdk` VALUES ('17', '2', '4', '', '', '', '1492771115', '1495174290');
+INSERT INTO `tdk` VALUES ('18', '2', '5', '', '', '', '1492771154', '1495173185');
+INSERT INTO `tdk` VALUES ('19', '2', '6', '', '', '', '1492771204', '1495174307');
+INSERT INTO `tdk` VALUES ('66', '2', '9', '', '', '', '1493795147', '1495174299');
 INSERT INTO `tdk` VALUES ('67', '3', '1', '大家好我是曾小贤', '大家好我是曾小贤', '大家好我', '1493795197', '1493804534');
 INSERT INTO `tdk` VALUES ('68', '1', '40', '去去去阿斯达', '去去去阿斯达', '去去去阿斯达', '1493795649', '1493795671');
 INSERT INTO `tdk` VALUES ('69', '1', '41', '大家好我是曾小贤', '大家好我是曾小贤', '大家好我是曾小贤', '1493795934', '1493795934');
-INSERT INTO `tdk` VALUES ('70', '2', '19', '习近平总书记考察广西在当地引起热烈反响', '习近平总书记考察广西在当地引起热烈反响', '习近平总书记考察广西在当地引起热烈反响', '1493804596', '1493804596');
-INSERT INTO `tdk` VALUES ('71', '3', '17', '微信小程序', '微信小程序', '微信小程序', '1493806050', '1493806050');
-INSERT INTO `tdk` VALUES ('72', '3', '16', 'iOS App', 'iOS App', 'iOS App', '1493806060', '1493806060');
+INSERT INTO `tdk` VALUES ('70', '2', '19', '', '', '', '1493804596', '1495174427');
+INSERT INTO `tdk` VALUES ('71', '2', '17', '', '', '', '1493806050', '1495174394');
+INSERT INTO `tdk` VALUES ('72', '2', '16', '', '', '', '1493806060', '1495174403');
 INSERT INTO `tdk` VALUES ('73', '1', '50', '', '', '', null, '1494314588');
-INSERT INTO `tdk` VALUES ('74', '1', '13', '', '', '', '1494552028', '1494552028');
+INSERT INTO `tdk` VALUES ('74', '2', '13', '', '', '', '1494552028', '1495174361');
 INSERT INTO `tdk` VALUES ('75', '2', '21', '', '', '', '1494573103', '1494573154');
+INSERT INTO `tdk` VALUES ('76', '2', '2', '', '', '', '1494904209', '1495173171');
+INSERT INTO `tdk` VALUES ('77', '1', '43', '', '', '', null, '1494924119');
+INSERT INTO `tdk` VALUES ('78', '1', '44', '', '', '', null, '1495012369');
+INSERT INTO `tdk` VALUES ('79', '1', '45', '', '', '', null, '1495014045');
+INSERT INTO `tdk` VALUES ('80', '1', '46', '', '', '', null, '1495014843');
+INSERT INTO `tdk` VALUES ('81', '1', '47', '', '', '', null, '1495015069');
+INSERT INTO `tdk` VALUES ('82', '1', '48', '', '', '', null, '1495015386');
+INSERT INTO `tdk` VALUES ('83', '2', '10', '', '', '', '1495174318', '1495174318');
+INSERT INTO `tdk` VALUES ('84', '2', '11', '', '', '', '1495174330', '1495174330');
+INSERT INTO `tdk` VALUES ('85', '2', '12', '', '', '', '1495174350', '1495174350');
+INSERT INTO `tdk` VALUES ('86', '2', '14', '', '', '', '1495174370', '1495174370');
+INSERT INTO `tdk` VALUES ('87', '2', '15', '', '', '', '1495174382', '1495174382');
+INSERT INTO `tdk` VALUES ('88', '2', '18', '', '', '', '1495174411', '1495174411');
 
 -- ----------------------------
 -- Table structure for `user`
@@ -4188,7 +4224,7 @@ INSERT INTO `user` VALUES ('17', '13861048973', '', '8cadbbfaa1ef350e2b56910ab6a
 INSERT INTO `user` VALUES ('18', '18961841640', '', 'c19fd740a33cf3d675c3c53dc534b4ee', '/Public/upload/avatar/2017-04-26/5900120bf20fe.jpg', null, '女', '', '', '', '', '', '1', '1493017499', '1493800297', '0', '', 'bbss', '1493969946', '1493969962', '16');
 INSERT INTO `user` VALUES ('20', '18961841571', '', 'c19fd740a33cf3d675c3c53dc534b4ee', '', null, '男', '', '', '', '', '', '0', '1493024607', '1493024607', '0', '', '', '1493024607', '0', '0');
 INSERT INTO `user` VALUES ('21', '18974516541', '', 'c19fd740a33cf3d675c3c53dc534b4ee', '', null, '男', '', '', '', '', '', '0', '1493024634', '1493024634', '0', '', '', '1493024634', '0', '0');
-INSERT INTO `user` VALUES ('22', '13861048971', '', 'c19fd740a33cf3d675c3c53dc534b4ee', '/Public/upload/avatar/2017-04-27/590154e96c267.jpg', null, '男', '', '', '', '', '', '1', '1493178203', '1493978271', '0', '辅导书', '赤心', '1494826974', '1494388503', '532468');
+INSERT INTO `user` VALUES ('22', '13861048971', '', 'c19fd740a33cf3d675c3c53dc534b4ee', '1495174199807QQ1.png', null, '男', '', '', '', '', '', '1', '1493178203', '1495174203', '0', '辅导书', '赤心', '1495172588', '1495172574', '754326');
 INSERT INTO `user` VALUES ('23', '13861048979', '13861048971@163.com', '', '/Public/upload/avatar/2017-05-03/59099691ef1f3.jpg', '', '男', '2010-05-05', '', '', '', '', '1', '1493800601', '1493800601', '0', '', '张耀乐', '1493800601', '0', '0');
 INSERT INTO `user` VALUES ('24', '16487154781', '', 'c19fd740a33cf3d675c3c53dc534b4ee', '', null, '男', '', '', '', '', '', '0', '1493800643', '1493800709', '0', '', '', '1493800643', '1493800862', '219');
 INSERT INTO `user` VALUES ('25', '18351868050', '', '6d87417435fa1201dca0b5a1e9982398', '', null, '男', '', '', '', '', '', '1', '1493864883', '1493864883', '0', '', '', '1493864883', '1493865120', '237');
@@ -4215,7 +4251,7 @@ CREATE TABLE `user_msg` (
   `update_time` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=68 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user_msg
@@ -4253,6 +4289,23 @@ INSERT INTO `user_msg` VALUES ('46', '22', '22', '', '', '0', '1', '3', '赤心�
 INSERT INTO `user_msg` VALUES ('47', '22', '22', '', '', '0', '1', '1', '赤心你有一条来自赤心的评论信息', '63', 'IOS 发送失败.Android 发送失败.', '1494489052', '1494489052');
 INSERT INTO `user_msg` VALUES ('48', '22', '22', '', '', '0', '1', '1', '赤心你有一条来自赤心的评论信息', '64', 'IOS 发送失败.Android 发送失败.', '1494489055', '1494489055');
 INSERT INTO `user_msg` VALUES ('49', '22', '22', '', '', '0', '1', '1', '赤心你有一条来自赤心的评论信息', '65', 'IOS 发送失败.Android 发送失败.', '1494489068', '1494489068');
+INSERT INTO `user_msg` VALUES ('50', '22', '22', '', '', '0', '1', '1', '赤心你有一条来自赤心的评论信息', '66', 'IOS 发送失败.Android 发送失败.', '1494918719', '1494918719');
+INSERT INTO `user_msg` VALUES ('51', '22', '22', '', '', '0', '1', '1', '赤心你有一条来自赤心的评论信息', '67', 'IOS 发送失败.Android 发送失败.', '1494924127', '1494924127');
+INSERT INTO `user_msg` VALUES ('52', '22', '22', '', '', '0', '1', '2', '赤心你有一条来自赤心的回复信息', '68', 'IOS 发送失败.Android 发送失败.', '1494924131', '1494924131');
+INSERT INTO `user_msg` VALUES ('53', '22', '22', '', '', '0', '1', '1', '你有一条来自13861048971的评论信息', '69', 'IOS 发送失败.Android 发送失败.', '1495005601', '1495005601');
+INSERT INTO `user_msg` VALUES ('54', '22', '22', '', '', '0', '1', '1', '赤心你有一条来自赤心的评论信息', '70', 'IOS 发送失败.Android 发送失败.', '1495005654', '1495005654');
+INSERT INTO `user_msg` VALUES ('55', '12', '22', '', '', '0', '1', '1', '你有一条来自赤心的评论信息', '71', 'IOS 发送失败.Android 发送失败.', '1495006774', '1495006774');
+INSERT INTO `user_msg` VALUES ('56', '0', '22', '', '', '0', '1', '4', '', '0', 'IOS 发送失败.Android 发送失败.', '1495011893', '1495011893');
+INSERT INTO `user_msg` VALUES ('57', '0', '22', '', '', '0', '1', '4', '', '0', 'IOS 发送失败.Android 发送失败.', '1495012347', '1495012347');
+INSERT INTO `user_msg` VALUES ('58', '0', '22', '', '', '0', '1', '4', '', '0', 'IOS 发送失败.Android 发送失败.', '1495012376', '1495012376');
+INSERT INTO `user_msg` VALUES ('60', '13', '22', '', '', '0', '1', '4', '你有一条来自赤心的点赞信息', '30', 'IOS 发送失败.Android 发送失败.', '1495013156', '1495013156');
+INSERT INTO `user_msg` VALUES ('61', '22', '22', '', '', '0', '1', '4', '赤心你有一条来自赤心的点赞信息', '44', 'IOS 发送失败.Android 发送失败.', '1495013399', '1495013399');
+INSERT INTO `user_msg` VALUES ('62', '0', '22', '', '', '0', '1', '4', '所有用户你有一条来自赤心的点赞信息', '48', 'IOS 发送失败.Android 发送失败.', '1495013554', '1495013554');
+INSERT INTO `user_msg` VALUES ('63', '18', '22', '', '', '0', '1', '4', 'bbss你有一条来自赤心的点赞信息', '38', 'IOS 发送失败.Android 发送失败.', '1495013980', '1495013980');
+INSERT INTO `user_msg` VALUES ('64', '22', '22', '', '', '0', '1', '4', '赤心你有一条来自赤心的点赞信息', '45', 'IOS 发送失败.Android 发送失败.', '1495014052', '1495014052');
+INSERT INTO `user_msg` VALUES ('65', '22', '22', '', '', '0', '1', '4', '赤心你有一条来自赤心的点赞信息', '46', 'IOS 发送失败.Android 发送失败.', '1495014847', '1495014847');
+INSERT INTO `user_msg` VALUES ('66', '22', '22', '', '', '0', '1', '4', '赤心你有一条来自赤心的点赞信息', '47', 'IOS 发送失败.Android 发送失败.', '1495015078', '1495015078');
+INSERT INTO `user_msg` VALUES ('67', '22', '22', '', '', '0', '1', '4', '赤心你有一条来自赤心的点赞信息', '48', 'IOS 发送失败.Android 发送失败.', '1495015394', '1495015394');
 
 -- ----------------------------
 -- Table structure for `user_msg_read`
@@ -4299,4 +4352,9 @@ INSERT INTO `user_msg_read` VALUES ('44', '22');
 INSERT INTO `user_msg_read` VALUES ('45', '22');
 INSERT INTO `user_msg_read` VALUES ('46', '22');
 INSERT INTO `user_msg_read` VALUES ('47', '22');
+INSERT INTO `user_msg_read` VALUES ('49', '22');
 INSERT INTO `user_msg_read` VALUES ('56', '1');
+INSERT INTO `user_msg_read` VALUES ('61', '22');
+INSERT INTO `user_msg_read` VALUES ('64', '22');
+INSERT INTO `user_msg_read` VALUES ('65', '22');
+INSERT INTO `user_msg_read` VALUES ('66', '22');
