@@ -59,21 +59,11 @@ a:hover{
 .logo {
 	height: 57px;
 	margin: 0;
-	padding-top: 15px;
+	padding-top: 7px;
 }
-.logo a {
-	display: block;
-	text-shadow: 3px 3px 5px #ccc;
-}
-.logo a:hover {
-	color: #428bca;
-	display: block;
-}
-.logo .logo-text{
-	font-size: 20px;
-}
-.logo .web-site{
-	font-size: 12px;
+.logo img {
+	height: 60px;
+	width: 180px;
 }
 
 #menu-top li a {

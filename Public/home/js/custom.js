@@ -260,7 +260,8 @@ function imgUploadClip(initData){
 		}
 	});
 	var fileName = '';
-	_thisFile.change(function(){
+	$('body').on('change','.file0',function(){
+		var _this = $(this).parents('.img-upload-clip');
 		if(this.files[0]){
 			var objUrl = getObjectURL(this.files[0]) ;
 			if($('.img-upload-clip').data('type')){
@@ -272,7 +273,7 @@ function imgUploadClip(initData){
 			fileName += date('y-m-d',time())+'/';
 			fileName += time().toString()+Math.round(Math.random()*8999+1000+1).toString()+this.files[0].name.match(/\.[a-z]+$/)[0];
 			if (objUrl) {
-				_this.find("#img0").attr("src", objUrl) ;
+				_this.find(".img0").attr("src", objUrl) ;
 			}
 			_this.find('.img-handle').show();
 			_this.find('.img-operate>img').cropper({
@@ -298,10 +299,10 @@ function imgUploadClip(initData){
 		}
 		return url ;
 	}
-	$('.img-upload-clip').on('click','.save', function(){
+	$('body').on('click','.save', function(){
 		if(!$('.cropper-container')[0])
 			return;
-		_this = $(this).parents('.img-upload-clip');
+		var _this = $(this).parents('.img-upload-clip');
 		// token获取
 		var token = '';
 		var url = '/File/getQiNiuToken';
@@ -311,10 +312,9 @@ function imgUploadClip(initData){
 			data:{'imageName':fileName},
 			dataType:'json',
 			success:function(data){
-				console.log(_this[0]);
 				if(!data.error){
 					token = data.data.token;
-					// uploadQiniu(fileName,token);
+					uploadQiniu(fileName,token);
 				}
 			}
 		});
