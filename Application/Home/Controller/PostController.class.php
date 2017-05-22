@@ -51,7 +51,7 @@ class PostController extends PublicController {
                 $list1[$k1]['list'][$k2]['postNum'] = $list1[$k1]['list'][$k2]['mainPostNum'] + $list1[$k1]['list'][$k2]['replyPostNum'];
             }
         } 
-        $block = d('block')->getBlock('1');
+        $block = d('block')->getBlock('9');
         $this->assign('hotList', $hotList);
         $this->assign('block', $block);
         $this->assign('newList', $newList);
@@ -141,18 +141,16 @@ class PostController extends PublicController {
 	    if($post_cate_ppid > 0)
 	        $idArr = ['post_cate_id2'=>$post_cate_pid, 'post_cate_id3'=>$post_cate_id];
 	    
-	    $userId = d('post')->where(['id'=>$id])->getField('user_id');
-	    $userRow = d('user')->where(['id'=>$userId])->find();//发帖人信息
+	  
 	    $userRow['avatar'] = getImage($userRow['avatar'], -1);
 	    $postRow = d('post')->getPost($id);//帖子信息
-	    
+	    //dump($postRow);exit();
 	    $this->click('post',$id);//访问量+1
 	    $con = ['post_id'=>$id];
 	    if($_GET['viewHost']){ 
 	       $con['user_id'] = $userRow['id'];
 	    }
 	    $data = d('postComment')->getPageList($con, '*', 'add_time', 15);//帖子评论信息
-
 	    //评论的id数组
 	    $idArr1 = getIdArr($data['list']);
 	    if($idArr1){
@@ -212,17 +210,6 @@ class PostController extends PublicController {
 	    //判断举报状态
 	    $postRow['isReport'] = d('report')->where(['node_id'=>$id, 'user_id'=>$this->user['id']])->getField('id');
 	    $postRow['reportNum'] = d('report')->getNum(['node_id'=>$id]);//举报数
-	    //评论的用户id数组
-	    $idArr2 = getIdArr($data['list'], 'user_id');
-	    //评论的用户列表
-	    $userList = d('user')->where(['id'=>['in', $idArr2]])->select();
-	    foreach($data['list'] as $k=>$v){
-	        foreach($userList as $k1=>$v1){
-	            if($v['user_id'] == $v1['id']){
-	                $data['list'][$k]['avatar'] = $v1['avatar'];
-	            }
-	        }
-	    } 
 
 	    $this->assign('p', $p);
 	    $this->assign('customList', $customList);
@@ -231,7 +218,7 @@ class PostController extends PublicController {
 	    $this->assign('proNum', $data['proNum']);
 	    $this->assign('viewHost', $_GET['viewHost']);
 	    $this->assign('idArr', $idArr);
-	    $this->assign('userRow', $userRow);
+	    //$this->assign('userRow', $userRow);
 	    $this->assign('list', $data['list']);
 	    $this->assign('postRow', $postRow);
 	    $this->assign('user', $this->user);

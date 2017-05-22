@@ -80,7 +80,7 @@ class PostCommentModel extends BaseModel{
             foreach($userList1 as $k1=>$v1){
                 if($v1['id'] == $v['user_id']){
                     $data['list'][$k]['userName'] = $v1['nickname'];
-                    $data['list'][$k]['avatar'] = getImage($v1['avatar'], -1);
+                    $data['list'][$k]['avatar'] = getImage($v1['avatar']);
                 }
             }
             //获取主贴标题

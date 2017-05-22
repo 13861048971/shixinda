@@ -503,7 +503,9 @@ class UserModel extends BaseModel{
 		$data = parent::getPageList($arr, $fields, $order, $limit);
 		foreach($data['list'] as $k=>$v){
 			$data['list'][$k] = $this->getInfo($v['id']);
+			$data['list'][$k]['avatar'] = getImage($v['avatar']);
 		}
+
 		return $data;
 	}
 	
@@ -622,7 +624,9 @@ class UserModel extends BaseModel{
 	    $v['last_login'] = date("Y-m-d H:i:s",$v['last_login']);//最后一次登录时间
 	    $v['last_logout'] = date("Y-m-d H:i:s",$v['last_logout']);//最后退出时间
 	    $v['add_time'] = date("Y-m-d H:i:s",$v['add_time']);//注册时间
-	    $v['avatar'] = getImage($v['avatar'], -1);
+	    if(MODULE_NAME == 'Home'){
+	        $v['avatar'] = getImage($v['avatar'], -1);
+	    }
 	    return $v ;
 	}
 }

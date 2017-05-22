@@ -203,6 +203,10 @@ class PostModel extends BaseModel{
     
     //格式化行
     public function parseRow($v){
+        $userId = $this->where(['id'=>$v['id']])->getField('user_id');
+        $userRow = d('user')->where(['id'=>$userId])->find();//发帖人信息
+        $v['userId'] = $userId;
+        $v['avatar'] = getImage($userRow['avatar'], -1);
         $v['statusName'] = $this->statusArr[$v['status']];
         $v['updateTime'] = date('Y-m-d H:i',$v['update_time']);
         $v['addTime'] = date("Y-m-d H:i",$v['add_time']);

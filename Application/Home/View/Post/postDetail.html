@@ -18,7 +18,7 @@
 	<div class="post-detail-page" data-id="{$postRow.id}"> 
 		<div class="container">
 			<div class="row post-title">
-				<a href="{:u('post/personInfo', ['userId'=>$userRow['id']])}"><img src="{$userRow.avatar}" alt=""></a>
+				<a href="{:u('post/personInfo', ['userId'=>$postRow['userId']])}"><img src="{$postRow.avatar}" alt=""></a>
 				<h3>{$postRow.title}</h3>
 				<p>
 					<a href="{:u('post/personInfo', ['userId'=>$userRow['id']])}">{$userRow.nickname}</a>
