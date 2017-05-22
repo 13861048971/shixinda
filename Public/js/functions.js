@@ -1214,6 +1214,7 @@ function bannerBlockEdit(ul){
 		node.find(":input").each(function(i){
             $(this).val("");
         });
+		node.find("img").attr("src",'');
 		var row1 = ul.find('li:last');
 		var imgID = row1.find('.upload-img input').attr('id');
 		imgID = imgID.match(/img-input-id-([0-9]+)/);

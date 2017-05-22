@@ -126,13 +126,16 @@ function setPos(jNode, pos){
  * @param NaN(num/num) aspectRario 裁剪比例
  * @param function callback 回调函数
  */
-function imgUploadClip(src,aspectRatio,callback){
+function imgUploadClip(src,aspectRatio,onclick,callback){
 	var html = '<button class="btn btn-default upload-file" type="button">上传图片</button><input type="file" id="file0" multiple="multiple" style="display:none"><div class="img-area"><div class="img-operate"><img src="'+src+'" id="img0"></div><div class="img-handle" style="display:none;"><div class="img-preview" style="overflow:hidden;"><img src="" alt=""></div><button class="btn btn-default save" type="button">裁剪</button></div></div>';
 	$('.img-upload-clip').append(html);
 	$('.upload-file').on('click',function(){
 		$("#file0").val('');
 		$("#file0").click();
 		$.fn.cropper;
+		if(onclick){
+			onclick();
+		}
 	});
 	var fileName = '';
 	$("#file0").change(function(){
@@ -204,7 +207,9 @@ function imgUploadClip(src,aspectRatio,callback){
 					dataType:'json',
 					type:'post',
 					success:function(data){
-						callback(data);
+						if(callback){
+							callback(data);
+						}
 						$('.img-upload-clip .img-handle').hide();
 						$('.img-upload-clip .img-operate>img').cropper('destroy');
 						$("#img0").attr("src", url);
@@ -477,7 +482,7 @@ $('.account-info-edit .commit-account').on('click',function(){
 				win.alert(data.error, 'error');
 			}
 		}
-		imgUploadClip(src,aspectRatio,callback)
+		imgUploadClip(src,aspectRatio,'',callback);
 	}
 }());
 //密码修改
