@@ -231,9 +231,6 @@ function setPos(jNode, pos){
  * @param function callback 回调函数
  */
 function imgUploadClip(initData){
-	var _this = '';
-	var _thisBtn = '';
-	var _thisFile = '';
 	var length = $('.img-upload-clip').length;
 	for(var i = 0;i<length;i++){
 		var html = '';
@@ -253,104 +250,101 @@ function imgUploadClip(initData){
 		html +='<div class="img-area"><div class="img-operate"><img src="'+src+'" class="img0"></div><div class="img-handle" style="display:none;"><div class="img-preview" style="overflow:hidden;"><img src="" alt=""></div><button class="btn btn-default save" type="button">裁剪</button></div></div>';
 		$($('.img-upload-clip')[i]).append(html);
 	}
-	$('.img-upload-clip').on('click',uploadBtn,function(){
-		_this = $(this).parents('.img-upload-clip');
-		_thisBtn = $(this);
-		_thisFile = _thisBtn.parents('.img-upload-clip').find('.file0');
+	$('body').on('click',uploadBtn,function(){
+		var _thisFile = $(this).parents('.img-upload-clip').find('.file0');
 		_thisFile.val('');
 		_thisFile.click();
 		$.fn.cropper;
 		if(initData.onclick){
 			initData.onclick();
 		}
-		eventListening()
 	});
 	var fileName = '';
-	function eventListening(){
-		_thisFile.change(function(){
-			if(this.files[0]){
-				var objUrl = getObjectURL(this.files[0]) ;
-				if($('.img-upload-clip').data('type')){
-					var imgType = $('.img-upload-clip').data('type');
-				}else{
-					var imgType = 'images';
-				}
-				fileName = imgType+'/';
-				fileName += date('y-m-d',time())+'/';
-				fileName += time().toString()+Math.round(Math.random()*8999+1000+1).toString()+this.files[0].name.match(/\.[a-z]+$/)[0];
-				if (objUrl) {
-					_this.find("#img0").attr("src", objUrl) ;
-				}
-				_this.find('.img-handle').show();
-				_this.find('.img-operate>img').cropper({
-					aspectRatio: initData.aspectRatio,
-					crop: function() {},
-					preview:_this.find('.img-preview')
-				}); 
-				_this.find('.img-operate>img').cropper('replace', objUrl);
-				if(initData.onchange){
-					initData.onchange();
-				}
+	_thisFile.change(function(){
+		if(this.files[0]){
+			var objUrl = getObjectURL(this.files[0]) ;
+			if($('.img-upload-clip').data('type')){
+				var imgType = $('.img-upload-clip').data('type');
+			}else{
+				var imgType = 'images';
 			}
-		});
-		//建立一个可存取到该file的url
-		function getObjectURL(file) {
-			var url = null ; 
-			if (window.createObjectURL!=undefined) { // basic
-				url = window.createObjectURL(file) ;
-			} else if (window.URL!=undefined) { // mozilla(firefox)
-				url = window.URL.createObjectURL(file) ;
-			} else if (window.webkitURL!=undefined) { // webkit or chrome
-				url = window.webkitURL.createObjectURL(file) ;
+			fileName = imgType+'/';
+			fileName += date('y-m-d',time())+'/';
+			fileName += time().toString()+Math.round(Math.random()*8999+1000+1).toString()+this.files[0].name.match(/\.[a-z]+$/)[0];
+			if (objUrl) {
+				_this.find("#img0").attr("src", objUrl) ;
 			}
-			return url ;
-		}	
-		_this.find('.save').on('click', function(){
-			if(!$('.cropper-container')[0])
-				return;
-			// token获取
-			var token = '';
-			var url = '/File/getQiNiuToken';
-			$.ajax({
-				url:url,
-				type:'post',
-				data:{'imageName':fileName},
-				dataType:'json',
-				success:function(data){
-					if(!data.error){
-						token = data.data.token;
-						uploadQiniu(fileName,token);
-					}
-				}
-			});
-			function uploadQiniu(fileName,token){
-					_this.find('.img-operate>img').cropper("getCroppedCanvas").toBlob(function(blob) {
-					var url = getObjectURL(blob);
-					var form = new FormData();
-					form.append("file", blob);
-					form.append('key', fileName);
-					form.append("token", token);
-					win.alert('图片上传中', 'info');
-					$.ajax({
-						processData: false,
-						contentType: false,
-						data:form,
-						url:'http://up-z2.qiniu.com/',
-						dataType:'json',
-						type:'post',
-						success:function(data){
-							if(initData.callback){
-								initData.callback(data);
-							}
-							_this.find('.img-handle').hide();
-							_this.find('.img-operate>img').cropper('destroy');
-							_this.find('#img0').attr("src", url);
-						}
-					});
-				},'image/jpeg',0.8);
+			_this.find('.img-handle').show();
+			_this.find('.img-operate>img').cropper({
+				aspectRatio: initData.aspectRatio,
+				crop: function() {},
+				preview:_this.find('.img-preview')
+			}); 
+			_this.find('.img-operate>img').cropper('replace', objUrl);
+			if(initData.onchange){
+				initData.onchange();
 			}
-		});
+		}
+	});
+	//建立一个可存取到该file的url
+	function getObjectURL(file) {
+		var url = null ; 
+		if (window.createObjectURL!=undefined) { // basic
+			url = window.createObjectURL(file) ;
+		} else if (window.URL!=undefined) { // mozilla(firefox)
+			url = window.URL.createObjectURL(file) ;
+		} else if (window.webkitURL!=undefined) { // webkit or chrome
+			url = window.webkitURL.createObjectURL(file) ;
+		}
+		return url ;
 	}
+	$('.img-upload-clip').on('click','.save', function(){
+		if(!$('.cropper-container')[0])
+			return;
+		_this = $(this).parents('.img-upload-clip');
+		// token获取
+		var token = '';
+		var url = '/File/getQiNiuToken';
+		$.ajax({
+			url:url,
+			type:'post',
+			data:{'imageName':fileName},
+			dataType:'json',
+			success:function(data){
+				console.log(_this[0]);
+				if(!data.error){
+					token = data.data.token;
+					// uploadQiniu(fileName,token);
+				}
+			}
+		});
+		function uploadQiniu(fileName,token){
+			_this.find('.img-operate>img').cropper("getCroppedCanvas").toBlob(function(blob) {
+				var url = getObjectURL(blob);
+				var form = new FormData();
+				form.append("file", blob);
+				form.append('key', fileName);
+				form.append("token", token);
+				win.alert('图片上传中', 'info');
+				$.ajax({
+					processData: false,
+					contentType: false,
+					data:form,
+					url:'http://up-z2.qiniu.com/',
+					dataType:'json',
+					type:'post',
+					success:function(data){
+						if(initData.callback){
+							initData.callback(data);
+						}
+						_this.find('.img-handle').hide();
+						_this.find('.img-operate>img').cropper('destroy');
+						_this.find('.img0').attr("src", url);
+					}
+				});
+			},'image/jpeg',0.8);
+		}
+	});
 };
 $(function(){
 	window.win = new smWin();
