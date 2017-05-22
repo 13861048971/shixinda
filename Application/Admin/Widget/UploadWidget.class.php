@@ -24,7 +24,7 @@ class UploadWidget extends Controller{
 	 * 
 	 */
 	//{:W('upload/img', ['avatar','头像', $row['avatar'], 'required', 'avatar' ])}
-	public function img($name, $label=null , $path=null,$req=false, $type = 'image'){
+	public function img($name, $label=null, $path=null, $req=false, $type = 'image'){
 		$img = self::$img;
 		if(is_array($name)) extract($name);
 		

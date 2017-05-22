@@ -51,7 +51,8 @@ class PostController extends PublicController {
                 $list1[$k1]['list'][$k2]['postNum'] = $list1[$k1]['list'][$k2]['mainPostNum'] + $list1[$k1]['list'][$k2]['replyPostNum'];
             }
         } 
-        $block = d('block')->getBlock('1');
+        $block = d('block')->getBlock('9');
+     
         $this->assign('hotList', $hotList);
         $this->assign('block', $block);
         $this->assign('newList', $newList);

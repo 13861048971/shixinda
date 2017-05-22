@@ -30,7 +30,7 @@ class UserController extends PublicController {
 	    }
 	    
 	    $field && $order = $field . ' desc';
-	    $data = $usermod->getPageList($con, 'id', $order);
+	    $data = $usermod->getPageList($con, '*', $order);
 	    $this->assign('userList', 	$data['list']);
 	    $this->assign('page', 	  	$data['pageVar']);
 	    
@@ -89,6 +89,7 @@ class UserController extends PublicController {
 		$this->ajaxEdit('user', null, function($row, $mod){
 			$genderList = [['list'=> d('user')->genderArr, 'name'=>'gender', 'checked'=>$row['gender']]];
 			$this->assign('genderList', $genderList);
+			$this->assign('qiNiuYunImgName',c('QINIUYUN.imgName'));
 		});
 	}
 	//删除用户

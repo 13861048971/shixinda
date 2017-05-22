@@ -9,25 +9,27 @@ class PublicController extends Controller {
 	
 	public function _initialize(){
  		$this->session();
+ 		
  		$this->config = $this->config();
 		$this->setTdk($this->config['seoTitle']['value'], $this->config['seoKeywords']['value'], $this->config['seoDescription']['value']);
 		$this->about = $this->aboutOur();
 		
 		if(session('user')['id']){
+		    //dump(session('user'));exit();
 		    $messageCount = d('UserMsg')->where(['user_id'=>session('user')['id']])->count();
 		    $messageReadCount = d('UserMsg')->alias('a')->join("user_msg_read b on a.id=b.msg_id")->where(['b.user_id' => session('user')['id']])->count();
 		    $messageNotReadCount = $messageCount - $messageReadCount;
 		    $this->assign('messageCount',$messageNotReadCount);
 		}
+		
 		$this->assign('user',session('user'));
 		$this->assign('navigation',d('navigation')->getNavigation());
 		$this->assign('aboutOur',$this->about);
-		$this->assign('config',$this->config);//
+		$this->assign('config',$this->config);
 		if($this->user = self::isLogin()){
 			$this->assign('user', $this->user);
 			return;
 		}
-		// $this->user = d('user')->getInfo(23);return;
 		self::checkUrl();
 	}
 	
@@ -155,7 +157,7 @@ class PublicController extends Controller {
 		$info = $upload->upload();
 		if(!$info) {
 			$output['err'] = 1;
-            $output['msg'] = $upload->getError();;
+            $output['msg'] = $upload->getError();
 		}else{
 			$file = $info[$filename];
 			$src = '/'.$upload->rootPath . $file['savepath'] . $file['savename'];

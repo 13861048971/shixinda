@@ -207,9 +207,9 @@ protected function ajaxEdit($modName, $template = null, $callback = null,$succes
 		if($id = (int)$_GET['id']){
 			$row = $mod->getInfo($id);
 			$this->assign('row',$row);
-		}else{
+		} else{
 		    $row = [];
-		}
+		} 
 		
 		if(is_callable($callback))
 			$callback($row, $mod);
@@ -224,8 +224,6 @@ protected function ajaxEdit($modName, $template = null, $callback = null,$succes
 			
 			$this->assign('statusList', $statusList);
 		}	
-	
-		
 		ajaxReturn(0, '',	['content'=>$this->fetch($template)]);
 	}
 	

@@ -22,7 +22,7 @@ class NavigationModel extends BaseModel {
 	    $info = $this->find($id);
 	    if(!$info) return;
 	
-	    $info = $this->parseInfoRow($info);
+	    $info = $this->parseRow($info);
 	    return $info;
 	}
 	
@@ -42,7 +42,6 @@ class NavigationModel extends BaseModel {
 	
 	//获取导航数据缓存信息
 	public function getNavigation(){
-	    
 	    $navigation = $this->getCache($this->cacheNavigationKey, 'navigation');
 	    $uri = $_SERVER['REQUEST_URI'];
 	    foreach ($navigation as $k=>$v){
@@ -57,16 +56,6 @@ class NavigationModel extends BaseModel {
 	    return $navigation;
 	}
 	
-	//格式化info
-	public function parseInfoRow($v){
-	    $v['num'] = $this->where(['pid'=>$v['id']])->Count();
-	    $v['statusName'] = $this->statusArr[$v['status']];
-	    $v['publishTime'] = date("Y-m-d H:i",$v['publish_time']);
-	    $v['updateTime'] = date("Y-m-d H:i",$v['update_time']);
-	    $v['addTime'] = date("Y-m-d H:i",$v['add_time']);
-	    return $v;
-	}
-	
 	//格式化行
 	public function parseRow($v){
 	    $v['num'] = $this->where(['pid'=>$v['id']])->Count();
@@ -74,7 +63,6 @@ class NavigationModel extends BaseModel {
 	    $v['publishTime'] = date("Y-m-d H:i",$v['publish_time']);
 	    $v['updateTime'] = date("Y-m-d H:i",$v['update_time']);
 	    $v['addTime'] = date("Y-m-d H:i",$v['add_time']);
-	    $v['logo'] = getImage($v['logo'], -1);
 	    return $v;
 	}
 	
@@ -108,6 +96,7 @@ class NavigationModel extends BaseModel {
 	
 	    foreach($data['list'] as $k=>$v){
 	        $data['list'][$k] = $this->parseRow($v);
+	        $data['list'][$k]['logo'] = getImage($v['logo'], -1);
 	    }
 	    return $data;
 	}

@@ -19,18 +19,10 @@ class FriendLinkModel extends BaseModel {
 	public function getInfo($id){
 	    $info = $this->find($id);
 	    if(!$info) return;
-	    $info = $this->parseInfoRow($info);
+	    $info = $this->parseRow($info);
 	    return $info;
 	}
 	
-	//格式化Info
-	public function  parseInfoRow($v){
-	    $v['statusName'] = $this->statusArr[$v['status']];
-	    $v['publishTime'] = date("Y-m-d H:i",$v['publish_time']);
-	    $v['updateTime'] = date("Y-m-d H:i",$v['update_time']);
-	    $v['addTime'] = date("Y-m-d H:i",$v['add_time']);
-	    return $v;
-	}
 	
 	//格式化行
 	public function parseRow($v){
@@ -38,7 +30,6 @@ class FriendLinkModel extends BaseModel {
 	    $v['publishTime'] = date("Y-m-d H:i",$v['publish_time']);
 	    $v['updateTime'] = date("Y-m-d H:i",$v['update_time']);
 	    $v['addTime'] = date("Y-m-d H:i",$v['add_time']);
-	    $v['logo'] = getImage($v['logo'], -1);
 	    return $v;
 	}
 	
@@ -71,6 +62,7 @@ class FriendLinkModel extends BaseModel {
 	    
 	    foreach($data['list'] as $k=>$v){
 	        $data['list'][$k] = $this->parseRow($v);
+	        $data['list'][$k]['logo'] = getImage($v['logo'], -1);  
 	    }
 	    return $data;
 	}

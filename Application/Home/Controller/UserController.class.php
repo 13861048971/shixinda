@@ -5,11 +5,13 @@ class UserController extends PublicController{
 	public $userId;
 	
 	function _initialize(){
+	    //dump(['a'=>'b']);exit();
 		parent::_initialize();
 		$this->userId = $this->user['id'];
 	}
 	//用户中心
 	function index(){
+	   
 	    $user = $this->user;
 	    $genderList = [
 	        [
@@ -18,6 +20,7 @@ class UserController extends PublicController{
 	            'checked' => $user['gender']
 	        ]
 	    ];
+	    
 	    $this->assign('genderList', $genderList);
 	    $this->assign('qiNiuYunImgName',c('QINIUYUN.imgName'));
 	    $this->display();
@@ -43,14 +46,12 @@ class UserController extends PublicController{
 	}
 	
 	//用户退出
-	
 	public function loginOut(){
 	    $onlineTime = time()-$this->user['last_login'] + $this->user['online_time'];
 	    $data = [
 	        'id'=>$this->user['id'],
 	        'last_logout'=>time(),
 	        'online_time' =>$onlineTime,
-	        
 	    ];
 	    $outTime = d('user')->data($data)->save();
 	    if($outTime)
@@ -148,7 +149,7 @@ class UserController extends PublicController{
 	    if($data)
 	       ajaxReturn(0,'修改成功,请刷新页面',['list'=>$data]);
         ajaxReturn(1,'修改失败'.d('user')->getError());
-	}
+	}u
 	
 	//用户密码修改
 	function changePwd(){

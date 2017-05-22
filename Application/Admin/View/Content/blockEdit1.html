@@ -24,12 +24,12 @@
 									<button type="button" class="banner-block-add">+</button>
 							</div>
 						</div>
-						<div class="row">
+						<div class="row  upload-type" data-type="{$qiNiuYunImgName.blockImage}">
 							<div class="col-sm-5">
 								<input name="ptitle[{$k}]" required class="form-control banner-title" value="{$vo.title}" placeholder="标题">
 							</div>
 							<div class="col-sm-4">
-								<div class="input-group upload-img upload-type" data-type="{$qiNiuYunImgName.blockImage}">
+								<div class="input-group upload-img">
 									{:w('upload/img2',$vo['imageArr'])}
 								</div>
 							</div>	

@@ -501,7 +501,9 @@ class UserModel extends BaseModel{
 		$data = parent::getPageList($arr, $fields, $order, $limit);
 		foreach($data['list'] as $k=>$v){
 			$data['list'][$k] = $this->getInfo($v['id']);
+			$data['list'][$k]['avatar'] = getImage($v['avatar'], -1);
 		}
+		
 		return $data;
 	}
 	
@@ -523,15 +525,14 @@ class UserModel extends BaseModel{
 		$info['addTime'] = local_date($info['add_time']);
 		$info['updateTime'] = local_date($info['update_time']);
 		$info['lastLogin'] = local_date($info['last_login']);
-		!$info['avatar'] ? ($info['avatar'] = '/Public/images/avatar.gif'):($info['avatar'] = getImage($info['avatar']));
+		//!$info['avatar'] ? ($info['avatar'] = '/Public/images/avatar.gif'):($info['avatar'] = getImage($info['avatar'], -1));
 		unset($info['password']);
-		
+		//dump($info);exit();
 		return $info;
 	}
 	
 	//详情
 	function getInfo($id){
-		//$info = $this->getCache($this->cacheKey.$id, 'UserInfo', $id);
 		$info = $this->_cacheUserInfo($id);
 		if(!$info) return;
  		return $info;
@@ -618,7 +619,7 @@ class UserModel extends BaseModel{
 	    $v['last_login'] = date("Y-m-d H:i:s",$v['last_login']);//最后一次登录时间
 	    $v['last_logout'] = date("Y-m-d H:i:s",$v['last_logout']);//最后退出时间
 	    $v['add_time'] = date("Y-m-d H:i:s",$v['add_time']);//注册时间
-	    $v['avatar'] = getImage($v['avatar'], -1);
+	    //$v['avatar'] = getImage($v['avatar'], -1);
 	    return $v ;
 	}
 }

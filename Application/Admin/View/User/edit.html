@@ -18,8 +18,8 @@
                 <input type="email" name="email"  value="{$row.email}" class="form-control" />
             </div>
         </div>
-		{:W('upload/img', ['avatar','头像', $row['avatar'], 'required', 'avatar' ])}
-		<div class="form-group">
+		{:W('upload/img', ['avatar','头像', $row['avatar']])}
+		<div class="form-group upload-type" data-type="{$qiNiuYunImgName.userAvatar}" >
             <label class="col-sm-2 control-label"> 真实姓名</label>
             <div class="col-sm-2">
                <input name="realname" value="{$row.realname}" class="form-control" />
