@@ -122,23 +122,41 @@ function setPos(jNode, pos){
 }
 /**
  * 图片上传裁剪，依赖jQuery,Bootstrap
- * @param string src 初始图片地址
- * @param NaN(num/num) aspectRario 裁剪比例
+ * @param object initData 参数对象，以下为对象属性
+ * @param string uploadBtn jquery选择器字符串，上传按钮
+ * @param string fileBtn jquery选择器字符串，文件
+ * @param string src 图片地址
+ * @param NaN aspectRatio (num/num)裁剪比例
+ * @param function onclick 上传按钮点击后的动作
+ * @param function onchange 文件改变后的动作
  * @param function callback 回调函数
  */
-function imgUploadClip(src,aspectRatio,onclick,callback){
-	var html = '<button class="btn btn-default upload-file" type="button">上传图片</button><input type="file" id="file0" multiple="multiple" style="display:none"><div class="img-area"><div class="img-operate"><img src="'+src+'" id="img0"></div><div class="img-handle" style="display:none;"><div class="img-preview" style="overflow:hidden;"><img src="" alt=""></div><button class="btn btn-default save" type="button">裁剪</button></div></div>';
+function imgUploadClip(initData){
+	var html = '';
+	var uploadBtn = '.upload-file';
+	var fileBtn = '#file0';
+	if(!initData.uploadBtn){
+		html += '<button class="btn btn-default upload-file" type="button">上传图片</button>';
+	}else{
+		uploadBtn = initData.uploadBtn;
+	}
+	if(!initData.fileBtn){
+		html += '<input type="file" id="file0" multiple="multiple" style="display:none">';
+	}else{
+		fileBtn = initData.fileBtn;
+	}
+	html +='<div class="img-area"><div class="img-operate"><img src="'+initData.src+'" id="img0"></div><div class="img-handle" style="display:none;"><div class="img-preview" style="overflow:hidden;"><img src="" alt=""></div><button class="btn btn-default save" type="button">裁剪</button></div></div>';
 	$('.img-upload-clip').append(html);
-	$('.upload-file').on('click',function(){
+	$(uploadBtn).on('click',function(){
 		$("#file0").val('');
 		$("#file0").click();
 		$.fn.cropper;
-		if(onclick){
-			onclick();
+		if(initData.onclick){
+			initData.onclick();
 		}
 	});
 	var fileName = '';
-	$("#file0").change(function(){
+	$(fileBtn).change(function(){
 		if(this.files[0]){
 			var objUrl = getObjectURL(this.files[0]) ;
 			if($('.img-upload-clip').data('type')){
@@ -154,11 +172,14 @@ function imgUploadClip(src,aspectRatio,onclick,callback){
 			}
 			$('.img-upload-clip .img-handle').show();
 			$('.img-upload-clip .img-operate>img').cropper({
-				aspectRatio: aspectRatio,
+				aspectRatio: initData.aspectRatio,
 				crop: function() {},
 				preview:'.img-upload-clip .img-preview'
 			}); 
 			$('.img-upload-clip .img-operate>img').cropper('replace', objUrl);
+			if(initData.onchange){
+				initData.onchange();
+			}
 		}
 	});
 	//建立一个可存取到该file的url
@@ -207,8 +228,8 @@ function imgUploadClip(src,aspectRatio,onclick,callback){
 					dataType:'json',
 					type:'post',
 					success:function(data){
-						if(callback){
-							callback(data);
+						if(initData.callback){
+							initData.callback(data);
 						}
 						$('.img-upload-clip .img-handle').hide();
 						$('.img-upload-clip .img-operate>img').cropper('destroy');
@@ -474,15 +495,18 @@ $('.account-info-edit .commit-account').on('click',function(){
 (function(){
 	if($('.img-upload-clip')[0]){
 		var src = $('.img-upload-clip').data('src');
-		var aspectRatio = 1/1;
-		function callback(data){
-			if(!data.error){
-				$('form .avatar-url').attr('value',  data.key);
-			}else{
-				win.alert(data.error, 'error');
+		var initData = {
+			src:src,
+			aspectRatio: 1/1,
+			callback: function(data){
+				if(!data.error){
+					$('form .avatar-url').attr('value', data.key);
+				}else{
+					win.alert(data.error, 'error');
+				}
 			}
 		}
-		imgUploadClip(src,aspectRatio,'',callback);
+		imgUploadClip(initData);
 	}
 }());
 //密码修改
