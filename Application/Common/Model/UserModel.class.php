@@ -48,7 +48,9 @@ class UserModel extends BaseModel{
 		
 		$this->save(['last_login'=>time(), 'id'=>$user['id']]);
 		$user = $this->getInfo($id);
+		
 		session('user', $user);
+		//dump(session('user'));exit();
 		return $user;
 	}
 	
@@ -523,7 +525,9 @@ class UserModel extends BaseModel{
 		$info['addTime'] = local_date($info['add_time']);
 		$info['updateTime'] = local_date($info['update_time']);
 		$info['lastLogin'] = local_date($info['last_login']);
-		!$info['avatar'] ? ($info['avatar'] = '/Public/images/avatar.gif'):($info['avatar'] = getImage($info['avatar']));
+		if(MODULE_NAME == 'Home'){
+            !$info['avatar'] ? ($info['avatar'] = '/Public/images/avatar.gif'):($info['avatar'] = getImage($info['avatar'], -1));
+		}
 		unset($info['password']);
 		
 		return $info;
