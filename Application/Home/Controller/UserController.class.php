@@ -149,7 +149,7 @@ class UserController extends PublicController{
 	    if($data)
 	       ajaxReturn(0,'修改成功,请刷新页面',['list'=>$data]);
         ajaxReturn(1,'修改失败'.d('user')->getError());
-	}u
+	}
 	
 	//用户密码修改
 	function changePwd(){
