@@ -1,7 +1,7 @@
 <?php
 return array(
 	//'配置项'=>'配置值'
-	'SHOW_PAGE_TRACE'	=> true,
+	'SHOW_PAGE_TRACE'	=> false,
 	'TMPL_CACHE_ON'		=> false,
 	'TMPL_CACHE_TIME'	=> 1,
 	'APP_AUTOLOAD_PATH' => 'Common.Model,Admin.Widget',
