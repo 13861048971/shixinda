@@ -81,7 +81,7 @@ class PostController extends PublicController {
 	            $childrenList[$k]['count'] = d('post')->where(['post_cate_id'=>$v['id']])->count();
 	            $idArr[$k] = $v['id'];
 	        }
-	       
+	        
 	        //二级分类名称
 	        $name = d('postCate')->where(['id'=>$post_cate_id2])->getField('name');
 	        
@@ -90,15 +90,15 @@ class PostController extends PublicController {
 	        $map['_complex'] = $where;
 	        $map['_logic'] = 'or';
 	        if($post_cate_id2 && $post_cate_id3){
-	            $data = d('post')->getPageList(['post_cate_id'=>$post_cate_id3, 'status'=>'1'], '*', 'add_time desc', 3);
+	            $data = d('post')->getPageList(['post_cate_id'=>$post_cate_id3, 'status'=>'1'], '*', 'add_time desc', 15);
 	        }elseif($post_cate_id2){
 	            $data = d('post')->getPageList([$map, 'status'=>'1'], '*', 'add_time desc');
 	        }
 	    }
 	    else{
-	        $data = d('post')->getPageList(['post_cate_id'=>$post_cate_id2, 'status'=>'1'], '*', 'add_time desc', 3);
+	        $data = d('post')->getPageList(['post_cate_id'=>$post_cate_id2, 'status'=>'1'], '*', 'add_time desc', 15);
 	    } 
-        //dump($data);exit();
+
 	    $this->assign('customList', $customList);
 	    $this->assign('todayPostNum', $_GET['todayPostNum']);
 	    $this->assign('mainPostNum', $_GET['mainPostNum']);
@@ -140,15 +140,12 @@ class PostController extends PublicController {
 	    $idArr = ['post_cate_id2'=>$post_cate_id];
 	    if($post_cate_ppid > 0)
 	        $idArr = ['post_cate_id2'=>$post_cate_pid, 'post_cate_id3'=>$post_cate_id];
-	    
-	  
-	    $userRow['avatar'] = getImage($userRow['avatar'], -1);
+
 	    $postRow = d('post')->getPost($id);//帖子信息
-	    //dump($postRow);exit();
 	    $this->click('post',$id);//访问量+1
 	    $con = ['post_id'=>$id];
 	    if($_GET['viewHost']){ 
-	       $con['user_id'] = $userRow['id'];
+	       $con['user_id'] = $postRow['user_id'];
 	    }
 	    $data = d('postComment')->getPageList($con, '*', 'add_time', 15);//帖子评论信息
 	    //评论的id数组

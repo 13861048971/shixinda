@@ -30,7 +30,6 @@ class FriendLinkModel extends BaseModel {
 	    $v['publishTime'] = date("Y-m-d H:i",$v['publish_time']);
 	    $v['updateTime'] = date("Y-m-d H:i",$v['update_time']);
 	    $v['addTime'] = date("Y-m-d H:i",$v['add_time']);
-	    $v['preLogo'] = getImage($v['logo'], -1);
 	    return $v;
 	}
 	
@@ -58,12 +57,14 @@ class FriendLinkModel extends BaseModel {
 	}
 	
 	//分页
-	function getPageList($con=[], $fields = 'id', $order = '', $perNum = 15){
+	function getPageList($con=[], $fields = '*', $order = '', $perNum = 15){
 	    $data = parent::getPageList($con, $fields, $order, $perNum);
 	    
 	    foreach($data['list'] as $k=>$v){
 	        $data['list'][$k] = $this->parseRow($v);
+	        $data['list'][$k]['logo'] = getImage($v['logo']);
 	    }
+
 	    return $data;
 	}
 }

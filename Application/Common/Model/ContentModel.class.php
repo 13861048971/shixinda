@@ -48,7 +48,6 @@ class ContentModel extends BaseModel {
 	
 	//格式化行
 	public function parseRow($v){
-	    $v['preCover'] = getImage($v['cover'], -1);
 	    $v['statusName'] = $this->statusArr[$v['status']];
 	    $v['publishTime'] = date("Y-m-d H:i",$v['publish_time']);
 	    $v['updateTime'] = date("Y-m-d H:i",$v['update_time']);
@@ -95,6 +94,7 @@ class ContentModel extends BaseModel {
 	        foreach ($cateList as $k1=>$v1){
 	            if($v['cate_id'] == $v1['id']){
 	                $data['list'][$k]['cateName'] = $v1['name'];
+	                $data['list'][$k]['cover'] = getImage($v['cover']);
 	            }
 	        }
 	    } 

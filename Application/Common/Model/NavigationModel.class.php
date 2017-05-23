@@ -63,7 +63,6 @@ class NavigationModel extends BaseModel {
 	    $v['publishTime'] = date("Y-m-d H:i",$v['publish_time']);
 	    $v['updateTime'] = date("Y-m-d H:i",$v['update_time']);
 	    $v['addTime'] = date("Y-m-d H:i",$v['add_time']);
-	    $v['preLogo'] = getImage($v['logo'], -1);
 	    return $v;
 	}
 	
@@ -97,6 +96,7 @@ class NavigationModel extends BaseModel {
 	
 	    foreach($data['list'] as $k=>$v){
 	        $data['list'][$k] = $this->parseRow($v);
+	        $data['list'][$k]['logo'] = getImage($v['logo']);
 	    }
 	    return $data;
 	}

@@ -18,10 +18,10 @@
 	<div class="post-detail-page" data-id="{$postRow.id}"> 
 		<div class="container">
 			<div class="row post-title">
-				<a href="{:u('post/personInfo', ['userId'=>$postRow['userId']])}"><img src="{$postRow.avatar}" alt=""></a>
+				<a href="{:u('post/personInfo', ['userId'=>$postRow['user_id']])}"><img src="{$postRow.avatar}" alt=""></a>
 				<h3>{$postRow.title}</h3>
 				<p>
-					<a href="{:u('post/personInfo', ['userId'=>$userRow['id']])}">{$userRow.nickname}</a>
+					<a href="{:u('post/personInfo', ['userId'=>$postRow['user_id']])}">{$postRow.userName}</a>
 					<span>{$postRow.addTime} 发表</span>
 					<span>阅读：<span>{$postRow.click}</span></span>
 					<span>回复：<span>{$postRow.comment_num}</span></span>

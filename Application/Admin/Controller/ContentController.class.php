@@ -96,7 +96,7 @@ class ContentController extends PublicController {
 	        ['name' => '添加新连接', 'url'=> u('friendLinkEdit'), 'dialog' => 1, 'dialog-lg' => 1 ]
 	    ];
 	    $this->setRightAction($rightBtn);
-	    $data = d('friendLink')->getPageList($_GET,null);
+	    $data = d('friendLink')->getPageList($_GET, '*', 'add_time desc', 15);
 	    $this->assign($data);
 	    $this->assign('linkName',$_GET['name']);
 	    $this->display('friendLink','list');
