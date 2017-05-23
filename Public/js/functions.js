@@ -918,6 +918,7 @@ function uploadFile(btnSelector){
  * @param function onchange 文件改变后的动作
  * @param function callback 回调函数
  */
+var isCliped = 0;
 function imgUploadClip(initData){
 	var length = $('.img-upload-clip').length;
 	for(var i = 0;i<length;i++){
@@ -925,6 +926,9 @@ function imgUploadClip(initData){
 		var	html = '<button class="btn btn-default upload-img" type="button">上传图片</button><input type="file" class="file0" multiple="multiple" style="display:none"><div class="img-area"><div class="img-operate"><img src="'+src+'" class="img0"></div><div class="img-handle" style="display:none;"><div class="img-preview" style="overflow:hidden;"><img src="" alt=""></div><button class="btn btn-default save" type="button">裁剪</button></div></div>';
 		$($('.img-upload-clip')[i]).append(html);
 	}
+	isCliped++;
+	if(isCliped>1)
+		return;
 	$('body').on('click','.upload-img',function(){
 		var _this = $(this).parents('.img-upload-clip')
 		var _thisFile = _this.find('.file0');

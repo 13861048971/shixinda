@@ -18,7 +18,15 @@
                 <input type="email" name="email"  value="{$row.email}" class="form-control" />
             </div>
         </div>
-		{:W('upload/img', ['avatar','头像', $row['avatar'], 'required', 'avatar' ])}
+		<div class="row form-group user-avatar upload-type" data-type="{$qiNiuYunImgName.userAvatar}">
+            <label for="avatar" class="col-md-2 control-label"><i class="required-star">*</i> 头像</label>
+            <div class="col-md-10">
+                <div class="img-upload-clip" data-src="{$row.preAvatar}"></div>
+            </div>
+        </div>
+        <div class="row form-group" style="display:none;">
+            <input type="text" class="avatar-url" name="avatar" value="{$row.avatar}">
+        </div>
 		<div class="form-group">
             <label class="col-sm-2 control-label"> 真实姓名</label>
             <div class="col-sm-2">
