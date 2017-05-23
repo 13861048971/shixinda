@@ -30,7 +30,7 @@
 							</div>
 							<div class="col-sm-4">
 								<div class="input-group upload-img upload-type" data-type="{$qiNiuYunImgName.blockImage}">
-									{:w('upload/img2',$vo['imageArr'])}
+									<div class="img-upload-clip" data-src="{$vo.preImage}"></div>
 								</div>
 							</div>	
 						</div>
@@ -50,7 +50,7 @@
 					</div>
 					<div class="col-sm-4">
 						<div class="input-group upload-img">
-							{:w('upload/img2',["image[1]","",''])}
+							<div class="img-upload-clip" data-src="{$vo.preImage}"></div>
 						</div>
 					</div>	
 				</div>

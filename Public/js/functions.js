@@ -906,7 +906,133 @@ function uploadFile(btnSelector){
 		});
 	}
 }
-
+/**
+ * 图片上传裁剪，依赖jQuery,Bootstrap
+ * @param object initData 参数对象，以下为对象属性
+ * @param NaN aspectRatio (num/num)裁剪比例
+ * @param function onclick 上传按钮点击后的动作
+ * @param function onchange 文件改变后的动作
+ * @param function callback 回调函数
+ */
+function imgUploadClip(initData){
+	var length = $('.img-upload-clip').length;
+	for(var i = 0;i<length;i++){
+		var src = $('.img-upload-clip')[i].dataset.src;
+		var	html = '<button class="btn btn-default upload-file" type="button">上传图片</button><input type="file" class="file0" multiple="multiple" style="display:none"><div class="img-area"><div class="img-operate"><img src="'+src+'" class="img0"></div><div class="img-handle" style="display:none;"><div class="img-preview" style="overflow:hidden;"><img src="" alt=""></div><button class="btn btn-default save" type="button">裁剪</button></div></div>';
+		$($('.img-upload-clip')[i]).append(html);
+	}
+	$('body').on('click','.upload-file',function(){
+		var _thisFile = $(this).parents('.img-upload-clip').find('.file0');
+		_thisFile.val('');
+		_thisFile.click();
+		console.log('....');
+		$.fn.cropper;
+		if(initData.onclick){
+			initData.onclick();
+		}
+	});
+	var fileName = '';
+	$('body').on('change','.file0',function(){
+		var _this = $(this).parents('.img-upload-clip');
+		if(this.files[0]){
+			var objUrl = getObjectURL(this.files[0]) ;
+			if($('.upload-type').data('type')){
+				var imgType = $('.upload-type').data('type');
+			}else{
+				var imgType = 'images';
+			}
+			fileName = imgType+'/';
+			fileName += date('y-m-d',time())+'/';
+			fileName += time().toString()+Math.round(Math.random()*8999+1000+1).toString()+this.files[0].name.match(/\.[a-z]+$/)[0];
+			if (objUrl) {
+				_this.find(".img0").attr("src", objUrl) ;
+			}
+			_this.find('.img-handle').show();
+			_this.find('.img-operate>img').cropper({
+				aspectRatio: initData.aspectRatio,
+				crop: function() {},
+				preview:_this.find('.img-preview')
+			}); 
+			_this.find('.img-operate>img').cropper('replace', objUrl);
+			if(initData.onchange){
+				initData.onchange();
+			}
+		}
+	});
+	//建立一个可存取到该file的url
+	function getObjectURL(file) {
+		var url = null ; 
+		if (window.createObjectURL!=undefined) { // basic
+			url = window.createObjectURL(file) ;
+		} else if (window.URL!=undefined) { // mozilla(firefox)
+			url = window.URL.createObjectURL(file) ;
+		} else if (window.webkitURL!=undefined) { // webkit or chrome
+			url = window.webkitURL.createObjectURL(file) ;
+		}
+		return url ;
+	}
+	$('body').on('click','.save', function(){
+		if(!$('.cropper-container')[0])
+			return;
+		var _this = $(this).parents('.img-upload-clip');
+		// token获取
+		var token = '';
+		var url = '/File/getQiNiuToken';
+		$.ajax({
+			url:url,
+			type:'post',
+			data:{'imageName':fileName},
+			dataType:'json',
+			success:function(data){
+				if(!data.error){
+					token = data.data.token;
+					uploadQiniu(fileName,token);
+				}
+			}
+		});
+		function uploadQiniu(fileName,token){
+			_this.find('.img-operate>img').cropper("getCroppedCanvas").toBlob(function(blob) {
+				var url = getObjectURL(blob);
+				var form = new FormData();
+				form.append("file", blob);
+				form.append('key', fileName);
+				form.append("token", token);
+				win.alert('图片上传中', 'info');
+				$.ajax({
+					processData: false,
+					contentType: false,
+					data:form,
+					url:'http://up-z2.qiniu.com/',
+					dataType:'json',
+					type:'post',
+					success:function(data){
+						if(initData.callback){
+							initData.callback(data);
+						}
+						_this.find('.img-handle').hide();
+						_this.find('.img-operate>img').cropper('destroy');
+						_this.find('.img0').attr("src", url);
+					}
+				});
+			},'image/jpeg',0.8);
+		}
+	});
+};
+function initUploadClip(){
+	if($('.img-upload-clip')[0]){
+		var initData = {
+			aspectRatio: 515/255,
+			callback: function(data){
+				if(!data.error){
+					$('form .avatar-url').attr('value', data.key);
+				}else{
+					win.alert(data.error, 'error');
+				}
+			}
+		}
+		imgUploadClip(initData);
+	}
+}
 /**
  * 选择地区
  * @param 

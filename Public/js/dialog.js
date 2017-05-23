@@ -37,6 +37,7 @@ function dialog(idName, callback){
 		initLayDate(th.modalNode.find('.lay-date'));
 		setTimeout(initMultiSelect,500);
 		setTimeout(bannerBlockEdit(th.modalNode.find('.banner-block-edit')),500);
+		setTimeout(initUploadClip,300);
 	};
 	this.hide = function(){
 		modalNode.modal('hide');
@@ -82,6 +83,5 @@ function dialog(idName, callback){
 	th.modalNode.off('shown.bs.modal').on('shown.bs.modal', function (e) {
 		$(document).off('focusin.modal');//解决编辑器弹出层文本框不能输入的问题
 	});
-
 }
 (new dialog());
