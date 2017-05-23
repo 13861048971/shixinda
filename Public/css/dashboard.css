@@ -608,32 +608,32 @@ table td.right{text-align:right;}
 	margin: 15px 0 0 0;
 }
 /*用户头像图片裁剪上传*/
-.img-upload-clip .img-area{
+.user-avatar-clip .img-upload-clip .img-area{
 	width: 100%;
 	margin: 15px 0 0 0;
 	overflow: hidden;
 }
-.img-upload-clip .img-area .img-operate{
+.user-avatar-clip .img-upload-clip .img-area .img-operate{
 	max-width: 65%;
 	max-height: 400px;
 	float: left;
 }
-.img-upload-clip .img-area .img-operate img{
+.user-avatar-clip .img-upload-clip .img-area .img-operate img{
 	max-width: 100%;
 }
-.img-upload-clip .img-area .img-handle{
+.user-avatar-clip .img-upload-clip .img-area .img-handle{
 	width: 30%;
 	float: left;
 	margin: 0 0 0 5%;
 	overflow: hidden;
 }
-.img-upload-clip .img-area .img-preview{
+.user-avatar-clip .img-upload-clip .img-area .img-preview{
 	width: 115px;
 	height: 115px;
 }
-.img-upload-clip .img-area .img-preview img{
+.user-avatar-clip .img-upload-clip .img-area .img-preview img{
 	max-width: 100%;
 }
-.img-upload-clip .img-area button{
+.user-avatar-clip .img-upload-clip .img-area button{
 	margin: 15px 0 0 0;
 }

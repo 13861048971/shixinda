@@ -926,9 +926,11 @@ function imgUploadClip(initData){
 		var	html = '<button class="btn btn-default upload-img" type="button">上传图片</button><input type="file" class="file0" multiple="multiple" style="display:none"><div class="img-area"><div class="img-operate"><img src="'+src+'" class="img0"></div><div class="img-handle" style="display:none;"><div class="img-preview" style="overflow:hidden;"><img src="" alt=""></div><button class="btn btn-default save" type="button">裁剪</button></div></div>';
 		$($('.img-upload-clip')[i]).append(html);
 	}
+	//阻止事件重复监听
 	isCliped++;
 	if(isCliped>1)
 		return;
+	//裁剪事件监听
 	$('body').on('click','.upload-img',function(){
 		var _this = $(this).parents('.img-upload-clip')
 		var _thisFile = _this.find('.file0');
@@ -1026,7 +1028,7 @@ function imgUploadClip(initData){
 		}
 	});
 };
-function initUploadClip(){
+function initBannerClip(){
 	if($('.img-upload-clip')[0]){
 		var initData = {
 			aspectRatio: 515/255,
@@ -1037,6 +1039,21 @@ function initUploadClip(){
 				if(!data.error){
 					_this.siblings('.img-url').val(data.key);
 					_this.find('.img-operate').removeClass('clip-operating');
+				}else{
+					win.alert(data.error, 'error');
+				}
+			}
+		}
+		imgUploadClip(initData);
+	}
+}
+function initAvatarClip(){
+	if($('.img-upload-clip')[0]){
+		var initData = {
+			aspectRatio: 1/1,
+			callback: function(data,_this){
+				if(!data.error){
+					$('form .avatar-url').val(data.key);
 				}else{
 					win.alert(data.error, 'error');
 				}
