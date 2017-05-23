@@ -461,6 +461,10 @@ ul#filters {
 	margin-left: 35%;
 	font-size: 14px;
 }
+.news-item .news-info-full{
+	margin: 0 0 0 15px;
+	font-size: 14px;
+}
 .news-link{
 	margin: 0 0 30px 0;
 }
