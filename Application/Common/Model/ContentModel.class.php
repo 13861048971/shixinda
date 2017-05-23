@@ -32,10 +32,7 @@ class ContentModel extends BaseModel {
 	public function getInfo($id){
 	    $info = $this->find($id);
 	    if(!$info) return;
-	    $v['statusName'] = $this->statusArr[$v['status']];
-	    $v['publishTime'] = date("Y-m-d H:i",$v['publish_time']);
-	    $v['updateTime'] = date("Y-m-d H:i",$v['update_time']);
-	    $v['addTime'] = date("Y-m-d H:i",$v['add_time']);
+        $info = $this->parseRow($info);
 	    return $info;
 	}
 	
@@ -51,7 +48,7 @@ class ContentModel extends BaseModel {
 	
 	//格式化行
 	public function parseRow($v){
-	    $v['cover'] = getImage($v['cover'], -1);
+	    $v['preCover'] = getImage($v['cover'], -1);
 	    $v['statusName'] = $this->statusArr[$v['status']];
 	    $v['publishTime'] = date("Y-m-d H:i",$v['publish_time']);
 	    $v['updateTime'] = date("Y-m-d H:i",$v['update_time']);

@@ -22,7 +22,7 @@ class NavigationModel extends BaseModel {
 	    $info = $this->find($id);
 	    if(!$info) return;
 	
-	    $info = $this->parseInfoRow($info);
+	    $info = $this->parseRow($info);
 	    return $info;
 	}
 	
@@ -53,18 +53,7 @@ class NavigationModel extends BaseModel {
 	                    $navigation[$k]['current'] = true;
 	        }
 	    }
-	    //dump($navigation);exit();
 	    return $navigation;
-	}
-	
-	//格式化info
-	public function parseInfoRow($v){
-	    $v['num'] = $this->where(['pid'=>$v['id']])->Count();
-	    $v['statusName'] = $this->statusArr[$v['status']];
-	    $v['publishTime'] = date("Y-m-d H:i",$v['publish_time']);
-	    $v['updateTime'] = date("Y-m-d H:i",$v['update_time']);
-	    $v['addTime'] = date("Y-m-d H:i",$v['add_time']);
-	    return $v;
 	}
 	
 	//格式化行
@@ -74,7 +63,7 @@ class NavigationModel extends BaseModel {
 	    $v['publishTime'] = date("Y-m-d H:i",$v['publish_time']);
 	    $v['updateTime'] = date("Y-m-d H:i",$v['update_time']);
 	    $v['addTime'] = date("Y-m-d H:i",$v['add_time']);
-	    $v['logo'] = getImage($v['logo'], -1);
+	    $v['preLogo'] = getImage($v['logo'], -1);
 	    return $v;
 	}
 	

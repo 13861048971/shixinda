@@ -342,7 +342,6 @@ class UserModel extends BaseModel{
 	/**
 	 * 编辑or添加
 	 */
-	
 	function edit($data, $id=null){
 		if($id){
 			$data['update_time'] = time();
@@ -620,7 +619,7 @@ class UserModel extends BaseModel{
 	    $v['last_logout'] = date("Y-m-d H:i:s",$v['last_logout']);//最后退出时间
 	    $v['add_time'] = date("Y-m-d H:i:s",$v['add_time']);//注册时间
 	    if(MODULE_NAME == 'Home'){
-	        $v['avatar'] = getImage($v['avatar'], -1);
+	        $v['preAvatar'] = getImage($v['avatar'], -1);
 	    }
 	    return $v ;
 	}
