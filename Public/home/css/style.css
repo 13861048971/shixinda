@@ -1578,6 +1578,15 @@ ul#filters {
 	max-height: 400px;
 	float: left;
 }
+.img-upload-clip .img-area .img-operate{
+  	max-width: 150px;
+  	max-height: 150px;
+	float: left;
+}
+.img-upload-clip .img-area .clip-operating{
+	max-width: 65%;
+	max-height: 400px;
+}
 .img-upload-clip .img-area .img-operate img{
 	max-width: 100%;
 }

@@ -614,9 +614,13 @@ table td.right{text-align:right;}
 	overflow: hidden;
 }
 .user-avatar-clip .img-upload-clip .img-area .img-operate{
+  max-width: 150px;
+  max-height: 150px;
+	float: left;
+}
+.user-avatar-clip .img-upload-clip .img-area .clip-operating{
 	max-width: 65%;
 	max-height: 400px;
-	float: left;
 }
 .user-avatar-clip .img-upload-clip .img-area .img-operate img{
 	max-width: 100%;

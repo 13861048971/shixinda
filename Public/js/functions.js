@@ -932,7 +932,7 @@ function imgUploadClip(initData){
 		return;
 	//裁剪事件监听
 	$('body').on('click','.upload-img',function(){
-		var _this = $(this).parents('.img-upload-clip')
+		var _this = $(this).parents('.img-upload-clip');
 		var _thisFile = _this.find('.file0');
 		_thisFile.val('');
 		_thisFile.click();
@@ -1051,9 +1051,13 @@ function initAvatarClip(){
 	if($('.img-upload-clip')[0]){
 		var initData = {
 			aspectRatio: 1/1,
+			onchange: function(_this){
+				_this.find('.img-operate').addClass('clip-operating');
+			},
 			callback: function(data,_this){
 				if(!data.error){
 					$('form .avatar-url').val(data.key);
+					_this.find('.img-operate').removeClass('clip-operating');
 				}else{
 					win.alert(data.error, 'error');
 				}

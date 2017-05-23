@@ -136,12 +136,13 @@ function imgUploadClip(initData){
 		$($('.img-upload-clip')[i]).append(html);
 	}
 	$('body').on('click','.upload-img',function(){
-		var _thisFile = $(this).parents('.img-upload-clip').find('.file0');
+		var _this = $(this).parents('.img-upload-clip');
+		var _thisFile = _this.find('.file0');
 		_thisFile.val('');
 		_thisFile.click();
 		$.fn.cropper;
 		if(initData.onclick){
-			initData.onclick();
+			initData.onclick(_this);
 		}
 	});
 	var fileName = '';
@@ -168,7 +169,7 @@ function imgUploadClip(initData){
 			}); 
 			_this.find('.img-operate>img').cropper('replace', objUrl);
 			if(initData.onchange){
-				initData.onchange();
+				initData.onchange(_this);
 			}
 		}
 	});
@@ -220,7 +221,7 @@ function imgUploadClip(initData){
 					type:'post',
 					success:function(data){
 						if(initData.callback){
-							initData.callback(data);
+							initData.callback(data,_this);
 						}
 						_this.find('.img-handle').hide();
 						_this.find('.img-operate>img').cropper('destroy');
@@ -487,9 +488,13 @@ $('.account-info-edit .commit-account').on('click',function(){
 	if($('.img-upload-clip')[0]){
 		var initData = {
 			aspectRatio: 1/1,
-			callback: function(data){
+			onchange: function(_this){
+				_this.find('.img-operate').addClass('clip-operating');
+			},
+			callback: function(data,_this){
 				if(!data.error){
 					$('form .avatar-url').val(data.key);
+					_this.find('.img-operate').removeClass('clip-operating');
 				}else{
 					win.alert(data.error, 'error');
 				}

@@ -37,7 +37,7 @@ function dialog(idName, callback){
 		initLayDate(th.modalNode.find('.lay-date'));
 		setTimeout(initMultiSelect,500);
 		setTimeout(bannerBlockEdit(th.modalNode.find('.banner-block-edit')),500);
-		function initClip(){
+		function initImgClip(){
 			if($('.banner-clip')[0]){
 				initBannerClip();
 			}
@@ -45,7 +45,7 @@ function dialog(idName, callback){
 				initAvatarClip();
 			}
 		}
-		setTimeout(initClip,300);
+		setTimeout(initImgClip,300);
 	};
 	this.hide = function(){
 		modalNode.modal('hide');
