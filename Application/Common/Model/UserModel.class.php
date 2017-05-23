@@ -528,7 +528,7 @@ class UserModel extends BaseModel{
 		$info['updateTime'] = local_date($info['update_time']);
 		$info['lastLogin'] = local_date($info['last_login']);
 		if(MODULE_NAME == 'Home'){
-            !$info['avatar'] ? ($info['avatar'] = '/Public/images/avatar.gif'):($info['avatar'] = getImage($info['avatar'], -1));
+            !$info['avatar'] ? ($info['preAvatar'] = "http://qiniu.img.mallshangyun.com"):($info['preAvatar'] = getImage($info['avatar'], -1));
 		}
 		unset($info['password']);
 		
@@ -540,6 +540,7 @@ class UserModel extends BaseModel{
 		//$info = $this->getCache($this->cacheKey.$id, 'UserInfo', $id);
 		$info = $this->_cacheUserInfo($id);
 		if(!$info) return;
+		//dump($info);exit();
  		return $info;
 	}
 	

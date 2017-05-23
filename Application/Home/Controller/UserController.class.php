@@ -18,6 +18,7 @@ class UserController extends PublicController{
 	            'checked' => $user['gender']
 	        ]
 	    ];
+	    //dump($user);exit();
 	    $this->assign('genderList', $genderList);
 	    $this->assign('qiNiuYunImgName',c('QINIUYUN.imgName'));
 	    $this->display();
