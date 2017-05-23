@@ -50,7 +50,6 @@ class UserModel extends BaseModel{
 		$user = $this->getInfo($id);
 		
 		session('user', $user);
-		//dump(session('user'));exit();
 		return $user;
 	}
 	
@@ -282,7 +281,6 @@ class UserModel extends BaseModel{
 		
 		if(!Org\Util\Validator::isMobile($mobile))
 			return $this->setError('手机号格式错误!');
-			//echo 1;exit();
 		if( $vercode != session('msgvercode') && ($vercode && $vercode != $vercode2))
 			return $this->setError('验证码错误!');
 		
@@ -498,7 +496,7 @@ class UserModel extends BaseModel{
 			unset($arr['name']);
 			$arr['name'] = array('like', "%{$username}%");
 		}
-		if(isset($arr['status']) && '0' === $arr['status'] )
+		if(isset($arr['status']) && '0' === $arr['status'])
 			$arr['status'] = ['lt', 1];
 		$data = parent::getPageList($arr, $fields, $order, $limit);
 		foreach($data['list'] as $k=>$v){
@@ -527,9 +525,7 @@ class UserModel extends BaseModel{
 		$info['addTime'] = local_date($info['add_time']);
 		$info['updateTime'] = local_date($info['update_time']);
 		$info['lastLogin'] = local_date($info['last_login']);
-		if(MODULE_NAME == 'Home'){
-            !$info['avatar'] ? ($info['preAvatar'] = "http://qiniu.img.mallshangyun.com"):($info['preAvatar'] = getImage($info['avatar'], -1));
-		}
+        !$info['avatar'] ? ($info['preAvatar'] = "http://qiniu.img.mallshangyun.com"):($info['preAvatar'] = getImage($info['avatar'], -1));
 		unset($info['password']);
 		
 		return $info;
@@ -537,10 +533,8 @@ class UserModel extends BaseModel{
 	
 	//详情
 	function getInfo($id){
-		//$info = $this->getCache($this->cacheKey.$id, 'UserInfo', $id);
 		$info = $this->_cacheUserInfo($id);
 		if(!$info) return;
-		//dump($info);exit();
  		return $info;
 	}
 	
