@@ -925,7 +925,6 @@ function imgUploadClip(initData){
 		var _thisFile = $(this).parents('.img-upload-clip').find('.file0');
 		_thisFile.val('');
 		_thisFile.click();
-		console.log('....');
 		$.fn.cropper;
 		if(initData.onclick){
 			initData.onclick();

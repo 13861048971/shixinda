@@ -20,14 +20,12 @@
 					<li class="form-group"> 
 						<div class="row">
 							<input name="url[{$k}]" required class="form-control banner-url col-sm-8" value="{$vo.url}" placeholder="链接">
+							<input name="ptitle[{$k}]" required class="form-control banner-title" value="{$vo.title}" placeholder="标题">
 							<div class="col-sm-2">
 									<button type="button" class="banner-block-add">+</button>
 							</div>
 						</div>
 						<div class="row">
-							<div class="col-sm-5">
-								<input name="ptitle[{$k}]" required class="form-control banner-title" value="{$vo.title}" placeholder="标题">
-							</div>
 							<div class="col-sm-4">
 								<div class="input-group upload-img upload-type" data-type="{$qiNiuYunImgName.blockImage}">
 									<div class="img-upload-clip" data-src="{$vo.preImage}"></div>
@@ -40,15 +38,13 @@
 			<li class="form-group"> 
 				<div class="row">
 					<input name="url[1]" required class="form-control banner-url col-sm-8" value="" placeholder="链接">
+					<input name="ptitle[1]" required class="form-control banner-title" value="" placeholder="标题">
 					<div class="col-sm-2">
 							<button type="button" class="banner-block-add">+</button>
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-sm-5">
-						<input name="ptitle[1]" required class="form-control banner-title" value="" placeholder="标题">
-					</div>
-					<div class="col-sm-4">
+					<div class="col-sm-10">
 						<div class="input-group upload-img">
 							<div class="img-upload-clip" data-src="{$vo.preImage}"></div>
 						</div>
