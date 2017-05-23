@@ -59,8 +59,7 @@ class BlockModel extends BaseModel {
 	    $v['content'] = json_decode($v['content'], true);
 	    
 	    foreach($v['content'] as $k2=>$v2){
-	       $v['content'][$k2]['imageArr'] = ['image['.$k2.']', '', $v2['image']];
-	       $v['content'][$k2]['qiNiuImage'] = getImage($v2['image'],-1);
+	       $v['content'][$k2]['preImage'] = getImage($v2['image'],-1);
 	    }
 	    
 	   
