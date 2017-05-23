@@ -851,8 +851,12 @@ function uploadFile(btnSelector){
 	$(document).on('click', btnSelector, function(){
 		btn = $(this);
 		options = eval('('+ btn.attr('data-option') + ')');
-		input = $(options.urlContainer);
-		preview = $(options.preview);
+		if(options.urlContainer){
+			input = $(options.urlContainer);
+		}
+		if(options.preview){
+			preview = $(options.preview);
+		}
 		if(!preview.parent().find('.process')[0]){
 			preview.parent().prepend(progressNode.hide());
 		}
@@ -918,16 +922,17 @@ function imgUploadClip(initData){
 	var length = $('.img-upload-clip').length;
 	for(var i = 0;i<length;i++){
 		var src = $('.img-upload-clip')[i].dataset.src;
-		var	html = '<button class="btn btn-default upload-file" type="button">上传图片</button><input type="file" class="file0" multiple="multiple" style="display:none"><div class="img-area"><div class="img-operate"><img src="'+src+'" class="img0"></div><div class="img-handle" style="display:none;"><div class="img-preview" style="overflow:hidden;"><img src="" alt=""></div><button class="btn btn-default save" type="button">裁剪</button></div></div>';
+		var	html = '<button class="btn btn-default upload-img" type="button">上传图片</button><input type="file" class="file0" multiple="multiple" style="display:none"><div class="img-area"><div class="img-operate"><img src="'+src+'" class="img0"></div><div class="img-handle" style="display:none;"><div class="img-preview" style="overflow:hidden;"><img src="" alt=""></div><button class="btn btn-default save" type="button">裁剪</button></div></div>';
 		$($('.img-upload-clip')[i]).append(html);
 	}
-	$('body').on('click','.upload-file',function(){
-		var _thisFile = $(this).parents('.img-upload-clip').find('.file0');
+	$('body').on('click','.upload-img',function(){
+		var _this = $(this).parents('.img-upload-clip')
+		var _thisFile = _this.find('.file0');
 		_thisFile.val('');
 		_thisFile.click();
 		$.fn.cropper;
 		if(initData.onclick){
-			initData.onclick();
+			initData.onclick(_this);
 		}
 	});
 	var fileName = '';
@@ -954,7 +959,7 @@ function imgUploadClip(initData){
 			}); 
 			_this.find('.img-operate>img').cropper('replace', objUrl);
 			if(initData.onchange){
-				initData.onchange();
+				initData.onchange(_this);
 			}
 		}
 	});
@@ -1006,7 +1011,7 @@ function imgUploadClip(initData){
 					type:'post',
 					success:function(data){
 						if(initData.callback){
-							initData.callback(data);
+							initData.callback(data,_this);
 						}
 						_this.find('.img-handle').hide();
 						_this.find('.img-operate>img').cropper('destroy');
@@ -1021,9 +1026,13 @@ function initUploadClip(){
 	if($('.img-upload-clip')[0]){
 		var initData = {
 			aspectRatio: 515/255,
-			callback: function(data){
+			onchange: function(_this){
+				_this.find('.img-operate').addClass('clip-operating');
+			},
+			callback: function(data,_this){
 				if(!data.error){
-					$('form .avatar-url').attr('value', data.key);
+					_this.siblings('.img-url').val(data.key);
+					_this.find('.img-operate').removeClass('clip-operating');
 				}else{
 					win.alert(data.error, 'error');
 				}
@@ -1341,25 +1350,16 @@ function bannerBlockEdit(ul){
         });
 		node.find("img").attr("src",'');
 		var row1 = ul.find('li:last');
-		var imgID = row1.find('.upload-img input').attr('id');
-		imgID = imgID.match(/img-input-id-([0-9]+)/);
-
+		var imgID = row1.find('.img-url').attr('name');
+		imgID = imgID.match(/image\[([0-9]+)\]/);
 		ul.append(node);
 		ul.find('li:last .banner-block-add').after('<button type="button" class="banner-block-sub">-</button>');
 
 		var row2 = ul.find('li:last');
 		var str = (parseInt(imgID[1])+1);
-		var option = row2.find('.upload-img button').data('option');
-		var klass = row2.find('.upload-img img').attr('class');
-		option = option.replace(/img-input-id-([0-9]+)/, 'img-input-id-'+str);
-		option = option.replace(/img-preview-([0-9]+)/, 'img-preview-'+str);
-		klass = klass.replace(/img-preview-([0-9]+)/, 'img-preview-'+str);
-		row2.find('.upload-img input').attr('name','image['+str+']');
 		row2.find('.banner-url').attr('name','url['+str+']');
-		row2.find('.upload-img input').attr('id','img-input-id-'+str);
 		row2.find('.banner-title').attr('name','ptitle['+str+']');
-		row2.find('.upload-img button').attr('data-option', option);
-		row2.find('.upload-img img').attr('class', klass);
+		row2.find('.img-url').attr('name','image['+str+']');
 	});
 	ul.on('click','.banner-block-sub',function(){
 		$(this).parents('li').remove();

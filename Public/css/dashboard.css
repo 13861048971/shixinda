@@ -570,19 +570,23 @@ table td.right{text-align:right;}
   margin: 0 0 0 15px;
 }
 /*图片裁剪上传*/
-.banner-block-edit .img-upload-clip .upload-file{
+.banner-block-edit .img-upload-clip .upload-img{
   float: left;
 }
 .banner-block-edit .img-upload-clip .img-area{
 	width: 100%;
-	margin: -33px 0 0 100px;
+	margin: -34px 0 0 95px;
 	overflow: hidden;
   float: left;
 }
 .banner-block-edit .img-upload-clip .img-area .img-operate{
+  max-width: 100px;
+  max-height: 100px;
+	float: left;
+}
+.banner-block-edit .img-upload-clip .img-area .clip-operating{
 	max-width: 65%;
 	max-height: 400px;
-	float: left;
 }
 .banner-block-edit .img-upload-clip .img-area .img-operate img{
 	max-width: 100%;
@@ -590,7 +594,7 @@ table td.right{text-align:right;}
 .banner-block-edit .img-upload-clip .img-area .img-handle{
 	width: 30%;
 	float: left;
-	margin: 0 0 0 5%;
+	margin: 0 0 0 2%;
 	overflow: hidden;
 }
 .banner-block-edit .img-upload-clip .img-area .img-preview{

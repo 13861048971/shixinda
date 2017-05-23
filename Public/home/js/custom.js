@@ -132,10 +132,10 @@ function imgUploadClip(initData){
 	var length = $('.img-upload-clip').length;
 	for(var i = 0;i<length;i++){
 		var src = $('.img-upload-clip')[i].dataset.src;
-		var	html = '<button class="btn btn-default upload-file" type="button">上传图片</button><input type="file" class="file0" multiple="multiple" style="display:none"><div class="img-area"><div class="img-operate"><img src="'+src+'" class="img0"></div><div class="img-handle" style="display:none;"><div class="img-preview" style="overflow:hidden;"><img src="" alt=""></div><button class="btn btn-default save" type="button">裁剪</button></div></div>';
+		var	html = '<button class="btn btn-default upload-img" type="button">上传图片</button><input type="file" class="file0" multiple="multiple" style="display:none"><div class="img-area"><div class="img-operate"><img src="'+src+'" class="img0"></div><div class="img-handle" style="display:none;"><div class="img-preview" style="overflow:hidden;"><img src="" alt=""></div><button class="btn btn-default save" type="button">裁剪</button></div></div>';
 		$($('.img-upload-clip')[i]).append(html);
 	}
-	$('body').on('click','.upload-file',function(){
+	$('body').on('click','.upload-img',function(){
 		var _thisFile = $(this).parents('.img-upload-clip').find('.file0');
 		_thisFile.val('');
 		_thisFile.click();
@@ -489,7 +489,7 @@ $('.account-info-edit .commit-account').on('click',function(){
 			aspectRatio: 1/1,
 			callback: function(data){
 				if(!data.error){
-					$('form .avatar-url').attr('value', data.key);
+					$('form .avatar-url').val(data.key);
 				}else{
 					win.alert(data.error, 'error');
 				}

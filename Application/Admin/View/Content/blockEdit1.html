@@ -26,9 +26,10 @@
 							</div>
 						</div>
 						<div class="row">
-							<div class="col-sm-4">
+							<div class="col-sm-10">
 								<div class="input-group upload-img upload-type" data-type="{$qiNiuYunImgName.blockImage}">
 									<div class="img-upload-clip" data-src="{$vo.preImage}"></div>
+									<input type="text" name="image[{$k}]" class="img-url" value="{$vo.image}" hidden>
 								</div>
 							</div>	
 						</div>
@@ -47,6 +48,7 @@
 					<div class="col-sm-10">
 						<div class="input-group upload-img">
 							<div class="img-upload-clip" data-src="{$vo.preImage}"></div>
+							<input type="text" name="image[1]" class="img-url" hidden>
 						</div>
 					</div>	
 				</div>
