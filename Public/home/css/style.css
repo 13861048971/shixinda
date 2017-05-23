@@ -455,6 +455,9 @@ ul#filters {
 .news-item a{
 	color: #000;
 }
+.news-item .news-text-box{
+	margin: 0 0 20px 0;
+}
 .news-item .news-info{
 	position: absolute;
 	bottom: 15px;

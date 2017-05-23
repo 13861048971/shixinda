@@ -9,7 +9,7 @@
 						<div class="col-md-4 news-img">
 							<a href="{:u('/Index/newsDetail',['id'=>$vo['id']])}"><img src="{$vo.cover}" alt=""></a>
 						</div>
-						<div class="col-md-8">
+						<div class="col-md-8 news-text-box">
 							<h3><a href="{:u('/Index/newsDetail',['id'=>$vo['id']])}">{$vo.title}</a></h3>
 							<div class="news-text">{$vo.content}</div>
 						</div>
@@ -17,7 +17,7 @@
 							<a href="{:u('/Index/newsDetail',['id'=>$vo['id']])}">{$vo.author}</a>·<span>{$vo.publishTime}</span>
 						</div>
 					<else />
-						<div class="col-md-12">
+						<div class="col-md-12 news-text-box">
 							<h3><a href="{:u('/Index/newsDetail',['id'=>$vo['id']])}">{$vo.title}</a></h3>
 							<div class="news-text">{$vo.content}</div>
 						</div>
