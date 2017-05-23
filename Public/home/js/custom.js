@@ -122,109 +122,7 @@ function setPos(jNode, pos){
 }
 /**
  * 图片上传裁剪，依赖jQuery,Bootstrap
- * @param string src 初始图片地址
- * @param NaN(num/num) aspectRario 裁剪比例
- * @param function callback 回调函数
- */
-// function imgUploadClip(src,aspectRatio,onclick,callback){
-// 	var html = '<button class="btn btn-default upload-file" type="button">上传图片</button><input type="file" id="file0" multiple="multiple" style="display:none"><div class="img-area"><div class="img-operate"><img src="'+src+'" id="img0"></div><div class="img-handle" style="display:none;"><div class="img-preview" style="overflow:hidden;"><img src="" alt=""></div><button class="btn btn-default save" type="button">裁剪</button></div></div>';
-// 	$('.img-upload-clip').append(html);
-// 	$('.upload-file').on('click',function(){
-// 		$("#file0").val('');
-// 		$("#file0").click();
-// 		$.fn.cropper;
-// 		if(onclick){
-// 			onclick();
-// 		}
-// 	});
-// 	var fileName = '';
-// 	$("#file0").change(function(){
-// 		if(this.files[0]){
-// 			var objUrl = getObjectURL(this.files[0]) ;
-// 			if($('.img-upload-clip').data('type')){
-// 				var imgType = $('.img-upload-clip').data('type');
-// 			}else{
-// 				var imgType = 'images';
-// 			}
-// 			fileName = imgType+'/';
-// 			fileName += date('y-m-d',time())+'/';
-// 			fileName += time().toString()+Math.round(Math.random()*8999+1000+1).toString()+this.files[0].name.match(/\.[a-z]+$/)[0];
-// 			if (objUrl) {
-// 				$("#img0").attr("src", objUrl) ;
-// 			}
-// 			$('.img-upload-clip .img-handle').show();
-// 			$('.img-upload-clip .img-operate>img').cropper({
-// 				aspectRatio: aspectRatio,
-// 				crop: function() {},
-// 				preview:'.img-upload-clip .img-preview'
-// 			}); 
-// 			$('.img-upload-clip .img-operate>img').cropper('replace', objUrl);
-// 		}
-// 	});
-// 	//建立一个可存取到该file的url
-// 	function getObjectURL(file) {
-// 		var url = null ; 
-// 		if (window.createObjectURL!=undefined) { // basic
-// 			url = window.createObjectURL(file) ;
-// 		} else if (window.URL!=undefined) { // mozilla(firefox)
-// 			url = window.URL.createObjectURL(file) ;
-// 		} else if (window.webkitURL!=undefined) { // webkit or chrome
-// 			url = window.webkitURL.createObjectURL(file) ;
-// 		}
-// 		return url ;
-// 	}
-// 	$('.save').on('click', function(){
-// 		if(!$('.cropper-container')[0])
-// 			return;
-// 		// token获取
-// 		var token = '';
-// 		var url = '/File/getQiNiuToken';
-// 		$.ajax({
-// 			url:url,
-// 			type:'post',
-// 			data:{'imageName':fileName},
-// 			dataType:'json',
-// 			success:function(data){
-// 				if(!data.error){
-// 					token = data.data.token;
-// 					uploadQiniu(fileName,token);
-// 				}
-// 			}
-// 		});
-// 		function uploadQiniu(fileName,token){
-// 				$('.img-upload-clip .img-operate>img').cropper("getCroppedCanvas").toBlob(function(blob) {
-// 				var url = getObjectURL(blob);
-// 				var form = new FormData();
-// 				form.append("file", blob);
-// 				form.append('key', fileName);
-// 				form.append("token", token);
-// 				win.alert('图片上传中', 'info');
-// 				$.ajax({
-// 					processData: false,
-// 					contentType: false,
-// 					data:form,
-// 					url:'http://up-z2.qiniu.com/',
-// 					dataType:'json',
-// 					type:'post',
-// 					success:function(data){
-// 						if(callback){
-// 							callback(data);
-// 						}
-// 						$('.img-upload-clip .img-handle').hide();
-// 						$('.img-upload-clip .img-operate>img').cropper('destroy');
-// 						$("#img0").attr("src", url);
-// 					}
-// 				});
-// 			},'image/jpeg',0.8);
-// 		}
-// 	});
-// };
-/**
- * 图片上传裁剪，依赖jQuery,Bootstrap
  * @param object initData 参数对象，以下为对象属性
- * @param string uploadBtn jquery选择器字符串，上传按钮
- * @param string fileBtn jquery选择器字符串，文件
- * @param string src 图片地址
  * @param NaN aspectRatio (num/num)裁剪比例
  * @param function onclick 上传按钮点击后的动作
  * @param function onchange 文件改变后的动作
@@ -233,24 +131,11 @@ function setPos(jNode, pos){
 function imgUploadClip(initData){
 	var length = $('.img-upload-clip').length;
 	for(var i = 0;i<length;i++){
-		var html = '';
-		var uploadBtn = '.upload-file';
-		var fileBtn = '#file0';
 		var src = $('.img-upload-clip')[i].dataset.src;
-		if(!initData.uploadBtn){
-			html += '<button class="btn btn-default upload-file" type="button">上传图片</button>';
-		}else{
-			uploadBtn = initData.uploadBtn;
-		}
-		if(!initData.fileBtn){
-			html += '<input type="file" class="file0" multiple="multiple" style="display:none">';
-		}else{
-			fileBtn = initData.fileBtn;
-		}
-		html +='<div class="img-area"><div class="img-operate"><img src="'+src+'" class="img0"></div><div class="img-handle" style="display:none;"><div class="img-preview" style="overflow:hidden;"><img src="" alt=""></div><button class="btn btn-default save" type="button">裁剪</button></div></div>';
+		var	html = '<button class="btn btn-default upload-file" type="button">上传图片</button><input type="file" class="file0" multiple="multiple" style="display:none"><div class="img-area"><div class="img-operate"><img src="'+src+'" class="img0"></div><div class="img-handle" style="display:none;"><div class="img-preview" style="overflow:hidden;"><img src="" alt=""></div><button class="btn btn-default save" type="button">裁剪</button></div></div>';
 		$($('.img-upload-clip')[i]).append(html);
 	}
-	$('body').on('click',uploadBtn,function(){
+	$('body').on('click','.upload-file',function(){
 		var _thisFile = $(this).parents('.img-upload-clip').find('.file0');
 		_thisFile.val('');
 		_thisFile.click();
@@ -264,8 +149,8 @@ function imgUploadClip(initData){
 		var _this = $(this).parents('.img-upload-clip');
 		if(this.files[0]){
 			var objUrl = getObjectURL(this.files[0]) ;
-			if($('.img-upload-clip').data('type')){
-				var imgType = $('.img-upload-clip').data('type');
+			if($('.upload-type').data('type')){
+				var imgType = $('.upload-type').data('type');
 			}else{
 				var imgType = 'images';
 			}
@@ -598,23 +483,8 @@ $('.account-info-edit .commit-account').on('click',function(){
 		}
 	});
 });
-// (function(){
-// 	if($('.img-upload-clip')[0]){
-// 		var src = $('.img-upload-clip').data('src');
-// 		var aspectRatio = 1/1;
-// 		function callback(data){
-// 			if(!data.error){
-// 				$('form .avatar-url').attr('value',  data.key);
-// 			}else{
-// 				win.alert(data.error, 'error');
-// 			}
-// 		}
-// 		imgUploadClip(src,aspectRatio,'',callback);
-// 	}
-// }());
 (function(){
 	if($('.img-upload-clip')[0]){
-		var src = $('.img-upload-clip').data('src');
 		var initData = {
 			aspectRatio: 1/1,
 			callback: function(data){
