@@ -333,7 +333,7 @@ class UserMsgModel extends BaseModel {
 			            //生成url定位当前消息的内容行
 			           
 			            if((int)$data['list'][$k]['type'] == 4){
-			                $data['list'][$k]['url'] = U('post/postDetail',['id'=>$data['list'][$k]['node_id'], 'msg_id'=>$v['id']]).'#comment-'.$v['node_id'];
+			                $data['list'][$k]['url'] = U('post/postDetail',['id'=>$data['list'][$k]['node_id'], 'msg_id'=>$v['id']]);
 			            }elseif((int)$data['list'][$k]['type'] == 5){
 			                $num = d(postComment)->where(['id'=>['lt', $v['node_id']],  'post_id'=>$v2['post_id']])->count('id');
 			                $p = intval(floor($num/15))+1;
