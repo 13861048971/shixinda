@@ -6,13 +6,9 @@
 				interval: 4000 //TIME IN MILLI SECONDS
 			});
 		},
-		// wow_fun: function () {
-		// 	new WOW().init();
-		// }
 	}
 	$(document).ready(function () {
-		mainApp.slide_fun();
-		//mainApp.wow_fun();       
+		mainApp.slide_fun();     
 	});
 }(jQuery));
 
