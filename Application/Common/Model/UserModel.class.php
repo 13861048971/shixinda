@@ -524,7 +524,7 @@ class UserModel extends BaseModel{
 		$info['addTime'] = local_date($info['add_time']);
 		$info['updateTime'] = local_date($info['update_time']);
 		$info['lastLogin'] = local_date($info['last_login']);
-        !$info['avatar'] ? ($info['preAvatar'] = "http://qiniu.img.mallshangyun.com"):($info['preAvatar'] = getImage($info['avatar'], -1));
+        !$info['avatar'] ? ($info['preAvatar'] = "http://qiniu.img.mallshangyun.com/-250_250_thumb"):($info['preAvatar'] = getImage($info['avatar'], -1));
 		unset($info['password']);
 		
 		return $info;

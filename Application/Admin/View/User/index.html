@@ -32,14 +32,11 @@
 		<tr>
 			<td>{$v.id}</td>
 			<td>
-				<if condition="$v['avatar']">
 					<a href="javascript:openInNewWindow('{$v.preAvatar}')">
 						<img class="avatar" src="{$v.preAvatar}" width=25 />
 					</a>
-				</if>
 			</td>
 			<td>{$v.nickname}</td>
-			
 			<td>{$v.gender}</td>
 			<td>{$v.mobile}</td>
 			<td>{$v['weixin_id']?'是':'否'}</td>
