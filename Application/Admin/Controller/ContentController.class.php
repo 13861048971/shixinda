@@ -121,6 +121,7 @@ class ContentController extends PublicController {
 	    ];
 	    $this->setRightAction($rightBtn);
 	    $data = d('navigation')->getPageList(['p'=>$_GET['p'],'name'=>$_GET['name'],'pid'=>'0'],null);
+	    
 	    $this->assign($data);
 	    $this->assign('navigationName',$_GET['name']);
 	    $this->display('navigation','list');

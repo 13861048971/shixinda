@@ -41,8 +41,8 @@ return array(
         'imgName' => [
             'userAvatar' => 'userAvatar', //用户头像
             'contentCover' => 'contentCover', //内容封面
-            'navigationLog' => 'navigationLog', //导航logo
-            'friendLinkLog' => 'friendLinkLog', //友情链接logo
+            'navigationLogo' => 'navigationLogo', //导航logo
+            'friendLinkLogo' => 'friendLinkLogo', //友情链接logo
             'blockImage' => 'blockImage' ,//轮播图
         ]
     )
