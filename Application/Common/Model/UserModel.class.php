@@ -500,7 +500,7 @@ class UserModel extends BaseModel{
 		$data = parent::getPageList($arr, $fields, $order, $limit);
 		foreach($data['list'] as $k=>$v){
 			$data['list'][$k] = $this->getInfo($v['id']);
-			$data['list'][$k]['avatar'] = getImage($v['avatar']);
+			//$data['list'][$k]['avatar'] = getImage($v['avatar']);
 		}
 
 		return $data;

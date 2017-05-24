@@ -31,7 +31,6 @@ class UserController extends PublicController {
 	    
 	    $field && $order = $field . ' desc';
 	    $data = $usermod->getPageList($con, '*', $order);
-
 	    $this->assign('userList', 	$data['list']);
 	    $this->assign('page', 	  	$data['pageVar']);
 	    
