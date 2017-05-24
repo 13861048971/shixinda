@@ -94,10 +94,8 @@ class PostModel extends BaseModel{
         $userIdArr = getIdArr($postCommentList, 'user_id');
         $userIdArr && $userList = d('user')->where(['id' => ['in', $userIdArr]])->select();
         //仅后台Admin模块执行
-        if(MODULE_NAME == 'Admin'){
-            $postCateIdArr = getIdArr($data['list'],'post_cate_id');
-            $postCateList = d('postCate')->where(['id'=>['in',$postCateIdArr]])->select();
-        } 
+        $postCateIdArr = getIdArr($data['list'],'post_cate_id');
+        $postCateList = d('postCate')->where(['id'=>['in',$postCateIdArr]])->select();
         //发帖人的id数组
         $postUserIdArr = getIdArr($data['list'],'user_id');
         //发帖人信息

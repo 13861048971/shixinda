@@ -113,6 +113,13 @@ class PostController extends PublicController {
 	
 	//获取帖子详情
 	public function postDetail(){
+	    if ($_GET['replayId']){
+	        $repayInfo = d('postComment')->where(['id'=>$_GET['replayId']])->find();
+	        
+	        $repayInfo['click'] = $repayInfo['click'] +1;
+	      
+	        d('postComment')->edit($repayInfo, $_GET['replayId']);
+	    }
 	    
 	    if($_GET['msg_id'])
 	        d('userMsg')->read($_GET['msg_id'], $this->user['id'], $read = true);

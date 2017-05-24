@@ -87,6 +87,8 @@ class PostCommentModel extends BaseModel{
             foreach($postList as $kp => $vp){
                 if($v['post_id'] == $vp['id']){
                     $data['list'][$k]['title'] = $vp['title'];
+                    $data['list'][$k]['click'] = $vp['click'];
+                    $data['list'][$k]['commentNum'] = $vp['comment_num'];
                 }
                 //获取主贴分类
                 foreach($postCateList as $kCate => $vCate){

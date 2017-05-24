@@ -66,9 +66,9 @@
 						<dd>
 						<foreach name="personReplay" item="vo">
 							<dl>
-								<dd class="col-md-6"><a href="{:U('post/postDetail',['id'=>$vo['post_id']])}">{$vo.title}</a></dd>
+								<dd class="col-md-6"><a href="{:U('post/postDetail',['id'=>$vo['post_id'],'replayId'=>$vo['id']])}">{$vo.title}</a></dd>
 								<dd class="col-md-3"><a href="">{$vo.cateName}</a></dd>
-								<dd class="col-md-3">{$vo.replayNum}/{$vo.clickNum}</dd>
+								<dd class="col-md-3">{$vo.commentNum}/{$vo.click}</dd>
 							</dl>
 						</foreach>
 						</dd>
