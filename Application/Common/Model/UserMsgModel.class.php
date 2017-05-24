@@ -88,7 +88,7 @@ class UserMsgModel extends BaseModel {
 	 * 编辑or添加
 	 */
 	function edit($data, $id=null){	
-	    
+	    //dump($data);exit();
 	    $type = $this->typeArr;
 	    $type = array_flip($type);
 	    $data['type_name'] = $type[$data['type']];
@@ -322,7 +322,7 @@ class UserMsgModel extends BaseModel {
 			    }
 			}else{
 			    foreach ($postComentList as $k2 => $v2){
-			        if($v2['id'] == $v['node_id']){
+			            if($v2['id'] == $v['node_id']){
 			            //计算当前消息前面的该帖下面的所有消息
 			            $con = [
 			                'id'=>['lt',$v['node_id']],
@@ -331,9 +331,13 @@ class UserMsgModel extends BaseModel {
 			            $count = d('postComment')->getPostCommentCount($con);
 			            $v['p'] = ceil($count/15);
 			            //生成url定位当前消息的内容行
-			    
+			           
 			            if((int)$data['list'][$k]['type'] == 4){
-			                $data['list'][$k]['url'] = U('post/postDetail',['id'=>$data['list'][$k]['node_id']]);
+			                $data['list'][$k]['url'] = U('post/postDetail',['id'=>$data['list'][$k]['node_id'], 'msg_id'=>$v['id']]).'#comment-'.$v['node_id'];
+			            }elseif((int)$data['list'][$k]['type'] == 5){
+			                $num = d(postComment)->where(['id'=>['lt', $v['node_id']],  'post_id'=>$v2['post_id']])->count('id');
+			                $p = intval(floor($num/15))+1;
+			                $data['list'][$k]['url'] = U('post/postDetail',['id'=>$v2['post_id'], 'p'=>$p, 'msg_id'=>$v['id']]).'#comment-'.$v['node_id'];
 			            }else{
 			                $data['list'][$k]['url'] = U('post/postDetail',['msg_id'=>$v['id'],'p'=>$v['p'],'id'=>$v2['post_id']]).'#comment-'.$v['node_id'];
 			            }

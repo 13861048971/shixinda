@@ -176,9 +176,9 @@ class UserController extends PublicController{
 		$con['_complex'] = [
 			'user_id' => $this->userId, 
 		];
-// 		return  $this->display();
+        
  		$data = $mod->getPageList($con,"");
- 		
+ 		//dump($data);exit();
  		$this->assign($data);
 		$this->display();
 		

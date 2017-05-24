@@ -122,11 +122,7 @@ class PostController extends PublicController {
 	        'type' => d('tdk')->typeArr['post']
 	    ];
 	    $this->tdkList($con);
-// 	    $tdkInfo = d('tdk')->tdkInfo($con);
 	    
-// 	    if($tdkInfo)
-// 	    $this->setTdk($tdkInfo['title'], $tdkInfo['keywords'], $tdkInfo['description']);
-
 	    //商户交流的帖子列表
 	    $customList = d('post')->getPostList([], 6, 'add_time desc');
 	    
@@ -215,7 +211,6 @@ class PostController extends PublicController {
 	    $this->assign('proNum', $data['proNum']);
 	    $this->assign('viewHost', $_GET['viewHost']);
 	    $this->assign('idArr', $idArr);
-	    //$this->assign('userRow', $userRow);
 	    $this->assign('list', $data['list']);
 	    $this->assign('postRow', $postRow);
 	    $this->assign('user', $this->user);

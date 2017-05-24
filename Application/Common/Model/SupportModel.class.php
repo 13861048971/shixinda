@@ -51,7 +51,7 @@ class SupportModel extends BaseModel {
 	            'from_user_id' => $data['user_id'],
 	            'node_id' => $data['node_id'],
 	            'post_id' => $data['post_id'],
-	            'type' => d('userMsg')->typeArr['点赞信息'],
+	            'type' => d('userMsg')->typeArr['评论点赞'],
 	            'user_id' => d('postComment')->where(['id'=>$data['node_id']])->getfield('user_id'),
 	        ];
 	    }

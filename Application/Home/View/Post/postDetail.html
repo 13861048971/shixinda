@@ -64,7 +64,7 @@
 						</div>
 					</div>
 					<foreach name="list" item="vo" key="k">
-						<div class="row post-comment-item">
+						<div class="row post-comment-item" id="comment-{$vo.id}">
 							<div class="col-md-2"><a href="{:u('post/personInfo', ['userId'=>$vo['user_id']])}"><img src="{$vo.avatar}" alt=""></a></div>
 							<div class="col-md-10">
 								<ul>
@@ -78,7 +78,7 @@
 											</blockquote>
 										<else />
 										</if>	
-											<span id="comment-{$vo.id}">{$vo.content}</span>
+											<span>{$vo.content}</span>
 										</div>
 									</li>
 									<li class="comment-handle" data-id="{$vo.id}">
