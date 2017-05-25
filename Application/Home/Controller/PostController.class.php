@@ -265,6 +265,25 @@ class PostController extends PublicController {
         $support = d('support')->isSupport('post');
     }
     
+    //点赞信息跳转
+    public function supportSkip(){ 
+        if($_GET['supportType'] == 'post'){
+            $url = U('post/postDetail',['msg_id'=>$_GET['msg_id'],'id'=>$_GET['supportNodeId']]);
+            $this->redirect($url);
+        }elseif ($_GET['supportType'] == 'postComment'){
+            $postCommentInfo = d('postComment')->where(['id' =>$_GET['supportNodeId']])->find();
+            $con = [
+                'id'=>['lt',$_GET['supportNodeId']],
+                'post_id'=>$postCommentInfo['post_id']
+            ];
+            $count = d('postComment')->getPostCommentCount($con);
+            $p = ceil($count/15);
+            $url = U('post/postDetail',['msg_id'=>$_GET['msg_id'],'p'=>$p,'id'=>$postCommentInfo['post_id']]).'#comment-'.$_GET['supportNodeId'];
+            $this->redirect($url);
+        }
+        
+    }
+    
     //帖子回复点赞或者踩
     public function postCommentSupport(){
         $data = [

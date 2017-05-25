@@ -39,23 +39,15 @@ class SupportModel extends BaseModel {
 	        'node_id' =>$_GET['id'],
 	        'post_id' =>$_GET['post_id']
         ];
-	    if($type == 'post'){
-	        $messageData = [
-	            'from_user_id' => $data['user_id'],
-	            'node_id' => $data['node_id'],
-	            'type' => d('userMsg')->typeArr['点赞信息'],
-	            'user_id' => d('post')->where(['id'=>$data['node_id']])->getfield('user_id'),
-	        ];
-	    }else{
-	        $messageData = [
-	            'from_user_id' => $data['user_id'],
-	            'node_id' => $data['node_id'],
-	            'post_id' => $data['post_id'],
-	            'type' => d('userMsg')->typeArr['评论点赞'],
-	            'user_id' => d('postComment')->where(['id'=>$data['node_id']])->getfield('user_id'),
-	        ];
-	    }
+
+	    $messageData['from_user_id'] = $data['user_id'];
+	    $messageData['type'] = d('userMsg')->typeArr['点赞信息'];
 	    
+	    if($type == 'post'){
+	        $messageData['user_id']= d('post')->where(['id'=>$data['node_id']])->getfield('user_id');
+	    }else{
+	        $messageData['user_id']= d('postComment')->where(['id'=>$data['node_id']])->getfield('user_id');
+	    }
 	    $info = $this->where($data)->find();
 
 	    //当前用户有记录的时候
@@ -66,21 +58,30 @@ class SupportModel extends BaseModel {
     	            return ajaxReturn2(1,'您已踩',['status'=>2,'id'=>$info['id']]);
     	        }	   
 	    }  
+	    
     	    //当前用户没有记录的时候
     	    if($_GET['act'] == 'zan'){
     	        $data['support'] = 1;
     	        if($id = $this->edit($data))
+    	           $messageData['type'] = $messageData['type']+$data['support'];
+	               $messageData['node_id'] = $id;
     	            if(!d('userMsg')->edit($messageData)){
     	                ajaxReturn(1, d('userMsg')->getError());
     	            };
                     return ajaxReturn2(0,'赞成功',['status'=>3,'id'=>$id]);
-    	    }
-    	    
-    	    if($_GET['act'] == 'cai'){
+    	    }else{
     	        $data['support'] = 0;
     	        if($id = $this->edit($data))
+    	            $messageData['type'] = $messageData['type']+$data['support'];
+    	            $messageData['node_id'] = $id;
+    	            if(!d('userMsg')->edit($messageData)){
+    	                ajaxReturn(1, d('userMsg')->getError());
+    	            };
+    	             
     	            return ajaxReturn2(0,'踩成功',['status'=>4,'id'=>$id]);
-    	    }           	   
+    	    }
+    	    
+    	  	   
     }                           
 	/**
 	 * 编辑or添加
@@ -93,7 +94,7 @@ class SupportModel extends BaseModel {
 		if(!($id = $this->add())){
 			return 0;//操作失败
 		}
-		return 1;//操作成功
+		return $id;//操作成功
 	}
 	
 	/**

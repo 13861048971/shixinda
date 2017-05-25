@@ -12,7 +12,6 @@ class UserMsgModel extends BaseModel {
         '回复信息' => 2, 
         '站内信息' => 3,
 	    '点赞信息' => 4,
-	    '评论点赞' => 5
     ];
 	public $cateArr = ['通知','投标','订单'];
 
@@ -102,10 +101,30 @@ class UserMsgModel extends BaseModel {
 	        empty($fromUser['nickname'])?($data['from_user_name'] = $fromUser['mobile']):($data['from_user_name'] = $fromUser['nickname']);
 	    }
         
-	    if(in_array($data['type'],[1,2,4,5]))
-            $data['content'] = $data['user_name'].'你有一条来自'.$data['from_user_name'].'的'.$data['type_name'];
-	    if($data['type'] == 3)
-            $data['content'] = $data['from_user_name'].'对你说：'.$data['content'];
+// 	    if(in_array($data['type'],[1,2,4,5]))
+//             $data['content'] = $data['user_name'].'你有一条来自'.$data['from_user_name'].'的'.$data['type_name'];
+// 	    if($data['type'] == 4)
+// 	        $data['content'] = $data['from_user_name'].'赞了您发布的帖子';
+// 	    if($data['type'] == 3)
+//             $data['content'] = $data['from_user_name'].'对你说：'.$data['content'];
+	    
+        switch ($data['type']){
+            case 1:
+                $data['content'] = $data['user_name'].'你有一条来自'.$data['from_user_name'].'的'.$data['type_name'];
+                break;
+            case 2:
+                $data['content'] = $data['user_name'].'你有一条来自'.$data['from_user_name'].'的'.$data['type_name'];
+                break;
+            case 3:
+                $data['content'] = $data['from_user_name'].'对你说：'.$data['content'];
+                break;
+            case 4:
+                $data['content'] = $data['from_user_name'].'踩了您';
+                break;
+            case 5:
+                $data['content'] = $data['from_user_name'].'赞了您';
+                break;
+        }
 	    if($data['type_name']!='点赞信息')
             $data = $this->setValidate($data);
 		
@@ -289,15 +308,33 @@ class UserMsgModel extends BaseModel {
 		} 
 
 		$data = parent::getPageList($con, $fields, $order, $perNum);
+		
+		
 		if( MODULE_NAME == 'Admin'){
 		    $from_id = getIdArr($data['list'],'from_user_id');
 		    $user_id = getIdArr($data['list'],'user_id');
 		    $idArr = array_merge($from_id,$user_id);
 		    $userList = d('user')->where(['id'=>['in',$idArr]])->select();
 		}else{
-		    $nodeIdArr = getIdArr($data['list'],'node_id');
-		    if($nodeIdArr)
-		    $postComentList = d('postComment')->where(['id'=>['in',$nodeIdArr]])->select();
+		    
+		    //把点赞和踩的消息取出来
+		    $supportMsgList = [];
+		    $commentMsgList = [];
+		    foreach($data['list'] as $mk=>$mv){
+		        if(in_array($mv['type'], [4,5])){
+		            $supportMsgList[] = $mv;
+		        }else{
+		            $commentMsgList[] =$mv; 
+		        }
+		    }
+		   
+		    $postCommentIdArr = getIdArr($commentMsgList,'node_id');
+		    $supportIdArr = getIdArr($supportMsgList,'node_id');
+		    if($postCommentIdArr)
+		        $postComentList = d('postComment')->where(['id'=>['in',$postCommentIdArr]])->select();//评论信息
+		    if($supportIdArr)
+		        $supportList = d('support')->where(['id'=>['in',$supportIdArr]])->select();//点赞信息
+  
 		}
 	
 		foreach($data['list'] as $k=>$v){
@@ -321,30 +358,42 @@ class UserMsgModel extends BaseModel {
 			        }
 			    }
 			}else{
-			    foreach ($postComentList as $k2 => $v2){
+			   
+			    if(in_array($v['type'], [1,2])){
+			        //生成评论表url连接
+			        foreach ($postComentList as $k2 => $v2){
+			       
 			            if($v2['id'] == $v['node_id']){
-			            //计算当前消息前面的该帖下面的所有消息
-			            $con = [
-			                'id'=>['lt',$v['node_id']],
-			                'post_id'=>$v2['post_id']
-			            ];
-			            $count = d('postComment')->getPostCommentCount($con);
-			            $v['p'] = ceil($count/15);
-			            //生成url定位当前消息的内容行
-			           
-			            if((int)$data['list'][$k]['type'] == 4){
-			                $data['list'][$k]['url'] = U('post/postDetail',['id'=>$data['list'][$k]['node_id'], 'msg_id'=>$v['id']]);
-			            }elseif((int)$data['list'][$k]['type'] == 5){
-			                $num = d(postComment)->where(['id'=>['lt', $v['node_id']],  'post_id'=>$v2['post_id']])->count('id');
-			                $p = intval(floor($num/15))+1;
-			                $data['list'][$k]['url'] = U('post/postDetail',['id'=>$v2['post_id'], 'p'=>$p, 'msg_id'=>$v['id']]).'#comment-'.$v['node_id'];
-			            }else{
+			                //计算当前消息前面的该帖下面的所有消息
+			                $con = [
+			                    'id'=>['lt',$v['node_id']],
+			                    'post_id'=>$v2['post_id']
+			                ];
+			                $count = d('postComment')->getPostCommentCount($con);
+			                $v['p'] = ceil($count/15);
+			                //生成url定位当前消息的内容行
 			                $data['list'][$k]['url'] = U('post/postDetail',['msg_id'=>$v['id'],'p'=>$v['p'],'id'=>$v2['post_id']]).'#comment-'.$v['node_id'];
 			            }
-			                
-			            
 			        }
-			    }
+			    }elseif (in_array($v['type'],[4,5])){  
+			        //生成点赞信息链接
+			        if($supportList){
+			            foreach ($supportList as $supk => $supv){
+			                
+			                if($supv['id'] == $v['node_id']){
+			                    //计算当前消息前面的该帖下面的所有消息
+			                    if($supv['type'] == 1){
+			                        $data['list'][$k]['url'] = U('post/supportSkip',['msg_id'=>$v['id'],'supportType'=>'post','supportNodeId'=>$supv['node_id']]);
+			                    }elseif ($supv['type'] == 2){
+			                        $data['list'][$k]['url'] = U('post/supportSkip',['msg_id'=>$v['id'],'supportType'=>'postComment','supportNodeId'=>$supv['node_id']]);
+			                    }
+
+			                }
+			            }
+			         
+			        } 
+			    }   
+			    
 			}	
 		}
 
