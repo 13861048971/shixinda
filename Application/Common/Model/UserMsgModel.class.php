@@ -309,14 +309,12 @@ class UserMsgModel extends BaseModel {
 
 		$data = parent::getPageList($con, $fields, $order, $perNum);
 		
-		
 		if( MODULE_NAME == 'Admin'){
 		    $from_id = getIdArr($data['list'],'from_user_id');
 		    $user_id = getIdArr($data['list'],'user_id');
 		    $idArr = array_merge($from_id,$user_id);
 		    $userList = d('user')->where(['id'=>['in',$idArr]])->select();
-		}else{
-		    
+		}else{ 
 		    //把点赞和踩的消息取出来
 		    $supportMsgList = [];
 		    $commentMsgList = [];
@@ -334,7 +332,6 @@ class UserMsgModel extends BaseModel {
 		        $postComentList = d('postComment')->where(['id'=>['in',$postCommentIdArr]])->select();//评论信息
 		    if($supportIdArr)
 		        $supportList = d('support')->where(['id'=>['in',$supportIdArr]])->select();//点赞信息
-  
 		}
 	
 		foreach($data['list'] as $k=>$v){
@@ -353,16 +350,13 @@ class UserMsgModel extends BaseModel {
 			                $data['list'][$k]['from_user_name'] = $v1['nickname'];
 			            }else{
 			                $data['list'][$k]['from_user_name'] = $v1['mobile'];
-			            }
-			    
+			            }    
 			        }
 			    }
-			}else{
-			   
+			}else{   
 			    if(in_array($v['type'], [1,2])){
 			        //生成评论表url连接
 			        foreach ($postComentList as $k2 => $v2){
-			       
 			            if($v2['id'] == $v['node_id']){
 			                //计算当前消息前面的该帖下面的所有消息
 			                $con = [
@@ -378,8 +372,7 @@ class UserMsgModel extends BaseModel {
 			    }elseif (in_array($v['type'],[4,5])){  
 			        //生成点赞信息链接
 			        if($supportList){
-			            foreach ($supportList as $supk => $supv){
-			                
+			            foreach ($supportList as $supk => $supv){   
 			                if($supv['id'] == $v['node_id']){
 			                    //计算当前消息前面的该帖下面的所有消息
 			                    if($supv['type'] == 1){
@@ -387,16 +380,12 @@ class UserMsgModel extends BaseModel {
 			                    }elseif ($supv['type'] == 2){
 			                        $data['list'][$k]['url'] = U('post/supportSkip',['msg_id'=>$v['id'],'supportType'=>'postComment','supportNodeId'=>$supv['node_id']]);
 			                    }
-
 			                }
 			            }
-			         
 			        } 
-			    }   
-			    
+			    }       
 			}	
 		}
-
 		return $data;
 	}
 	

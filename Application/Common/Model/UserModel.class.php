@@ -148,8 +148,16 @@ class UserModel extends BaseModel{
 		
 		if( !($pass = $this->checkPass($pass)))
 			return false;
-		if( $vercode != session('msgvercode') )
-			return $this->setError('验证码错误!');
+// 		if( $vercode != session('msgvercode') )
+// 			return $this->setError('验证码错误!');
+
+        $conf = d('config')->getInfo('SMS')['value'];
+        $vercode2 = $conf['vercode'];
+        if(!Org\Util\Validator::isMobile($mobile))
+            return $this->setError('手机号格式错误!');
+        if( $vercode != session('msgvercode') && ($vercode && $vercode != $vercode2))
+            return $this->setError('验证码错误!');
+    
 		
 		if(!($id = $this->where(['mobile'=>$mobile])->getField('id')))
 			return $this->setError('用户不存在!');

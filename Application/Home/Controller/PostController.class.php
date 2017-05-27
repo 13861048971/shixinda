@@ -267,6 +267,7 @@ class PostController extends PublicController {
     
     //点赞信息跳转
     public function supportSkip(){ 
+       
         if($_GET['supportType'] == 'post'){
             $url = U('post/postDetail',['msg_id'=>$_GET['msg_id'],'id'=>$_GET['supportNodeId']]);
             $this->redirect($url);
