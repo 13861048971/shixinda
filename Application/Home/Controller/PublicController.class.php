@@ -19,18 +19,18 @@ class PublicController extends Controller {
 		    $messageNotReadCount = $messageCount - $messageReadCount;
 		    $this->assign('messageCount',$messageNotReadCount);
 		}
-		//dump(session('user'));exit();
+		$navigation = d('navigation')->getNavigation();
 		$this->assign('user',session('user'));
-		$this->assign('navigation',d('navigation')->getNavigation());
+		$this->assign('navigation', $navigation);
 		$this->assign('aboutOur',$this->about);
-		$this->assign('config',$this->config);//
+		$this->assign('config',$this->config);
 		if($this->user = self::isLogin()){
 			$this->assign('user', $this->user);
 			return;
 		}
-		// $this->user = d('user')->getInfo(23);return;
+		//$this->user = d('user')->getInfo(23);return;
 		self::checkUrl();
-	}
+	} 
 	
 	//tdk详情
 	public function tdkDetail(){
@@ -41,7 +41,7 @@ class PublicController extends Controller {
 	    $tdkInfo = d('tdk')->getTdk($con);
 	    if($tdkInfo)
 	        $this->setTdk($tdkInfo['title'], $tdkInfo['keywords'], $tdkInfo['description']);
-	}
+	} 
 	
 	//tdk列表
 	public function tdkList($con){
@@ -59,7 +59,7 @@ class PublicController extends Controller {
 	    $mod = d('config');
 	    $info = $mod->getList();
 	    $info = $info['about']['node'];
-	     
+	    
 	    return $info;
 	}
 	//网站配置信息
@@ -172,41 +172,41 @@ class PublicController extends Controller {
 	 * @param string $modName  模型名称
 	 * @param string $template 模板地址
 	 */
-// 	protected function ajaxEdit($modName, $template = null, $callback = null,$success=''){
-// 	    $mod = d($modName);
-// 	    $modTdk = d('tdk');
-// 	    if($_POST){
-// 	        $data = $_POST;
-// 	        $id   = (int)$_POST['id'];
-// 	        $act = $id ? '编辑' : '添加';
+	protected function ajaxEdit($modName, $template = null, $callback = null,$success=''){
+	    $mod = d($modName);
+	    $modTdk = d('tdk');
+	    if($_POST){
+	        $data = $_POST;
+	        $id   = (int)$_POST['id'];
+	        $act = $id ? '编辑' : '添加';
 	        	
-// 	        if($mod->edit($data, $id))
-// 	            return ajaxReturn(0, ($success ? $success : $act) . '成功!');
-// 	            return ajaxReturn(1, $act . '失败,'. $mod->getError());
-// 	    }
+	        if($mod->edit($data, $id))
+	            return ajaxReturn(0, ($success ? $success : $act) . '成功!');
+	            return ajaxReturn(1, $act . '失败,'. $mod->getError());
+	    }
 	
-// 	    if($id = (int)$_GET['id']){
-// 	        $row = $mod->getInfo($id);
+	    if($id = (int)$_GET['id']){
+	        $row = $mod->getInfo($id);
 	
-// 	        $this->assign('row',$row);
-// 	    }
+	        $this->assign('row',$row);
+	    }
 	
-// 	    if(is_callable($callback))
-// 	        $callback($row, $mod);
-// 	        if($mod->statusArr){
-// 	            $statusList = [[ 'name' => 'status', 'list' => $mod->statusArr]];
-// 	            if(isset($row['status'])){
-// 	                $statusList[0]['checked'] = $row['status'];
-// 	                $statusList[0]['selected'] = $row['status'];
-// 	            }
-// 	            if(!isset($row['status']))
-// 	                $statusList[0]['checked'] = 1;
+	    if(is_callable($callback))
+	        $callback($row, $mod);
+	        if($mod->statusArr){
+	            $statusList = [[ 'name' => 'status', 'list' => $mod->statusArr]];
+	            if(isset($row['status'])){
+	                $statusList[0]['checked'] = $row['status'];
+	                $statusList[0]['selected'] = $row['status'];
+	            }
+	            if(!isset($row['status']))
+	                $statusList[0]['checked'] = 1;
 	                	
-// 	                $this->assign('statusList', $statusList);
-// 	        }
+	                $this->assign('statusList', $statusList);
+	        }
 	
 	     
-// 	}
+ 	} 
 	
 	/**
 	 * ajax 删除
