@@ -436,7 +436,7 @@ class UserModel extends BaseModel{
 		if(self::getPass($d['password']) != $info['password'])
 			return $this->setError('原密码不正确!');
 		
-		$data = array('password'=>self::getPass($d['password']));
+		$data = array('password'=>self::getPass($d['password_new']));
 		if($this->edit($data, $id)){
 			session('user', $this->getInfo($id));
 			return true;
