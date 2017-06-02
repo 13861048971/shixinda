@@ -2,6 +2,7 @@
 <div class="table-responsive shrink user">
 	<form action="" class="form-inline search clearfix" method="GET">
 		<input type="text" class="form-control" name="title" placeholder="请输入标题" value="{$contentTitle}" />
+	     {:W('select/contentCate')}
 		<input type="submit"  class="form-control btn-info" value="搜索">       			     
 	</form>
 	<table class="table table-striped user-list">
@@ -24,7 +25,7 @@
 			<td>{$v.title}</td>
 			<td>{$v.author}</td>
 			<td <if condition="$v['status'] eq 1"> class="green"</if>> {$v.statusName}</td>
-			<td><img src="{$v.cover}" width=25></td>
+			<td ><if condition="$v['cover']"><img src="{$v.cover}" width=25></if></td>
 			<td>{$v.publishTime}</td>
 			<td>{$v.addTime}</td>
 			<td>{$v.updateTime}</td>

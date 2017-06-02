@@ -4,6 +4,7 @@ class PostController extends PublicController {
     
     public function _initialize(){
         parent::_initialize();  
+       
     }
     //获取帖子分类
 	public function index(){

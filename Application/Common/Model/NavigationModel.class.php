@@ -28,7 +28,7 @@ class NavigationModel extends BaseModel {
 	
 	//缓存所有导航信息
 	protected  function _cacheNavigation(){
-	    $navigation = d("navigation")->where(['pid'=>['eq',6]])->order('rank ')->select();
+	    $navigation = d("navigation")->where(['pid'=>['eq',6], 'status'=>1])->order('rank ')->select();
 	    $childNavigation = d("navigation")->where(['pid'=>['neq',0]])->order('rank desc')->select();
 	    foreach ($navigation as $k=>$v){
 	        foreach ($childNavigation as $k2=>$v2) {

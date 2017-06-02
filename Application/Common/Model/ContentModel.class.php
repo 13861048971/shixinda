@@ -82,10 +82,10 @@ class ContentModel extends BaseModel {
 	}
 	
 	//分页
-	function getPageList($con=[], $fields = '*', $order = '', $perNum = 15){ 
+	function getPageList($con=[], $fields = '*', $order = 'update_time desc', $perNum = 15){ 
 	
 	    $data = parent::getPageList($con, $fields, $order, $perNum);
-	    
+
 	    $cateIdArr = getIdArr($data['list'],'cate_id'); 
 	    if($cateIdArr)
 	    $cateList = d('contentCate')->where(['id'=>['in',$cateIdArr]])->select(); 
@@ -94,7 +94,9 @@ class ContentModel extends BaseModel {
 	        foreach ($cateList as $k1=>$v1){
 	            if($v['cate_id'] == $v1['id']){
 	                $data['list'][$k]['cateName'] = $v1['name'];
-	                $data['list'][$k]['cover'] = getImage($v['cover']);
+	                if($v['cover']){
+	                    $data['list'][$k]['cover'] = getImage($v['cover']);
+	                }
 	            }
 	        }
 	    } 

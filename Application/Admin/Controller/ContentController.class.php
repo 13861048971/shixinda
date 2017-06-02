@@ -17,6 +17,7 @@ class ContentController extends PublicController {
             ['name' => '添加内容', 'url' => u('contentEdit'), 'dialog' => 1, 'dialog-lg' => 1 ]
         ];
         $this->setRightAction($rightBtn);
+        $cateId = d('contentCate')->where(['name'=>$_GET['cateName']])->getField('id');
         $data = d('content')->getPageList($_GET);
         $this->assign($data); 
         $this->assign('contentTitle',$_GET['title']);
@@ -29,9 +30,9 @@ class ContentController extends PublicController {
 	    $list = d('contentCate')->getList(['pid'=>'0'], $limit=50);
 	    $url = "/admin/content/contentCateChildren/pid/";
         $selectMuti = [
-                    'list'      => $list,
-                    'url'       => $url,
-                    'name'      => 'cate_id',
+            'list'      => $list,
+            'url'       => $url,
+            'name'      => 'cate_id',
         ];
         if(!$row){
             $row['publish_time'] = time();
